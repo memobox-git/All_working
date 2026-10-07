@@ -1,0 +1,245 @@
+<!--@profile {"name":"Rahul Kumar","role":"Senior Data Engineer","direction":"An engineering schematic: paper-white sheet, cobalt ink, technical labels and to-scale charts.","palette":["#F4F3EE","#13151A","#1D3FD8","#E5482D","#C9CCD3"],"fonts":["Archivo","IBM Plex Mono"],"highlights":["6+ years","AWS + Databricks","20K rec/s CDC","30–50% cost cut","Databricks Pro certified"]}-->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rahul Kumar · Senior Data Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#F4F3EE;--ink:#13151A;--soft:#5C606B;--rule:#C9CCD3;--blue:#1D3FD8;--red:#E5482D;--tint:#E7E9F6;--display:"Archivo",system-ui,sans-serif;--body:"Source Serif 4",Georgia,serif;--mono:"IBM Plex Mono",ui-monospace,monospace}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 18px/1.6 var(--body);background-image:linear-gradient(var(--rule) 1px,transparent 1px),linear-gradient(90deg,var(--rule) 1px,transparent 1px);background-size:120px 120px;background-position:-1px -1px;background-attachment:fixed}
+body::before{content:"";position:fixed;inset:0;background:radial-gradient(ellipse at 50% 0,rgba(244,243,238,.55),rgba(244,243,238,.92) 60%);pointer-events:none;z-index:-1}
+a{color:var(--blue);text-underline-offset:4px}
+a:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+.sheet{max-width:1180px;margin:0 auto;padding:0 28px}
+.label{font:500 12px/1.3 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--soft)}
+.label b{color:var(--blue);font-weight:500}
+nav{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:22px 0;border-bottom:1.5px solid var(--ink)}
+nav ul{display:flex;gap:26px;list-style:none;margin:0;padding:0}
+nav a{font:500 13px/1 var(--mono);color:var(--ink);text-decoration:none}
+nav a:hover{color:var(--blue)}
+.hero{display:grid;grid-template-columns:1.25fr 1fr;gap:48px;padding:72px 0 64px;border-bottom:1.5px solid var(--ink);align-items:end}
+.hero>*{min-width:0}
+h1{font:900 clamp(64px,11vw,148px)/.84 var(--display);font-stretch:62%;letter-spacing:-.01em;text-transform:uppercase;margin:22px 0 28px}
+h1 span{display:block;color:var(--blue)}
+.lede{font-size:clamp(19px,2vw,22px);line-height:1.5;max-width:30ch;margin:0 0 26px}
+.cta{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:13px 18px;font:500 14px/1 var(--mono);text-decoration:none;border:1.5px solid var(--ink);color:var(--ink);background:var(--paper)}
+.btn.solid{background:var(--ink);color:var(--paper)}
+.btn:hover{background:var(--blue);border-color:var(--blue);color:#fff}
+.schematic{border:1.5px solid var(--ink);background:var(--paper);padding:16px 16px 10px}
+.schematic svg{display:block;width:100%;height:auto}
+.schematic text{font-family:"IBM Plex Mono",monospace}
+.flow{stroke-dasharray:4 6;animation:dash 1.2s linear infinite}
+@keyframes dash{to{stroke-dashoffset:-20}}
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1.5px solid var(--ink)}
+.metric{padding:30px 22px 28px;border-left:1px solid var(--rule)}
+.metric:first-child{border-left:0;padding-left:0}
+.metric strong{display:block;font:800 clamp(40px,5vw,62px)/.9 var(--display);font-stretch:70%;letter-spacing:-.01em}
+.metric p{margin:12px 0 14px;font-size:15px;line-height:1.45;color:var(--soft)}
+.meter{height:6px;background:var(--tint);position:relative}
+.meter i{position:absolute;inset:0 auto 0 0;background:var(--blue)}
+section{padding:88px 0 0}
+.head{display:grid;grid-template-columns:220px 1fr;gap:32px;margin-bottom:40px;align-items:baseline}
+h2{font:800 clamp(38px,5vw,64px)/.95 var(--display);font-stretch:75%;text-transform:uppercase;margin:0;letter-spacing:-.005em;text-wrap:balance}
+.work{display:grid;grid-template-columns:repeat(6,1fr);gap:0;border-top:1.5px solid var(--ink)}
+.case{grid-column:span 3;padding:30px 30px 32px 0;border-bottom:1px solid var(--rule);display:flex;flex-direction:column;gap:14px;min-width:0}
+.case:nth-child(odd):not(.wide){padding:30px 0 32px 30px;border-left:1px solid var(--rule)}
+.case.wide{grid-column:span 6;display:grid;grid-template-columns:1.2fr 1fr;gap:40px;padding-right:0}
+.case h3{font:700 clamp(24px,2.6vw,32px)/1.05 var(--display);font-stretch:85%;margin:0;text-wrap:balance}
+.case p{margin:0;color:#2E3139}
+.stack{display:flex;flex-wrap:wrap;gap:6px}
+.stack span{font:500 12px/1 var(--mono);padding:6px 8px;border:1px solid var(--rule);background:var(--paper)}
+.result{font:500 14px/1.5 var(--mono);color:var(--ink);padding-top:12px;border-top:1px dashed var(--rule);margin-top:auto}
+.result em{font-style:normal;color:var(--red)}
+.chart{border:1.5px solid var(--ink);padding:18px;background:var(--paper);align-self:start}
+.chart svg{display:block;width:100%;height:auto}
+.chart text{font-family:"IBM Plex Mono",monospace}
+.timeline{list-style:none;margin:0;padding:0;border-top:1.5px solid var(--ink)}
+.job{display:grid;grid-template-columns:220px 1fr;gap:32px;padding:30px 0;border-bottom:1px solid var(--rule)}
+.job>*{min-width:0}
+.when{font:500 13px/1.6 var(--mono);color:var(--soft)}
+.when b{display:block;color:var(--ink);font-weight:500}
+.job h3{font:700 26px/1.1 var(--display);font-stretch:85%;margin:0 0 6px}
+.job h3 span{color:var(--blue)}
+.job ul{margin:14px 0 0;padding:0;list-style:none;display:grid;gap:10px}
+.job li{padding-left:22px;position:relative;font-size:17px}
+.job li::before{content:"";position:absolute;left:0;top:.7em;width:10px;height:1.5px;background:var(--blue)}
+.skills{display:grid;grid-template-columns:repeat(4,1fr);border-top:1.5px solid var(--ink)}
+.skills div{padding:22px 20px 26px 0;border-bottom:1px solid var(--rule)}
+.skills div:not(:nth-child(4n+1)){padding-left:20px;border-left:1px solid var(--rule)}
+.skills h4{margin:0 0 10px;font:500 12px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--blue)}
+.skills p{margin:0;font-size:16px;line-height:1.5}
+.certs{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.cert{display:flex;flex-direction:column;gap:12px;padding:22px;border:1.5px solid var(--ink);background:var(--paper);text-decoration:none;color:var(--ink);position:relative;min-width:0}
+.cert::after{content:"";position:absolute;top:-1.5px;right:-1.5px;width:18px;height:18px;background:var(--blue)}
+.cert:hover{background:var(--tint)}
+.cert strong{font:700 22px/1.1 var(--display);font-stretch:85%}
+.cert .v{font:500 13px/1 var(--mono);color:var(--blue);margin-top:auto}
+.edu{margin-top:26px;font-size:17px}
+.contact{margin:96px 0 0;background:var(--ink);color:var(--paper);padding:64px 0 40px}
+.contact .sheet{display:grid;grid-template-columns:1.3fr 1fr;gap:48px;align-items:end}
+.contact h2{color:var(--paper);font-size:clamp(48px,7vw,96px)}
+.contact h2 span{color:#8EA2FF}
+.contact dl{margin:0;display:grid;gap:18px}
+.contact dt{font:500 11px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:#9AA0AE;margin-bottom:6px}
+.contact dd{margin:0;font:500 17px/1.4 var(--mono);overflow-wrap:anywhere}
+.contact a{color:var(--paper)}
+footer{margin-top:56px;padding-top:18px;border-top:1px solid #3A3D46;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font:400 12px/1.5 var(--mono);color:#9AA0AE}
+@media (max-width:900px){.hero{grid-template-columns:1fr;padding:48px 0}.metrics{grid-template-columns:repeat(2,1fr)}.metric:nth-child(3){border-left:0;padding-left:0}.metric:nth-child(n+3){border-top:1px solid var(--rule)}.head,.job{grid-template-columns:1fr;gap:10px}.case,.case:nth-child(odd):not(.wide){grid-column:span 6;padding:28px 0;border-left:0}.case.wide{grid-template-columns:1fr;gap:24px}.skills{grid-template-columns:repeat(2,1fr)}.skills div,.skills div:not(:nth-child(4n+1)){padding:20px 14px 22px 0;border-left:0}.certs{grid-template-columns:1fr}.contact .sheet{grid-template-columns:1fr}nav ul{display:none}}
+@media (max-width:480px){.sheet{padding:0 16px}.metrics{grid-template-columns:1fr}.metric{border-left:0;padding-left:0}.metric+.metric{border-top:1px solid var(--rule)}.skills{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.flow{animation:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<!--@step Hero-->
+<div class="sheet">
+<nav aria-label="Primary">
+<span class="label">RK / <b>data-platform</b> / rev. 2026</span>
+<ul><li><a href="#work">Work</a></li><li><a href="#experience">Experience</a></li><li><a href="#stack">Stack</a></li><li><a href="#contact">Contact</a></li></ul>
+</nav>
+<header class="hero">
+<div>
+<span class="label">Senior Data Engineer · <b>ThoughtWorks</b> · Bangalore</span>
+<h1>Rahul<span>Kumar</span></h1>
+<p class="lede">I design data platforms that move terabytes on schedule and cost less to run than the ones they replace.</p>
+<div class="cta"><a class="btn solid" href="#work">Selected work ↓</a><a class="btn" href="https://www.linkedin.com/in/panditrahulsharma" target="_blank" rel="noopener">LinkedIn ↗</a></div>
+</div>
+<figure class="schematic" aria-label="Schematic of a change-data-capture pipeline from MySQL through Debezium and Kafka into Spark and Delta Lake bronze, silver and gold tables">
+<div class="label" style="display:flex;justify-content:space-between;margin-bottom:10px"><span>FIG. 1 · CDC pipeline</span><span><b>~20,000</b> rec/s</span></div>
+<svg viewBox="0 0 420 250" role="img" aria-hidden="true">
+<g fill="none" stroke="#13151A" stroke-width="1.5">
+<rect x="8" y="24" width="84" height="46"/><rect x="168" y="24" width="84" height="46"/><rect x="328" y="24" width="84" height="46"/>
+<rect x="8" y="164" width="104" height="58"/><rect x="158" y="164" width="104" height="58"/><rect x="308" y="164" width="104" height="58"/>
+</g>
+<g fill="none" stroke="#1D3FD8" stroke-width="1.5">
+<path class="flow" d="M92 47H168"/><path class="flow" d="M252 47H328"/><path class="flow" d="M370 70V118H60V164"/><path class="flow" d="M112 193H158"/><path class="flow" d="M262 193H308"/>
+</g>
+<g font-size="11" fill="#13151A">
+<text x="50" y="45" text-anchor="middle">MySQL</text><text x="50" y="60" text-anchor="middle" fill="#5C606B" font-size="9">source DB</text>
+<text x="210" y="45" text-anchor="middle">Debezium</text><text x="210" y="60" text-anchor="middle" fill="#E5482D" font-size="9">+ encrypt SMT</text>
+<text x="370" y="45" text-anchor="middle">Kafka</text><text x="370" y="60" text-anchor="middle" fill="#5C606B" font-size="9">topics</text>
+<text x="215" y="112" text-anchor="middle" fill="#1D3FD8" font-size="9">SPARK STRUCTURED STREAMING</text>
+<text x="60" y="190" text-anchor="middle">BRONZE</text><text x="60" y="206" text-anchor="middle" fill="#5C606B" font-size="9">raw · append</text>
+<text x="210" y="190" text-anchor="middle">SILVER</text><text x="210" y="206" text-anchor="middle" fill="#5C606B" font-size="9">clean · merge</text>
+<text x="360" y="190" text-anchor="middle">GOLD</text><text x="360" y="206" text-anchor="middle" fill="#5C606B" font-size="9">marts · BI</text>
+<text x="210" y="244" text-anchor="middle" fill="#5C606B" font-size="9">DELTA LAKE · UNITY CATALOG · DBT TESTS · AIRFLOW</text>
+</g>
+</svg>
+</figure>
+</header>
+<!--@step Impact numbers-->
+<div class="metrics" role="list">
+<div class="metric" role="listitem"><strong>30–50%</strong><p>lower platform cost from query tuning and liquid clustering</p><div class="meter"><i style="width:50%"></i></div></div>
+<div class="metric" role="listitem"><strong>20K/s</strong><p>records through a real-time CDC platform I architected</p><div class="meter"><i style="width:100%"></i></div></div>
+<div class="metric" role="listitem"><strong>80%</strong><p>less manual engineering with metadata-driven pipelines</p><div class="meter"><i style="width:80%"></i></div></div>
+<div class="metric" role="listitem"><strong>15 min</strong><p>end-to-end SLA from source change to analytics</p><div class="meter"><i style="width:25%"></i></div></div>
+</div>
+<!--@step Selected work-->
+<section id="work">
+<div class="head"><span class="label">02 · Selected work</span><h2>Systems I designed and shipped</h2></div>
+<div class="work">
+<article class="case wide">
+<div style="display:flex;flex-direction:column;gap:14px">
+<span class="label">ThoughtWorks · 2026</span>
+<h3>Redshift to Databricks Lakehouse migration</h3>
+<p>I led the end-to-end move of batch and analytical workloads off Amazon Redshift and re-architected them for TB-scale processing on Delta Lake. Unity Catalog now governs access for more than 20 teams. To speed up the rewrite, I used LLMs to convert legacy SQL into PySpark.</p>
+<div class="stack"><span>Databricks</span><span>Delta Lake</span><span>Unity Catalog</span><span>PySpark</span><span>dbt</span><span>LLMs</span></div>
+<div class="result">→ <em>30–50%</em> lower cost · <em>30–40%</em> less development effort · <em>20–30%</em> faster downstream queries</div>
+</div>
+<figure class="chart" aria-label="Bar chart: relative platform cost. Before migration 100; after migration between 50 and 70.">
+<div class="label" style="margin-bottom:12px">FIG. 2 · Relative platform cost</div>
+<svg viewBox="0 0 320 170" role="img" aria-hidden="true">
+<g font-size="10" fill="#5C606B"><text x="0" y="36">Before</text><text x="0" y="96">After</text></g>
+<rect x="56" y="20" width="250" height="24" fill="#13151A"/>
+<rect x="56" y="80" width="125" height="24" fill="#1D3FD8"/>
+<rect x="181" y="80" width="50" height="24" fill="#8EA2FF"/>
+<g font-size="10" fill="#13151A"><text x="306" y="60" text-anchor="end">100</text><text x="231" y="120" text-anchor="end">50–70</text></g>
+<line x1="56" y1="140" x2="306" y2="140" stroke="#C9CCD3"/>
+<g font-size="9" fill="#5C606B"><text x="56" y="156">0</text><text x="181" y="156" text-anchor="middle">50</text><text x="306" y="156" text-anchor="end">100</text></g>
+</svg>
+</figure>
+</article>
+<article class="case">
+<span class="label">Junglee Games · 2022–2026</span>
+<h3>Real-time CDC platform</h3>
+<p>I architected change-data-capture from operational databases into the lake with Kafka, Debezium and Spark, and led a team of four engineers running it alongside the batch platform on AWS.</p>
+<div class="stack"><span>Kafka</span><span>Debezium</span><span>Spark Streaming</span><span>Airflow</span><span>AWS</span></div>
+<div class="result">→ <em>~20K</em> records/sec · latency down to <em>~15 min</em></div>
+</article>
+<article class="case">
+<span class="label">Junglee Games</span>
+<h3>Metadata-driven pipeline framework</h3>
+<p>I replaced hand-built pipelines with YAML data contracts. Engineers declare sources, schemas and schedules, and CI/CD generates and deploys each pipeline the same way every time.</p>
+<div class="stack"><span>YAML contracts</span><span>CI/CD</span><span>Python</span><span>Airflow</span></div>
+<div class="result">→ <em>80%</em> less manual engineering effort</div>
+</article>
+<article class="case">
+<span class="label">Junglee Games</span>
+<h3>Kafka SMT for in-flight encryption</h3>
+<p>I wrote a custom Single Message Transform for Kafka Connect that encrypts sensitive fields inside Debezium CDC streams before they leave the connector.</p>
+<div class="stack"><span>Kafka Connect</span><span>Debezium</span><span>Security</span></div>
+<div class="result">→ sensitive fields are <em>encrypted in flight</em></div>
+</article>
+<article class="case">
+<span class="label">InfoObjects · 2020–2022</span>
+<h3>Spark tuning and a data mesh platform</h3>
+<p>I tuned Spark jobs with caching, broadcast joins and parallelism, automated orchestration with Airflow, and designed a data mesh on AWS, Databricks, Starburst and Kubernetes.</p>
+<div class="stack"><span>Spark</span><span>Airflow</span><span>Starburst</span><span>Kubernetes</span></div>
+<div class="result">→ <em>20%</em> faster on ~2M daily records · <em>80%</em> less manual intervention</div>
+</article>
+</div>
+</section>
+<!--@step Experience-->
+<section id="experience">
+<div class="head"><span class="label">03 · Experience</span><h2>Six years, three teams</h2></div>
+<ol class="timeline">
+<li class="job"><div class="when"><b>Jan 2026 – Present</b>Bangalore</div><div><h3>Senior Data Engineer · <span>ThoughtWorks</span></h3><ul><li>Led the Redshift to Databricks Lakehouse migration for TB-scale batch and analytical workloads.</li><li>Used generative AI to convert SQL to PySpark, cutting development effort by about 30–40%.</li><li>Designed a governed Lakehouse on Delta Lake and Unity Catalog serving 20+ teams.</li><li>Built data observability with dbt tests, monitoring and alerting, which reduced pipeline failures.</li></ul></div></li>
+<li class="job"><div class="when"><b>Apr 2022 – Jan 2026</b>Bangalore</div><div><h3>Data Engineer 3 · <span>Junglee Games</span></h3><ul><li>Led four engineers building batch and real-time platforms on Kafka, Spark, Airflow and AWS with a 15-minute SLA.</li><li>Architected a CDC platform processing about 20K records per second.</li><li>Built a metadata-driven pipeline framework with YAML data contracts, reducing manual effort by 80%.</li><li>Engineered a custom Kafka SMT plugin for real-time encryption of sensitive data.</li></ul></div></li>
+<li class="job"><div class="when"><b>Jan 2020 – Apr 2022</b>Jaipur</div><div><h3>Data Engineer · <span>InfoObjects</span></h3><ul><li>Cut Spark processing time by 20% on about 2M daily records.</li><li>Built Airflow orchestration that reduced manual intervention by 80%.</li><li>Designed a data mesh platform on AWS, Databricks, Starburst and Kubernetes.</li></ul></div></li>
+</ol>
+</section>
+<!--@step Stack-->
+<section id="stack">
+<div class="head"><span class="label">04 · Stack</span><h2>Tools I use in production</h2></div>
+<div class="skills">
+<div><h4>Languages</h4><p>Python, SQL, Scala</p></div>
+<div><h4>Platforms</h4><p>Databricks, Delta Lake, Spark, Hive, YARN</p></div>
+<div><h4>AWS</h4><p>S3, Glue, EMR, Lambda, EKS</p></div>
+<div><h4>Streaming</h4><p>Kafka, Debezium, Spark Structured Streaming</p></div>
+<div><h4>Modeling</h4><p>dbt, Medallion architecture, warehousing</p></div>
+<div><h4>Orchestration</h4><p>Airflow, Kubernetes, CI/CD</p></div>
+<div><h4>Databases</h4><p>PostgreSQL, MySQL, MSSQL, MongoDB</p></div>
+<div><h4>AI</h4><p>LLM-assisted development, GitHub Copilot</p></div>
+</div>
+</section>
+<!--@step Certifications-->
+<section id="credentials">
+<div class="head"><span class="label">05 · Credentials</span><h2>Certified and verifiable</h2></div>
+<div class="certs">
+<a class="cert" href="https://credentials.databricks.com/abef4602-ede0-4cd8-8d0f-cef5c73555f3" target="_blank" rel="noopener"><span class="label">Databricks · 2026</span><strong>Data Engineer Professional</strong><span class="v">Verify ↗</span></a>
+<a class="cert" href="https://credentials.databricks.com/865a2121-0bd4-4101-beab-4dd525d9a9d0" target="_blank" rel="noopener"><span class="label">Databricks · 2026</span><strong>Data Engineer Associate</strong><span class="v">Verify ↗</span></a>
+<a class="cert" href="https://achieve.snowflake.com/9aeb7dbd-8b91-43c0-9aa8-b4757117ec84" target="_blank" rel="noopener"><span class="label">Snowflake · 2025</span><strong>SnowPro Core</strong><span class="v">Verify ↗</span></a>
+</div>
+<p class="edu"><strong>B.Tech, Computer Science</strong> · Rajasthan Technical University · 2020 · 8.0 CGPA</p>
+</section>
+</div>
+<!--@step Contact-->
+<section class="contact" id="contact">
+<div class="sheet">
+<h2>Let's build the <span>next platform.</span></h2>
+<dl>
+<div><dt>Email</dt><dd><a href="mailto:rahulpandit151197@gmail.com">rahulpandit151197@gmail.com</a></dd></div>
+<div><dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/panditrahulsharma" target="_blank" rel="noopener">in/panditrahulsharma ↗</a></dd></div>
+<div><dt>Based in</dt><dd>Bangalore, India</dd></div>
+</dl>
+</div>
+<div class="sheet"><footer><span>© 2026 Rahul Kumar</span><span>Drawn on a 120px grid · rev. 2026</span></footer></div>
+</section>
+</body>
+</html>
