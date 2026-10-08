@@ -43,10 +43,15 @@ Your output is streamed straight into a live preview while the person watches, s
 - Fully responsive down to 360px wide; no horizontal scrolling. Readable line lengths, real type scale, good contrast.
 - Aim for a rich page that is still efficient to generate: roughly 250-450 lines of HTML+CSS in total.`;
 
-export function userInstruction(style: StyleKey, notes?: string) {
+export const PORTRAIT_TOKEN = "__PORTRAIT__";
+
+export function userInstruction(style: StyleKey, notes?: string, hasPhoto = false) {
   return [
     "Build my portfolio website from the resume above.",
     `Style: ${STYLES[style]}`,
+    hasPhoto
+      ? `I have a headshot. Feature it prominently, ideally in the hero, using exactly <img src="${PORTRAIT_TOKEN}" alt="Portrait of {my name}"> (the src is replaced with the real photo). Frame and treat it so it belongs to the design; use object-fit: cover inside a fixed aspect-ratio box.`
+      : "There is no photo. Do not use placeholder or stock people images. If the layout wants a portrait spot, design a typographic monogram plate from my initials instead.",
     notes ? `Extra notes from me: ${notes}` : "",
   ]
     .filter(Boolean)

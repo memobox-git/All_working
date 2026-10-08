@@ -1,7 +1,7 @@
 import Anthropic from "@anthropic-ai/sdk";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
-import { SYSTEM_PROMPT, STYLES, userInstruction, type StyleKey } from "@/lib/prompt";
+import { PORTRAIT_TOKEN, SYSTEM_PROMPT, STYLES, userInstruction, type StyleKey } from "@/lib/prompt";
 import { InputError, resumeToContent } from "@/lib/resume";
 
 export const runtime = "nodejs";
@@ -29,6 +29,7 @@ export async function POST(req: Request) {
   const notes = String(form.get("notes") || "").slice(0, 1000);
   const styleRaw = String(form.get("style") || "auto");
   const style: StyleKey = styleRaw in STYLES ? (styleRaw as StyleKey) : "auto";
+  const hasPhoto = form.get("photo") === "1";
   const demo = form.get("demo") === "1" || !hasCredentials();
 
   const encoder = new TextEncoder();
@@ -40,14 +41,14 @@ export async function POST(req: Request) {
       try {
         if (demo) {
           send({ type: "mode", mode: "demo" });
-          await replayDemo(send, req.signal);
+          await replayDemo(send, req.signal, hasPhoto);
         } else {
           const content = await resumeToContent(
             file instanceof File ? file : null,
             typeof text === "string" ? text : null,
           );
           send({ type: "mode", mode: "live", model: MODEL });
-          const result = await streamFromClaude(content, style, notes, send, req.signal);
+          const result = await streamFromClaude(content, style, notes, hasPhoto, send, req.signal);
           send({ type: "done", ms: Date.now() - started, ...result });
           controller.close();
           return;
@@ -73,6 +74,7 @@ async function streamFromClaude(
   resume: Anthropic.Beta.BetaContentBlockParam[],
   style: StyleKey,
   notes: string,
+  hasPhoto: boolean,
   send: (e: BuildEvent) => void,
   signal: AbortSignal,
 ) {
@@ -88,7 +90,7 @@ async function streamFromClaude(
       thinking: { type: "adaptive", display: "summarized" },
       output_config: { effort: EFFORT },
       system: [{ type: "text", text: SYSTEM_PROMPT, cache_control: { type: "ephemeral" } }],
-      messages: [{ role: "user", content: [...resume, { type: "text", text: userInstruction(style, notes) }] }],
+      messages: [{ role: "user", content: [...resume, { type: "text", text: userInstruction(style, notes, hasPhoto) }] }],
     },
     { signal },
   );
@@ -113,8 +115,14 @@ const DEMO_THINKING = [
   "Lead with the numbers, then four case studies with small to-scale charts, then the timeline.\n",
 ];
 
-async function replayDemo(send: (e: BuildEvent) => void, signal: AbortSignal) {
-  const html = await readFile(path.join(process.cwd(), "fixtures", "demo-portfolio.html"), "utf8");
+async function replayDemo(send: (e: BuildEvent) => void, signal: AbortSignal, hasPhoto: boolean) {
+  let html = await readFile(path.join(process.cwd(), "fixtures", "demo-portfolio.html"), "utf8");
+  if (hasPhoto) {
+    html = html.replace(
+      '<div class="plate" aria-hidden="true"><span class="mono">RK</span></div>',
+      `<div class="plate"><img src="${PORTRAIT_TOKEN}" alt="Portrait of Rahul Kumar"></div>`,
+    );
+  }
   const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
   for (const line of DEMO_THINKING) {

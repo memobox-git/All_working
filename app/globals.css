@@ -51,6 +51,14 @@ h1 em { color: var(--muted); }
 .chip { border: 1px solid var(--line); background: transparent; border-radius: 999px; padding: 7px 12px; font-size: 13px; color: var(--muted); }
 .chip:hover { color: var(--fg); }
 .chip.on { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+.photo-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.photo-pick { position: relative; display: flex; align-items: center; gap: 12px; cursor: pointer; min-width: 0; }
+.photo-pick input { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+.photo-pick img, .photo-empty { flex: none; width: 44px; height: 44px; border-radius: 10px; object-fit: cover; }
+.photo-empty { display: grid; place-items: center; border: 1.5px dashed #3A3A42; color: var(--muted); font-size: 20px; }
+.photo-pick:hover .photo-empty { border-color: var(--accent); color: var(--accent); }
+.photo-pick strong { display: block; font-weight: 500; font-size: 14px; }
+.photo-pick small { color: var(--muted); font-size: 12px; }
 .notes { width: 100%; background: var(--raise); border: 1px solid var(--line); border-radius: 10px; padding: 11px 12px; color: var(--fg); font: inherit; }
 .go-row { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
 .go { display: inline-flex; align-items: center; gap: 10px; border: 0; border-radius: 10px; padding: 13px 20px; background: var(--accent); color: var(--accent-ink); font-weight: 600; font-size: 15px; }

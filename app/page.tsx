@@ -13,7 +13,7 @@ type Profile = {
   highlights?: string[];
 };
 type Step = { label: string; state: "active" | "done" };
-type Input = { file: File | null; text: string; style: StyleKey; notes: string; demo: boolean };
+type Input = { file: File | null; text: string; style: StyleKey; notes: string; demo: boolean; photo: string | null };
 
 const STYLE_OPTIONS: { key: StyleKey; label: string }[] = [
   { key: "auto", label: "Let Claude decide" },
@@ -23,12 +23,13 @@ const STYLE_OPTIONS: { key: StyleKey; label: string }[] = [
   { key: "dark", label: "Dark studio" },
 ];
 
+const PORTRAIT_TOKEN = "__PORTRAIT__";
 const PROFILE_RE = /<!--@profile\s+([\s\S]*?)-->/;
 const STEP_RE = /<!--@step\s+([^>]*?)-->/g;
 
 export default function Studio() {
   const [phase, setPhase] = useState<Phase>("idle");
-  const [input, setInput] = useState<Input>({ file: null, text: "", style: "auto", notes: "", demo: false });
+  const [input, setInput] = useState<Input>({ file: null, text: "", style: "auto", notes: "", demo: false, photo: null });
   const [pasteMode, setPasteMode] = useState(false);
   const [dragging, setDragging] = useState(false);
 
@@ -46,6 +47,7 @@ export default function Studio() {
   const [showReady, setShowReady] = useState(false);
 
   const iframeRef = useRef<HTMLIFrameElement>(null);
+  const photoRef = useRef<string | null>(null);
   const htmlRef = useRef("");
   const pendingRef = useRef("");
   const followRef = useRef(true);
@@ -79,8 +81,9 @@ export default function Studio() {
           win.addEventListener("wheel", stopFollowing, { passive: true });
           win.addEventListener("touchmove", stopFollowing, { passive: true });
         }
-        doc.write(pendingRef.current);
-        pendingRef.current = "";
+        const { ready, hold } = splitHeld(pendingRef.current);
+        doc.write(withPhoto(ready, photoRef.current));
+        pendingRef.current = hold;
       }
       if (doc?.body && win && followRef.current) {
         const target = Math.max(0, doc.documentElement.scrollHeight - win.innerHeight);
@@ -148,7 +151,7 @@ export default function Studio() {
   const finish = (ms: number) => {
     const frame = iframeRef.current;
     if (pendingRef.current && frame?.contentDocument) {
-      frame.contentDocument.write(pendingRef.current);
+      frame.contentDocument.write(withPhoto(pendingRef.current, photoRef.current));
       pendingRef.current = "";
     }
     frame?.contentDocument?.close();
@@ -162,6 +165,7 @@ export default function Studio() {
   const build = async (override?: Partial<Input>) => {
     const req = { ...input, ...override };
     setInput(req);
+    photoRef.current = req.photo;
     resetBuild();
     profileSeen.current = false;
     stepCount.current = 0;
@@ -172,6 +176,7 @@ export default function Studio() {
     if (req.text) fd.append("text", req.text);
     fd.append("style", req.style);
     fd.append("notes", req.notes);
+    if (req.photo) fd.append("photo", "1");
     if (req.demo) fd.append("demo", "1");
 
     const ac = new AbortController();
@@ -224,7 +229,7 @@ export default function Studio() {
   };
 
   const cleanHtml = () =>
-    htmlRef.current.replace(PROFILE_RE, "").replace(STEP_RE, "").replace(/^\s+/, "");
+    withPhoto(htmlRef.current.replace(PROFILE_RE, "").replace(STEP_RE, "").replace(/^\s+/, ""), input.photo);
 
   const download = () => {
     const blob = new Blob([cleanHtml()], { type: "text/html" });
@@ -253,6 +258,13 @@ export default function Studio() {
     } catch {
       setPublish({ busy: false, error: "Publishing failed. Check your connection and try again." });
     }
+  };
+
+  const onPhoto = async (files: FileList | null) => {
+    const f = files?.[0];
+    if (!f) return;
+    const photo = await downscale(f);
+    setInput((i) => ({ ...i, photo }));
   };
 
   const onFiles = (files: FileList | null) => {
@@ -350,6 +362,22 @@ export default function Studio() {
               </button>
             ))}
           </fieldset>
+
+          <div className="photo-row">
+            <label className="photo-pick">
+              <input id="headshot" type="file" accept="image/*" onChange={(e) => onPhoto(e.target.files)} />
+              {input.photo ? <img src={input.photo} alt="" /> : <span className="photo-empty" aria-hidden="true">+</span>}
+              <span>
+                <strong>{input.photo ? "Headshot added" : "Add a headshot"}</strong>
+                <small>Optional. Shown in the portfolio&apos;s hero.</small>
+              </span>
+            </label>
+            {input.photo && (
+              <button type="button" className="link" onClick={() => setInput((i) => ({ ...i, photo: null }))}>
+                Remove
+              </button>
+            )}
+          </div>
 
           <input
             id="notes"
@@ -624,4 +652,34 @@ function highlight(src: string) {
       return `<span class="a">${attr}</span>=<span class="s">${val}</span>`;
     },
   );
+}
+
+/** Holds back a trailing partial "__PORTRAIT__" so the token is never split across two writes. */
+function splitHeld(text: string) {
+  for (let k = PORTRAIT_TOKEN.length - 1; k > 0; k--) {
+    if (text.endsWith(PORTRAIT_TOKEN.slice(0, k))) return { ready: text.slice(0, -k), hold: text.slice(-k) };
+  }
+  return { ready: text, hold: "" };
+}
+
+function withPhoto(html: string, photo: string | null) {
+  return photo ? html.split(PORTRAIT_TOKEN).join(photo) : html;
+}
+
+/** Shrinks a headshot to at most 900px and re-encodes it as JPEG so the generated page stays light. */
+function downscale(file: File): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.onload = () => {
+      const scale = Math.min(1, 900 / Math.max(img.width, img.height));
+      const canvas = document.createElement("canvas");
+      canvas.width = Math.round(img.width * scale);
+      canvas.height = Math.round(img.height * scale);
+      canvas.getContext("2d")!.drawImage(img, 0, 0, canvas.width, canvas.height);
+      URL.revokeObjectURL(img.src);
+      resolve(canvas.toDataURL("image/jpeg", 0.86));
+    };
+    img.onerror = () => reject(new Error("That image couldn't be read."));
+    img.src = URL.createObjectURL(file);
+  });
 }
