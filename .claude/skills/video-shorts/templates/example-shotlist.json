@@ -1,0 +1,28 @@
+{
+  "title": "Data engineering isn't dying",
+  "slug": "de-not-dying",
+  "captions": "karaoke",
+  "theme": {
+    "bg": "#0b1020", "bg2": "#1a1440", "fg": "#f5f7ff", "muted": "#8a93b8",
+    "accent": "#ffd23f", "accent2": "#5b8cff",
+    "headingFont": "Montserrat", "bodyFont": "Inter", "backdrop": "grid"
+  },
+  "music": {"prompt": "modern minimal electronic, steady pulse, confident, no vocals", "volume": 0.12},
+  "voice": {"stability": 0.45, "similarity": 0.8, "style": 0.25, "speed": 1.05},
+  "shots": [
+    {"layout": "aroll", "say": "Everyone says AI is killing data engineering.", "punchIn": true,
+     "lowerThird": {"name": "Chris", "title": "Stackle · Your Career Lab"}},
+    {"layout": "broll", "say": "But job posts for data engineers went up this year.",
+     "graphic": {"kind": "stat", "value": 23, "suffix": "%", "label": "more data engineering roles"}, "sfx": "impact"},
+    {"layout": "pip", "say": "Here is what companies actually hire for now.",
+     "graphic": {"kind": "list", "title": "2026 hiring", "items": ["Pipelines for AI", "Data quality", "Cost control"]}},
+    {"layout": "split", "say": "Raw data flows in, gets cleaned, and feeds the model.",
+     "graphic": {"kind": "diagram", "steps": ["Raw data", "Clean", "Model"]}},
+    {"layout": "broll", "say": "A tiny bit of SQL still does most of the work.",
+     "graphic": {"kind": "code", "language": "sql", "code": "SELECT team, COUNT(*)\nFROM hires\nGROUP BY team;"}},
+    {"layout": "broll", "say": "So learn the fundamentals and you will be fine.",
+     "graphic": {"kind": "kinetic", "emphasis": ["fundamentals", "fine."]}},
+    {"layout": "pip", "say": "Follow for more career tips.",
+     "graphic": {"kind": "cta", "title": "Follow for more", "handle": "@stackle"}}
+  ]
+}

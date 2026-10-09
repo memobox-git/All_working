@@ -31,3 +31,21 @@ Without an API key the app runs in **demo mode** and replays a recorded build of
 - `app/page.tsx` writes the HTML into the preview iframe with `document.write` as each chunk arrives, so the browser renders the page progressively, the way it would on a slow network.
 - `app/api/publish/route.ts` creates a Netlify site and uploads `index.html` through Netlify's file-digest deploy API.
 - `fixtures/demo-portfolio.html` is the recorded build that demo mode replays.
+
+## Video shorts skill
+
+`.claude/skills/video-shorts/` is a Claude Code skill that turns an idea into a finished 1–3 minute short:
+script (Stackle script skill) → your HeyGen avatar speaking in your cloned ElevenLabs voice → motion-graphic
+B-roll, picture-in-picture, split screens, captions, music and sound effects → vertical 9:16 and horizontal 16:9 MP4s.
+
+One-time setup on your computer (needs Node 18+ and ffmpeg):
+
+```bash
+git clone https://github.com/memobox-git/all_working.git
+cd all_working
+node .claude/skills/video-shorts/scripts/setup.mjs
+```
+
+Setup creates `.env` in this folder and opens it. Paste your ElevenLabs and HeyGen API keys, save,
+and run setup again: it finds your cloned voice and lists your avatars. Then in Claude Code, in this
+folder, say: *"make a 1-minute short about …"*. Videos land in `~/Desktop/shorts`.
