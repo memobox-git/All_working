@@ -1,0 +1,16 @@
+@font-face{font-family:PJS;font-weight:400;src:url(node_modules/@fontsource/plus-jakarta-sans/files/plus-jakarta-sans-latin-400-normal.woff2)}
+@font-face{font-family:PJS;font-weight:600;src:url(node_modules/@fontsource/plus-jakarta-sans/files/plus-jakarta-sans-latin-600-normal.woff2)}
+@font-face{font-family:PJS;font-weight:800;src:url(node_modules/@fontsource/plus-jakarta-sans/files/plus-jakarta-sans-latin-800-normal.woff2)}
+*{margin:0;box-sizing:border-box}
+body{width:1920px;height:1080px;overflow:hidden;background:#1E1C1D;color:#FAF8F1;font-family:PJS,sans-serif;position:relative}
+.grid{position:absolute;inset:0;background-image:linear-gradient(rgba(245,158,11,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(245,158,11,.06) 1px,transparent 1px);background-size:80px 80px}
+.ring{position:absolute;width:900px;height:900px;right:-250px;top:-250px;border:2px dashed rgba(245,158,11,.25);border-radius:50%}
+.beat{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:0 180px}
+.amber{color:#F59E0B}.big{font-size:260px;font-weight:800;line-height:1}
+.h1{font-size:110px;font-weight:800;line-height:1.05}.h2{font-size:64px;font-weight:600;line-height:1.2}
+.sub{font-size:44px;color:#c9c4b8;margin-top:24px}
+.chips{display:flex;gap:28px;margin-top:56px;flex-wrap:wrap}
+.chip{border:3px solid #F59E0B;border-radius:60px;padding:18px 40px;font-size:42px;font-weight:600}
+.bar{height:10px;background:#F59E0B;border-radius:6px;margin-top:40px}
+.tag{font-size:34px;letter-spacing:.2em;text-transform:uppercase;color:#F59E0B;font-weight:600;margin-bottom:24px}
+.brand{position:absolute;left:180px;bottom:70px;font-size:30px;font-weight:600;color:#8a857a}
