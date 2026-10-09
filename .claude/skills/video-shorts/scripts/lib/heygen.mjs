@@ -23,6 +23,46 @@ export const listAvatars = async () => {
 	};
 };
 
+// HEYGEN_AVATAR_ID may be an avatar ID, a photo-avatar (talking_photo) ID, or the ID of an
+// avatar group (what HeyGen's web app shows for custom avatars). Resolve it to something
+// /v2/video/generate accepts. Returns {id, type, name, via}.
+let resolved = null;
+export const resolveAvatar = async (wanted = process.env.HEYGEN_AVATAR_ID) => {
+	if (resolved?.wanted === wanted) return resolved;
+	const {avatars, talkingPhotos} = await listAvatars();
+	let hit = [...avatars, ...talkingPhotos].find((a) => a.id === wanted);
+	if (hit) return (resolved = {...hit, via: 'direct', wanted});
+
+	const groups = await check(
+		await fetch(`${API}/v2/avatar_group.list?include_public=false`, {headers: headers()}),
+		'list avatar groups',
+	);
+	const list = groups.avatar_group_list ?? groups.avatar_groups ?? groups.list ?? [];
+	const group = list.find((g) => (g.id ?? g.group_id) === wanted);
+	if (!group) {
+		throw new Error(
+			`HEYGEN_AVATAR_ID ${wanted} is not an avatar, photo avatar or avatar group in this HeyGen account. ` +
+				`Your groups: ${list.map((g) => `${g.id ?? g.group_id} "${g.name}"`).join(', ') || 'none'}`,
+		);
+	}
+	const looks = await check(
+		await fetch(`${API}/v2/avatar_group/${encodeURIComponent(wanted)}/avatars`, {headers: headers()}),
+		'list avatars in group',
+	);
+	const items = looks.avatar_list ?? looks.avatars ?? looks.list ?? [];
+	if (!items.length) throw new Error(`Avatar group "${group.name}" has no looks yet`);
+	const look = items[0];
+	const lookId = look.avatar_id ?? look.id ?? look.talking_photo_id;
+	const isPhoto = /photo/i.test(String(group.group_type ?? group.type ?? '')) || talkingPhotos.some((p) => p.id === lookId);
+	return (resolved = {
+		id: lookId,
+		type: isPhoto ? 'talking_photo' : 'avatar',
+		name: `${group.name} / ${look.avatar_name ?? look.name ?? 'look 1'}`,
+		via: `group (${items.length} look${items.length > 1 ? 's' : ''}, using the first)`,
+		wanted,
+	});
+};
+
 export const uploadAudio = async (file) => {
 	const data = await check(
 		await fetch(`${UPLOAD}/v1/asset`, {
@@ -36,11 +76,11 @@ export const uploadAudio = async (file) => {
 };
 
 export const generateAvatarVideo = async ({audioAssetId, width = 1080, height = 1920}) => {
-	const type = process.env.HEYGEN_AVATAR_TYPE || 'avatar';
+	const avatar = await resolveAvatar();
 	const character =
-		type === 'talking_photo'
-			? {type: 'talking_photo', talking_photo_id: process.env.HEYGEN_AVATAR_ID}
-			: {type: 'avatar', avatar_id: process.env.HEYGEN_AVATAR_ID, avatar_style: 'normal'};
+		avatar.type === 'talking_photo'
+			? {type: 'talking_photo', talking_photo_id: avatar.id}
+			: {type: 'avatar', avatar_id: avatar.id, avatar_style: 'normal'};
 	const data = await check(
 		await fetch(`${API}/v2/video/generate`, {
 			method: 'POST',

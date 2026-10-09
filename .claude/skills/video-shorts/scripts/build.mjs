@@ -85,7 +85,7 @@ if (narrated.length) {
 
 // ── 2. Avatar ───────────────────────────────────────────────────────────────
 if (needsAvatar) {
-	const key = hash('avatar', cache.voiceKey, process.env.HEYGEN_AVATAR_ID, process.env.HEYGEN_AVATAR_TYPE, MOCK);
+	const key = hash('avatar', cache.voiceKey, process.env.HEYGEN_AVATAR_ID, MOCK);
 	if (cached(key, 'avatar.webm')) {
 		log('Avatar: cached');
 	} else {

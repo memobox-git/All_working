@@ -66,25 +66,17 @@ if (process.env.ELEVENLABS_API_KEY) {
 	}
 }
 
-// 4. Avatar ID
+// 4. Avatar ID (an avatar, a photo avatar, or an avatar group all work)
 if (process.env.HEYGEN_API_KEY) {
 	try {
-		const {avatars, talkingPhotos} = await hg.listAvatars();
-		const all = [...avatars, ...talkingPhotos];
 		if (process.env.HEYGEN_AVATAR_ID) {
-			const a = all.find((x) => x.id === process.env.HEYGEN_AVATAR_ID);
-			if (a) {
-				if (a.type !== (process.env.HEYGEN_AVATAR_TYPE || 'avatar')) setEnv('HEYGEN_AVATAR_TYPE', a.type);
-				ok(`Avatar: ${a.name} (${a.type})`);
-			} else {
-				bad('HEYGEN_AVATAR_ID not found in your account');
-				problems++;
-			}
+			const a = await hg.resolveAvatar();
+			ok(`Avatar: ${a.name} (${a.type}, found ${a.via})`);
 		} else {
-			// HeyGen's list includes public stock avatars; yours are usually the talking photos or the few custom ones.
-			bad('Pick YOUR avatar and paste its ID into HEYGEN_AVATAR_ID (run again afterwards):');
-			for (const a of all.slice(0, 60)) console.log(`    ${a.id}  ${a.name} (${a.type})`);
-			if (all.length > 60) console.log(`    …and ${all.length - 60} more (stock avatars). Your own avatar ID is also shown in HeyGen → Avatars.`);
+			const {avatars, talkingPhotos} = await hg.listAvatars();
+			bad('Paste YOUR avatar ID into HEYGEN_AVATAR_ID (HeyGen → Avatars → your avatar; the ID in the page URL works), then run again.');
+			for (const a of talkingPhotos.slice(0, 20)) console.log(`    ${a.id}  ${a.name} (${a.type})`);
+			console.log(`    (${avatars.length} avatars and ${talkingPhotos.length} photo avatars in total, mostly HeyGen stock)`);
 			problems++;
 		}
 	} catch (e) {
