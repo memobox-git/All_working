@@ -79,7 +79,8 @@ export const generateAvatarVideo = async ({audioAssetId, width = 1080, height = 
 	const avatar = await resolveAvatar();
 	const character =
 		avatar.type === 'talking_photo'
-			? {type: 'talking_photo', talking_photo_id: avatar.id}
+			? // matting cuts the person out of the photo so our green background replaces it.
+			  {type: 'talking_photo', talking_photo_id: avatar.id, matting: true}
 			: {type: 'avatar', avatar_id: avatar.id, avatar_style: 'normal'};
 	const data = await check(
 		await fetch(`${API}/v2/video/generate`, {
