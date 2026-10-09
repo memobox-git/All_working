@@ -23,7 +23,7 @@ export const loadEnv = () => {
 		for (const line of fs.readFileSync(ENV_PATH, 'utf8').split(/\r?\n/)) {
 			const m = line.match(/^\s*([A-Z0-9_]+)\s*=\s*(.*)\s*$/);
 			if (!m) continue;
-			let v = m[2];
+			let v = m[2].trim();
 			if ((v.startsWith('"') && v.endsWith('"')) || (v.startsWith("'") && v.endsWith("'"))) v = v.slice(1, -1);
 			// Real environment variables win over the file.
 			if (process.env[m[1]] === undefined || process.env[m[1]] === '') process.env[m[1]] = v;
