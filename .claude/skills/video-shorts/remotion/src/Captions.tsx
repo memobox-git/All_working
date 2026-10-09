@@ -69,7 +69,7 @@ export const Captions: React.FC<{words: Word[]; mode: 'karaoke' | 'simple'; posi
 					display: 'flex',
 					flexWrap: 'wrap',
 					justifyContent: 'center',
-					gap: `0 ${u * 1.6}px`,
+					gap: `0 ${u * 2.6}px`,
 					transform: `scale(${0.85 + 0.15 * enter})`,
 				}}
 			>
@@ -87,7 +87,7 @@ export const Captions: React.FC<{words: Word[]; mode: 'karaoke' | 'simple'; posi
 								WebkitTextStroke: `${u * 0.25}px rgba(0,0,0,0.85)`,
 								paintOrder: 'stroke fill',
 								textShadow: `0 ${u * 0.5}px ${u * 1.5}px rgba(0,0,0,0.6)`,
-								transform: active ? 'scale(1.08)' : 'scale(1)',
+								transform: active ? 'scale(1.05)' : 'scale(1)',
 								lineHeight: 1.15,
 							}}
 						>

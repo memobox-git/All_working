@@ -257,6 +257,14 @@ if (!fs.existsSync(path.join(REMOTION_DIR, 'node_modules'))) {
 	log('Installing renderer (first run only)…');
 	run('npm', ['install', '--no-audit', '--no-fund'], {cwd: REMOTION_DIR});
 }
+// Cloud containers ship Playwright's Chromium; use it instead of letting Remotion download one.
+const preinstalledBrowser = () => {
+	const root = '/opt/pw-browsers';
+	if (!fs.existsSync(root)) return null;
+	const dir = fs.readdirSync(root).find((d) => d.startsWith('chromium_headless_shell-'));
+	const exe = dir && path.join(root, dir, 'chrome-linux', 'headless_shell');
+	return exe && fs.existsSync(exe) ? exe : null;
+};
 const outputs = [];
 for (const fmt of FORMATS) {
 	const [width, height] = SIZES[fmt] ?? (() => { throw new Error(`Unknown format ${fmt}`); })();
@@ -277,7 +285,8 @@ for (const fmt of FORMATS) {
 	const final = path.join(PROJECT, `${sl.slug ?? path.basename(PROJECT)}-${fmt}.mp4`);
 	log(`Rendering ${fmt} (${width}x${height})…`);
 	const extra = [];
-	if (process.env.REMOTION_BROWSER_EXECUTABLE) extra.push(`--browser-executable=${process.env.REMOTION_BROWSER_EXECUTABLE}`);
+	const browser = process.env.REMOTION_BROWSER_EXECUTABLE || preinstalledBrowser();
+	if (browser) extra.push(`--browser-executable=${browser}`);
 	if (process.env.REMOTION_IGNORE_CERT_ERRORS === '1') extra.push('--ignore-certificate-errors');
 	run('npx', [
 		'remotion', 'render', 'src/index.ts', 'Short', raw,
