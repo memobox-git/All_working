@@ -1,0 +1,42 @@
+{
+  "title": "What Is an AI Agent? (and why data engineers build them)",
+  "slug": "ai-agents",
+  "captions": "karaoke",
+  "theme": {
+    "bg": "#1E1C1D", "bg2": "#2A2420", "fg": "#FAF8F1", "muted": "#A89F94",
+    "accent": "#F59E0B", "accent2": "#BA7517",
+    "headingFont": "Poppins", "bodyFont": "Inter", "backdrop": "dots"
+  },
+  "music": {"prompt": "modern minimal electronic, curious and confident, steady light beat, no vocals", "volume": 0.11},
+  "voice": {"stability": 0.45, "similarity": 0.8, "style": 0.25, "speed": 1.05},
+  "shots": [
+    {"layout": "aroll", "punchIn": true,
+     "say": "An AI agent is a program that can plan steps and use tools to finish a task,"},
+    {"layout": "broll", "say": "not just answer a question.",
+     "graphic": {"kind": "kinetic", "emphasis": ["question."]}, "sfx": "impact"},
+    {"layout": "pip", "say": "In this video I am going to show you how an AI agent works, and why data engineers are needed to build AI agents.",
+     "graphic": {"kind": "title", "title": "How an AI agent works", "subtitle": "and why data engineers build AI agents"}},
+    {"layout": "aroll", "say": "If you are new here, I am Chris. I have worked in data engineering for more than ten years.",
+     "lowerThird": {"name": "Chris", "title": "Stackle · Your Career Lab"}},
+    {"layout": "pip", "say": "Today I run Stackle, where I teach data and AI engineering.",
+     "graphic": {"kind": "title", "title": "Stackle", "subtitle": "data and AI engineering"}},
+    {"layout": "split", "say": "A chatbot answers a question and stops.",
+     "graphic": {"kind": "compare", "left": {"title": "Chatbot", "items": ["Answers a question", "Stops"]}, "right": {"title": "AI agent", "items": ["Gets a goal", "Breaks it into steps", "Uses tools"]}}},
+    {"layout": "split", "say": "An AI agent gets a goal, breaks the goal into steps, and uses tools like search, code, or a database to finish each step.",
+     "graphic": {"kind": "diagram", "steps": ["Goal", "Steps", "Tools", "Finish"]}},
+    {"layout": "aroll", "say": "For example, you ask an AI agent to find last month's top product."},
+    {"layout": "broll", "say": "The agent writes a SQL query, runs the query on your database, and reads the result back to you.",
+     "graphic": {"kind": "code", "language": "sql", "title": "SQL query", "code": "SELECT product, SUM(sales) AS total\nFROM orders\nWHERE month = 'last month'\nGROUP BY product\nORDER BY total DESC\nLIMIT 1;"}, "sfx": "click"},
+    {"layout": "aroll", "punchIn": true, "say": "An AI agent is only as good as the data it can reach."},
+    {"layout": "broll", "say": "If the data is late, messy, or missing, the agent gives a wrong answer with full confidence.",
+     "graphic": {"kind": "list", "title": "If the data is", "items": ["Late", "Messy", "Missing"]}},
+    {"layout": "split", "say": "Companies need engineers who build clean data pipelines and connect those pipelines safely to AI agents.",
+     "graphic": {"kind": "diagram", "steps": ["Clean data", "Pipelines", "AI agents"]}},
+    {"layout": "aroll", "say": "This week, pick one task you do by hand, and write down the steps an AI agent would need to do it."},
+    {"layout": "pip", "say": "If you want help planning your path into AI engineering, book a free fifteen minute call with me.",
+     "graphic": {"kind": "cta", "title": "Book a free 15-minute call", "handle": "stackle.io"}, "sfx": "ding"},
+    {"layout": "pip", "say": "You can also join the Stackle AI Engineering masterclass.",
+     "graphic": {"kind": "cta", "title": "AI Engineering Masterclass", "subtitle": "Stackle", "handle": "stackle.io"}},
+    {"layout": "aroll", "say": "Tell me in the comments which task you would give an AI agent first."}
+  ]
+}
