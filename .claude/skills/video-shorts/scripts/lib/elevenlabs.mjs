@@ -93,3 +93,20 @@ export const transcribe = async (file) => {
 	const data = await res.json();
 	return (data.words ?? []).filter((w) => w.type === 'word').map((w) => ({text: w.text, start: w.start, end: w.end}));
 };
+
+// Word timings for existing audio of a known text (used when reusing an already-rendered avatar video).
+export const align = async ({file, text}) => {
+	const form = new FormData();
+	form.append('file', new Blob([fs.readFileSync(file)]), path.basename(file));
+	form.append('text', text);
+	const res = await call('/v1/forced-alignment', {form});
+	const data = await res.json();
+	if (Array.isArray(data.characters) && data.characters.length) {
+		return toWords({
+			characters: data.characters.map((c) => c.text),
+			character_start_times_seconds: data.characters.map((c) => c.start),
+			character_end_times_seconds: data.characters.map((c) => c.end),
+		});
+	}
+	return (data.words ?? []).map((w) => ({text: w.text, start: w.start, end: w.end}));
+};

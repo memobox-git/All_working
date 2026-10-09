@@ -18,13 +18,15 @@ loadEnv();
 const args = process.argv.slice(2);
 const flag = (name) => args.find((a) => a.startsWith(`--${name}`));
 const MOCK = Boolean(flag('mock'));
+// Reuse an avatar video HeyGen already rendered (e.g. after a failed download) instead of paying again.
+const REUSE_VIDEO = flag('heygen-video')?.split('=')[1];
 const FORMATS = (flag('formats')?.split('=')[1] ?? '9x16,16x9').split(',');
 const FPS = 30;
 const SIZES = {'9x16': [1080, 1920], '16x9': [1920, 1080]};
 
 const projectArg = args.find((a) => !a.startsWith('--'));
 if (!projectArg) {
-	console.error('Usage: node build.mjs <project-dir> [--formats=9x16,16x9] [--mock]');
+	console.error('Usage: node build.mjs <project-dir> [--formats=9x16,16x9] [--mock] [--heygen-video=<id>]');
 	process.exit(1);
 }
 const PROJECT = path.resolve(expandHome(projectArg));
@@ -67,6 +69,14 @@ if (narrated.length) {
 		const len = voiceWords.at(-1).end + 0.4;
 		run('ffmpeg', ['-y', '-v', 'error', '-f', 'lavfi', '-i', 'anullsrc=r=44100:cl=mono', '-t', String(len), '-c:a', 'libmp3lame', path.join(ASSETS, 'voice.mp3')]);
 		cache[key] = {words: voiceWords};
+	} else if (REUSE_VIDEO) {
+		// The HeyGen render carries the narration it was lip-synced to: reuse that audio, align the script to it.
+		log(`Narration: taking audio from HeyGen video ${REUSE_VIDEO}…`);
+		const raw = path.join(ASSETS, 'avatar-green.mp4');
+		await hg.download(await hg.waitForVideo(REUSE_VIDEO), raw);
+		run('ffmpeg', ['-y', '-v', 'error', '-i', raw, '-vn', '-c:a', 'libmp3lame', '-b:a', '128k', path.join(ASSETS, 'voice.mp3')]);
+		voiceWords = await el.align({file: path.join(ASSETS, 'voice.mp3'), text: narration});
+		cache[key] = {words: voiceWords};
 	} else {
 		log(`Narration: ElevenLabs (${narration.length} chars)…`);
 		voiceWords = await el.tts({
@@ -98,13 +108,25 @@ if (needsAvatar) {
 				'-c:v', 'libx264', '-pix_fmt', 'yuv420p', raw,
 			]);
 		} else {
-			log('Avatar: uploading narration to HeyGen…');
-			const assetId = await hg.uploadAudio(path.join(ASSETS, 'voice.mp3'));
-			const videoId = await hg.generateAvatarVideo({audioAssetId: assetId});
-			log(`Avatar: rendering on HeyGen (video ${videoId}) — usually a few minutes…`);
-			const url = await hg.waitForVideo(videoId, {onTick: (s) => process.stdout.write(`  …${s}\r`)});
-			await hg.download(url, raw);
-			usage.avatarSeconds += voiceDuration;
+			// Remember the HeyGen video ID as soon as it exists, so a failed wait or download
+			// can be resumed without paying for a second render.
+			let videoId = REUSE_VIDEO || cache[`heygen:${key}`];
+			if (videoId) {
+				log(`Avatar: reusing HeyGen video ${videoId}`);
+			} else {
+				log('Avatar: uploading narration to HeyGen…');
+				const assetId = await hg.uploadAudio(path.join(ASSETS, 'voice.mp3'));
+				videoId = await hg.generateAvatarVideo({audioAssetId: assetId});
+				cache[`heygen:${key}`] = videoId;
+				fs.rmSync(raw, {force: true}); // never key an older render
+				saveCache();
+				usage.avatarSeconds += voiceDuration;
+				log(`Avatar: rendering on HeyGen (video ${videoId}), usually a few minutes…`);
+			}
+			if (!fs.existsSync(raw)) {
+				const url = await hg.waitForVideo(videoId, {onTick: (st) => process.stdout.write(`  …${st}\r`)});
+				await hg.download(url, raw);
+			}
 		}
 		log('Avatar: keying out green screen…');
 		chromaKey(raw, path.join(ASSETS, 'avatar.webm'));
