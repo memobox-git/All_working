@@ -78,8 +78,10 @@ export const ShotView: React.FC<{shot: Shot; timeline: Timeline}> = ({shot, time
 	switch (shot.layout) {
 		case 'aroll': {
 			// Avatar source is a 9:16 cutout: fill a vertical frame, stand centered in a horizontal one.
-			const fit = isAvatar ? (vertical ? 'cover' : 'contain') : 'cover';
-			body = presenter(fit, isAvatar ? 30 : 50);
+			// The keyed avatar is cropped to the person. Vertical: fill the frame from the head down,
+			// so the photo's bottom edge falls off-frame. Horizontal: stand the person on the frame's bottom edge.
+			if (isAvatar) body = vertical ? presenter('cover', 8) : presenter('contain', 100);
+			else body = presenter('cover', 50);
 			break;
 		}
 		case 'broll':
@@ -91,7 +93,7 @@ export const ShotView: React.FC<{shot: Shot; timeline: Timeline}> = ({shot, time
 					<>
 						<Box style={{left: 0, top: 0, width: W, height: H / 2}}>{graphic(W, H / 2)}</Box>
 						<Box style={{left: 0, top: H / 2, width: W, height: H / 2, borderTop: `${u * 0.6}px solid ${t.accent}`}}>
-							{presenter('cover', isAvatar ? 18 : 50)}
+							{presenter('cover', isAvatar ? 6 : 50)}
 						</Box>
 					</>
 				);
@@ -101,7 +103,7 @@ export const ShotView: React.FC<{shot: Shot; timeline: Timeline}> = ({shot, time
 					<>
 						<Box style={{left: 0, top: 0, width: gw, height: H}}>{graphic(gw, H)}</Box>
 						<Box style={{left: gw, top: 0, width: W - gw, height: H, borderLeft: `${u * 0.6}px solid ${t.accent}`}}>
-							{presenter('cover', isAvatar ? 22 : 50)}
+							{presenter('cover', isAvatar ? 6 : 50)}
 						</Box>
 					</>
 				);

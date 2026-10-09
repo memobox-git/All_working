@@ -23,7 +23,8 @@ export const Presenter: React.FC<{
 		objectFit: fit,
 		objectPosition: `50% ${anchorY}%`,
 		transform: `scale(${scale})`,
-		transformOrigin: `50% ${anchorY}%`,
+		// Zoom toward the face, never the feet.
+		transformOrigin: `50% ${Math.min(anchorY, 22)}%`,
 	};
 
 	if (presenter.type === 'clip') {
@@ -39,6 +40,11 @@ export const Presenter: React.FC<{
 		);
 	}
 	if (!avatarSrc) return null;
+	// Soften the bottom edge of a contained cut-out (photo avatars end where the photo ends).
+	if (fit === 'contain') {
+		style.WebkitMaskImage = 'linear-gradient(to bottom, #000 86%, transparent 100%)';
+		style.maskImage = 'linear-gradient(to bottom, #000 86%, transparent 100%)';
+	}
 	return (
 		<AbsoluteFill>
 			<OffthreadVideo

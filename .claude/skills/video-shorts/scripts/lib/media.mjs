@@ -22,11 +22,24 @@ export const duration = (file) =>
 
 export const hash = (...parts) => crypto.createHash('sha256').update(JSON.stringify(parts)).digest('hex').slice(0, 16);
 
-// Turn a green-screen render into a VP9 WebM with an alpha channel (Remotion plays it with `transparent`).
+// Turn a green-screen render into a VP9 WebM with an alpha channel (Remotion plays it with `transparent`),
+// cropped to the person. Photo avatars stop at the photo's edges; cropping puts those edges on the
+// frame border, where layouts can anchor them instead of leaving a hard line mid-frame.
 export const chromaKey = (input, output, color = '0x00FF00') => {
+	const key = `chromakey=${color}:0.14:0.06,despill=type=green`;
+	// Bounding box of everything that isn't green, across the whole clip.
+	const probe = spawnSync('ffmpeg', ['-v', 'info', '-i', input, '-vf', `${key},format=yuva420p,alphaextract,cropdetect=limit=24:round=2:reset=0`, '-f', 'null', '-'], {encoding: 'utf8'});
+	const boxes = [...(probe.stderr ?? '').matchAll(/crop=(\d+):(\d+):(\d+):(\d+)/g)];
+	let crop = '';
+	if (boxes.length) {
+		const [w, h, x, y] = boxes.at(-1).slice(1).map(Number);
+		// Keep some headroom above the hair so the head never touches the top of the frame.
+		const pad = Math.min(y, Math.round(h * 0.08));
+		crop = `crop=${w}:${h + pad}:${x}:${y - pad},`;
+	}
 	run('ffmpeg', [
 		'-y', '-v', 'error', '-i', input,
-		'-vf', `chromakey=${color}:0.14:0.06,despill=type=green,format=yuva420p`,
+		'-vf', `${key},${crop}format=yuva420p`,
 		'-c:v', 'libvpx-vp9', '-pix_fmt', 'yuva420p', '-b:v', '5M', '-auto-alt-ref', '0', '-an',
 		output,
 	]);
