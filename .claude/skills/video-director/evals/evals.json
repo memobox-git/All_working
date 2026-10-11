@@ -1,0 +1,57 @@
+{
+  "skill_name": "video-director",
+  "evals": [
+    {
+      "id": 1,
+      "name": "budget-rule-explainer",
+      "prompt": "I teach personal finance on YouTube. I want to make a ~5 minute video explaining the 50/30/20 budget rule for people in their first job. It's just me, I film at home on a Samsung phone, I have maybe $60 to spend and 10 days. I don't want it to be a boring talking head. Can you direct it for me? Show me visually how the whole video will look, what I'll use, what it'll cost and how to make each part.",
+      "expected_output": "A director's board (HTML) with vision, beat timeline covering 5 minutes, diagram storyboard frames, A/V script, per-shot method and steps, tools and tiered budget within $60, feasibility ratings with fallbacks, workflow over 10 days, assumptions.",
+      "files": [],
+      "expectations": [
+        "A visual board file (HTML) is delivered",
+        "The board has at least 6 storyboard frames drawn as diagrams",
+        "There is a picture/sound script with timecodes",
+        "The structure (beats) covers the full ~5 minute runtime",
+        "Every shot states a method and how-to steps",
+        "Tools are listed with costs and a budget total that fits $60 in at least one tier",
+        "Every shot has a feasibility rating and every risky shot has a fallback",
+        "Assumptions are stated",
+        "Prices are marked as approximate or dated",
+        "A workflow or schedule fits the 10-day deadline"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "candle-reel-ad",
+      "prompt": "Plan a 30-second Instagram Reel ad for my small handmade soy candle brand 'Ember & Oak'. It's just me and my phone, no crew. I'm thinking of using AI video for a dreamy forest scene with my candle glowing on a mossy log. Budget is under ₹8,000 (I'm in India). Show me visually how it'll look, what tools, the cost and how to pull it off.",
+      "expected_output": "A 9:16 director's board with a hook in the first 1-2 seconds, honest AI feasibility (product consistency, text), a hybrid approach (real candle filmed, AI or practical forest), costs in rupees under 8,000, fallbacks.",
+      "files": [],
+      "expectations": [
+        "A visual board file (HTML) is delivered",
+        "Storyboard frames are vertical (9:16)",
+        "Costs are given in rupees and at least one tier is under ₹8,000",
+        "The plan warns that AI video struggles to keep the real candle/label consistent",
+        "The plan films the real candle (e.g. tabletop moss set or composite) rather than relying on AI to generate the product",
+        "The hook lands in the first 1-3 seconds",
+        "Every shot has a feasibility rating and risky shots have fallbacks",
+        "AI or music licensing/disclosure is addressed"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "fix-drone-opening",
+      "prompt": "I'm making a 90-second brand film for my small architecture studio. The opening shot in my plan was a drone flying over the city at sunset and then pushing into our office window on the 12th floor, where the team is working. I don't have a drone, flying is banned in our area, and when I tried Runway and Kling the buildings kept bending and melting. What else can I do so the opening still works?",
+      "expected_output": "Fix mode: names the opening's job, diagnoses blockers, at least 3 ranked alternatives with cost/effort/fidelity, a clear recommendation, fixes for AI warping, and a visual of the new opening.",
+      "files": [],
+      "expectations": [
+        "States what the opening shot must achieve (its job/intent)",
+        "Offers at least 3 distinct alternatives",
+        "Makes one clear recommendation with a reason",
+        "Compares options on cost and effort or fidelity",
+        "Gives specific techniques to stop AI warping (e.g. image-to-video from a still, slow/short moves, 2.5D parallax)",
+        "Mentions a permission/licensing point for the alternatives (stock licence, attribution, building access)",
+        "Delivers a visual of the new opening (storyboard frames or board)"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,646 @@
+{
+  "title": "What is a data pipeline? (in 6 minutes)",
+  "logline": "A calm, visual explainer that turns 'data pipeline' from jargon into a picture the viewer can draw from memory.",
+  "version": 1,
+  "meta": {
+    "platform": "YouTube (long form)",
+    "length": "6:00",
+    "aspect": "16:9",
+    "audience": "New grads and career changers aiming for data engineering",
+    "goal": "Viewer can explain extract, transform, load in their own words; books a free call",
+    "budget": "$50",
+    "deadline": "2 weeks",
+    "crew": "Solo, filmed at a home desk",
+    "currency": "$",
+    "date": "2026-10-11"
+  },
+  "assumptions": [
+    "You film yourself on an iPhone at your desk, with window light",
+    "You already own a laptop that can run DaVinci Resolve or CapCut",
+    "Prices are approximate for October 2026 and should be checked before buying"
+  ],
+  "questions": [
+    "Do you want the 'interviewed 200 engineers' line in the intro for a concept video?"
+  ],
+  "vision": {
+    "intent": "Make the viewer feel 'oh, that's all it is' by building one pipeline diagram piece by piece while you talk.",
+    "tone": [
+      "calm",
+      "clear",
+      "confident",
+      "friendly"
+    ],
+    "look": "Clean desk set, warm window light on your face, cool blue screen glow behind. Graphics are flat, dark grid with one amber accent.",
+    "camera": "Locked-off medium close-up for talking; 10% punch-ins on key lines; overhead inserts of hands sketching.",
+    "light": "Window as key light at 45 degrees, desk lamp as a warm practical in the background.",
+    "type": "Plus Jakarta Sans, bold white titles, amber for the single word that matters.",
+    "edit": "A new visual every 5 to 8 seconds; graphics build step by step in sync with the voice.",
+    "sound": "Soft lo-fi bed at -28 LUFS under the voice; one subtle whoosh per graphic build.",
+    "palette": [
+      {
+        "hex": "#0F1115",
+        "name": "Ink"
+      },
+      {
+        "hex": "#F59F00",
+        "name": "Amber"
+      },
+      {
+        "hex": "#F4F1EA",
+        "name": "Paper"
+      },
+      {
+        "hex": "#4C6EF5",
+        "name": "Signal blue"
+      }
+    ],
+    "references": [
+      "Whiteboard-style explainers that build one diagram across the video",
+      "Calm desk-setup talking-head channels with warm practical lighting"
+    ]
+  },
+  "beats": [
+    {
+      "name": "Hook",
+      "start": "0:00",
+      "end": "0:15",
+      "purpose": "State the problem: data is stuck in many places",
+      "feeling": "curious"
+    },
+    {
+      "name": "Promise + intro",
+      "start": "0:15",
+      "end": "0:45",
+      "purpose": "What they will learn, who you are",
+      "feeling": "trust"
+    },
+    {
+      "name": "Extract",
+      "start": "0:45",
+      "end": "2:00",
+      "purpose": "Where data comes from",
+      "feeling": "this is simple"
+    },
+    {
+      "name": "Transform",
+      "start": "2:00",
+      "end": "3:30",
+      "purpose": "Cleaning and shaping",
+      "feeling": "I get it"
+    },
+    {
+      "name": "Load + schedule",
+      "start": "3:30",
+      "end": "5:00",
+      "purpose": "Warehouse and orchestration",
+      "feeling": "the full picture"
+    },
+    {
+      "name": "Your turn + CTA",
+      "start": "5:00",
+      "end": "6:00",
+      "purpose": "One task this week, free call",
+      "feeling": "ready to act"
+    }
+  ],
+  "shots": [
+    {
+      "id": "1",
+      "beat": "Hook",
+      "time": "0:00-0:06",
+      "size": "MCU",
+      "angle": "Eye level",
+      "move": "Push in",
+      "lens": "1x (26mm)",
+      "visual": "You at the desk, look straight to lens. Slow digital push-in.",
+      "audio": "Every company has data stuck in twenty different places.",
+      "onscreen": "20 places",
+      "method": "Live action",
+      "tools": [
+        "iPhone (4K)",
+        "Tripod",
+        "Lav mic"
+      ],
+      "how": [
+        "Shoot in 4K, edit on a 1080p timeline",
+        "Scale 100% to 112% over the shot for the push-in"
+      ],
+      "effort": "15 min",
+      "cost": 0,
+      "feasibility": "green",
+      "frame": {
+        "bg": "room",
+        "elements": [
+          {
+            "kind": "person",
+            "size": "mcu",
+            "x": 0.62
+          },
+          {
+            "kind": "object",
+            "shape": "plant",
+            "x": 0.15,
+            "y": 0.72,
+            "s": 0.35
+          },
+          {
+            "kind": "text",
+            "style": "number",
+            "text": "20",
+            "x": 0.1,
+            "y": 0.12,
+            "w": 0.3,
+            "accent": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "2",
+      "beat": "Hook",
+      "time": "0:06-0:15",
+      "size": "Full screen graphic",
+      "move": "Static",
+      "visual": "Grid of app icons (CRM, payments, app logs) scattered, each pulsing.",
+      "audio": "A data pipeline is how that data gets to one place, cleaned and ready to use.",
+      "method": "Motion graphics",
+      "tools": [
+        "HTML + CSS animation rendered to MP4",
+        "or Canva animate"
+      ],
+      "how": [
+        "Build the scene in HTML with a render(t) function",
+        "Render with Playwright + ffmpeg at 30 fps"
+      ],
+      "effort": "1 h",
+      "cost": 0,
+      "feasibility": "green",
+      "frame": {
+        "bg": "grid",
+        "elements": [
+          {
+            "kind": "object",
+            "shape": "box",
+            "x": 0.2,
+            "y": 0.4,
+            "s": 0.18,
+            "label": "CRM"
+          },
+          {
+            "kind": "object",
+            "shape": "box",
+            "x": 0.45,
+            "y": 0.75,
+            "s": 0.18,
+            "label": "Payments"
+          },
+          {
+            "kind": "object",
+            "shape": "box",
+            "x": 0.7,
+            "y": 0.35,
+            "s": 0.18,
+            "label": "Logs"
+          },
+          {
+            "kind": "object",
+            "shape": "box",
+            "x": 0.85,
+            "y": 0.8,
+            "s": 0.18,
+            "accent": true,
+            "label": "Warehouse"
+          },
+          {
+            "kind": "arrow",
+            "from": [
+              0.25,
+              0.32
+            ],
+            "to": [
+              0.8,
+              0.62
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "3",
+      "beat": "Extract",
+      "time": "0:45-0:55",
+      "size": "Overhead insert",
+      "angle": "Top down",
+      "move": "Static",
+      "visual": "Overhead: your hand draws three boxes on paper labelled sources.",
+      "audio": "Step one is extract. You copy data out of the systems where it lives.",
+      "method": "Live action insert",
+      "tools": [
+        "iPhone on overhead arm",
+        "A4 paper",
+        "Thick marker"
+      ],
+      "how": [
+        "Clamp phone to a boom arm or use a stack of books and a ruler",
+        "Lock exposure, film 3 takes"
+      ],
+      "effort": "30 min",
+      "cost": "15-25",
+      "feasibility": "amber",
+      "risk": "Overhead rigs wobble and the phone can fall",
+      "fallback": "Film at a 45 degree angle from a tripod; it still reads as 'drawing'",
+      "frame": {
+        "bg": "desk",
+        "elements": [
+          {
+            "kind": "object",
+            "shape": "paper",
+            "x": 0.5,
+            "y": 0.92,
+            "s": 0.78,
+            "w": 0.62
+          },
+          {
+            "kind": "object",
+            "shape": "box",
+            "x": 0.32,
+            "y": 0.5,
+            "s": 0.16,
+            "label": "API"
+          },
+          {
+            "kind": "object",
+            "shape": "box",
+            "x": 0.5,
+            "y": 0.5,
+            "s": 0.16,
+            "label": "DB"
+          },
+          {
+            "kind": "object",
+            "shape": "box",
+            "x": 0.68,
+            "y": 0.5,
+            "s": 0.16,
+            "label": "Files"
+          },
+          {
+            "kind": "object",
+            "shape": "hand",
+            "x": 0.78,
+            "y": 0.88,
+            "s": 0.3
+          }
+        ]
+      }
+    },
+    {
+      "id": "4",
+      "beat": "Transform",
+      "time": "2:00-2:12",
+      "size": "Screen recording",
+      "move": "Push in",
+      "visual": "SQL query cleans a messy table; zoom into the WHERE clause.",
+      "audio": "Transform means you fix the mess: remove duplicates, fix dates, join tables.",
+      "onscreen": "Transform = clean + shape",
+      "method": "Screen recording",
+      "tools": [
+        "OBS Studio",
+        "VS Code at 150% zoom"
+      ],
+      "how": [
+        "Record at 4K or at 2x display scaling",
+        "Zoom in post on the line that matters"
+      ],
+      "effort": "45 min",
+      "cost": 0,
+      "feasibility": "green",
+      "frame": {
+        "bg": "plain",
+        "elements": [
+          {
+            "kind": "screen",
+            "content": "code",
+            "x": 0.08,
+            "y": 0.08,
+            "w": 0.84,
+            "h": 0.8,
+            "stand": false
+          },
+          {
+            "kind": "text",
+            "style": "caption",
+            "text": "Transform = clean + shape"
+          }
+        ]
+      }
+    },
+    {
+      "id": "5",
+      "beat": "Load + schedule",
+      "time": "3:30-3:45",
+      "size": "Two-shot (you + graphic)",
+      "move": "Static",
+      "visual": "You on the left third, the full pipeline diagram builds on the right.",
+      "audio": "Load puts the clean data in a warehouse, and a scheduler runs it every night.",
+      "method": "Live action + composited graphic",
+      "tools": [
+        "iPhone",
+        "DaVinci Resolve (Fusion) or CapCut overlay"
+      ],
+      "how": [
+        "Frame yourself on the left third, leave the right side empty",
+        "Overlay the rendered diagram in the edit"
+      ],
+      "effort": "1 h",
+      "cost": 0,
+      "feasibility": "green",
+      "frame": {
+        "bg": "room",
+        "elements": [
+          {
+            "kind": "person",
+            "size": "ms",
+            "x": 0.22,
+            "facing": "right"
+          },
+          {
+            "kind": "object",
+            "shape": "box",
+            "x": 0.58,
+            "y": 0.4,
+            "s": 0.16,
+            "label": "Extract"
+          },
+          {
+            "kind": "object",
+            "shape": "box",
+            "x": 0.75,
+            "y": 0.4,
+            "s": 0.16,
+            "label": "Transform"
+          },
+          {
+            "kind": "object",
+            "shape": "box",
+            "x": 0.9,
+            "y": 0.4,
+            "s": 0.16,
+            "accent": true,
+            "label": "Load"
+          },
+          {
+            "kind": "text",
+            "style": "lower-third",
+            "text": "Runs every night at 2am",
+            "x": 0.5,
+            "y": 0.72,
+            "w": 0.45
+          }
+        ]
+      }
+    },
+    {
+      "id": "6",
+      "beat": "Your turn + CTA",
+      "time": "5:30-5:45",
+      "size": "Wide",
+      "move": "Pull out",
+      "visual": "Pull out from you to the whole desk setup; end card space on the right.",
+      "audio": "If you want help building your first pipeline, book a free 15-minute call.",
+      "method": "Live action",
+      "tools": [
+        "iPhone 0.5x lens",
+        "Tripod"
+      ],
+      "how": [
+        "Shoot wide in 4K; start the edit at 130% scale and ease to 100%"
+      ],
+      "effort": "10 min",
+      "cost": 0,
+      "feasibility": "green",
+      "frame": {
+        "bg": "room",
+        "elements": [
+          {
+            "kind": "object",
+            "shape": "desk",
+            "x": 0.4,
+            "y": 0.78,
+            "s": 0.4,
+            "w": 0.6
+          },
+          {
+            "kind": "person",
+            "size": "ws",
+            "x": 0.35
+          },
+          {
+            "kind": "monitor",
+            "x": 0.5,
+            "y": 0.42,
+            "w": 0.18,
+            "h": 0.2,
+            "content": "chart"
+          },
+          {
+            "kind": "text",
+            "style": "title",
+            "text": "Book a free call",
+            "x": 0.68,
+            "y": 0.2,
+            "w": 0.3,
+            "box": true
+          }
+        ]
+      }
+    }
+  ],
+  "tools": [
+    {
+      "name": "iPhone (owned)",
+      "category": "Camera",
+      "use": "Talking head and inserts in 4K",
+      "plan": "Owned",
+      "cost": 0,
+      "alt": "Any phone that shoots 4K"
+    },
+    {
+      "name": "Wired lav mic",
+      "category": "Audio",
+      "use": "Clean voice",
+      "plan": "Buy once",
+      "cost": "20-30",
+      "alt": "Phone voice memo held near the mouth, synced in post"
+    },
+    {
+      "name": "DaVinci Resolve",
+      "category": "Edit",
+      "use": "Cut, grade, overlays",
+      "plan": "Free",
+      "cost": 0,
+      "alt": "CapCut desktop (free)"
+    },
+    {
+      "name": "HTML + Playwright + ffmpeg",
+      "category": "Motion graphics",
+      "use": "Diagrams that build step by step",
+      "plan": "Free",
+      "cost": 0,
+      "alt": "Canva animate"
+    },
+    {
+      "name": "OBS Studio",
+      "category": "Screen capture",
+      "use": "SQL screen recording",
+      "plan": "Free",
+      "cost": 0,
+      "alt": "QuickTime / Xbox Game Bar"
+    },
+    {
+      "name": "YouTube Audio Library",
+      "category": "Music",
+      "use": "Lo-fi bed",
+      "plan": "Free",
+      "cost": 0,
+      "alt": "Epidemic Sound (paid, wider choice)"
+    }
+  ],
+  "budget": {
+    "tiers": [
+      {
+        "name": "Lean",
+        "summary": "Everything you own plus free software"
+      },
+      {
+        "name": "Standard",
+        "summary": "Better audio and a stable overhead rig"
+      },
+      {
+        "name": "Premium",
+        "summary": "Wireless mic, key light, licensed music"
+      }
+    ],
+    "line_items": [
+      {
+        "item": "Microphone",
+        "costs": {
+          "Lean": 0,
+          "Standard": "20-30",
+          "Premium": "150-250"
+        },
+        "note": "Lean uses phone voice memo"
+      },
+      {
+        "item": "Overhead rig",
+        "costs": {
+          "Lean": 0,
+          "Standard": "15-25",
+          "Premium": "40-60"
+        }
+      },
+      {
+        "item": "Key light",
+        "costs": {
+          "Lean": 0,
+          "Standard": 0,
+          "Premium": "60-120"
+        },
+        "note": "Window light is free"
+      },
+      {
+        "item": "Music",
+        "costs": {
+          "Lean": 0,
+          "Standard": 0,
+          "Premium": "10-20"
+        },
+        "note": "Premium = one month of a licence"
+      },
+      {
+        "item": "Software",
+        "costs": {
+          "Lean": 0,
+          "Standard": 0,
+          "Premium": 0
+        }
+      }
+    ],
+    "note": "Prices are approximate (October 2026). Check before you buy; rent gear locally if you only need it once."
+  },
+  "risks": [
+    {
+      "risk": "Echo in the room ruins the voice",
+      "impact": "High",
+      "likelihood": "Medium",
+      "plan_b": "Hang a blanket behind the camera, mic closer",
+      "plan_c": "Re-record the voice in a closet, use AI voice clean-up"
+    },
+    {
+      "risk": "Graphics take longer than planned",
+      "impact": "Medium",
+      "likelihood": "Medium",
+      "plan_b": "Reuse one diagram template for all three steps",
+      "plan_c": "Use Canva templates and cut graphic count in half"
+    }
+  ],
+  "workflow": [
+    {
+      "stage": "Pre-production",
+      "time": "Day 1-2",
+      "owner": "You",
+      "steps": [
+        "Lock script",
+        "Build graphics style frame",
+        "Test light and audio"
+      ]
+    },
+    {
+      "stage": "Shoot",
+      "time": "Day 3",
+      "owner": "You",
+      "steps": [
+        "Talking head in 2 takes per section",
+        "Overhead inserts",
+        "Screen recordings"
+      ]
+    },
+    {
+      "stage": "Graphics",
+      "time": "Day 4-5",
+      "owner": "You",
+      "steps": [
+        "Animate the pipeline diagram",
+        "Render to MP4"
+      ]
+    },
+    {
+      "stage": "Edit",
+      "time": "Day 6-8",
+      "owner": "You",
+      "steps": [
+        "Assembly cut",
+        "Punch-ins and graphics",
+        "Captions, music, mix"
+      ]
+    },
+    {
+      "stage": "Deliver",
+      "time": "Day 9",
+      "owner": "You",
+      "steps": [
+        "Export 4K",
+        "Thumbnail",
+        "Upload with chapters"
+      ]
+    }
+  ],
+  "checklist": [
+    "Phone storage cleared",
+    "Do Not Disturb on",
+    "Exposure and focus locked",
+    "Clap at the start of each take for sync",
+    "Hide personal info on screen recordings"
+  ],
+  "changes": []
+}
