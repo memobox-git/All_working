@@ -1,0 +1,394 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>How to make videos with Claude</title>
+<style>
+@font-face{font-family:PJS;font-weight:400;src:url(node_modules/@fontsource/plus-jakarta-sans/files/plus-jakarta-sans-latin-400-normal.woff2)}
+@font-face{font-family:PJS;font-weight:600;src:url(node_modules/@fontsource/plus-jakarta-sans/files/plus-jakarta-sans-latin-600-normal.woff2)}
+@font-face{font-family:PJS;font-weight:800;src:url(node_modules/@fontsource/plus-jakarta-sans/files/plus-jakarta-sans-latin-800-normal.woff2)}
+@font-face{font-family:JBM;font-weight:400;src:url(node_modules/@fontsource/jetbrains-mono/files/jetbrains-mono-latin-400-normal.woff2)}
+@font-face{font-family:JBM;font-weight:700;src:url(node_modules/@fontsource/jetbrains-mono/files/jetbrains-mono-latin-700-normal.woff2)}
+:root{--bg:#15151A;--panel:#1E1E25;--panel2:#25252E;--edge:#33333F;--text:#F4F1EA;--muted:#A3A094;--dim:#6E6B63;--acc:#E8875B;--gold:#E9C46A;--sage:#8FC1A9;--sky:#7FB2E5;--lilac:#C3A6E8}
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1920px;height:1080px;overflow:hidden;background:var(--bg);color:var(--text);font-family:PJS,sans-serif;position:relative}
+.bg{position:absolute;inset:0;background:radial-gradient(1100px 800px at 88% 8%,rgba(232,135,91,.14),transparent 60%),radial-gradient(900px 700px at 0% 100%,rgba(143,193,169,.08),transparent 60%)}
+.dots{position:absolute;inset:0;background-image:radial-gradient(rgba(244,241,234,.06) 1.5px,transparent 1.6px);background-size:48px 48px}
+.ring{position:absolute;width:980px;height:980px;right:-300px;top:-300px;border:2px dashed rgba(232,135,91,.22);border-radius:50%}
+.scene{position:absolute;inset:0}
+.center{display:flex;flex-direction:column;justify-content:center;padding:0 140px}
+.col{position:absolute;left:140px;top:0;bottom:0;width:780px;display:flex;flex-direction:column;justify-content:center}
+.top{position:absolute;left:140px;right:140px;top:120px}
+.acc{color:var(--acc)}.sage{color:var(--sage)}.gold{color:var(--gold)}.muted{color:var(--muted)}.dim{color:var(--dim)}
+.tag{font-size:28px;letter-spacing:.18em;text-transform:uppercase;color:var(--acc);font-weight:600;margin-bottom:26px}
+.h0{font-size:140px;font-weight:800;line-height:1.02;letter-spacing:-.025em}
+.h1{font-size:84px;font-weight:800;line-height:1.06;letter-spacing:-.02em}
+.h2{font-size:68px;font-weight:800;line-height:1.08;letter-spacing:-.015em}
+.sub{font-size:38px;color:var(--muted);line-height:1.4;margin-top:30px;max-width:1300px}
+.chips{display:flex;gap:24px;margin-top:56px;flex-wrap:wrap}
+.chip{border:2px solid rgba(232,135,91,.7);border-radius:60px;padding:16px 36px;font-size:36px;font-weight:600}
+.note{position:absolute;left:140px;bottom:86px;width:780px;font-size:25px;line-height:1.45;color:var(--dim)}
+.note b{color:var(--muted);font-weight:600}
+
+/* steps */
+.steps{margin-top:46px}
+.step{display:flex;gap:28px;align-items:flex-start;margin-bottom:30px;--hl:0}
+.step .n{position:relative;flex:none;width:62px;height:62px;border-radius:18px;border:2px solid rgba(244,241,234,.16);display:grid;place-items:center;font-weight:800;font-size:28px;overflow:hidden}
+.step .n::before{content:"";position:absolute;inset:0;background:var(--acc);opacity:var(--hl)}
+.step .n span{position:relative}
+.step .tx{font-size:36px;line-height:1.3;font-weight:600;padding-top:8px;opacity:calc(.34 + .66*var(--hl))}
+.step .tx em{font-style:normal;color:var(--acc)}
+
+/* mock windows */
+.win{position:absolute;left:1000px;top:120px;width:780px;height:820px;background:var(--panel);border:1px solid var(--edge);border-radius:28px;overflow:hidden;box-shadow:0 40px 120px rgba(0,0,0,.45)}
+.win .bar{height:60px;display:flex;align-items:center;gap:12px;padding:0 24px;border-bottom:1px solid #2C2C36;background:#1A1A20}
+.win .bar i{width:14px;height:14px;border-radius:50%;background:#3A3A46}
+.win .bar span{margin-left:14px;font-size:21px;color:var(--muted);font-weight:600}
+.win .bar small{margin-left:auto;font-size:17px;color:var(--dim);letter-spacing:.08em;text-transform:uppercase}
+.pane{position:absolute;left:0;right:0;top:60px;bottom:0}
+.abs{position:absolute}
+
+/* chat mock */
+.tabs{position:absolute;left:36px;top:28px;display:flex;gap:34px;font-size:24px;font-weight:600;color:var(--dim)}
+.tabs .on{color:var(--text);border-bottom:4px solid var(--acc);padding-bottom:8px}
+.lbl{font-size:19px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);font-weight:600}
+.tiles{position:absolute;left:36px;top:150px;display:grid;grid-template-columns:340px 340px;gap:24px}
+.tile{height:190px;border-radius:18px;background:var(--panel2);border:1px solid var(--edge);padding:18px;display:flex;flex-direction:column;justify-content:space-between}
+.tile .art{height:110px;display:flex;align-items:flex-end;gap:10px}
+.tile .art b{width:26px;border-radius:6px 6px 2px 2px;background:var(--acc)}
+.tile p{font-size:21px;font-weight:600;color:var(--muted)}
+.input{position:absolute;left:36px;right:36px;top:664px;height:76px;border-radius:20px;background:var(--panel2);border:1px solid var(--edge)}
+.input>*{position:absolute;left:22px;right:22px;top:0;bottom:0;display:flex;align-items:center;font-size:21px;white-space:nowrap;overflow:hidden}
+.ph{color:var(--dim)}
+.caret{display:inline-block;width:3px;height:1.05em;background:var(--acc);vertical-align:-.15em;margin-left:2px}
+.bubble{position:absolute;right:36px;top:26px;max-width:600px;background:#2D2D38;border-radius:22px 22px 6px 22px;padding:16px 22px;font-size:22px;line-height:1.4}
+.attach{display:inline-block;font-size:18px;color:var(--muted);border:1px solid var(--edge);border-radius:10px;padding:4px 10px;margin-left:8px}
+.card{position:absolute;left:36px;right:36px;top:140px;height:340px;border-radius:20px;background:#121217;border:1px solid var(--edge);overflow:hidden}
+.card .hd{height:56px;display:flex;align-items:center;padding:0 20px;font-size:19px;color:var(--dim);border-bottom:1px solid #26262F}
+.card .hd b{color:var(--muted);font-weight:600;margin-right:10px}
+.card .body{position:absolute;left:28px;right:28px;top:76px;height:200px}
+.card .k{font-size:24px;color:var(--muted);font-weight:600}
+.card .v{position:absolute;left:0;top:40px;font-size:96px;font-weight:800;color:var(--acc);letter-spacing:-.02em}
+.vbars{position:absolute;right:0;bottom:0;height:190px;display:flex;align-items:flex-end;gap:18px}
+.vbars b{width:46px;border-radius:8px 8px 2px 2px;background:var(--sage)}
+.vbars b:last-child{background:var(--acc)}
+.scrub{position:absolute;left:28px;right:28px;bottom:24px;height:6px;border-radius:3px;background:#2A2A33}
+.scrub b{display:block;height:100%;border-radius:3px;background:var(--acc)}
+.btns{position:absolute;right:16px;top:9px;display:flex;gap:10px}
+.btn{font-size:19px;font-weight:600;border-radius:10px;padding:8px 16px;border:1px solid var(--edge);color:var(--text);background:#22222B}
+.btn.pri{background:var(--acc);border-color:var(--acc);color:#1A1210}
+.menu{position:absolute;right:112px;top:62px;width:200px;border-radius:14px;background:#2A2A34;border:1px solid #3C3C48;padding:8px;box-shadow:0 18px 40px rgba(0,0,0,.4)}
+.menu div{font-size:21px;font-weight:600;padding:10px 14px;border-radius:9px}
+.menu .sel{background:rgba(232,135,91,.22);color:var(--acc)}
+.reply{position:absolute;left:36px;right:36px;top:500px;font-size:22px;line-height:1.45;color:var(--muted)}
+.reply b{color:var(--sage)}
+.partners{position:absolute;left:36px;right:36px;top:500px}
+.partners .row{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+.partners .row span{font-size:20px;font-weight:600;padding:7px 15px;border-radius:30px;border:1px solid var(--edge);background:var(--panel2)}
+
+/* terminal */
+.term{background:#101014}
+.term .pane{padding:34px 36px;font-family:JBM,monospace;font-size:27px;line-height:1.55}
+.blk{position:absolute;left:36px;right:36px;top:34px}
+.blk div{white-space:pre-wrap;word-break:break-word}
+.pr{color:var(--acc)}
+.ok{color:var(--sage)}
+.cm{color:var(--dim)}
+.tbl{display:grid;grid-template-columns:auto 1fr;column-gap:30px;row-gap:6px;margin-top:14px}
+.tbl .a{color:var(--gold)}
+.pbar{display:inline-block;width:300px;height:18px;border-radius:9px;background:#26262E;vertical-align:middle;margin:0 16px;overflow:hidden}
+.pbar b{display:block;height:100%;background:var(--acc)}
+
+/* overview + connector cards */
+.cards{position:absolute;left:140px;right:140px;top:450px;display:grid;grid-template-columns:repeat(3,1fr);gap:60px}
+.ocard{height:400px;border-radius:28px;background:var(--panel);border:1px solid var(--edge);padding:40px 38px;position:relative}
+.ocard .num{width:66px;height:66px;border-radius:20px;background:var(--acc);color:#1A1210;display:grid;place-items:center;font-size:32px;font-weight:800}
+.ocard h3{font-size:46px;font-weight:800;margin-top:28px}
+.ocard p{font-size:28px;line-height:1.42;color:var(--muted);margin-top:14px}
+.ocard .badge{position:absolute;left:38px;bottom:36px;font-size:21px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--sage)}
+.ccard{height:300px}
+.ccard .role{font-size:21px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--acc)}
+.ccard h3{margin-top:16px}
+.ask{position:absolute;left:140px;top:810px;display:flex;align-items:center;gap:22px;font-size:32px}
+.ask .say{background:#2D2D38;border-radius:24px 24px 6px 24px;padding:18px 30px;font-weight:600}
+
+/* prompt recipe */
+.recipe{position:absolute;left:140px;right:140px;top:380px;border-radius:28px;background:var(--panel);border:1px solid var(--edge);padding:48px 56px;font-size:50px;line-height:1.55;font-weight:600}
+.hl{--p:0;border-radius:10px;padding:0 6px;box-decoration-break:clone;-webkit-box-decoration-break:clone;background:color-mix(in srgb,var(--c) calc(var(--p)*24%),transparent);box-shadow:inset 0 -4px 0 color-mix(in srgb,var(--c) calc(var(--p)*100%),transparent)}
+.legend{position:absolute;left:140px;top:735px;display:flex;gap:20px}
+.legend span{font-size:26px;font-weight:600;padding:10px 22px;border-radius:30px;border:2px solid var(--c);color:var(--c)}
+.then{position:absolute;left:140px;top:860px;font-size:36px;color:var(--muted)}
+.then b{color:var(--text)}
+
+/* outro */
+.big3{font-size:136px;font-weight:800;line-height:1.08;letter-spacing:-.025em}
+
+.prog{position:absolute;left:0;right:0;bottom:0;height:7px;background:rgba(244,241,234,.06)}
+.prog b{display:block;height:100%;background:var(--acc)}
+</style>
+</head>
+<body>
+<div class="bg"></div>
+<div class="dots"></div>
+
+<!-- 1 · Title ---------------------------------------------------------- -->
+<section class="scene center" data-in="0" data-out="6.2" data-fx="fade">
+  <div class="ring" data-spin="6"></div>
+  <div class="tag" data-in="0.3">A 90-second guide</div>
+  <h1 class="h0" data-in="0.6">How to make videos<br>with <span class="acc">Claude</span></h1>
+  <p class="sub" data-in="1.4">Three ways: one prompt in the Claude app, full control in code, or your video tools on autopilot.</p>
+  <div class="chips">
+    <span class="chip" data-in="2.3">1 · Claude Motion</span>
+    <span class="chip" data-in="2.6">2 · Claude Code</span>
+    <span class="chip" data-in="2.9">3 · Connectors</span>
+  </div>
+</section>
+
+<!-- 2 · The big idea --------------------------------------------------- -->
+<section class="scene" data-in="6.4" data-out="17" data-fx="fade">
+  <div class="col">
+    <div class="tag" data-in="6.6">The big idea</div>
+    <div class="h2" data-in="6.9">Claude doesn't film anything.</div>
+    <div class="h2 acc" data-in="8.4" style="margin-top:26px">It writes the video as code.</div>
+    <p class="sub" data-in="10.2">So every word, number and timing stays editable. Then the code renders to an MP4.</p>
+  </div>
+  <div class="win term" data-in="8.6" data-fx="scale" style="height:320px;top:190px">
+    <div class="bar"><i></i><i></i><i></i><span>scene.html</span></div>
+    <div class="pane">
+      <div class="blk" data-tseq="9.1" data-cps="42">
+        <div><span class="t pr">&lt;h2&gt;</span><span class="t">Q3 revenue</span><span class="t pr">&lt;/h2&gt;</span></div>
+        <div><span class="t pr">&lt;div </span><span class="t gold">class</span><span class="t">="bar" </span><span class="t gold">data-h</span><span class="t">=".64"</span><span class="t pr">&gt;</span></div>
+        <div><span class="t pr">&lt;div </span><span class="t gold">class</span><span class="t">="bar" </span><span class="t gold">data-h</span><span class="t">=".82"</span><span class="t pr">&gt;</span></div>
+        <div><span class="t cm">// render(t) → one frame per tick</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="abs" data-in="12.4" style="left:1000px;top:540px;font-size:24px;color:var(--dim);font-weight:600;letter-spacing:.12em;text-transform:uppercase">↓ renders to</div>
+  <div class="win" data-in="12.7" data-fx="scale" style="top:590px;height:310px;background:#121217">
+    <div class="abs" style="left:36px;top:32px;font-size:26px;color:var(--muted);font-weight:600">Q3 revenue</div>
+    <div class="abs" style="right:28px;top:28px;font-size:19px;color:var(--dim);border:1px solid var(--edge);border-radius:8px;padding:4px 10px">out.mp4</div>
+    <div class="vbars" style="left:36px;right:auto;bottom:62px;height:180px">
+      <b data-h=".38" data-hin="13.1"></b><b data-h=".52" data-hin="13.25"></b><b data-h=".64" data-hin="13.4"></b><b data-h=".82" data-hin="13.55"></b>
+    </div>
+    <div class="abs" data-in="14.2" style="left:380px;top:110px;font-size:86px;font-weight:800;color:var(--acc)">+14%</div>
+    <div class="scrub"><b data-loop="4" data-lfrom="12.9"></b></div>
+  </div>
+</section>
+
+<!-- 3 · Three ways ----------------------------------------------------- -->
+<section class="scene" data-in="17.2" data-out="23.3" data-fx="fade">
+  <div class="top">
+    <div class="tag" data-in="17.4">Three ways</div>
+    <div class="h1" data-in="17.6">Pick the route that fits.</div>
+  </div>
+  <div class="cards">
+    <div class="ocard" data-in="18.3"><div class="num">1</div><h3>Claude Motion</h3><p>Describe it in the Claude app, tweak it, export an MP4.</p><div class="badge">Easiest</div></div>
+    <div class="ocard" data-in="18.7"><div class="num">2</div><h3>Claude Code</h3><p>Claude writes the scenes as code. You render them yourself.</p><div class="badge">Most control</div></div>
+    <div class="ocard" data-in="19.1"><div class="num">3</div><h3>Connectors</h3><p>Claude works your video tools: editing, voice, publishing.</p><div class="badge">Real footage &amp; voice</div></div>
+  </div>
+</section>
+
+<!-- 4 · Claude Motion -------------------------------------------------- -->
+<section class="scene" data-in="23.5" data-out="47.5" data-fx="fade">
+  <div class="col" style="justify-content:flex-start;top:150px">
+    <div class="tag" data-in="23.7">Way 1 · Claude Motion · beta</div>
+    <div class="h2" data-in="23.9">Make it right in<br>the Claude app</div>
+    <div class="steps">
+      <div class="step" data-in="24.2" data-on="24.6" data-off="29.4"><div class="n"><span>1</span></div><div class="tx">Start a chat, or pick a <em>Motion template</em> in the Artifacts tab.</div></div>
+      <div class="step" data-in="24.4" data-on="29.5" data-off="35.4"><div class="n"><span>2</span></div><div class="tx">Describe it: <em>who it's for</em>, <em>where it plays</em>, <em>how long</em>.</div></div>
+      <div class="step" data-in="24.6" data-on="35.5" data-off="41.4"><div class="n"><span>3</span></div><div class="tx">Refine it in chat, or adjust it yourself in the editor.</div></div>
+      <div class="step" data-in="24.8" data-on="41.5" data-off="49"><div class="n"><span>4</span></div><div class="tx"><em>Export as MP4</em>, or send it on to your video tools.</div></div>
+    </div>
+  </div>
+  <div class="note" data-in="25.4"><b>Beta on Team &amp; Enterprise plans.</b> On Enterprise, an owner switches it on in Organization settings &gt; Artifacts.</div>
+
+  <div class="win" data-in="23.9" data-fx="scale">
+    <div class="bar"><i></i><i></i><i></i><span>Claude</span><small>simplified</small></div>
+    <div class="pane">
+      <!-- A: templates -->
+      <div class="abs" data-in="24.4" data-out="29.3" data-fx="fade" style="inset:0">
+        <div class="tabs"><span>Chats</span><span>Projects</span><span class="on">Artifacts</span></div>
+        <div class="lbl abs" style="left:36px;top:108px">Motion templates</div>
+        <div class="tiles">
+          <div class="tile" data-in="25.0"><div class="art"><b data-h=".4" data-hin="25.3"></b><b data-h=".7" data-hin="25.4"></b><b data-h=".55" data-hin="25.5"></b><b data-h=".95" data-hin="25.6"></b></div><p>Chart story</p></div>
+          <div class="tile" data-in="25.2"><div class="art" style="align-items:center"><b style="width:90px;height:90px;border-radius:50%;background:var(--sage)"></b><b style="width:150px;height:18px;border-radius:9px;background:var(--edge)"></b></div><p>Explainer</p></div>
+          <div class="tile" data-in="25.4"><div class="art" style="flex-direction:column;align-items:stretch;justify-content:center;gap:12px"><b style="width:100%;height:16px;border-radius:8px;background:var(--gold)"></b><b style="width:70%;height:16px;border-radius:8px;background:var(--edge)"></b><b style="width:85%;height:16px;border-radius:8px;background:var(--edge)"></b></div><p>Report recap</p></div>
+          <div class="tile" data-in="25.6"><div class="art" style="align-items:center;justify-content:center"><b style="width:160px;height:96px;border-radius:12px;background:var(--sky)"></b></div><p>Product walkthrough</p></div>
+        </div>
+      </div>
+
+      <!-- B–D: chat -->
+      <div class="abs" data-in="29.6" data-out="32.2" data-fx="fade" style="left:0;right:0;top:250px;text-align:center;font-size:40px;font-weight:800;color:var(--muted)">What should we make?</div>
+      <div class="bubble" data-in="32.3" data-out="35.3">Make a 30-second explainer of our Q3 results for the all-hands. 16:9. <span class="attach">q3-chart.png</span></div>
+      <div class="bubble" data-in="37.5" data-out="41.3">Slow down the second scene and change the Q3 number to 18%.</div>
+      <div class="card" data-in="32.8" data-fx="scale">
+        <div class="hd"><b>Q3 explainer</b> · Motion · 0:30</div>
+        <div class="btns"><span class="btn" data-in="41.6">Share</span><span class="btn pri" data-in="41.6">Export ▾</span></div>
+        <div class="body">
+          <div class="k">Q3 revenue</div>
+          <div class="v" data-in="33.4" data-out="38.4" data-fx="fade">+14%</div>
+          <div class="v" data-in="38.5" data-fx="scale">+18%</div>
+          <div class="vbars"><b data-h=".42" data-hin="33.2"></b><b data-h=".58" data-hin="33.35"></b><b data-h=".7" data-hin="33.5"></b><b data-h=".95" data-hin="33.65"></b></div>
+        </div>
+        <div class="scrub"><b data-loop="5" data-lfrom="33"></b></div>
+        <div class="menu" data-in="42.2" data-fx="fade"><div class="sel">MP4 ✓</div></div>
+      </div>
+      <div class="reply" data-in="38.1" data-out="41.3"><b>✓</b> Scene 2 now runs longer, and Q3 reads 18%.</div>
+      <div class="partners" data-in="43.0" data-fx="fade">
+        <div class="lbl">Or hand it off to</div>
+        <div class="row">
+          <span data-in="43.2">Descript</span><span data-in="43.35">HeyGen</span><span data-in="43.5">Runway</span><span data-in="43.65">Adobe</span><span data-in="43.8">Luma AI</span><span data-in="43.95">invideo</span><span data-in="44.1">Higgsfield</span>
+        </div>
+      </div>
+
+      <div class="input" data-in="24.6" data-fx="fade">
+        <div class="ph" data-in="24.8" data-out="29.4" data-fx="fade">…or just ask for one in any chat</div>
+        <div data-in="29.6" data-out="32.2" data-fx="fade"><span data-tseq="29.9" data-cps="48"><span class="t">Make a 30-second explainer of our Q3 results…</span><i class="caret"></i></span></div>
+        <div class="ph" data-in="32.4" data-out="35.6" data-fx="fade">Reply…</div>
+        <div data-in="35.7" data-out="37.4" data-fx="fade"><span data-tseq="35.8" data-cps="48"><span class="t">Slow down the second scene and change the Q3 number to 18%.</span><i class="caret"></i></span></div>
+        <div class="ph" data-in="37.5" data-fx="fade">Reply…</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5 · Claude Code ---------------------------------------------------- -->
+<section class="scene" data-in="47.7" data-out="66.4" data-fx="fade">
+  <div class="col" style="justify-content:flex-start;top:150px">
+    <div class="tag" data-in="47.9">Way 2 · Claude Code</div>
+    <div class="h2" data-in="48.1">Build it as code,<br>render it yourself</div>
+    <div class="steps">
+      <div class="step" data-in="48.4" data-on="48.8" data-off="52.9"><div class="n"><span>1</span></div><div class="tx">Pick a code-based <em>video framework</em>.</div></div>
+      <div class="step" data-in="48.6" data-on="53.0" data-off="57.4"><div class="n"><span>2</span></div><div class="tx">Add its <em>skill</em> so Claude knows the tools.</div></div>
+      <div class="step" data-in="48.8" data-on="57.5" data-off="61.9"><div class="n"><span>3</span></div><div class="tx">Describe the scenes. Claude writes the code.</div></div>
+      <div class="step" data-in="49.0" data-on="62.0" data-off="68"><div class="n"><span>4</span></div><div class="tx">Render to <em>MP4</em>, watch it, ask for changes.</div></div>
+    </div>
+  </div>
+  <div class="note" data-in="49.6"><b>This video was made this way:</b> HTML scenes, rendered frame by frame with Playwright and ffmpeg.</div>
+
+  <div class="win term" data-in="48.1" data-fx="scale">
+    <div class="bar"><i></i><i></i><i></i><span>Terminal — my-video</span></div>
+    <div class="pane">
+      <div class="blk" data-in="48.8" data-out="57.4" data-fx="fade">
+        <div class="cm"># pick one</div>
+        <div class="tbl">
+          <span class="a" data-in="49.3">remotion</span><span data-in="49.3">React components → MP4</span>
+          <span class="a" data-in="49.8">hyperframes</span><span data-in="49.8">HTML + GSAP → MP4</span>
+          <span class="a" data-in="50.3">playwright</span><span data-in="50.3">any web page + ffmpeg → MP4</span>
+        </div>
+      </div>
+      <div class="blk" data-in="53.0" data-out="57.4" data-fx="fade" style="top:300px">
+        <div data-tseq="53.2" data-cps="34"><span class="t pr">$ </span><span class="t">npx skills add remotion-dev/skills</span></div>
+        <div class="ok" data-in="54.6" data-fx="fade">✓ skill added</div>
+        <div class="cm" data-in="55.3" data-fx="fade" style="margin-top:28px"># or, for HTML videos:</div>
+        <div data-tseq="55.6" data-cps="40"><span class="t pr">$ </span><span class="t">npx skills add heygen-com/hyperframes</span></div>
+      </div>
+      <div class="blk" data-in="57.5" data-out="66.4" data-fx="fade">
+        <div><span class="pr">$ </span>claude</div>
+        <div data-tseq="57.9" data-cps="56" style="margin-top:10px"><span class="t pr">&gt; </span><span class="t">Make a 60-second 1080p explainer of our onboarding flow. 5 scenes, brand colors, captions.</span></div>
+        <div class="muted" data-in="59.8" data-fx="fade" style="margin-top:22px">● Writing src/Explainer.tsx</div>
+        <div class="muted" data-in="60.2" data-fx="fade">● Writing src/scenes/*.tsx</div>
+        <div class="ok" data-in="60.7" data-fx="fade">✓ 5 scenes ready</div>
+      </div>
+      <div class="blk" data-in="62.0" data-out="66.4" data-fx="fade" style="top:430px">
+        <div data-tseq="62.2" data-cps="48"><span class="t pr">$ </span><span class="t">npx remotion render Explainer out/explainer.mp4</span></div>
+        <div data-in="63.4" data-fx="fade" style="margin-top:16px">Rendering<span class="pbar"><b data-pfrom="63.5" data-pto="64.9"></b></span><span data-count="1800" data-cin="63.6" data-suffix=" frames">0</span></div>
+        <div class="ok" data-in="65.0" data-fx="fade" style="margin-top:16px">✓ out/explainer.mp4</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6 · Connectors ----------------------------------------------------- -->
+<section class="scene" data-in="66.6" data-out="77.3" data-fx="fade">
+  <div class="top">
+    <div class="tag" data-in="66.8">Way 3 · Connectors</div>
+    <div class="h1" data-in="67.0">Let Claude drive your video tools</div>
+    <p class="sub" data-in="67.6" style="margin-top:20px">Connect a tool once, then ask in plain English.</p>
+  </div>
+  <div class="cards" style="top:430px">
+    <div class="ocard ccard" data-in="68.2"><div class="role">Editing</div><h3>Descript</h3><p>Edits video by editing its transcript: trims, captions, publishing.</p></div>
+    <div class="ocard ccard" data-in="68.5"><div class="role">Video projects</div><h3>HeyGen</h3><p>Composes HTML video projects and renders them in the cloud.</p></div>
+    <div class="ocard ccard" data-in="68.8"><div class="role">Voiceover</div><h3>ElevenLabs</h3><p>Turns your script into narration in the voice you pick.</p></div>
+  </div>
+  <div class="ask" data-in="70.6"><span class="muted">Try:</span><span class="say">“Cut the filler words, add captions and publish it.”</span></div>
+  <div class="note" data-in="72.0" style="width:1640px;bottom:70px"><b>Claude animates, it doesn't film.</b> Realistic footage, avatars and voices come from tools like these.</div>
+</section>
+
+<!-- 7 · Prompt recipe -------------------------------------------------- -->
+<section class="scene" data-in="77.5" data-out="86.3" data-fx="fade">
+  <div class="top">
+    <div class="tag" data-in="77.7">Prompt recipe</div>
+    <div class="h1" data-in="77.9">What to put in your ask</div>
+  </div>
+  <div class="recipe" data-in="78.4">Make a <span class="hl" style="--c:var(--acc)" data-pin="79.3">30-second</span> explainer about <span class="hl" style="--c:var(--gold)" data-pin="79.9">how invoicing works</span> for <span class="hl" style="--c:var(--sage)" data-pin="80.5">new customers</span>, playing <span class="hl" style="--c:var(--sky)" data-pin="81.1">as a 9:16 reel</span>. Use <span class="hl" style="--c:var(--lilac)" data-pin="81.7">our logo and real numbers</span>.</div>
+  <div class="legend">
+    <span style="--c:var(--acc)" data-in="79.3">Length</span>
+    <span style="--c:var(--gold)" data-in="79.9">Topic</span>
+    <span style="--c:var(--sage)" data-in="80.5">Audience</span>
+    <span style="--c:var(--sky)" data-in="81.1">Where it plays</span>
+    <span style="--c:var(--lilac)" data-in="81.7">Your assets</span>
+  </div>
+  <div class="then" data-in="82.7">Then refine one scene at a time: <b>“Make scene 3 shorter.”</b></div>
+</section>
+
+<!-- 8 · Outro ---------------------------------------------------------- -->
+<section class="scene center" data-in="86.5" data-out="92.4" data-fx="fade">
+  <div class="ring" data-spin="-5"></div>
+  <div class="big3" data-in="86.8">Describe it.</div>
+  <div class="big3" data-in="87.4">Refine it.</div>
+  <div class="big3 acc" data-in="88.0">Export it.</div>
+  <p class="sub" data-in="89.0">This video was written by Claude Code as HTML and rendered to MP4.</p>
+</section>
+
+<div class="prog"><b data-pfrom="0" data-pto="93"></b></div>
+
+<script src="base.js"></script>
+<script>
+// Extras on top of base.js:
+//   data-tseq="t" data-cps="n"   types its .t children in order, n chars/sec
+//   data-h=".8" data-hin="t"      height grows to 80%
+//   data-pfrom/data-pto           width tracks progress between two times
+//   data-loop="p" data-lfrom="t"  width loops 0→100% every p seconds
+//   data-on/data-off              sets --hl 0→1→0 for step highlights
+//   data-pin="t"                  sets --p 0→1 (text highlights)
+(() => {
+  const cl = x => Math.min(Math.max(x, 0), 1);
+  const ez = x => 1 - Math.pow(1 - cl(x), 3);
+  const q = s => document.querySelectorAll(s);
+  const base = window.render;
+  q('[data-tseq]').forEach(box => {
+    box._spans = [...box.querySelectorAll('.t')];
+    box._spans.forEach(s => s._full = s.textContent);
+  });
+  window.render = t => {
+    base(t);
+    q('[data-tseq]').forEach(box => {
+      let n = Math.floor((t - +box.dataset.tseq) * +(box.dataset.cps || 40));
+      box._spans.forEach(s => {
+        s.textContent = s._full.slice(0, Math.max(0, Math.min(n, s._full.length)));
+        n -= s._full.length;
+      });
+      const caret = box.querySelector('.caret');
+      if (caret) caret.style.opacity = n < 0 || Math.floor(t * 2.4) % 2 === 0 ? 1 : 0;
+    });
+    q('[data-h]').forEach(el => el.style.height = 100 * el.dataset.h * ez((t - el.dataset.hin) / 0.9) + '%');
+    q('[data-pfrom]').forEach(el => el.style.width = 100 * cl((t - el.dataset.pfrom) / (el.dataset.pto - el.dataset.pfrom)) + '%');
+    q('[data-loop]').forEach(el => {
+      const d = t - el.dataset.lfrom, p = +el.dataset.loop;
+      el.style.width = (d < 0 ? 0 : 100 * (d % p) / p) + '%';
+    });
+    q('[data-on]').forEach(el => el.style.setProperty('--hl', (ez((t - el.dataset.on) / 0.35) * (1 - ez((t - el.dataset.off) / 0.35))).toFixed(3)));
+    q('[data-pin]').forEach(el => el.style.setProperty('--p', ez((t - el.dataset.pin) / 0.5).toFixed(3)));
+  };
+  window.render(0);
+  // Open with #play to preview in a browser at real speed.
+  if (location.hash === '#play') {
+    const t0 = performance.now();
+    const tick = () => { window.render((performance.now() - t0) / 1000); requestAnimationFrame(tick); };
+    requestAnimationFrame(tick);
+  }
+})();
+</script>
+</body>
+</html>
