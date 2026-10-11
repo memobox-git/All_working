@@ -134,7 +134,7 @@ body{width:1920px;height:1080px;overflow:hidden;background:var(--bg);color:var(-
 <!-- 1 · Title ---------------------------------------------------------- -->
 <section class="scene center" data-in="0" data-out="6.2" data-fx="fade">
   <div class="ring" data-spin="6"></div>
-  <div class="tag" data-in="0.3">A 90-second guide</div>
+  <div class="tag" data-in="0.3">A quick guide</div>
   <h1 class="h0" data-in="0.6">How to make videos<br>with <span class="acc">Claude</span></h1>
   <p class="sub" data-in="1.4">Three ways: one prompt in the Claude app, full control in code, or your video tools on autopilot.</p>
   <div class="chips">
@@ -338,12 +338,13 @@ body{width:1920px;height:1080px;overflow:hidden;background:var(--bg);color:var(-
   <div class="big3" data-in="86.8">Describe it.</div>
   <div class="big3" data-in="87.4">Refine it.</div>
   <div class="big3 acc" data-in="88.0">Export it.</div>
-  <p class="sub" data-in="89.0">This video was written by Claude Code as HTML and rendered to MP4.</p>
+  <p class="sub" data-in="89.0">Written by Claude Code as HTML, voiced with ElevenLabs, rendered to MP4.</p>
 </section>
 
 <div class="prog"><b data-pfrom="0" data-pto="93"></b></div>
 
 <script src="base.js"></script>
+<script src="claude-videos.timing.js"></script>
 <script>
 // Extras on top of base.js:
 //   data-tseq="t" data-cps="n"   types its .t children in order, n chars/sec
@@ -352,16 +353,27 @@ body{width:1920px;height:1080px;overflow:hidden;background:var(--bg);color:var(-
 //   data-loop="p" data-lfrom="t"  width loops 0→100% every p seconds
 //   data-on/data-off              sets --hl 0→1→0 for step highlights
 //   data-pin="t"                  sets --p 0→1 (text highlights)
+// All times above are on the scene timeline. When claude-videos.timing.js
+// sets window.WARP, video time is mapped onto it so scenes follow the voiceover.
 (() => {
   const cl = x => Math.min(Math.max(x, 0), 1);
   const ez = x => 1 - Math.pow(1 - cl(x), 3);
   const q = s => document.querySelectorAll(s);
   const base = window.render;
+  const W = window.WARP;
+  const toScene = t => {
+    if (!W || t <= W[0][0]) return W ? W[0][1] : t;
+    const i = W.findIndex(k => k[0] >= t);
+    if (i < 0) return W[W.length - 1][1];
+    const [a, p] = W[i - 1], [b, r] = W[i];
+    return p + (r - p) * (t - a) / (b - a);
+  };
   q('[data-tseq]').forEach(box => {
     box._spans = [...box.querySelectorAll('.t')];
     box._spans.forEach(s => s._full = s.textContent);
   });
-  window.render = t => {
+  window.render = vt => {
+    const t = toScene(vt);
     base(t);
     q('[data-tseq]').forEach(box => {
       let n = Math.floor((t - +box.dataset.tseq) * +(box.dataset.cps || 40));
@@ -382,8 +394,9 @@ body{width:1920px;height:1080px;overflow:hidden;background:var(--bg);color:var(-
     q('[data-pin]').forEach(el => el.style.setProperty('--p', ez((t - el.dataset.pin) / 0.5).toFixed(3)));
   };
   window.render(0);
-  // Open with #play to preview in a browser at real speed.
+  // Open with #play to preview in a browser at real speed, with the voiceover.
   if (location.hash === '#play') {
+    if (W) new Audio('voiceover/voiceover.wav').play().catch(() => {});
     const t0 = performance.now();
     const tick = () => { window.render((performance.now() - t0) / 1000); requestAnimationFrame(tick); };
     requestAnimationFrame(tick);
