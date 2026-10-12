@@ -120,6 +120,7 @@ def money(v, cur):
 class Frame:
     def __init__(self, aspect):
         self.W, self.H = ASPECTS.get(aspect, ASPECTS["16:9"])
+        self.U = min(self.W, self.H)  # unit for text sizes, so 9:16 text isn't oversized
         self.out = []
 
     def add(self, s):
@@ -234,7 +235,7 @@ def draw_person(f, el):
         for dx in (-0.34, 0.34):
             f.circle(cx + shift + dx * r, hy - 0.08 * r, max(0.7, 0.09 * r), "f-eye")
     if el.get("label"):
-        fs = H * 0.055
+        fs = f.U * 0.055
         f.text(cx, max(label_y, fs + 1), el["label"], "f-label", fs, "middle")
 
 
@@ -294,7 +295,7 @@ def draw_device(f, el, kind):
                f"L{num(x + w * 1.08)} {num(y + h + h * 0.1)} Z", "f-device")
     if el.get("label"):
         f.text(x + w / 2, y + h + H * 0.09 + (h * 0.16 if kind in ("screen", "monitor") else 0),
-               el["label"], "f-label", H * 0.055, "middle")
+               el["label"], "f-label", f.U * 0.055, "middle")
 
 
 def draw_text(f, el):
@@ -307,10 +308,10 @@ def draw_text(f, el):
         w = float(el.get("w", 0.5)) * W
         f.rect(x, y, w, H * 0.12, "f-l3", 2)
         f.rect(x, y, W * 0.012, H * 0.12, "f-accent-fill")
-        f.text(x + W * 0.03, y + H * 0.085, s, "f-text", H * 0.06, weight=600)
+        f.text(x + W * 0.03, y + H * 0.085, s, "f-boxtext", f.U * 0.06, weight=600)
         return
     if style == "caption":
-        size = H * 0.06
+        size = f.U * 0.06
         w = float(el.get("w", 0.8)) * W
         x = float(el.get("x", 0.5)) * W
         y = float(el.get("y", 0.84)) * H
@@ -319,7 +320,7 @@ def draw_text(f, el):
         f.rect(x - bw / 2, y - size * 1.05, bw, size * (len(lines) * 1.18 + 0.5), "f-cap", 3)
         f.wrapped(x, y, w, s, cls, size, "middle", 600, 2)
         return
-    size = {"title": 0.11, "headline": 0.11, "big": 0.2, "number": 0.2, "body": 0.065, "label": 0.05}.get(style, 0.065) * H
+    size = {"title": 0.11, "headline": 0.11, "big": 0.2, "number": 0.2, "body": 0.065, "label": 0.05}.get(style, 0.065) * f.U
     weight = 700 if style in ("title", "headline", "big", "number") else None
     x = float(el.get("x", 0.08)) * W
     y = float(el.get("y", 0.25)) * H + size
@@ -332,6 +333,7 @@ def draw_text(f, el):
         bx = max(size * 0.3 + 1, min(bx, W - w - size * 0.3 - 1))
         x = bx + (w / 2 if anchor == "middle" else w if anchor == "end" else 0)
         f.rect(bx - size * 0.3, y - size * 1.05, w + size * 0.6, len(lines) * size * 1.18 + size * 0.5, "f-card", 3)
+        cls = "f-boxtext-hi" if el.get("accent") else "f-boxtext"
     f.wrapped(x, y, w, s, cls, size, anchor, weight)
 
 
@@ -403,7 +405,12 @@ def draw_object(f, el):
         w = float(el.get("w", 0.0)) * W or s * 0.8
         f.rect(x - w / 2, y - s, w, s, hi, 3)
     if el.get("label"):
-        f.text(x, min(y + H * 0.07, H - 2), el["label"], "f-label", H * 0.05, "middle")
+        fs = f.U * 0.05
+        below = y + fs * 1.4
+        limit = H * 0.78 if W < H else H - 2
+        where = str(el.get("label_at", "below" if below <= limit else "above"))
+        ly = below if where == "below" else y - s - fs * 0.5
+        f.text(x, ly, el["label"], "f-label", fs, "middle")
 
 
 def draw_chart(f, el):
@@ -422,7 +429,7 @@ def draw_chart(f, el):
         for i, v in enumerate(vals):
             f.rect(x + bw * 0.25 + i * bw * 1.5, y + h - v / top * h * 0.9, bw, v / top * h * 0.9, "f-accent-fill" if i == len(vals) - 1 else "f-obj")
     if el.get("label"):
-        f.text(x, y - H * 0.03, el["label"], "f-label", H * 0.055)
+        f.text(x, y - H * 0.03, el["label"], "f-label", f.U * 0.055)
 
 
 def draw_arrow(f, el):
@@ -432,7 +439,7 @@ def draw_arrow(f, el):
     f.arrow(float(a[0]) * W, float(a[1]) * H, float(b[0]) * W, float(b[1]) * H, "f-path")
     if el.get("label"):
         f.text((float(a[0]) + float(b[0])) / 2 * W, (float(a[1]) + float(b[1])) / 2 * H - H * 0.04,
-               el["label"], "f-label", H * 0.05, "middle")
+               el["label"], "f-label", f.U * 0.05, "middle")
 
 
 def draw_camera_move(f, move):
@@ -489,7 +496,7 @@ def draw_camera_move(f, move):
         f.circle(W * 0.25, H * 0.5, H * 0.06, "f-move-box")
         f.circle(W * 0.75, H * 0.5, H * 0.06, "f-move-box")
         f.arrow(W * 0.33, H * 0.5, W * 0.67, H * 0.5)
-    fs = H * 0.05
+    fs = f.U * 0.045
     tw = len(tag) * fs * 0.62 + fs
     f.rect(W - tw - 4, 4, tw, fs * 1.5, "f-tag", 2)
     f.text(W - tw / 2 - 4, 4 + fs * 1.1, tag, "f-tag-text", fs, "middle", 700)
@@ -500,7 +507,7 @@ def draw_safe_zones(f):
     W, H = f.W, f.H
     f.rect(0, H * 0.8, W, H * 0.2, "f-safe")
     f.rect(W * 0.84, H * 0.42, W * 0.16, H * 0.38, "f-safe")
-    f.text(W * 0.5, H * 0.95, "platform UI", "f-safe-text", H * 0.03, "middle")
+    f.text(W * 0.5, H * 0.95, "platform UI", "f-safe-text", f.U * 0.04, "middle")
 
 
 ELEMENTS = {
@@ -676,7 +683,9 @@ def build_storyboard(plan, shots):
         if s.get("visual"):
             body.append(f'<p>{esc(s["visual"])}</p>')
         if s.get("audio"):
-            body.append(f'<p class="audio"><span class="k">Audio</span>{esc(s["audio"])}</p>')
+            body.append(f'<p class="audio"><span class="k">Says</span>{esc(s["audio"])}</p>')
+        if s.get("sound"):
+            body.append(f'<p class="audio"><span class="k">Sound</span>{esc(s["sound"])}</p>')
         if s.get("onscreen"):
             body.append(f'<p class="audio"><span class="k">On screen</span>{esc(s["onscreen"])}</p>')
         if s.get("transition"):
@@ -694,7 +703,8 @@ def build_script(plan, shots):
     rows = as_list(plan.get("script"))
     if not rows:
         rows = [{"time": s.get("time", ""), "shot": s.get("id", ""), "visual": s.get("visual", ""),
-                 "audio": s.get("audio", ""), "onscreen": s.get("onscreen", "")} for s in shots if s.get("audio") or s.get("visual")]
+                 "audio": s.get("audio", ""), "sound": s.get("sound", ""), "onscreen": s.get("onscreen", "")}
+                for s in shots if s.get("audio") or s.get("visual") or s.get("sound")]
     if not rows:
         return ""
     words = sum(len(str(r.get("audio", "")).split()) for r in rows)
@@ -704,9 +714,12 @@ def build_script(plan, shots):
         if r.get("onscreen"):
             vis += f'<div class="ost">On screen: {esc(r["onscreen"])}</div>'
         tr.append(f'<tr><td class="tc">{esc(r.get("time", ""))}<div class="muted small">{("Shot " + esc(r["shot"])) if r.get("shot") else ""}</div></td>'
-                  f'<td>{vis}</td><td class="vo">{esc(r.get("audio", ""))}</td></tr>')
-    lead = f"{words} spoken words, about {fmt_time(words / 150 * 60)} at 150 words a minute." if words else ""
-    table = ('<div class="tw"><table class="script"><thead><tr><th>Time</th><th>Picture</th><th>Sound</th></tr></thead>'
+                  f'<td>{vis}</td><td class="vo">{esc(r.get("audio", ""))}'
+                  f'{"<div class=sfx>" + esc(r["sound"]) + "</div>" if r.get("sound") else ""}</td></tr>')
+    wpm = float((plan.get("meta") or {}).get("wpm", 150))
+    lead = (f"{words} spoken words, about {fmt_time(words / wpm * 60)} at {num(wpm)} words a minute."
+            if words else "No spoken words: the sound column carries music and effects.")
+    table = ('<div class="tw"><table class="script"><thead><tr><th>Time</th><th>Picture</th><th>Words & sound</th></tr></thead>'
              f'<tbody>{"".join(tr)}</tbody></table></div>')
     return section("script", "Script", table, lead)
 
@@ -928,6 +941,7 @@ tfoot td{background:var(--soft)}
 .script td{min-width:180px}.script td.tc{min-width:0}
 .prod td{min-width:150px}.prod td.tc,.prod td.nw{min-width:0}
 .ost{margin-top:4px;font-size:12px;color:var(--accent);font-weight:600}
+.sfx{margin-top:4px;font-size:13px;color:var(--muted);font-style:italic}
 .alts ul{padding-left:16px;margin:4px 0 0}
 .alts li{margin-bottom:4px}
 .pick{background:var(--accent);color:var(--accent-ink);font-size:10px;font-weight:700;border-radius:4px;padding:1px 5px;margin-right:6px}
@@ -961,6 +975,8 @@ footer{margin-top:48px;color:var(--muted);font-size:12px}
 .f-code{stroke:var(--accent);stroke-opacity:.75;stroke-width:1.6;stroke-linecap:round}
 .f-accent-fill{fill:var(--accent)}
 .f-text{fill:var(--ink)}.f-text-hi{fill:var(--accent)}.f-label{fill:var(--muted)}
+.f-boxtext{fill:var(--ink)}.f-boxtext-hi{fill:var(--accent)}
+.f-dark~.f-label{fill:#b9b4aa}
 .f-dark~.f-text,.f-dark~text.f-text{fill:#f4f1ea}
 .f-l3{fill:var(--panel);opacity:.95}.f-cap{fill:var(--dark);opacity:.72}
 .f-cap+text.f-text,.f-cap~.f-text{fill:#fff}

@@ -38,6 +38,7 @@
 | currency | "$", "₹", "£", "€" | Prefix for every cost |
 | date | "2026-10-11" | Date the prices were estimated |
 | safe_zones | true | For 9:16, shades the bottom and right areas that platform UI covers. Default true. |
+| wpm | 150 | Speaking pace used to time the script |
 
 ## vision
 
@@ -70,7 +71,8 @@ Times accept `"m:ss"` or seconds. The timeline bar is drawn in proportion to eac
 | move | "Push in" | Also drawn on the frame unless `frame.move` overrides it |
 | lens | "1x (26mm)" | Phone lens names are friendlier for beginners |
 | visual | "What we see" | |
-| audio | "Voice-over or dialogue, word for word, plus key sound" | Builds the script table when `script` is absent |
+| audio | "Voice-over or dialogue, word for word" | Spoken words only, so the word count and timing stay right. Builds the script table when `script` is absent. |
+| sound | "Whoosh; music drops out" | Music, effects and ambience cues |
 | onscreen | "Text on screen" | |
 | transition | "Match cut to shot 4" | |
 | method | "Live action" | Live action, screen recording, motion graphics, stock, AI video, AI image + parallax, AI avatar, 2D animation, 3D, archive |
@@ -119,7 +121,7 @@ A frame is a composition diagram. Coordinates are fractions of the frame: `x` 0 
 | shoulder | `side` (`left`, `right`) | A dark foreground head and shoulder for over-the-shoulder shots |
 | screen / monitor / laptop / phone | `x`, `y`, `w`, `h` (top-left and size), `content` (`ui`, `code`, `chart`, `video`, `face`), `label`, `stand` (monitor only) | Devices for screen recordings, UI demos and video calls |
 | text | `text`, `style` (`title`, `big`, `body`, `label`, `caption`, `lower-third`), `x`, `y`, `w`, `align`, `accent`, `box` | On-screen text. `caption` is centered at the bottom; `lower-third` is a name bar. |
-| object | `shape`, `x`, `y` (where it sits), `s` (height as a fraction of the frame), `w`, `label`, `accent` | Shapes: `box`, `paper`, `hand`, `building`, `tree`, `mountain`, `sun`, `cloud`, `candle`, `bottle`, `mug`, `plant`, `car`, `desk`, `window`, `door`. Use `box` with a `label` for anything else (a product, a logo, an app icon). |
+| object | `shape`, `x`, `y` (where it sits), `s` (height as a fraction of the frame), `w`, `label`, `label_at` (`below`, `above`; automatic by default), `accent` | Shapes: `box`, `paper`, `hand`, `building`, `tree`, `mountain`, `sun`, `cloud`, `candle`, `bottle`, `mug`, `plant`, `car`, `desk`, `window`, `door`. Use `box` with a `label` for anything else (a product, a logo, an app icon). |
 | chart | `x`, `y`, `w`, `h`, `values`, `type` (`bar`, `line`), `label` | A data graphic |
 | arrow | `from` [x, y], `to` [x, y], `label` | Movement of a subject or an animated element inside the frame (dashed). Camera moves use `move` instead. |
 
@@ -129,13 +131,14 @@ Tips for frames that read well:
 - One idea per frame. If a frame needs a paragraph to explain, split the shot.
 - Leave empty space where text or graphics will go and put the text element there, so the person sees that the layout works.
 - Show the end position of a move. For a push-in, the dashed box is where the frame lands, so the subject should fit inside it.
-- For 9:16, keep text and faces out of the shaded platform UI zones.
+- For 9:16, keep text and faces out of the shaded platform UI zones. Short words read best; centre on-screen text so it clears the camera-move tag in the top corner.
+- Text with `box: true` stays readable on dark frames; use it for titles over `grid` or `dark` backgrounds.
 
 ## script
 
 Optional. Use it when spoken lines don't map one-to-one to shots. Otherwise the script table is built from the shots.
 ```json
-{"time": "0:00", "shot": "1", "visual": "...", "audio": "...", "onscreen": "..."}
+{"time": "0:00", "shot": "1", "visual": "...", "audio": "spoken words", "sound": "music and effects", "onscreen": "..."}
 ```
 
 ## tools and budget

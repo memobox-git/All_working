@@ -12,14 +12,15 @@ Read this in fix mode, and when rating feasibility while planning. The goal is t
 
 1. **State the shot's job in one sentence.** Examples: "Show this candle is handmade", "Establish that we're in a big city before we go inside", "Prove the SQL query removes duplicates". If you can't say it, the shot may not need to exist.
 2. **Find the real blocker.** Common ones: money, gear, skill, time, permission or law, a tool's limits, physics or location, talent (no one to appear on camera, or someone who freezes on camera). Problems often hide another problem. "AI keeps warping the buildings" is a tool limit; "it looks cheap" usually means light, audio or pacing.
-3. **Walk down the ladder** and find at least one option on each of the first three rungs:
+3. **Look at what the person already has that others don't.** An architect has 3D models of the building, a baker has a kitchen, a software company has its own product, a shop has customers who might film themselves. The best fix often turns one of these into the shot.
+4. **Walk down the ladder** and find at least one option on each of the first three rungs:
    1. **Same shot, other means**: rent, borrow, a different tool, a different setting in the same tool, fake it in the edit.
    2. **Same idea, different medium**: live to motion graphics, AI video to AI still plus parallax, real aerial to stock or map flyover, actor to hands-only or POV, real set to tabletop miniature.
    3. **Same job, different idea**: a new visual metaphor that does the same job and is easy to get.
    4. **Restructure**: carry the information in voice-over, on-screen text, or a neighbouring shot.
    5. **Cut it**: if the job is already done elsewhere, removing the shot makes the video better.
-4. **Score the options** (below), recommend one, keep one backup.
-5. **Check the ripple**: does the change affect timing, voice-over, continuity with neighbouring shots, budget or schedule? Update them.
+5. **Score the options** (below), recommend one, keep one backup.
+6. **Check the ripple**: does the change affect timing, voice-over, continuity with neighbouring shots, budget or schedule? Update them.
 
 ## Scoring options
 

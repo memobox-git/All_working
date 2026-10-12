@@ -114,6 +114,7 @@
       "lens": "1x (26mm)",
       "visual": "You at the desk, look straight to lens. Slow digital push-in.",
       "audio": "Every company has data stuck in twenty different places.",
+      "sound": "Room tone; music bed starts soft",
       "onscreen": "20 places",
       "method": "Live action",
       "tools": [
@@ -163,6 +164,7 @@
       "move": "Static",
       "visual": "Grid of app icons (CRM, payments, app logs) scattered, each pulsing.",
       "audio": "A data pipeline is how that data gets to one place, cleaned and ready to use.",
+      "sound": "Whoosh as each icon pops in",
       "method": "Motion graphics",
       "tools": [
         "HTML + CSS animation rendered to MP4",
@@ -302,6 +304,7 @@
       "move": "Push in",
       "visual": "SQL query cleans a messy table; zoom into the WHERE clause.",
       "audio": "Transform means you fix the mess: remove duplicates, fix dates, join tables.",
+      "sound": "Keyboard clicks",
       "onscreen": "Transform = clean + shape",
       "method": "Screen recording",
       "tools": [
@@ -408,6 +411,7 @@
       "move": "Pull out",
       "visual": "Pull out from you to the whole desk setup; end card space on the right.",
       "audio": "If you want help building your first pipeline, book a free 15-minute call.",
+      "sound": "Music swells to the end card",
       "method": "Live action",
       "tools": [
         "iPhone 0.5x lens",

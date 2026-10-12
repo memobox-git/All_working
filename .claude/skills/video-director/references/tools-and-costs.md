@@ -2,6 +2,8 @@
 
 Price bands for planning. Prices change often and vary by country, so treat every figure here as approximate. When a price changes the plan's total, check it on the vendor's site (search the web if you can) and write the date next to it. If the person gave a currency, convert and say the conversion is approximate.
 
+Check that a tool is available where the person lives before recommending it. Some apps are banned or restricted in some countries (CapCut and TikTok have been blocked in India, for example), and some AI tools are region-limited.
+
 Bands used below: **Free**, **$** = under $20 a month or under $100 once, **$$** = $20-60 a month or $100-400 once, **$$$** = more than that.
 
 ## Contents

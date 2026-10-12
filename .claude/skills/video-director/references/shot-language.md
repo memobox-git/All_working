@@ -112,7 +112,7 @@ Movement should mean something: a push-in adds emphasis, a pull-out reveals, a t
 |---|---|---|---|
 | YouTube | 16:9 | 1920×1080 or 3840×2160 | Thumbnail 1280×720. Chapters help retention. |
 | YouTube Shorts | 9:16 | 1080×1920 | Up to 3 minutes. Keep text out of the bottom 20% and right edge. |
-| Instagram Reels | 9:16 | 1080×1920 | The grid preview crops to the center 4:5. |
+| Instagram Reels | 9:16 | 1080×1920 | The profile grid shows a 3:4 crop of the center, so keep the cover image's subject there. |
 | TikTok | 9:16 | 1080×1920 | Bottom and right UI zones are covered by captions and buttons. |
 | Instagram / Facebook feed | 4:5 or 1:1 | 1080×1350 / 1080×1080 | |
 | LinkedIn | 16:9, 1:1 or 4:5 | | Most people watch with sound off, so burn in captions. |
