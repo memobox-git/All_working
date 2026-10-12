@@ -17,7 +17,12 @@
         "Every shot has a feasibility rating and every risky shot has a fallback",
         "Assumptions are stated",
         "Prices are marked as approximate or dated",
-        "A workflow or schedule fits the 10-day deadline"
+        "A workflow or schedule fits the 10-day deadline",
+        "Storyboard frames show the mood or look (color, light or grade), not only grey layout shapes",
+        "The user can watch the sequence play in time (an animatic or moving mock-up)",
+        "Every number quoted in the chat reply (runtime, totals, shares, counts) matches the plan files",
+        "On-camera talking-head share is under half of the runtime, measured from the shot list",
+        "A thumbnail concept is included"
       ]
     },
     {
@@ -34,7 +39,11 @@
         "The plan films the real candle (e.g. tabletop moss set or composite) rather than relying on AI to generate the product",
         "The hook lands in the first 1-3 seconds",
         "Every shot has a feasibility rating and risky shots have fallbacks",
-        "AI or music licensing/disclosure is addressed"
+        "AI or music licensing/disclosure is addressed",
+        "Storyboard frames show the mood or look (color, light or grade), not only grey layout shapes",
+        "The user can watch the sequence play in time (an animatic or moving mock-up)",
+        "Every number quoted in the chat reply (runtime, totals, shares, counts) matches the plan files",
+        "The real candle is on screen within the first 2 seconds"
       ]
     },
     {
@@ -50,7 +59,9 @@
         "Compares options on cost and effort or fidelity",
         "Gives specific techniques to stop AI warping (e.g. image-to-video from a still, slow/short moves, 2.5D parallax)",
         "Mentions a permission/licensing point for the alternatives (stock licence, attribution, building access)",
-        "Delivers a visual of the new opening (storyboard frames or board)"
+        "Delivers a visual of the new opening (storyboard frames or board)",
+        "Every number quoted in the chat reply (runtime, totals, shares, counts) matches the plan files",
+        "Explains why the AI tools warped the buildings, in plain words"
       ]
     }
   ]
