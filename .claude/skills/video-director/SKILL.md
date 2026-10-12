@@ -55,7 +55,7 @@ This is where a director earns their place. When a shot, look, tool or budget fa
 2. **Find the real blocker**: money, gear, skill, time, permission or law, a tool's limits (AI artifacts), physics, or talent. Ask one short question only if you cannot tell.
 3. **Generate options down the ladder**, starting from what the person uniquely has (an architect's 3D models, a shop's products, a team's real workplace): same shot by other means, then a different medium, then a different idea for the same job, then restructure (move the information into voice-over or text), then cut. Aim for 3-4 real options.
 4. **Score each option** on fidelity to the vision (1-5), cost, effort and risk. Recommend one, keep one as backup, and say why.
-5. **Update the plan.** Change the shot in `plan.json`, add the options under the shot's `alternatives` with the chosen one marked `"pick": true`, add an entry to `changes` (was, now, why), raise `version`, and rebuild the board. If the change ripples (a new shot changes the voice-over timing or the budget), update those too.
+5. **Update the plan.** Keep the original shot with `"status": "dropped"` so the board shows before and after, add the replacement shot(s), add the options under the shot's `alternatives` with the chosen one marked `"pick": true`, add an entry to `changes` (was, now, why), raise `version`, and rebuild the board. If the change ripples (a new shot changes the voice-over timing or the budget), update those too.
 
 If the person shares their earlier plan or board, edit that plan rather than starting over. If you only have their description, build a small board around the affected beat so they can see the before and after.
 

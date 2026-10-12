@@ -551,6 +551,10 @@ def render_frame(shot, aspect, safe_zones):
 # Page sections
 # --------------------------------------------------------------------------
 
+def is_dropped(shot):
+    return str(shot.get("status", "")).lower() in ("dropped", "cut", "replaced")
+
+
 def feas_pill(level):
     level = str(level or "").lower()
     if level not in FEAS:
@@ -592,6 +596,7 @@ def shot_secs(shot):
 
 def build_header(plan, shots, cur, budget_totals):
     meta = plan.get("meta") or {}
+    shots = [s for s in shots if not is_dropped(s)]
     meta_chips = []
     for key, label in (("platform", "Platform"), ("length", "Length"), ("aspect", "Aspect"), ("audience", "Audience"),
                        ("goal", "Goal"), ("budget", "Budget"), ("deadline", "Deadline"), ("crew", "Crew")):
@@ -693,6 +698,9 @@ def build_storyboard(plan, shots):
         if s.get("method"):
             body.append(f'<div class="method">{esc(s["method"])}</div>')
         cls = "shot shot-tall" if aspect in ("9:16", "4:5") else "shot"
+        if is_dropped(s):
+            cls += " shot-dropped"
+            body[0] = body[0].replace("</b>", '</b><span class="feas feas-dropped">Dropped</span>', 1)
         cards.append(f'<article class="{cls}"><div class="shot-frame">{svg}</div><div class="shot-b">{"".join(body)}</div></article>')
     legend = ('<p class="legend">Frames are composition diagrams: grey shapes are people and objects, the faint grid is the rule of thirds, '
               'orange arrows show camera movement, dashed boxes show where a push-in ends.</p>')
@@ -704,7 +712,7 @@ def build_script(plan, shots):
     if not rows:
         rows = [{"time": s.get("time", ""), "shot": s.get("id", ""), "visual": s.get("visual", ""),
                  "audio": s.get("audio", ""), "sound": s.get("sound", ""), "onscreen": s.get("onscreen", "")}
-                for s in shots if s.get("audio") or s.get("visual") or s.get("sound")]
+                for s in shots if not is_dropped(s) and (s.get("audio") or s.get("visual") or s.get("sound"))]
     if not rows:
         return ""
     words = sum(len(str(r.get("audio", "")).split()) for r in rows)
@@ -747,11 +755,14 @@ def build_production(plan, shots, cur):
                           f'{"<div>" + esc(a["how"]) + "</div>" if a.get("how") else ""}</li>')
             risk += f'<div class="alts"><span class="k">Options</span><ul>{"".join(li)}</ul></div>'
         level = str(s.get("feasibility", "")).lower()
-        if level in ("amber", "red") and not (s.get("fallback") or alts):
+        if is_dropped(s):
+            level = ""
+        elif level in ("amber", "red") and not (s.get("fallback") or alts):
             warn(f"shot {s.get('id')}: rated {level} but has no fallback or alternatives")
-        if not s.get("method"):
+        if not s.get("method") and not is_dropped(s):
             warn(f"shot {s.get('id')}: no method (how this shot gets made)")
-        rows.append(f'<tr><td class="tc"><b>{esc(s.get("id", ""))}</b>{feas_pill(level)}</td>'
+        pill = '<span class="feas feas-dropped">Dropped</span>' if is_dropped(s) else feas_pill(level)
+        rows.append(f'<tr{" class=row-dropped" if is_dropped(s) else ""}><td class="tc"><b>{esc(s.get("id", ""))}</b>{pill}</td>'
                     f'<td><b>{esc(s.get("method", ""))}</b><div class="muted">{esc(tools)}</div></td>'
                     f'<td>{how_html}</td><td class="nw">{esc(s.get("effort", ""))}</td>'
                     f'<td class="nw">{money(s.get("cost"), cur)}</td><td>{risk}</td></tr>')
@@ -929,6 +940,8 @@ h3{font-size:15px;margin:22px 0 8px}
 .method{display:inline-block;margin-top:4px;font-size:12px;font-weight:600;color:var(--accent);border:1px solid currentColor;border-radius:6px;padding:1px 8px}
 .feas{font-size:11px;font-weight:700;border-radius:999px;padding:1px 8px;color:#fff;margin-left:auto}
 td .feas{margin:4px 0 0 6px;display:inline-block}
+.feas-dropped{background:var(--muted)}
+.shot-dropped{opacity:.7}.shot-dropped .shot-frame{filter:grayscale(1)}.row-dropped td{color:var(--muted)}
 .feas-green{background:var(--green)}.feas-amber{background:var(--amber)}.feas-red{background:var(--red)}
 .tw{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--panel)}
 table{border-collapse:collapse;width:100%;font-size:14px}

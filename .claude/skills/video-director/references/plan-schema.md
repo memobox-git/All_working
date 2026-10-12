@@ -84,6 +84,7 @@ Times accept `"m:ss"` or seconds. The timeline bar is drawn in proportion to eac
 | risk | "What could go wrong" | |
 | fallback | "What to do instead" | |
 | alternatives | see below | Used in fix mode |
+| status | "dropped" | Keeps a replaced shot on the board, greyed out, for before/after. Dropped shots are left out of counts, the script and warnings. |
 | frame | see below | The storyboard diagram |
 
 Alternatives, with the chosen one marked:
