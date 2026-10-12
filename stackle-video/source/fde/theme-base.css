@@ -1,0 +1,10 @@
+/* Applies the palette in theme.css to the shared classes from ../base.css. */
+body{background:var(--bg);color:var(--text)}
+.grid{background-image:linear-gradient(rgba(var(--accent-rgb),var(--grid-alpha)) 1px,transparent 1px),linear-gradient(90deg,rgba(var(--accent-rgb),var(--grid-alpha)) 1px,transparent 1px)}
+.ring{border-color:rgba(var(--accent-rgb),.28)}
+.amber{color:var(--accent)}
+.sub{color:var(--soft)}
+.chip{border-color:var(--accent)}
+.bar{background:var(--accent)}
+.tag{color:var(--accent)}
+.brand{color:var(--mute)}

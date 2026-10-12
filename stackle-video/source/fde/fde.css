@@ -1,5 +1,5 @@
 /* Components for the Forward Deployed Engineer roadmap graphics. Loaded after ../base.css. */
-:root{--amber:#F59E0B;--ink:#1E1C1D;--cream:#FAF8F1;--soft:#c9c4b8;--mute:#8a857a;--line:rgba(245,158,11,.35);--card:#262324;--dim:#4a4642}
+:root{--line:rgba(var(--accent-rgb),.35)}
 .scene{position:absolute;inset:0;padding:110px 160px 120px}
 .abs{position:absolute}
 .row{display:flex;gap:40px;align-items:center}
@@ -8,35 +8,35 @@
 .h3{font-size:44px;font-weight:700;line-height:1.2}
 .body{font-size:36px;line-height:1.35;color:var(--soft)}
 .small{font-size:30px;color:var(--mute)}
-.mute{color:var(--mute)}.cream{color:var(--cream)}
+.mute{color:var(--mute)}.cream{color:var(--text)}
 .src{position:absolute;right:160px;bottom:70px;font-size:24px;color:var(--mute);max-width:1200px;text-align:right}
-.card{background:var(--card);border:3px solid rgba(245,158,11,.22);border-radius:28px;padding:36px 40px}
-.card.hot{border-color:var(--amber);background:rgba(245,158,11,.08)}
+.card{background:var(--card);border:3px solid rgba(var(--accent-rgb),.22);border-radius:28px;padding:36px 40px}
+.card.hot{border-color:var(--accent);background:rgba(var(--accent-rgb),.08)}
 /* --g goes 0 -> 1 with data-glow; these classes light up as it does */
-.lit{border-color:color-mix(in srgb,var(--amber) calc(var(--g,0)*100%),rgba(245,158,11,.22));background:color-mix(in srgb,rgba(245,158,11,.12) calc(var(--g,0)*100%),var(--card))}
-.littext{color:color-mix(in srgb,var(--amber) calc(var(--g,0)*100%),var(--cream))}
+.lit{border-color:color-mix(in srgb,var(--accent) calc(var(--g,0)*100%),rgba(var(--accent-rgb),.22));background:color-mix(in srgb,rgba(var(--accent-rgb),.12) calc(var(--g,0)*100%),var(--card))}
+.littext{color:color-mix(in srgb,var(--accent) calc(var(--g,0)*100%),var(--text))}
 .fadeg{opacity:calc(1 - var(--g,0)*.75)}
-.pill{display:inline-flex;align-items:center;gap:14px;border:3px solid var(--amber);border-radius:60px;padding:14px 32px;font-size:34px;font-weight:600;white-space:nowrap}
-.pill.solid{background:var(--amber);color:var(--ink)}
+.pill{display:inline-flex;align-items:center;gap:14px;border:3px solid var(--accent);border-radius:60px;padding:14px 32px;font-size:34px;font-weight:600;white-space:nowrap}
+.pill.solid{background:var(--accent);color:var(--on-accent)}
 .pill.ghost{border-color:var(--dim);color:var(--soft)}
-.badge{display:inline-block;background:var(--amber);color:var(--ink);font-weight:800;border-radius:16px;padding:10px 22px;font-size:34px}
-.num{font-weight:800;color:var(--amber);line-height:1}
+.badge{display:inline-block;background:var(--accent);color:var(--on-accent);font-weight:800;border-radius:16px;padding:10px 22px;font-size:34px}
+.num{font-weight:800;color:var(--accent);line-height:1}
 .ic{display:inline-block;width:64px;height:64px;flex:none}
 .ic svg{width:100%;height:100%;display:block}
-.icon-amber{color:var(--amber)}.icon-mute{color:var(--mute)}
-.arrow{stroke:var(--amber);stroke-width:5;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.icon-amber{color:var(--accent)}.icon-mute{color:var(--mute)}
+.arrow{stroke:var(--accent);stroke-width:5;fill:none;stroke-linecap:round;stroke-linejoin:round}
 .wire{stroke:var(--line);stroke-width:4;fill:none;stroke-dasharray:10 10}
 svg.layer{position:absolute;inset:0;width:1920px;height:1080px;overflow:visible;pointer-events:none}
-.strike{position:absolute;left:-2%;top:52%;height:12px;background:var(--amber);border-radius:6px;transform:rotate(-4deg)}
-.tick{color:var(--amber);font-weight:800}
+.strike{position:absolute;left:-2%;top:52%;height:12px;background:var(--accent);border-radius:6px;transform:rotate(-4deg)}
+.tick{color:var(--accent);font-weight:800}
 .cross{color:var(--mute);font-weight:800}
 .quote{font-size:56px;font-weight:700;line-height:1.25}
-.part{font-size:40px;letter-spacing:.25em;text-transform:uppercase;color:var(--amber);font-weight:700}
+.part{font-size:40px;letter-spacing:.25em;text-transform:uppercase;color:var(--accent);font-weight:700}
 /* phase bar shown at the top of every roadmap graphic */
 .phasebar{position:absolute;left:160px;right:160px;top:44px;display:flex;gap:14px}
 .phasebar div{flex:1;border-top:8px solid var(--dim);padding-top:12px;font-size:24px;font-weight:600;color:var(--mute);white-space:nowrap}
-.phasebar div.done{border-color:rgba(245,158,11,.45);color:var(--soft)}
-.phasebar div.cur{border-color:var(--amber);color:var(--amber)}
+.phasebar div.done{border-color:rgba(var(--accent-rgb),.45);color:var(--soft)}
+.phasebar div.cur{border-color:var(--accent);color:var(--accent)}
 /* simple data table */
-.tbl{display:grid;gap:0;border-radius:20px;overflow:hidden;border:3px solid rgba(245,158,11,.22)}
-.tbl>div{padding:18px 24px;font-size:28px;border-bottom:2px solid rgba(245,158,11,.12)}
+.tbl{display:grid;gap:0;border-radius:20px;overflow:hidden;border:3px solid rgba(var(--accent-rgb),.22)}
+.tbl>div{padding:18px 24px;font-size:28px;border-bottom:2px solid rgba(var(--accent-rgb),.12)}

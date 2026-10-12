@@ -1,0 +1,9 @@
+/* Palette for the FDE graphics: white background, black text, blue accent.
+   Copy this file over theme.css to use it. */
+:root{
+  --bg:#FFFFFF; --text:#0A0D14; --text-rgb:10,13,20;
+  --soft:#3E4757; --mute:#6B7382;
+  --accent:#1F5FD6; --accent-rgb:31,95,214; --on-accent:#FFFFFF;
+  --card:#F3F6FB; --dim:#D5DCE7; --panel-2:#E6EBF3; --code-bg:#EAF0F8;
+  --page:#FFFFFF; --page-line:#C9D1DD; --grid-alpha:.07;
+}

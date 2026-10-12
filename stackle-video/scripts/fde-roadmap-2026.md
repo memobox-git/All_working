@@ -2,7 +2,7 @@
 
 **Spoken words:** about 3,070 | **Estimated length:** about 20 minutes at 150 words a minute
 **On camera:** 6 scenes. Everything else is full-screen motion graphics with your voice over them.
-**Visual style:** Plus Jakarta Sans, amber #F59E0B on charcoal #1E1C1D.
+**Visual style:** Plus Jakarta Sans, white text with blue #2F7CF6 highlights on a black #07090D background.
 
 ---
 
@@ -103,7 +103,7 @@ Two more creators passed 50K views with FDE roadmap videos in June 2026: **Aishw
 
 ### HOOK
 
-**[Graphic 1, full screen]** Three amber bars grow one after another: about 200 postings (2024), about 1,200 (2025), more than 5,200 (first seven months of 2026). Then "$188,000" counts up beside them.
+**[Graphic 1, full screen]** Three blue bars grow one after another: about 200 postings (2024), about 1,200 (2025), more than 5,200 (first seven months of 2026). Then "$188,000" counts up beside them.
 
 > Job postings for forward deployed engineers in the United States are up more than one thousand percent from last year, and the median salary in those postings is more than one hundred eighty-eight thousand dollars. Yet the job is so new that most people still do not know what it is, or how to get it.
 
@@ -157,7 +157,7 @@ Two more creators passed 50K views with FDE roadmap videos in June 2026: **Aishw
 
 **[PAUSE]**
 
-**[Graphic 8, full screen]** A grid of 100 dots. 95 fade to grey and 5 glow amber. Caption: "MIT, 2025".
+**[Graphic 8, full screen]** A grid of 100 dots. 95 fade to grey and 5 glow blue. Caption: "MIT, 2025".
 
 > Many businesses bought AI tools and then struggled to make them useful. In 2025, a research group at MIT looked at company AI projects and found that about ninety-five out of every hundred companies it studied got no measurable return from their AI pilots, which are small test projects. The researchers blamed the way the tools fit into daily work, not the quality of the AI models.
 
@@ -381,7 +381,7 @@ Two more creators passed 50K views with FDE roadmap videos in June 2026: **Aishw
 
 The graphics are built. The rendered files are in `stackle-video/graphics/fde/`, and its `README.md` is the cue sheet for the editor.
 
-All graphics use Plus Jakarta Sans, with amber #F59E0B on charcoal #1E1C1D. Each one is full screen, with your voice continuing over it.
+All graphics use Plus Jakarta Sans, with white text and blue #2F7CF6 highlights on a black #07090D background. Each one is full screen, with your voice continuing over it.
 
 | # | Section | What it shows |
 |---|---|---|
@@ -392,7 +392,7 @@ All graphics use Plus Jakarta Sans, with amber #F59E0B on charcoal #1E1C1D. Each
 | 5 | Part 1 | Timeline at 2006: Palantir, Shyam Sankar, employee #13. |
 | 6 | Part 1 | Devs, Deltas and Echo, built as columns. |
 | 7 | Part 1 | An LLM card: three things it can do (ticks) and three it cannot do on its own (locked doors). |
-| 8 | Part 1 | 100 dots, 95 grey and 5 amber, credited "MIT, 2025". |
+| 8 | Part 1 | 100 dots, 95 grey and 5 blue, credited "MIT, 2025". |
 | 9 | Part 1 | Who hires FDEs: OpenAI (Jan 2025 team; $4B+ deployment company, May 2026), Salesforce (1,000 FDEs), then the other company names. |
 | 10 | Part 1 | Bank flow: files, AI model, review tool, checked against the rules, staff use it every day. |
 | 11 | Part 1 | "Judged by the result, not the code", a result meter, and the Natalie Meurer credit. |

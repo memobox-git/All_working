@@ -1,6 +1,6 @@
 # FDE Roadmap 2026: motion graphics
 
-These are the full-screen graphics for the script in `stackle-video/scripts/fde-roadmap-2026.md`. Every file is 1920x1080 at 30 fps, uses Plus Jakarta Sans, and uses amber #F59E0B on charcoal #1E1C1D.
+These are the full-screen graphics for the script in `stackle-video/scripts/fde-roadmap-2026.md`. Every file is 1920x1080 at 30 fps, uses Plus Jakarta Sans, and uses white text with blue #2F7CF6 highlights on a black #07090D background.
 
 ## How the timing works
 
@@ -92,6 +92,15 @@ Most on-screen text uses the script's own words. These labels are mine, so check
 - **34:** "Approve" and "Reject"
 - **35:** "plus rounds that test"
 - **36:** "A big, vague problem", "Asks first / do well", "Jumps to a tool / struggle"
+
+## Changing the colours
+
+The colours for this video live in one file, `stackle-video/source/fde/theme.css`, and every graphic reads from it. Two palettes are ready to use:
+
+- `theme-black.css`: black background, white text, blue highlights. This is the current palette.
+- `theme-white.css`: white background, black text, blue highlights.
+
+To switch palettes, copy one of them over `theme.css` and re-render. Your channel's original intro and call-to-action animations keep the amber Stackle palette from `stackle-video/source/base.css`.
 
 ## Editing the graphics
 
