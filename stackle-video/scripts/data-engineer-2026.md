@@ -253,21 +253,21 @@ Rendered files are in `stackle-video/graphics/de-2026/`. Each one is timed to th
 
 | # | File | What it shows | Length |
 |---|---|---|---|
-| 1 | 01-hook.mp4 | $160,500, the middle of the US pay range, and data engineer as a top-3 tech job title by postings | LEN:01-hook.mp4 |
+| 1 | 01-hook.mp4 | $160,500, the middle of the US pay range, and data engineer as a top-3 tech job title by postings | 18 s |
 | Intro | intro.mp4 (existing) | Chris's intro facts | 17.8 s |
-| 2 | 02-degree.mp4 | Four job postings: about 3 in 4 mention a degree, about 1 in 4 do not | LEN:02-degree.mp4 |
-| Card A | card-a-checks.mov (transparent) | "What I check": SQL on messy data, a pipeline that runs without you, explaining it to a person who does not code | LEN:card-a-checks.mov |
-| 3–8 | 03-skills.mp4 | One board: the five phases, then SQL, Python, data modeling (star schema), pipelines and cloud, then back to the five phases with AI circled | LEN:03-skills.mp4 |
-| 9 | 04-ai-1.mp4 | How you write code: 83% use an AI tool, "runs and still gives the wrong answer", 71% of data teams worry, SQL and modeling check the work | LEN:04-ai-1.mp4 |
-| 10 | 04-ai-2.mp4 | The RAG pipeline: documents, small pieces, embeddings, vector database, question | LEN:04-ai-2.mp4 |
-| 11 | 05-side-door.mp4 | Data analyst, analytics engineer and BI developer lead to data engineer in 12 to 18 months | LEN:05-side-door.mp4 |
-| Card B | card-b-industries.mov (transparent) | Healthcare, banking, retail: less training needed | LEN:card-b-industries.mov |
-| 12–15 | 06-portfolio.mp4 | One board: copied projects crossed out, a strong project, the four questions, build in your field, then the whole board | LEN:06-portfolio.mp4 |
-| Card C | card-c-projects.mov (transparent) | 3 projects: README, diagram, LinkedIn write-up | LEN:card-c-projects.mov |
-| 16 | 07-interviews-1.mp4 | The five interview stages | LEN:07-interviews-1.mp4 |
-| Card D | card-d-reasons.mov (transparent) | "Explain your reasons": the short answer crossed out, the full answer checked | LEN:card-d-reasons.mov |
-| 17 | 07-interviews-2.mp4 | The STAR method, ending with a number | LEN:07-interviews-2.mp4 |
-| 18 | 07-interviews-3.mp4 | Referrals: 1% of applications, 17% of hires, then the whole board | LEN:07-interviews-3.mp4 |
+| 2 | 02-degree.mp4 | Four job postings: about 3 in 4 mention a degree, about 1 in 4 do not | 15 s |
+| Card A | card-a-checks.mov (transparent) | "What I check": SQL on messy data, a pipeline that runs without you, explaining it to a person who does not code | 24 s |
+| 3–8 | 03-skills.mp4 | One board: the five phases, then SQL, Python, data modeling (star schema), pipelines and cloud, then back to the five phases with AI circled | 2:58 |
+| 9 | 04-ai-1.mp4 | How you write code: 83% use an AI tool, "runs and still gives the wrong answer", 71% of data teams worry, SQL and modeling check the work | 33 s |
+| 10 | 04-ai-2.mp4 | The RAG pipeline: documents, small pieces, embeddings, vector database, question | 30 s |
+| 11 | 05-side-door.mp4 | Data analyst, analytics engineer and BI developer lead to data engineer in 12 to 18 months | 33 s |
+| Card B | card-b-industries.mov (transparent) | Healthcare, banking, retail: less training needed | 19 s |
+| 12–15 | 06-portfolio.mp4 | One board: copied projects crossed out, a strong project, the four questions, build in your field, then the whole board | 1:07 |
+| Card C | card-c-projects.mov (transparent) | 3 projects: README, diagram, LinkedIn write-up | 17 s |
+| 16 | 07-interviews-1.mp4 | The five interview stages | 18 s |
+| Card D | card-d-reasons.mov (transparent) | "Explain your reasons": the short answer crossed out, the full answer checked | 22 s |
+| 17 | 07-interviews-2.mp4 | The STAR method, ending with a number | 20 s |
+| 18 | 07-interviews-3.mp4 | Referrals: 1% of applications, 17% of hires, then the whole board | 18 s |
 | End | cta.mp4 (existing) | Free call, then the masterclass | 11 s |
 
 The cards are transparent QuickTime files. Put them over your camera shot. The card sits on the right, so stand left of centre for those parts.
