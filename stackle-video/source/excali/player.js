@@ -139,8 +139,10 @@ function buildText(el, g) {
   };
 }
 
-window.load = async scene => {
+// A transparent scene leaves out the background so it can sit beside Chris.
+window.load = async (scene, { transparent } = {}) => {
   await document.fonts.load(`40px ${FONT}`);
+  if (transparent) document.body.classList.add('transparent');
   svg.replaceChildren();
   items = []; cams = [];
   let clock = 0;

@@ -1,14 +1,18 @@
 // Helpers for writing Excalidraw scenes in code. Every element is a real
 // Excalidraw element, so the built file opens in excalidraw.com for editing.
 // Elements draw one after another unless given "at"; "dur" sets draw time.
+// say() lines up the drawing with the script: what follows a line starts
+// when Chris starts saying it, at his pace of about 150 words a minute.
 const COLORS = {
   ink: '#1E1C1D', amber: '#BA7517', gold: '#F59E0B', cream: '#FAF8F1',
   soft: '#F6D8A2', paper: '#FFF4E0', red: '#e03131', green: '#2f9e44', grey: '#8a857a',
 };
 
+const WORDS_PER_SECOND = 150 / 60;
+
 function scene() {
   const elements = [];
-  let clock = 0;
+  let clock = 0, spoken = 0, cutNext = false;
 
   const base = (type, p) => ({
     id: `${type}-${elements.length + 1}`, type, x: p.x || 0, y: p.y || 0, width: p.w || 0, height: p.h || 0,
@@ -46,7 +50,28 @@ function scene() {
     get t() { return clock; },
     wait(s) { clock += s; },
     at(s) { clock = s; },
-    frame: p => add({ ...base('frame', p), name: p.name || null }, p, p.at === 0 ? 0 : 1.4),
+    say(line) {
+      clock = spoken;
+      spoken += line.split(/\s+/).filter(Boolean).length / WORDS_PER_SECOND;
+    },
+    // Waits until both the voice and the drawing have finished.
+    settle() { clock = Math.max(clock, spoken); },
+    // Holds the last shot until both the voice and the drawing have finished.
+    end() {
+      const last = [...elements].reverse().find(e => e.type === 'frame') || { x: 0, y: 0, width: 1920, height: 1080 };
+      const hold = { ...base('frame', { x: last.x, y: last.y, w: last.width, h: last.height }), name: 'End' };
+      add(hold, { at: Math.max(clock, spoken) }, 0);
+    },
+    frame: p => {
+      const el = add({ ...base('frame', p), name: p.name || null }, p, p.at === 0 ? 0 : 1.4);
+      if (cutNext) { el.customData.cut = true; cutNext = false; }
+      return el;
+    },
+    // Chris is on camera before the next shot: the next frame starts a new clip.
+    cut() {
+      clock = spoken = Math.max(clock, spoken) + 0.6;
+      cutNext = true;
+    },
     rect: p => add(base('rectangle', p), p, 0.9),
     ellipse: p => add(base('ellipse', p), p, 0.7),
     diamond: p => add(base('diamond', p), p, 0.8),
@@ -66,4 +91,13 @@ function scene() {
   };
 }
 
-module.exports = { scene, COLORS };
+// The same scene, with every shape moved by dx, dy, so a zone of a big board
+// can be drawn in its own 1920 x 1080 coordinates.
+function shift(s, dx, dy) {
+  const move = p => ({ ...p, x: (p.x || 0) + dx, y: (p.y || 0) + dy, pts: p.pts && p.pts.map(([x, y]) => [x + dx, y + dy]) });
+  const z = Object.create(s);
+  for (const k of ['frame', 'rect', 'ellipse', 'diamond', 'line', 'arrow', 'text']) z[k] = p => s[k](move(p));
+  return z;
+}
+
+module.exports = { scene, shift, COLORS };
