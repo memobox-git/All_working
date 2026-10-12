@@ -56,6 +56,7 @@ This is where a director earns their place. When a shot, look, tool or budget fa
 2. **Find the real blocker**: money, gear, skill, time, permission or law, a tool's limits (AI artifacts), physics, or talent. Ask one short question only if you cannot tell.
 3. **Generate options down the ladder**, starting from what the person uniquely has (an architect's 3D models, a shop's products, a team's real workplace): same shot by other means, then a different medium, then a different idea for the same job, then restructure (move the information into voice-over or text), then cut. Aim for 3-4 real options.
 4. **Score each option** on fidelity to the vision (1-5), cost, effort and risk. Recommend one, keep one as backup, and say why.
+   If the person already tried a tool and you advise against it, still include the best way to make that tool work as one of the options (for AI video: image-to-video from a clean still, short clips, slow locked moves, first and last keyframes), so they can choose with full information.
    Explain in a sentence or two *why* the original approach failed (for example: AI video models have no real 3D geometry, so straight lines and repeating window grids drift as the camera moves). Understanding the cause stops the person from hitting the same wall on the next shot.
 5. **Update the plan.** Keep the original shot with `"status": "dropped"` so the board shows before and after, add the replacement shot(s), add the options under the shot's `alternatives` with the chosen one marked `"pick": true`, add an entry to `changes` (was, now, why), raise `version`, and rebuild the board. If the change ripples (a new shot changes the voice-over timing or the budget), update those too.
 
@@ -85,7 +86,7 @@ If the person also has an image-generation tool connected and wants richer visua
 
 ## Reply in chat
 
-Before you reply, check every number you quote against the plan: runtime, shot count, tier totals, on-camera share, word count. A reply that says "under a third on camera" when the shot list says 39% costs the person's trust in the whole plan.
+Before you reply, check everything you quote against the plan: runtime, shot count, tier totals, on-camera share, word count, and the list of open questions (ask all of them, especially any the recommendation depends on). A reply that says "under a third on camera" when the shot list says 39% costs the person's trust in the whole plan.
 
 Keep the chat reply short. The board holds the detail.
 
