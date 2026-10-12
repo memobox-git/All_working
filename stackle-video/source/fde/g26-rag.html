@@ -1,0 +1,28 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../base.css"><link rel="stylesheet" href="fde.css">
+<style>.nd{width:330px;height:220px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;text-align:center;font-size:32px;font-weight:700;padding:20px}
+.nd .ic{width:80px;height:80px;color:var(--amber)}
+.bub{display:inline-block;border-radius:26px;padding:20px 30px;font-size:34px;font-weight:600}
+.q{background:#3a3637}.a{background:var(--amber);color:var(--ink)}</style></head><body>
+<div class="grid"></div><div class="phasebar" data-cur="3"></div>
+<div class="scene" style="padding-top:150px"><div class="tag" data-in="0.4" data-fx="left">Phase 3</div>
+  <div class="row" style="gap:30px;align-items:baseline" data-in="0.6"><div class="h1" style="font-size:84px">RAG</div><div class="h3 mute">retrieval-augmented generation</div></div></div>
+<div class="abs row" style="left:160px;top:400px;gap:0">
+  <div class="nd card" data-in="3.0"><i class="ic" data-ic="chat"></i>Question</div>
+  <svg width="80" height="40"><path class="arrow" d="M8 20H70M58 8l12 12-12 12" data-draw="4.6" data-ddur="0.4"></path></svg>
+  <div class="nd card lit" data-in="5.0" data-glow="5.2"><i class="ic" data-ic="search"></i>Finds the right documents</div>
+  <svg width="80" height="40"><path class="arrow" d="M8 20H70M58 8l12 12-12 12" data-draw="7.0" data-ddur="0.4"></path></svg>
+  <div class="nd card lit" data-in="7.4" data-glow="7.6"><i class="ic" data-ic="cpu"></i>Hands them to the model</div>
+  <svg width="80" height="40"><path class="arrow" d="M8 20H70M58 8l12 12-12 12" data-draw="10.2" data-ddur="0.4"></path></svg>
+  <div class="nd card hot" data-in="10.6"><i class="ic" data-ic="check"></i>Answer from the company&rsquo;s own facts</div>
+</div>
+<div class="abs" style="left:1360px;top:640px" data-in="13.0"><span class="small">not from memory</span></div>
+<div class="abs card" style="left:160px;top:700px;width:1600px;height:240px;padding:30px 40px" data-in="14.6">
+  <div class="tag" style="font-size:26px;margin-bottom:18px">Example &middot; An assistant that answers employee questions</div>
+  <div class="row" style="gap:30px">
+    <div class="bub q" data-in="15.6"><span data-type="15.8" data-tps="30">How many days off do I have left?</span></div>
+    <span class="pill" style="font-size:30px" data-in="19.0"><i class="ic" data-ic="doc" style="width:36px;height:36px"></i>Leave policy</span>
+    <div class="bub a" data-in="22.4" data-fx="right">Answer, based on the leave policy</div>
+  </div>
+</div>
+<div class="brand">stackle.io</div>
+<script src="fde.js"></script><script src="../base.js"></script></body></html>

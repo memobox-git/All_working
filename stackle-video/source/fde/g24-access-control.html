@@ -1,0 +1,28 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../base.css"><link rel="stylesheet" href="fde.css">
+<style>.pn{position:absolute;top:420px;width:780px;height:380px}
+.pn .flow{display:flex;align-items:center;gap:26px;margin-top:40px}
+.blk{width:80px;height:80px;border-radius:50%;background:var(--amber);color:var(--ink);display:flex;align-items:center;justify-content:center}
+.blk .ic{width:48px;height:48px}</style></head><body>
+<div class="grid"></div><div class="phasebar" data-cur="2"></div>
+<div class="scene" style="padding-top:150px"><div class="row" style="gap:28px" data-in="2.0"><i class="ic icon-amber" data-ic="lock" style="width:100px;height:100px"></i>
+  <div><div class="h1" style="font-size:84px">Access control</div><div class="body" data-in="4.0">decides who is allowed to see what</div></div></div></div>
+<div class="pn card" style="left:160px" data-in="6.6">
+  <div class="row" style="gap:18px"><i class="ic icon-amber" data-ic="hospital" style="width:56px;height:56px"></i><div class="h3">Hospital tool</div></div>
+  <div class="flow"><div class="col center" style="gap:8px"><i class="ic" data-ic="doc" style="width:90px;height:90px;color:var(--cream)"></i><div class="small" style="font-size:26px">patient record</div></div>
+    <svg width="150" height="40"><path class="arrow" d="M5 20H140" style="stroke:var(--mute);stroke-dasharray:10 10" data-draw="9.0"></path></svg>
+    <div class="blk" data-in="10.6" data-fx="pop"><i class="ic" data-ic="lock"></i></div>
+    <div class="col center" style="gap:8px"><i class="ic" data-ic="user" style="width:90px;height:90px;color:var(--mute)"></i><div class="small" style="font-size:26px">wrong person</div></div></div>
+</div>
+<div class="pn card" style="left:980px" data-in="12.2">
+  <div class="row" style="gap:18px"><i class="ic icon-amber" data-ic="building" style="width:56px;height:56px"></i><div class="h3">Bank tool</div></div>
+  <div class="flow"><div class="col center" style="gap:8px"><i class="ic" data-ic="money" style="width:90px;height:90px;color:var(--cream)"></i><div class="small" style="font-size:26px">one client&rsquo;s account</div></div>
+    <svg width="120" height="40"><path class="arrow" d="M5 20H110" style="stroke:var(--mute);stroke-dasharray:10 10" data-draw="14.0"></path></svg>
+    <div class="blk" data-in="15.8" data-fx="pop"><i class="ic" data-ic="lock"></i></div>
+    <div class="col center" style="gap:8px"><i class="ic" data-ic="user" style="width:90px;height:90px;color:var(--mute)"></i><div class="small" style="font-size:26px">another client</div></div></div>
+</div>
+<div class="abs row" style="left:160px;top:860px;gap:24px">
+  <div class="h3" data-in="17.0">Checked before anything goes live</div>
+  <span class="pill solid" data-in="22.2">Logins</span><span class="pill solid" data-in="23.0">Permissions</span>
+</div>
+<div class="brand">stackle.io</div>
+<script src="fde.js"></script><script src="../base.js"></script></body></html>

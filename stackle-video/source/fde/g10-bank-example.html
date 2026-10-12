@@ -1,0 +1,43 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../base.css"><link rel="stylesheet" href="fde.css">
+<style>
+.lim{display:flex;align-items:center;gap:24px;font-size:40px;font-weight:600}
+.lim .ic{width:54px;height:54px}
+.flow{position:absolute;left:160px;right:160px;top:430px;display:flex;align-items:center}
+.node{width:268px;height:300px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px;text-align:center;font-size:33px;font-weight:700;padding:24px}
+.node .ic{width:96px;height:96px;color:var(--amber)}
+.gap{width:65px;height:40px;flex:none}
+</style></head><body>
+<div class="grid"></div>
+<div class="scene">
+  <div class="tag" data-in="0.3" data-fx="left">Example &middot; Banking</div>
+</div>
+<div class="abs" style="left:160px;top:300px;width:700px" data-in="3.8" data-out="23.6">
+  <i class="ic icon-amber" data-ic="building" style="width:220px;height:220px"></i>
+  <div class="h2" style="font-weight:800;margin-top:30px;white-space:nowrap">A bank buys an <span class="amber">AI model</span></div>
+  <div class="body" style="margin-top:14px" data-in="6.0" data-out="23.6">to help its staff review loan applications</div>
+</div>
+<div class="abs card" style="left:960px;top:290px;width:800px;padding:44px 48px" data-in="9.8" data-out="23.6">
+  <div class="h3" style="margin-bottom:34px">The model on its own</div>
+  <div class="col" style="gap:30px">
+    <div class="lim" data-in="11.6"><i class="ic icon-amber" data-ic="check"></i>can read a document</div>
+    <div class="lim mute" data-in="15.0"><i class="ic" data-ic="x"></i>cannot open the bank&rsquo;s files</div>
+    <div class="lim mute" data-in="17.8"><i class="ic" data-ic="x"></i>does not know the lending rules</div>
+    <div class="lim mute" data-in="20.4"><i class="ic" data-ic="x"></i>no one knows how to check its answers</div>
+  </div>
+</div>
+<div class="scene" style="padding-top:200px">
+  <div class="h2" style="font-weight:800" data-in="24.0">An FDE stays until the team <span class="amber">uses it every day</span></div>
+</div>
+<div class="flow">
+  <div class="node card lit" data-in="26.6" data-glow="26.8"><i class="ic" data-ic="docs"></i>Files</div>
+  <svg class="gap" viewBox="0 0 65 40"><path class="arrow" d="M6 20H56M46 10l10 10-10 10" data-draw="27.2" data-ddur="0.5"></path></svg>
+  <div class="node card lit" data-in="27.0" data-glow="27.4"><i class="ic" data-ic="cpu"></i>AI model</div>
+  <svg class="gap" viewBox="0 0 65 40"><path class="arrow" d="M6 20H56M46 10l10 10-10 10" data-draw="29.4" data-ddur="0.5"></path></svg>
+  <div class="node card lit" data-in="29.8" data-glow="30.0"><i class="ic" data-ic="screen"></i>Review screen</div>
+  <svg class="gap" viewBox="0 0 65 40"><path class="arrow" d="M6 20H56M46 10l10 10-10 10" data-draw="31.8" data-ddur="0.5"></path></svg>
+  <div class="node card lit" data-in="32.2" data-glow="32.4"><i class="ic" data-ic="check"></i>Checked against the rules</div>
+  <svg class="gap" viewBox="0 0 65 40"><path class="arrow" d="M6 20H56M46 10l10 10-10 10" data-draw="35.2" data-ddur="0.5"></path></svg>
+  <div class="node card lit" data-in="35.6" data-glow="35.8"><i class="ic" data-ic="users"></i>Team uses it every day</div>
+</div>
+<div class="brand">stackle.io</div>
+<script src="fde.js"></script><script src="../base.js"></script></body></html>

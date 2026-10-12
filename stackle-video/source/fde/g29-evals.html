@@ -1,0 +1,30 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../base.css"><link rel="stylesheet" href="fde.css">
+<style>.qr{display:flex;align-items:center;gap:16px;font-size:28px;font-weight:600;padding:8px 0;border-bottom:2px solid rgba(245,158,11,.12)}
+.qr .ic{width:40px;height:40px;color:var(--amber)}.qr span{flex:1;color:var(--soft)}
+.btn{display:inline-block;border:4px solid var(--amber);border-radius:16px;padding:14px 26px;font-size:32px;font-weight:800}</style></head><body>
+<div class="grid"></div><div class="phasebar" data-cur="3"></div>
+<div class="scene" style="padding-top:150px"><div class="tag" data-in="0.4" data-fx="left">Phase 3</div>
+  <div class="row" style="gap:30px;align-items:baseline" data-in="0.6"><div class="h1" style="font-size:84px">Evals</div><div class="h3 mute">short for evaluations</div></div>
+  <div class="row" style="gap:18px;margin-top:16px"><span class="small" data-in="4.6">Named in FDE job posts at</span><span class="pill" style="font-size:28px" data-in="5.0">OpenAI</span><span class="pill" style="font-size:28px" data-in="5.6">Anthropic</span></div></div>
+<div class="abs card" style="left:160px;top:430px;width:780px;height:460px" data-in="10.2">
+  <div class="h3" style="font-size:34px;white-space:nowrap">Test questions with known correct answers</div>
+  <div style="margin-top:16px">
+    <div class="qr" data-in="11.6"><i class="ic" data-ic="question"></i><span>Question 1</span><b class="amber">known answer</b></div>
+    <div class="qr" data-in="12.0"><i class="ic" data-ic="question"></i><span>Question 2</span><b class="amber">known answer</b></div>
+    <div class="qr" data-in="12.4"><i class="ic" data-ic="question"></i><span>Question 3</span><b class="amber">known answer</b></div>
+  </div>
+  <div class="row" style="gap:16px;margin-top:26px" data-in="15.8"><i class="ic icon-amber" data-ic="undo" style="width:44px;height:44px;transform:scaleX(-1)"></i><span class="body cream" style="font-size:32px">Run it every time you change the system</span></div>
+  <div class="body amber" style="margin-top:8px;font-size:32px" data-in="19.8">Prove it got better, not worse</div>
+</div>
+<div class="abs card hot" style="left:980px;top:430px;width:780px;height:460px" data-in="22.6" data-fx="right">
+  <div class="tag" style="font-size:26px">Example &middot; Hospital assistant</div>
+  <div class="row" style="gap:24px;margin-top:10px"><div class="btn" data-in="23.8" data-fx="pop">Change the prompt</div><div class="body cream" data-in="27.4">Run <span class="num" style="font-size:44px"><span data-count="100" data-cin="27.4" data-cdur="2"></span></span> known questions</div></div>
+  <div class="row" style="gap:50px;margin-top:40px">
+    <div data-in="30.0"><div class="small">Score before</div><div class="num cream" style="font-size:110px">91</div></div>
+    <div data-in="30.6"><div class="small">Score after</div><div class="num" style="font-size:110px">93</div></div>
+    <div data-in="31.2" data-fx="pop"><i class="ic icon-amber" data-ic="check" style="width:100px;height:100px"></i><div class="small" style="font-size:26px">did not drop</div></div>
+  </div>
+</div>
+<div class="abs h3" style="left:160px;top:920px" data-in="32.6">Customers believe a <span class="amber">measured result</span> more than a demo.</div>
+<div class="brand" style="left:auto;right:160px">stackle.io</div>
+<script src="fde.js"></script><script src="../base.js"></script></body></html>

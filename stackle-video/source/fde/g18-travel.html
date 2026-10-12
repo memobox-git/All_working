@@ -1,0 +1,25 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../base.css"><link rel="stylesheet" href="fde.css">
+<style>.cal{position:absolute;left:160px;top:330px;display:grid;grid-template-columns:repeat(5,130px);gap:14px}
+.cal .d{height:110px;border-radius:16px;border:3px solid var(--dim);display:flex;align-items:center;justify-content:center;position:relative}
+.cal .h{font-size:26px;color:var(--mute);text-align:center;font-weight:600}
+.cal .d .ic{width:58px;height:58px;color:var(--amber)}
+.cal .d.lit{border-color:color-mix(in srgb,var(--amber) calc(var(--g,0)*100%),var(--dim));background:color-mix(in srgb,rgba(245,158,11,.14) calc(var(--g,0)*100%),transparent)}</style></head><body>
+<div class="grid"></div>
+<div class="scene"><div class="row" style="gap:24px" data-in="0.6"><i class="ic icon-amber" data-ic="plane" style="width:80px;height:80px"></i><div class="h2" style="font-weight:800">Travel is the last number to check</div></div></div>
+<div class="cal" id="cal" data-in="1.2" data-fx="fade"></div>
+<div class="abs col" style="left:980px;top:330px;width:780px;gap:30px">
+  <div class="card hot" data-in="6.6" data-fx="right"><div class="h3">OpenAI</div><div class="num" style="font-size:84px;margin-top:8px">up to 50%</div></div>
+  <div class="card hot" data-in="8.6" data-fx="right"><div class="h3">Anthropic</div><div class="num" style="font-size:84px;margin-top:8px">25 to 50%</div></div>
+</div>
+<div class="abs" style="left:160px;top:900px;width:1600px" data-in="11.0"><span class="h3">Up to half your time on the road</span><span class="h3 mute" data-in="14.2"> suits some people</span><span class="h3 mute" data-in="16.0"> and wears others down.</span></div>
+<div class="src" data-in="6.6" data-fx="fade" style="bottom:30px">Sources: OpenAI and Anthropic FDE job posts (Oct 2026)</div>
+<script>
+const c=document.getElementById('cal');
+['Mon','Tue','Wed','Thu','Fri'].forEach(h=>{const e=document.createElement('div');e.className='h';e.textContent=h;c.appendChild(e);});
+const away=new Set([0,1,2,3,5,6,10,11,12,13]);let k=0;
+for(let i=0;i<20;i++){const e=document.createElement('div');e.className='d lit';
+ if(away.has(i)){const tt=(7.0+k*0.12).toFixed(2);e.dataset.glow=tt;e.innerHTML='<i class="ic" data-ic="plane" data-in="'+tt+'" data-fx="pop"></i>';k++;}
+ c.appendChild(e);}
+</script>
+<div class="brand">stackle.io</div>
+<script src="fde.js"></script><script src="../base.js"></script></body></html>

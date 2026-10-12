@@ -1,0 +1,29 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../base.css"><link rel="stylesheet" href="fde.css">
+<style>.rlab{position:absolute;left:160px;width:340px;font-size:44px;font-weight:800}
+.rng{position:absolute;height:64px}
+.rng .f{height:100%;background:var(--amber);border-radius:12px}
+.rng .lo,.rng .hi{position:absolute;top:14px;left:16px;font-size:28px;color:var(--ink);font-weight:800}
+.rng .hi{left:auto;right:16px}
+.tk{position:absolute;top:800px;font-size:26px;color:var(--mute);transform:translateX(-50%)}
+.gl{position:absolute;top:330px;height:450px;width:2px;background:rgba(245,158,11,.1)}</style></head><body>
+<div class="grid"></div>
+<div class="scene"><div class="tag" data-in="0.2" data-fx="left">US base salary in FDE job posts</div>
+  <div class="h2" style="font-weight:800" data-in="0.6">Real job posts give a <span class="amber">clearer picture</span></div></div>
+<div data-in="5.6" data-fx="fade">
+  <div class="gl" style="left:520px"></div><div class="gl" style="left:768px"></div><div class="gl" style="left:1016px"></div><div class="gl" style="left:1264px"></div><div class="gl" style="left:1512px"></div><div class="gl" style="left:1760px"></div>
+  <div class="tk" style="left:520px">&#36;100K</div><div class="tk" style="left:768px">&#36;150K</div><div class="tk" style="left:1016px">&#36;200K</div><div class="tk" style="left:1264px">&#36;250K</div><div class="tk" style="left:1512px">&#36;300K</div><div class="tk" style="left:1760px">&#36;350K</div>
+</div>
+<svg class="layer" data-in="26.2" data-fx="fade"><path d="M1097 320 V790" style="stroke:var(--cream);stroke-width:5;stroke-dasharray:14 10;fill:none" data-draw="26.2" data-ddur="1"></path></svg>
+<div class="rlab" style="top:362px" data-in="6.2">OpenAI <span class="small" style="display:block;font-weight:600">plus stock</span></div>
+<div class="rng" style="left:942px;width:570px;top:360px" data-in="6.2" data-fx="fade"><div class="f" data-bar="1" data-bin="6.4" data-bdur="1.2"></div><div class="lo">&#36;185K</div><div class="hi">&#36;300K</div></div>
+<div class="rlab" style="top:512px" data-in="15.8">Anthropic</div>
+<div class="rng" style="left:1016px;width:496px;top:500px" data-in="15.8" data-fx="fade"><div class="f" data-bar="1" data-bin="16.0" data-bdur="1.2"></div><div class="lo">&#36;200K</div><div class="hi">&#36;300K</div></div>
+<div class="rlab" style="top:652px" data-in="20.2">Palantir</div>
+<div class="rng" style="left:694px;width:322px;top:640px" data-in="20.2" data-fx="fade"><div class="f" data-bar="1" data-bin="20.4" data-bdur="1.2"></div><div class="lo">&#36;135K</div><div class="hi">&#36;200K</div></div>
+<div class="abs card hot" style="left:640px;top:860px;width:1120px;padding:24px 36px" data-in="26.2">
+  <div class="row" style="gap:30px"><div class="h3">Levels.fyi median total pay</div><div class="num" style="font-size:64px"><span data-count="216250" data-cin="33.0" data-prefix="&#36;"></span></div>
+  <div class="small" data-in="37.0">salary + bonus + stock</div></div>
+</div>
+<div class="src" style="bottom:30px" data-in="6.2" data-fx="fade">Sources: OpenAI, Anthropic and Palantir job posts (Oct 2026); Levels.fyi (Oct 10, 2026)</div>
+<div class="brand" style="bottom:30px">stackle.io</div>
+<script src="fde.js"></script><script src="../base.js"></script></body></html>

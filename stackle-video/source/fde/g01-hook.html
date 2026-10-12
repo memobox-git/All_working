@@ -1,0 +1,36 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../base.css"><link rel="stylesheet" href="fde.css">
+<style>
+.chart{position:absolute;left:160px;top:340px;width:880px;height:600px}
+.colb{position:absolute;bottom:70px;width:220px;height:470px}
+.fill{position:absolute;bottom:0;left:0;right:0;background:var(--amber);border-radius:14px 14px 4px 4px}
+.fill.soft{background:rgba(245,158,11,.45)}
+.val{position:absolute;top:-70px;left:0;right:0;text-align:center;font-size:44px;font-weight:800}
+.yr{position:absolute;bottom:0;left:0;right:0;text-align:center;font-size:32px;color:var(--soft);font-weight:600}
+.axis{position:absolute;left:0;right:0;bottom:66px;height:4px;background:var(--dim)}
+.salary{position:absolute;left:1130px;top:430px}
+</style></head><body>
+<div class="grid"></div>
+<div class="scene">
+  <div class="tag" data-in="0.2" data-out="14.2" data-fx="left">Forward deployed engineer job postings &middot; United States</div>
+</div>
+<div class="chart" data-in="0.4" data-out="14.2" data-fx="fade">
+  <div class="axis"></div>
+  <div class="colb" style="left:20px"><div class="fill soft" data-h="0.04" data-hin="0.8"><div class="val" data-in="1.3">~200</div></div></div>
+  <div class="colb" style="left:330px"><div class="fill soft" data-h="0.23" data-hin="1.6"><div class="val" data-in="2.1">~1,200</div></div></div>
+  <div class="colb" style="left:640px"><div class="fill" data-h="1" data-hin="2.4" data-hdur="1.4"><div class="val amber" data-in="3.3">5,200+</div></div></div>
+  <div class="yr" style="left:20px;width:220px">2024</div>
+  <div class="yr" style="left:330px;width:220px">2025</div>
+  <div class="yr" style="left:610px;width:280px">2026 (Jan&ndash;Jul)</div>
+</div>
+<div class="abs" style="left:470px;top:205px" data-in="4.6" data-out="14.2" data-fx="pop"><span class="badge" style="font-size:44px">Up 1,000%+ from last year</span></div>
+<div class="salary">
+  <div class="h3 mute" data-in="9.2" data-out="14.2" data-fx="right">Median advertised salary</div>
+  <div class="num" style="font-size:124px;margin-top:20px" data-in="9.4" data-out="14.2" data-fx="scale"><span data-count="188000" data-cin="9.4" data-cdur="1.6" data-prefix="$" data-suffix="+"></span></div>
+</div>
+<div class="src" data-in="0.5" data-out="14.2" data-fx="fade">Sources: Lightcast data via Fortune (Sep 3, 2026); Lightcast blog. Postings up 1,000%+ in Jan&ndash;Aug 2026 vs Jan&ndash;Aug 2025.</div>
+<div class="beat">
+  <div class="h1" style="font-size:96px" data-in="14.6">Most people still do not know <span class="amber">what it is</span>,</div>
+  <div class="h1" style="font-size:96px;margin-top:10px" data-in="16.6">or <span class="amber">how to get it</span>.</div>
+</div>
+<div class="brand">stackle.io</div>
+<script src="fde.js"></script><script src="../base.js"></script></body></html>

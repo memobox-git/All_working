@@ -1,0 +1,42 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../base.css"><link rel="stylesheet" href="fde.css">
+<style>.srcrow{display:flex;align-items:center;gap:20px;font-size:34px;font-weight:700;position:relative}
+.srcrow .ic{width:62px;height:62px;color:var(--cream)}
+.err{position:absolute;left:40px;top:-12px;width:36px;height:36px;border-radius:50%;background:var(--amber);color:var(--ink);font-weight:800;font-size:26px;display:flex;align-items:center;justify-content:center}
+.dot{width:26px;height:26px;border-radius:50%;background:var(--amber);position:absolute;left:600px;top:627px}</style></head><body>
+<div class="grid"></div><div class="phasebar" data-cur="2"></div>
+<div class="scene" style="padding-top:150px"><div class="tag" data-in="0.4" data-fx="left">Phase 2</div>
+  <div class="h1" style="font-size:84px" data-in="0.6">Data and cloud</div>
+  <div class="body" style="margin-top:8px" data-in="3.0">Your code is only useful once it can reach the customer&rsquo;s information.</div></div>
+<div class="abs" style="left:1000px;top:240px" data-in="8.2" data-fx="pop"><span class="pill solid">Where real projects slow down the most</span></div>
+<div class="abs col" style="left:160px;top:470px;gap:44px">
+  <div class="srcrow" data-in="19.0"><i class="ic" data-ic="db"></i>Old databases</div>
+  <div class="srcrow" data-in="19.8"><i class="ic" data-ic="sheet"></i>Spreadsheets<div class="err" data-in="22.2" data-fx="pop">!</div></div>
+  <div class="srcrow" data-in="20.6"><i class="ic" data-ic="pdf"></i>PDF files<div class="err" data-in="22.4" data-fx="pop">!</div></div>
+  <div class="small" data-in="22.2">and some of it is wrong</div>
+</div>
+<svg class="layer">
+  <path d="M600 640 H1290" style="stroke:#3a3637;stroke-width:44;stroke-linecap:round;fill:none" data-draw="25.6" data-ddur="1"></path>
+  <path d="M600 640 H1290" style="stroke:var(--amber);stroke-width:8;stroke-linecap:round;fill:none" data-draw="33.0" data-ddur="1.4"></path>
+  <path class="arrow" d="M1300 640 H1350M1336 626l14 14-14 14" data-draw="29.4" data-ddur="0.4"></path>
+</svg>
+<div class="abs" style="left:600px;top:520px" data-in="26.2" data-fx="pop"><span class="pill" style="font-size:28px">Get access</span></div>
+<div class="abs" style="left:820px;top:520px" data-in="27.0" data-fx="pop"><span class="pill" style="font-size:28px">Fix the errors</span></div>
+<div class="abs" style="left:1060px;top:520px" data-in="28.6" data-fx="pop"><span class="pill" style="font-size:28px">Move everything</span></div>
+<div class="abs" style="left:780px;top:700px" data-in="37.4" data-fx="pop"><span class="h2 amber" style="font-weight:800">Data pipeline</span></div>
+<div id="flow"></div>
+<div class="abs card hot col center" style="left:1380px;top:480px;width:380px;height:320px;gap:16px" data-in="29.6" data-fx="right">
+  <i class="ic icon-amber" data-ic="table" style="width:100px;height:100px"></i><div class="h3">One clean place</div><div class="small" style="font-size:26px">where the AI can use it</div></div>
+<div class="abs row" style="left:160px;top:860px;gap:20px">
+  <div class="tag" style="margin:0;white-space:nowrap" data-in="38.6">Example &middot; Hospital</div>
+  <span class="pill" style="font-size:30px" data-in="41.4">New patient records</span>
+  <span class="pill" style="font-size:30px" data-in="43.0">Every night</span>
+  <span class="pill" style="font-size:30px" data-in="43.8">Duplicates removed</span>
+  <span class="pill solid" style="font-size:30px" data-in="46.6">One clean table</span>
+</div>
+<script>
+const f=document.getElementById('flow');
+for(let i=0;i<8;i++){const t=34.4+i*0.5;const w=document.createElement('div');w.className='abs';w.style.left='0';w.style.top='0';w.dataset.mv=t+' '+(t+1.6)+' 680 0';
+ w.innerHTML='<div class="dot" data-in="'+t+'" data-out="'+(t+1.5)+'" data-fx="fade"></div>';f.appendChild(w);}
+</script>
+<div class="brand">stackle.io</div>
+<script src="fde.js"></script><script src="../base.js"></script></body></html>
