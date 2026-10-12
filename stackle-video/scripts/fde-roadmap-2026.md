@@ -379,6 +379,8 @@ Two more creators passed 50K views with FDE roadmap videos in June 2026: **Aishw
 
 ## Part C. Graphics list
 
+The graphics are built. The rendered files are in `stackle-video/graphics/fde/`, and its `README.md` is the cue sheet for the editor.
+
 All graphics use Plus Jakarta Sans, with amber #F59E0B on charcoal #1E1C1D. Each one is full screen, with your voice continuing over it.
 
 | # | Section | What it shows |
