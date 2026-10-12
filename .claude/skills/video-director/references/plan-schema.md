@@ -84,7 +84,7 @@ Times accept `"m:ss"` or seconds. The timeline bar is drawn in proportion to eac
 | risk | "What could go wrong" | |
 | fallback | "What to do instead" | |
 | alternatives | see below | Used in fix mode |
-| status | "dropped" | Keeps a replaced shot on the board, greyed out, for before/after. Dropped shots are left out of counts, the script and warnings. |
+| status | "dropped" or "extra" | `dropped` keeps a replaced shot on the board, greyed out, for before/after. `extra` is for deliverables outside the cut (thumbnail, cover, a cut-down). Both are left out of the counts, the script and the animatic. |
 | frame | see below | The storyboard diagram |
 
 Alternatives, with the chosen one marked:
@@ -110,6 +110,11 @@ A frame is a composition diagram. Coordinates are fractions of the frame: `x` 0 
 }
 ```
 
+**Look**: frames can carry mood as well as layout.
+- `tint` (hex) washes the whole frame in a color, with `tint_opacity` (default 0.3). Use it for time of day and grade: amber for sunset, teal for night, green for a forest.
+- A `glow` element is a soft light source: `{"kind": "glow", "x": 0.1, "y": 0.3, "r": 0.4, "color": "#FFD8A8", "strength": 0.85}`. Use it for windows, lamps, screens, flames, the sun.
+- Any element can take `color` (hex) to fill it with a palette color: the product in its real color, a presenter's shirt, diagram boxes in brand colors.
+
 **bg**: `plain`, `room` (wall and floor), `desk` (desk surface at the bottom), `outdoor` (horizon), `city` (skyline), `studio` (curved backdrop), `grid` (dark motion-graphics canvas), `dark`.
 
 **move**: `static`, `push in`, `pull out`, `zoom in`, `zoom out`, `pan left`, `pan right`, `tilt up`, `tilt down`, `track left`, `track right`, `crane up`, `crane down`, `drone rise`, `orbit`, `handheld`, `gimbal follow`, `whip pan`, `rack focus`. If left out, the shot's `move` is used.
@@ -125,6 +130,7 @@ A frame is a composition diagram. Coordinates are fractions of the frame: `x` 0 
 | object | `shape`, `x`, `y` (where it sits), `s` (height as a fraction of the frame), `w`, `label`, `label_at` (`below`, `above`; automatic by default), `accent` | Shapes: `box`, `paper`, `hand`, `building`, `tree`, `mountain`, `sun`, `cloud`, `candle`, `bottle`, `mug`, `plant`, `car`, `desk`, `window`, `door`. Use `box` with a `label` for anything else (a product, a logo, an app icon). |
 | chart | `x`, `y`, `w`, `h`, `values`, `type` (`bar`, `line`), `label` | A data graphic |
 | arrow | `from` [x, y], `to` [x, y], `label` | Movement of a subject or an animated element inside the frame (dashed). Camera moves use `move` instead. |
+| glow | `x`, `y`, `r`, `color`, `strength` | A soft light source (see Look above) |
 
 **Raw SVG**: for anything the elements can't express, add `"svg": "<circle cx='160' cy='90' r='20' class='f-obj'/>"`. The viewBox is 320×180 for 16:9, 180×320 for 9:16, 240×240 for 1:1, 240×300 for 4:5. Use the classes `f-fig`, `f-obj`, `f-accent-fill`, `f-text`, `f-label`, `f-line`, `f-move` so it follows the theme.
 
@@ -134,6 +140,10 @@ Tips for frames that read well:
 - Show the end position of a move. For a push-in, the dashed box is where the frame lands, so the subject should fit inside it.
 - For 9:16, keep text and faces out of the shaded platform UI zones. Short words read best; centre on-screen text so it clears the camera-move tag in the top corner.
 - Text with `box: true` stays readable on dark frames; use it for titles over `grid` or `dark` backgrounds.
+
+## Animatic
+
+Every board has a "Play animatic" button. It plays the frames in order, holds each for the shot's duration, simulates the camera move, and shows the spoken words as subtitles with sound cues underneath. Clicking a storyboard frame plays from that shot. It works offline with no extra files. Shots without a duration are held for 3 seconds, so give every shot a `time` range or `duration` to make the timing true.
 
 ## script
 

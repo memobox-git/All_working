@@ -109,6 +109,7 @@ Prefer the option with the best fidelity for acceptable cost and risk. A 4/5 opt
 
 1. One line: the shot's job and the real blocker.
 2. The recommendation and why it wins (fidelity, cost, effort).
-3. The other options, one line each with cost and fidelity.
-4. What else changes (timing, voice-over, budget).
-5. The updated board, with the change in the revision log.
+3. Why the original approach failed, in plain words, so the person can avoid it elsewhere.
+4. The other options, one line each with cost and fidelity.
+5. What else changes (timing, voice-over, budget).
+6. The updated board, with the change in the revision log.

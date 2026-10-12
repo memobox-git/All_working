@@ -133,6 +133,21 @@
         "bg": "room",
         "elements": [
           {
+            "kind": "glow",
+            "x": 0.0,
+            "y": 0.35,
+            "r": 0.5,
+            "color": "#FFD8A8"
+          },
+          {
+            "kind": "glow",
+            "x": 0.85,
+            "y": 0.3,
+            "r": 0.25,
+            "color": "#4C6EF5",
+            "strength": 0.5
+          },
+          {
             "kind": "person",
             "size": "mcu",
             "x": 0.62
@@ -151,9 +166,11 @@
             "x": 0.1,
             "y": 0.12,
             "w": 0.3,
-            "accent": true
+            "color": "#F59F00"
           }
-        ]
+        ],
+        "tint": "#F59F00",
+        "tint_opacity": 0.12
       }
     },
     {
@@ -186,7 +203,8 @@
             "x": 0.2,
             "y": 0.4,
             "s": 0.18,
-            "label": "CRM"
+            "label": "CRM",
+            "color": "#4C6EF5"
           },
           {
             "kind": "object",
@@ -194,7 +212,8 @@
             "x": 0.45,
             "y": 0.75,
             "s": 0.18,
-            "label": "Payments"
+            "label": "Payments",
+            "color": "#4C6EF5"
           },
           {
             "kind": "object",
@@ -202,7 +221,8 @@
             "x": 0.7,
             "y": 0.35,
             "s": 0.18,
-            "label": "Logs"
+            "label": "Logs",
+            "color": "#4C6EF5"
           },
           {
             "kind": "object",
@@ -210,8 +230,8 @@
             "x": 0.85,
             "y": 0.8,
             "s": 0.18,
-            "accent": true,
-            "label": "Warehouse"
+            "label": "Warehouse",
+            "color": "#F59F00"
           },
           {
             "kind": "arrow",
@@ -373,7 +393,8 @@
             "x": 0.58,
             "y": 0.4,
             "s": 0.16,
-            "label": "Extract"
+            "label": "Extract",
+            "color": "#4C6EF5"
           },
           {
             "kind": "object",
@@ -381,7 +402,8 @@
             "x": 0.75,
             "y": 0.4,
             "s": 0.16,
-            "label": "Transform"
+            "label": "Transform",
+            "color": "#4C6EF5"
           },
           {
             "kind": "object",
@@ -389,8 +411,8 @@
             "x": 0.9,
             "y": 0.4,
             "s": 0.16,
-            "accent": true,
-            "label": "Load"
+            "label": "Load",
+            "color": "#F59F00"
           },
           {
             "kind": "text",
@@ -427,6 +449,13 @@
         "bg": "room",
         "elements": [
           {
+            "kind": "glow",
+            "x": 0.15,
+            "y": 0.45,
+            "r": 0.3,
+            "color": "#FFD8A8"
+          },
+          {
             "kind": "object",
             "shape": "desk",
             "x": 0.4,
@@ -458,6 +487,48 @@
           }
         ]
       }
+    },
+    {
+      "id": "T",
+      "beat": "Delivery",
+      "size": "Thumbnail",
+      "move": "Static",
+      "visual": "Thumbnail: your face on the right third looking at a big amber 'ETL?' on the left; dark grid background.",
+      "onscreen": "ETL?",
+      "method": "Still from the shoot + Canva",
+      "tools": [
+        "Frame grab from shot 1",
+        "Canva"
+      ],
+      "how": [
+        "Grab a sharp frame with an open, curious expression",
+        "Cut out with background removal",
+        "Add 2-4 words max, readable at phone size"
+      ],
+      "effort": "45 min",
+      "cost": 0,
+      "feasibility": "green",
+      "frame": {
+        "bg": "grid",
+        "elements": [
+          {
+            "kind": "person",
+            "size": "cu",
+            "x": 0.72,
+            "facing": "left"
+          },
+          {
+            "kind": "text",
+            "style": "big",
+            "text": "ETL?",
+            "x": 0.06,
+            "y": 0.22,
+            "w": 0.5,
+            "color": "#F59F00"
+          }
+        ]
+      },
+      "status": "extra"
     }
   ],
   "tools": [

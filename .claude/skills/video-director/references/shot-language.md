@@ -83,6 +83,7 @@ Movement should mean something: a push-in adds emphasis, a pull-out reveals, a t
 - **Practicals**: lamps in shot for warmth and depth.
 - Never put a bright window behind the subject unless a silhouette is the goal.
 - Turn off mixed light sources (warm bulbs plus daylight) or commit to one color.
+- Filming into a building's windows from outside: shoot at blue hour (10-30 minutes after sunset), when the interior lights are brighter than the sky and the glass stops acting as a mirror.
 
 ## Transitions
 
@@ -98,7 +99,7 @@ Movement should mean something: a push-in adds emphasis, a pull-out reveals, a t
 | Format | Typical shot length | Notes |
 |---|---|---|
 | Shorts / Reels / TikTok | 1-3 s | Hook in the first 1-2 s, visually and in words. Captions on. Loop the ending into the start if you can. |
-| Ads (6/15/30/60 s) | 1-4 s | Brand or product by second 3. One message. A clear call to action at the end. |
+| Ads (6/15/30/60 s) | 1-4 s | Product or payoff on screen in the first 1-2 s, brand by second 3. One message. A clear call to action at the end. |
 | YouTube explainer / education | A new visual every 4-8 s | Promise within 30 s. Change visuals on each idea, not on a timer. |
 | Talking head / vlog | Punch-ins every 10-20 s | Alternate MCU and CU from one 4K camera. |
 | Product demo | 3-6 s | Show the result first, then how. |

@@ -38,7 +38,7 @@ Work in this order. Each step depends on the one before it.
 
 1. **Intent.** Write one sentence that says what the video must make the viewer feel or do. Every later choice is checked against it. If a beautiful shot does not serve the intent, cut it.
 2. **Vision.** Decide the tone (3-5 words), the look (light, color, set), the camera language, type and graphics, edit rhythm, and sound. Give a palette with hex codes. Describe references by their style ("calm desk-setup channels with warm practical light"), not by copying a specific creator's work.
-3. **Structure.** Break the runtime into beats with start and end times, the purpose of each beat and what the viewer should feel. Use the platform's rhythm: short-form needs the hook in the first 1-2 seconds; long-form YouTube needs the promise in the first 15-30 seconds.
+3. **Structure.** Break the runtime into beats with start and end times, the purpose of each beat and what the viewer should feel. Use the platform's rhythm: short-form needs the hook in the first 1-2 seconds, and an ad should show the product or the payoff in that window rather than building up to it; long-form YouTube needs the promise in the first 15-30 seconds.
 4. **Shots.** For every beat, decide the shots: size, angle, movement, lens feel, what is seen, the exact words spoken (`audio`), music and effects (`sound`), on-screen text, and the transition out. Read `references/shot-language.md` when choosing shot sizes, moves, pacing and platform specs.
    - Videos up to about 90 seconds: storyboard every shot.
    - Longer videos: storyboard every distinct setup or sequence, give each beat at least one frame, and let a shot's time range cover a sequence ("2:00-2:40, screen recording sequence, 4 zooms"). The board shows "Storyboarded" time next to the runtime, so gaps are visible.
@@ -46,6 +46,7 @@ Work in this order. Each step depends on the one before it.
 6. **Feasibility.** Rate every shot: `green` (doable with what they have), `amber` (doable with a known risk), `red` (may not work). Every amber or red shot gets a fallback written into the plan now, not later. Be honest. A plan that promises an AI-generated product shot with readable text on the label, with no backup, is a plan that fails on shoot day.
 7. **Budget.** Price everything per tier. Put an item's cost in the tier where it is needed. Owned gear costs nothing. When a price matters to the total and you can search the web, check it. Otherwise give a range and say it is approximate, with the date. Never present a guessed price as exact.
 8. **Risks and workflow.** List the risks that could sink the video (audio, time, permissions, licensing, platform rules) with Plan B and Plan C. Lay out the workflow from pre-production to delivery with time per stage, and a short checklist for the shoot day.
+9. **Delivery.** A video isn't done when the edit is. Plan what ships with it: export settings, captions, and the thumbnail or cover frame (storyboard it as a shot with `"status": "extra"`). Add cut-downs (a vertical teaser, a 15-second version) only when they serve the goal.
 
 ## Fix mode: when something isn't being achieved
 
@@ -55,6 +56,7 @@ This is where a director earns their place. When a shot, look, tool or budget fa
 2. **Find the real blocker**: money, gear, skill, time, permission or law, a tool's limits (AI artifacts), physics, or talent. Ask one short question only if you cannot tell.
 3. **Generate options down the ladder**, starting from what the person uniquely has (an architect's 3D models, a shop's products, a team's real workplace): same shot by other means, then a different medium, then a different idea for the same job, then restructure (move the information into voice-over or text), then cut. Aim for 3-4 real options.
 4. **Score each option** on fidelity to the vision (1-5), cost, effort and risk. Recommend one, keep one as backup, and say why.
+   Explain in a sentence or two *why* the original approach failed (for example: AI video models have no real 3D geometry, so straight lines and repeating window grids drift as the camera moves). Understanding the cause stops the person from hitting the same wall on the next shot.
 5. **Update the plan.** Keep the original shot with `"status": "dropped"` so the board shows before and after, add the replacement shot(s), add the options under the shot's `alternatives` with the chosen one marked `"pick": true`, add an entry to `changes` (was, now, why), raise `version`, and rebuild the board. If the change ripples (a new shot changes the voice-over timing or the budget), update those too.
 
 If the person shares their earlier plan or board, edit that plan rather than starting over. If you only have their description, build a small board around the affected beat so they can see the before and after.
@@ -71,16 +73,19 @@ The deliverable is one self-contained HTML file. It is the "images and diagrams"
 
 1. Write `plan.json` following `references/plan-schema.md`. `assets/example-plan.json` is a complete worked example to copy from.
 2. Draw a `frame` for every shot. Frames are diagrams, not art, so focus on what a director checks: where the subject sits on the thirds, shot size, eyeline (`facing`), empty space for text, foreground and background, on-screen text, and the camera move (`move`) which is drawn as orange arrows. Use the element kinds in the schema. For anything they can't express, a frame can include raw `svg`.
-3. Render it:
+3. Make the frames show the look, not only the layout. People ask "how will it look", and grey boxes can't answer that. Use the vision's palette: `tint` for time of day and grade, `glow` for light sources (window, lamp, flame, screen, sun), and `color` on the product, wardrobe and graphics. A viewer flicking through the frames should feel the mood change from beat to beat.
+4. Render it:
    ```bash
    python <skill-dir>/scripts/build_board.py path/to/plan.json -o path/to/director-board.html
    ```
-   Fix every warning the script prints. Warnings flag real gaps such as a risky shot with no fallback.
-4. Save both files where the person can open them, in a folder named after the video (for example `video-plans/<slug>/`). If your environment can show or publish an HTML page, use it so they see the board right away.
+   Fix every warning the script prints. Warnings flag real gaps such as a risky shot with no fallback. The board includes a "Play animatic" button that plays the frames in time with simulated camera moves and the spoken words as subtitles, so give every shot a time range to make the timing true.
+5. Save both files where the person can open them, in a folder named after the video (for example `video-plans/<slug>/`). If your environment can show or publish an HTML page, use it so they see the board right away.
 
 If the person also has an image-generation tool connected and wants richer visuals, you may generate 2-4 mood frames for the key moments after the board exists. The diagrams stay the source of truth for composition.
 
 ## Reply in chat
+
+Before you reply, check every number you quote against the plan: runtime, shot count, tier totals, on-camera share, word count. A reply that says "under a third on camera" when the shot list says 39% costs the person's trust in the whole plan.
 
 Keep the chat reply short. The board holds the detail.
 
@@ -88,9 +93,9 @@ Keep the chat reply short. The board holds the detail.
 - Shot count, runtime, and the cost of each tier.
 - The 2-3 riskiest shots and their fallbacks.
 - Assumptions you made and any open question.
-- Where the board is.
+- Where the board is, and that it has a Play animatic button.
 
-In fix mode, lead with the recommendation and the reason, then the other options in one line each.
+In fix mode, lead with the recommendation and the reason, then why the original approach failed, then the other options in one line each.
 
 ## Principles
 

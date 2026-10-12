@@ -134,6 +134,7 @@ Put these in the risks table when they apply:
 - Stock and AI output licences differ on commercial use, resale and trademarks.
 - Platforms require disclosure of realistic AI-generated or altered content (YouTube, TikTok and Meta all have labels).
 - AI voice cloning needs the voice owner's consent.
+- Don't crop, blur or cover an AI tool's watermark; use a plan that exports without one. Removing it usually breaks the tool's terms.
 - Drones need registration and airspace checks in most countries; many cities ban them.
 - Don't show other brands' logos prominently in ads without permission.
 

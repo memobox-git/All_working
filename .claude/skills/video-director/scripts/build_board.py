@@ -502,6 +502,23 @@ def draw_camera_move(f, move):
     f.text(W - tw / 2 - 4, 4 + fs * 1.1, tag, "f-tag-text", fs, "middle", 700)
 
 
+GLOW_IDS = [0]
+HEX = re.compile(r"#[0-9a-fA-F]{3,8}")
+
+
+def draw_glow(f, el):
+    """Soft light source: a lamp, a window, the sun, a candle flame, a screen."""
+    W, H = f.W, f.H
+    color = el.get("color") if HEX.fullmatch(str(el.get("color", ""))) else "#ffb347"
+    GLOW_IDS[0] += 1
+    gid = f"glow{GLOW_IDS[0]}"
+    op = float(el.get("strength", 0.85))
+    f.add(f'<defs><radialGradient id="{gid}"><stop offset="0" stop-color="{color}" stop-opacity="{num(op, 2)}"/>'
+          f'<stop offset="1" stop-color="{color}" stop-opacity="0"/></radialGradient></defs>')
+    f.add(f'<circle cx="{num(float(el.get("x", 0.5)) * W)}" cy="{num(float(el.get("y", 0.4)) * H)}" '
+          f'r="{num(float(el.get("r", 0.3)) * max(W, H))}" fill="url(#{gid})"/>')
+
+
 def draw_safe_zones(f):
     """Short-form platforms cover the bottom and right edge with UI."""
     W, H = f.W, f.H
@@ -511,6 +528,7 @@ def draw_safe_zones(f):
 
 
 ELEMENTS = {
+    "glow": draw_glow, "light": draw_glow,
     "person": draw_person, "shoulder": draw_shoulder, "text": draw_text, "object": draw_object,
     "chart": draw_chart, "arrow": draw_arrow,
     "screen": lambda f, e: draw_device(f, e, "screen"), "monitor": lambda f, e: draw_device(f, e, "monitor"),
@@ -524,22 +542,33 @@ def render_frame(shot, aspect, safe_zones):
     W, H = f.W, f.H
     f.rect(0, 0, W, H, "f-bg")
     draw_background(f, spec.get("bg"))
+    if HEX.fullmatch(str(spec.get("tint", ""))):
+        f.add(f'<rect width="{W}" height="{H}" fill="{spec["tint"]}" opacity="{num(float(spec.get("tint_opacity", 0.3)), 2)}"/>')
+    f.add('<g class="f-guides">')
     for x in (W / 3, 2 * W / 3):
         f.line(x, 0, x, H, "f-thirds")
     for y in (H / 3, 2 * H / 3):
         f.line(0, y, W, y, "f-thirds")
+    f.add('</g>')
     if spec.get("svg"):
         f.add(str(spec["svg"]))
     for el in as_list(spec.get("elements")):
         fn = ELEMENTS.get(str(el.get("kind", "")).lower())
-        if fn:
-            fn(f, el)
-        else:
+        if not fn:
             warn(f"shot {shot.get('id')}: unknown frame element kind {el.get('kind')!r}")
+            continue
+        start = len(f.out)
+        fn(f, el)
+        color = str(el.get("color", ""))
+        if HEX.fullmatch(color) and str(el.get("kind", "")).lower() not in ("glow", "light"):
+            f.out.insert(start, f'<g style="--fig:{color};--fig-hi:{color};--accent:{color};--ink:{color}">')
+            f.add("</g>")
     if not spec:
         f.text(W / 2, H / 2, "no frame spec", "f-label", H * 0.06, "middle")
         warn(f"shot {shot.get('id')}: no frame spec, so its storyboard frame is blank")
+    f.add('<g class="f-cam">')
     draw_camera_move(f, spec.get("move", shot.get("move")))
+    f.add('</g>')
     if safe_zones and spec.get("aspect", aspect) == "9:16":
         draw_safe_zones(f)
     label = f"Shot {shot.get('id', '')}: {shot.get('visual', '')}"
@@ -553,6 +582,15 @@ def render_frame(shot, aspect, safe_zones):
 
 def is_dropped(shot):
     return str(shot.get("status", "")).lower() in ("dropped", "cut", "replaced")
+
+
+def is_extra(shot):
+    """Thumbnails, covers, cut-downs: on the board but not part of the video's runtime."""
+    return str(shot.get("status", "")).lower() in ("extra", "thumbnail", "cover", "deliverable")
+
+
+def in_video(shot):
+    return not is_dropped(shot) and not is_extra(shot)
 
 
 def feas_pill(level):
@@ -596,7 +634,8 @@ def shot_secs(shot):
 
 def build_header(plan, shots, cur, budget_totals):
     meta = plan.get("meta") or {}
-    shots = [s for s in shots if not is_dropped(s)]
+    extras = sum(1 for s in shots if is_extra(s))
+    shots = [s for s in shots if in_video(s)]
     meta_chips = []
     for key, label in (("platform", "Platform"), ("length", "Length"), ("aspect", "Aspect"), ("audience", "Audience"),
                        ("goal", "Goal"), ("budget", "Budget"), ("deadline", "Deadline"), ("crew", "Crew")):
@@ -604,7 +643,7 @@ def build_header(plan, shots, cur, budget_totals):
             meta_chips.append(f'<span class="meta"><b>{label}</b> {esc(meta[key])}</span>')
     total_secs = sum(s for s in (shot_secs(x) for x in shots) if s)
     counts = {k: sum(1 for s in shots if str(s.get("feasibility", "")).lower() == k) for k in FEAS}
-    stats = [("Shots", str(len(shots)))]
+    stats = [("Shots", str(len(shots)) + (f" + {extras} extra" if extras else ""))]
     if meta.get("length"):
         stats.append(("Runtime", str(meta["length"])))
     if total_secs:
@@ -621,7 +660,8 @@ def build_header(plan, shots, cur, budget_totals):
             f'<h1>{esc(plan.get("title", "Untitled video"))}</h1>'
             f'{"<p class=logline>" + esc(plan["logline"]) + "</p>" if plan.get("logline") else ""}'
             f'<div class="metas">{"".join(meta_chips)}</div>'
-            f'<div class="stats">{stat_html}</div></header>')
+            f'<div class="stats">{stat_html}</div>'
+            f'<button id="play-animatic" class="play-btn" hidden><span class="tri"></span>Play animatic</button></header>')
 
 
 def build_vision(plan):
@@ -701,9 +741,13 @@ def build_storyboard(plan, shots):
         if is_dropped(s):
             cls += " shot-dropped"
             body[0] = body[0].replace("</b>", '</b><span class="feas feas-dropped">Dropped</span>', 1)
+        elif is_extra(s):
+            cls += " shot-extra"
+            body[0] = body[0].replace("</b>", '</b><span class="feas feas-extra">Extra</span>', 1)
         cards.append(f'<article class="{cls}"><div class="shot-frame">{svg}</div><div class="shot-b">{"".join(body)}</div></article>')
-    legend = ('<p class="legend">Frames are composition diagrams: grey shapes are people and objects, the faint grid is the rule of thirds, '
-              'orange arrows show camera movement, dashed boxes show where a push-in ends.</p>')
+    legend = ('<p class="legend">Frames are composition diagrams: shapes are people and objects, colors and glows suggest the light and grade, '
+              'the faint grid is the rule of thirds, orange arrows show camera movement and dashed boxes show where a push-in ends. '
+              'Press Play animatic, or click any frame, to watch the cut in time.</p>')
     return section("storyboard", "Storyboard", legend + f'<div class="board board-{aspect.replace(":", "x").replace(".", "")}">{"".join(cards)}</div>')
 
 
@@ -712,7 +756,7 @@ def build_script(plan, shots):
     if not rows:
         rows = [{"time": s.get("time", ""), "shot": s.get("id", ""), "visual": s.get("visual", ""),
                  "audio": s.get("audio", ""), "sound": s.get("sound", ""), "onscreen": s.get("onscreen", "")}
-                for s in shots if not is_dropped(s) and (s.get("audio") or s.get("visual") or s.get("sound"))]
+                for s in shots if in_video(s) and (s.get("audio") or s.get("visual") or s.get("sound"))]
     if not rows:
         return ""
     words = sum(len(str(r.get("audio", "")).split()) for r in rows)
@@ -940,7 +984,7 @@ h3{font-size:15px;margin:22px 0 8px}
 .method{display:inline-block;margin-top:4px;font-size:12px;font-weight:600;color:var(--accent);border:1px solid currentColor;border-radius:6px;padding:1px 8px}
 .feas{font-size:11px;font-weight:700;border-radius:999px;padding:1px 8px;color:#fff;margin-left:auto}
 td .feas{margin:4px 0 0 6px;display:inline-block}
-.feas-dropped{background:var(--muted)}
+.feas-dropped{background:var(--muted)}.feas-extra{background:var(--s4)}
 .shot-dropped{opacity:.7}.shot-dropped .shot-frame{filter:grayscale(1)}.row-dropped td{color:var(--muted)}
 .feas-green{background:var(--green)}.feas-amber{background:var(--amber)}.feas-red{background:var(--red)}
 .tw{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--panel)}
@@ -1000,9 +1044,155 @@ footer{margin-top:48px;color:var(--muted);font-size:12px}
 .f-move-box{fill:none;stroke:var(--accent);stroke-width:1.2;stroke-dasharray:5 3}
 .f-tag{fill:var(--accent)}.f-tag-text{fill:var(--accent-ink)}
 .f-safe{fill:var(--red);opacity:.12}.f-safe-text{fill:var(--red);opacity:.8}
+.play-btn{margin-top:16px;display:inline-flex;align-items:center;gap:10px;background:var(--accent);color:var(--accent-ink);border:0;
+border-radius:999px;padding:10px 18px;font:inherit;font-weight:700;cursor:pointer}
+.play-btn .tri{width:0;height:0;border-left:10px solid currentColor;border-top:6px solid transparent;border-bottom:6px solid transparent}
+.shot-frame.can-play{cursor:pointer}
+.anim{position:fixed;inset:0;z-index:50;background:#0b0b09;display:flex;align-items:center;justify-content:center;padding:16px;color:#f4f1ea}
+.anim[hidden]{display:none}
+.anim-in{width:min(960px,100%,calc((100vh - 230px) * var(--ar,1.78)));min-width:min(280px,100%);display:flex;flex-direction:column;gap:10px}
+.anim-top{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:13px;color:#cfc9bd}
+.anim-stage{position:relative;width:100%;overflow:hidden;border-radius:10px;background:var(--frame)}
+.anim-stage svg{display:block;width:100%;height:100%;transform-origin:50% 50%}
+.anim-stage .f-cam,.anim-stage .f-guides{display:none}
+.anim-says{min-height:2.6em;text-align:center;font-size:clamp(15px,2.2vw,20px);line-height:1.35}
+.anim-says.anim-ost{color:var(--accent);font-weight:700}
+.anim-sound{min-height:1.2em;text-align:center;font-size:13px;color:#a8a294;font-style:italic}
+.anim-bar{display:flex;gap:3px;height:8px}
+.anim .anim-seg{flex:1;padding:0;border:0;border-radius:3px;background:rgba(255,255,255,.18);overflow:hidden;cursor:pointer;min-width:3px}
+.anim .anim-seg span{display:block;height:100%;width:0;background:var(--accent)}
+.anim-ctl{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.anim button{background:transparent;color:#f4f1ea;border:1px solid rgba(255,255,255,.3);border-radius:8px;padding:6px 12px;font:inherit;font-size:13px;cursor:pointer}
+.anim button[data-a=play]{background:var(--accent);color:var(--accent-ink);border-color:transparent;font-weight:700;min-width:72px}
+.anim-clock{margin-left:auto;font-variant-numeric:tabular-nums;font-size:13px;color:#cfc9bd}
+.anim-note{margin:0;font-size:11px;color:#8d887d}
 @media (max-width:640px){.vrow{grid-template-columns:1fr;gap:2px}.stage:not(:last-child)::after{display:none}.hero{padding-top:24px}}
-@media print{nav{display:none}body{background:#fff}.shot,.stage,.tier,.beat{break-inside:avoid}section{margin-top:24px}.tw{overflow:visible}}
+@media print{nav,.play-btn,.anim{display:none}body{background:#fff}.shot,.stage,.tier,.beat{break-inside:avoid}section{margin-top:24px}.tw{overflow:visible}}
 """
+
+
+PLAYER_JS = r"""
+(function () {
+  var dataEl = document.getElementById('animatic-data');
+  var ov = document.getElementById('anim');
+  if (!dataEl || !ov) return;
+  var data = JSON.parse(dataEl.textContent);
+  var frames = Array.prototype.slice.call(document.querySelectorAll('.board .shot:not(.shot-dropped):not(.shot-extra) svg.frame'));
+  if (!data.length || data.length !== frames.length) return;
+  var stage = ov.querySelector('.anim-stage'), head = ov.querySelector('.anim-head'),
+      says = ov.querySelector('.anim-says'), sound = ov.querySelector('.anim-sound'),
+      bar = ov.querySelector('.anim-bar'), btnPlay = ov.querySelector('[data-a=play]'),
+      btnSpeed = ov.querySelector('[data-a=speed]'), clock = ov.querySelector('.anim-clock');
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var i = 0, playing = false, speed = 1, anim = null, raf = 0;
+  var starts = [], total = 0;
+  data.forEach(function (d) { starts.push(total); total += d.dur; });
+  var vb = frames[0].viewBox.baseVal;
+  stage.style.aspectRatio = vb.width + ' / ' + vb.height;
+  ov.style.setProperty('--ar', vb.width / vb.height);
+  data.forEach(function (d, k) {
+    var seg = document.createElement('button');
+    seg.className = 'anim-seg'; seg.style.flex = d.dur; seg.title = 'Shot ' + d.id;
+    seg.setAttribute('aria-label', 'Go to shot ' + d.id);
+    seg.innerHTML = '<span></span>';
+    seg.onclick = function () { show(k, playing); };
+    bar.appendChild(seg);
+  });
+  var segs = bar.children;
+  function fmt(t) { t = Math.max(0, Math.round(t)); return Math.floor(t / 60) + ':' + ('0' + t % 60).slice(-2); }
+  function keyframes(m) {
+    m = (m || '').toLowerCase();
+    var S = 1.16, up, r;
+    if (/whip/.test(m)) return [{transform: 'scale(1.1) translateX(8%)', filter: 'blur(3px)'}, {transform: 'scale(1.1) translateX(0)', filter: 'blur(0)', offset: 0.2}, {transform: 'scale(1.1) translateX(0)', filter: 'blur(0)'}];
+    if (/pull|out|reveal/.test(m)) return [{transform: 'scale(' + S + ')'}, {transform: 'scale(1)'}];
+    if (/push|dolly|zoom|punch/.test(m)) return [{transform: 'scale(1)'}, {transform: 'scale(' + S + ')'}];
+    if (/pan|track|truck|slide/.test(m)) { r = /right/.test(m) ? 1 : -1; return [{transform: 'scale(1.12) translateX(' + 4 * r + '%)'}, {transform: 'scale(1.12) translateX(' + -4 * r + '%)'}]; }
+    if (/tilt/.test(m)) { up = /up/.test(m) ? 1 : -1; return [{transform: 'scale(1.12) translateY(' + -4 * up + '%)'}, {transform: 'scale(1.12) translateY(' + 4 * up + '%)'}]; }
+    if (/crane|jib|rise|drone|boom|pedestal/.test(m)) { up = /down/.test(m) ? -1 : 1; return [{transform: 'scale(1.12) translateY(' + -4 * up + '%)'}, {transform: 'scale(1.12) translateY(' + 4 * up + '%)'}]; }
+    if (/orbit|arc/.test(m)) return [{transform: 'scale(1.12) translateX(-3%) rotate(-1deg)'}, {transform: 'scale(1.12) translateX(3%) rotate(1deg)'}];
+    if (/handheld|gimbal|follow/.test(m)) return [0, 1, 2, 3, 4, 5, 6, 7].map(function (k) { return {transform: 'scale(1.06) translate(' + (k % 2 ? 0.7 : -0.7) + '%,' + ((k % 3) - 1) * 0.5 + '%)'}; });
+    return [{transform: 'scale(1)'}, {transform: 'scale(1.015)'}];
+  }
+  function show(k, autoplay) {
+    i = Math.max(0, Math.min(k, data.length - 1));
+    var d = data[i], clone = frames[i].cloneNode(true);
+    clone.removeAttribute('aria-label');
+    stage.innerHTML = ''; stage.appendChild(clone);
+    head.textContent = 'Shot ' + d.id + (d.time ? '  ·  ' + d.time : '') + (d.move ? '  ·  ' + d.move : '');
+    says.textContent = d.audio || d.onscreen || '';
+    says.classList.toggle('anim-ost', !d.audio && !!d.onscreen);
+    sound.textContent = d.sound || '';
+    clone.animate([{opacity: 0}, {opacity: 1}], {duration: 220});
+    if (anim) anim.cancel();
+    anim = clone.animate(reduce ? [{transform: 'none'}, {transform: 'none'}] : keyframes(d.move),
+                         {duration: d.dur * 1000, fill: 'forwards', easing: 'ease-in-out'});
+    anim.playbackRate = speed;
+    anim.onfinish = function () { if (playing) { if (i < data.length - 1) show(i + 1, true); else stop(); } };
+    if (autoplay) play(); else { anim.pause(); playing = false; btnPlay.textContent = 'Play'; }
+    tick();
+  }
+  function tick() {
+    cancelAnimationFrame(raf);
+    var t = anim ? (anim.currentTime || 0) / 1000 : 0, d = data[i];
+    for (var k = 0; k < segs.length; k++) {
+      var fill = k < i ? 1 : k > i ? 0 : Math.min(1, t / d.dur);
+      segs[k].firstChild.style.width = (fill * 100) + '%';
+    }
+    clock.textContent = fmt(starts[i] + Math.min(t, d.dur)) + ' / ' + fmt(total);
+    if (playing) raf = requestAnimationFrame(tick);
+  }
+  function play() { playing = true; btnPlay.textContent = 'Pause'; if (anim) anim.play(); tick(); }
+  function stop() { playing = false; btnPlay.textContent = 'Play'; if (anim) anim.pause(); tick(); }
+  function open(k) { ov.hidden = false; document.body.style.overflow = 'hidden'; show(k || 0, true); }
+  function close() { stop(); ov.hidden = true; document.body.style.overflow = ''; }
+  ov.addEventListener('click', function (e) {
+    var a = e.target.getAttribute && e.target.getAttribute('data-a');
+    if (a === 'play') { playing ? stop() : (anim && anim.playState === 'finished' && i === data.length - 1 ? show(0, true) : play()); }
+    else if (a === 'prev') show(i - 1, playing);
+    else if (a === 'next') show(i + 1, playing);
+    else if (a === 'close' || e.target === ov) close();
+    else if (a === 'speed') { speed = speed === 1 ? 2 : speed === 2 ? 4 : 1; btnSpeed.textContent = speed + 'x'; if (anim) anim.playbackRate = speed; }
+  });
+  document.addEventListener('keydown', function (e) {
+    if (ov.hidden) return;
+    if (e.key === 'Escape') close();
+    else if (e.key === ' ') { e.preventDefault(); playing ? stop() : play(); }
+    else if (e.key === 'ArrowRight') show(i + 1, playing);
+    else if (e.key === 'ArrowLeft') show(i - 1, playing);
+  });
+  var openBtn = document.getElementById('play-animatic');
+  if (openBtn) { openBtn.hidden = false; openBtn.onclick = function () { open(0); }; }
+  frames.forEach(function (svg, k) {
+    var box = svg.closest('.shot-frame');
+    box.classList.add('can-play'); box.title = 'Play from shot ' + data[k].id;
+    box.onclick = function () { open(k); };
+  });
+})();
+"""
+
+PLAYER_HTML = (
+    '<div id="anim" class="anim" hidden role="dialog" aria-label="Animatic player">'
+    '<div class="anim-in"><div class="anim-top"><span class="anim-head"></span>'
+    '<button data-a="close" aria-label="Close">Close</button></div>'
+    '<div class="anim-stage"></div>'
+    '<div class="anim-says"></div><div class="anim-sound"></div>'
+    '<div class="anim-bar"></div>'
+    '<div class="anim-ctl"><button data-a="prev">Prev</button><button data-a="play">Play</button>'
+    '<button data-a="next">Next</button><button data-a="speed" title="Playback speed">1x</button>'
+    '<span class="anim-clock"></span></div>'
+    '<p class="anim-note">Animatic: frames held for each shot\'s planned length, with a simulated camera move. Timing and order, not final pictures.</p>'
+    '</div></div>')
+
+
+def animatic_data(shots):
+    out = []
+    for s in shots:
+        if not in_video(s):
+            continue
+        out.append({"id": str(s.get("id", "")), "dur": round(shot_secs(s) or 3.0, 2), "time": str(s.get("time", "")),
+                    "move": str((s.get("frame") or {}).get("move") or s.get("move") or ""),
+                    "audio": str(s.get("audio", "")), "sound": str(s.get("sound", "")), "onscreen": str(s.get("onscreen", ""))})
+    return json.dumps(out, ensure_ascii=False).replace("</", "<\\/")
 
 
 def build(plan):
@@ -1034,7 +1224,9 @@ def build(plan):
             f'<nav><div class="in">{nav}</div></nav><div class="wrap">'
             f'{build_header(plan, shots, cur, totals)}{"".join(sections)}'
             f'<footer>Costs are estimates{" as of " + esc(meta["date"]) if meta.get("date") else ""}; check current prices before you buy. '
-            f'Storyboard frames are layout diagrams, not final images.</footer></div></body></html>')
+            f'Storyboard frames are layout diagrams, not final images.</footer></div>'
+            f'{PLAYER_HTML}<script type="application/json" id="animatic-data">{animatic_data(shots)}</script>'
+            f'<script>{PLAYER_JS}</script></body></html>')
 
 
 def main():
