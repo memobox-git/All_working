@@ -272,6 +272,13 @@ Rendered files are in `stackle-video/graphics/de-2026/`. Each one is timed to th
 
 The cards are transparent QuickTime files. Put them over your camera shot. The card sits on the right, so stand left of centre for those parts.
 
+### How to film and edit with these graphics
+
+1. Record the whole script in one take. Pause for one second at each *(pause)* mark.
+2. Send the recording. Each graphic is built from the script's own sentences, so the graphics can be retimed to your real voice and rendered again. The drawing then lands on the words you say.
+3. In the edit, a graphic replaces your camera shot from its first *(pause)* to the next one. Cards go on top of your camera shot instead.
+4. To change a graphic yourself, open its `.excalidraw` file at excalidraw.com, then ask for a re-render.
+
 **On-screen labels that shorten the script** (all the others use the script's own words):
 - "What I check": "SQL that is right on messy data", "a pipeline that runs every day without you", "explain it to a person who does not code"
 - Cloud: "storage: where files live", "compute: runs your code", "permissions: who sees what"
