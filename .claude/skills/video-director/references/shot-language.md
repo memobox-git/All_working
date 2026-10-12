@@ -57,7 +57,7 @@ Movement should mean something: a push-in adds emphasis, a pull-out reveals, a t
 | Gimbal follow | Smooth movement with a moving subject | Phone gimbal ($80-150) |
 | Whip pan | Fast, energetic transition | Pan fast between two shots and cut in the blur; add motion blur in the edit |
 | Rack focus | Shift attention between depths | Phone portrait/cinematic mode; tap-to-focus while recording |
-| Drone / aerial | Scale, location | Stock footage, Google Earth Studio for map flyovers, or a high window. Real drones need registration and airspace checks. |
+| Drone / aerial | Scale, location | Stock footage, a high window or rooftop, a 3D render of the area, or Google Earth Studio for non-commercial map flyovers (check its terms). Real drones need registration and airspace checks. |
 
 ## Lens feel
 

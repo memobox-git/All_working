@@ -91,7 +91,7 @@ Alternatives, with the chosen one marked:
 ```json
 "alternatives": [
   {"option": "Stock aerial clip", "how": "Licensed 4K city aerial at sunset", "cost": "0-60", "effort": "30 min", "fidelity": 4, "pick": true},
-  {"option": "Google Earth Studio flyover", "how": "Free; needs on-screen attribution", "cost": 0, "effort": "2 h", "fidelity": 3}
+  {"option": "Tabletop model + probe lens", "how": "Card model of the block, phone macro lens glides between buildings", "cost": "0-80", "effort": "1 day", "fidelity": 3}
 ]
 ```
 

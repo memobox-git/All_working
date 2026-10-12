@@ -38,7 +38,7 @@ Prefer the option with the best fidelity for acceptable cost and risk. A 4/5 opt
 
 **Aerial or drone shot not possible** (no drone, restricted airspace, no budget)
 - Licensed stock aerial of a similar place; add a slow push-in in the edit.
-- Google Earth Studio flyover for map-style or city-scale moves (free, needs on-screen attribution).
+- Google Earth Studio flyover for map-style or city-scale moves. Free and needs on-screen attribution, but Google's terms restrict commercial and advertising use of its imagery, so check the current terms before using it in an ad or brand film.
 - Shoot from a high window, rooftop or bridge; tilt or push in.
 - AI image of the skyline plus a 2.5D parallax move, which keeps buildings straight because the image never re-renders.
 - A time-lapse from a high floor.
