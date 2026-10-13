@@ -2,7 +2,7 @@
 
 **Title:** AI Product Manager Roadmap 2026: Skills, Salary and 5 Phases
 
-**Spoken words:** about 2,448 · **Estimated length:** about 16 minutes at 150 words a minute
+**Spoken words:** about 2,493 · **Estimated length:** about 17 minutes at 150 words a minute
 
 **Style:** Alex Hormozi delivery within the Stackle rules. The hook leads with money, sentences are short and blunt, there is one "if I started from zero" plan, the math is shown out loud, and every phase ends with a pass or fail test.
 
@@ -20,7 +20,7 @@ AI product manager jobs posted this fall in the United States pay from about nin
 
 **[On camera]**
 
-Most people try to become an AI product manager by collecting certificates. A certificate shows that you watched something. A hiring team wants proof that you can make an AI product work, and proof is something you can build on purpose.
+Those numbers come from public job ads, and this whole roadmap is built on what those ads ask for. Every hour you spend on it goes toward a skill that a company has already said it will pay for.
 
 ## Promise
 
@@ -74,7 +74,7 @@ A good roadmap also tells you what the job pays. The numbers in this part come f
 
 *[pause]*
 
-**[Graphic 4, full screen]** A table with three rows. Entry: about $120,000 to $185,000, and closer to $90,000 in smaller markets. Senior: about $130,000 to $210,000. Lead and principal: $140,000 to $304,000. A note under the table: "Top AI labs: median base about $356,000."
+**[Graphic 4, full screen]** A table with three rows. Entry: about $120,000 to $185,000, and closer to $90,000 in smaller markets. Senior: about $130,000 to $210,000. Lead and principal: $140,000 to $304,000. A note under the table: "All US product managers, total pay: median about $230,000 (Levels.fyi)."
 
 At the entry level, which means associate and new graduate jobs, posted base pay runs from about one hundred twenty thousand to one hundred eighty-five thousand dollars. A new graduate AI product manager job at a large social media company lists one hundred twenty-two thousand to one hundred eighty-four thousand dollars. In smaller markets and outside the tech industry, starting pay can be closer to ninety thousand dollars.
 
@@ -82,7 +82,7 @@ At the senior level, posted base pay runs from about one hundred thirty thousand
 
 At the lead and principal level, the range gets wide. The lowest posting I found lists one hundred forty thousand dollars. The highest lists up to three hundred four thousand dollars, for a principal job building vision AI, which is AI that understands images and video, at a restaurant software company.
 
-At the top AI labs, the pay can go higher still. One salary tracker that reads the public job ads at a large AI lab reports a median base pay of about three hundred fifty-six thousand dollars for product managers.
+Base salary is not the whole package. Total pay adds bonus and stock on top of it. Levels.fyi, a site where tech workers share what they earn, reports a median total pay of about two hundred thirty thousand dollars a year for product managers in the United States, across all types of product jobs.
 
 *[pause]*
 
@@ -174,7 +174,7 @@ If you already work as a product manager, you can move faster through phase two.
 
 **[Graphic 14, full screen]** Phase 1 card. "Weeks 1 to 4. Learn how AI products work." The test: "Explain RAG, agents, and fine-tuning in two minutes."
 
-Phase one is learning how AI products work, in weeks one to four. Use ChatGPT, Claude, and Gemini every day for real tasks, and notice where each tool fails. Learn the terms from skills one and two: LLM, token, context window, hallucination, RAG, agent, and fine-tuning. Read the official documentation from the model providers, because it is free and it is current. The test for phase one is simple. You can explain to a friend, in two minutes, the difference between RAG, an agent, and fine-tuning, and when you would use each.
+Phase one is learning how AI products work, in weeks one to four. Use ChatGPT, Claude, and Gemini every day for real tasks, and notice where each tool fails. Learn the terms from skills one and two: LLM, token, context window, hallucination, RAG, agent, and fine-tuning. The test for phase one is simple. You can explain to a friend, in two minutes, the difference between RAG, an agent, and fine-tuning, and when you would use each.
 
 *[pause]*
 
@@ -186,7 +186,7 @@ Phase two is learning the product and data basics, in weeks five to eight. Draft
 
 **[Graphic 16, full screen]** Phase 3 card. "Weeks 9 to 12. Evals and trade-offs." The test: "A one-page table comparing two models on quality, cost, and speed."
 
-Phase three is learning evals and trade-offs, in weeks nine to twelve. Pick one AI feature, such as a tool that summarizes customer reviews. Build a test set of fifty real inputs, write what a good output looks like for each, and run two different models on all of them. Record the score, the price, and the waiting time for both. The test for phase three is a one-page table that compares the two models on quality, cost, and speed, along with a clear reason for the one you would ship.
+Phase three is learning evals and trade-offs, in weeks nine to twelve. It comes before building on purpose, because every project you build later needs a quality score. Pick one AI feature, such as a tool that summarizes customer reviews. Build a test set of fifty real inputs, write what a good output looks like for each, and run two different models on all of them. Record the score, the price, and the waiting time for both. The test for phase three is a one-page table that compares the two models on quality, cost, and speed, along with a clear reason for the one you would ship.
 
 *[pause]*
 
@@ -198,7 +198,7 @@ Phase four is creating proof, in weeks thirteen to twenty. Build three small AI 
 
 **[On camera]** *(Opinion. Chris to confirm.)*
 
-Phase five is getting hired, in weeks twenty-one to twenty-six. If you already have a job, look inside your own company first. Find the team that builds AI features, and offer to own their test set. An internal move skips the hardest part of hiring, which is getting a stranger to trust you.
+Phase five is getting hired, in weeks twenty-one to twenty-six. If you already have a job, look inside your own company first. Find the team that builds AI features, and offer to own their test set. An internal move skips the hardest part of hiring, which is getting a stranger to trust you. When you search outside your company, search for several titles, not one. The same job appears under names like Technical Product Manager for AI Systems, or Data and AI Product Manager.
 
 *[pause]*
 
@@ -237,7 +237,7 @@ Tell me in the comments: are you coming to AI product management from product, f
 1. **Hook:** real AI product manager job ads with base pay ranges highlighted, from $91,000 to $304,000.
 2. **Two halves of the job:** "Decide what to build and why" next to "Know how the AI behaves, what it costs, and how to test it."
 3. **Bank chatbot:** the same question asked two ways. The first reply is correct, and the second reply invents a fee, marked in red.
-4. **Salary table:** Entry about $120,000 to $185,000 (closer to $90,000 in smaller markets). Senior about $130,000 to $210,000. Lead and principal $140,000 to $304,000. Note: "Top AI labs: median base about $356,000."
+4. **Salary table:** Entry about $120,000 to $185,000 (closer to $90,000 in smaller markets). Senior about $130,000 to $210,000. Lead and principal $140,000 to $304,000. Note: "All US product managers, total pay: median about $230,000 (Levels.fyi)."
 5. **What changes by level:** "Help ship a feature" at the bottom, "Decide if an AI system is safe, useful, and worth its cost" at the top.
 6. **LLM basics:** a phone keyboard suggesting the next word, plus the token, context window and hallucination labels.
 7. **RAG, agent, fine-tuning:** three small side-by-side diagrams.
@@ -290,7 +290,7 @@ Sources
   - Lead, Enterprise AI Product Manager, AMD, Santa Clara, $140,000: https://www.dice.com/job-detail/02297dc2-c825-47a9-b323-7831a40458cf
   - Lead AI Product Manager, start-up, San Francisco (via Motion Recruitment), $200,000 to $230,000: https://www.dice.com/job-detail/a2136105-aa8c-4a58-855d-01ed49902484
   - Principal Product Manager, Vision AI, Toast, Costa Mesa, $190,000 to $304,000: https://www.dice.com/job-detail/ea5587d1-3147-432f-8caa-7de41553b611
-- Top AI lab median base pay for product managers (about $356,000, from 264 public job ads, July 2026): https://www.recruitingfromscratch.com/roles/anthropic-salary
+- Product manager pay in the United States, all product jobs: median total pay $230,000 and median base $185,000, from 4,972 submissions (Levels.fyi, checked October 13, 2026): https://www.levels.fyi/t/product-manager
 - One token is about three quarters of a word in English (OpenAI Help Center): https://help.openai.com/en/articles/4936856-what-are-tokens-and-how-to-count-them
 - The cost math (one cent per answer, one million questions a day) is an example, not a market price.
 
