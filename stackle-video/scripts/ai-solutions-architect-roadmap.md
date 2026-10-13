@@ -9,22 +9,35 @@
 ## Research brief
 
 ### How the research was done
-Claude in Chrome was not connected, because this ran in a cloud session. YouTube and the transcript sites were also blocked by the session's network policy. All creator research therefore came from web search results: titles, descriptions, chapters and a few comments. **No transcript was read, and no view count or length could be checked**, except for one talk page. Before filming, open each link below and note the views and length. The salary and certification facts came from search extracts of the cited pages. Confirm the pay ranges on each employer's own careers page before they go on screen.
+Claude in Chrome was not connected, because this ran in a cloud session. After the network settings were changed, the YouTube search results page and oEmbed became reachable. **The views, lengths, channels and ages below are real numbers from YouTube search results, taken on 13 October 2026.** YouTube only shows ages such as "1mo ago", so the upload dates are approximate. Watch pages are still blocked by YouTube's "unusual traffic" check, so **no transcript or comment section could be read**. The notes on each video come from titles, descriptions and chapters. The salary and certification facts came from search extracts of the cited pages. Confirm the pay ranges on each employer's own careers page before they go on screen.
 
 ### Creators and videos flagged
 
 | Creator | Channel | Title | Link | Views | Uploaded (approx.) | Length | Transcript |
 |---|---|---|---|---|---|---|---|
-| Unverified | Unverified | DevOps + AI + ___ = $300K/Yr.? [AI Solutions Architect Roadmap] | youtube.com/watch?v=BPU4HEqaubQ | not checked | Aug 2026 | not checked | No |
-| Unverified | Unverified | How to Become an AI Architect: 5 Steps to Get Hired | youtube.com/watch?v=6yzhA2XaTEs | not checked | Sep 2026 | not checked | No |
-| Unverified | Unverified | The AI Architect Roadmap: Why the Old Rules are Breaking (2026) | youtube.com/watch?v=RcS5Aoc8tcE | not checked | Feb 2026 | not checked | No |
-| Unverified | Unverified | How YOU can become an AI Architect (for free) using Anthropic's learning path | youtube.com/watch?v=hwEr6TnNS6I | not checked | Aug 2026 | not checked | No |
-| Mike Gibbs | Go Cloud Architects | What Does an AI Architect Actually Do? Interview With a Real AI Architect | youtube.com/watch?v=v70ybAt8H8I | not checked | May 2026 | not checked | No |
-| Mike Gibbs (likely) | Go Cloud Architects (likely) | AI Architect Career Q&A | youtube.com/watch?v=hEAw6CoLgks | not checked | Mar 2026 | not checked | No |
-| Noelle Russell (likely) | AI Leadership Institute (likely) | How to Become an AI Solutions Architect | youtube.com/watch?v=77VrRZ4Hkwo | not checked | Nov 2025 | not checked | No |
-| Clay Bavor with Alessio Fanelli | AI Engineer | Rise of the AI Architect | youtube.com/watch?v=C3geUfBR2js | not checked | 24 Jul 2025 | 18:55 | Chapters and summary only |
+| Clay Bavor with Alessio Fanelli | AI Engineer | Rise of the AI Architect | youtube.com/watch?v=C3geUfBR2js | 52,846 | Jul 2025 | 18:55 | Chapters and summary only |
+| Mike Gibbs | Go Cloud Architects | AI Architect Skills: 5 Skills You Need to Get Hired in 2026 | youtube.com/watch?v=Pq7_EDpQdbA | 48,108 | Sep 2026 | 25:17 | No |
+| Tech With Lucy | Tech With Lucy | Here's EXACTLY How to Become A Solutions Architect (just copy this) | youtube.com/watch?v=4iSb2IYiup8 | 44,497 | Apr 2026 | 8:30 | No |
+| Simplilearn | Simplilearn | AI Architect Roadmap For 2026: How To Become An AI Solution Architect In 2026 | youtube.com/watch?v=34ZrB8l17p4 | 26,922 | about 2023 (the title says 2026) | 7:45 | No |
+| Vishakha Sadhwani | Vishakha Sadhwani | DevOps + AI + ___ = $300K/Yr.? [AI Solutions Architect Roadmap] | youtube.com/watch?v=BPU4HEqaubQ | 26,667 | Aug 2026 | 12:19 | No |
+| Mike Gibbs | Go Cloud Architects | How to Become an AI Architect: 5 Steps to Get Hired | youtube.com/watch?v=6yzhA2XaTEs | 18,919 | Sep 2026 | 23:14 | No |
+| Neal Davis | Digital Cloud Training | What does a Solutions Architect actually do? | youtube.com/watch?v=atL0s3Ajrrg | 12,601 | Feb 2026 | 22:16 | No |
+| Baraa | Data with Baraa | AI Engineer Roadmap: Built From 40,000 Real Job Ads (nearby topic) | youtube.com/watch?v=qKXUPI06tZo | 218,031 | Sep 2026 | 19:13 | No |
 
-**Big creators:** none of the large data and AI career channels has a dedicated AI Solutions Architect roadmap video. The channels checked were Krish Naik, codebasics, Tina Huang, Tech With Tim, Seattle Data Guy, Andreas Kretz, Zach Wilson, Ken Jee, Thu Vu, Mischa van den Burg, Adrian Cantrill, Neal Davis and Tech With Lucy. The closest is Krish Naik's "AI Forward Deployed Engineer roadmap" from about September 2026. Mid-size cloud channels and course sellers own the topic, so the space is open for Stackle.
+Also checked, with smaller audiences:
+- Go Cloud Architects, "What Does an AI Architect Actually Do?" (v70ybAt8H8I): 6,660 views, 1:16:28, live in Jun 2026.
+- Go Cloud Architects, "AI Architect Career Q&A" (hEAw6CoLgks): 1,507 views, 1:25:50.
+- Go Cloud Architects, "AI Architect vs AI Engineer" (9HPU5xoW-AM): 3,241 views, 6 days old.
+- Noelle, "How to Become an AI Solutions Architect" (77VrRZ4Hkwo): 489 views, 1:08:46.
+- Shweta Vohra, "The AI Architect Roadmap: Why the Old Rules are Breaking" (RcS5Aoc8tcE): 294 views, 2:40.
+- Prakash Karena, "How YOU can become an AI Architect (for free)" (hwEr6TnNS6I): 83 views.
+- Miles Jazz, "AI Solutions Architect Roadmap 2026: From Developer to $300K Architect" (kf24gaYnNq8): 52 views.
+
+**What the numbers say:**
+- **No big data or AI career channel owns this exact topic.** The most-viewed exact-topic video is Go Cloud Architects at about 48,000 views, and most videos on the topic have under 30,000.
+- **Nearby AI Engineer roadmaps pull far bigger audiences.** Examples: Sajjaad Khader's "$300K AI Engineer" (360,000 views in a month), Data with Baraa (218,000 in 3 weeks) and Krish Naik's "Complete AI Engineering Roadmap" (141,000 in 5 days).
+- **Bigger creators cover the non-AI version.** Tech With Lucy and Digital Cloud Training have solutions architect videos.
+- **The space is open,** and an AI Engineer audience is ready to move to the next title.
 
 ### What all of them cover (our script covers these too)
 - The architect is a bridge between the business and the engineers, and the job is about design decisions and trade-offs.
@@ -39,10 +52,11 @@ Claude in Chrome was not connected, because this ran in a cloud session. YouTube
 - **$15.7 trillion is misused.** One description in this group calls it an industry size. The figure is PwC's 2017 estimate of what AI could add to world GDP by 2030, not the size of an industry.
 - **"14 days" and "for free" are misleading.** Those videos sell a vendor's developer certificate as if it were the job. Real postings ask for 2 to 10 years of experience.
 - **Older videos name outdated certifications.** AWS Machine Learning Specialty retired on 31 March 2026. Microsoft AI-102 retired on 30 June 2026 and was replaced by AI-103. AI-900 was replaced by AI-901. AWS Solutions Architect Professional moves from SAP-C02 to SAP-C03 on 17 November 2026.
+- **Old content wears a new year.** The Simplilearn "AI Architect Roadmap For 2026" video is about three years old and was given a 2026 title, so its tools and certifications come from before the generative AI wave.
 - **They disagree on what the job is.** Some treat it as a cloud architect role, some as a vendor certificate, and one treats it as a business owner of customer AI agents. None separates customer-facing jobs from internal jobs.
 
 ### Gaps, and the angle our script takes
-1. **Job-posting evidence.** Nobody uses real postings, so we take the pay ranges and required years straight from postings.
+1. **Job-posting evidence.** No AI Solutions Architect video uses real postings, so we take the pay ranges and required years straight from them. Data with Baraa did this for AI engineers with 40,000 job ads. Our version is smaller, but it is the first for this role, and every range has a link.
 2. **Pay by level, with sources.** We give the first, specialist and senior levels, base pay versus total pay, a government comparison, and the UK. For India we say plainly that we found no reliable number.
 3. **Two types of the job.** We separate customer-facing from internal, which nobody else does.
 4. **A proof for every phase.** Each phase ends with something you can show, including a decision record and an evaluation report. Nobody shows portfolio pieces like these.
