@@ -1,9 +1,9 @@
 # How to Become a Data Engineer in 2026 and 2027
 
-**Spoken words: 1,665 · about 11 minutes at 150 words a minute**
-**Screen time: 64% full-screen Excalidraw graphics. You are on screen for 36%: 24% on camera and 11% with a card beside you.**
+**Spoken words: 1,911 · about 13 minutes at 150 words a minute**
+**Screen time: 66% full-screen Excalidraw graphics. You are on screen for 34%: 23% on camera and 11% with a card beside you.**
 
-Status: draft for Chris to review. Numbers were checked on 12 October 2026 (see the research brief). The two marked "check before filming" need one look in a browser.
+Status: version 2, rewritten in simple English with an everyday example for each idea. Version 1 is in the git history. Draft for Chris to review. Numbers were checked on 12 October 2026 (see the research brief). The two marked "check before filming" need one look in a browser.
 
 ---
 
@@ -75,23 +75,25 @@ Numbers we chose **not** to use:
 
 ## Script
 
+This version uses short, plain sentences and one everyday example for each idea. Every sentence is still a full sentence, so it stays easy to follow for people who speak English as a second language.
+
 Labels: **Graphic N, full screen** means the graphic fills the screen while you keep talking. **Card beside you** means you stay on screen with a card next to you. **On camera** means only you. *(pause)* means a one-second pause, where a graphic starts or ends.
 
 ### Hook
 
 **[Graphic 1, full screen: $160,500 and the job postings fact]** *(pause)*
 
-A data engineer in the United States earns about one hundred sixty thousand dollars a year at the middle of the pay range, and data engineer is one of the three tech job titles with the most job postings. *(pause)*
+The middle of the pay range for a data engineer in the United States is about one hundred sixty thousand dollars a year. Data engineer is also one of the three tech jobs with the most job postings right now. *(pause)*
 
 **[On camera]**
 
-Still, many people who try to become a data engineer take far too long, because they learn the skills in the wrong order and build projects that no hiring manager wants to see.
+So why do so many people try to become a data engineer and give up? They are not lazy, and they are not slow. They learn the skills in the wrong order, and they build projects that nobody wants to see.
 
 ### Promise
 
 **[On camera]**
 
-In this video I am going to show you how to become a data engineer in 2026 and 2027. You will learn if you need a degree, which skills to learn and in which order, how AI changed the work, the first job that makes the move easier, the projects that get callbacks, and how the interviews work.
+In this video I am going to show you how to become a data engineer in 2026 and 2027, step by step. You will learn if you need a degree, what to learn and in what order, how AI changed the job, the easier first job that most people skip, the projects that get callbacks, and how to pass the interviews.
 
 ### Intro
 
@@ -103,89 +105,95 @@ If you are new here, I am Chris. I have worked in data engineering for more than
 
 **[On camera]**
 
-A computer science degree is not a hard requirement for data engineering, but a degree still helps.
+Do you need a computer science degree to become a data engineer? The short answer is no, but a degree still helps.
 
-**[Graphic 2, full screen: four job postings, three with a degree]** *(pause)*
+**[Graphic 2, full screen: four job posts, three with a degree]** *(pause)*
 
-A 2026 study of data engineer job postings in the United States found that about three in four postings mention a bachelor's degree. About one in four do not mention education at all. *(pause)*
+A 2026 study looked at data engineer job posts in the United States. About three in four mention a bachelor's degree. About one in four do not mention education at all. *(pause)*
 
 **[Card beside you: "What I check"]** *(pause)*
 
-A job posting asks for a degree, but the interview tests skills. When I interview engineers, I check three things. Can you write SQL that gives the right answer on messy data? Can you build a pipeline that runs every day without you? Can you explain what you built to a person who does not code? *(pause)*
+A job post can ask for a degree, but the interview tests skills. When I interview engineers, I check three things. Can you write SQL that gives the right answer on messy data? Can you build a pipeline that runs every day without you? Can you explain what you built to a person who does not code? *(pause)*
 
 **[On camera]**
 
-A background in computer science, math or engineering makes the first phase faster, because you already think in clear steps. A background like that does not decide who gets the offer.
+A degree in computer science, math or engineering is a head start, not a finish line. It does not decide who gets the offer. Your skills decide that.
 
 ### Part 2: The skills, in order
 
 **[Graphic 3, full screen: the five phases]** *(pause)*
 
-Data engineering skills build on each other, so the order matters. There are five phases: SQL and Python, data modeling, pipelines, cloud, and AI. Each phase uses the one before it.
+Data engineering skills build on each other, like math in school. You cannot learn fractions before you learn to count, so the order matters. There are five phases: SQL and Python, data modeling, pipelines, cloud, and AI.
 
 **[Graphic 4, full screen: SQL]**
 
-The first phase starts with SQL, which stands for Structured Query Language. It is how you ask a database for data. Start with joins, which combine two tables, such as orders and customers. Next come aggregations, which add up rows, such as total sales for each month. Then learn window functions, which compare a row with the rows around it, such as today's sales against yesterday's. SQL is tested in almost every data engineering interview.
+Phase one starts with SQL, which stands for Structured Query Language. It is how you ask a database a question. Think of a database as a giant spreadsheet. You type, "Show me every order from last week," and you get the answer in seconds.
+
+Inside SQL, start with joins. A join connects two tables, like matching each order to the customer who placed it. Next, learn aggregations, which add things up, such as total sales for each month. Then learn window functions, which compare a row with the rows next to it, such as today's sales against yesterday's. SQL is tested in almost every data engineering interview.
 
 **[Graphic 5, full screen: Python]**
 
-Python is the second half of the first phase. Learn the core language first: variables, loops, functions and error handling. Then learn to read files and to call an API, which is how one program asks another program for data, such as a weather app asking a weather service for today's forecast. A library called pandas, or a newer one called Polars, helps you clean tables of data in Python.
+Python is the other half of phase one. If SQL asks the questions, Python does the chores. It moves files and cleans messy data. Learn the basics first: variables, loops, functions and error handling. Then learn to read files and to call an API. An API is how one program asks another program for data, like a weather app asking a weather service for today's forecast. A library called pandas, or a newer one called Polars, helps you clean tables.
 
 **[Graphic 6, full screen: data modeling]**
 
-The second phase is data modeling, which means deciding how to store data so that people can get answers fast. The most common design is the star schema. A fact table in the middle holds events, such as every order. Dimension tables around it describe those events, such as the customer, the product and the date. Practice on a cloud data warehouse, a database built for analysis, such as Snowflake, BigQuery or Databricks. Then learn dbt, a tool that turns your SQL into tested, reusable steps.
+Phase two is data modeling, which means deciding how to store data so people get answers fast. Think of a kitchen. When every pan has its own place, you cook fast.
+
+The most common data model is the star schema. One fact table sits in the middle and holds events, like every order. Dimension tables sit around it and describe those events, like the customer, the product and the date. Practice on a cloud data warehouse, which is a database built for analysis, such as Snowflake, BigQuery or Databricks. Then learn dbt, a tool that turns your SQL into tested, reusable steps.
 
 **[Graphic 7, full screen: pipelines]**
 
-The third phase is the data pipeline. It moves data from where it is created to where it is used, and cleans it on the way. A batch pipeline runs on a schedule, such as every night at two in the morning. An orchestrator, such as Airflow or Dagster, starts each step in the right order and tries again when a step fails. Add data quality tests, such as a check that no order has a negative price. When the data is too big for one computer, learn Apache Spark. Later, learn Apache Kafka for streaming data that arrives every second, such as card payments.
+Phase three is the data pipeline. A pipeline works like the water pipes in a city. Water starts at a lake, gets cleaned at a plant, and comes out of your tap. Data works the same way. It starts where it is created, gets cleaned on the way, and lands where people use it.
+
+Most pipelines run on a schedule, like every night at two in the morning. An orchestrator, such as Airflow or Dagster, is the manager of the pipeline. It starts each step in the right order, and it tries again when a step fails. Add data quality tests, like a check that no order has a negative price. When the data gets too big for one computer, learn Apache Spark. Later, learn Apache Kafka for events that arrive every second, like card payments.
 
 **[Graphic 8, full screen: cloud, then back to the five phases with AI circled]**
 
-The fourth phase is the cloud. Pick one provider, Amazon Web Services, Microsoft Azure or Google Cloud, and learn three parts of it: storage, where your files live; compute, the machines that run your code; and permissions, which decide who can see what. Also learn Git, which tracks every change in your code, and Docker, which packages a program so it runs the same on every computer. *(pause)*
+Phase four is the cloud, which just means renting computers from a company instead of buying your own. Pick one provider, Amazon Web Services, Microsoft Azure or Google Cloud, and learn three parts: storage, where your files live; compute, the machines that run your code; and permissions, which decide who can see what. Also learn Git, which saves every change in your code, like the version history in a Google Doc. Then learn Docker, which packs your program in a box so it runs the same on every computer. *(pause)*
 
 ### Part 3: How AI changed the work
 
 **[On camera]**
 
-The fifth phase is AI, and AI changed the work of data engineers in two ways.
+Phase five is AI, and AI changed this job in two big ways.
 
-The first change is how you write code. Most engineers now work with a coding assistant, such as GitHub Copilot, Cursor or Claude Code. An assistant can write the first draft of a query or a pipeline step in seconds.
+The first change is how you write code. Most engineers now work with a coding assistant, such as GitHub Copilot, Cursor or Claude Code. You type what you want, and the assistant writes a first draft in seconds.
 
 **[Graphic 9, full screen: how you write code, 83% then 71%]** *(pause)*
 
-In the 2026 Stack Overflow survey, eighty-three percent of developers said they use at least one AI tool. You still read every line, because the result can run and still give the wrong answer. In a 2026 survey by dbt Labs, seventy-one percent of data teams said they worry that wrong data from AI can reach the people who rely on it. This is why SQL and data modeling matter more now, not less. You need them to check the work. *(pause)*
+In the 2026 Stack Overflow survey, eighty-three percent of developers said they use at least one AI tool. But here is the catch. The code can run and still give the wrong answer. Think of a calculator with a broken key. It gives you a number fast, but you cannot trust that number. In a 2026 survey by dbt Labs, seventy-one percent of data teams said they worry that wrong data from AI can reach the people who rely on it. So SQL and data modeling matter more now, not less. They are how you check the work. *(pause)*
 
 **[On camera]**
 
-The second change is what you build. Companies want AI assistants that answer questions from their own documents, such as a support assistant that answers from a company's help pages. That needs a data pipeline.
+The second change is what you build. Companies want AI assistants that answer questions from their own documents, like an assistant that answers customers from a company's help pages. Every assistant like that needs a data pipeline behind it.
 
 **[Graphic 10, full screen: what you build]** *(pause)*
 
-A pipeline for an AI assistant collects the documents, splits them into small pieces, and turns each one into an embedding. An embedding is a list of numbers that captures what the text means, so text with a similar meaning gets similar numbers. These lists go into a vector database, which finds the pieces closest in meaning to a question. This setup is called RAG, which stands for retrieval-augmented generation. *(pause)*
+A pipeline for an AI assistant collects the documents, cuts them into small pieces, and turns each one into an embedding. An embedding is a list of numbers that captures what the text means. Text with a similar meaning gets similar numbers, like two houses on the same street that have close addresses. These lists go into a vector database. When someone asks a question, the vector database finds the pieces closest in meaning. This setup is called RAG, which stands for retrieval-augmented generation. *(pause)*
 
 **[On camera]**
 
-A small RAG project in your portfolio shows a hiring manager that you know how the job looks in 2026 and 2027.
+Build one small RAG project, and a hiring manager can see that you know how the job works in 2026 and 2027.
 
 ### Part 4: The side door
 
 **[On camera]**
 
-Data engineering is often not an entry-level job, so your first job in data may have a different title.
+Here is the honest truth. Data engineering is often not an entry-level job. So your first job in data may have a different title, and that is completely fine.
 
 **[Graphic 11, full screen: the side door]** *(pause)*
 
-Three jobs are more open to beginners: data analyst, analytics engineer, and business intelligence developer, a person who builds reports and dashboards. An analytics engineer builds clean tables for analysts with SQL and dbt, which is already half of the work of a data engineer. After twelve to eighteen months, you move across inside the same company. A move inside a company is much easier than a new hire from outside, because the team already trusts your work. *(pause)*
+Three jobs are more open to beginners: data analyst, analytics engineer, and business intelligence developer, a person who builds reports and dashboards. An analytics engineer builds clean tables with SQL and dbt, which is already half the work of a data engineer. Think of this path as the side door into a building when the front door is locked. After twelve to eighteen months, you move across inside the same company. A move inside a company is much easier than a new hire from outside, because the team already trusts your work. *(pause)*
 
 **[Card beside you: "Your past industry counts"]** *(pause)*
 
-Your past industry also counts. If you worked in healthcare, banking or retail, apply to data teams in that industry first. A person who already knows what an insurance claim or a stock trade is needs less training, and hiring managers notice that. *(pause)*
+Your past industry also counts. If you worked in healthcare, banking or retail, apply to data teams in that industry first. A person who already knows what an insurance claim or a stock trade is needs less training. Hiring managers notice that. *(pause)*
 
 ### Part 5: Projects that get callbacks
 
 **[Graphic 12, full screen: copied projects crossed out]** *(pause)*
 
-Projects copied from a course get skipped. A hiring manager has seen the same taxi-trip pipeline and the same spreadsheet loaded once into a database many times, so a copy says nothing about you.
+Projects copied from a course get skipped. A hiring manager has seen the same taxi-trip pipeline and the same spreadsheet loaded once into a database many times, so a copy says nothing about you. Think of a cover song. It shows that you can follow along, but it does not show what you can make.
 
 **[Graphic 13, full screen: a strong project]**
 
@@ -193,7 +201,7 @@ A strong project pulls real data that changes every day. It runs on a schedule, 
 
 **[Graphic 14, full screen: the four questions]**
 
-Every project should answer four questions. What problem does it solve? Why does that problem matter to a business? What did you build, and why did you choose that design? What can someone do now that they could not do before? The last question matters most, because a pipeline that runs tells no one what to do on Monday morning.
+Every project should answer four questions. What problem does it solve? Why does that problem matter to a business? What did you build, and why did you choose that design? What can someone do now that they could not do before? The last question matters most. A pipeline that runs tells no one what to do on Monday morning.
 
 **[Graphic 15, full screen: build in a field you know, then the whole board]**
 
@@ -201,7 +209,7 @@ Build in a field you already know. A nurse can build a pipeline on public health
 
 **[Card beside you: "3 projects"]** *(pause)*
 
-Aim for three projects. Give each a README, the first page of the project, written for a manager who does not code, with a diagram of the pipeline. Then post a short write-up of each one on LinkedIn. *(pause)*
+Three real projects beat ten copied ones. Give each a README, the first page of the project, written for a manager who does not code, with a diagram of the pipeline. Then post a short write-up of each on LinkedIn. *(pause)*
 
 ### Part 6: The interviews
 
@@ -211,15 +219,15 @@ A data engineering interview usually has five stages. The first stage is a call 
 
 **[On camera]**
 
-Practice SQL every week, not only the week before an interview. Sites such as StrataScratch, DataLemur and LeetCode have questions that companies have asked.
+Practice SQL every week, not only right before an interview. SQL practice works like the gym. Ten minutes every day beats five hours the night before. Sites such as StrataScratch, DataLemur and LeetCode have questions that companies have asked.
 
 **[Card beside you: "Explain your reasons"]** *(pause)*
 
-In the design sessions, explain your reasons out loud, not only your answer. Do not say, "I used an incremental load." Say, "I used an incremental load, which moves only the rows that changed, because the table grows by ten million rows a day and a full reload would take hours." *(pause)*
+In the design sessions, explain your reasons out loud, not only your answer. Do not say, "I used an incremental load." Say, "I used an incremental load, which moves only the rows that changed, because the table grows by ten million rows a day and a full reload would take hours." The first one tells me what you did. The second one tells me how you think. *(pause)*
 
 **[Graphic 17, full screen: the STAR method]** *(pause)*
 
-For questions about past work, use the STAR method: the situation, the task, the action you took, and the result. Always end with a number. "My pipeline cut the delay of the daily sales report from six hours to forty minutes" sounds very different from "my pipeline worked well." *(pause)*
+For questions about past work, use the STAR method: the situation, the task, the action you took, and the result. Always end with a number. "My pipeline cut the delay of the daily sales report from six hours to forty minutes" beats "my pipeline worked well" every single time. *(pause)*
 
 **[On camera]**
 
@@ -233,7 +241,7 @@ A referral means a person inside a company recommends you. Hiring data from Ashb
 
 **[On camera]**
 
-Here is one thing to do this week. Pick one public dataset from a field you know, and write the answers to the four questions before you write any code.
+Here is your homework for this week. Pick one public dataset from a field you know. Before you write any code, write the answers to the four questions. That one page will guide your whole project.
 
 ### Call to action
 
@@ -294,11 +302,13 @@ The cards are transparent QuickTime files. Put them over your camera shot. The c
 ## Things I added that you did not give me: please check
 
 - **"When I interview engineers, I check three things..."** These are written in your voice. Change them to the three things you actually check.
-- **"Many people who try to become a data engineer take far too long, because they learn the skills in the wrong order..."** This is presented as your observation.
+- **"So many people try to become a data engineer and give up. They are not lazy, and they are not slow."** This is presented as your observation, and so is "the easier first job that most people skip".
 - **"Data engineering is often not an entry-level job"** and **"after twelve to eighteen months, you move across"**. These are opinions with no survey behind them. Keep them only if they match what you have seen.
 - **"An analytics engineer's work is already half of a data engineer's work."** This is an opinion.
 - **"SQL is tested in almost every data engineering interview."** This is based on your experience and on interview guides from Amazon and Exponent, not on a statistic.
 - **The masterclass line** ("from SQL to a job-ready portfolio in ten weeks") comes from the masterclass page address. Confirm the wording.
+- **Everyday examples added in version 2:** math in school (fractions before counting), the database as a giant spreadsheet, "SQL asks the questions, Python does the chores", the kitchen, the city water pipes, the cloud as renting computers, Git as the version history in a Google Doc, Docker as a box, the calculator with a broken key, houses with close addresses, the side door, the cover song, and the gym. Check that each one sounds like you.
+- **Opinions added in version 2:** "a head start, not a finish line", "three real projects beat ten copied ones", and "beats 'my pipeline worked well' every single time".
 - **Examples:** the incremental load example, the "six hours to forty minutes" STAR result, the taxi-trip pipeline, and the support assistant on a company's help pages are all invented examples, not real cases.
 
 ---
@@ -311,7 +321,7 @@ Other choice: **Data Engineer Roadmap 2026: How to Become a Data Engineer** (58 
 
 ## Description
 
-A data engineer in the United States earns about $160,000 a year at the middle of the pay range, and data engineer is one of the three tech job titles with the most job postings. In this video I show you how to become a data engineer in 2026 and 2027: if you need a degree, which skills to learn and in which order, how AI changed the work, the first job that makes the move easier, the projects that get callbacks, and how the interviews work.
+The middle of the pay range for a data engineer in the United States is about $160,000 a year, and data engineer is one of the three tech jobs with the most job postings. In this video I show you how to become a data engineer in 2026 and 2027, step by step: if you need a degree, what to learn and in what order, how AI changed the job, the easier first job that most people skip, the projects that get callbacks, and how to pass the interviews.
 
 Chapters
 0:00 Data engineer pay and demand
