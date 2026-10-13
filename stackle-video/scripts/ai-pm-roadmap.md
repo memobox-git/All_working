@@ -2,7 +2,7 @@
 
 **Title:** AI Product Manager Roadmap 2026: Skills, Salary and 5 Phases
 
-**Spoken words:** about 2,493 · **Estimated length:** about 17 minutes at 150 words a minute
+**Spoken words:** about 2,494 · **Estimated length:** about 17 minutes at 150 words a minute
 
 **Style:** Alex Hormozi delivery within the Stackle rules. The hook leads with money, sentences are short and blunt, there is one "if I started from zero" plan, the math is shown out loud, and every phase ends with a pass or fail test.
 
@@ -14,7 +14,7 @@
 
 *[pause]*
 
-AI product manager jobs posted this fall in the United States pay from about ninety thousand dollars to more than three hundred thousand dollars a year in base salary. The difference between those two numbers is not luck. The difference is a short list of skills, learned in the right order.
+AI product manager jobs posted this fall in the United States pay from about ninety thousand dollars to more than three hundred thousand dollars a year in base salary. You do not need to be an engineer to get this job, but you do need the right skills in the right order.
 
 *[pause]*
 
