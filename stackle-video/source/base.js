@@ -11,9 +11,18 @@ const clamp = x => Math.min(Math.max(x, 0), 1);
 const ease = x => 1 - Math.pow(1 - clamp(x), 3);
 const back = x => { x = clamp(x); const c = 1.70158; return 1 + (c + 1) * Math.pow(x - 1, 3) + c * Math.pow(x - 1, 2); };
 const D = 0.55;
+// Optional re-timing, set per render: window.TS scales every cue time,
+// window.TMAP maps cue times through [oldStart, oldEnd, newStart, newEnd] segments
+// (a cue outside every segment never fires). Animation lengths stay the same.
+const tm = x => {
+  x = +x;
+  const m = window.TMAP;
+  if (m) { for (const [o0, o1, n0, n1] of m) if (x >= o0 && x <= o1) return n0 + (x - o0) * (n1 - n0) / ((o1 - o0) || 1); return 1e6; }
+  return x * (window.TS || 1);
+};
 window.render = t => {
   document.querySelectorAll('[data-in]').forEach(el => {
-    const a = +el.dataset.in, b = el.dataset.out ? +el.dataset.out : 1e9;
+    const a = tm(el.dataset.in), b = el.dataset.out ? tm(el.dataset.out) : 1e9;
     const p = ease((t - a) / D) * (1 - ease((t - b) / (D * 0.7)));
     const fx = el.dataset.fx || 'up';
     const off = 1 - p;
@@ -27,33 +36,33 @@ window.render = t => {
     el.style.transform = tf;
   });
   document.querySelectorAll('[data-count]').forEach(el => {
-    const p = ease((t - +el.dataset.cin) / +(el.dataset.cdur || 1.2));
+    const p = ease((t - tm(el.dataset.cin)) / +(el.dataset.cdur || 1.2));
     el.textContent = (el.dataset.prefix || '') + Math.round(+el.dataset.count * p).toLocaleString('en-US') + (el.dataset.suffix || '');
   });
   document.querySelectorAll('[data-bar]').forEach(el => {
-    el.style.width = (100 * +el.dataset.bar * ease((t - +el.dataset.bin) / +(el.dataset.bdur || 1))) + '%';
+    el.style.width = (100 * +el.dataset.bar * ease((t - tm(el.dataset.bin)) / +(el.dataset.bdur || 1))) + '%';
   });
   document.querySelectorAll('[data-h]').forEach(el => {
-    el.style.height = (100 * +el.dataset.h * ease((t - +el.dataset.hin) / +(el.dataset.hdur || 1))) + '%';
+    el.style.height = (100 * +el.dataset.h * ease((t - tm(el.dataset.hin)) / +(el.dataset.hdur || 1))) + '%';
   });
   document.querySelectorAll('[data-draw]').forEach(el => {
     const len = el.getTotalLength ? el.getTotalLength() : 1000;
-    const p = ease((t - +el.dataset.draw) / +(el.dataset.ddur || 0.8));
+    const p = ease((t - tm(el.dataset.draw)) / +(el.dataset.ddur || 0.8));
     el.style.strokeDasharray = `${len} ${len}`;
     el.style.strokeDashoffset = String(len * (1 - p));
   });
   document.querySelectorAll('[data-glow]').forEach(el => {
-    const b = el.dataset.glowout ? +el.dataset.glowout : 1e9;
-    const g = ease((t - +el.dataset.glow) / 0.45) * (1 - ease((t - b) / 0.45));
+    const b = el.dataset.glowout ? tm(el.dataset.glowout) : 1e9;
+    const g = ease((t - tm(el.dataset.glow)) / 0.45) * (1 - ease((t - b) / 0.45));
     el.style.setProperty('--g', g.toFixed(3));
   });
   document.querySelectorAll('[data-type]').forEach(el => {
     if (el.dataset.full === undefined) el.dataset.full = el.textContent;
-    const n = Math.max(0, Math.floor((t - +el.dataset.type) * +(el.dataset.tps || 30)));
+    const n = Math.max(0, Math.floor((t - tm(el.dataset.type)) * +(el.dataset.tps || 30)));
     el.textContent = el.dataset.full.slice(0, n);
   });
   document.querySelectorAll('[data-mv]').forEach(el => {
-    const [a, b, dx, dy] = el.dataset.mv.split(' ').map(Number);
+    let [a, b, dx, dy] = el.dataset.mv.split(' ').map(Number); a = tm(a); b = tm(b);
     const p = ease((t - a) / (b - a));
     el.style.transform = `translate(${dx * p}px, ${dy * p}px)`;
   });

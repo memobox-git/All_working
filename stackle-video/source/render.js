@@ -5,10 +5,11 @@ const { chromium } = require('playwright');
 const { spawn } = require('child_process');
 const path = require('path');
 
-async function renderScene(scene, out, secs, fps = 30) {
+async function renderScene(scene, out, secs, fps = 30, timing = {}) {
   const frames = Math.round(Number(secs) * fps);
   const browser = await chromium.launch();
   const page = await browser.newPage({ viewport: { width: 1920, height: 1080 } });
+  if (timing.ts || timing.tmap) await page.addInitScript(t => { window.TS = t.ts; window.TMAP = t.tmap; }, timing);
   await page.goto('file://' + path.resolve(scene));
   await page.evaluate(() => document.fonts.ready);
   const ff = spawn('ffmpeg', ['-y', '-loglevel', 'error', '-f', 'image2pipe', '-framerate', String(fps),

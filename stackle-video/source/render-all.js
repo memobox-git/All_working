@@ -15,7 +15,7 @@ const { renderScene } = require('./render');
     while (next < jobs.length) {
       const j = jobs[next++];
       const t0 = Date.now();
-      await renderScene(j.scene, j.out, j.seconds, 30);
+      await renderScene(j.scene, j.out, j.seconds, 30, { ts: j.ts, tmap: j.tmap });
       console.log(`  graphic ${j.graphic} done in ${((Date.now() - t0) / 1000).toFixed(0)}s`);
     }
   };

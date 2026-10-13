@@ -3,222 +3,452 @@
   "graphic": 1,
   "scene": "fde/g01-hook.html",
   "out": "../graphics/fde/g01-hook.mp4",
-  "seconds": 25.0
+  "seconds": 22.5,
+  "ts": 0.913
  },
  {
   "graphic": 2,
   "scene": "fde/g02-intro.html",
   "out": "../graphics/fde/g02-intro.mp4",
-  "seconds": 25.8
+  "seconds": 25.3
  },
  {
   "graphic": 3,
   "scene": "fde/g03-part1-title.html",
   "out": "../graphics/fde/g03-part1-title.mp4",
-  "seconds": 23.0
+  "seconds": 6.9,
+  "ts": 0.2571
  },
  {
   "graphic": 4,
   "scene": "fde/g04-what-is-fde.html",
   "out": "../graphics/fde/g04-what-is-fde.mp4",
-  "seconds": 29.0
+  "seconds": 20.1,
+  "ts": 0.6889
  },
  {
   "graphic": 5,
   "scene": "fde/g05-palantir-origin.html",
   "out": "../graphics/fde/g05-palantir-origin.mp4",
-  "seconds": 17.0
+  "seconds": 8.9,
+  "ts": 0.4933
  },
  {
   "graphic": 6,
   "scene": "fde/g06-devs-deltas.html",
   "out": "../graphics/fde/g06-devs-deltas.mp4",
-  "seconds": 30.2
+  "seconds": 12.1,
+  "ts": 0.3759
  },
  {
   "graphic": 7,
   "scene": "fde/g07-llm-limits.html",
   "out": "../graphics/fde/g07-llm-limits.mp4",
-  "seconds": 35.0
+  "seconds": 18.1,
+  "tmap": [
+   [
+    0,
+    9.6,
+    0,
+    3.4
+   ],
+   [
+    9.6,
+    20.0,
+    3.4,
+    7.0
+   ],
+   [
+    20.0,
+    25.6,
+    7.0,
+    8.0
+   ],
+   [
+    25.6,
+    35.0,
+    8.0,
+    18.1
+   ]
+  ]
  },
  {
   "graphic": 8,
   "scene": "fde/g08-mit-study.html",
   "out": "../graphics/fde/g08-mit-study.mp4",
-  "seconds": 29.4
+  "seconds": 16.5,
+  "ts": 0.5474
  },
  {
   "graphic": 9,
   "scene": "fde/g09-who-hires.html",
   "out": "../graphics/fde/g09-who-hires.mp4",
-  "seconds": 31.0
+  "seconds": 13.7,
+  "tmap": [
+   [
+    0,
+    7.0,
+    0,
+    3.0
+   ],
+   [
+    7.0,
+    19.0,
+    3.0,
+    5.8
+   ],
+   [
+    19.0,
+    23.6,
+    5.8,
+    8.4
+   ],
+   [
+    23.6,
+    31.0,
+    8.4,
+    13.7
+   ]
+  ]
  },
  {
   "graphic": 10,
   "scene": "fde/g10-bank-example.html",
   "out": "../graphics/fde/g10-bank-example.mp4",
-  "seconds": 37.8
+  "seconds": 18.1,
+  "tmap": [
+   [
+    0,
+    0.6,
+    0,
+    0.6
+   ],
+   [
+    23.9,
+    24.0,
+    0.9,
+    1.0
+   ],
+   [
+    24.0,
+    26.6,
+    1.0,
+    6.6
+   ],
+   [
+    26.6,
+    29.8,
+    6.6,
+    8.8
+   ],
+   [
+    29.8,
+    32.2,
+    8.8,
+    10.6
+   ],
+   [
+    32.2,
+    35.6,
+    10.6,
+    13.6
+   ],
+   [
+    35.6,
+    37.8,
+    13.6,
+    18.1
+   ]
+  ]
  },
  {
   "graphic": 11,
   "scene": "fde/g11-accountability.html",
   "out": "../graphics/fde/g11-accountability.mp4",
-  "seconds": 41.4
+  "seconds": 6.9,
+  "tmap": [
+   [
+    0,
+    0.6,
+    0,
+    0.4
+   ]
+  ]
  },
  {
   "graphic": 12,
   "scene": "fde/g12-four-jobs.html",
   "out": "../graphics/fde/g12-four-jobs.mp4",
-  "seconds": 35.0
+  "seconds": 23.7,
+  "ts": 0.6727
  },
  {
   "graphic": 13,
   "scene": "fde/g13-read-postings.html",
   "out": "../graphics/fde/g13-read-postings.mp4",
-  "seconds": 25.8
+  "seconds": 10.5,
+  "ts": 0.3782
  },
  {
   "graphic": 14,
   "scene": "fde/g14-pay-hype.html",
   "out": "../graphics/fde/g14-pay-hype.mp4",
-  "seconds": 27.0
+  "seconds": 12.9,
+  "tmap": [
+   [
+    0,
+    3.2,
+    0,
+    2.0
+   ],
+   [
+    3.2,
+    27.0,
+    2.0,
+    12.9
+   ]
+  ]
  },
  {
   "graphic": 15,
   "scene": "fde/g15-salary-ranges.html",
   "out": "../graphics/fde/g15-salary-ranges.mp4",
-  "seconds": 39.0
+  "seconds": 18.1,
+  "ts": 0.4486
  },
  {
   "graphic": 16,
   "scene": "fde/g16-experience.html",
   "out": "../graphics/fde/g16-experience.mp4",
-  "seconds": 29.8
+  "seconds": 13.7,
+  "tmap": [
+   [
+    0,
+    3.8,
+    0,
+    3.0
+   ],
+   [
+    3.8,
+    11.6,
+    3.0,
+    4.0
+   ],
+   [
+    11.6,
+    16.0,
+    4.0,
+    8.6
+   ],
+   [
+    16.0,
+    29.8,
+    8.6,
+    13.7
+   ]
+  ]
  },
  {
   "graphic": 17,
   "scene": "fde/g17-timeline.html",
   "out": "../graphics/fde/g17-timeline.mp4",
-  "seconds": 27.4
+  "seconds": 13.3,
+  "tmap": [
+   [
+    0,
+    7.0,
+    0,
+    4.6
+   ],
+   [
+    7.0,
+    12.0,
+    4.6,
+    6.8
+   ],
+   [
+    12.0,
+    27.4,
+    6.8,
+    13.3
+   ]
+  ]
  },
  {
   "graphic": 18,
   "scene": "fde/g18-travel.html",
   "out": "../graphics/fde/g18-travel.mp4",
-  "seconds": 22.6
+  "seconds": 8.1,
+  "ts": 0.3204
  },
  {
   "graphic": 19,
   "scene": "fde/g19-five-phases.html",
   "out": "../graphics/fde/g19-five-phases.mp4",
-  "seconds": 9.4
+  "seconds": 8.9
  },
  {
   "graphic": 20,
   "scene": "fde/g20-phase1-foundations.html",
   "out": "../graphics/fde/g20-phase1-foundations.mp4",
-  "seconds": 38.6
+  "seconds": 19.3,
+  "ts": 0.4863
  },
  {
   "graphic": 21,
   "scene": "fde/g21-git-typescript.html",
   "out": "../graphics/fde/g21-git-typescript.mp4",
-  "seconds": 26.6
+  "seconds": 7.3,
+  "ts": 0.2358
  },
  {
   "graphic": 22,
   "scene": "fde/g22-phase2-pipeline.html",
   "out": "../graphics/fde/g22-phase2-pipeline.mp4",
-  "seconds": 49.8
+  "seconds": 18.5,
+  "ts": 0.3556
  },
  {
   "graphic": 23,
   "scene": "fde/g23-docker-cloud.html",
   "out": "../graphics/fde/g23-docker-cloud.mp4",
-  "seconds": 37.0
+  "seconds": 12.9,
+  "ts": 0.3257
  },
  {
   "graphic": 24,
   "scene": "fde/g24-access-control.html",
   "out": "../graphics/fde/g24-access-control.mp4",
-  "seconds": 25.8
+  "seconds": 9.3,
+  "ts": 0.3277
  },
  {
   "graphic": 25,
   "scene": "fde/g25-phase3-applied-ai.html",
   "out": "../graphics/fde/g25-phase3-applied-ai.mp4",
-  "seconds": 34.2
+  "seconds": 14.5,
+  "ts": 0.4037
  },
  {
   "graphic": 26,
   "scene": "fde/g26-rag.html",
   "out": "../graphics/fde/g26-rag.mp4",
-  "seconds": 26.6
+  "seconds": 14.5,
+  "ts": 0.5285
  },
  {
   "graphic": 27,
   "scene": "fde/g27-agents.html",
   "out": "../graphics/fde/g27-agents.mp4",
-  "seconds": 25.4
+  "seconds": 8.9,
+  "ts": 0.3162
  },
  {
   "graphic": 28,
   "scene": "fde/g28-mcp.html",
   "out": "../graphics/fde/g28-mcp.mp4",
-  "seconds": 29.8
+  "seconds": 11.3,
+  "ts": 0.3525
  },
  {
   "graphic": 29,
   "scene": "fde/g29-evals.html",
   "out": "../graphics/fde/g29-evals.mp4",
-  "seconds": 41.4
+  "seconds": 11.7,
+  "ts": 0.2589
  },
  {
   "graphic": 30,
   "scene": "fde/g30-phase4-discovery.html",
   "out": "../graphics/fde/g30-phase4-discovery.mp4",
-  "seconds": 27.8
+  "seconds": 10.5,
+  "ts": 0.3488
  },
  {
   "graphic": 31,
   "scene": "fde/g31-scoping-tradeoffs-writing.html",
   "out": "../graphics/fde/g31-scoping-tradeoffs-writing.mp4",
-  "seconds": 27.8
+  "seconds": 9.3,
+  "ts": 0.3023
  },
  {
   "graphic": 32,
   "scene": "fde/g32-practice.html",
   "out": "../graphics/fde/g32-practice.mp4",
-  "seconds": 23.8
+  "seconds": 10.5,
+  "ts": 0.4128
  },
  {
   "graphic": 33,
   "scene": "fde/g33-phase5-proof.html",
   "out": "../graphics/fde/g33-phase5-proof.mp4",
-  "seconds": 40.6
+  "seconds": 16.5,
+  "ts": 0.3886
  },
  {
   "graphic": 34,
   "scene": "fde/g34-two-projects.html",
   "out": "../graphics/fde/g34-two-projects.mp4",
-  "seconds": 25.8
+  "seconds": 16.5,
+  "ts": 0.6303
  },
  {
   "graphic": 35,
   "scene": "fde/g35-interview.html",
   "out": "../graphics/fde/g35-interview.mp4",
-  "seconds": 29.8
+  "seconds": 15.7,
+  "ts": 0.5108
  },
  {
   "graphic": 36,
   "scene": "fde/g36-decomposition.html",
   "out": "../graphics/fde/g36-decomposition.mp4",
-  "seconds": 40.6
+  "seconds": 15.3,
+  "tmap": [
+   [
+    0,
+    1.0,
+    0,
+    0.6
+   ],
+   [
+    1.0,
+    9.4,
+    0.6,
+    5.0
+   ],
+   [
+    9.4,
+    16.0,
+    5.0,
+    11.2
+   ],
+   [
+    16.0,
+    40.6,
+    11.2,
+    15.3
+   ]
+  ]
  },
  {
   "graphic": 37,
   "scene": "fde/g37-cta.html",
   "out": "../graphics/fde/g37-cta.mp4",
-  "seconds": 25.0
+  "seconds": 20.1,
+  "tmap": [
+   [
+    0,
+    11.4,
+    0,
+    11.4
+   ],
+   [
+    11.4,
+    25.0,
+    11.4,
+    20.1
+   ]
+  ]
  }
 ]
