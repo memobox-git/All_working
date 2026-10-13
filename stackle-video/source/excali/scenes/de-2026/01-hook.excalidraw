@@ -566,9 +566,9 @@
   {
    "id": "text-14",
    "type": "text",
-   "x": 788.0726013183594,
+   "x": 798.3465576171875,
    "y": 740,
-   "width": 603.8547973632812,
+   "width": 583.306884765625,
    "height": 110,
    "angle": 0,
    "strokeColor": "#1E1C1D",
@@ -589,8 +589,8 @@
    "updated": 1,
    "link": null,
    "locked": false,
-   "text": "one of the 3 tech job titles\nwith the most job postings",
-   "originalText": "one of the 3 tech job titles\nwith the most job postings",
+   "text": "one of the 3 tech jobs\nwith the most job postings",
+   "originalText": "one of the 3 tech jobs\nwith the most job postings",
    "fontSize": 44,
    "fontFamily": 5,
    "textAlign": "center",
@@ -600,7 +600,7 @@
    "lineHeight": 1.25,
    "customData": {
     "at": 7.988000000000001,
-    "dur": 1.65,
+    "dur": 1.47,
     "anchor": {
      "x": 1090,
      "y": 795,
@@ -644,7 +644,7 @@
    "autoResize": true,
    "lineHeight": 1.25,
    "customData": {
-    "at": 9.788000000000002,
+    "at": 9.608000000000002,
     "dur": 0.87,
     "anchor": {
      "x": 1090,
@@ -681,7 +681,7 @@
    "locked": false,
    "name": "End",
    "customData": {
-    "at": 15.6,
+    "at": 16,
     "dur": 0
    }
   }

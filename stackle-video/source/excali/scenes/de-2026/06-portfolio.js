@@ -28,6 +28,8 @@ for (const x of [300, 1020]) {
   s.line({ pts: [[x + 510, 340], [x + 90, 620]], stroke: C.red, sw: 7, dur: 0.25, gap: 0.1 });
 }
 s.text({ x: 960, y: 880, text: 'A copy says nothing about you.', size: 60, stroke: C.red });
+s.say('Think of a cover song.');
+s.say('It shows that you can follow along, but it does not show what you can make.');
 
 // Shot 2: what a strong project does
 let z = shift(s, 2100, 0);
@@ -68,7 +70,8 @@ questions.forEach(([line, label], i) => {
   z.text({ x: bx + 82, y: by + 105, text: String(i + 1), size: 58, dur: 0.2, gap: 0.05 });
   z.text({ x: bx + 170, y: by + 105, text: label, size: 46, align: 'left' });
 });
-s.say('The last question matters most, because a pipeline that runs tells no one what to do on Monday morning.');
+s.say('The last question matters most.');
+s.say('A pipeline that runs tells no one what to do on Monday morning.');
 z.ellipse({ x: 990, y: 548, w: 900, h: 270, stroke: C.red, sw: 4, rough: 2, dur: 0.7 });
 z.text({ x: 960, y: 940, text: 'A pipeline that runs tells no one what to do on Monday morning.', size: 44, stroke: C.amber });
 

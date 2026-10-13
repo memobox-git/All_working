@@ -14,6 +14,10 @@ s.say('Say, "I used an incremental load, which moves only the rows that changed,
 d.bubble(s, { x: 1400, y: 640, w: 720, h: 330, fill: C.soft });
 s.text({ x: 1400, y: 630, text: '"I used an incremental load,\nwhich moves only the rows\nthat changed, because the table\ngrows by ten million rows a day\nand a full reload would take hours."', size: 38, dur: 4 });
 d.check(s, { x: 1800, y: 900, size: 64 });
+s.say('The first one tells me what you did.');
+s.text({ x: 1560, y: 430, text: 'what you did', size: 34, stroke: C.amber });
+s.say('The second one tells me how you think.');
+s.text({ x: 1560, y: 860, text: 'how you think', size: 34, stroke: C.amber });
 s.end();
 
 module.exports = s;

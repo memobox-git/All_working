@@ -514,7 +514,7 @@
      "y": 470,
      "valign": "middle"
     },
-    "out": 13.600000000000001
+    "out": 21.2
    }
   },
   {
@@ -560,7 +560,7 @@
      "y": 600,
      "valign": "middle"
     },
-    "out": 13.600000000000001
+    "out": 21.2
    }
   },
   {
@@ -606,7 +606,7 @@
      "y": 660,
      "valign": "middle"
     },
-    "out": 13.600000000000001
+    "out": 21.2
    }
   },
   {
@@ -638,7 +638,7 @@
    "link": null,
    "locked": false,
    "customData": {
-    "at": 7.2,
+    "at": 9.2,
     "dur": 0.4
    }
   },
@@ -678,7 +678,7 @@
    "autoResize": true,
    "lineHeight": 1.25,
    "customData": {
-    "at": 7.65,
+    "at": 9.65,
     "dur": 1.14,
     "anchor": {
      "x": 570,
@@ -729,7 +729,7 @@
    "startArrowhead": null,
    "endArrowhead": null,
    "customData": {
-    "at": 8.940000000000001,
+    "at": 10.940000000000001,
     "dur": 0.15
    }
   },
@@ -775,7 +775,7 @@
    "startArrowhead": null,
    "endArrowhead": null,
    "customData": {
-    "at": 9.090000000000002,
+    "at": 11.090000000000002,
     "dur": 0.15
    }
   },
@@ -815,7 +815,7 @@
    "autoResize": true,
    "lineHeight": 1.25,
    "customData": {
-    "at": 14.000000000000002,
+    "at": 21.599999999999998,
     "dur": 0.6,
     "anchor": {
      "x": 1500,
@@ -860,7 +860,7 @@
    "autoResize": true,
    "lineHeight": 1.25,
    "customData": {
-    "at": 14.750000000000002,
+    "at": 22.349999999999998,
     "dur": 2.2199999999999998,
     "anchor": {
      "x": 1500,
@@ -905,7 +905,7 @@
    "autoResize": true,
    "lineHeight": 1.25,
    "customData": {
-    "at": 17.12,
+    "at": 24.719999999999995,
     "dur": 1.3499999999999999,
     "anchor": {
      "x": 1500,
@@ -943,7 +943,7 @@
    "link": null,
    "locked": false,
    "customData": {
-    "at": 29.6,
+    "at": 36.4,
     "dur": 0.4
    }
   },
@@ -983,7 +983,7 @@
    "autoResize": true,
    "lineHeight": 1.25,
    "customData": {
-    "at": 30.05,
+    "at": 36.849999999999994,
     "dur": 1.29,
     "anchor": {
      "x": 1390,
@@ -1038,7 +1038,7 @@
    "startArrowhead": null,
    "endArrowhead": null,
    "customData": {
-    "at": 31.49,
+    "at": 38.28999999999999,
     "dur": 0.3
    }
   },
@@ -1070,7 +1070,7 @@
    "locked": false,
    "name": "What you build",
    "customData": {
-    "at": 33,
+    "at": 39.8,
     "dur": 1,
     "cut": true
    }
@@ -1111,7 +1111,7 @@
    "autoResize": true,
    "lineHeight": 1.25,
    "customData": {
-    "at": 34.15,
+    "at": 40.949999999999996,
     "dur": 0.6,
     "anchor": {
      "x": 960,
@@ -1123,9 +1123,9 @@
   {
    "id": "text-27",
    "type": "text",
-   "x": 391.59222412109375,
+   "x": 280.22906494140625,
    "y": 1498.75,
-   "width": 1136.8155517578125,
+   "width": 1359.5418701171875,
    "height": 52.5,
    "angle": 0,
    "strokeColor": "#BA7517",
@@ -1146,8 +1146,8 @@
    "updated": 1,
    "link": null,
    "locked": false,
-   "text": "an assistant that answers from a company's help pages",
-   "originalText": "an assistant that answers from a company's help pages",
+   "text": "an assistant that answers customers from a company's help pages",
+   "originalText": "an assistant that answers customers from a company's help pages",
    "fontSize": 42,
    "fontFamily": 5,
    "textAlign": "center",
@@ -1156,7 +1156,7 @@
    "autoResize": true,
    "lineHeight": 1.25,
    "customData": {
-    "at": 34.9,
+    "at": 41.699999999999996,
     "dur": 0.8,
     "anchor": {
      "x": 960,
@@ -1192,7 +1192,7 @@
    "link": null,
    "locked": false,
    "customData": {
-    "at": 35.849999999999994,
+    "at": 42.64999999999999,
     "dur": 0.15
    }
   },
@@ -1238,7 +1238,7 @@
    "startArrowhead": null,
    "endArrowhead": null,
    "customData": {
-    "at": 35.99999999999999,
+    "at": 42.79999999999999,
     "dur": 0.048
    }
   },
@@ -1284,7 +1284,7 @@
    "startArrowhead": null,
    "endArrowhead": null,
    "customData": {
-    "at": 36.047999999999995,
+    "at": 42.84799999999999,
     "dur": 0.048
    }
   },
@@ -1330,7 +1330,7 @@
    "startArrowhead": null,
    "endArrowhead": null,
    "customData": {
-    "at": 36.096,
+    "at": 42.895999999999994,
     "dur": 0.048
    }
   },
@@ -1361,7 +1361,7 @@
    "link": null,
    "locked": false,
    "customData": {
-    "at": 36.294,
+    "at": 43.093999999999994,
     "dur": 0.15
    }
   },
@@ -1407,7 +1407,7 @@
    "startArrowhead": null,
    "endArrowhead": null,
    "customData": {
-    "at": 36.443999999999996,
+    "at": 43.24399999999999,
     "dur": 0.048
    }
   },
@@ -1453,7 +1453,7 @@
    "startArrowhead": null,
    "endArrowhead": null,
    "customData": {
-    "at": 36.492,
+    "at": 43.291999999999994,
     "dur": 0.048
    }
   },
@@ -1499,7 +1499,7 @@
    "startArrowhead": null,
    "endArrowhead": null,
    "customData": {
-    "at": 36.54,
+    "at": 43.339999999999996,
     "dur": 0.048
    }
   },
@@ -1530,7 +1530,7 @@
    "link": null,
    "locked": false,
    "customData": {
-    "at": 36.738,
+    "at": 43.538,
     "dur": 0.15
    }
   },
@@ -1576,7 +1576,7 @@
    "startArrowhead": null,
    "endArrowhead": null,
    "customData": {
-    "at": 36.888,
+    "at": 43.687999999999995,
     "dur": 0.048
    }
   },
@@ -1622,7 +1622,7 @@
    "startArrowhead": null,
    "endArrowhead": null,
    "customData": {
-    "at": 36.936,
+    "at": 43.736,
     "dur": 0.048
    }
   },
@@ -1668,7 +1668,7 @@
    "startArrowhead": null,
    "endArrowhead": null,
    "customData": {
-    "at": 36.984,
+    "at": 43.784,
     "dur": 0.048
    }
   },
@@ -1708,7 +1708,7 @@
    "autoResize": true,
    "lineHeight": 1.25,
    "customData": {
-    "at": 37.182,
+    "at": 43.982,
     "dur": 0.4,
     "anchor": {
      "x": 190,
@@ -1759,7 +1759,7 @@
    "startArrowhead": null,
    "endArrowhead": "arrow",
    "customData": {
-    "at": 37.732,
+    "at": 44.532,
     "dur": 0.3
    }
   },
@@ -1790,7 +1790,7 @@
    "link": null,
    "locked": false,
    "customData": {
-    "at": 38.181999999999995,
+    "at": 44.98199999999999,
     "dur": 0.15
    }
   },
@@ -1821,7 +1821,7 @@
    "link": null,
    "locked": false,
    "customData": {
-    "at": 38.331999999999994,
+    "at": 45.13199999999999,
     "dur": 0.15
    }
   },
@@ -1852,7 +1852,7 @@
    "link": null,
    "locked": false,
    "customData": {
-    "at": 38.48199999999999,
+    "at": 45.28199999999999,
     "dur": 0.15
    }
   },
@@ -1883,7 +1883,7 @@
    "link": null,
    "locked": false,
    "customData": {
-    "at": 38.63199999999999,
+    "at": 45.43199999999999,
     "dur": 0.15
    }
   },
@@ -1923,7 +1923,7 @@
    "autoResize": true,
    "lineHeight": 1.25,
    "customData": {
-    "at": 38.78199999999999,
+    "at": 45.58199999999999,
     "dur": 0.4,
     "anchor": {
      "x": 505,
@@ -1974,7 +1974,7 @@
    "startArrowhead": null,
    "endArrowhead": "arrow",
    "customData": {
-    "at": 39.33199999999999,
+    "at": 46.131999999999984,
     "dur": 0.3
    }
   },
@@ -2007,7 +2007,7 @@
    "link": null,
    "locked": false,
    "customData": {
-    "at": 39.78199999999998,
+    "at": 46.58199999999998,
     "dur": 0.4
    }
   },
@@ -2047,7 +2047,7 @@
    "autoResize": true,
    "lineHeight": 1.25,
    "customData": {
-    "at": 40.23199999999998,
+    "at": 47.031999999999975,
     "dur": 0.72,
     "anchor": {
      "x": 895,
@@ -2092,7 +2092,7 @@
    "autoResize": true,
    "lineHeight": 1.25,
    "customData": {
-    "at": 41.101999999999975,
+    "at": 47.90199999999997,
     "dur": 0.4,
     "anchor": {
      "x": 895,
@@ -2137,7 +2137,7 @@
    "autoResize": true,
    "lineHeight": 1.25,
    "customData": {
-    "at": 41.4,
+    "at": 53.4,
     "dur": 0.96,
     "anchor": {
      "x": 895,
@@ -2188,7 +2188,7 @@
    "startArrowhead": null,
    "endArrowhead": "arrow",
    "customData": {
-    "at": 50.2,
+    "at": 63.8,
     "dur": 0.3
    }
   },
@@ -2219,7 +2219,7 @@
    "link": null,
    "locked": false,
    "customData": {
-    "at": 50.65,
+    "at": 64.25,
     "dur": 0.225
    }
   },
@@ -2265,7 +2265,7 @@
    "startArrowhead": null,
    "endArrowhead": null,
    "customData": {
-    "at": 50.875,
+    "at": 64.475,
     "dur": 0.225
    }
   },
@@ -2333,7 +2333,7 @@
    "startArrowhead": null,
    "endArrowhead": null,
    "customData": {
-    "at": 51.1,
+    "at": 64.69999999999999,
     "dur": 0.225
    }
   },
@@ -2379,7 +2379,7 @@
    "startArrowhead": null,
    "endArrowhead": null,
    "customData": {
-    "at": 51.325,
+    "at": 64.92499999999998,
     "dur": 0.225
    }
   },
@@ -2447,7 +2447,7 @@
    "startArrowhead": null,
    "endArrowhead": null,
    "customData": {
-    "at": 51.7,
+    "at": 65.29999999999998,
     "dur": 0.225
    }
   },
@@ -2487,7 +2487,7 @@
    "autoResize": true,
    "lineHeight": 1.25,
    "customData": {
-    "at": 52.075,
+    "at": 65.67499999999998,
     "dur": 0.44999999999999996,
     "anchor": {
      "x": 1360,
@@ -2525,7 +2525,7 @@
    "link": null,
    "locked": false,
    "customData": {
-    "at": 52.675000000000004,
+    "at": 66.27499999999999,
     "dur": 0.5599999999999999
    }
   },
@@ -2575,7 +2575,7 @@
    "startArrowhead": null,
    "endArrowhead": null,
    "customData": {
-    "at": 53.23500000000001,
+    "at": 66.835,
     "dur": 0.24
    }
   },
@@ -2615,7 +2615,7 @@
    "autoResize": true,
    "lineHeight": 1.25,
    "customData": {
-    "at": 53.62500000000001,
+    "at": 67.225,
     "dur": 0.4,
     "anchor": {
      "x": 1700,
@@ -2666,7 +2666,7 @@
    "startArrowhead": null,
    "endArrowhead": "arrow",
    "customData": {
-    "at": 54.175000000000004,
+    "at": 67.775,
     "dur": 0.3
    }
   },
@@ -2712,7 +2712,7 @@
    "startArrowhead": null,
    "endArrowhead": "arrow",
    "customData": {
-    "at": 54.625,
+    "at": 68.22500000000001,
     "dur": 0.3
    }
   },
@@ -2752,7 +2752,7 @@
    "autoResize": true,
    "lineHeight": 1.25,
    "customData": {
-    "at": 55.074999999999996,
+    "at": 68.67500000000001,
     "dur": 0.42,
     "anchor": {
      "x": 1615,
@@ -2790,7 +2790,7 @@
    "link": null,
    "locked": false,
    "customData": {
-    "at": 57,
+    "at": 69.39999999999999,
     "dur": 0.4
    }
   },
@@ -2830,7 +2830,7 @@
    "autoResize": true,
    "lineHeight": 1.25,
    "customData": {
-    "at": 57.449999999999996,
+    "at": 69.85,
     "dur": 1.05,
     "anchor": {
      "x": 960,
@@ -2867,7 +2867,7 @@
    "locked": false,
    "name": "End",
    "customData": {
-    "at": 61,
+    "at": 73.39999999999999,
     "dur": 0
    }
   }

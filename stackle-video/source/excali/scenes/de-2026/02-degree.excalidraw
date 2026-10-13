@@ -38,9 +38,9 @@
   {
    "id": "text-2",
    "type": "text",
-   "x": 434.28045654296875,
+   "x": 487.2804260253906,
    "y": 90,
-   "width": 1051.4390869140625,
+   "width": 945.4391479492188,
    "height": 100,
    "angle": 0,
    "strokeColor": "#1E1C1D",
@@ -61,8 +61,8 @@
    "updated": 1,
    "link": null,
    "locked": false,
-   "text": "Data engineer job postings",
-   "originalText": "Data engineer job postings",
+   "text": "Data engineer job posts",
+   "originalText": "Data engineer job posts",
    "fontSize": 80,
    "fontFamily": 5,
    "textAlign": "center",
@@ -72,7 +72,7 @@
    "lineHeight": 1.25,
    "customData": {
     "at": 0,
-    "dur": 0.78,
+    "dur": 0.69,
     "anchor": {
      "x": 960,
      "y": 140,
@@ -128,7 +128,7 @@
    "startArrowhead": null,
    "endArrowhead": null,
    "customData": {
-    "at": 0.93,
+    "at": 0.84,
     "dur": 0.4
    }
   },
@@ -159,7 +159,7 @@
    "link": null,
    "locked": false,
    "customData": {
-    "at": 1.48,
+    "at": 1.39,
     "dur": 0.25
    }
   },
@@ -205,7 +205,7 @@
    "startArrowhead": null,
    "endArrowhead": null,
    "customData": {
-    "at": 1.73,
+    "at": 1.64,
     "dur": 0.08
    }
   },
@@ -251,7 +251,7 @@
    "startArrowhead": null,
    "endArrowhead": null,
    "customData": {
-    "at": 1.81,
+    "at": 1.72,
     "dur": 0.08
    }
   },
@@ -297,7 +297,7 @@
    "startArrowhead": null,
    "endArrowhead": null,
    "customData": {
-    "at": 1.8900000000000001,
+    "at": 1.8,
     "dur": 0.08
    }
   },
@@ -328,7 +328,7 @@
    "link": null,
    "locked": false,
    "customData": {
-    "at": 2.12,
+    "at": 2.0300000000000002,
     "dur": 0.3
    }
   },
@@ -359,7 +359,7 @@
    "link": null,
    "locked": false,
    "customData": {
-    "at": 2.57,
+    "at": 2.48,
     "dur": 0.25
    }
   },
@@ -405,7 +405,7 @@
    "startArrowhead": null,
    "endArrowhead": null,
    "customData": {
-    "at": 2.82,
+    "at": 2.73,
     "dur": 0.08
    }
   },
@@ -451,7 +451,7 @@
    "startArrowhead": null,
    "endArrowhead": null,
    "customData": {
-    "at": 2.9,
+    "at": 2.81,
     "dur": 0.08
    }
   },
@@ -497,7 +497,7 @@
    "startArrowhead": null,
    "endArrowhead": null,
    "customData": {
-    "at": 2.98,
+    "at": 2.89,
     "dur": 0.08
    }
   },
@@ -528,7 +528,7 @@
    "link": null,
    "locked": false,
    "customData": {
-    "at": 3.21,
+    "at": 3.12,
     "dur": 0.3
    }
   },
@@ -559,7 +559,7 @@
    "link": null,
    "locked": false,
    "customData": {
-    "at": 3.6599999999999997,
+    "at": 3.57,
     "dur": 0.25
    }
   },
@@ -605,7 +605,7 @@
    "startArrowhead": null,
    "endArrowhead": null,
    "customData": {
-    "at": 3.9099999999999997,
+    "at": 3.82,
     "dur": 0.08
    }
   },
@@ -651,7 +651,7 @@
    "startArrowhead": null,
    "endArrowhead": null,
    "customData": {
-    "at": 3.9899999999999998,
+    "at": 3.9,
     "dur": 0.08
    }
   },
@@ -697,7 +697,7 @@
    "startArrowhead": null,
    "endArrowhead": null,
    "customData": {
-    "at": 4.069999999999999,
+    "at": 3.98,
     "dur": 0.08
    }
   },
@@ -728,7 +728,7 @@
    "link": null,
    "locked": false,
    "customData": {
-    "at": 4.3,
+    "at": 4.21,
     "dur": 0.3
    }
   },
@@ -759,7 +759,7 @@
    "link": null,
    "locked": false,
    "customData": {
-    "at": 4.75,
+    "at": 4.66,
     "dur": 0.25
    }
   },
@@ -805,7 +805,7 @@
    "startArrowhead": null,
    "endArrowhead": null,
    "customData": {
-    "at": 5,
+    "at": 4.91,
     "dur": 0.08
    }
   },
@@ -851,7 +851,7 @@
    "startArrowhead": null,
    "endArrowhead": null,
    "customData": {
-    "at": 5.08,
+    "at": 4.99,
     "dur": 0.08
    }
   },
@@ -897,7 +897,7 @@
    "startArrowhead": null,
    "endArrowhead": null,
    "customData": {
-    "at": 5.16,
+    "at": 5.07,
     "dur": 0.08
    }
   },
@@ -937,7 +937,7 @@
    "autoResize": true,
    "lineHeight": 1.25,
    "customData": {
-    "at": 5.390000000000001,
+    "at": 5.300000000000001,
     "dur": 0.3,
     "anchor": {
      "x": 330,
@@ -982,7 +982,7 @@
    "autoResize": true,
    "lineHeight": 1.25,
    "customData": {
-    "at": 5.74,
+    "at": 5.65,
     "dur": 0.3,
     "anchor": {
      "x": 750,
@@ -1027,7 +1027,7 @@
    "autoResize": true,
    "lineHeight": 1.25,
    "customData": {
-    "at": 6.09,
+    "at": 6,
     "dur": 0.3,
     "anchor": {
      "x": 1170,
@@ -1072,7 +1072,7 @@
    "autoResize": true,
    "lineHeight": 1.25,
    "customData": {
-    "at": 6.4399999999999995,
+    "at": 6.35,
     "dur": 0.4,
     "anchor": {
      "x": 750,
@@ -1117,7 +1117,7 @@
    "autoResize": true,
    "lineHeight": 1.25,
    "customData": {
-    "at": 6.99,
+    "at": 6.9,
     "dur": 0.8099999999999999,
     "anchor": {
      "x": 750,
@@ -1153,7 +1153,7 @@
    "link": null,
    "locked": false,
    "customData": {
-    "at": 9.2,
+    "at": 8.4,
     "dur": 0.6
    }
   },
@@ -1193,7 +1193,7 @@
    "autoResize": true,
    "lineHeight": 1.25,
    "customData": {
-    "at": 9.95,
+    "at": 9.15,
     "dur": 0.4,
     "anchor": {
      "x": 1590,
@@ -1238,7 +1238,7 @@
    "autoResize": true,
    "lineHeight": 1.25,
    "customData": {
-    "at": 10.5,
+    "at": 9.700000000000001,
     "dur": 0.72,
     "anchor": {
      "x": 1590,
@@ -1283,7 +1283,7 @@
    "autoResize": true,
    "lineHeight": 1.25,
    "customData": {
-    "at": 11.370000000000001,
+    "at": 10.570000000000002,
     "dur": 1.77,
     "anchor": {
      "x": 960,
@@ -1320,7 +1320,7 @@
    "locked": false,
    "name": "End",
    "customData": {
-    "at": 13.290000000000001,
+    "at": 12.490000000000002,
     "dur": 0
    }
   }

@@ -351,7 +351,7 @@
    "autoResize": true,
    "lineHeight": 1.25,
    "customData": {
-    "at": 8.4,
+    "at": 15.2,
     "dur": 0.6,
     "anchor": {
      "x": 1450,
@@ -388,7 +388,7 @@
    "locked": false,
    "name": "End",
    "customData": {
-    "at": 17.200000000000003,
+    "at": 16.8,
     "dur": 0
    }
   }

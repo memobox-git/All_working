@@ -6,7 +6,7 @@ const s = scene();
 
 s.frame({ x: 0, y: 0, w: 1920, h: 1080, name: 'Degree', at: 0 });
 s.say(DEGREE.line);
-s.text({ x: 960, y: 140, text: 'Data engineer job postings', size: 80 });
+s.text({ x: 960, y: 140, text: 'Data engineer job posts', size: 80 });
 s.line({ pts: [[560, 210], [960, 218], [1360, 208]], stroke: C.amber, sw: 4, curve: true, dur: 0.4 });
 [0, 1, 2, 3].forEach(i => {
   const x = 330 + i * 420;

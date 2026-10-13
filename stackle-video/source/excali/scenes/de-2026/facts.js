@@ -2,13 +2,13 @@
 // Each line is the script sentence that gives the number, so timing matches the voice.
 module.exports = {
   PAY: {
-    line: 'A data engineer in the United States earns about one hundred sixty thousand dollars a year at the middle of the pay range, and data engineer is one of the three tech job titles with the most job postings.',
+    line: 'The middle of the pay range for a data engineer in the United States is about one hundred sixty thousand dollars a year. Data engineer is also one of the three tech jobs with the most job postings right now.',
     big: '$160,500', small: 'middle of the US pay range for a data engineer',
     source: 'Robert Half 2027 Salary Guide',
-    second: 'one of the 3 tech job titles\nwith the most job postings', secondSource: 'Dice tech job report, Q3 2026',
+    second: 'one of the 3 tech jobs\nwith the most job postings', secondSource: 'Dice tech job report, Q3 2026',
   },
   DEGREE: {
-    line: "A 2026 study of data engineer job postings in the United States found that about three in four postings mention a bachelor's degree.",
+    line: "A 2026 study looked at data engineer job posts in the United States. About three in four mention a bachelor's degree.",
     line2: 'About one in four do not mention education at all.',
     yes: "mention a bachelor's degree", no: 'do not mention education',
     source: '365 Data Science, US data engineer job postings, April 2026',

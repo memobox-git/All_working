@@ -3,7 +3,7 @@ const { scene, COLORS: C } = require('../../kit');
 const d = require('../../doodles');
 const s = scene();
 
-s.say('A job posting asks for a degree, but the interview tests skills.');
+s.say('A job post can ask for a degree, but the interview tests skills.');
 s.rect({ x: 1060, y: 120, w: 780, h: 840, round: true, sw: 3, fill: C.cream, fillStyle: 'solid', dur: 0.6 });
 s.text({ x: 1450, y: 220, text: 'What I check', size: 64, stroke: C.amber });
 s.say('When I interview engineers, I check three things.');

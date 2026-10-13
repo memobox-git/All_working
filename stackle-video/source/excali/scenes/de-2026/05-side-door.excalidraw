@@ -388,7 +388,7 @@
    "link": null,
    "locked": false,
    "customData": {
-    "at": 18,
+    "at": 16.8,
     "dur": 0.5
    }
   },
@@ -428,7 +428,7 @@
    "autoResize": true,
    "lineHeight": 1.25,
    "customData": {
-    "at": 18.65,
+    "at": 17.45,
     "dur": 0.4,
     "anchor": {
      "x": 1550,
@@ -485,7 +485,7 @@
    "startArrowhead": null,
    "endArrowhead": "arrow",
    "customData": {
-    "at": 19.199999999999996,
+    "at": 17.999999999999996,
     "dur": 0.4
    }
   },
@@ -537,7 +537,7 @@
    "startArrowhead": null,
    "endArrowhead": "arrow",
    "customData": {
-    "at": 19.599999999999994,
+    "at": 18.399999999999995,
     "dur": 0.4
    }
   },
@@ -589,16 +589,16 @@
    "startArrowhead": null,
    "endArrowhead": "arrow",
    "customData": {
-    "at": 19.999999999999993,
+    "at": 18.799999999999994,
     "dur": 0.4
    }
   },
   {
    "id": "text-15",
    "type": "text",
-   "x": 864.1103515625,
-   "y": 302.5,
-   "width": 351.779296875,
+   "x": 1404.7342987060547,
+   "y": 662.5,
+   "width": 290.5314025878906,
    "height": 55,
    "angle": 0,
    "strokeColor": "#BA7517",
@@ -619,8 +619,8 @@
    "updated": 1,
    "link": null,
    "locked": false,
-   "text": "12 to 18 months",
-   "originalText": "12 to 18 months",
+   "text": "the side door",
+   "originalText": "the side door",
    "fontSize": 44,
    "fontFamily": 5,
    "textAlign": "center",
@@ -629,11 +629,11 @@
    "autoResize": true,
    "lineHeight": 1.25,
    "customData": {
-    "at": 20.39999999999999,
-    "dur": 0.44999999999999996,
+    "at": 19.199999999999992,
+    "dur": 0.4,
     "anchor": {
-     "x": 1040,
-     "y": 330,
+     "x": 1550,
+     "y": 690,
      "valign": "middle"
     }
    }
@@ -641,12 +641,12 @@
   {
    "id": "text-16",
    "type": "text",
-   "x": 913.5546417236328,
-   "y": 361.25,
-   "width": 252.89071655273438,
-   "height": 47.5,
+   "x": 864.1103515625,
+   "y": 302.5,
+   "width": 351.779296875,
+   "height": 55,
    "angle": 0,
-   "strokeColor": "#8a857a",
+   "strokeColor": "#BA7517",
    "backgroundColor": "transparent",
    "fillStyle": "hachure",
    "strokeWidth": 2,
@@ -664,6 +664,51 @@
    "updated": 1,
    "link": null,
    "locked": false,
+   "text": "12 to 18 months",
+   "originalText": "12 to 18 months",
+   "fontSize": 44,
+   "fontFamily": 5,
+   "textAlign": "center",
+   "verticalAlign": "top",
+   "containerId": null,
+   "autoResize": true,
+   "lineHeight": 1.25,
+   "customData": {
+    "at": 23.6,
+    "dur": 0.44999999999999996,
+    "anchor": {
+     "x": 1040,
+     "y": 330,
+     "valign": "middle"
+    }
+   }
+  },
+  {
+   "id": "text-17",
+   "type": "text",
+   "x": 913.5546417236328,
+   "y": 361.25,
+   "width": 252.89071655273438,
+   "height": 47.5,
+   "angle": 0,
+   "strokeColor": "#8a857a",
+   "backgroundColor": "transparent",
+   "fillStyle": "hachure",
+   "strokeWidth": 2,
+   "strokeStyle": "solid",
+   "roughness": 1,
+   "opacity": 100,
+   "groupIds": [],
+   "frameId": null,
+   "roundness": null,
+   "seed": 45623,
+   "version": 1,
+   "versionNonce": 17,
+   "isDeleted": false,
+   "boundElements": null,
+   "updated": 1,
+   "link": null,
+   "locked": false,
    "text": "same company",
    "originalText": "same company",
    "fontSize": 38,
@@ -674,7 +719,7 @@
    "autoResize": true,
    "lineHeight": 1.25,
    "customData": {
-    "at": 20.99999999999999,
+    "at": 24.2,
     "dur": 0.4,
     "anchor": {
      "x": 1040,
@@ -684,7 +729,7 @@
    }
   },
   {
-   "id": "ellipse-17",
+   "id": "ellipse-18",
    "type": "ellipse",
    "x": 1421.4,
    "y": 755,
@@ -701,21 +746,21 @@
    "groupIds": [],
    "frameId": null,
    "roundness": null,
-   "seed": 45623,
+   "seed": 53542,
    "version": 1,
-   "versionNonce": 17,
+   "versionNonce": 18,
    "isDeleted": false,
    "boundElements": null,
    "updated": 1,
    "link": null,
    "locked": false,
    "customData": {
-    "at": 22.8,
+    "at": 28.400000000000002,
     "dur": 0.315
    }
   },
   {
-   "id": "line-18",
+   "id": "line-19",
    "type": "line",
    "x": 1395.4,
    "y": 885,
@@ -734,9 +779,9 @@
    "roundness": {
     "type": 2
    },
-   "seed": 53542,
+   "seed": 61461,
    "version": 1,
-   "versionNonce": 18,
+   "versionNonce": 19,
    "isDeleted": false,
    "boundElements": null,
    "updated": 1,
@@ -770,12 +815,12 @@
    "startArrowhead": null,
    "endArrowhead": null,
    "customData": {
-    "at": 23.115000000000002,
+    "at": 28.715000000000003,
     "dur": 0.385
    }
   },
   {
-   "id": "ellipse-19",
+   "id": "ellipse-20",
    "type": "ellipse",
    "x": 1571.4,
    "y": 755,
@@ -792,21 +837,21 @@
    "groupIds": [],
    "frameId": null,
    "roundness": null,
-   "seed": 61461,
+   "seed": 69380,
    "version": 1,
-   "versionNonce": 19,
+   "versionNonce": 20,
    "isDeleted": false,
    "boundElements": null,
    "updated": 1,
    "link": null,
    "locked": false,
    "customData": {
-    "at": 23.650000000000002,
+    "at": 29.250000000000004,
     "dur": 0.315
    }
   },
   {
-   "id": "line-20",
+   "id": "line-21",
    "type": "line",
    "x": 1545.4,
    "y": 885,
@@ -825,9 +870,9 @@
    "roundness": {
     "type": 2
    },
-   "seed": 69380,
+   "seed": 77299,
    "version": 1,
-   "versionNonce": 20,
+   "versionNonce": 21,
    "isDeleted": false,
    "boundElements": null,
    "updated": 1,
@@ -861,12 +906,12 @@
    "startArrowhead": null,
    "endArrowhead": null,
    "customData": {
-    "at": 23.965000000000003,
+    "at": 29.565000000000005,
     "dur": 0.385
    }
   },
   {
-   "id": "line-21",
+   "id": "line-22",
    "type": "line",
    "x": 1698.5,
    "y": 800,
@@ -883,9 +928,9 @@
    "groupIds": [],
    "frameId": null,
    "roundness": null,
-   "seed": 77299,
+   "seed": 85218,
    "version": 1,
-   "versionNonce": 21,
+   "versionNonce": 22,
    "isDeleted": false,
    "boundElements": null,
    "updated": 1,
@@ -911,62 +956,17 @@
    "startArrowhead": null,
    "endArrowhead": null,
    "customData": {
-    "at": 24.500000000000004,
+    "at": 30.100000000000005,
     "dur": 0.3
    }
   },
   {
-   "id": "text-22",
+   "id": "text-23",
    "type": "text",
    "x": 1238.7660827636719,
    "y": 926.25,
    "width": 642.4678344726562,
    "height": 47.5,
-   "angle": 0,
-   "strokeColor": "#1E1C1D",
-   "backgroundColor": "transparent",
-   "fillStyle": "hachure",
-   "strokeWidth": 2,
-   "strokeStyle": "solid",
-   "roughness": 1,
-   "opacity": 100,
-   "groupIds": [],
-   "frameId": null,
-   "roundness": null,
-   "seed": 85218,
-   "version": 1,
-   "versionNonce": 22,
-   "isDeleted": false,
-   "boundElements": null,
-   "updated": 1,
-   "link": null,
-   "locked": false,
-   "text": "the team already trusts your work",
-   "originalText": "the team already trusts your work",
-   "fontSize": 38,
-   "fontFamily": 5,
-   "textAlign": "center",
-   "verticalAlign": "top",
-   "containerId": null,
-   "autoResize": true,
-   "lineHeight": 1.25,
-   "customData": {
-    "at": 24.950000000000003,
-    "dur": 0.99,
-    "anchor": {
-     "x": 1560,
-     "y": 950,
-     "valign": "middle"
-    }
-   }
-  },
-  {
-   "id": "frame-23",
-   "type": "frame",
-   "x": 0,
-   "y": 0,
-   "width": 1920,
-   "height": 1080,
    "angle": 0,
    "strokeColor": "#1E1C1D",
    "backgroundColor": "transparent",
@@ -986,9 +986,54 @@
    "updated": 1,
    "link": null,
    "locked": false,
+   "text": "the team already trusts your work",
+   "originalText": "the team already trusts your work",
+   "fontSize": 38,
+   "fontFamily": 5,
+   "textAlign": "center",
+   "verticalAlign": "top",
+   "containerId": null,
+   "autoResize": true,
+   "lineHeight": 1.25,
+   "customData": {
+    "at": 30.550000000000004,
+    "dur": 0.99,
+    "anchor": {
+     "x": 1560,
+     "y": 950,
+     "valign": "middle"
+    }
+   }
+  },
+  {
+   "id": "frame-24",
+   "type": "frame",
+   "x": 0,
+   "y": 0,
+   "width": 1920,
+   "height": 1080,
+   "angle": 0,
+   "strokeColor": "#1E1C1D",
+   "backgroundColor": "transparent",
+   "fillStyle": "hachure",
+   "strokeWidth": 2,
+   "strokeStyle": "solid",
+   "roughness": 1,
+   "opacity": 100,
+   "groupIds": [],
+   "frameId": null,
+   "roundness": null,
+   "seed": 11056,
+   "version": 1,
+   "versionNonce": 24,
+   "isDeleted": false,
+   "boundElements": null,
+   "updated": 1,
+   "link": null,
+   "locked": false,
    "name": "End",
    "customData": {
-    "at": 31.200000000000003,
+    "at": 36.800000000000004,
     "dur": 0
    }
   }

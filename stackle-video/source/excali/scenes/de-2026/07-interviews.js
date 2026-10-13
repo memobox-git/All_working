@@ -54,7 +54,7 @@ underline(z, 650, 1270, 222);
 });
 s.say('Always end with a number.');
 z.ellipse({ x: 1380, y: 270, w: 380, h: 260, stroke: C.red, sw: 4, rough: 2, dur: 0.6 });
-s.say('"My pipeline cut the delay of the daily sales report from six hours to forty minutes" sounds very different from "my pipeline worked well."');
+s.say('"My pipeline cut the delay of the daily sales report from six hours to forty minutes" beats "my pipeline worked well" every single time.');
 card(z, 120, 610, 1680, 150, C.soft);
 z.text({ x: 960, y: 685, text: '"My pipeline cut the delay of the daily sales report\nfrom six hours to forty minutes."', size: 44, dur: 2 });
 d.check(z, { x: 1740, y: 685, size: 70 });

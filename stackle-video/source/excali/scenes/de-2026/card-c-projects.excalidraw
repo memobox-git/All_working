@@ -127,7 +127,7 @@
    "startArrowhead": null,
    "endArrowhead": null,
    "customData": {
-    "at": 1.6,
+    "at": 2.8,
     "dur": 0.3
    }
   },
@@ -167,7 +167,7 @@
    "autoResize": true,
    "lineHeight": 1.25,
    "customData": {
-    "at": 2.0500000000000003,
+    "at": 3.2499999999999996,
     "dur": 1.14,
     "anchor": {
      "x": 1230,
@@ -222,7 +222,7 @@
    "startArrowhead": null,
    "endArrowhead": null,
    "customData": {
-    "at": 4.19,
+    "at": 5.39,
     "dur": 0.3
    }
   },
@@ -262,7 +262,7 @@
    "autoResize": true,
    "lineHeight": 1.25,
    "customData": {
-    "at": 4.640000000000001,
+    "at": 5.84,
     "dur": 0.75,
     "anchor": {
      "x": 1230,
@@ -317,7 +317,7 @@
    "startArrowhead": null,
    "endArrowhead": null,
    "customData": {
-    "at": 11.2,
+    "at": 12.399999999999999,
     "dur": 0.3
    }
   },
@@ -357,7 +357,7 @@
    "autoResize": true,
    "lineHeight": 1.25,
    "customData": {
-    "at": 11.65,
+    "at": 12.85,
     "dur": 0.84,
     "anchor": {
      "x": 1230,
@@ -394,7 +394,7 @@
    "locked": false,
    "name": "End",
    "customData": {
-    "at": 15.2,
+    "at": 15.999999999999998,
     "dur": 0
    }
   }
