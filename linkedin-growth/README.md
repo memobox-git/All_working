@@ -5,12 +5,14 @@ Built Oct 14, 2026 for Chris (Stackle). It draws on verified public LinkedIn dat
 | File | What's in it |
 |---|---|
 | `README.md` (this file) | The strategy: the math, positioning, rules, growth levers, the 60-day plan |
-| [`hooks-swipe-file.md`](hooks-swipe-file.md) | 1,057 verified hooks (100+ reactions each) with author, followers, reactions, link, and which patterns win |
+| [`hooks-swipe-file.md`](hooks-swipe-file.md) | 1,099 verified hooks (100+ reactions each) with author, followers, reactions, link, and which patterns win |
 | [`creators.md`](creators.md) | Who to study and who to collaborate with: data, AI and LinkedIn-growth creators with exact follower counts and signature formats |
 | [`visuals.md`](visuals.md) | Which images, carousels, infographics, videos and GIFs work, with specs and examples |
 | [`calendar-60-days.md`](calendar-60-days.md) | Oct 15 to Dec 13: one post a day, written as hooks, plus the weekly Live/newsletter/collab tasks |
 | [`research/algorithm-and-formats-2026.md`](research/algorithm-and-formats-2026.md) | Sourced notes on how the 2026 feed ranks posts, format benchmarks, follower mechanics |
-| [`research/growth-sellers-playbooks.md`](research/growth-sellers-playbooks.md) | What Vedika Bhaia, Unnati Bagga (The Growth Square), Justin Welsh, Jasmin Alić and others do and teach |
+| [`research/growth-sellers-playbooks.md`](research/growth-sellers-playbooks.md) | What Vedika Bhaia, Unnati Bagga (The Growth Square), Justin Welsh, Jasmin Alić, Lara Acosta and others do and teach, including The Growth Square's 50-hook swipe file and ~20 fast-growth case studies |
+| [`research/data-creators.md`](research/data-creators.md) | 32 data creators: exact followers, typical post today, formats, hook patterns, every verified post |
+| [`research/ai-creators.md`](research/ai-creators.md) | 42 AI creators: who still wins in 2026, visual systems (Rakesh Gohel, Brij Pandey, Alex Xu, Avi Chawla), the AI angle a data engineer can own |
 | [`data/verified-posts.csv`](data/verified-posts.csv) | The raw table behind the swipe file, to filter and sort |
 
 ---
@@ -50,15 +52,40 @@ Sixty posts at your current top-10% level (~9k each) is about 540k impressions. 
 
 You won't pass the giants in 60 days. The biggest accounts in this space have hundreds of thousands of followers (see [`creators.md`](creators.md)). You can, however, be **#1 in a lane none of them owns**, then widen it.
 
-**Who owns what right now (from the verified data):**
-_(Creator table with exact follower counts: see [`creators.md`](creators.md); this section is being finalized.)_
+**Who owns what right now** (exact followers; "typical" = median reactions on their latest posts, Oct 2026):
+
+| Lane | Owner | Followers | Typical post now |
+|---|---|---|---|
+| Data engineering careers + big-tech comp | Zach Wilson | 533,177 | 126 (his all-time best: a comp post, 14,528) |
+| India DE courses + memes | Shashank Mishra, Darshil Parmar | 191,669 / 146,292 | 41 / 48 (technical explainers: 11-57; memes: 3,000+) |
+| SQL interview puzzles | Ankit Bansal | 262,943 | 218 |
+| DE interview scenarios, one market | Ajay Kadiyala (Dubai) | 185,417 | **522, highest of any data creator checked** |
+| AI explainer infographics | Brij Kishore Pandey, Alex Xu | 740,434 / 1,036,872 | 252 / 736 |
+| AI = a data problem | Andreas Horn | 257,466 | 262 (his "…It is fixing your data." post got 1,952) |
+
+Two things stand out:
+- **Big accounts' typical posts are small now.** Follower count doesn't predict the typical post; format and topic do.
+- **The creator with the best typical post in the data niche is running your format,** first-person interview scenarios, in a single market (Dubai). Nobody runs it for the US/global big-tech market from the hiring side.
+
+More in [`creators.md`](creators.md).
 
 **The open lane: the hiring side of data & AI interviews.** None of the large accounts has your edge: **200+ data engineering interviews run from the hiring side** across banking, healthcare, automotive and exchanges, plus your own recent loops (Amazon, Mercedes-Benz, Airbnb's "design our data warehouse", a healthcare AI startup). Interview, money and big-tech-expectation posts are already your best performers.
+
+Hiring-side hooks also break out for small accounts in neighbouring niches (verified):
+- Izmah Khan, 8,038 followers: 23,549 reactions on "Today, I witnessed my team lead interviewing a Full-Stack Web Developer…"
+- Rajya Vardhan Mishra: 9,286 on "In the last 15 years, I have interviewed 800+ Software Engineers…"
+- Harshit Sharma: 6,081 on "After taking 75 Software Engineer interviews at Google in < 7 months"
+- Alejandro R., 11,198 followers: 2,342 on "I can tell in 5 minutes during an interview if someone understands data"
+- Kateryna Stetsiuk, 14,960 followers: 1,109 on "I've interviewed around 150 candidates for ML/AI Engineer positions…"
+
+Your "200+ interviews" is the same hook with more behind it.
 
 **How AI fits without killing reach.** Your AI listicles and tool comparisons got 120-260 impressions. LinkedIn is now actively suppressing that kind of content:
 - In 2026 LinkedIn began classifying "low-effort, likely AI-generated" posts, and views of flagged posts are down 40% ([LinkedIn, Sep 2026](https://news.linkedin.com/2026/how-linkedin-is-tackling-ai-slop)).
 - Since Oct 8, 2026, those classifiers check **every post shown outside your network**, which is exactly the audience you need to grow ([Tim Jurka, LinkedIn VP Eng](https://www.linkedin.com/pulse/technology-behind-linkedins-fight-against-ai-slop-tim-jurka-7ojbc/)).
 - "Top 10 AI tools" posts are the most recycled content in the niche.
+- **Even the giants' typical AI posts are small now.** Median reactions on recent posts: Brij Kishore Pandey 252 on 740k followers, Ruben Hassid 285 on 945k, Avi Chawla 86 on 177k, Armand Ruiz 46 on 208k. Generic "AI agents explained" has the weakest 2026 median of the major AI topics ([`research/ai-creators.md`](research/ai-creators.md)).
+- **An outside study backs the "AI through your own niche" approach.** It found creators whose feeds are mostly about something else earn an *AI premium* when they post AI, while heavy AI posters drag their own medians down ([MagicPost, Jun 2026](https://magicpost.in/blog/top-linkedin-creators-ai)).
 
 So **AI goes through your lens: careers, interviews and money**, never generic explainers.
 - "The AI round that's now in data engineering interviews"
@@ -67,7 +94,25 @@ So **AI goes through your lens: careers, interviews and money**, never generic e
 - "The question I now ask every data engineer about AI"
 - A real DE-to-AI-engineering move with numbers
 
-That is the bridge from "the data engineering interviews guy" to "the data & AI careers guy". It also matches where the audience is going: data engineers moving into AI engineering is one of the clearest themes in the verified posts.
+Plus one more angle nobody big owns: **"AI is a data problem."** RAG quality is retrieval and data quality, agent memory is a data model, and semantic layers and data contracts sit under every agent. Small accounts get outsized results there:
+
+| Author (followers) | Reactions | Hook |
+|---|---|---|
+| Shobhit Tankha (8,296) | 1,551 | "A lot of AI engineers (even sharp ones) get seduced by the cool factor of vector databases." |
+| Isin Pesch (5,601) | 1,369 | "Everyone is selling the semantic layer as the way to make AI agents reliable on your data." |
+| Andreas Horn | 1,952 (his typical post: 262) | "…has nothing to do with AI. It is fixing your data." |
+
+That is the bridge from "the data engineering interviews guy" to "the data & AI careers guy".
+
+**News-jacks, done the data way, are your spike lever.** Day-one posts on big AI launches got a median of 8.1 reactions per 1k followers in the growth-seller sample, against 1.9 for niche business news. In the data niche, tool news with an immediate practical consequence beats generic AI commentary from the same creators:
+
+| Post | Reactions |
+|---|---|
+| "AWS just put DuckDB inside Aurora PostgreSQL" | 746 |
+| "Python is getting lazy… lazy imports" | 1,165 |
+| Generic AI commentary from the same creators | 40-69 |
+
+When a major data or AI launch lands, replace that day's post with: "[Launch] just shipped. Here's what it changes for data engineers / in interviews.
 
 **Make LinkedIn understand the lane.** The 2026 feed finds candidate audiences by matching the text of your post *and your headline/industry* to members' profiles with an LLM ([LinkedIn Engineering, Mar 2026](https://www.linkedin.com/blog/engineering/feed/engineering-the-next-generation-of-linkedins-feed)). Off-topic posts confuse that matching. Keep about 80% of posts on one main topic (data & AI careers and interviews) and 2-3 sub-topics ([van der Blom, Jun 2026](https://pod.wave.co/podcast/creator-science-dc8ffac2-9d4b-4034-a53c-bc78b533d35a/307-richard-van-der-blom-the-state-of-linkedin-in-2026-based-on-data-from-13-million-posts)).
 
@@ -92,7 +137,20 @@ Full sources in [`research/algorithm-and-formats-2026.md`](research/algorithm-an
 
 ## 4. Hooks: the rules that come out of the data
 
-_(Pattern statistics are at the top of [`hooks-swipe-file.md`](hooks-swipe-file.md).)_
+What 1,000+ verified hooks say (details: [`hooks-swipe-file.md`](hooks-swipe-file.md) and the three research files):
+
+- **Data niche:**
+  - **Money with an exact number and a company has the highest median** (1,475). Examples: Zach Wilson's comp post (14,528), "From Intern to Amazon - Here is my salary growth" (6,231), "In 11 months I negotiated from $71K to $153K" (1,475).
+  - Next: career-transition stories (902), first-person interview stories at a named company or market (748), contrarian takes about hiring (693).
+  - **Pure technical explainers with no story or number got 11-57**, even on 150k-200k accounts.
+- **AI niche:**
+  - "X vs Y" comparisons and "the shift to X" posts have the highest medians.
+  - **First-person proof has the fattest tail**: the 31,313 post was "I spent 3+ hours in the last 2 weeks putting together this no-nonsense curriculum".
+  - Generic agent explainers and copy-paste prompt posts are cooling in 2026.
+- **Growth sellers:**
+  - Aphorism one-liners win for 700k+ accounts. Real milestones (6.0 reactions per 1k followers) and then-vs-now arcs (5.0) win per follower.
+  - **"Comment X to get it" posts get 3-4x the comments but fewer reactions**: 0.6 per 1k followers in the last 12 months, the lowest of any pattern.
+- **Across all three:** pattern medians sit close together (about 3-7 reactions per 1k followers). The spread *inside* a pattern is much bigger than between patterns. **Specificity beats the template**: a real number, a named company, one moment, your own stake.
 
 **Your hook rules (data + your own numbers):**
 1. **Line 1 names a company or a dollar figure** whenever it's true. Your 37k, 27k and 11k posts all did, and so do many of the top data hooks in the swipe file.
@@ -129,7 +187,12 @@ The full list of verified hooks, sorted by pattern and by how much each beat its
 
 ## 5. Formats and visuals (summary; details in [`visuals.md`](visuals.md))
 
-_(See [`visuals.md`](visuals.md); being finalized.)_
+- **Story posts** (interview moments, money, founder, hiring side): **text-only or one real photo is enough.** In the data niche, text-only and image posts tie on median reactions, and the biggest data post (14,528) is text-only. Andrew Ng's 21,964-reaction story is text-only too.
+- **Teaching posts** (What Big Tech Expects, Before/After, X vs Y, interview answers): **one strong image.** Infographics, cheat sheets and diagrams are what people save. In the AI niche, 91 of 104 checked winners were single-image posts. Use 4:5 portrait (1080x1350) with your face and handle in the header (Rakesh Gohel and Brij Pandey style), so reposts carry your name.
+- **Carousels:** only for step-by-step walkthroughs, 8-12 slides, slide 1 = the end result. A Matt Barker client at about 18k followers gained about 2,000 followers from one carousel in 2026. But documents can't be boosted, and per-follower results fell over the last 12 months.
+- **Video:** the weakest median in the data niche (330), and per-post video reach is down 36% year on year. Use it for 60-180 second clips from your weekly Live, with captions burned in.
+- **GIFs / animated diagrams:** Rakesh Gohel, Alex Xu and Avi Chawla use them, but no dataset measures their reach. They upload as video. Optional.
+- **Memes:** one a week at most. They buy reach (Shashank Mishra's 3,832 vs 11-57 for his explainers) but convert to followers poorly.
 
 ---
 

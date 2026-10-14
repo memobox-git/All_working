@@ -6,6 +6,7 @@ One post a day on your proven weekly rhythm, with AI brought in through the care
 - `†` = verify the number on the source (Levels.fyi, the company's careers page) on the day you post, and name the source in the post.
 - Every topic is new. Nothing repeats an earlier post (Amazon Section 2, Mercedes-Benz questions, "why don't you quit", "$120K at Amazon or Google, 4 months left", W2 vs 1099 vs C2C, "walk me through an end-to-end pipeline", and the Claude plan post have all been used). Check this list against your own post history before each week.
 - Post time to test: 8:30 am ET (6 pm IST) vs 12:30 pm ET. Keep the winner after week 3.
+- **News-jack rule:** when a major data or AI launch lands (a new model, a Databricks/Snowflake/AWS data feature, a hiring or layoff headline at a big tech company), swap that day's post for a same-day take through your lens: what it changes for data engineers, or how it shows up in interviews. Day-one posts on big launches are the most reliable spike in the research. Move the planned topic to the next free slot.
 
 ## Weekly rhythm
 

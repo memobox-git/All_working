@@ -8,19 +8,31 @@ Sources:
 
 ## 1. What the numbers say
 
-**Put a native image on almost every post.** Image posts lead in our verified data:
+**It depends on the niche and the kind of post.** Media type below was checked inside the main post only. A first pass also counted media from the "related posts" cards under each post, which made text-only posts look like video or image posts; those counts were thrown out.
 
-| Media (verified 100+ reaction posts where media was detected) | Posts | Median reactions | Median reactions per 1k followers |
+**Data creators** (196 verified posts with 100+ reactions, at most 12 per creator):
+
+| Media | Posts | Median reactions | Max |
 |---|---|---|---|
-| image | 374 | 1,548 | see swipe file |
-| text-only | 86 | 494 | see swipe file |
-| document/carousel | 49 | 1,010 | see swipe file |
-| video | 30 | 481 | see swipe file |
-| image + video | 1 | 3,119 | see swipe file |
-| document/carousel + image | 1 | 1,242 | see swipe file |
-| document/carousel + image + video | 1 | 123 | see swipe file |
+| text-only | 58 | 536 | 14,528 |
+| image (incl. GIF) | 105 | 533 | 6,231 |
+| document / carousel | 10 | 516 | 1,748 |
+| link preview card | 6 | 460 | 1,159 |
+| native video | 16 | 330 | 1,613 |
 
-The outside datasets point the same way:
+- **In the data niche, text-only ties with images.** Text-only also holds the biggest post: Zach Wilson's comp post at 14,528. Images dominate memes, salary graphics, SQL puzzle screenshots and infographics.
+- **AI creators:** 91 of 104 winners checked were single-image posts: infographics, diagrams, memes. Andrew Ng's text-only story (21,964) is the big exception.
+- **Growth sellers:** most of their verified top posts carry an image (Justin Welsh: 100% quote-card images).
+- **All three samples are selected for 100+ reactions.** They show which formats *reach* high numbers, not the average result by format.
+
+**So, by post type:**
+- **Story posts** (interview moment, money, founder, hiring side): text-only or one real photo.
+- **Teaching posts** (what big tech expects, before/after, X vs Y, an interview answer): one strong image.
+- **Carousels:** only for step-by-step walkthroughs.
+- **Video:** only for Live clips.
+- **Polls:** skip them. They reach far but grow followers poorly and can't be boosted.
+
+The big cross-niche datasets (all topics mixed, by impressions) favour images and documents over text and video:
 - **AuthoredUp** (personal profiles, reach multiplier against the profile's own average): polls 1.64x, documents 1.45x, images 1.18x, video 0.86-1.10x, text 0.88x.
 - **Taplio** (June 2026, median impressions): image 600, document 462, video 460, text 307.
 - **Metricool 2026:** carousels averaged 1,451 impressions against 606 for video; image posts got the most comments per post (2.80).
@@ -29,14 +41,12 @@ The outside datasets point the same way:
 - Richard van der Blom's 2026 scorecard: text + image is "Saveable 5/5. Best for: Infographics. Avoid selfies."
 - Growth sellers: Justin Welsh's audited posts are 100% image. Vedika: 70% image, 20% carousel, 10% graphics. Lara Acosta puts a visual on nearly every post.
 
-**So the default is text + one strong image.** Use a carousel when the content is a step-by-step walkthrough. Use video only for Live clips and talking-head answers. Skip polls: they reach far but grow followers poorly and can't be boosted.
-
 ---
 
 ## 2. The 8 visual types that win in data & AI (with real examples)
 
 ### 1) The "X vs Y" comparison infographic
-- **Example:** Rakesh Gohel, *AI Agents vs. Agentic AI*, **4,083 reactions** ([post](https://www.linkedin.com/posts/rakeshgohel01_most-still-think-that-ai-agents-and-agentic-activity-7330934143326781440-vn67)). Alex Xu, *RAG vs Agentic RAG*, **9,290**.
+- **Example:** Rakesh Gohel, *AI Agents vs. Agentic AI*, **4,083 reactions** ([post](https://www.linkedin.com/posts/rakeshgohel01_most-still-think-that-ai-agents-and-agentic-activity-7330934143326781440-vn67)). Alex Xu, *RAG vs Agentic RAG*, **9,290** ([post](https://www.linkedin.com/posts/alexxubyte_systemdesign-coding-interviewtips-activity-7344040591753678849-j-6J)).
 - **Anatomy:**
   - 4:5 portrait.
   - Header strip with his face, the LinkedIn logo and his @handle.
@@ -46,7 +56,7 @@ The outside datasets point the same way:
 - **Your version:** "Data Engineer vs AI Engineer", "Batch vs Streaming: how I'd answer it in an interview", "Data Warehouse vs Lakehouse". Bottom panel: "What I'd say in the interview".
 
 ### 2) The staircase / levels / roadmap infographic
-- **Example:** Brij Kishore Pandey, *The AI Agents Staircase*, **7,327 reactions** ([post](https://www.linkedin.com/feed/update/urn:li:activity:7306637799196119040)). Alex Xu, *The Generative AI Learning Roadmap*, **7,924**.
+- **Example:** Brij Kishore Pandey, *The AI Agents Staircase*, **7,327 reactions** ([post](https://www.linkedin.com/feed/update/urn:li:activity:7306637799196119040)). Alex Xu, *The Generative AI Learning Roadmap*, **7,924** ([post](https://www.linkedin.com/posts/alexxubyte_systemdesign-coding-interviewtips-activity-7300194175021400066-SY3c)).
 - **Anatomy:**
   - Huge title with one word in red.
   - Three color bands (green Basic, purple Intermediate, blue Advanced) with a staircase arrow.
