@@ -141,3 +141,167 @@ The model is the easy part. The data underneath it is the job.
 
 How to use: read each post once (30 seconds), check the one line marked "Check", paste, post. Every claim is either a public fact (source given) or a fact you already gave me. Nothing about your life is made up.
 
+
+---
+
+# Batch: range samples (Oct 14). All facts from `source-facts.md`
+
+## 1 · Data surprise: the missing job title · READY
+Visual: three tiles: "Databricks · 895 open roles · 0 titled Data Engineer", "Snowflake · 358 · 0", "Uber · 643 · 0".
+
+```
+Databricks has 895 open jobs right now.
+Not one of them is titled "Data Engineer." 👇
+
+Snowflake: 358 open roles. Same story.
+Uber: 643. Same story.
+
+The work didn't disappear. The title did.
+
+At Databricks, the job that builds their own pipelines is called "Senior Software Engineer (Data Platform)."
+At Uber, it's "Software Engineer II, Data Infrastructure": pipelines that stay "correct under retries, reprocessing, and backfills."
+
+That's data engineering. It just says software engineer on the door.
+
+So if your job search is one search box with "data engineer" in it, you're missing roles built for you.
+
+Search for the work instead:
+→ data platform
+→ data infrastructure
+→ analytics engineer
+→ Spark, Airflow, dbt, pipelines
+
+Then read the responsibilities, not the title.
+
+The best data engineering jobs don't always say data engineering.
+```
+
+## 2 · Money: Amazon L5 to L6 · READY
+Visual: two stacked bars (L5 $231K, L6 $334K), each split into base and stock.
+
+```
+At Amazon, a data engineer's pay jumps $103K a year from L5 to L6.
+Most of that jump isn't salary. 👇
+
+Levels.fyi averages, US, October 2026:
+
+L5: $231K a year
+→ $161K base, $69K stock
+
+L6: $334K a year
+→ $191K base, $143K stock
+
+Base goes up $30K. Stock goes up $74K.
+
+That changes how you negotiate.
+
+People fight hard for an extra $10K of base. The bigger lever is the level you're hired at, because the level decides the stock.
+
+So before you talk numbers, ask which level the offer is at, and what it would take to be considered for the next one.
+
+Negotiate the level first. The money follows it.
+```
+
+## 3 · Job post decode: Anthropic · READY
+Visual: quote card with the 3 "how you work" lines highlighted, pay range on top.
+
+```
+Anthropic is hiring a data engineer at $320,000 to $405,000.
+The skills list is shorter than you'd think. 👇
+
+The role: Data Engineer, Product. San Francisco, New York or Seattle. Posted Oct 9.
+
+What they ask for:
+→ SQL and Python, for "accurate, clean data models"
+→ dbt pipelines "that turn raw logs into canonical datasets"
+→ Airflow and GitHub
+→ dashboards that other teams actually use
+
+No vector databases. No model training. No agent frameworks.
+
+The lines that stand out are about how you work:
+→ "a sense of when 'good enough' beats perfect"
+→ "you take ownership of solving a problem fully, even when that means picking up work beyond your usual scope"
+→ "Experience using AI to scale your own productivity and your team's without lowering the quality of the work"
+
+An AI lab paying up to $405K is hiring for fundamentals, ownership and judgment.
+
+If you're waiting to learn one more AI framework before you apply, read the job post first.
+```
+
+## 4 · Interview question teardown · READY
+Visual: two cards: "Short answer" (grey) vs "Hire answer" (3 parts, blue).
+
+```
+"What happens if your pipeline runs twice?"
+There's a short answer and a hire answer. 👇
+
+The short answer:
+"It's idempotent, so nothing happens."
+
+That's a label, not an answer. The next question is: how?
+
+The hire answer has three parts.
+
+What could go wrong
+→ a rerun inserts the same day again and revenue doubles
+
+How you prevent it
+→ overwrite that date's partition instead of appending, or MERGE on a unique key
+
+How you know it worked
+→ row counts and a duplicate check on the key after every run
+
+Same question. One answer names a concept. The other shows you've cleaned up after a rerun before.
+
+Interviewers aren't checking whether you know the word. They're checking whether you know the 2 AM version of it.
+```
+
+## 5 · Hot take: failure modes over tools · READY
+Visual: text-only, or a simple "Break it on purpose" checklist card.
+
+```
+You don't need another data engineering tool.
+You need to know how the ones you have break. 👇
+
+Tools change. Failure modes don't.
+
+Late data.
+Duplicate rows after a retry.
+A schema change upstream that nobody announced.
+A join that quietly multiplies rows.
+A job that's fine at 1 million rows and dies at 1 billion.
+
+Every one of these shows up in Airflow, Dagster, dbt, Spark and Snowflake. Learn them once and they carry over to every tool you'll ever use.
+
+So the next time you learn a tool, skip the hello-world. Break it on purpose:
+→ run the job twice
+→ send it data a day late
+→ rename a column upstream
+→ give it 100x the rows
+
+What you learn from breaking it is what on-call and interviews actually ask about.
+
+Tools get you the first job. Failure modes get you trusted with the second.
+```
+
+## 6 · Money: same title, three banks · READY
+Visual: three numbers side by side with the $85K gap called out; source line at the bottom.
+
+```
+Same title. Same country. $85K apart.
+
+Data engineer median pay on Levels.fyi (US, October 2026):
+
+JPMorgan Chase: $145K
+Capital One: $180K
+Goldman Sachs: $230K
+
+All three are banks. All three hire data engineers for similar work.
+
+If you're interviewing in finance, don't benchmark an offer against the job you have. Benchmark it against the same title at two competitors.
+
+It takes five minutes, and it's the most useful number you can bring to a negotiation.
+
+The title tells you what you'll do. The company decides what it's worth.
+```
