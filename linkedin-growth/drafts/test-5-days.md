@@ -1,14 +1,14 @@
 # 5-day test (Oct 15-19, 2026)
 
-Each day uses the format of one of the example posts Chris shared. The wording and topics are Chris's own.
+Thursday is a rewrite of Jean Lee's post. Fri-Mon are rewrites of last month's best data and AI posts (see `rebrands-oct.md`). The ideas come from the originals; the wording is new.
 
 | Day | Format (from Chris's examples) | Hook | Visual | Status |
 |---|---|---|---|---|
 | Thu Oct 15 | Rewrite of Jean Lee's Python mind map (377 on 69k) | Python runs almost every part of an AI system. | `visuals/python-for-ai-engineering.png` | FINAL, below |
-| Fri Oct 16 | Step-by-step build (Chorouk Malmoum, Codex steps: 245 on 126k) | How to build a RAG pipeline on your own documents, step by step. | Step infographic | Next |
-| Sat Oct 17 | Levels (Abhisek Sahu, SQL mastery: 1,435 on 179k) | Every data pipeline works on day 1. Day 90 is where you find out what you built. | `visuals/pipeline.gif` | FINAL in `week-1.md` |
-| Sun Oct 18 | Roadmap (Aiswarya Venkitesh, Databricks roadmap: 616 on 77k) | Spark mastery roadmap, from first DataFrame to production | Roadmap image | Next |
-| Mon Oct 19 | Usage gap (Uttam Gupta, "barely using Claude": 209) | Using AI only to write SQL is using a fraction of it. | Workflow image | Next |
+| Fri Oct 16 | Rebrand of Sivasankar Natarajan's MCP explainer (1,623 on 26.7k) | Everyone's talking about MCP. | `visuals/mcp-explained.png` | FINAL in `rebrands-oct.md` |
+| Sat Oct 17 | Rebrand of Alex Freberg's skills list (1,353, text-only) | In 2016, SQL and one ETL tool could get you a data engineering job. | Text-only | FINAL in `rebrands-oct.md` |
+| Sun Oct 18 | Rebrand of Andreas Horn's "fix your data" (1,956) | Gartner predicted… 60% of AI projects… | Text-only | FINAL in `rebrands-oct.md` |
+| Mon Oct 19 | Rebrand of Ajay Kadiyala's interview scenario (523, text-only) | "The dashboard says $4.2M. Finance says $3.9M." | Text-only | FINAL in `rebrands-oct.md` |
 
 Post at 8:30 AM ET. Upload the image with the post, and keep links out of the body.
 
@@ -99,10 +99,10 @@ The list changes every year. Clean data has been at the top the whole time.
 | Day | Post | Impressions (24h) | Impressions (7d) | Reactions | Comments | Followers gained |
 |---|---|---|---|---|---|---|
 | Thu Oct 15 | Python for AI engineering | | | | | |
-| Fri Oct 16 | RAG pipeline steps | | | | | |
-| Sat Oct 17 | Day 1 vs Day 90 | | | | | |
-| Sun Oct 18 | Spark roadmap | | | | | |
-| Mon Oct 19 | AI beyond SQL | | | | | |
+| Fri Oct 16 | What is MCP | | | | | |
+| Sat Oct 17 | Skills 2016 vs 2026 | | | | | |
+| Sun Oct 18 | Fix the data first | | | | | |
+| Mon Oct 19 | Dashboard vs finance | | | | | |
 
 Benchmark for your follower tier (Shield): a typical post gets 1,216 impressions, and a top-10% post gets 9,052.
 
