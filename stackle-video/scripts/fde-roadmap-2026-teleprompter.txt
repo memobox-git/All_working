@@ -1,43 +1,49 @@
 FORWARD DEPLOYED ENGINEER ROADMAP 2026
 Teleprompter script
 
-About 1,340 words, about 9 minutes at 150 words a minute.
+About 1,800 words: about 12 minutes at 150 words a minute, about 10 at your recorded pace.
 [ON CAMERA] means look into the lens. [VOICE OVER] means a graphic is on screen.
-[PAUSE] means stop for one second.
+[PAUSE] means stop for one second. (NEW) marks the one camera scene you have not recorded yet.
 
-
-[VOICE OVER, GRAPHIC 1]
-
-Job postings for forward deployed engineers in the United States are up more than one thousand percent from last year, and the median salary in those postings is more than one hundred eighty-eight thousand dollars.
-Yet most people still do not know what the job is, or how to get it.
-
-[PAUSE]
 
 [ON CAMERA, SCENE 1 OF 6]
 
-In this video I am going to explain what a forward deployed engineer does, what the job really pays, the skills to learn in five phases, and how the interview works.
+In this video, I'm going to explain what a forward deployed engineer does, what the job really pays, the skills to learn in five phases, and how the interview works.
+
+[PAUSE]
+
+[VOICE OVER, GRAPHIC 1]
+
+And the demand behind it is real.
+In 2025, there were about twelve hundred job postings for forward deployed engineers, or FDEs, in the United States.
+In the first seven months of 2026, there were more than fifty-two hundred.
+If you think about it, that's about a hundred a month last year.
+This year, it's about seven hundred forty a month, which means demand grew about seven times.
+And the median salary in those postings is more than one hundred eighty-eight thousand dollars.
 
 [PAUSE]
 
 [VOICE OVER, GRAPHIC 2]
 
-If you are new here, I am Chris.
-I have worked in data engineering for more than ten years.
-I have interviewed more than two hundred engineers for companies in healthcare, banking, automotive, and financial exchanges.
+If you're new here, I'm Chris.
+I've worked in data engineering for more than ten years.
+I've interviewed more than two hundred engineers for companies in healthcare, banking, automotive, and financial exchanges.
 Today I run Stackle, where I teach data and AI engineering, and more than two hundred thousand people follow me on LinkedIn.
 
 [PAUSE]
 
 [VOICE OVER, GRAPHIC 3]
 
-Before the skills, you need a clear picture of the job itself.
+And so before we get to the skills, you need a clear picture of the job itself.
 
 [PAUSE]
 
 [VOICE OVER, GRAPHIC 4]
 
-A forward deployed engineer, or FDE, is a software developer who works inside one customer's business.
-Most developers build one product for thousands of users, but an FDE sits with one client and connects the product to their data, their systems, and their daily work.
+A forward deployed engineer just means a software engineer who works inside one customer's business.
+Most engineers build one product for users they never meet.
+An FDE connects the product to one client's data, systems, and daily work.
+A lot of time with the customer means you build what they need, and a little means you build what you guessed.
 
 [PAUSE]
 
@@ -49,60 +55,66 @@ The role started at Palantir, and Shyam Sankar, the company's thirteenth employe
 
 [VOICE OVER, GRAPHIC 6]
 
-Palantir split its engineers into Devs, who built the core product, and Deltas, who went out to customers and made the product work for them.
+Palantir split its engineers into two groups.
+The Devs built the core product, and the Deltas went out to customers and made it work for them.
 
 [PAUSE]
 
 [VOICE OVER, GRAPHIC 7]
 
-The FDE idea spread when AI companies began selling large language models, the AI behind ChatGPT, Claude, and Gemini.
-On its own, a model cannot open a company's files, follow its rules, or plug into the software its staff use.
+And so the idea spread when AI companies started selling large language models, like the ones behind ChatGPT, Claude, and Gemini.
+But a model on its own can't open a company's files, follow its rules, or plug into its software.
 
 [PAUSE]
 
 [VOICE OVER, GRAPHIC 8]
 
-In 2025, an MIT study found that about ninety-five out of every hundred companies it looked at got no measurable return from their AI test projects, mostly because the tools did not fit into daily work.
+A 2025 MIT study looked at AI test projects inside companies.
+About ninety-five out of every hundred companies it studied got no measurable return.
+That's not because the models were bad.
+It's because the tools didn't fit into daily work.
 
 [PAUSE]
 
 [VOICE OVER, GRAPHIC 9]
 
-So AI companies started hiring FDEs.
-OpenAI built an FDE team in 2025, Salesforce has committed to one thousand FDEs, and Anthropic, Databricks, and many others are hiring too.
+So AI companies started hiring FDEs to close that gap.
+OpenAI built an FDE team in 2025, Salesforce has committed to one thousand of them, and Anthropic and Databricks are hiring too.
 
 [PAUSE]
 
 [VOICE OVER, GRAPHIC 10]
 
-Here is what the work looks like at a bank.
-An FDE connects an AI model to the loan files, builds a review screen, checks the answers against the lending rules, and stays until the staff use it every day.
+Let's say a bank buys an AI model to help its staff review loan applications.
+An FDE connects the model to the loan files, builds a review screen, and checks the answers against the lending rules.
+Then they stay until the staff use it every day.
 
 [PAUSE]
 
 [VOICE OVER, GRAPHIC 11]
 
-An FDE is judged by the customer's result, not by the code.
+And so an FDE is judged by the customer's result, not by the code they wrote.
 
 [PAUSE]
 
 [VOICE OVER, GRAPHIC 12]
 
-The focus on results is also what separates an FDE from three similar jobs.
-A software engineer builds one product for many customers, a solutions engineer builds demos before the sale, and a consultant gives advice.
-An FDE works after the sale, writes production code that real people depend on, and owns the result.
+That focus on results is what separates an FDE from similar jobs.
+A solutions engineer builds demos before the sale, and a consultant gives advice.
+An FDE works after the sale, writes code people depend on, and owns the result.
 
 [PAUSE]
 
 [VOICE OVER, GRAPHIC 13]
 
-Some companies use the FDE title for consulting work, so before you apply, check that the role involves writing real code.
+Now, some companies put the FDE title on consulting work.
+So before you apply, check that the role involves writing real code.
 
 [PAUSE]
 
 [ON CAMERA, SCENE 2 OF 6]
 
-In my view, this job suits you if you like solving problems for real people and explaining technical ideas in plain words.
+In my view, the job really suits you if you like solving problems for real people and explaining technical ideas in plain words.
 If you prefer quiet weeks of deep focus on one codebase, a product engineering role will make you happier.
 Either way, you should know the real numbers before you decide.
 
@@ -110,28 +122,34 @@ Either way, you should know the real numbers before you decide.
 
 [VOICE OVER, GRAPHIC 14]
 
-Some videos say this job pays a million dollars a year, but only a few very senior roles come close, and most of that money is stock.
+You've probably seen videos saying this job pays a million dollars a year, right?
+That's only true for a handful of senior roles, and most of that money is stock.
 
 [PAUSE]
 
 [VOICE OVER, GRAPHIC 15]
 
-Real job posts are clearer, with base salaries from about one hundred thirty-five thousand to three hundred thousand dollars at OpenAI, Anthropic, and Palantir.
-On Levels.fyi, the median total pay for an FDE is about two hundred sixteen thousand dollars.
+Real job posts list base pay from about one thirty-five to three hundred thousand dollars.
+So let's do the math on the medians.
+The median FDE posting pays about one eighty-eight thousand a year, and the median software engineer posting pays about one forty-five.
+One eighty-eight minus one forty-five is forty-three thousand dollars a year.
+If that gap holds for five years, that's two hundred fifteen thousand dollars.
+So what would it be worth to you to learn the skills that close that gap?
 
 [PAUSE]
 
 [VOICE OVER, GRAPHIC 16]
 
 Experience matters more than most roadmaps admit.
-Only twelve percent of FDE job posts ask for two years or less, and sixty percent ask for three to five years.
+Only twelve percent of FDE job posts ask for two years or less, and sixty percent ask for three to five.
 
 [PAUSE]
 
 [VOICE OVER, GRAPHIC 17]
 
-So for most people, FDE is a second or third job.
-Palantir does hire new graduates, but a ninety-day plan only works if you already have engineering experience.
+And so for most people, FDE is a second or third job, not a first one.
+Palantir does hire new graduates.
+But a ninety-day plan only works if you already have engineering experience.
 
 [PAUSE]
 
@@ -141,10 +159,11 @@ The job also comes with travel, up to half your time at OpenAI and Anthropic.
 
 [PAUSE]
 
-[ON CAMERA, SCENE 3 OF 6]
+[ON CAMERA, SCENE 3 OF 6]  (NEW)
 
-Now here is the roadmap, in five phases.
-Most roadmaps start with AI tools, but after more than ten years in data engineering, I start with code and data, because that is where real projects get stuck.
+So if the job still sounds right for you, here's the roadmap.
+Most roadmaps start with AI tools.
+But after more than ten years in data engineering, I start with code and data, because that's where real projects get stuck.
 
 [PAUSE]
 
@@ -156,138 +175,171 @@ The five phases are software foundations, data and cloud, applied AI, customer s
 
 [VOICE OVER, GRAPHIC 20]
 
-Phase one is software foundations.
-Learn Python, which appears in about two thirds of FDE job posts, then SQL to pull data from a database, then APIs, which let one program ask another for data, like a weather app asking for the forecast.
+Number one is software foundations, which means you learn to ship working code before you touch AI.
+That's because an FDE is an engineer first, right?
+Start with Python, which shows up in about two thirds of FDE job posts.
+Then add SQL to pull data from a database, and APIs to pass data between programs.
+Let's say a client wants last month's orders in a report.
+You'd pull them with SQL, clean them with Python, and send them to the team's tool through an API.
 
 [PAUSE]
 
 [VOICE OVER, GRAPHIC 21]
 
-Add Git to track your code, and basic TypeScript to build simple screens.
+Add Git to track your changes and a little TypeScript for simple screens.
+If you can't do this part, nothing else in this roadmap matters.
 
 [PAUSE]
 
 [VOICE OVER, GRAPHIC 22]
 
-Phase two is data and cloud.
-At a real customer, the information sits in old databases, spreadsheets, and PDF files, and some of it is wrong, so learn to build data pipelines that clean it and move it to one place.
+Number two is data and cloud, which means you learn to move messy data and run code in the cloud.
+That's because at a real customer, the data sits in old databases, spreadsheets, and PDFs, and some of it is wrong.
+A data pipeline just means code that moves data and cleans it on the way.
+Let's say a hospital wants an assistant for its nurses.
+Every night, your pipeline pulls new patient records, removes duplicates, and stores them in one table.
 
 [PAUSE]
 
 [VOICE OVER, GRAPHIC 23]
 
-Then learn Docker, which packs your code so it runs the same way anywhere, and one cloud, starting with AWS, the one FDE job posts mention most.
+Then learn Docker, which packs your code so it runs the same way anywhere.
+And learn one cloud, starting with AWS, because FDE job posts mention it most.
 
 [PAUSE]
 
 [VOICE OVER, GRAPHIC 24]
 
-Finish phase two with access control, so each person sees only the data they are allowed to see.
+Finish phase two with access control, so each person only sees the data they're allowed to see.
+If the data's wrong or exposed, the AI is wrong too, no matter how smart the model is.
 
 [PAUSE]
 
 [VOICE OVER, GRAPHIC 25]
 
-Phase three is applied AI, which means building with models that already exist.
-Start by calling an LLM through its API and writing clear instructions for it, which is called prompting.
+Number three is applied AI, which means you build with models that already exist instead of training your own.
+That's because a company wants its problem solved this quarter, not a research project.
+Start by calling a large language model, or LLM, through its API and writing clear instructions, which is called prompting.
 
 [PAUSE]
 
 [VOICE OVER, GRAPHIC 26]
 
 Next, learn RAG, short for retrieval-augmented generation.
-The system first finds the right documents, such as a leave policy, so the model answers from the company's facts instead of from memory.
+RAG just means the system finds the right documents first, like a leave policy, and then the model answers from them.
+A lot of retrieval keeps answers on the company's facts, and a little lets the model guess.
 
 [PAUSE]
 
 [VOICE OVER, GRAPHIC 27]
 
-Then learn agents, which are AI systems that take actions, like checking stock and placing an order.
+After RAG, you learn agents.
+An agent just means an AI system that takes actions, like checking stock and placing an order.
 
 [PAUSE]
 
 [VOICE OVER, GRAPHIC 28]
 
-Agents connect to tools through MCP, the Model Context Protocol, an open standard that works like one common plug for many AI apps.
+Many agents connect to their tools through MCP, the Model Context Protocol, which works like one common plug for many AI apps.
 
 [PAUSE]
 
 [VOICE OVER, GRAPHIC 29]
 
-Last, learn evals, which are test questions with known answers that you run after every change, so you can prove your system got better.
+The last skill in this phase is evals, which just means test questions with known answers that you run after every change.
+A lot of evals means you can prove your system got better, and a little means you're guessing.
+Let's say you change one line in a prompt and run your hundred test questions.
+If the score goes up, you can ship that change with proof, because customers trust a score more than a demo.
 
 [PAUSE]
 
 [VOICE OVER, GRAPHIC 30]
 
-Phase four is customer skills, starting with discovery, which means asking questions until you find the real problem behind a request.
+Number four is customer skills, which means you ask questions until you find the real problem.
+That's because what a customer asks for often isn't what they need.
+Discovery just means asking those questions.
+A lot of discovery means you build the right thing once, and a little means you build the wrong thing twice.
+Let's say a manager asks you for a chatbot.
+A few questions later, you learn the staff just can't find the right form, which means a simple search might fix it faster.
 
 [PAUSE]
 
 [VOICE OVER, GRAPHIC 31]
 
-Then learn to scope a small first version, explain trade-offs in plain words, and write short, clear updates.
+Then you learn to scope a small first version, explain trade-offs in plain words, and write short, clear updates.
 
 [PAUSE]
 
 [VOICE OVER, GRAPHIC 32]
 
-You can practice these skills now by volunteering for work with real users and writing a one-page summary after each conversation.
+You can practice all of this now.
+Volunteer for work with real users, and write a one-page summary after each conversation.
+Do that for a few months, and those pages become your proof.
 
 [PAUSE]
 
 [VOICE OVER, GRAPHIC 33]
 
-Phase five is proof of work.
-Build each project the way an FDE would deliver it, with a real problem from a real person, a tool that is online, an eval, and a one-page case study.
+Number five is proof of work, which means you build projects the way an FDE would deliver them.
+That's because hiring managers want to see the first four phases in action, not a list of courses.
+Each project needs a real problem from a real person, a tool that's online, an eval, and a one-page case study.
 
 [PAUSE]
 
 [VOICE OVER, GRAPHIC 34]
 
-Two projects are enough to start.
-The first is a RAG assistant built on messy, real documents, and the second is an agent that connects to a real system and asks a person before it acts.
+Let's say you build two projects.
+The first is a RAG assistant on messy, real documents, with an eval score you can show.
+The second is an agent that connects to a real system and asks a person before it acts.
+Two projects like that do more for you than ten tutorials.
 
 [PAUSE]
 
 [VOICE OVER, GRAPHIC 35]
 
-The last step is the interview.
-It still includes coding, but it adds rounds on unclear problems and real customers, such as a take-home project at OpenAI and a customer use-case round at Anthropic.
+And once you have those, the last step is the interview.
+It still includes coding, but it adds rounds on unclear problems and real customers.
+People who've interviewed report a take-home project at OpenAI and a customer use-case round at Anthropic.
 
 [PAUSE]
 
 [ON CAMERA, SCENE 4 OF 6]
 
-The round that surprises most people is the decomposition interview, made famous by Palantir, where you break a big, vague problem into pieces you could build.
+The round that surprises most people is the decomposition interview, made famous by Palantir, where you break a big, vague problem into small pieces you could build.
 I have interviewed more than two hundred engineers, and the ones who do well ask questions before they design anything.
 
 [PAUSE]
 
 [VOICE OVER, GRAPHIC 36]
 
-So if you are asked to cut emergency room wait times, start by asking who the users are, what data exists, what success looks like, and what the smallest first version would be.
+So let's say you're asked to cut emergency room wait times.
+You'd ask who the users are and what data exists.
+Then you'd ask what success looks like and what the smallest first version is.
+A lot of questions up front means you design the right thing, and a little means you build a chatbot nobody needed.
 
 [PAUSE]
 
 [ON CAMERA, SCENE 5 OF 6]
 
-Here is one thing to do this week.
+Here's one thing to do this week.
 Find one person with a problem at work, talk to them for thirty minutes, and write a one-page problem statement, because that page is the start of your first FDE project.
 
 [PAUSE]
 
 [VOICE OVER, GRAPHIC 37]
 
-If you want help planning your path into an FDE role, book a free fifteen-minute career call with me, and the link is in the description.
-If you want to learn these skills with real projects, join the Stackle Data Engineering or AI Engineering Masterclass.
+If you want help planning your path into an FDE role, book a free fifteen-minute career call with me.
+The link's in the description.
+And if you want to learn these skills with real projects, join the Stackle Data Engineering or AI Engineering Masterclass.
 
 [PAUSE]
 
 [ON CAMERA, SCENE 6 OF 6]
 
-Tell me in the comments which phase you are in right now.
-Thank you for watching, and I will see you in the next one.
+Tell me in the comment section which phase you're in right now.
+Thank you for watching, and I'll see you in the next one.
+
+[PAUSE]
 
 
 END OF SCRIPT
