@@ -2,7 +2,7 @@
 
 Slot: Thu Oct 22 (the next free day after the test run), or swap it into any day. Never two posts in 24 hours.
 
-Visual: `visuals/sql-orbit.gif` (1080x1350, 8 seconds, 4.2 MB). SQL sits in the centre, three rings of tools pop in around it (6 databases, 12 warehouses and engines, 18 tools that run SQL or connect to it), then data dots flow between them. If LinkedIn shows the GIF as a still image, upload `visuals/sql-orbit.mp4` instead. Theme: Dark (motion graphics rule in CLAUDE.md).
+Visual: `visuals/sql-orbit.gif` (1080x1350, 8 seconds, 4.3 MB). SQL sits in the centre and 118 small logos pop in around it in five rings while a counter ticks up to 118. Then data dots flow between SQL and the tools, and between the tools themselves. If LinkedIn shows the GIF as a still image, upload `visuals/sql-orbit.mp4` instead. Theme: Dark (motion graphics rule in CLAUDE.md).
 
 When you type the course credit, type "@Baraa Khatib Salkini" and pick his profile from the list, so he's tagged and gets notified.
 
@@ -40,9 +40,15 @@ Where you'll find it today
 → Streaming: Flink SQL queries data while it's still moving
 → AI: agents now write SQL against company data
 
-The GIF shows 36 of the tools that run SQL or connect to it. Learn it once and you can work in all of them.
+The GIF shows 118 tools that run SQL or connect to it, and that's still not all of them. Learn it once and you can work in all of them.
 
 If you want to learn it, this is an amazing free course I found: @Baraa Khatib Salkini's "SQL Full Course for Beginners (30 Hours)" on Data With Baraa. 6 million views, zero to advanced. Kudos to you, Baraa, for putting this out for free. Link in the first comment.
 
 Tools come and go every few years. SQL has been underneath them for five decades.
 ```
+
+## The 118 tools in the GIF
+
+In case someone asks in the comments. Order: inner ring outwards.
+
+PostgreSQL, MySQL, SQL Server, Oracle, SQLite, Snowflake, BigQuery, Databricks, Redshift, Excel, Power BI, Tableau, dbt, Spark SQL, MariaDB, CockroachDB, YugabyteDB, TiDB, SingleStore, Neon, Supabase, PlanetScale, Amazon RDS, Cloud Spanner, Percona, Vitess, TimescaleDB, CrateDB, QuestDB, SAP HANA, Teradata, Greenplum, Exasol, MonetDB, Firebolt, Microsoft Fabric, ClickHouse, DuckDB, Trino, Presto, Starburst, Dremio, Hive, Druid, Pinot, Doris, StarRocks, Materialize, RisingWave, Flink SQL, ksqlDB, Kafka, DataFusion, Calcite, Iceberg, Delta Lake, Hudi, Polars, SQLMesh, Airflow, Dagster, Prefect, Fivetran, Airbyte, Matillion, Informatica, Talend, Coalesce, Estuary, Meltano, Kestra, Great Expectations, Soda, Looker, Metabase, Superset, Redash, Mode, Hex, Sigma, ThoughtSpot, Qlik, Grafana, Sisense, Domo, Google Sheets, Lightdash, Evidence, Preset, Retool, Streamlit, Observable, Count, Omni, Holistics, Zoho Analytics, Cube, DBeaver, DataGrip, pgAdmin, TablePlus, Beekeeper Studio, Jupyter, pandas, Python, R, Java, SQLAlchemy, Prisma, Django, Rails, Laravel, Hibernate, .NET, Node.js, Go, Hasura, VS Code
