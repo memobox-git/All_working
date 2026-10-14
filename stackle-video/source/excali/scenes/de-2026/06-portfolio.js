@@ -71,9 +71,9 @@ questions.forEach(([line, label], i) => {
   z.text({ x: bx + 170, y: by + 105, text: label, size: 46, align: 'left' });
 });
 s.say('The last question matters most.');
-s.say('A pipeline that runs tells no one what to do on Monday morning.');
+s.say('A pipeline that runs does not tell anyone what to do next.');
 z.ellipse({ x: 990, y: 548, w: 900, h: 270, stroke: C.red, sw: 4, rough: 2, dur: 0.7 });
-z.text({ x: 960, y: 940, text: 'A pipeline that runs tells no one what to do on Monday morning.', size: 44, stroke: C.amber });
+z.text({ x: 960, y: 940, text: 'A pipeline that runs does not tell anyone what to do next.', size: 44, stroke: C.amber });
 
 // Shot 4: build in a field you know
 z = shift(s, 2100, 1300);
@@ -82,9 +82,9 @@ z.frame({ x: 0, y: 0, w: 1920, h: 1080, name: 'Your field' });
 z.text({ x: 960, y: 150, text: 'Build in a field you already know', size: 84 });
 underline(z, 380, 1540, 222);
 const fields = [
-  ['A nurse can build a pipeline on public health data.', 'Nurse', 'public health data'],
-  ['A person from marketing can track campaign results.', 'Marketing', 'campaign results'],
-  ['A person from finance can load daily market prices.', 'Finance', 'daily market prices'],
+  ['If you worked in logistics, build a pipeline that tracks deliveries.', 'Logistics', 'track deliveries'],
+  ['If you worked in a hospital, track how long patients wait.', 'Hospital', 'patient wait times'],
+  ['If you worked in a bank, load daily card transactions.', 'Banking', 'daily card transactions'],
 ];
 fields.forEach(([line, role, data], i) => {
   s.say(line);

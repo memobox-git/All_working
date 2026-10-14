@@ -201,11 +201,11 @@ A strong project pulls real data that changes every day. It runs on a schedule, 
 
 **[Graphic 14, full screen: the four questions]**
 
-Every project should answer four questions. What problem does it solve? Why does that problem matter to a business? What did you build, and why did you choose that design? What can someone do now that they could not do before? The last question matters most. A pipeline that runs tells no one what to do on Monday morning.
+Every project should answer four questions. What problem does it solve? Why does that problem matter to a business? What did you build, and why did you choose that design? What can someone do now that they could not do before? The last question matters most. A pipeline that runs does not tell anyone what to do next.
 
 **[Graphic 15, full screen: build in a field you know, then the whole board]**
 
-Build in a field you already know. A nurse can build a pipeline on public health data. A person from marketing can track campaign results. A person from finance can load daily market prices. *(pause)*
+Build in a field you already know. If you worked in logistics, build a pipeline that tracks deliveries. If you worked in a hospital, track how long patients wait. If you worked in a bank, load daily card transactions. *(pause)*
 
 **[Card beside you: "3 projects"]** *(pause)*
 

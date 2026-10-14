@@ -2864,9 +2864,9 @@
   {
    "id": "text-70",
    "type": "text",
-   "x": 271.6434326171875,
+   "x": 327.105224609375,
    "y": 2212.5,
-   "width": 1376.713134765625,
+   "width": 1265.78955078125,
    "height": 55,
    "angle": 0,
    "strokeColor": "#BA7517",
@@ -2887,8 +2887,8 @@
    "updated": 1,
    "link": null,
    "locked": false,
-   "text": "A pipeline that runs tells no one what to do on Monday morning.",
-   "originalText": "A pipeline that runs tells no one what to do on Monday morning.",
+   "text": "A pipeline that runs does not tell anyone what to do next.",
+   "originalText": "A pipeline that runs does not tell anyone what to do next.",
    "fontSize": 44,
    "fontFamily": 5,
    "textAlign": "center",
@@ -2898,7 +2898,7 @@
    "lineHeight": 1.25,
    "customData": {
     "at": 52.85,
-    "dur": 1.89,
+    "dur": 1.74,
     "anchor": {
      "x": 960,
      "y": 2240,
@@ -2934,7 +2934,7 @@
    "locked": false,
    "name": "Your field",
    "customData": {
-    "at": 57.2,
+    "at": 56.8,
     "dur": 1.4
    }
   },
@@ -2974,7 +2974,7 @@
    "autoResize": true,
    "lineHeight": 1.25,
    "customData": {
-    "at": 58.75,
+    "at": 58.349999999999994,
     "dur": 0.99,
     "anchor": {
      "x": 3060,
@@ -3031,7 +3031,7 @@
    "startArrowhead": null,
    "endArrowhead": null,
    "customData": {
-    "at": 59.89,
+    "at": 59.489999999999995,
     "dur": 0.4
    }
   },
@@ -3064,7 +3064,7 @@
    "link": null,
    "locked": false,
    "customData": {
-    "at": 60,
+    "at": 59.599999999999994,
     "dur": 0.5
    }
   },
@@ -3095,7 +3095,7 @@
    "link": null,
    "locked": false,
    "customData": {
-    "at": 60.55,
+    "at": 60.14999999999999,
     "dur": 0.315
    }
   },
@@ -3155,16 +3155,16 @@
    "startArrowhead": null,
    "endArrowhead": null,
    "customData": {
-    "at": 60.864999999999995,
+    "at": 60.46499999999999,
     "dur": 0.385
    }
   },
   {
    "id": "text-77",
    "type": "text",
-   "x": 2385.184013366699,
+   "x": 2338.788017272949,
    "y": 1885,
-   "width": 149.63197326660156,
+   "width": 242.42396545410156,
    "height": 70,
    "angle": 0,
    "strokeColor": "#BA7517",
@@ -3185,8 +3185,8 @@
    "updated": 1,
    "link": null,
    "locked": false,
-   "text": "Nurse",
-   "originalText": "Nurse",
+   "text": "Logistics",
+   "originalText": "Logistics",
    "fontSize": 56,
    "fontFamily": 5,
    "textAlign": "center",
@@ -3195,7 +3195,7 @@
    "autoResize": true,
    "lineHeight": 1.25,
    "customData": {
-    "at": 61.39999999999999,
+    "at": 60.999999999999986,
     "dur": 0.4,
     "anchor": {
      "x": 2460,
@@ -3246,16 +3246,16 @@
    "startArrowhead": null,
    "endArrowhead": "arrow",
    "customData": {
-    "at": 61.94999999999999,
+    "at": 61.54999999999998,
     "dur": 0.2
    }
   },
   {
    "id": "text-79",
    "type": "text",
-   "x": 2267.544387817383,
+   "x": 2297.9263305664062,
    "y": 2082.5,
-   "width": 384.9112243652344,
+   "width": 324.1473388671875,
    "height": 55,
    "angle": 0,
    "strokeColor": "#1E1C1D",
@@ -3276,8 +3276,8 @@
    "updated": 1,
    "link": null,
    "locked": false,
-   "text": "public health data",
-   "originalText": "public health data",
+   "text": "track deliveries",
+   "originalText": "track deliveries",
    "fontSize": 44,
    "fontFamily": 5,
    "textAlign": "center",
@@ -3286,8 +3286,8 @@
    "autoResize": true,
    "lineHeight": 1.25,
    "customData": {
-    "at": 62.29999999999999,
-    "dur": 0.54,
+    "at": 61.899999999999984,
+    "dur": 0.48,
     "anchor": {
      "x": 2460,
      "y": 2110,
@@ -3324,7 +3324,7 @@
    "link": null,
    "locked": false,
    "customData": {
-    "at": 64,
+    "at": 63.99999999999999,
     "dur": 0.5
    }
   },
@@ -3422,9 +3422,9 @@
   {
    "id": "text-83",
    "type": "text",
-   "x": 2928.344024658203,
+   "x": 2952.1720123291016,
    "y": 1885,
-   "width": 263.31195068359375,
+   "width": 215.65597534179688,
    "height": 70,
    "angle": 0,
    "strokeColor": "#BA7517",
@@ -3445,8 +3445,8 @@
    "updated": 1,
    "link": null,
    "locked": false,
-   "text": "Marketing",
-   "originalText": "Marketing",
+   "text": "Hospital",
+   "originalText": "Hospital",
    "fontSize": 56,
    "fontFamily": 5,
    "textAlign": "center",
@@ -3513,9 +3513,9 @@
   {
    "id": "text-85",
    "type": "text",
-   "x": 2885.7163696289062,
+   "x": 2864.1564025878906,
    "y": 2082.5,
-   "width": 348.5672607421875,
+   "width": 391.68719482421875,
    "height": 55,
    "angle": 0,
    "strokeColor": "#1E1C1D",
@@ -3536,8 +3536,8 @@
    "updated": 1,
    "link": null,
    "locked": false,
-   "text": "campaign results",
-   "originalText": "campaign results",
+   "text": "patient wait times",
+   "originalText": "patient wait times",
    "fontSize": 44,
    "fontFamily": 5,
    "textAlign": "center",
@@ -3547,7 +3547,7 @@
    "lineHeight": 1.25,
    "customData": {
     "at": 66.30000000000003,
-    "dur": 0.48,
+    "dur": 0.54,
     "anchor": {
      "x": 3060,
      "y": 2110,
@@ -3584,7 +3584,7 @@
    "link": null,
    "locked": false,
    "customData": {
-    "at": 67.2,
+    "at": 68.39999999999999,
     "dur": 0.5
    }
   },
@@ -3615,7 +3615,7 @@
    "link": null,
    "locked": false,
    "customData": {
-    "at": 67.75,
+    "at": 68.94999999999999,
     "dur": 0.315
    }
   },
@@ -3675,16 +3675,16 @@
    "startArrowhead": null,
    "endArrowhead": null,
    "customData": {
-    "at": 68.065,
+    "at": 69.26499999999999,
     "dur": 0.385
    }
   },
   {
    "id": "text-89",
    "type": "text",
-   "x": 3559.9280166625977,
+   "x": 3555.81201171875,
    "y": 1885,
-   "width": 200.1439666748047,
+   "width": 208.3759765625,
    "height": 70,
    "angle": 0,
    "strokeColor": "#BA7517",
@@ -3705,8 +3705,8 @@
    "updated": 1,
    "link": null,
    "locked": false,
-   "text": "Finance",
-   "originalText": "Finance",
+   "text": "Banking",
+   "originalText": "Banking",
    "fontSize": 56,
    "fontFamily": 5,
    "textAlign": "center",
@@ -3715,7 +3715,7 @@
    "autoResize": true,
    "lineHeight": 1.25,
    "customData": {
-    "at": 68.60000000000001,
+    "at": 69.8,
     "dur": 0.4,
     "anchor": {
      "x": 3660,
@@ -3766,16 +3766,16 @@
    "startArrowhead": null,
    "endArrowhead": "arrow",
    "customData": {
-    "at": 69.15000000000002,
+    "at": 70.35000000000001,
     "dur": 0.2
    }
   },
   {
    "id": "text-91",
    "type": "text",
-   "x": 3460.87841796875,
+   "x": 3413.7545166015625,
    "y": 2082.5,
-   "width": 398.2431640625,
+   "width": 492.490966796875,
    "height": 55,
    "angle": 0,
    "strokeColor": "#1E1C1D",
@@ -3796,8 +3796,8 @@
    "updated": 1,
    "link": null,
    "locked": false,
-   "text": "daily market prices",
-   "originalText": "daily market prices",
+   "text": "daily card transactions",
+   "originalText": "daily card transactions",
    "fontSize": 44,
    "fontFamily": 5,
    "textAlign": "center",
@@ -3806,8 +3806,8 @@
    "autoResize": true,
    "lineHeight": 1.25,
    "customData": {
-    "at": 69.50000000000003,
-    "dur": 0.57,
+    "at": 70.70000000000002,
+    "dur": 0.69,
     "anchor": {
      "x": 3660,
      "y": 2110,
@@ -3843,7 +3843,7 @@
    "locked": false,
    "name": "Whole board",
    "customData": {
-    "at": 71.39999999999999,
+    "at": 72.99999999999999,
     "dur": 1.8
    }
   },
@@ -3875,7 +3875,7 @@
    "locked": false,
    "name": "End",
    "customData": {
-    "at": 73.35,
+    "at": 74.94999999999999,
     "dur": 0
    }
   }
