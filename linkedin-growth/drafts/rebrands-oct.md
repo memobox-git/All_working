@@ -1,4 +1,4 @@
-# Rebrands: last month's winners, rewritten for Chris (Oct 16-19)
+# Rebrands: last month's winners, rewritten for Chris (Oct 16-20)
 
 How these were picked: the 114 data and AI posts from Sep 14 to Oct 14, 2026 with 100+ reactions in `data/verified-posts.csv`. I kept the ones that teach something and don't depend on the author's own life story, so they can be rewritten honestly. Each one keeps the idea and is rewritten in new words, with a data engineering angle the original didn't have. Original posts are linked so you can compare.
 
@@ -7,7 +7,7 @@ How these were picked: the 114 data and AI posts from Sep 14 to Oct 14, 2026 wit
 | Fri Oct 16 | What is MCP, for data engineers | [Sivasankar Natarajan, "What is MCP?"](https://www.linkedin.com/feed/update/urn:li:activity:7506570451591192576) | 1,623 on 26.7k followers | **60.7**, the best ratio of the month |
 | Sat Oct 17 | Data engineer skills, 2016 vs 2026 | [Alex Freberg, "SQL and excel were what you needed… 2015"](https://www.linkedin.com/posts/alex-freberg_sql-and-excel-were-what-you-needed-to-land-activity-7511853897884540928-Kk6T) | 1,353, text-only | 2.9 |
 | Sun Oct 18 | Fix the data before the AI | [Andreas Horn, "…It is fixing your data."](https://www.linkedin.com/posts/andreashorn1_the-best-thing-you-can-do-for-your-ai-strategy-activity-7515290062301839360-EPiX) | 1,956 | 7.6 (his typical post: 262) |
-| Mon Oct 19 | Dashboard vs finance interview question | [Ajay Kadiyala, "The BI dashboard doesn't match finance's numbers"](https://www.linkedin.com/posts/ajay026_dataengineering-azure-spark-activity-7515618390305333248-pF_z) | 523, text-only | 2.8 (his series runs 500-800) |
+| Tue Oct 20 | Dashboard vs finance interview question | [Ajay Kadiyala, "The BI dashboard doesn't match finance's numbers"](https://www.linkedin.com/posts/ajay026_dataengineering-azure-spark-activity-7515618390305333248-pF_z) | 523, text-only | 2.8 (his series runs 500-800) |
 
 Post at 8:30 AM ET. Only Friday has an image. The other three were text-only or near text-only in the original too.
 
@@ -120,7 +120,7 @@ Every AI strategy is a data strategy first.
 
 ---
 
-## Mon Oct 19 · "The dashboard doesn't match finance"
+## Tue Oct 20 · "The dashboard doesn't match finance"
 
 Text-only. The dollar figures are a made-up example inside the question, not a real case.
 

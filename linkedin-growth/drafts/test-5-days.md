@@ -1,6 +1,6 @@
-# 5-day test (Oct 15-19, 2026)
+# Test run (Oct 15-21, 2026)
 
-Thursday is a rewrite of Jean Lee's post. Fri-Mon are rewrites of last month's best data and AI posts (see `rebrands-oct.md`). The ideas come from the originals; the wording is new.
+From now on, Monday and Wednesday posts go with that day's YouTube video (`youtube-aligned.md`). Thursday is a rewrite of Jean Lee's post. Fri, Sat, Sun and Tue are rewrites of last month's best data and AI posts (see `rebrands-oct.md`). The ideas come from the originals; the wording is new.
 
 | Day | Format (from Chris's examples) | Hook | Visual | Status |
 |---|---|---|---|---|
@@ -8,7 +8,9 @@ Thursday is a rewrite of Jean Lee's post. Fri-Mon are rewrites of last month's b
 | Fri Oct 16 | Rebrand of Sivasankar Natarajan's MCP explainer (1,623 on 26.7k) | Everyone's talking about MCP. | `visuals/mcp-explained.png` | FINAL in `rebrands-oct.md` |
 | Sat Oct 17 | Rebrand of Alex Freberg's skills list (1,353, text-only) | In 2016, SQL and one ETL tool could get you a data engineering job. | Text-only | FINAL in `rebrands-oct.md` |
 | Sun Oct 18 | Rebrand of Andreas Horn's "fix your data" (1,956) | Gartner predicted… 60% of AI projects… | Text-only | FINAL in `rebrands-oct.md` |
-| Mon Oct 19 | Rebrand of Ajay Kadiyala's interview scenario (523, text-only) | "The dashboard says $4.2M. Finance says $3.9M." | Text-only | FINAL in `rebrands-oct.md` |
+| Mon Oct 19 | Goes with the YouTube video (AI PM roadmap) | An AI product manager job posted this fall pays up to $304,000 in base salary. | 45-60s clip from the video | FINAL in `youtube-aligned.md` (post A) |
+| Tue Oct 20 | Rebrand of Ajay Kadiyala's interview scenario (523, text-only) | "The dashboard says $4.2M. Finance says $3.9M." | Text-only | FINAL in `rebrands-oct.md` |
+| Wed Oct 21 | Goes with the YouTube video (20 AI concepts) | Every AI meeting uses the same 20 terms. | 45-60s clip from the video | FINAL in `youtube-aligned.md` (post B) |
 
 Post at 8:30 AM ET. Upload the image with the post, and keep links out of the body.
 
@@ -102,7 +104,9 @@ The list changes every year. Clean data has been at the top the whole time.
 | Fri Oct 16 | What is MCP | | | | | |
 | Sat Oct 17 | Skills 2016 vs 2026 | | | | | |
 | Sun Oct 18 | Fix the data first | | | | | |
-| Mon Oct 19 | Dashboard vs finance | | | | | |
+| Mon Oct 19 | AI PM roadmap (video) | | | | | |
+| Tue Oct 20 | Dashboard vs finance | | | | | |
+| Wed Oct 21 | 20 AI concepts (video) | | | | | |
 
 Benchmark for your follower tier (Shield): a typical post gets 1,216 impressions, and a top-10% post gets 9,052.
 
