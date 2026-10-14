@@ -1,0 +1,75 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:PJS;font-weight:400;src:url(../../../stackle-video/source/node_modules/@fontsource/plus-jakarta-sans/files/plus-jakarta-sans-latin-400-normal.woff2)}
+@font-face{font-family:PJS;font-weight:600;src:url(../../../stackle-video/source/node_modules/@fontsource/plus-jakarta-sans/files/plus-jakarta-sans-latin-600-normal.woff2)}
+@font-face{font-family:PJS;font-weight:700;src:url(../../../stackle-video/source/node_modules/@fontsource/plus-jakarta-sans/files/plus-jakarta-sans-latin-700-normal.woff2)}
+@font-face{font-family:PJS;font-weight:800;src:url(../../../stackle-video/source/node_modules/@fontsource/plus-jakarta-sans/files/plus-jakarta-sans-latin-800-normal.woff2)}
+:root{--bg:#1E1C1D;--ink:#FAF8F1;--mute:#B9B3A6;--amber:#F59E0B;--card:#2A2728;--line:#3A3637}
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1080px;height:1350px;background:var(--bg);color:var(--ink);font-family:PJS,sans-serif;position:relative;overflow:hidden}
+.grid{position:absolute;inset:0;background-image:linear-gradient(rgba(245,158,11,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(245,158,11,.05) 1px,transparent 1px);background-size:54px 54px}
+header{position:absolute;left:56px;right:56px;top:44px}
+.badge{display:flex;align-items:center;gap:14px;margin-bottom:22px}
+.avatar{width:58px;height:58px;border-radius:50%;background:var(--amber);color:var(--bg);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:28px;overflow:hidden}
+.avatar img{width:100%;height:100%;object-fit:cover}
+.who{font-size:24px;font-weight:700;line-height:1.15}.who span{display:block;font-size:19px;font-weight:600;color:var(--mute)}
+h1{font-size:62px;font-weight:800;line-height:1.02;letter-spacing:-1px}
+h1 em{font-style:normal;color:var(--amber)}
+.sub{font-size:25px;color:var(--mute);margin-top:12px;font-weight:600}
+.stairs{position:absolute;left:56px;right:56px;top:318px;bottom:110px}
+.lvl{position:absolute;height:118px;width:640px;display:flex;gap:16px;align-items:stretch;opacity:var(--o,1);transform:translateY(var(--y,0px))}
+.num{width:96px;flex:none;border-radius:16px;background:var(--amber);color:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;font-weight:800}
+.num b{font-size:46px;line-height:1}.num i{font-style:normal;font-size:14px;letter-spacing:.14em;margin-top:2px}
+.card{flex:1;background:var(--card);border:2px solid var(--line);border-radius:16px;padding:12px 18px;display:flex;flex-direction:column;justify-content:center}
+.t{font-size:27px;font-weight:800}
+.pills{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 4px}
+.pill{font-size:15px;font-weight:600;border:1.5px solid rgba(245,158,11,.6);color:#F7C76A;border-radius:30px;padding:2px 10px}
+.out{font-size:16px;color:var(--mute)}
+.spine{position:absolute;left:104px;top:40px;bottom:30px;width:3px;background:linear-gradient(var(--amber),rgba(245,158,11,.15));transform:skewX(-27deg);transform-origin:bottom}
+footer{position:absolute;left:56px;right:56px;bottom:40px;display:flex;justify-content:space-between;align-items:center;font-size:22px;font-weight:700}
+footer .k{color:var(--amber)}
+.note{position:absolute;right:56px;top:1118px;width:310px;font-size:24px;font-weight:700;line-height:1.3;text-align:right;color:var(--ink);opacity:var(--no,1)}
+.note span{color:var(--amber)}
+</style></head>
+<body>
+<div class="grid"></div>
+<header>
+  <div class="badge"><div class="avatar" id="av">C</div><script>const ph=new URLSearchParams(location.search).get('photo'); if(ph) document.getElementById('av').innerHTML='<img src="'+ph+'">';</script><div class="who">Chris · Stackle<span>@crispusroshan</span></div></div>
+  <h1>The Data <em>Pipeline</em><br>Maturity Stack</h1>
+  <div class="sub">From a script on your laptop to a platform people trust</div>
+</header>
+<div class="note" id="note">Most tutorials stop at <span>Level 2</span>.<br>Most interviews start at <span>Level 3</span>.</div>
+<div class="stairs" id="stairs"></div>
+<footer><div>Which level are you at?</div><div class="k">stackle.io</div></footer>
+<script>
+const L=[
+ ["Scripts",["Python","SQL","API pulls","CSV / JSON"],"Data moves, once"],
+ ["Scheduling",["Airflow","cron","retries","alerts on failure"],"It runs every day, and you know when it didn't"],
+ ["Idempotency",["safe reruns","overwrite partitions","dedupe keys"],"Run it twice, get the same result"],
+ ["Incremental loads",["watermarks","MERGE / upsert","CDC"],"Process only what changed"],
+ ["Data quality",["row counts","nulls","duplicates","freshness"],"Bad data stops before anyone sees it"],
+ ["Backfills & late data",["reprocess history","late events","versioned tables"],"Fix the past without breaking today"],
+ ["Observability & SLAs",["lineage","monitoring","data contracts","SLA"],"Data ready on time, owned like a product"],
+];
+const st=document.getElementById('stairs');
+const H=1350-318-110, step=(H-118)/6, xs=58;
+L.forEach((l,i)=>{
+  const d=document.createElement('div');d.className='lvl';d.id='l'+i;
+  d.style.left=(i*xs)+'px'; d.style.top=(H-118-i*step)+'px';
+  d.innerHTML=`<div class="num"><i>LEVEL</i><b>${i+1}</b></div><div class="card"><div class="t">${l[0]}</div><div class="pills">${l[1].map(p=>`<span class="pill">${p}</span>`).join('')}</div><div class="out">→ ${l[2]}</div></div>`;
+  st.appendChild(d);
+});
+// t in [0,1]: reveal levels bottom→top, then the note
+window.render=function(t){
+  for(let i=0;i<7;i++){
+    const s=i*0.1, p=Math.max(0,Math.min(1,(t-s)/0.09));
+    const el=document.getElementById('l'+i);
+    el.style.setProperty('--o',p); el.style.setProperty('--y',((1-p)*24)+'px');
+  }
+  const pn=Math.max(0,Math.min(1,(t-0.74)/0.1));
+  document.getElementById('note').style.setProperty('--no',pn);
+};
+if(location.hash==='#static') window.render(1);
+</script>
+</body></html>

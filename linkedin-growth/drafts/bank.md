@@ -41,3 +41,56 @@ No course answers those for you. So:
 
 Courses teach you the tools. Interviews test your decisions.
 ```
+
+---
+
+## "Data Pipeline Maturity Stack" · Mastery map · READY (visual done)
+
+The style Chris pointed to with his examples:
+- Abhisek Sahu, "SQL is easy to start. Mastering it is a different story.": 1,435 reactions on 179k followers.
+- Aiswarya Venkitesh's Databricks roadmap: 616 on 77k.
+- Jean Lee's Python mind map: 377 on 69k.
+
+Each of those did far better than the author's other recent posts. What they share:
+- A two-line contrast hook.
+- Levels or steps, one line each.
+- A big designed visual (animated GIF) that *is* the content.
+- A reframe at the end.
+- No credentials, no personal story.
+
+Visual: `visuals/pipeline.gif` (animated, levels build bottom to top), `visuals/pipeline.png` (static), `visuals/pipeline.mp4`. Source: `visuals/pipeline-maturity-stack.html`. Add `?photo=<your headshot path>` to swap the "C" badge for your face, then re-render with `node gif.js`.
+
+```
+Anyone can build a data pipeline.
+Building one that survives production is a different story.
+
+A script on your laptop moves data once. A production pipeline keeps moving it correctly when the source is late, the job fails at 2 AM, and someone needs last year reprocessed.
+
+This is how pipeline skills actually progress:
+
+→ Level 1: Scripts
+Pull data from an API or file, transform it in Python or SQL, load it into a table.
+
+→ Level 2: Scheduling
+Run it every day with Airflow or cron, and know when it didn't run.
+
+→ Level 3: Idempotency
+Rerun any day safely, without creating duplicates.
+
+→ Level 4: Incremental loads
+Process only what changed, with watermarks and MERGE.
+
+→ Level 5: Data quality
+Check row counts, nulls, duplicates and freshness before anyone sees the data.
+
+→ Level 6: Backfills and late data
+Reprocess two years of history without breaking today's dashboards.
+
+→ Level 7: Observability and SLAs
+Lineage, alerts, and a promised time the data is ready.
+
+Most tutorials stop at Level 2.
+Most interviews start at Level 3.
+
+Which level are you at right now?
+```
