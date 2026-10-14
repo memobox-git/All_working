@@ -5,7 +5,7 @@ Built Oct 14, 2026 for Chris (Stackle). It draws on verified public LinkedIn dat
 | File | What's in it |
 |---|---|
 | `README.md` (this file) | The strategy: the math, positioning, rules, growth levers, the 60-day plan |
-| [`hooks-swipe-file.md`](hooks-swipe-file.md) | 644 verified hooks (100+ reactions each) with author, followers, reactions, link, and which patterns win |
+| [`hooks-swipe-file.md`](hooks-swipe-file.md) | 1,057 verified hooks (100+ reactions each) with author, followers, reactions, link, and which patterns win |
 | [`creators.md`](creators.md) | Who to study and who to collaborate with: data, AI and LinkedIn-growth creators with exact follower counts and signature formats |
 | [`visuals.md`](visuals.md) | Which images, carousels, infographics, videos and GIFs work, with specs and examples |
 | [`calendar-60-days.md`](calendar-60-days.md) | Oct 15 to Dec 13: one post a day, written as hooks, plus the weekly Live/newsletter/collab tasks |
