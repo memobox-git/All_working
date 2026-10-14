@@ -194,28 +194,46 @@ Your team built the pipeline. The interview is about what you did inside it.
 
 ---
 
-## Tue Oct 20 · Money & offers · READY
+## Tue Oct 20 · Money & offers · READY (3P: Proof, Promise, Plan)
+
+Structure: lines 1-2 hook · Proof (2,500+ salary reports + 200+ interviews) · Promise (no pay cut for a title) · Plan (3 numbers, the role that pays, the move) · then deliver each part.
+
+Check: "So I wouldn't change titles. I'd add the other half" is your advice in your voice.
 
 Source: Levels.fyi job-family pages, US median total compensation, read Oct 14, 2026 (details and URLs in `source-facts.md`, section B6, and Google in B2).
 
 Visual: three horizontal bars, one per title, each labelled with its dollar figure and number of reports. Source line at the bottom: "Levels.fyi, US median total comp, Oct 2026".
 
 ```
-On Levels.fyi, the median AI engineer in the US makes $8K less than the median data engineer.
-The title so many data engineers want pays less than the job they already have. 👇
+The median AI engineer in the US makes $151K.
+The median data engineer makes $159K. 👇
 
-Data engineer: $159K median, from 1,189 salary reports.
-AI engineer: $151K, from 334.
+I pulled this from 2,500+ salary reports on Levels.fyi, and I've sat on the hiring side of 200+ data engineering interviews.
 
-Google shows the same thing. Data engineers $280K. AI engineers $260K.
+If you're a data engineer eyeing AI, this will keep you from taking a pay cut for a title.
 
-The money is one row down. Machine learning engineers: $280K across the US, $354K at Google.
+The 3 numbers, the role that actually pays, and the move I'd make instead.
 
-The difference isn't the word "AI" in the title. It's the work: building models, putting them into production, and owning them when they break.
+The numbers (US, October 2026):
+Data engineer: $159K
+AI engineer: $151K
+Machine learning engineer: $280K
 
-So if you're a data engineer eyeing AI, don't rename yourself. Stay close to the data the models run on, and learn the production side. Meta and Apple already write it into their data engineer job posts. Apple's makes hands-on LLM use a minimum qualification.
+Google shows the same order. Data engineer $280K, AI engineer $260K, machine learning engineer $354K.
 
-Change your skills, not your title.
+So the raise isn't in the word "AI". It's in the work machine learning engineers do: putting models into production and owning them when they break.
+
+That work runs on data. Pipelines, quality checks, the tables a model reads from. If you're a data engineer, you already do half of it.
+
+So I wouldn't change titles. I'd add the other half:
+
+1. Build one pipeline that feeds a model, end to end.
+2. Learn to test whether the model's output is right.
+3. Run it in production for a month and fix what breaks.
+
+Companies are already asking for it. An Apple data engineer job post from this month makes hands-on LLM use a minimum qualification.
+
+Don't trade your title. Build on top of it.
 ```
 
 ---
