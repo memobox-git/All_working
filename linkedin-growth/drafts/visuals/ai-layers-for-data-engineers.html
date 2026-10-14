@@ -1,0 +1,72 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:PJS;font-weight:400;src:url(../../../stackle-video/source/node_modules/@fontsource/plus-jakarta-sans/files/plus-jakarta-sans-latin-400-normal.woff2)}
+@font-face{font-family:PJS;font-weight:600;src:url(../../../stackle-video/source/node_modules/@fontsource/plus-jakarta-sans/files/plus-jakarta-sans-latin-600-normal.woff2)}
+@font-face{font-family:PJS;font-weight:700;src:url(../../../stackle-video/source/node_modules/@fontsource/plus-jakarta-sans/files/plus-jakarta-sans-latin-700-normal.woff2)}
+@font-face{font-family:PJS;font-weight:800;src:url(../../../stackle-video/source/node_modules/@fontsource/plus-jakarta-sans/files/plus-jakarta-sans-latin-800-normal.woff2)}
+:root{--bg:#FFFFFF;--ink:#171717;--mute:#5B6170;--blue:#2563EB;--cyan:#10A5BE;--card:#F6F8FC;--line:#DCE3EE}
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1080px;height:1350px;background:var(--bg);color:var(--ink);font-family:PJS,sans-serif;position:relative;overflow:hidden}
+.grid{position:absolute;inset:0;background-image:linear-gradient(rgba(37,99,235,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(37,99,235,.05) 1px,transparent 1px);background-size:54px 54px}
+header{position:absolute;left:56px;right:56px;top:44px}
+.badge{display:flex;align-items:center;gap:14px;margin-bottom:22px}
+.avatar{width:58px;height:58px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--cyan));color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:28px;overflow:hidden}
+.avatar img{width:100%;height:100%;object-fit:cover}
+.who{font-size:24px;font-weight:700;line-height:1.15}.who span{display:block;font-size:19px;font-weight:600;color:var(--mute)}
+h1{font-size:62px;font-weight:800;line-height:1.02;letter-spacing:-1px}
+h1 em{font-style:normal;background:linear-gradient(135deg,var(--blue),var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{font-size:25px;color:var(--mute);margin-top:12px;font-weight:600}
+.stack{position:absolute;left:0;right:0;top:318px;height:880px}
+.layer{position:absolute;left:50%;height:112px;border-radius:18px;display:flex;align-items:center;gap:18px;padding:0 22px;background:var(--card);border:2px solid var(--line);opacity:var(--o,1);transform:translate(-50%,var(--y,0px))}
+.layer.known{background:linear-gradient(135deg,rgba(37,99,235,.10),rgba(16,165,190,.10));border-color:rgba(37,99,235,.45)}
+.num{width:74px;height:74px;flex:none;border-radius:14px;background:linear-gradient(135deg,var(--blue),var(--cyan));color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;font-weight:800}
+.num b{font-size:34px;line-height:1}.num i{font-style:normal;font-size:11px;letter-spacing:.14em}
+.txt{flex:1;min-width:0}
+.t{font-size:25px;font-weight:800;white-space:nowrap}
+.pills{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.pill{font-size:15px;font-weight:600;border:1.5px solid rgba(37,99,235,.35);color:#1D4ED8;background:#fff;border-radius:30px;padding:2px 10px;white-space:nowrap}
+.tagk{position:absolute;right:22px;top:-13px;font-size:14px;font-weight:800;letter-spacing:.06em;color:#fff;background:var(--blue);padding:3px 10px;border-radius:20px}
+footer{position:absolute;left:56px;right:56px;bottom:40px;display:flex;justify-content:space-between;align-items:center;font-size:22px;font-weight:700}
+footer .k{color:var(--blue)}
+.punch{position:absolute;left:56px;right:56px;bottom:96px;text-align:center;font-size:27px;font-weight:800;opacity:var(--no,1)}
+.punch span{background:linear-gradient(135deg,var(--blue),var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent}
+</style></head>
+<body>
+<div class="grid"></div>
+<header>
+  <div class="badge"><div class="avatar" id="av">C</div><div class="who">Chris · Stackle<span>@crispusroshan</span></div></div>
+  <h1>AI for <em>Data Engineers</em><br>The 7 Layers</h1>
+  <div class="sub">Every AI system sits on top of data work you already do</div>
+</header>
+<div class="stack" id="stack"></div>
+<div class="punch" id="punch">The model is the easy part. <span>The data underneath it is the job.</span></div>
+<footer><div>Which layer are you working on?</div><div class="k">stackle.io</div></footer>
+<script>
+const ph=new URLSearchParams(location.search).get('photo'); if(ph) document.getElementById('av').innerHTML='<img src="'+ph+'">';
+// bottom (1) to top (7)
+const L=[
+ ["Data foundations",["SQL","Python","pipelines","data quality"],1],
+ ["Unstructured data",["PDFs & docs","chunking","metadata","text cleaning"],2],
+ ["Embeddings & vector search",["embeddings","pgvector","similarity search"],0],
+ ["RAG pipelines",["retrieval","re-indexing","freshness","citations"],0],
+ ["Evaluation",["test sets","precision@k","LLM-as-judge"],0],
+ ["LLMs inside pipelines",["extraction","classification","cost","caching"],0],
+ ["Agents in production",["tool calling","MCP","guardrails","monitoring"],0],
+];
+const st=document.getElementById('stack');
+const H=880, h=112, gap=(H-7*h)/6;
+L.forEach((l,i)=>{
+  const w=980 - i*58;
+  const d=document.createElement('div'); d.className='layer'+(l[2]===1?' known':''); d.id='l'+i;
+  d.style.width=w+'px'; d.style.top=(H-h-i*(h+gap))+'px';
+  d.innerHTML=`<div class="num"><i>LAYER</i><b>${i+1}</b></div><div class="txt"><div class="t">${l[0]}</div><div class="pills">${l[1].map(p=>`<span class="pill">${p}</span>`).join('')}</div></div>`+(l[2]===1?`<div class="tagk">YOU ALREADY DO THIS</div>`:(l[2]===2?`<div class="tagk" style="background:#10A5BE">YOUR NEXT STEP</div>`:''));
+  st.appendChild(d);
+});
+window.render=function(t){
+  for(let i=0;i<7;i++){const s=i*0.1,p=Math.max(0,Math.min(1,(t-s)/0.09));const el=document.getElementById('l'+i);el.style.setProperty('--o',p);el.style.setProperty('--y',((1-p)*24)+'px');}
+  document.getElementById('punch').style.setProperty('--no',Math.max(0,Math.min(1,(t-0.74)/0.1)));
+};
+if(location.hash==='#static') window.render(1);
+</script>
+</body></html>

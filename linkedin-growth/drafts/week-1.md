@@ -1,8 +1,98 @@
-# Week 1 drafts (Oct 15-21, 2026)
+# Week 1 (Oct 15-21, 2026)
+
+Style from Chris's examples (Abhisek Sahu, Aiswarya Venkitesh, Jean Lee, Naresh Edagotti, Aishwarya Srinivasan):
+- Reader-first, two-line contrast hook.
+- One skill map per post.
+- A designed visual that IS the content.
+- No credential lines.
+- A reframe at the end.
+
+Colours and font: see `/CLAUDE.md`.
+
+## FINAL · Thu Oct 15 · Mastery map: data pipelines
+
+Post time: 8:30 AM ET. Upload `visuals/pipeline.gif` as the image (it animates in the feed). Fallback: `visuals/pipeline.png`.
+
+```
+Anyone can build a data pipeline.
+Building one that survives production is a different story.
+
+A script on your laptop moves data once. A production pipeline keeps moving it correctly when the source is late, the job fails at 2 AM, and someone needs last year reprocessed.
+
+This is how pipeline skills actually progress:
+
+→ Level 1: Scripts
+Pull data from an API or file, transform it in Python or SQL, load it into a table.
+
+→ Level 2: Scheduling
+Run it every day with Airflow or cron, and know when it didn't run.
+
+→ Level 3: Idempotency
+Rerun any day safely, without creating duplicates.
+
+→ Level 4: Incremental loads
+Process only what changed, with watermarks and MERGE.
+
+→ Level 5: Data quality
+Check row counts, nulls, duplicates and freshness before anyone sees the data.
+
+→ Level 6: Backfills and late data
+Reprocess two years of history without breaking today's dashboards.
+
+→ Level 7: Observability and SLAs
+Lineage, alerts, and a promised time the data is ready.
+
+Most tutorials stop at Level 2.
+Most interviews start at Level 3.
+
+Which level are you at right now?
+```
+
+## FINAL · Fri Oct 16 · Mastery map: AI for data engineers
+
+Post time: 8:30 AM ET. Upload `visuals/ai_layers.gif`. Fallback: `visuals/ai_layers.png`.
+
+```
+Learning AI as a data engineer feels overwhelming.
+It's 7 layers, and you already work in the first one.
+
+Every AI system you hear about, chatbots, RAG, agents, sits on top of data. Someone has to collect it, clean it, store it and keep it fresh.
+
+This is how it stacks up:
+
+→ Layer 1: Data foundations
+SQL, Python, pipelines, data quality. You already do this.
+
+→ Layer 2: Unstructured data
+PDFs, docs and tickets, split into chunks with clean metadata.
+
+→ Layer 3: Embeddings and vector search
+Turn text into vectors and find similar things fast. pgvector is a good place to start.
+
+→ Layer 4: RAG pipelines
+Retrieve the right chunks, hand them to the model, keep the index fresh.
+
+→ Layer 5: Evaluation
+A test set and a score, so you know whether a change made answers better or worse.
+
+→ Layer 6: LLMs inside pipelines
+Use a model to extract, classify and enrich data at scale, and watch the cost.
+
+→ Layer 7: Agents in production
+Models that call tools, with guardrails and monitoring around them.
+
+Most people try to learn AI from the top down.
+Data engineers get to build it from the bottom up.
+
+The model is the easy part. The data underneath it is the job.
+```
+
+---
+
 
 How to use: read each post once (30 seconds), check the one line marked "Check", paste, post. Every claim is either a public fact (source given) or a fact you already gave me. Nothing about your life is made up.
 
-## Thu Oct 15 · Before & After · READY
+## Backup (not scheduled): Before & After resume bullet
 
 Visual: two-row image. Top row in grey with the first bullet. Bottom row "Example" in your accent color with the second bullet. Header with your face and handle.
 
@@ -25,7 +115,7 @@ Tools tell them where you've been. A number tells them what you did there.
 
 ---
 
-## Fri Oct 16 · What Big Tech Expects · READY (check one fact)
+## Backup (not scheduled): What Meta expects
 
 Source: Meta, "Data Engineer, Product Analytics (University Grad)", posted June 13, 2026 (Bellevue, Menlo Park, New York). Text read from a job-board mirror of the posting: https://resumegeni.com/jobs/data-engineer-product-analytics-university-grad-at-meta-bellevue-wa-menlo-park-ca-new-york-ny
 Before posting, open metacareers.com, search "Data Engineer University Grad", and confirm the three AI lines are still there. The original metacareers link now returns 404, so the role may be closed; the post says "posted in June", so it stays accurate either way.
