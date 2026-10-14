@@ -248,21 +248,21 @@ Rendered files are in `stackle-video/graphics/ds-2026/`. Each one is timed to th
 
 | # | File | What it shows | Length |
 |---|---|---|---|
-| 1 | 01-hook.mp4 | $120,230, the middle of the US pay range, and +35% more data scientist jobs by 2035 | LEN:01-hook.mp4 |
+| 1 | 01-hook.mp4 | $120,230, the middle of the US pay range, and +35% more data scientist jobs by 2035 | 22 s |
 | Intro | intro.mp4 (existing) | Chris's intro facts | 17.8 s |
-| 2 | 02-degree.mp4 | Six job posts: about 2 in 3 mention a master's or PhD, almost 1 in 5 list no education | LEN:02-degree.mp4 |
-| Card A | card-a-checks.mov (transparent) | "What I check": clean Python and SQL, a model and why you chose it, explaining it to a manager who does not code | LEN:card-a-checks.mov |
-| 3–6 | 03-skills.mp4 | One board: the four phases, then Python, SQL, statistics, machine learning and grading a model, then back to the four phases with AI circled | LEN:03-skills.mp4 |
-| 7 | 04-ai-1.mp4 | How you work: 83% use an AI tool, the smart new intern, statistics and SQL check the work | LEN:04-ai-1.mp4 |
-| 8 | 04-ai-2.mp4 | Classic model or LLM: a table of numbers or messy text, with one example each | LEN:04-ai-2.mp4 |
-| 9 | 05-side-door.mp4 | Data analyst, product analyst and analytics engineer lead to data scientist in a year or two | LEN:05-side-door.mp4 |
-| Card B | card-b-industries.mov (transparent) | Healthcare, banking, retail: less training needed | LEN:card-b-industries.mov |
-| 10–12 | 06-portfolio.mp4 | One board: Titanic and Iris crossed out, the four questions, build in your field, then the whole board | LEN:06-portfolio.mp4 |
-| Card C | card-c-projects.mov (transparent) | 3 projects: messy data to a clear answer, a README anyone gets in one minute, shared on LinkedIn | LEN:card-c-projects.mov |
-| 13 | 07-interviews-1.mp4 | The five interview stages, plus the take-home note | LEN:07-interviews-1.mp4 |
-| Card D | card-d-reasons.mov (transparent) | "Explain the why": the weak answer crossed out, the strong answer checked | LEN:card-d-reasons.mov |
-| 14 | 07-interviews-2.mp4 | The STAR method, ending with a number | LEN:07-interviews-2.mp4 |
-| 15 | 07-interviews-3.mp4 | Referrals: 1% of applications, 17% of hires, then the whole board | LEN:07-interviews-3.mp4 |
+| 2 | 02-degree.mp4 | Six job posts: about 2 in 3 mention a master's or PhD, almost 1 in 5 list no education | 16 s |
+| Card A | card-a-checks.mov (transparent) | "What I check": clean Python and SQL, a model and why you chose it, explaining it to a manager who does not code | 24 s |
+| 3–6 | 03-skills.mp4 | One board: the four phases, then Python, SQL, statistics, machine learning and grading a model, then back to the four phases with AI circled | 3:39 |
+| 7 | 04-ai-1.mp4 | How you work: 83% use an AI tool, the smart new intern, statistics and SQL check the work | 25 s |
+| 8 | 04-ai-2.mp4 | Classic model or LLM: a table of numbers or messy text, with one example each | 37 s |
+| 9 | 05-side-door.mp4 | Data analyst, product analyst and analytics engineer lead to data scientist in a year or two | 42 s |
+| Card B | card-b-industries.mov (transparent) | Healthcare, banking, retail: less training needed | 19 s |
+| 10–12 | 06-portfolio.mp4 | One board: Titanic and Iris crossed out, the four questions, build in your field, then the whole board | 56 s |
+| Card C | card-c-projects.mov (transparent) | 3 projects: messy data to a clear answer, a README anyone gets in one minute, shared on LinkedIn | 22 s |
+| 13 | 07-interviews-1.mp4 | The five interview stages, plus the take-home note | 25 s |
+| Card D | card-d-reasons.mov (transparent) | "Explain the why": the weak answer crossed out, the strong answer checked | 27 s |
+| 14 | 07-interviews-2.mp4 | The STAR method, ending with a number | 22 s |
+| 15 | 07-interviews-3.mp4 | Referrals: 1% of applications, 17% of hires, then the whole board | 18 s |
 | End | cta.mp4 (existing) | Free call, then the masterclass | 11 s |
 
 The cards are transparent QuickTime files. Put them over your camera shot. The card sits on the right, so stand left of centre for those parts.

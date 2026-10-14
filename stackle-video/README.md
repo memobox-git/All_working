@@ -1,7 +1,7 @@
 # Stackle video graphics
 
 - `scripts/` holds the video scripts, each with its research brief, filming labels and graphics list.
-- `graphics/` holds the rendered clips, ready to drop into the edit. `graphics/de-2026/` is the data engineer video.
+- `graphics/` holds the rendered clips, ready to drop into the edit. `graphics/de-2026/` is the data engineer video and `graphics/ds-2026/` is the data scientist video.
 - `source/` holds what they are made from: HTML motion graphics (`intro.html`, `cta.html`) and the Excalidraw animation pipeline in `source/excali/`.
 
 ## Excalidraw scenes

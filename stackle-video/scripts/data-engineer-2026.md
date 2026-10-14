@@ -271,9 +271,9 @@ Rendered files are in `stackle-video/graphics/de-2026/`. Each one is timed to th
 | 11 | 05-side-door.mp4 | Data analyst, analytics engineer and BI developer lead to data engineer in a year or two | 39 s |
 | Card B | card-b-industries.mov (transparent) | Healthcare, banking, retail: less training needed | 19 s |
 | 12–15 | 06-portfolio.mp4 | One board: copied projects crossed out, a strong project, the four questions, build in your field, then the whole board | 1:15 |
-| Card C | card-c-projects.mov (transparent) | 3 projects: a README anyone gets in one minute, a diagram, shared on LinkedIn | 18 s |
+| Card C | card-c-projects.mov (transparent) | 3 projects: a README anyone gets in one minute, a diagram, shared on LinkedIn | 22 s |
 | 16 | 07-interviews-1.mp4 | The five interview stages | 18 s |
-| Card D | card-d-reasons.mov (transparent) | "Explain the why": the weak answer crossed out, the strong answer checked, then "what you did" and "how you think" | 29 s |
+| Card D | card-d-reasons.mov (transparent) | "Explain the why": the weak answer crossed out, the strong answer checked, then "what you did" and "how you think" | 30 s |
 | 17 | 07-interviews-2.mp4 | The STAR method, ending with a number | 20 s |
 | 18 | 07-interviews-3.mp4 | Referrals: 1% of applications, 17% of hires, then the whole board | 18 s |
 | End | cta.mp4 (existing) | Free call, then the masterclass | 11 s |
