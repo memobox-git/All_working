@@ -11,6 +11,7 @@ From now on, Monday and Wednesday posts go with that day's YouTube video (`youtu
 | Mon Oct 19 | Goes with the YouTube video (AI PM roadmap) | An AI product manager job posted this fall pays up to $304,000 in base salary. | 45-60s clip from the video | FINAL in `youtube-aligned.md` (post A) |
 | Tue Oct 20 | Rebrand of Ajay Kadiyala's interview scenario (523, text-only) | "The dashboard says $4.2M. Finance says $3.9M." | Text-only | FINAL in `rebrands-oct.md` |
 | Wed Oct 21 | Goes with the YouTube video (20 AI concepts) | Every AI meeting uses the same 20 terms. | 45-60s clip from the video | FINAL in `youtube-aligned.md` (post B) |
+| Thu Oct 22 | SQL history and tools, with a GIF (credits Data With Baraa's course) | SQL is 52 years old. More developers use it than Python. | `visuals/sql-orbit.gif` | FINAL in `sql-orbit.md` |
 
 Post at 8:30 AM ET. Upload the image with the post, and keep links out of the body.
 
