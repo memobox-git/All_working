@@ -4,39 +4,24 @@ How to use: read each post once (30 seconds), check the one line marked "Check",
 
 ## Thu Oct 15 · Before & After · READY
 
-Visual: two-row image. Top row "Before" in grey with the first bullet. Bottom row "After (example)" in your accent color with the second bullet. Header with your face and handle.
+Visual: two-row image. Top row in grey with the first bullet. Bottom row "Example" in your accent color with the second bullet. Header with your face and handle.
 
-Check: the line "The second bullet gives me three questions to ask you" is in your voice. Make sure it's true for how you interview.
+Check: "I have three questions ready for you before you even sit down" is in your voice. Make sure it's true for how you interview.
 
 ```
-Most data engineering resume bullets list tools.
-The ones that get read show what changed. 👇
-
-Before:
 "Built ETL pipelines using Spark, Airflow and Snowflake."
+This bullet is on almost every data engineering resume. That's the problem. 👇
 
-This tells me what you touched. It doesn't tell me what happened.
+When I'm on the hiring side, it tells me one thing: you've used three tools. So has everyone else in the pile.
 
-After (example):
-"Rebuilt the nightly sales pipeline in Spark and Airflow. Runtime went from 6 hours to 40 minutes, so finance had numbers before their 9 AM meeting."
+Now read this one (example):
+"Rebuilt the nightly sales pipeline in Spark. Runtime went from 6 hours to 40 minutes, so finance had numbers before their 9 AM meeting."
 
-What changed:
+Same tools. But now I know what was broken, what you changed, and who cared. I have three questions ready for you before you even sit down.
 
-The problem
-→ which pipeline, and why anyone cared
+Rewrite your top bullet tonight with a real number from your own work. If you don't know the number, go find it. That search is better interview prep than another tutorial.
 
-The tools
-→ still there, but now they support the result
-
-The number
-→ 6 hours to 40 minutes is something an interviewer can ask about
-
-Who it helped
-→ finance, not "the business"
-
-Use your real numbers. Made-up numbers fall apart at the first follow-up question.
-
-I've run 200+ data engineering interviews. The second bullet gives me three questions to ask you. The first gives me none.
+Tools tell me where you've been. A number tells me what you did there.
 ```
 
 ---
@@ -49,39 +34,20 @@ Before posting, open metacareers.com, search "Data Engineer University Grad", an
 Visual: 4:5 cheat-sheet image. Title "What Meta expects from an entry-level data engineer (2026)". Left column "The work": 3 boxes. Right column "New on the list": 3 boxes in your accent color. Your face and handle in the header. Footer: "Source: Meta job post, June 2026".
 
 ```
-Meta posted an entry-level data engineer role in June. It asks for SQL, Python and databases, then lists 3 AI skills. 👇
+Meta's entry-level data engineer job post asks for SQL, Python and databases.
+Then it asks how you've used AI to change the way work gets done. 👇
 
-The role is Data Engineer, Product Analytics (University Grad), working across Facebook, Instagram, WhatsApp and Threads.
+I read the whole post. It's for Data Engineer, Product Analytics (University Grad), posted in June.
 
-The day-to-day work hasn't changed:
+The day-to-day is classic data engineering. Decide what to log, build pipelines in production, own the SLA on your data.
 
-Decide what to log
-→ work out which data a business question needs, and make sure it gets collected
+The qualifications are where it changes. Three lines are about AI: using AI tools to redesign workflows with measurable impact, practicing responsible AI with risk and accuracy reviews, and keeping up with things like prompt engineering and agent orchestration.
 
-Build pipelines in production
-→ design, build and launch ETL on your own
+For a new grad role.
 
-Own the SLA
-→ commit to when your data lands, and keep that promise
+So if you're interviewing in 2026, expect the AI question. "I use AI tools every day" is the answer everyone gives. The answer that stands out names one workflow you changed, how you checked the AI's output, and the number that moved.
 
-The new part is in the qualifications:
-
-Use AI to redesign how work gets done
-→ and show the impact, like time saved or better quality
-
-Practice responsible AI
-→ risk checks, bias checks, accuracy reviews
-
-Keep your AI skills current
-→ they name prompt and context engineering, and agent orchestration
-
-I've run 200+ data engineering interviews. If I were hiring for this role, I'd ask one question: tell me about a workflow you changed with AI.
-
-What won't pass:
-→ "I use AI tools every day."
-
-What will:
-→ one real workflow, what the AI did, how you checked its output, and the number that moved.
+I've run 200+ data engineering interviews. The checking part is what tells me you can be trusted with production data.
 
 SQL is still the floor. AI is now on the list.
 ```
@@ -205,34 +171,23 @@ Thursday, Oct 22 at [time] ET. Free. The link is in my Featured section.
 
 Visual: text-only, or one real photo of you.
 
-Check: this is written as something you watch for in interviews. Make sure it's true for you.
+Check: "'We' is the word I follow up on most" is written as your habit. Make sure it's true for you.
 
 ```
 I've run 200+ data engineering interviews.
-One small word always gets a follow-up from me: "we". 👇
+"We" is the word I follow up on most. 👇
 
-"We built a streaming pipeline."
-"We moved the warehouse to Snowflake."
-"We cut costs by 40%."
+"We built a streaming pipeline." "We moved the warehouse to Snowflake." "We cut costs by 40%."
 
-Good projects. But I still don't know what you did.
+Great projects. But ten minutes in, I still don't know what you did.
 
-What not to do:
-→ tell the whole story in "we" and hope I fill in the gaps
+It's not a humility problem. It's an evidence problem. The company can hire you. It can't hire your team.
 
-What to do instead:
+So use "we" to set the scene, then switch to "I":
 
-Use "we" for the setup
-→ "Our team was moving 2 TB a day into Snowflake."
+"Our team was moving 2 TB a day into Snowflake. I chose to partition by event date, because most queries filtered on it. If I did it again, I'd add quality checks before the load, not after."
 
-Use "I" for your decisions
-→ "I chose to partition by event date, because most queries filtered on it."
-
-Give the reason
-→ the "because" is what shows judgment
-
-Say what you'd change
-→ "If I did it again, I'd add data quality checks before the load, not after."
+Three sentences. Now I know your judgment, your reasoning, and what you learned.
 
 Your team built the pipeline. The interview is about what you did inside it.
 ```
@@ -246,34 +201,21 @@ Source: Levels.fyi job-family pages, US median total compensation, read Oct 14, 
 Visual: three horizontal bars, one per title, each labelled with its dollar figure and number of reports. Source line at the bottom: "Levels.fyi, US median total comp, Oct 2026".
 
 ```
-On Levels.fyi, the median AI engineer in the US makes $151K a year.
-The median data engineer makes $159K. 👇
+On Levels.fyi, the median AI engineer in the US makes $8K less than the median data engineer.
+The title so many data engineers want pays less than the job they already have. 👇
 
-US median total compensation, October 2026:
+Data engineer: $159K median, from 1,189 salary reports.
+AI engineer: $151K, from 334.
 
-Data engineer
-→ $159K, from 1,189 reports
+Google shows the same thing. Data engineers $280K. AI engineers $260K.
 
-AI engineer
-→ $151K, from 334 reports
+The money is one row down. Machine learning engineers: $280K across the US, $354K at Google.
 
-Machine learning engineer
-→ $280K, from 1,065 reports
+The difference isn't the word "AI" in the title. It's the work: building models, putting them into production, and owning them when they break.
 
-Google shows the same order: data engineer $280K, AI engineer $260K, machine learning engineer $354K.
+So if you're a data engineer eyeing AI, don't rename yourself. Stay close to the data the models run on, and learn the production side. Meta and Apple already write it into their data engineer job posts. Apple's makes hands-on LLM use a minimum qualification.
 
-So if you're a data engineer looking at AI:
-
-Don't switch for the title
-→ on these numbers, the title alone pays less than the job you already have
-
-Look at the work behind the bigger number
-→ machine learning engineers build and run models in production, and their median is $121K higher
-
-Bring AI into the role you have
-→ Meta's and Apple's data engineer job posts now list AI skills as requirements
-
-AI on your skills is showing up in job posts. AI in your job title isn't showing up in pay.
+Change your skills, not your title.
 ```
 
 ---
@@ -286,7 +228,7 @@ Check: the post says Airbnb asked you this in an interview last year (true, from
 
 ```
 Airbnb asked me to design their data warehouse in an interview last year.
-Most people start drawing tables. That's step 4. 👇
+The trap is starting with tables. Tables are step 4. 👇
 
 The requirement: design a warehouse that lets Airbnb answer questions about its business.
 
