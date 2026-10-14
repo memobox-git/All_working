@@ -1,0 +1,92 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:PJS;font-weight:400;src:url(../../../stackle-video/source/node_modules/@fontsource/plus-jakarta-sans/files/plus-jakarta-sans-latin-400-normal.woff2)}
+@font-face{font-family:PJS;font-weight:600;src:url(../../../stackle-video/source/node_modules/@fontsource/plus-jakarta-sans/files/plus-jakarta-sans-latin-600-normal.woff2)}
+@font-face{font-family:PJS;font-weight:700;src:url(../../../stackle-video/source/node_modules/@fontsource/plus-jakarta-sans/files/plus-jakarta-sans-latin-700-normal.woff2)}
+@font-face{font-family:PJS;font-weight:800;src:url(../../../stackle-video/source/node_modules/@fontsource/plus-jakarta-sans/files/plus-jakarta-sans-latin-800-normal.woff2)}
+:root{--ink:#171717;--mute:#5B6170;--blue:#2563EB;--cyan:#10A5BE;--card:#F6F8FC;--line:#DCE3EE;--red:#DC2626;--green:#059669}
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1080px;height:1350px;background:#fff;color:var(--ink);font-family:PJS,sans-serif;position:relative;overflow:hidden}
+.grid{position:absolute;inset:0;background-image:linear-gradient(rgba(37,99,235,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(37,99,235,.05) 1px,transparent 1px);background-size:54px 54px}
+header{position:absolute;left:56px;right:56px;top:44px}
+.badge{display:flex;align-items:center;gap:14px;margin-bottom:22px}
+.avatar{width:58px;height:58px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--cyan));color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:28px}
+.who{font-size:24px;font-weight:700;line-height:1.15}.who span{display:block;font-size:19px;font-weight:600;color:var(--mute)}
+h1{font-size:58px;font-weight:800;line-height:1.04;letter-spacing:-1px}
+h1 em{font-style:normal;background:linear-gradient(135deg,var(--blue),var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent}
+.cols{position:absolute;left:56px;right:56px;top:300px;display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.col{background:var(--card);border:2px solid var(--line);border-radius:22px;padding:22px 22px 18px;height:760px;position:relative;overflow:hidden}
+.ctitle{font-size:28px;font-weight:800}
+.csub{font-size:20px;font-weight:600;color:var(--mute);margin-top:2px;height:26px}
+.run{display:inline-flex;align-items:center;gap:8px;margin-top:14px;font-size:18px;font-weight:800;color:#fff;background:var(--ink);padding:6px 14px;border-radius:30px;opacity:var(--ro,0);transform:scale(var(--rs,1))}
+table{width:100%;border-collapse:collapse;margin-top:16px;font-size:24px}
+th{text-align:left;font-size:16px;letter-spacing:.08em;color:var(--mute);padding:6px 8px;border-bottom:2px solid var(--line)}
+td{padding:13px 8px;border-bottom:1px solid var(--line);font-weight:600}
+tr.r{opacity:var(--o,1);transform:translateX(var(--x,0px))}
+tr.dup td{color:var(--red);background:rgba(220,38,38,.07)}
+tr.flash td{background:rgba(37,99,235,var(--f,0))}
+.total{position:absolute;left:22px;right:22px;bottom:96px;display:flex;justify-content:space-between;align-items:baseline;border-top:2px solid var(--line);padding-top:14px}
+.total .l{font-size:20px;font-weight:700;color:var(--mute)}
+.total .v{font-size:46px;font-weight:800}
+.verdict{position:absolute;left:22px;right:22px;bottom:22px;height:62px;border-radius:14px;display:flex;align-items:center;justify-content:center;gap:10px;font-size:24px;font-weight:800;color:#fff;opacity:var(--vo,0);transform:translateY(var(--vy,10px))}
+.bad{background:var(--red)}.good{background:var(--green)}
+.bottom{position:absolute;left:56px;right:56px;top:1090px;font-size:26px;font-weight:700;line-height:1.35;text-align:center;opacity:var(--bo,0)}
+.bottom b{background:linear-gradient(135deg,var(--blue),var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent}
+footer{position:absolute;left:56px;right:56px;bottom:40px;display:flex;justify-content:space-between;font-size:20px;font-weight:600;color:var(--mute)}
+footer b{color:var(--blue)}
+</style></head>
+<body>
+<div class="grid"></div>
+<header>
+  <div class="badge"><div class="avatar">C</div><div class="who">Chris · Stackle<span>@crispusroshan</span></div></div>
+  <h1>What happens if your<br>pipeline <em>runs twice?</em></h1>
+</header>
+<div class="cols">
+  <div class="col" id="L">
+    <div class="ctitle">INSERT (append)</div><div class="csub">"It's idempotent, trust me"</div>
+    <div class="run" id="runL">▶ Run #2 · same day</div>
+    <table><thead><tr><th>DATE</th><th>ORDER</th><th>AMOUNT</th></tr></thead><tbody id="tbL"></tbody></table>
+    <div class="total"><span class="l">Revenue, Oct 14</span><span class="v" id="totL">$1.2M</span></div>
+    <div class="verdict bad" id="vL">✗ Revenue doubled</div>
+  </div>
+  <div class="col" id="R">
+    <div class="ctitle">Overwrite the partition</div><div class="csub">or MERGE on order_id</div>
+    <div class="run" id="runR">▶ Run #2 · same day</div>
+    <table><thead><tr><th>DATE</th><th>ORDER</th><th>AMOUNT</th></tr></thead><tbody id="tbR"></tbody></table>
+    <div class="total"><span class="l">Revenue, Oct 14</span><span class="v" id="totR">$1.2M</span></div>
+    <div class="verdict good" id="vR">✓ Same result, every run</div>
+  </div>
+</div>
+<div class="bottom" id="bt">Idempotent = <b>run it twice, get the same result.</b><br>Replace the day's data. Don't add to it.</div>
+<footer><div>Example data</div><b>stackle.io</b></footer>
+<script>
+const rows=[["Oct 14","#1041","$400K"],["Oct 14","#1042","$500K"],["Oct 14","#1043","$300K"]];
+const tbL=document.getElementById('tbL'), tbR=document.getElementById('tbR');
+function mk(tb,r,cls,id){const tr=document.createElement('tr');tr.className='r '+cls;tr.id=id;tr.innerHTML=r.map(c=>`<td>${c}</td>`).join('');tb.appendChild(tr);}
+rows.forEach((r,i)=>{mk(tbL,r,'',`L${i}`);mk(tbR,r,'flash',`R${i}`);});
+rows.forEach((r,i)=>mk(tbL,r,'dup',`D${i}`));
+const cl=(x)=>Math.max(0,Math.min(1,x)), ease=(x)=>1-Math.pow(1-cl(x),3);
+const S=(el,k,v)=>document.getElementById(el).style.setProperty(k,v);
+window.render=function(t){
+  // base rows appear
+  for(let i=0;i<3;i++){const p=ease((t-0.02-i*0.03)/0.06);S('L'+i,'--o',p);S('L'+i,'--x',(1-p)*-30+'px');S('R'+i,'--o',p);S('R'+i,'--x',(1-p)*-30+'px');}
+  // run pill
+  const rp=cl((t-0.2)/0.04); const pulse=1+0.06*Math.sin(cl((t-0.2)/0.12)*Math.PI*3);
+  ['runL','runR'].forEach(id=>{S(id,'--ro',rp);S(id,'--rs',pulse);});
+  // duplicates slide in on the left
+  let added=0;
+  for(let i=0;i<3;i++){const p=ease((t-0.30-i*0.07)/0.07);S('D'+i,'--o',p);S('D'+i,'--x',(1-p)*60+'px'); added+=p*[0.4,0.5,0.3][i];}
+  document.getElementById('totL').textContent='$'+(1.2+added).toFixed(1)+'M';
+  document.getElementById('totL').style.color= added>0.05?'#DC2626':'#171717';
+  // rewrite flash on the right
+  for(let i=0;i<3;i++){const f=Math.sin(cl((t-0.30-i*0.07)/0.09)*Math.PI);S('R'+i,'--f',(0.18*f).toFixed(3));}
+  document.getElementById('totR').style.color= t>0.5?'#059669':'#171717';
+  // verdicts
+  const vp=ease((t-0.58)/0.06); S('vL','--vo',vp);S('vL','--vy',(1-vp)*10+'px');
+  const vq=ease((t-0.62)/0.06); S('vR','--vo',vq);S('vR','--vy',(1-vq)*10+'px');
+  S('bt','--bo',ease((t-0.72)/0.08));
+};
+if(location.hash==='#static') window.render(1);
+</script>
+</body></html>

@@ -230,7 +230,7 @@ If you're waiting to learn one more AI framework before you apply, read the job 
 ```
 
 ## 4 · Interview question teardown · READY
-Visual: two cards: "Short answer" (grey) vs "Hire answer" (3 parts, blue).
+Visual: `visuals/rerun.gif` (animated: append doubles revenue to $2.4M; overwrite stays at $1.2M). Fallback `visuals/rerun.png`. Example data, labelled on the image.
 
 ```
 "What happens if your pipeline runs twice?"
