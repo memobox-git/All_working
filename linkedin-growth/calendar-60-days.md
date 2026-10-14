@@ -2,7 +2,7 @@
 
 One post a day on your proven weekly rhythm, with AI brought in through the career, interview and money lens. Every topic is written as the hook.
 
-- `*` = needs a real detail from you (story, number, name, permission). Never fill it with something made up. If you don't have the detail, swap the topic for another one from the same format.
+- `*` = needs a real detail from you (story, number, name, permission). Never fill it with something made up. Default from Oct 14: Claude writes every post from public research plus facts Chris has already shared, and swaps any `*` topic for one in the same format that doesn't need new input. Finished posts are in [`drafts/`](drafts/), marked "(written)" here.
 - `†` = verify the number on the source (Levels.fyi, the company's careers page) on the day you post, and name the source in the post.
 - Every topic is new. Nothing repeats an earlier post (Amazon Section 2, Mercedes-Benz questions, "why don't you quit", "$120K at Amazon or Google, 4 months left", W2 vs 1099 vs C2C, "walk me through an end-to-end pipeline", and the Claude plan post have all been used). Check this list against your own post history before each week.
 - Post time to test: 8:30 am ET (6 pm IST) vs 12:30 pm ET. Keep the winner after week 3.
@@ -44,13 +44,13 @@ One post a day on your proven weekly rhythm, with AI brought in through the care
 
 | Date | Day | Format | Hook / topic | Visual |
 |---|---|---|---|---|
-| Oct 15 | Thu | Before & After | This resume bullet got zero calls in 3 months. One rewrite and it started getting replies.* | Before/after image: the two bullets side by side, red vs green |
-| Oct 16 | Fri | What Big Tech (and AI labs) Expect | What Meta expects from a data engineer in 2026, straight from their own job posts.† | Cheat-sheet image (4:5), 6 boxes, your name + Stackle mark |
-| Oct 17 | Sat | Newsletter: Across the Table | Across the Table #1: the one question that tells me the most about a data engineer in the first 5 minutes.* | Newsletter cover: plain card with the question |
-| Oct 18 | Sun | Founder story | I started Stackle in December 2025. Ten months later, [the real number that matters most].* | Real photo: you at a meetup or workshop |
-| Oct 19 | Mon | Across the Table | I've run 200+ data engineering interviews. The people who got offers did one thing in the last 5 minutes that others didn't.* | Text + one photo of you (no stock) |
+| Oct 15 | Thu | Before & After | Most data engineering resume bullets list tools. The ones that get read show what changed. (written) | Before/after image: the two bullets side by side, red vs green |
+| Oct 16 | Fri | What Big Tech (and AI labs) Expect | Meta posted an entry-level data engineer role in June. It asks for SQL, Python and databases, then lists 3 AI skills. (written) | Cheat-sheet image (4:5), 6 boxes, your name + Stackle mark |
+| Oct 17 | Sat | Newsletter: Across the Table | Across the Table #1: 3 rounds at a healthcare startup, and how to prepare for each (written) | Newsletter cover: plain card with the question |
+| Oct 18 | Sun | Founder story | A free workshop I ran on Claude drew 511 people. This Thursday: a live mock data engineering interview. (written) | Real photo: you at a meetup or workshop |
+| Oct 19 | Mon | Across the Table | I've run 200+ data engineering interviews. One small word always gets a follow-up from me: "we". (written) | Text + one photo of you (no stock) |
 | Oct 20 | Tue | Money & offers | $[verified]† total comp for a senior data engineer at Databricks. Round 3 of the loop is pure Spark internals.* | Simple image: the number big, 4 rounds listed under it |
-| Oct 21 | Wed | Inside the Interview | Airbnb asked me to design their data warehouse in an interview. The first 10 minutes decided it.* | Whiteboard-style diagram of your actual design (redrawn clean) |
+| Oct 21 | Wed | Inside the Interview | Airbnb asked me to design their data warehouse in an interview last year. Most people start drawing tables. That's step 4. (written) | Whiteboard-style diagram of your actual design (redrawn clean) |
 | Oct 22 | Thu | Before & After | Weak answer vs passing answer: "Tell me about a pipeline that broke in production." (Live tonight: mock interview, link in Featured) | Two-column image: weak vs passing |
 | Oct 23 | Fri | What Big Tech (and AI labs) Expect | What OpenAI expects from a data engineer, from their actual job posts.† | Cheat-sheet image, OpenAI posting quoted (no logo misuse) |
 | Oct 24 | Sat | Newsletter: Across the Table | Across the Table #2: the SQL question I stopped asking, and what I ask instead.* | Newsletter cover |
