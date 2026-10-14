@@ -1,0 +1,31 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="common.css"><style>
+.tiles{position:absolute;left:56px;right:56px;top:330px;display:flex;flex-direction:column;gap:28px}
+.tile{background:var(--card);border:2px solid var(--line);border-radius:22px;padding:36px 34px;display:flex;align-items:center;justify-content:space-between;opacity:var(--o,0);transform:translateY(var(--y,20px))}
+.co{font-size:46px;font-weight:800}.co small{display:block;font-size:22px;font-weight:600;color:var(--mute);margin-top:4px}
+.nums{display:flex;gap:34px;align-items:flex-end}
+.n{text-align:right}.n b{display:block;font-size:66px;font-weight:800;line-height:1}.n span{font-size:17px;font-weight:700;color:var(--mute);letter-spacing:.04em;white-space:nowrap}
+.zero b{color:var(--red);transform:scale(var(--zs,1));display:inline-block}
+.zero{opacity:var(--zo,0)}
+.note{position:absolute;left:56px;right:56px;top:1000px;font-size:34px;font-weight:800;line-height:1.3;text-align:center;opacity:var(--no,0)}
+.alt{position:absolute;left:56px;right:56px;top:1095px;display:flex;justify-content:center;gap:12px;flex-wrap:wrap;opacity:var(--ao,0)}
+.pill{font-size:24px;font-weight:700;border:2px solid rgba(37,99,235,.4);color:#1D4ED8;background:#fff;border-radius:40px;padding:8px 18px}
+</style></head><body><div class="grid"></div>
+<header><div class="badge"><div class="avatar">C</div><div class="who">Chris · Stackle<span>@crispusroshan</span></div></div>
+<h1>Open jobs vs. jobs titled<br><em>"Data Engineer"</em></h1><div class="sub">Company job boards, Oct 14, 2026</div></header>
+<div class="tiles" id="tiles"></div>
+<div class="note" id="note">The work didn't disappear. <span class="g">The title did.</span></div>
+<div class="alt" id="alt"><span class="pill">data platform</span><span class="pill">data infrastructure</span><span class="pill">analytics engineer</span><span class="pill">Spark · Airflow · dbt</span></div>
+<footer><div>Search the work, not the title.</div><b>stackle.io</b></footer>
+<script>
+const C=[["Databricks",895,"Senior Software Engineer (Data Platform)"],["Snowflake",358,"\"Data Engineering\" only in non-DE titles"],["Uber",643,"Software Engineer II, Data Infrastructure"]];
+const T=document.getElementById('tiles');
+C.forEach((c,i)=>{const d=document.createElement('div');d.className='tile';d.id='t'+i;d.innerHTML=`<div class="co">${c[0]}<small>${c[2]}</small></div><div class="nums"><div class="n"><b id="c${i}">0</b><span>OPEN JOBS</span></div><div class="n zero" id="z${i}"><b>0</b><span>"DATA ENGINEER"</span></div></div>`;T.appendChild(d);});
+const cl=x=>Math.max(0,Math.min(1,x)),ease=x=>1-Math.pow(1-cl(x),3),S=(e,k,v)=>document.getElementById(e).style.setProperty(k,v);
+window.render=function(t){
+ C.forEach((c,i)=>{const a=ease((t-0.03-i*0.12)/0.08);S('t'+i,'--o',a);S('t'+i,'--y',(1-a)*20+'px');
+  const k=ease((t-0.06-i*0.12)/0.14);document.getElementById('c'+i).textContent=Math.round(c[1]*k);
+  const z=ease((t-0.48-i*0.06)/0.06);S('z'+i,'--zo',z);S('z'+i,'--zs',1+0.4*Math.sin(cl((t-0.48-i*0.06)/0.08)*Math.PI));});
+ S('note','--no',ease((t-0.72)/0.07));S('alt','--ao',ease((t-0.8)/0.07));
+};
+if(location.hash==='#static')window.render(1);
+</script></body></html>

@@ -1,0 +1,62 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="common.css"><style>
+.src{position:absolute;left:56px;right:56px;top:300px;display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.card{background:var(--card);border:2px solid var(--line);border-radius:22px;padding:20px 24px;opacity:var(--o,0);transform:translateY(var(--y,16px))}
+.ct{font-size:26px;font-weight:800}.ct span{font-size:18px;font-weight:600;color:var(--mute);margin-left:8px}
+table{width:100%;border-collapse:collapse;margin-top:10px;font-size:23px}
+th{text-align:left;font-size:15px;letter-spacing:.08em;color:var(--mute);padding:5px 8px;border-bottom:2px solid var(--line)}
+td{padding:9px 8px;border-bottom:1px solid var(--line);font-weight:600}
+.tot{margin-top:18px;font-size:22px;font-weight:700;color:var(--mute)}.tot b{color:var(--green);font-weight:800}
+tr.p td{background:rgba(37,99,235,var(--f,0))}
+.res{position:absolute;left:56px;top:690px;width:560px;height:360px}
+.res .card{height:100%}
+tr.r{opacity:var(--o,0);transform:translateX(var(--x,0px))}
+tr.dup td{color:var(--red);background:rgba(220,38,38,.07)}
+.tag{font-size:14px;font-weight:800;letter-spacing:.06em;color:#fff;background:var(--red);border-radius:20px;padding:2px 9px;margin-left:8px;vertical-align:middle}
+.sum{position:absolute;left:644px;right:56px;top:690px;height:360px;border-radius:22px;border:2px solid var(--line);background:#fff;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;opacity:var(--o,0)}
+.sum .l{font-size:20px;font-weight:700;color:var(--mute);letter-spacing:.04em}
+.sum .v{font-size:84px;font-weight:800;line-height:1.05;margin-top:6px}
+.sum .real{font-size:24px;font-weight:700;margin-top:14px;opacity:var(--ro,0)}
+.sum .real b{color:var(--green)}
+.sum .diff{margin-top:10px;font-size:20px;font-weight:800;color:#fff;background:var(--red);border-radius:30px;padding:5px 14px;opacity:var(--ro,0)}
+.fix{position:absolute;left:56px;right:56px;top:1080px;height:92px;border-radius:18px;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;gap:12px;font-size:28px;font-weight:800;opacity:var(--o,0);transform:translateY(var(--y,12px))}
+.fix span{font-weight:600;opacity:.9}
+.punch{position:absolute;left:56px;right:56px;top:1200px;text-align:center;font-size:30px;font-weight:800;opacity:var(--o,0)}
+</style></head><body><div class="grid"></div>
+<header><div class="badge"><div class="avatar">C</div><div class="who">Chris · Stackle<span>@crispusroshan</span></div></div>
+<h1>3 orders in. <em>5 rows out.</em></h1><div class="sub">orders JOIN payments ON order_id</div></header>
+<div class="src">
+ <div class="card" id="cO"><div class="ct">orders<span>one row per order</span></div>
+  <table><thead><tr><th>ORDER_ID</th><th>AMOUNT</th></tr></thead><tbody>
+  <tr><td>#1041</td><td>$120</td></tr><tr><td>#1042</td><td>$80</td></tr><tr><td>#1043</td><td>$200</td></tr></tbody></table>
+  <div class="tot">3 rows · total <b>$400</b></div></div>
+ <div class="card" id="cP"><div class="ct">payments<span>one row per payment</span></div>
+  <table><thead><tr><th>ORDER_ID</th><th>PAID</th></tr></thead><tbody id="pb"></tbody></table></div>
+</div>
+<div class="res"><div class="card" id="cR"><div class="ct">After the join</div>
+ <table><thead><tr><th>ORDER_ID</th><th>AMOUNT</th></tr></thead><tbody id="rb"></tbody></table></div></div>
+<div class="sum" id="sm"><div class="l">SUM(amount)</div><div class="v" id="sv">$0</div>
+ <div class="real" id="rl">Real revenue: <b>$400</b></div><div class="diff" id="df">+$160 from copied rows</div></div>
+<div class="fix" id="fx">✓ Total payments per order first, then join <span>→ 3 rows · $400</span></div>
+<div class="punch" id="pu">Count the rows <span class="g">before and after every join.</span></div>
+<footer><div>Example data</div><b>stackle.io</b></footer>
+<script>
+const P=[["#1041","$120"],["#1042","$30"],["#1042","$30"],["#1042","$20"],["#1043","$200"]];
+const R=[["#1041",120,0],["#1042",80,0],["#1042",80,1],["#1042",80,1],["#1043",200,0]];
+const pb=document.getElementById('pb'),rb=document.getElementById('rb');
+P.forEach((p,i)=>{const tr=document.createElement('tr');tr.className='p';tr.id='p'+i;tr.innerHTML=`<td>${p[0]}</td><td>${p[1]}</td>`;pb.appendChild(tr);});
+R.forEach((r,i)=>{const tr=document.createElement('tr');tr.className='r'+(r[2]?' dup':'');tr.id='r'+i;tr.innerHTML=`<td>${r[0]}${r[2]?'<span class="tag">COPY</span>':''}</td><td>$${r[1]}</td>`;rb.appendChild(tr);});
+const cl=x=>Math.max(0,Math.min(1,x)),ease=x=>1-Math.pow(1-cl(x),3),S=(e,k,v)=>document.getElementById(e).style.setProperty(k,v);
+window.render=function(t){
+ [['cO',0.02],['cP',0.06]].forEach(([id,s])=>{const a=ease((t-s)/0.07);S(id,'--o',a);S(id,'--y',(1-a)*16+'px');});
+ const a=ease((t-0.12)/0.06);S('cR','--o',a);S('cR','--y',(1-a)*16+'px');S('sm','--o',a);
+ let sum=0,dup=false;
+ R.forEach((r,i)=>{const s=0.18+i*0.075,p=ease((t-s)/0.06);S('r'+i,'--o',p);S('r'+i,'--x',(1-p)*-40+'px');
+  S('p'+i,'--f',(0.22*Math.sin(cl((t-s)/0.1)*Math.PI)).toFixed(3));
+  sum+=r[1]*p; if(r[2]&&p>0.5)dup=true;});
+ const sv=document.getElementById('sv');sv.textContent='$'+Math.round(sum);sv.style.color=dup?'#DC2626':'#171717';
+ S('sm','--ro',ease((t-0.6)/0.06));
+ const f=ease((t-0.7)/0.07);S('fx','--o',f);S('fx','--y',(1-f)*12+'px');
+ S('pu','--o',ease((t-0.8)/0.07));
+};
+if(location.hash==='#static')window.render(1);
+</script></body></html>

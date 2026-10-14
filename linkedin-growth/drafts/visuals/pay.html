@@ -1,0 +1,31 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="common.css"><style>
+.chart{position:absolute;left:56px;right:56px;top:330px}
+.row{margin-bottom:40px;opacity:var(--o,0)}
+.lab{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px}
+.lab b{font-size:34px;font-weight:800}.lab span{font-size:20px;font-weight:600;color:var(--mute)}
+.track{height:98px;background:var(--card);border:2px solid var(--line);border-radius:18px;position:relative;overflow:hidden}
+.bar{position:absolute;left:0;top:0;bottom:0;width:var(--w,0%);border-radius:16px;display:flex;align-items:center;justify-content:flex-end;padding-right:20px;font-size:42px;font-weight:800;color:#fff}
+.de{background:linear-gradient(135deg,#2563EB,#10A5BE)}.ai{background:#94A3B8}.ml{background:#171717}
+.note{position:absolute;left:56px;right:56px;top:950px;background:var(--card);border:2px solid var(--line);border-radius:22px;padding:26px 30px;font-size:28px;font-weight:700;line-height:1.35;opacity:var(--no,0)}
+.note b{color:var(--red)}
+.punch{position:absolute;left:56px;right:56px;top:1170px;text-align:center;font-size:36px;font-weight:800;opacity:var(--po,0)}
+</style></head><body><div class="grid"></div>
+<header><div class="badge"><div class="avatar">C</div><div class="who">Chris · Stackle<span>@crispusroshan</span></div></div>
+<h1>The title everyone wants<br><em>pays less.</em></h1><div class="sub">US median total compensation · Levels.fyi · Oct 2026</div></header>
+<div class="chart">
+ <div class="row" id="r0"><div class="lab"><b>Data engineer</b><span>1,189 reports</span></div><div class="track"><div class="bar de" id="b0">$0K</div></div></div>
+ <div class="row" id="r1"><div class="lab"><b>AI engineer</b><span>334 reports</span></div><div class="track"><div class="bar ai" id="b1">$0K</div></div></div>
+ <div class="row" id="r2"><div class="lab"><b>Machine learning engineer</b><span>1,065 reports</span></div><div class="track"><div class="bar ml" id="b2">$0K</div></div></div>
+</div>
+<div class="note" id="note">AI engineer: <b>$8K less</b> than data engineer.<br>Same order at Google: $280K · $260K · $354K.</div>
+<div class="punch" id="punch">Change your skills, <span class="g">not your title.</span></div>
+<footer><div>Source: levels.fyi job-family pages, read Oct 14, 2026</div><b>stackle.io</b></footer>
+<script>
+const V=[159,151,280],MAX=300;
+const cl=x=>Math.max(0,Math.min(1,x)),ease=x=>1-Math.pow(1-cl(x),3),S=(e,k,v)=>document.getElementById(e).style.setProperty(k,v);
+window.render=function(t){
+ V.forEach((v,i)=>{S('r'+i,'--o',ease((t-0.02-i*0.1)/0.06));const k=ease((t-0.08-i*0.1)/0.22);S('b'+i,'--w',(v/MAX*100*k)+'%');document.getElementById('b'+i).textContent='$'+Math.round(v*k)+'K';});
+ S('note','--no',ease((t-0.62)/0.08));S('punch','--po',ease((t-0.76)/0.08));
+};
+if(location.hash==='#static')window.render(1);
+</script></body></html>
