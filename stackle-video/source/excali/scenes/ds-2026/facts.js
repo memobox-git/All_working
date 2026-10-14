@@ -7,9 +7,15 @@ module.exports = {
     source: 'US Bureau of Labor Statistics, May 2025 wages',
   },
   GROWTH: {
-    line: 'The government expects the number of data scientist jobs to grow by about thirty-five percent by 2035.',
+    line: 'The government expects data scientist jobs to grow by about thirty-five percent by 2035, which makes it one of the ten fastest-growing jobs in the country.',
     big: '+35%', small: 'more data scientist jobs by 2035',
     source: 'US Bureau of Labor Statistics, 2025–2035 projections',
+  },
+  DEGREE: {
+    line: 'A 2025 study looked at data scientist job posts in the United States.',
+    line2: "About two in three mentioned a master's degree or a PhD.",
+    line3: 'Almost one in five did not mention education at all.',
+    source: '365 Data Science, 1,121 US data scientist job posts (2025 data, published April 2026)',
   },
   AI_STAT: {
     line: 'In the 2026 Stack Overflow survey, eighty-three percent of developers said they use at least one AI tool.',

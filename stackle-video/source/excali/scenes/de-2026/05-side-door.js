@@ -18,8 +18,8 @@ s.text({ x: 1550, y: 530, text: 'Data engineer', size: 56 });
 [[700, 365], [700, 585], [700, 805]].forEach(([x, y]) =>
   s.arrow({ pts: [[x, y], [1000, (y + 530) / 2], [1290, 530]], stroke: C.amber, sw: 3, curve: true, dur: 0.4, gap: 0 }));
 s.text({ x: 1550, y: 690, text: 'the side door', size: 44, stroke: C.amber });
-s.say('After twelve to eighteen months, you move across inside the same company.');
-s.text({ x: 1040, y: 330, text: '12 to 18 months', size: 44, stroke: C.amber });
+s.say('After a year or two, you move across inside the same company.');
+s.text({ x: 1040, y: 330, text: 'a year or two', size: 44, stroke: C.amber });
 s.text({ x: 1040, y: 385, text: 'same company', size: 38, stroke: C.grey });
 s.say('A move inside a company is much easier than a new hire from outside, because the team already trusts your work.');
 d.person(s, { x: 1450, y: 820, size: 130 });

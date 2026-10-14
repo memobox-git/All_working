@@ -39,9 +39,9 @@
   {
    "id": "text-2",
    "type": "text",
-   "x": 1129.6102905273438,
+   "x": 1200.4102172851562,
    "y": 152.5,
-   "width": 600.7794189453125,
+   "width": 459.1795654296875,
    "height": 75,
    "angle": 0,
    "strokeColor": "#BA7517",
@@ -62,8 +62,8 @@
    "updated": 1,
    "link": null,
    "locked": false,
-   "text": "Explain your reasons",
-   "originalText": "Explain your reasons",
+   "text": "Explain the why",
+   "originalText": "Explain the why",
    "fontSize": 60,
    "fontFamily": 5,
    "textAlign": "center",
@@ -73,7 +73,7 @@
    "lineHeight": 1.25,
    "customData": {
     "at": 0.75,
-    "dur": 0.6,
+    "dur": 0.44999999999999996,
     "anchor": {
      "x": 1430,
      "y": 190,
@@ -110,7 +110,7 @@
    "link": null,
    "locked": false,
    "customData": {
-    "at": 5.6,
+    "at": 4.8,
     "dur": 0.5599999999999999
    }
   },
@@ -160,7 +160,7 @@
    "startArrowhead": null,
    "endArrowhead": null,
    "customData": {
-    "at": 6.159999999999999,
+    "at": 5.359999999999999,
     "dur": 0.24
    }
   },
@@ -200,7 +200,7 @@
    "autoResize": true,
    "lineHeight": 1.25,
    "customData": {
-    "at": 6.55,
+    "at": 5.75,
     "dur": 0.87,
     "anchor": {
      "x": 1400,
@@ -251,7 +251,7 @@
    "startArrowhead": null,
    "endArrowhead": null,
    "customData": {
-    "at": 7.57,
+    "at": 6.7700000000000005,
     "dur": 0.15
    }
   },
@@ -297,7 +297,7 @@
    "startArrowhead": null,
    "endArrowhead": null,
    "customData": {
-    "at": 7.720000000000001,
+    "at": 6.920000000000001,
     "dur": 0.15
    }
   },
@@ -330,7 +330,7 @@
    "link": null,
    "locked": false,
    "customData": {
-    "at": 8.399999999999999,
+    "at": 8,
     "dur": 0.5599999999999999
    }
   },
@@ -380,7 +380,7 @@
    "startArrowhead": null,
    "endArrowhead": null,
    "customData": {
-    "at": 8.959999999999999,
+    "at": 8.56,
     "dur": 0.24
    }
   },
@@ -420,7 +420,7 @@
    "autoResize": true,
    "lineHeight": 1.25,
    "customData": {
-    "at": 9.35,
+    "at": 8.950000000000001,
     "dur": 4,
     "anchor": {
      "x": 1400,
@@ -475,7 +475,7 @@
    "startArrowhead": null,
    "endArrowhead": null,
    "customData": {
-    "at": 13.5,
+    "at": 13.100000000000001,
     "dur": 0.3
    }
   },
@@ -515,7 +515,7 @@
    "autoResize": true,
    "lineHeight": 1.25,
    "customData": {
-    "at": 17.599999999999998,
+    "at": 18.4,
     "dur": 0.4,
     "anchor": {
      "x": 1560,
@@ -560,7 +560,7 @@
    "autoResize": true,
    "lineHeight": 1.25,
    "customData": {
-    "at": 20.799999999999997,
+    "at": 21.599999999999998,
     "dur": 0.4,
     "anchor": {
      "x": 1560,
@@ -597,7 +597,7 @@
    "locked": false,
    "name": "End",
    "customData": {
-    "at": 23.999999999999996,
+    "at": 24.799999999999997,
     "dur": 0
    }
   }

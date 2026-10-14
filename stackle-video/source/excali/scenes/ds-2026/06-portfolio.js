@@ -39,10 +39,10 @@ z.frame({ x: 0, y: 0, w: 1920, h: 1080, name: 'Four questions' });
 z.text({ x: 960, y: 150, text: 'Every project answers 4 questions', size: 84 });
 underline(z, 340, 1580, 222);
 const questions = [
-  ['What problem did you solve?', 'What problem did\nyou solve?'],
-  ['Why does it matter to a business?', 'Why does it matter\nto a business?'],
-  ['What did you find?', 'What did you find?'],
-  ['What should someone do differently because of it?', 'What should someone\ndo differently?'],
+  ['Who has the problem?', 'Who has\nthe problem?'],
+  ['What does the problem cost them?', 'What does it\ncost them?'],
+  ['What did the data show?', 'What did the\ndata show?'],
+  ['What should they do now?', 'What should they\ndo now?'],
 ];
 questions.forEach(([line, label], i) => {
   s.say(line);
@@ -52,10 +52,9 @@ questions.forEach(([line, label], i) => {
   z.text({ x: bx + 82, y: by + 105, text: String(i + 1), size: 58, dur: 0.2, gap: 0.05 });
   z.text({ x: bx + 170, y: by + 105, text: label, size: 46, align: 'left' });
 });
-s.say('The last question matters most.');
+s.say('The last question matters most, because a manager pays for decisions, not for accuracy scores.');
 z.ellipse({ x: 990, y: 548, w: 900, h: 270, stroke: C.red, sw: 4, rough: 2, dur: 0.7 });
-s.say('A model with ninety percent accuracy does not tell a manager what to do next.');
-z.text({ x: 960, y: 940, text: 'A model with 90% accuracy does not tell a manager what to do next.', size: 42, stroke: C.amber });
+z.text({ x: 960, y: 940, text: 'A manager pays for decisions, not for accuracy scores.', size: 46, stroke: C.amber });
 
 // Graphic 12: build in a field you know
 z = shift(s, 1050, 1300);
@@ -65,8 +64,8 @@ z.text({ x: 960, y: 150, text: 'Build in a field you already know', size: 84 });
 underline(z, 380, 1540, 222);
 const fields = [
   ['If you worked in retail, predict which products will sell out.', 'Retail', 'which products\nwill sell out'],
-  ['If you worked in a hospital, predict which patients will miss appointments.', 'Hospital', 'which patients will\nmiss appointments'],
-  ['If you worked in sales, predict which leads will turn into customers.', 'Sales', 'which leads will\nturn into customers'],
+  ['In a hospital, predict which patients will miss appointments.', 'Hospital', 'which patients will\nmiss appointments'],
+  ['In sales, find which leads will turn into customers.', 'Sales', 'which leads will\nturn into customers'],
 ];
 fields.forEach(([line, role, data], i) => {
   s.say(line);

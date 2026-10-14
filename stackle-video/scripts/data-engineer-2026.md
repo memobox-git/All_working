@@ -183,7 +183,7 @@ Here is the honest truth. Data engineering is often not an entry-level job. So y
 
 **[Graphic 11, full screen: the side door]** *(pause)*
 
-Three jobs are more open to beginners: data analyst, analytics engineer, and business intelligence developer, a person who builds reports and dashboards. An analytics engineer builds clean tables with SQL and dbt, which is already half the work of a data engineer. Think of this path as the side door into a building when the front door is locked. After twelve to eighteen months, you move across inside the same company. A move inside a company is much easier than a new hire from outside, because the team already trusts your work. *(pause)*
+Three jobs are more open to beginners: data analyst, analytics engineer, and business intelligence developer, a person who builds reports and dashboards. An analytics engineer builds clean tables with SQL and dbt, which is already half the work of a data engineer. Think of this path as the side door into a building when the front door is locked. After a year or two, you move across inside the same company. A move inside a company is much easier than a new hire from outside, because the team already trusts your work. *(pause)*
 
 **[Card beside you: "Your past industry counts"]** *(pause)*
 
@@ -201,7 +201,7 @@ A strong project pulls real data that changes every day. It runs on a schedule, 
 
 **[Graphic 14, full screen: the four questions]**
 
-Every project should answer four questions. What problem does it solve? Why does that problem matter to a business? What did you build, and why did you choose that design? What can someone do now that they could not do before? The last question matters most. A pipeline that runs does not tell anyone what to do next.
+Every project should answer four questions. Who has the problem? What does the problem cost them? What did you build, and why did you choose that design? What can someone do now that they could not do before? The last question matters most, because a business pays for results, not for pipelines.
 
 **[Graphic 15, full screen: build in a field you know, then the whole board]**
 
@@ -209,7 +209,7 @@ Build in a field you already know. If you worked in logistics, build a pipeline 
 
 **[Card beside you: "3 projects"]** *(pause)*
 
-Three real projects beat ten copied ones. Give each a README, the first page of the project, written for a manager who does not code, with a diagram of the pipeline. Then post a short write-up of each on LinkedIn. *(pause)*
+Three real projects beat ten copied ones. Give each a README, the first page of the project, with a diagram of the pipeline, so that someone outside tech understands it in one minute. Then share each one on LinkedIn, because work that nobody sees cannot get you a callback. *(pause)*
 
 ### Part 6: The interviews
 
@@ -219,11 +219,11 @@ A data engineering interview usually has five stages. The first stage is a call 
 
 **[On camera]**
 
-Practice SQL every week, not only right before an interview. SQL practice works like the gym. Ten minutes every day beats five hours the night before. Sites such as StrataScratch, DataLemur and LeetCode have questions that companies have asked.
+Treat SQL practice like the gym. Ten minutes every day beats five hours the night before an interview. Sites like DataLemur, StrataScratch and LeetCode give you questions to practice on.
 
-**[Card beside you: "Explain your reasons"]** *(pause)*
+**[Card beside you: "Explain the why"]** *(pause)*
 
-In the design sessions, explain your reasons out loud, not only your answer. Do not say, "I used an incremental load." Say, "I used an incremental load, which moves only the rows that changed, because the table grows by ten million rows a day and a full reload would take hours." The first one tells me what you did. The second one tells me how you think. *(pause)*
+In the design sessions, the why matters more than the what. A weak answer is, "I used an incremental load." A strong answer is, "I used an incremental load, which moves only the rows that changed, because the table grows by ten million rows a day and a full reload would take hours." The first one tells me what you did. The second one tells me how you think. *(pause)*
 
 **[Graphic 17, full screen: the STAR method]** *(pause)*
 
@@ -231,7 +231,7 @@ For questions about past work, use the STAR method: the situation, the task, the
 
 **[On camera]**
 
-Before you apply to a company, check if you know someone who works there, or someone who knows a person there.
+Before you send an application, look at who you already know. Search the company on LinkedIn and look for friends, old classmates, or friends of friends who work there.
 
 **[Graphic 18, full screen: referrals, then the whole board]** *(pause)*
 
@@ -268,12 +268,12 @@ Rendered files are in `stackle-video/graphics/de-2026/`. Each one is timed to th
 | 3–8 | 03-skills.mp4 | One board: the five phases, then SQL, Python, data modeling (star schema), pipelines and cloud, then back to the five phases with AI circled | 3:45 |
 | 9 | 04-ai-1.mp4 | How you write code: 83% use an AI tool, "runs and still gives the wrong answer", 71% of data teams worry, SQL and modeling check the work | 40 s |
 | 10 | 04-ai-2.mp4 | The RAG pipeline: documents, small pieces, embeddings, vector database, question | 36 s |
-| 11 | 05-side-door.mp4 | Data analyst, analytics engineer and BI developer lead to data engineer in 12 to 18 months | 39 s |
+| 11 | 05-side-door.mp4 | Data analyst, analytics engineer and BI developer lead to data engineer in a year or two | 39 s |
 | Card B | card-b-industries.mov (transparent) | Healthcare, banking, retail: less training needed | 19 s |
 | 12–15 | 06-portfolio.mp4 | One board: copied projects crossed out, a strong project, the four questions, build in your field, then the whole board | 1:15 |
-| Card C | card-c-projects.mov (transparent) | 3 projects: README, diagram, LinkedIn write-up | 18 s |
+| Card C | card-c-projects.mov (transparent) | 3 projects: a README anyone gets in one minute, a diagram, shared on LinkedIn | 18 s |
 | 16 | 07-interviews-1.mp4 | The five interview stages | 18 s |
-| Card D | card-d-reasons.mov (transparent) | "Explain your reasons": the short answer crossed out, the full answer checked, then "what you did" and "how you think" | 29 s |
+| Card D | card-d-reasons.mov (transparent) | "Explain the why": the weak answer crossed out, the strong answer checked, then "what you did" and "how you think" | 29 s |
 | 17 | 07-interviews-2.mp4 | The STAR method, ending with a number | 20 s |
 | 18 | 07-interviews-3.mp4 | Referrals: 1% of applications, 17% of hires, then the whole board | 18 s |
 | End | cta.mp4 (existing) | Free call, then the masterclass | 11 s |
@@ -303,7 +303,7 @@ The cards are transparent QuickTime files. Put them over your camera shot. The c
 
 - **"When I interview engineers, I check three things..."** These are written in your voice. Change them to the three things you actually check.
 - **"So many people try to become a data engineer and give up. They are not lazy, and they are not slow."** This is presented as your observation, and so is "the easier first job that most people skip".
-- **"Data engineering is often not an entry-level job"** and **"after twelve to eighteen months, you move across"**. These are opinions with no survey behind them. Keep them only if they match what you have seen.
+- **"Data engineering is often not an entry-level job"** and **"after a year or two, you move across"**. These are opinions with no survey behind them. Keep them only if they match what you have seen.
 - **"An analytics engineer's work is already half of a data engineer's work."** This is an opinion.
 - **"SQL is tested in almost every data engineering interview."** This is based on your experience and on interview guides from Amazon and Exponent, not on a statistic.
 - **The masterclass line** ("from SQL to a job-ready portfolio in ten weeks") comes from the masterclass page address. Confirm the wording.

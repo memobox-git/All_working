@@ -2328,7 +2328,7 @@
    "type": "text",
    "x": 250,
    "y": 1676.25,
-   "width": 625.0940551757812,
+   "width": 482.5860595703125,
    "height": 57.5,
    "angle": 0,
    "strokeColor": "#1E1C1D",
@@ -2349,8 +2349,8 @@
    "updated": 1,
    "link": null,
    "locked": false,
-   "text": "What problem does it solve?",
-   "originalText": "What problem does it solve?",
+   "text": "Who has the problem?",
+   "originalText": "Who has the problem?",
    "fontSize": 46,
    "fontFamily": 5,
    "textAlign": "left",
@@ -2360,7 +2360,7 @@
    "lineHeight": 1.25,
    "customData": {
     "at": 37.099999999999994,
-    "dur": 0.8099999999999999,
+    "dur": 0.6,
     "anchor": {
      "x": 250,
      "y": 1705,
@@ -2397,7 +2397,7 @@
    "link": null,
    "locked": false,
    "customData": {
-    "at": 38,
+    "at": 37.6,
     "dur": 0.5
    }
   },
@@ -2428,7 +2428,7 @@
    "link": null,
    "locked": false,
    "customData": {
-    "at": 38.55,
+    "at": 38.15,
     "dur": 0.3
    }
   },
@@ -2468,7 +2468,7 @@
    "autoResize": true,
    "lineHeight": 1.25,
    "customData": {
-    "at": 38.849999999999994,
+    "at": 38.449999999999996,
     "dur": 0.2,
     "anchor": {
      "x": 1102,
@@ -2481,9 +2481,9 @@
    "id": "text-60",
    "type": "text",
    "x": 1190,
-   "y": 1647.5,
-   "width": 435.114013671875,
-   "height": 115,
+   "y": 1676.25,
+   "width": 558.9000854492188,
+   "height": 57.5,
    "angle": 0,
    "strokeColor": "#1E1C1D",
    "backgroundColor": "transparent",
@@ -2503,8 +2503,8 @@
    "updated": 1,
    "link": null,
    "locked": false,
-   "text": "Why does it matter\nto a business?",
-   "originalText": "Why does it matter\nto a business?",
+   "text": "What does it cost them?",
+   "originalText": "What does it cost them?",
    "fontSize": 46,
    "fontFamily": 5,
    "textAlign": "left",
@@ -2513,8 +2513,8 @@
    "autoResize": true,
    "lineHeight": 1.25,
    "customData": {
-    "at": 39.099999999999994,
-    "dur": 0.99,
+    "at": 38.699999999999996,
+    "dur": 0.69,
     "anchor": {
      "x": 1190,
      "y": 1705,
@@ -2551,7 +2551,7 @@
    "link": null,
    "locked": false,
    "customData": {
-    "at": 41.2,
+    "at": 40,
     "dur": 0.5
    }
   },
@@ -2582,7 +2582,7 @@
    "link": null,
    "locked": false,
    "customData": {
-    "at": 41.75,
+    "at": 40.55,
     "dur": 0.3
    }
   },
@@ -2622,7 +2622,7 @@
    "autoResize": true,
    "lineHeight": 1.25,
    "customData": {
-    "at": 42.05,
+    "at": 40.849999999999994,
     "dur": 0.2,
     "anchor": {
      "x": 162,
@@ -2667,7 +2667,7 @@
    "autoResize": true,
    "lineHeight": 1.25,
    "customData": {
-    "at": 42.3,
+    "at": 41.099999999999994,
     "dur": 1.2,
     "anchor": {
      "x": 250,
@@ -2705,7 +2705,7 @@
    "link": null,
    "locked": false,
    "customData": {
-    "at": 45.6,
+    "at": 44.4,
     "dur": 0.5
    }
   },
@@ -2736,7 +2736,7 @@
    "link": null,
    "locked": false,
    "customData": {
-    "at": 46.15,
+    "at": 44.949999999999996,
     "dur": 0.3
    }
   },
@@ -2776,7 +2776,7 @@
    "autoResize": true,
    "lineHeight": 1.25,
    "customData": {
-    "at": 46.449999999999996,
+    "at": 45.24999999999999,
     "dur": 0.2,
     "anchor": {
      "x": 1102,
@@ -2821,7 +2821,7 @@
    "autoResize": true,
    "lineHeight": 1.25,
    "customData": {
-    "at": 46.699999999999996,
+    "at": 45.49999999999999,
     "dur": 0.72,
     "anchor": {
      "x": 1190,
@@ -2857,17 +2857,17 @@
    "link": null,
    "locked": false,
    "customData": {
-    "at": 52,
+    "at": 48.8,
     "dur": 0.7
    }
   },
   {
    "id": "text-70",
    "type": "text",
-   "x": 327.105224609375,
-   "y": 2212.5,
-   "width": 1265.78955078125,
-   "height": 55,
+   "x": 427.19891357421875,
+   "y": 2210,
+   "width": 1065.6021728515625,
+   "height": 60,
    "angle": 0,
    "strokeColor": "#BA7517",
    "backgroundColor": "transparent",
@@ -2887,9 +2887,9 @@
    "updated": 1,
    "link": null,
    "locked": false,
-   "text": "A pipeline that runs does not tell anyone what to do next.",
-   "originalText": "A pipeline that runs does not tell anyone what to do next.",
-   "fontSize": 44,
+   "text": "A business pays for results, not for pipelines.",
+   "originalText": "A business pays for results, not for pipelines.",
+   "fontSize": 48,
    "fontFamily": 5,
    "textAlign": "center",
    "verticalAlign": "top",
@@ -2897,8 +2897,8 @@
    "autoResize": true,
    "lineHeight": 1.25,
    "customData": {
-    "at": 52.85,
-    "dur": 1.74,
+    "at": 49.65,
+    "dur": 1.41,
     "anchor": {
      "x": 960,
      "y": 2240,
@@ -2934,7 +2934,7 @@
    "locked": false,
    "name": "Your field",
    "customData": {
-    "at": 56.8,
+    "at": 54.4,
     "dur": 1.4
    }
   },
@@ -2974,7 +2974,7 @@
    "autoResize": true,
    "lineHeight": 1.25,
    "customData": {
-    "at": 58.349999999999994,
+    "at": 55.949999999999996,
     "dur": 0.99,
     "anchor": {
      "x": 3060,
@@ -3031,7 +3031,7 @@
    "startArrowhead": null,
    "endArrowhead": null,
    "customData": {
-    "at": 59.489999999999995,
+    "at": 57.089999999999996,
     "dur": 0.4
    }
   },
@@ -3064,7 +3064,7 @@
    "link": null,
    "locked": false,
    "customData": {
-    "at": 59.599999999999994,
+    "at": 57.199999999999996,
     "dur": 0.5
    }
   },
@@ -3095,7 +3095,7 @@
    "link": null,
    "locked": false,
    "customData": {
-    "at": 60.14999999999999,
+    "at": 57.74999999999999,
     "dur": 0.315
    }
   },
@@ -3155,7 +3155,7 @@
    "startArrowhead": null,
    "endArrowhead": null,
    "customData": {
-    "at": 60.46499999999999,
+    "at": 58.06499999999999,
     "dur": 0.385
    }
   },
@@ -3195,7 +3195,7 @@
    "autoResize": true,
    "lineHeight": 1.25,
    "customData": {
-    "at": 60.999999999999986,
+    "at": 58.59999999999999,
     "dur": 0.4,
     "anchor": {
      "x": 2460,
@@ -3246,7 +3246,7 @@
    "startArrowhead": null,
    "endArrowhead": "arrow",
    "customData": {
-    "at": 61.54999999999998,
+    "at": 59.149999999999984,
     "dur": 0.2
    }
   },
@@ -3286,7 +3286,7 @@
    "autoResize": true,
    "lineHeight": 1.25,
    "customData": {
-    "at": 61.899999999999984,
+    "at": 59.499999999999986,
     "dur": 0.48,
     "anchor": {
      "x": 2460,
@@ -3324,7 +3324,7 @@
    "link": null,
    "locked": false,
    "customData": {
-    "at": 63.99999999999999,
+    "at": 61.599999999999994,
     "dur": 0.5
    }
   },
@@ -3355,7 +3355,7 @@
    "link": null,
    "locked": false,
    "customData": {
-    "at": 64.55,
+    "at": 62.14999999999999,
     "dur": 0.315
    }
   },
@@ -3415,7 +3415,7 @@
    "startArrowhead": null,
    "endArrowhead": null,
    "customData": {
-    "at": 64.865,
+    "at": 62.46499999999999,
     "dur": 0.385
    }
   },
@@ -3455,7 +3455,7 @@
    "autoResize": true,
    "lineHeight": 1.25,
    "customData": {
-    "at": 65.4,
+    "at": 62.999999999999986,
     "dur": 0.4,
     "anchor": {
      "x": 3060,
@@ -3506,7 +3506,7 @@
    "startArrowhead": null,
    "endArrowhead": "arrow",
    "customData": {
-    "at": 65.95000000000002,
+    "at": 63.54999999999998,
     "dur": 0.2
    }
   },
@@ -3546,7 +3546,7 @@
    "autoResize": true,
    "lineHeight": 1.25,
    "customData": {
-    "at": 66.30000000000003,
+    "at": 63.899999999999984,
     "dur": 0.54,
     "anchor": {
      "x": 3060,
@@ -3584,7 +3584,7 @@
    "link": null,
    "locked": false,
    "customData": {
-    "at": 68.39999999999999,
+    "at": 66,
     "dur": 0.5
    }
   },
@@ -3615,7 +3615,7 @@
    "link": null,
    "locked": false,
    "customData": {
-    "at": 68.94999999999999,
+    "at": 66.55,
     "dur": 0.315
    }
   },
@@ -3675,7 +3675,7 @@
    "startArrowhead": null,
    "endArrowhead": null,
    "customData": {
-    "at": 69.26499999999999,
+    "at": 66.865,
     "dur": 0.385
    }
   },
@@ -3715,7 +3715,7 @@
    "autoResize": true,
    "lineHeight": 1.25,
    "customData": {
-    "at": 69.8,
+    "at": 67.4,
     "dur": 0.4,
     "anchor": {
      "x": 3660,
@@ -3766,7 +3766,7 @@
    "startArrowhead": null,
    "endArrowhead": "arrow",
    "customData": {
-    "at": 70.35000000000001,
+    "at": 67.95000000000002,
     "dur": 0.2
    }
   },
@@ -3806,7 +3806,7 @@
    "autoResize": true,
    "lineHeight": 1.25,
    "customData": {
-    "at": 70.70000000000002,
+    "at": 68.30000000000003,
     "dur": 0.69,
     "anchor": {
      "x": 3660,
@@ -3843,7 +3843,7 @@
    "locked": false,
    "name": "Whole board",
    "customData": {
-    "at": 72.99999999999999,
+    "at": 70.6,
     "dur": 1.8
    }
   },
@@ -3875,7 +3875,7 @@
    "locked": false,
    "name": "End",
    "customData": {
-    "at": 74.94999999999999,
+    "at": 72.55,
     "dur": 0
    }
   }

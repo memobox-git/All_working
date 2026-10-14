@@ -136,7 +136,7 @@
    "type": "text",
    "x": 1230,
    "y": 322.5,
-   "width": 527.6660766601562,
+   "width": 414.55206298828125,
    "height": 115,
    "angle": 0,
    "strokeColor": "#1E1C1D",
@@ -157,8 +157,8 @@
    "updated": 1,
    "link": null,
    "locked": false,
-   "text": "README for a manager\nwho does not code",
-   "originalText": "README for a manager\nwho does not code",
+   "text": "a README anyone\ngets in one minute",
+   "originalText": "a README anyone\ngets in one minute",
    "fontSize": 46,
    "fontFamily": 5,
    "textAlign": "left",
@@ -168,7 +168,7 @@
    "lineHeight": 1.25,
    "customData": {
     "at": 3.2499999999999996,
-    "dur": 1.14,
+    "dur": 1.02,
     "anchor": {
      "x": 1230,
      "y": 380,
@@ -222,7 +222,7 @@
    "startArrowhead": null,
    "endArrowhead": null,
    "customData": {
-    "at": 5.39,
+    "at": 5.27,
     "dur": 0.3
    }
   },
@@ -262,7 +262,7 @@
    "autoResize": true,
    "lineHeight": 1.25,
    "customData": {
-    "at": 5.84,
+    "at": 5.72,
     "dur": 0.75,
     "anchor": {
      "x": 1230,
@@ -317,7 +317,7 @@
    "startArrowhead": null,
    "endArrowhead": null,
    "customData": {
-    "at": 12.399999999999999,
+    "at": 13.2,
     "dur": 0.3
    }
   },
@@ -325,9 +325,9 @@
    "id": "text-8",
    "type": "text",
    "x": 1230,
-   "y": 682.5,
-   "width": 369.6560363769531,
-   "height": 115,
+   "y": 711.25,
+   "width": 423.4300231933594,
+   "height": 57.5,
    "angle": 0,
    "strokeColor": "#1E1C1D",
    "backgroundColor": "transparent",
@@ -347,8 +347,8 @@
    "updated": 1,
    "link": null,
    "locked": false,
-   "text": "a short write-up\non LinkedIn",
-   "originalText": "a short write-up\non LinkedIn",
+   "text": "shared on LinkedIn",
+   "originalText": "shared on LinkedIn",
    "fontSize": 46,
    "fontFamily": 5,
    "textAlign": "left",
@@ -357,8 +357,8 @@
    "autoResize": true,
    "lineHeight": 1.25,
    "customData": {
-    "at": 12.85,
-    "dur": 0.84,
+    "at": 13.65,
+    "dur": 0.54,
     "anchor": {
      "x": 1230,
      "y": 740,
@@ -394,7 +394,7 @@
    "locked": false,
    "name": "End",
    "customData": {
-    "at": 15.999999999999998,
+    "at": 19.6,
     "dur": 0
    }
   }

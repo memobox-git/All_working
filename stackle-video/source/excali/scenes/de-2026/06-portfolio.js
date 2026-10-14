@@ -57,8 +57,8 @@ z.frame({ x: 0, y: 0, w: 1920, h: 1080, name: 'Four questions' });
 z.text({ x: 960, y: 150, text: 'Every project answers 4 questions', size: 84 });
 underline(z, 340, 1580, 222);
 const questions = [
-  ['What problem does it solve?', 'What problem does it solve?'],
-  ['Why does that problem matter to a business?', 'Why does it matter\nto a business?'],
+  ['Who has the problem?', 'Who has the problem?'],
+  ['What does the problem cost them?', 'What does it cost them?'],
   ['What did you build, and why did you choose that design?', 'What did you build,\nand why that design?'],
   ['What can someone do now that they could not do before?', 'What can someone\ndo now?'],
 ];
@@ -70,10 +70,9 @@ questions.forEach(([line, label], i) => {
   z.text({ x: bx + 82, y: by + 105, text: String(i + 1), size: 58, dur: 0.2, gap: 0.05 });
   z.text({ x: bx + 170, y: by + 105, text: label, size: 46, align: 'left' });
 });
-s.say('The last question matters most.');
-s.say('A pipeline that runs does not tell anyone what to do next.');
+s.say('The last question matters most, because a business pays for results, not for pipelines.');
 z.ellipse({ x: 990, y: 548, w: 900, h: 270, stroke: C.red, sw: 4, rough: 2, dur: 0.7 });
-z.text({ x: 960, y: 940, text: 'A pipeline that runs does not tell anyone what to do next.', size: 44, stroke: C.amber });
+z.text({ x: 960, y: 940, text: 'A business pays for results, not for pipelines.', size: 48, stroke: C.amber });
 
 // Shot 4: build in a field you know
 z = shift(s, 2100, 1300);

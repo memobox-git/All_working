@@ -641,9 +641,9 @@
   {
    "id": "text-16",
    "type": "text",
-   "x": 864.1103515625,
+   "x": 892.8423156738281,
    "y": 302.5,
-   "width": 351.779296875,
+   "width": 294.31536865234375,
    "height": 55,
    "angle": 0,
    "strokeColor": "#BA7517",
@@ -664,8 +664,8 @@
    "updated": 1,
    "link": null,
    "locked": false,
-   "text": "12 to 18 months",
-   "originalText": "12 to 18 months",
+   "text": "a year or two",
+   "originalText": "a year or two",
    "fontSize": 44,
    "fontFamily": 5,
    "textAlign": "center",
@@ -675,7 +675,7 @@
    "lineHeight": 1.25,
    "customData": {
     "at": 23.6,
-    "dur": 0.44999999999999996,
+    "dur": 0.4,
     "anchor": {
      "x": 1040,
      "y": 330,
@@ -719,7 +719,7 @@
    "autoResize": true,
    "lineHeight": 1.25,
    "customData": {
-    "at": 24.2,
+    "at": 24.15,
     "dur": 0.4,
     "anchor": {
      "x": 1040,

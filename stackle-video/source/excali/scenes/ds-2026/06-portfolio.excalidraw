@@ -1193,7 +1193,7 @@
    "type": "text",
    "x": 2350,
    "y": 347.5,
-   "width": 380.1900329589844,
+   "width": 278.39202880859375,
    "height": 115,
    "angle": 0,
    "strokeColor": "#1E1C1D",
@@ -1214,8 +1214,8 @@
    "updated": 1,
    "link": null,
    "locked": false,
-   "text": "What problem did\nyou solve?",
-   "originalText": "What problem did\nyou solve?",
+   "text": "Who has\nthe problem?",
+   "originalText": "Who has\nthe problem?",
    "fontSize": 46,
    "fontFamily": 5,
    "textAlign": "left",
@@ -1225,7 +1225,7 @@
    "lineHeight": 1.25,
    "customData": {
     "at": 24.299999999999997,
-    "dur": 0.8099999999999999,
+    "dur": 0.6,
     "anchor": {
      "x": 2350,
      "y": 405,
@@ -1262,7 +1262,7 @@
    "link": null,
    "locked": false,
    "customData": {
-    "at": 25.199999999999996,
+    "at": 24.799999999999997,
     "dur": 0.5
    }
   },
@@ -1293,7 +1293,7 @@
    "link": null,
    "locked": false,
    "customData": {
-    "at": 25.749999999999996,
+    "at": 25.349999999999998,
     "dur": 0.3
    }
   },
@@ -1333,7 +1333,7 @@
    "autoResize": true,
    "lineHeight": 1.25,
    "customData": {
-    "at": 26.049999999999997,
+    "at": 25.65,
     "dur": 0.2,
     "anchor": {
      "x": 3202,
@@ -1347,7 +1347,7 @@
    "type": "text",
    "x": 3290,
    "y": 347.5,
-   "width": 435.114013671875,
+   "width": 292.7440185546875,
    "height": 115,
    "angle": 0,
    "strokeColor": "#1E1C1D",
@@ -1368,8 +1368,8 @@
    "updated": 1,
    "link": null,
    "locked": false,
-   "text": "Why does it matter\nto a business?",
-   "originalText": "Why does it matter\nto a business?",
+   "text": "What does it\ncost them?",
+   "originalText": "What does it\ncost them?",
    "fontSize": 46,
    "fontFamily": 5,
    "textAlign": "left",
@@ -1378,8 +1378,8 @@
    "autoResize": true,
    "lineHeight": 1.25,
    "customData": {
-    "at": 26.299999999999997,
-    "dur": 0.99,
+    "at": 25.9,
+    "dur": 0.69,
     "anchor": {
      "x": 3290,
      "y": 405,
@@ -1416,7 +1416,7 @@
    "link": null,
    "locked": false,
    "customData": {
-    "at": 27.999999999999996,
+    "at": 27.199999999999996,
     "dur": 0.5
    }
   },
@@ -1447,7 +1447,7 @@
    "link": null,
    "locked": false,
    "customData": {
-    "at": 28.549999999999997,
+    "at": 27.749999999999996,
     "dur": 0.3
    }
   },
@@ -1487,7 +1487,7 @@
    "autoResize": true,
    "lineHeight": 1.25,
    "customData": {
-    "at": 28.849999999999998,
+    "at": 28.049999999999997,
     "dur": 0.2,
     "anchor": {
      "x": 2262,
@@ -1500,9 +1500,9 @@
    "id": "text-37",
    "type": "text",
    "x": 2350,
-   "y": 646.25,
-   "width": 420.9920959472656,
-   "height": 57.5,
+   "y": 617.5,
+   "width": 294.0780334472656,
+   "height": 115,
    "angle": 0,
    "strokeColor": "#1E1C1D",
    "backgroundColor": "transparent",
@@ -1522,8 +1522,8 @@
    "updated": 1,
    "link": null,
    "locked": false,
-   "text": "What did you find?",
-   "originalText": "What did you find?",
+   "text": "What did the\ndata show?",
+   "originalText": "What did the\ndata show?",
    "fontSize": 46,
    "fontFamily": 5,
    "textAlign": "left",
@@ -1532,8 +1532,8 @@
    "autoResize": true,
    "lineHeight": 1.25,
    "customData": {
-    "at": 29.099999999999998,
-    "dur": 0.54,
+    "at": 28.299999999999997,
+    "dur": 0.69,
     "anchor": {
      "x": 2350,
      "y": 675,
@@ -1570,7 +1570,7 @@
    "link": null,
    "locked": false,
    "customData": {
-    "at": 29.599999999999998,
+    "at": 29.199999999999996,
     "dur": 0.5
    }
   },
@@ -1601,7 +1601,7 @@
    "link": null,
    "locked": false,
    "customData": {
-    "at": 30.15,
+    "at": 29.749999999999996,
     "dur": 0.3
    }
   },
@@ -1641,7 +1641,7 @@
    "autoResize": true,
    "lineHeight": 1.25,
    "customData": {
-    "at": 30.45,
+    "at": 30.049999999999997,
     "dur": 0.2,
     "anchor": {
      "x": 3202,
@@ -1655,7 +1655,7 @@
    "type": "text",
    "x": 3290,
    "y": 617.5,
-   "width": 477.29608154296875,
+   "width": 393.6220703125,
    "height": 115,
    "angle": 0,
    "strokeColor": "#1E1C1D",
@@ -1676,8 +1676,8 @@
    "updated": 1,
    "link": null,
    "locked": false,
-   "text": "What should someone\ndo differently?",
-   "originalText": "What should someone\ndo differently?",
+   "text": "What should they\ndo now?",
+   "originalText": "What should they\ndo now?",
    "fontSize": 46,
    "fontFamily": 5,
    "textAlign": "left",
@@ -1686,8 +1686,8 @@
    "autoResize": true,
    "lineHeight": 1.25,
    "customData": {
-    "at": 30.7,
-    "dur": 1.05,
+    "at": 30.299999999999997,
+    "dur": 0.72,
     "anchor": {
      "x": 3290,
      "y": 675,
@@ -1722,17 +1722,17 @@
    "link": null,
    "locked": false,
    "customData": {
-    "at": 32.8,
+    "at": 31.199999999999996,
     "dur": 0.7
    }
   },
   {
    "id": "text-43",
    "type": "text",
-   "x": 2344.927978515625,
-   "y": 913.75,
-   "width": 1430.14404296875,
-   "height": 52.5,
+   "x": 2445.577880859375,
+   "y": 911.25,
+   "width": 1228.84423828125,
+   "height": 57.5,
    "angle": 0,
    "strokeColor": "#BA7517",
    "backgroundColor": "transparent",
@@ -1752,9 +1752,9 @@
    "updated": 1,
    "link": null,
    "locked": false,
-   "text": "A model with 90% accuracy does not tell a manager what to do next.",
-   "originalText": "A model with 90% accuracy does not tell a manager what to do next.",
-   "fontSize": 42,
+   "text": "A manager pays for decisions, not for accuracy scores.",
+   "originalText": "A manager pays for decisions, not for accuracy scores.",
+   "fontSize": 46,
    "fontFamily": 5,
    "textAlign": "center",
    "verticalAlign": "top",
@@ -1762,8 +1762,8 @@
    "autoResize": true,
    "lineHeight": 1.25,
    "customData": {
-    "at": 34.8,
-    "dur": 1.98,
+    "at": 32.05,
+    "dur": 1.6199999999999999,
     "anchor": {
      "x": 3060,
      "y": 940,
@@ -1799,7 +1799,7 @@
    "locked": false,
    "name": "Your field",
    "customData": {
-    "at": 40.8,
+    "at": 37.199999999999996,
     "dur": 1.4
    }
   },
@@ -1839,7 +1839,7 @@
    "autoResize": true,
    "lineHeight": 1.25,
    "customData": {
-    "at": 42.349999999999994,
+    "at": 38.74999999999999,
     "dur": 0.99,
     "anchor": {
      "x": 2010,
@@ -1896,7 +1896,7 @@
    "startArrowhead": null,
    "endArrowhead": null,
    "customData": {
-    "at": 43.489999999999995,
+    "at": 39.88999999999999,
     "dur": 0.4
    }
   },
@@ -1929,7 +1929,7 @@
    "link": null,
    "locked": false,
    "customData": {
-    "at": 43.599999999999994,
+    "at": 39.99999999999999,
     "dur": 0.5
    }
   },
@@ -1960,7 +1960,7 @@
    "link": null,
    "locked": false,
    "customData": {
-    "at": 44.14999999999999,
+    "at": 40.54999999999999,
     "dur": 0.315
    }
   },
@@ -2020,7 +2020,7 @@
    "startArrowhead": null,
    "endArrowhead": null,
    "customData": {
-    "at": 44.46499999999999,
+    "at": 40.86499999999999,
     "dur": 0.385
    }
   },
@@ -2060,7 +2060,7 @@
    "autoResize": true,
    "lineHeight": 1.25,
    "customData": {
-    "at": 44.999999999999986,
+    "at": 41.399999999999984,
     "dur": 0.4,
     "anchor": {
      "x": 1410,
@@ -2111,7 +2111,7 @@
    "startArrowhead": null,
    "endArrowhead": "arrow",
    "customData": {
-    "at": 45.54999999999998,
+    "at": 41.94999999999998,
     "dur": 0.2
    }
   },
@@ -2151,7 +2151,7 @@
    "autoResize": true,
    "lineHeight": 1.25,
    "customData": {
-    "at": 45.899999999999984,
+    "at": 42.29999999999998,
     "dur": 0.84,
     "anchor": {
      "x": 1410,
@@ -2189,7 +2189,7 @@
    "link": null,
    "locked": false,
    "customData": {
-    "at": 47.99999999999999,
+    "at": 44.39999999999999,
     "dur": 0.5
    }
   },
@@ -2220,7 +2220,7 @@
    "link": null,
    "locked": false,
    "customData": {
-    "at": 48.54999999999999,
+    "at": 44.94999999999999,
     "dur": 0.315
    }
   },
@@ -2280,7 +2280,7 @@
    "startArrowhead": null,
    "endArrowhead": null,
    "customData": {
-    "at": 48.86499999999999,
+    "at": 45.264999999999986,
     "dur": 0.385
    }
   },
@@ -2320,7 +2320,7 @@
    "autoResize": true,
    "lineHeight": 1.25,
    "customData": {
-    "at": 49.399999999999984,
+    "at": 45.79999999999998,
     "dur": 0.4,
     "anchor": {
      "x": 2010,
@@ -2371,7 +2371,7 @@
    "startArrowhead": null,
    "endArrowhead": "arrow",
    "customData": {
-    "at": 49.94999999999998,
+    "at": 46.34999999999998,
     "dur": 0.2
    }
   },
@@ -2411,7 +2411,7 @@
    "autoResize": true,
    "lineHeight": 1.25,
    "customData": {
-    "at": 50.29999999999998,
+    "at": 46.69999999999998,
     "dur": 1.1099999999999999,
     "anchor": {
      "x": 2010,
@@ -2449,7 +2449,7 @@
    "link": null,
    "locked": false,
    "customData": {
-    "at": 52.79999999999999,
+    "at": 47.99999999999999,
     "dur": 0.5
    }
   },
@@ -2480,7 +2480,7 @@
    "link": null,
    "locked": false,
    "customData": {
-    "at": 53.34999999999999,
+    "at": 48.54999999999999,
     "dur": 0.315
    }
   },
@@ -2540,7 +2540,7 @@
    "startArrowhead": null,
    "endArrowhead": null,
    "customData": {
-    "at": 53.664999999999985,
+    "at": 48.86499999999999,
     "dur": 0.385
    }
   },
@@ -2580,7 +2580,7 @@
    "autoResize": true,
    "lineHeight": 1.25,
    "customData": {
-    "at": 54.19999999999998,
+    "at": 49.399999999999984,
     "dur": 0.4,
     "anchor": {
      "x": 2610,
@@ -2631,7 +2631,7 @@
    "startArrowhead": null,
    "endArrowhead": "arrow",
    "customData": {
-    "at": 54.74999999999998,
+    "at": 49.94999999999998,
     "dur": 0.2
    }
   },
@@ -2671,7 +2671,7 @@
    "autoResize": true,
    "lineHeight": 1.25,
    "customData": {
-    "at": 55.09999999999998,
+    "at": 50.29999999999998,
     "dur": 1.08,
     "anchor": {
      "x": 2610,
@@ -2708,7 +2708,7 @@
    "locked": false,
    "name": "Whole board",
    "customData": {
-    "at": 58.19999999999999,
+    "at": 52.199999999999996,
     "dur": 1.8
    }
   },
@@ -2740,7 +2740,7 @@
    "locked": false,
    "name": "End",
    "customData": {
-    "at": 60.149999999999984,
+    "at": 54.14999999999999,
     "dur": 0
    }
   }

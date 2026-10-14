@@ -47,7 +47,7 @@ z.text({ x: 1410, y: 560, text: '→ LLM', size: 48 });
 s.say('If you want to sort ten thousand support emails by topic, an LLM can do it in minutes.');
 z.text({ x: 1410, y: 650, text: '"sort 10,000 support emails by topic"', size: 38 });
 z.text({ x: 1410, y: 740, text: 'in minutes', size: 38, stroke: C.green });
-s.say('LLMs work with embeddings, which are lists of numbers that capture what text means, and vector databases, which find the text closest in meaning to a question.');
+s.say('LLMs work with embeddings, which are lists of numbers that capture what text means, and vector databases, which find the passages closest in meaning to a question.');
 box(z, 260, 890, 1400, 120, C.soft);
 z.text({ x: 960, y: 950, text: 'embeddings: numbers for meaning  ·  vector database: finds the closest text', size: 36 });
 s.end();

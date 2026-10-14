@@ -78,24 +78,23 @@ topics.forEach(([name, label], i) => {
   }
   z.text({ x: x + 205, y: 845, text: label, size: 34 });
 });
-s.say('SQL is tested in almost every data science interview, even for jobs that are mostly about models.');
-z.text({ x: 960, y: 1000, text: 'Tested in almost every data science interview', size: 46, stroke: C.red });
+s.say('Even if the job is all about models, expect a SQL test in the interview.');
+z.text({ x: 960, y: 1000, text: 'Expect a SQL test in the interview', size: 46, stroke: C.red });
 
 // Zone 3: statistics
 z = Z(2);
-s.say('Phase two is statistics, and most people skip it.');
+s.say('Phase two is statistics, which tells you if a result is real or just luck.');
 z.frame({ x: 0, y: 0, w: 1920, h: 1080, name: 'Statistics' });
 title(z, '2 · Statistics');
-s.say('Statistics tells you if a result is real or just luck.');
 z.text({ x: 960, y: 215, text: 'real, or just luck?', size: 46, stroke: C.amber });
 s.say('If you flip a coin ten times and get seven heads, is the coin broken?');
 z.ellipse({ x: 300, y: 330, w: 180, h: 180, stroke: C.amber, fill: C.gold, fillStyle: 'solid', sw: 3, dur: 0.5 });
 z.text({ x: 390, y: 420, text: 'H', size: 80, dur: 0.3 });
 z.text({ x: 390, y: 590, text: '7 heads in 10 flips', size: 42 });
 z.text({ x: 390, y: 650, text: 'is the coin broken?', size: 42, stroke: C.red });
-s.say('Statistics answers that question.');
+s.say('That is exactly the question it answers.');
 const stats = [
-  ['Learn distributions, which show the shape your data makes.', 'distributions:\nthe shape of your data'],
+  ['Learn distributions, which describe the shape your data makes.', 'distributions:\nthe shape of your data'],
   ['Learn hypothesis testing, which is a fair way to check a claim.', 'hypothesis testing:\na fair way to check a claim'],
   ['A p-value tells you how surprising a result would be if nothing had changed.', 'p-value: how surprising,\nif nothing changed'],
   ['A confidence interval gives you a range where the true number probably sits.', 'confidence interval: where\nthe true number probably sits'],
@@ -106,7 +105,7 @@ stats.forEach(([line, label], i) => {
   card(z, { x, y, w: 520, h: 170, dur: 0.35 });
   z.text({ x: x + 260, y: y + 85, text: label, size: 33 });
 });
-s.say('Then learn A/B testing.');
+s.say('Then practice A/B testing.');
 card(z, { x: 760, y: 700, w: 1080, h: 200, fill: C.soft });
 z.text({ x: 900, y: 800, text: 'A/B test', size: 50 });
 s.say('Show half your users a green button and half a blue button, and measure which one gets more clicks.');
@@ -170,12 +169,12 @@ z.rect({ x: 900, y: 580, w: 920, h: 90, round: true, sw: 2, fill: C.paper, fillS
 z.text({ x: 1360, y: 625, text: 'precision: how many yes answers were right', size: 36 });
 z.rect({ x: 900, y: 690, w: 920, h: 90, round: true, sw: 2, fill: C.paper, fillStyle: 'solid', dur: 0.3, gap: 1.5 });
 z.text({ x: 1360, y: 735, text: 'recall: how many real yes cases you found', size: 36 });
-s.say('AUC is a single score for how well a model separates yes from no.');
+s.say('AUC is a single score for how well your predictions separate yes from no.');
 z.rect({ x: 900, y: 800, w: 920, h: 90, round: true, sw: 2, fill: C.soft, fillStyle: 'solid', dur: 0.3 });
 z.text({ x: 1360, y: 845, text: 'AUC: how well it separates yes from no', size: 36 });
 s.say('Later, take a first look at deep learning, the kind of machine learning behind image and speech tools, with PyTorch or TensorFlow.');
 z.text({ x: 960, y: 980, text: 'Later: deep learning with PyTorch or TensorFlow', size: 40, stroke: C.grey });
-s.say('You do not need to go deep at the start.');
+s.say('It is not needed for most first jobs.');
 
 // Back to the overview, AI next
 s.settle();

@@ -231,7 +231,7 @@
    "type": "text",
    "x": 1230,
    "y": 502.5,
-   "width": 484.748046875,
+   "width": 414.55206298828125,
    "height": 115,
    "angle": 0,
    "strokeColor": "#1E1C1D",
@@ -252,8 +252,8 @@
    "updated": 1,
    "link": null,
    "locked": false,
-   "text": "a README a manager\ngets in one minute",
-   "originalText": "a README a manager\ngets in one minute",
+   "text": "a README anyone\ngets in one minute",
+   "originalText": "a README anyone\ngets in one minute",
    "fontSize": 46,
    "fontFamily": 5,
    "textAlign": "left",
@@ -263,7 +263,7 @@
    "lineHeight": 1.25,
    "customData": {
     "at": 7.2,
-    "dur": 1.1099999999999999,
+    "dur": 1.02,
     "anchor": {
      "x": 1230,
      "y": 560,
@@ -317,7 +317,7 @@
    "startArrowhead": null,
    "endArrowhead": null,
    "customData": {
-    "at": 14.8,
+    "at": 13.600000000000001,
     "dur": 0.3
    }
   },
@@ -325,9 +325,9 @@
    "id": "text-8",
    "type": "text",
    "x": 1230,
-   "y": 682.5,
-   "width": 369.6560363769531,
-   "height": 115,
+   "y": 711.25,
+   "width": 423.4300231933594,
+   "height": 57.5,
    "angle": 0,
    "strokeColor": "#1E1C1D",
    "backgroundColor": "transparent",
@@ -347,8 +347,8 @@
    "updated": 1,
    "link": null,
    "locked": false,
-   "text": "a short write-up\non LinkedIn",
-   "originalText": "a short write-up\non LinkedIn",
+   "text": "shared on LinkedIn",
+   "originalText": "shared on LinkedIn",
    "fontSize": 46,
    "fontFamily": 5,
    "textAlign": "left",
@@ -357,8 +357,8 @@
    "autoResize": true,
    "lineHeight": 1.25,
    "customData": {
-    "at": 15.250000000000002,
-    "dur": 0.84,
+    "at": 14.050000000000002,
+    "dur": 0.54,
     "anchor": {
      "x": 1230,
      "y": 740,
@@ -394,7 +394,7 @@
    "locked": false,
    "name": "End",
    "customData": {
-    "at": 18.400000000000002,
+    "at": 20,
     "dur": 0
    }
   }

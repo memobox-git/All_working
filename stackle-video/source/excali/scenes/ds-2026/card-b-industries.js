@@ -5,12 +5,12 @@ const s = scene();
 s.say('Your past industry also counts.');
 s.rect({ x: 1060, y: 160, w: 780, h: 760, round: true, sw: 3, fill: C.cream, fillStyle: 'solid', dur: 0.6 });
 s.text({ x: 1450, y: 260, text: 'Your past industry counts', size: 54, stroke: C.amber });
-s.say('If you worked in healthcare, finance or marketing, apply to data teams in that industry first.');
-['Healthcare', 'Finance', 'Marketing'].forEach((name, i) => {
+s.say('If you worked in healthcare, banking or retail, apply to data teams in that industry first.');
+['Healthcare', 'Banking', 'Retail'].forEach((name, i) => {
   s.rect({ x: 1140, y: 350 + i * 130, w: 620, h: 100, round: true, sw: 2, fill: C.paper, fillStyle: 'solid', dur: 0.3, gap: 0 });
   s.text({ x: 1450, y: 400 + i * 130, text: name, size: 46, gap: 0.3 });
 });
-s.say('A person who already knows what a patient record or a sales funnel is needs less training.');
+s.say('A person who already knows what a patient record or a credit score is needs less training.');
 s.say('Hiring managers notice that.');
 s.text({ x: 1450, y: 800, text: 'less training needed', size: 46, stroke: C.green });
 s.end();

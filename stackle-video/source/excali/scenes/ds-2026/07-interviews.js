@@ -15,9 +15,9 @@ s.text({ x: 960, y: 150, text: 'The interview: five stages', size: 84 });
 underline(s, 520, 1400, 222);
 const stages = [
   ['The first stage is a call with a recruiter.', 'Recruiter call'],
-  ['Then come a technical screen,', 'Technical\nscreen'],
-  ['a take-home project,', 'Take-home\nproject'],
-  ['a final round with SQL, statistics and a machine learning case,', 'Final round:\nSQL · stats · ML'],
+  ['The second is a screen on SQL and statistics.', 'SQL + statistics\nscreen'],
+  ['Then come the final rounds: a machine learning case,', 'Machine\nlearning case'],
+  ['a product question, like how you would test a new feature,', 'Product\nquestion'],
   ['and questions about how you work with people.', 'How you work\nwith people'],
 ];
 stages.forEach(([line, label], i) => {
@@ -28,12 +28,14 @@ stages.forEach(([line, label], i) => {
   s.text({ x: x + 160, y: y - 10, text: String(i + 1), size: 44, dur: 0.15, gap: 0 });
   if (i === 0) d.bubble(s, { x: x + 160, y: y + 110, w: 150, h: 80, dur: 0.4 });
   if (i === 1) d.laptop(s, { x: x + 160, y: y + 110, size: 150, dur: 0.5 });
-  if (i === 2) d.doc(s, { x: x + 160, y: y + 110, size: 130, dur: 0.4 });
-  if (i === 3) d.table(s, { x: x + 160, y: y + 110, w: 150, h: 100 });
+  if (i === 2) d.table(s, { x: x + 160, y: y + 110, w: 150, h: 100 });
+  if (i === 3) d.doc(s, { x: x + 160, y: y + 110, size: 130, dur: 0.4 });
   if (i === 4) { d.person(s, { x: x + 115, y: y + 110, size: 90 }); d.person(s, { x: x + 205, y: y + 110, size: 90 }); }
   s.text({ x: x + 160, y: y + 235, text: label, size: 38 });
   if (i < 4) s.arrow({ pts: [[x + 325, y + 150], [x + 360, y + 150]], stroke: C.amber, sw: 3, dur: 0.2 });
 });
+s.say('Some companies also give you a take-home project.');
+s.text({ x: 960, y: 860, text: 'Some companies also give you a take-home project.', size: 42, stroke: C.grey });
 
 // Graphic 14: STAR with a number
 s.cut();
