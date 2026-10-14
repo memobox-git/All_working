@@ -36,11 +36,11 @@ Only posts whose media type was checked inside the main post (not the related-po
 
 | Media | Posts | Median reactions | Median R/1k followers |
 |---|---|---|---|
-| image | 160 | 636 | 3.8 |
-| text-only | 75 | 453 | 2.3 |
-| video | 23 | 334 | 1.9 |
-| document/carousel | 13 | 541 | 3.1 |
-| link card | 8 | 481 | 2.0 |
+| image | 478 | 1,852 | 4.8 |
+| text-only | 98 | 681 | 2.8 |
+| document/carousel | 47 | 1,218 | 3.7 |
+| video | 39 | 1,221 | 1.9 |
+| link card | 20 | 1,968 | 1.8 |
 
 ## Top 50 hooks by reactions per 1k followers (beat their audience size)
 

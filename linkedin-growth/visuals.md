@@ -10,20 +10,20 @@ Sources:
 
 **It depends on the niche and the kind of post.** Media type below was checked inside the main post only. A first pass also counted media from the "related posts" cards under each post, which made text-only posts look like video or image posts; those counts were thrown out.
 
-**Data creators** (196 verified posts with 100+ reactions, at most 12 per creator):
+All 682 posts below have 100+ reactions and a media type checked inside the main post. R/1k = median reactions per 1,000 followers, which corrects for account size.
 
-| Media | Posts | Median reactions | Max |
-|---|---|---|---|
-| text-only | 58 | 536 | 14,528 |
-| image (incl. GIF) | 105 | 533 | 6,231 |
-| document / carousel | 10 | 516 | 1,748 |
-| link preview card | 6 | 460 | 1,159 |
-| native video | 16 | 330 | 1,613 |
+| Media | Data: posts | Data: median reactions | Data: R/1k | AI: posts | AI: median | AI: R/1k | Growth sellers: posts | Growth: median | Growth: R/1k |
+|---|---|---|---|---|---|---|---|---|---|
+| image | 122 | 463 | 2.5 | 187 | 2,137 | 8.0 | 169 | 2,305 | 4.9 |
+| text-only | 72 | 444 | 2.0 | 19 | 1,214 | 16.0 | 7 | 1,576 | 4.1 |
+| document / carousel | 12 | 516 | 3.1 | 12 | 1,929 | 4.3 | 23 | 1,227 | 3.8 |
+| native video | 20 | 319 | 1.0 | 11 | 2,196 | 2.7 | 8 | 2,006 | 6.7 |
+| link preview card | 6 | 459 | 0.9 | 14 | 3,007 | 1.9 | – | – | – |
 
-- **In the data niche, text-only ties with images.** Text-only also holds the biggest post: Zach Wilson's comp post at 14,528. Images dominate memes, salary graphics, SQL puzzle screenshots and infographics.
-- **AI creators:** 91 of 104 winners checked were single-image posts: infographics, diagrams, memes. Andrew Ng's text-only story (21,964) is the big exception.
-- **Growth sellers:** most of their verified top posts carry an image (Justin Welsh: 100% quote-card images).
-- **All three samples are selected for 100+ reactions.** They show which formats *reach* high numbers, not the average result by format.
+- **Data niche: text-only and images are close** (2.0 vs 2.5 reactions per 1k followers). Text-only holds the biggest data post: Zach Wilson's comp post at 14,528. Video and link cards are clearly weakest.
+- **AI niche: images dominate the volume**: 187 of 243 winners are single images (infographics, diagrams, memes). But the **text-only winners beat their audience size the most** (16.0 per 1k): small accounts with strong first-person stories, plus Andrew Ng's 21,964-reaction text post.
+- **Growth sellers:** mostly image posts (Justin Welsh: 100% quote-card images).
+- **These samples are selected for 100+ reactions.** They show which formats *reach* high numbers, not the average result by format.
 
 **So, by post type:**
 - **Story posts** (interview moment, money, founder, hiring side): text-only or one real photo.

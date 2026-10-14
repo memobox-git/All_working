@@ -194,10 +194,10 @@ The full list of verified hooks, sorted by pattern and by how much each beat its
 
 ## 5. Formats and visuals (summary; details in [`visuals.md`](visuals.md))
 
-- **Story posts** (interview moments, money, founder, hiring side): **text-only or one real photo is enough.** In the data niche, text-only and image posts tie on median reactions, and the biggest data post (14,528) is text-only. Andrew Ng's 21,964-reaction story is text-only too.
-- **Teaching posts** (What Big Tech Expects, Before/After, X vs Y, interview answers): **one strong image.** Infographics, cheat sheets and diagrams are what people save. In the AI niche, 91 of 104 checked winners were single-image posts. Use 4:5 portrait (1080x1350) with your face and handle in the header (Rakesh Gohel and Brij Pandey style), so reposts carry your name.
+- **Story posts** (interview moments, money, founder, hiring side): **text-only or one real photo is enough.** In the data niche, text-only and image posts are close (2.0 vs 2.5 reactions per 1k followers), and the biggest data post (14,528) is text-only. Andrew Ng's 21,964-reaction story is text-only too.
+- **Teaching posts** (What Big Tech Expects, Before/After, X vs Y, interview answers): **one strong image.** Infographics, cheat sheets and diagrams are what people save. In the AI niche, 187 of 243 verified winners were single-image posts. Use 4:5 portrait (1080x1350) with your face and handle in the header (Rakesh Gohel and Brij Pandey style), so reposts carry your name.
 - **Carousels:** only for step-by-step walkthroughs, 8-12 slides, slide 1 = the end result. A Matt Barker client at about 18k followers gained about 2,000 followers from one carousel in 2026. But documents can't be boosted, and per-follower results fell over the last 12 months.
-- **Video:** the weakest median in the data niche (330), and per-post video reach is down 36% year on year. Use it for 60-180 second clips from your weekly Live, with captions burned in.
+- **Video:** the weakest format in the data niche (1.0 reactions per 1k followers vs 2.0-2.5 for text and images), and per-post video reach is down 36% year on year. Use it for 60-180 second clips from your weekly Live, with captions burned in.
 - **GIFs / animated diagrams:** Rakesh Gohel, Alex Xu and Avi Chawla use them, but no dataset measures their reach. They upload as video. Optional.
 - **Memes:** one a week at most. They buy reach (Shashank Mishra's 3,832 vs 11-57 for his explainers) but convert to followers poorly.
 
