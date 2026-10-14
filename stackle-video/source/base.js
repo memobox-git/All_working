@@ -14,12 +14,20 @@ const D = 0.55;
 // Optional re-timing, set per render: window.TS scales every cue time,
 // window.TMAP maps cue times through [oldStart, oldEnd, newStart, newEnd] segments
 // (a cue outside every segment never fires). Animation lengths stay the same.
-const tm = x => {
+// window.TWARP then bends the result through [[from, to], ...] anchor points, which lines
+// the beats up with a recorded voiceover (straight lines past the first and last anchor).
+const warp = (m, x) => {
+  if (x <= m[0][0]) return m[0][1] + (x - m[0][0]);
+  for (let i = 1; i < m.length; i++) if (x <= m[i][0]) { const [a, b] = m[i - 1], [c, d] = m[i]; return b + (x - a) * (d - b) / ((c - a) || 1); }
+  const [a, b] = m[m.length - 1]; return b + (x - a);
+};
+const tm0 = x => {
   x = +x;
   const m = window.TMAP;
   if (m) { for (const [o0, o1, n0, n1] of m) if (x >= o0 && x <= o1) return n0 + (x - o0) * (n1 - n0) / ((o1 - o0) || 1); return 1e6; }
   return x * (window.TS || 1);
 };
+const tm = x => { const y = tm0(x); return window.TWARP && y < 1e5 ? warp(window.TWARP, y) : y; };
 window.render = t => {
   document.querySelectorAll('[data-in]').forEach(el => {
     const a = tm(el.dataset.in), b = el.dataset.out ? tm(el.dataset.out) : 1e9;

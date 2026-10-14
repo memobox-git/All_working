@@ -70,7 +70,7 @@ Total graphics time: 8.7 minutes.
 
 Most on-screen text uses the script's own words. These labels are mine, so check them:
 
-- **1:** "Up 1,000%+ from last year", "Median advertised salary", "2026 (Jan–Jul)"
+- **1:** "About 7x more a month", "Median advertised salary", "2026 (Jan–Jul)"
 - **4:** "Most developers", "one client"
 - **5:** "Where the job came from", "thirteenth employee"
 - **7:** "How the idea spread", "A Palantir idea", "An LLM can", "On its own, it cannot"
