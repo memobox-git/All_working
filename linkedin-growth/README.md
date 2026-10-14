@@ -44,6 +44,13 @@ So 1,000+ every post is the median for your tier: a realistic floor once every p
 
 Sixty posts at your current top-10% level (~9k each) is about 540k impressions. That gap is why the plan below leans on **breakout posts plus off-feed levers**. One more point: follows come from *relevance*, not raw reach. One analysis found a 93k-impression post that gained 15 followers ([contentin.io](https://contentin.io/blog/why-93000-linkedin-impressions-performed-worse-than-838-the-algorithm-truth-nobodys-talking-about)). A post that only data engineers love beats a meme that everyone likes.
 
+**It has been done, and it always looked the same:**
+- The Growth Square says one of its clients added 10,000+ followers in 55 days.
+- Vedika Bhaia says a client of hers added 14k in 2 months, with "7-8 back to back bangers" and 400+ relevant connections added every month.
+- A Matt Barker client at about 18k followers gained about 2,000 from a single carousel.
+
+These are self-reported. **Every ~10k-in-60-days case came from a cluster of viral posts plus deliberate network growth**, never from a steady average ([`research/growth-sellers-playbooks.md`](research/growth-sellers-playbooks.md), section 6).
+
 **Realistic outcome:** if you execute every lever in section 6, the floor is roughly 17-19k by mid-December (a planning estimate, not a measured benchmark). Reaching 25k needs 3-5 breakout posts (60k+ impressions each), two or three collaborations with large data or AI creators, and a paid test that works. Treat 25k as the stretch target and track weekly against the targets in section 8.
 
 ---
@@ -206,7 +213,7 @@ Posting gets you reach. These levers turn reach and your existing audiences into
 | 2 | **Owned audiences → LinkedIn** | Meetup (~3,900 members), every workshop (511 at the Claude one), YouTube, TikTok, the Stackle email list and your students. Add a "Follow me on LinkedIn" slide with a QR code to every session, plus the link in every Meetup and event email, in the YouTube description and pinned comment, and in your TikTok bio. Say it out loud at the end of every live session. | 1,000-2,000 follows |
 | 3 | **Weekly LinkedIn Event + Live** | Run the workshops you already do as **LinkedIn Events**, which need a LinkedIn signup and put your profile in front of every registrant. Add a weekly "Across the Table Live": a real mock data engineering interview, with a volunteer, in 30-45 minutes. Clip the best 60-90 seconds into a post afterward. | 8 events, 300+ registrants each |
 | 4 | **Newsletter: "Across the Table"** | Launch in week 1. The first edition invites all ~13k followers plus connections. Publish weekly: one real interview question, how to answer it, and what the hiring side saw. Every edition notifies subscribers. | 3,000+ subscribers |
-| 5 | **Collaborations** | Pick 10 data or AI creators with 20k-500k followers from [`creators.md`](creators.md). Offer something concrete: "I'll run a live mock interview with one of your followers on your Live" or a co-hosted event on "what hiring managers look for in 2026". Co-host LinkedIn Events (both audiences get invited) and tag only people who are genuinely in the post. | 3-4 collabs with 50k+ creators |
+| 5 | **Collaborations** | Pick 10 data or AI creators with 20k-500k followers from [`creators.md`](creators.md). Offer something concrete: "I'll run a live mock interview with one of your followers on your Live" or a co-hosted event on "what hiring managers look for in 2026". Co-host LinkedIn Events so both of you can invite your networks, and tag only people who are genuinely in the post. | 3-4 collabs with 50k+ creators |
 | 6 | **Commenting** | 30 minutes a day, 10-15 real comments (35-120 words, your own experience) on posts from the creators list, early in their life. Top-1% creators reply about 8x more than average ones, and commenting frequency correlates with follower growth ([summary](https://newsletter.kararedman.com/p/i-binged-6-linkedin-algorithm-reports)). No AI-written comments: LinkedIn now detects and suppresses them. | ~600 real comments |
 | 7 | **Paid boost test** | Once a week, boost the post that is already winning organically, using the "growing followers" goal. Target data engineers and analytics engineers in the US and India. Images, text and video can be boosted; documents and polls can't ([LinkedIn Help](https://www.linkedin.com/help/lms/answer/a6584635)). Thought Leader Ads run at about a $49 median CPM in B2B ([ZenABM](https://zenabm.com/blog/tla-benchmarks/)). Start at $50-100 per boost and compute cost per follower. Scale only if it's cheaper than your target (e.g. under $1.50/follower). | Decide by week 3 |
 | 8 | **Targeted connection requests** | Accepted connections also follow you. Send personal-note requests to data engineers who engaged with your posts or attended your events. Keep your follower-to-connection ratio healthy (≥1.5 per [AuthoredUp](https://authoredup.com/blog/linkedin-algorithm)). | 300-600 accepted |
@@ -231,7 +238,6 @@ Day-by-day calendar with hooks: [`calendar-60-days.md`](calendar-60-days.md).
 
 **Weeks 5-8 (Nov 12-Dec 13): scale what converts**
 - Double the share of the winning format. Run 2-3 collaborations with bigger creators. Run one larger "event" week, such as a free 3-day "Data & AI interview sprint" as LinkedIn Events.
-- December has fewer competing posts in the last two weeks; keep posting.
 
 ---
 
@@ -239,7 +245,7 @@ Day-by-day calendar with hooks: [`calendar-60-days.md`](calendar-60-days.md).
 
 | Metric | Where | Weekly target |
 |---|---|---|
-| Net new followers | Analytics → Audience | ~1,400/week for 25k; ~800/week for the 18k floor |
+| Net new followers | Analytics → Audience | ~1,400/week for 25k; ~575/week for 18k |
 | Median impressions per post | Post analytics | ≥3,000 (p75 for your tier) |
 | Posts over 10k impressions | Post analytics | ≥2 a week |
 | Followers gained per post (top 3) | Post analytics | Learn which format converts |
