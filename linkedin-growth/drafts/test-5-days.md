@@ -4,7 +4,7 @@ Each day uses the format of one of the example posts Chris shared. The wording a
 
 | Day | Format (from Chris's examples) | Hook | Visual | Status |
 |---|---|---|---|---|
-| Thu Oct 15 | Tool map (Jean Lee, Python mind map: 377 on 69k) | Every AI system runs on a data stack most people never see. | `visuals/data-stack-for-ai.png` | FINAL, below |
+| Thu Oct 15 | Rewrite of Jean Lee's Python mind map (377 on 69k) | Python runs almost every part of an AI system. | `visuals/python-for-ai-engineering.png` | FINAL, below |
 | Fri Oct 16 | Step-by-step build (Chorouk Malmoum, Codex steps: 245 on 126k) | How to build a RAG pipeline on your own documents, step by step. | Step infographic | Next |
 | Sat Oct 17 | Levels (Abhisek Sahu, SQL mastery: 1,435 on 179k) | Every data pipeline works on day 1. Day 90 is where you find out what you built. | `visuals/pipeline.gif` | FINAL in `week-1.md` |
 | Sun Oct 18 | Roadmap (Aiswarya Venkitesh, Databricks roadmap: 616 on 77k) | Spark mastery roadmap, from first DataFrame to production | Roadmap image | Next |
@@ -14,51 +14,79 @@ Post at 8:30 AM ET. Upload the image with the post, and keep links out of the bo
 
 ---
 
-## FINAL · Thu Oct 15 · The data engineering stack behind AI
+## FINAL · Thu Oct 15 · Python for AI engineering (rewrite of Jean Lee's post)
 
-Image: `visuals/data-stack-for-ai.png` (1080x1350). It shows 43 tools with their logos across 10 layers, the same list as the post.
+Image: `visuals/python-for-ai-engineering.png` (1080x1350). It shows the same 40 libraries as the post, with their logos.
 
 ```
-Every AI system runs on a data stack most people never see.
-This is that stack, layer by layer, with the tools teams use at each one. 👇
+Python runs almost every part of an AI system.
+These are the 40 libraries that do the work, grouped by the job each one does. 👇
 
-A model is only as good as what it's fed. Before any AI feature ships, someone has to get the data in, store it, clean it, schedule it, check it, and turn documents into something a model can search.
+Building with AI isn't one skill. It's ten different jobs, and each job has its own short list.
 
-That someone is usually a data engineer.
+1. Data handling
+→ pandas: tables in memory
+→ Polars: faster DataFrames
+→ NumPy: arrays and math
+→ DuckDB: SQL on files and DataFrames
 
-1. Ingestion: pull data from apps, APIs and databases
-→ Fivetran, Airbyte, Debezium, dlt
+2. Classic ML
+→ scikit-learn: models, metrics, preprocessing
+→ XGBoost: gradient boosting
+→ LightGBM: fast boosting on big tables
 
-2. Streaming: move events as they happen
-→ Kafka, Flink, Spark Streaming, Redpanda, Kinesis
+3. Deep learning
+→ PyTorch: train and run neural networks
+→ TensorFlow: deep learning at production scale
+→ Keras: a simpler API on top of them
+→ JAX: fast math on GPUs and TPUs
 
-3. Storage: cheap files, with real tables on top
-→ Amazon S3, Iceberg, Delta Lake, Hudi, Parquet
+4. LLMs
+→ Transformers: load open models
+→ PEFT: fine-tune with LoRA
+→ vLLM: serve models fast
+→ Sentence Transformers: embeddings
 
-4. Warehouses: where dashboards and analysts query
-→ Snowflake, BigQuery, Databricks, Redshift, ClickHouse
+5. RAG and retrieval
+→ LlamaIndex: connect documents to LLMs
+→ LangChain: LLM building blocks
+→ FAISS: fast vector search
+→ Chroma: a simple vector database
 
-5. Processing: clean, join and reshape data at any size
-→ Spark, Polars, DuckDB, pandas, Trino
+6. Agents
+→ LangGraph: stateful agent workflows
+→ PydanticAI: typed agents
+→ CrewAI: teams of agents
+→ MCP SDK: expose tools to AI apps
+→ Claude Agent SDK: agents built on Claude
+→ OpenAI Agents SDK: agents built on OpenAI models
 
-6. Transformation: turn raw tables into trusted models
-→ dbt, SQLMesh, Dataform
+7. APIs and apps
+→ FastAPI: serve it as an API
+→ Pydantic: validate inputs and outputs
+→ Streamlit: data apps in an afternoon
+→ Gradio: quick model demos
 
-7. Orchestration: run it all in order, on time
-→ Airflow, Dagster, Prefect, Kestra
+8. Evaluation and tracing
+→ Ragas: score RAG answers
+→ DeepEval: unit tests for LLM output
+→ Langfuse: trace every LLM call
+→ MLflow: track experiments and runs
 
-8. Quality and observability: catch bad data before anyone sees it
-→ Great Expectations, Soda, Monte Carlo, OpenLineage
+9. Pipelines and MLOps
+→ Airflow: schedule pipelines
+→ Dagster: pipelines built around data assets
+→ DVC: version data and models
+→ pytest: test your code
 
-9. Catalog and governance: find data and control who sees it
-→ Unity Catalog, DataHub, OpenMetadata
+10. Scale
+→ PySpark: big data processing
+→ Ray: distribute Python and training
+→ Dask: parallel pandas-style work
 
-10. AI data layer: data a model can search and use
-→ Unstructured, pgvector, Qdrant, Pinecone, Feast
+Nobody uses all 40. A real project touches a few rows at a time. Pick one problem, take one library from each row it needs, and ship it.
 
-Most teams run one or two tools per layer, not five. So when you read a job post, don't ask "do I know this tool?" Ask "which layer is this, and have I worked in it?"
-
-AI engineers build on top of this stack. Data engineers build the stack.
+The list changes every year. Clean data has been at the top the whole time.
 ```
 
 ---
@@ -70,7 +98,7 @@ AI engineers build on top of this stack. Data engineers build the stack.
 
 | Day | Post | Impressions (24h) | Impressions (7d) | Reactions | Comments | Followers gained |
 |---|---|---|---|---|---|---|
-| Thu Oct 15 | Data stack behind AI | | | | | |
+| Thu Oct 15 | Python for AI engineering | | | | | |
 | Fri Oct 16 | RAG pipeline steps | | | | | |
 | Sat Oct 17 | Day 1 vs Day 90 | | | | | |
 | Sun Oct 18 | Spark roadmap | | | | | |
@@ -81,6 +109,7 @@ Benchmark for your follower tier (Shield): a typical post gets 1,216 impressions
 ## Bank (built, not scheduled)
 
 These visuals were made for the earlier plan. They're kept for later weeks:
+- `data-stack-for-ai.png`: the data engineering stack behind AI, 43 tools in 10 layers. Its text was in the first version of this file (commit 771ca02).
 - `titles.gif`: 0 "Data Engineer" titles at Databricks, Snowflake and Uber (text in `bank.md` #1).
 - `pay.gif`: AI engineer vs data engineer pay (text in `week-1.md`, Tue).
 - `join.gif`: why a join returns more rows than you started with.
