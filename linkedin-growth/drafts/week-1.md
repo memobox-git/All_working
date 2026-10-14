@@ -1,96 +1,75 @@
 # Week 1 (Oct 15-21, 2026)
 
 Style from Chris's examples (Abhisek Sahu, Aiswarya Venkitesh, Jean Lee, Naresh Edagotti, Aishwarya Srinivasan):
-- Reader-first, two-line contrast hook.
-- One skill map per post.
-- A designed visual that IS the content.
+- Reader-first hook.
+- One idea per post.
+- A designed visual.
 - No credential lines.
 - A reframe at the end.
 
+Two rules on top of that:
+- Never two posts with the same shape in a row.
+- Never echo another creator's wording.
+
 Colours and font: see `/CLAUDE.md`.
 
-## FINAL · Thu Oct 15 · Mastery map: data pipelines
+## FINAL · Thu Oct 15 · Pipeline: Day 1 vs Day 90
 
-Post time: 8:30 AM ET. Upload `visuals/pipeline.gif` as the image (it animates in the feed). Fallback: `visuals/pipeline.png`.
-
-```
-Anyone can build a data pipeline.
-Building one that survives production is a different story.
-
-A script on your laptop moves data once. A production pipeline keeps moving it correctly when the source is late, the job fails at 2 AM, and someone needs last year reprocessed.
-
-This is how pipeline skills actually progress:
-
-→ Level 1: Scripts
-Pull data from an API or file, transform it in Python or SQL, load it into a table.
-
-→ Level 2: Scheduling
-Run it every day with Airflow or cron, and know when it didn't run.
-
-→ Level 3: Idempotency
-Rerun any day safely, without creating duplicates.
-
-→ Level 4: Incremental loads
-Process only what changed, with watermarks and MERGE.
-
-→ Level 5: Data quality
-Check row counts, nulls, duplicates and freshness before anyone sees the data.
-
-→ Level 6: Backfills and late data
-Reprocess two years of history without breaking today's dashboards.
-
-→ Level 7: Observability and SLAs
-Lineage, alerts, and a promised time the data is ready.
-
-Most tutorials stop at Level 2.
-Most interviews start at Level 3.
-
-Which level are you at right now?
-```
-
-## FINAL · Fri Oct 16 · Mastery map: AI for data engineers
-
-Post time: 8:30 AM ET. Upload `visuals/ai_layers.gif`. Fallback: `visuals/ai_layers.png`.
+Post time: 8:30 AM ET. Upload `visuals/pipeline.gif` (animated). Fallback: `visuals/pipeline.png`.
 
 ```
-Learning AI as a data engineer feels overwhelming.
-It's 7 layers, and you already work in the first one.
+Every data pipeline works on day 1.
+Day 90 is where you find out what you built.
 
-Every AI system you hear about, chatbots, RAG, agents, sits on top of data. Someone has to collect it, clean it, store it and keep it fresh.
+Day 1, it runs on your laptop. Then real life shows up:
 
-This is how it stacks up:
+The job fails at 2 AM and nobody notices
+→ schedule it, with retries and an alert
 
-→ Layer 1: Data foundations
-SQL, Python, pipelines, data quality. You already do this.
+Someone reruns it and the numbers double
+→ make it idempotent, so a rerun gives the same result
 
-→ Layer 2: Unstructured data
-PDFs, docs and tickets, split into chunks with clean metadata.
+The source table hits 500 million rows
+→ load only what changed, with a watermark and MERGE
 
-→ Layer 3: Embeddings and vector search
-Turn text into vectors and find similar things fast. pgvector is a good place to start.
+A null sneaks into the revenue column
+→ check counts, nulls, duplicates and freshness before anyone sees it
 
-→ Layer 4: RAG pipelines
-Retrieve the right chunks, hand them to the model, keep the index fresh.
+Finance needs last year recalculated
+→ build backfills that don't touch today's data
 
-→ Layer 5: Evaluation
-A test set and a score, so you know whether a change made answers better or worse.
+Someone asks why the dashboard is late
+→ add monitoring, lineage and a promised time the data is ready
 
-→ Layer 6: LLMs inside pipelines
-Use a model to extract, classify and enrich data at scale, and watch the cost.
+Every fix is a level. That's the difference between a pipeline and a platform.
 
-→ Layer 7: Agents in production
-Models that call tools, with guardrails and monitoring around them.
+Tutorials teach day 1. Jobs pay for day 90.
+```
 
-Most people try to learn AI from the top down.
-Data engineers get to build it from the bottom up.
+## FINAL · Fri Oct 16 · Job post decode: Apple
 
-The model is the easy part. The data underneath it is the job.
+Post time: 8:30 AM ET. Upload `visuals/apple-job-post.png`.
+
+Source: jobs.apple.com role 200687054, posted Oct 12, 2026; quotes checked against the posting (`source-facts.md`, A8). If the role closes before Friday, the post still holds ("posted this week").
+
+```
+Apple posted a data engineer job this week.
+SQL isn't on the minimum requirements. Using LLMs is.
+
+The role: Data Engineer, Apple Ads, Cupertino. 1 to 4 years of experience. $129,300 to $194,700 base.
+
+The minimum list asks for Rust, Python, Java or Scala, then Spark, Kafka and Flink, and this line:
+
+"Hands-on experience using LLMs (e.g. Claude, Gemini) in daily engineering work — for code generation, review, debugging, test writing, agentic loops, and evaluation systems."
+
+The responsibilities go one step further: use LLMs and coding agents every day, "continually validating every result for correctness, privacy, and cost."
+
+That's the part people skip. Generating code with AI is easy now. Checking it before it reaches production is the skill.
+
+SQL didn't disappear. My read: it's assumed. What's new is that using AI well, and checking its work, is now written into the minimum bar.
 ```
 
 ---
-
-
-How to use: read each post once (30 seconds), check the one line marked "Check", paste, post. Every claim is either a public fact (source given) or a fact you already gave me. Nothing about your life is made up.
 
 ## Backup (not scheduled): Before & After resume bullet
 

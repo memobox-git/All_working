@@ -46,6 +46,8 @@ Do not write AI tutorials, AI listicles, tool comparisons, or Claude explainers 
 - AI and Claude listicles, tool-vs-tool comparisons, generic explainers.
 - Part twos or sequels. Nobody remembers part one. Every post stands alone.
 - Repeats. A topic posted a second time dropped from 1,557 to 202.
+- Copying a creator's wording or skeleton. Study why a post works, then write it in Chris's own words and structure. Never reuse another creator's hook lines, section phrases or visual titles.
+- Two posts in a row with the same shape (for example two level-by-level maps back to back). Vary the format across the week.
 
 ## Hooks
 

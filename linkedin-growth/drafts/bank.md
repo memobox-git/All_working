@@ -94,3 +94,50 @@ Most interviews start at Level 3.
 
 Which level are you at right now?
 ```
+
+---
+
+## AI for data engineers: the 7 layers · Mastery map · READY (visual done; schedule next week, not next to another levels post)
+
+Upload `visuals/ai_layers.gif`. Fallback: `visuals/ai_layers.png`.
+
+```
+Learning AI as a data engineer feels overwhelming.
+It's 7 layers, and you already work in the first one.
+
+Every AI system you hear about, chatbots, RAG, agents, sits on top of data. Someone has to collect it, clean it, store it and keep it fresh.
+
+This is how it stacks up:
+
+→ Layer 1: Data foundations
+SQL, Python, pipelines, data quality. You already do this.
+
+→ Layer 2: Unstructured data
+PDFs, docs and tickets, split into chunks with clean metadata.
+
+→ Layer 3: Embeddings and vector search
+Turn text into vectors and find similar things fast. pgvector is a good place to start.
+
+→ Layer 4: RAG pipelines
+Retrieve the right chunks, hand them to the model, keep the index fresh.
+
+→ Layer 5: Evaluation
+A test set and a score, so you know whether a change made answers better or worse.
+
+→ Layer 6: LLMs inside pipelines
+Use a model to extract, classify and enrich data at scale, and watch the cost.
+
+→ Layer 7: Agents in production
+Models that call tools, with guardrails and monitoring around them.
+
+Most people try to learn AI from the top down.
+Data engineers get to build it from the bottom up.
+
+The model is the easy part. The data underneath it is the job.
+```
+
+---
+
+
+How to use: read each post once (30 seconds), check the one line marked "Check", paste, post. Every claim is either a public fact (source given) or a fact you already gave me. Nothing about your life is made up.
+
