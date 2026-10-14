@@ -24,6 +24,12 @@ svg.lines{position:absolute;inset:0;z-index:1}
 .chips{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
 .chip{display:flex;align-items:center;justify-content:center;min-height:104px;background:#F1F1FF;border:2px solid rgba(87,87,255,.35);border-radius:16px;padding:14px 12px;font-size:22px;font-weight:800;line-height:1.2;color:#2E2EB8;text-align:center}
 footer{bottom:30px}
+</style><style>
+:root{--blue:#059669;--cyan:#10B981;--card:#ECFDF5;--line:#A7F3D0}
+.grid{background-image:linear-gradient(rgba(5,150,105,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(5,150,105,.06) 1px,transparent 1px)}
+.p2{border-color:rgba(5,150,105,.55)}
+.p1{background:#FFF5F5;border-color:#FECACA}
+.avatar{background:linear-gradient(135deg,#059669,#10B981)}
 </style></head><body><div class="grid"></div>
 <header><div class="badge"><div class="avatar">C</div><div class="who">Chris · Stackle<span>@crispusroshan</span></div></div>
 <h1>What is <em>MCP?</em></h1><div class="sub">One standard plug between AI apps and the systems they use</div></header>
@@ -44,7 +50,7 @@ function wire(pid,sid,mode){
  const path=(x1,y1,x2,y2,c,w,d)=>`<path d="M${x1},${y1} C${(x1+x2)/2},${y1} ${(x1+x2)/2},${y2} ${x2},${y2}" stroke="${c}" stroke-width="${w}" fill="none" ${d?'stroke-dasharray="6 6"':''} opacity=".8"/>`;
  if(mode===1){A.forEach(a=>S.forEach(b=>{h+=path(a.r,a.y,b.l,b.y,'#DC2626',2.2,true)}));}
  else{const hub=p.querySelector('.hub').getBoundingClientRect(),hl=hub.left-pr.left,hr=hub.right-pr.left;
-  A.forEach(a=>h+=path(a.r,a.y,hl,a.y,'#2563EB',4,false));S.forEach(b=>h+=path(hr,b.y,b.l,b.y,'#10A5BE',4,false));}
+  A.forEach(a=>h+=path(a.r,a.y,hl,a.y,'#059669',4,false));S.forEach(b=>h+=path(hr,b.y,b.l,b.y,'#10B981',4,false));}
  s.innerHTML=h;}
 document.fonts.ready.then(()=>{wire('p1','s1',1);wire('p2','s2',2);});
 window.render=()=>{wire('p1','s1',1);wire('p2','s2',2);};

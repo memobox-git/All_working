@@ -85,7 +85,8 @@ Do not write AI tutorials, AI listicles, tool comparisons, or Claude explainers 
 
 ## Visuals
 
-- Font: Plus Jakarta Sans. Colours from stackle.io: blue-to-cyan accent (#2563EB → #10A5BE) on white (#FFFFFF, text #171717) for images, carousels and infographics; #3B82F6 → #22D3EE on near-black #0A0A0A for video.
+- Font: Plus Jakarta Sans. Keep the header (avatar, name, handle) and the stackle.io footer the same on every image.
+- Rotate colour themes so no two posts in a row look the same: Blue (#2563EB → #10A5BE on white), Dark (#0A0A0A page, white cards, #3B82F6 → #22D3EE), Emerald (#059669 → #10B981), Violet (#5757FF → #A855F7), Rose (#E11D48 → #DB2777). Video uses Dark.
 - Never use amber/gold (#F59E0B, #BA7517), charcoal #1E1C1D or cream #FAF8F1.
 
 ## Hard rules
