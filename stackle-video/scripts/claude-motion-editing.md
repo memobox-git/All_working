@@ -399,7 +399,7 @@ Graphics 1, 4, 6, 9 and 11 are screen recordings in Claude Motion. **They need a
 
 **Shortened on-screen labels (not word for word from the script):** the Graphic 2 box labels, the Graphic 3 table cells, the Graphic 7 file labels, the Graphic 10 plan cells, the Graphic 13 column text, every card title, and the HyperFrames card. Every number on screen matches the script.
 
-**Style for all graphics:** Plus Jakarta Sans. Amber #F59E0B on dark charcoal #1E1C1D, or amber #BA7517 on cream #FAF8F1.
+**Style for all graphics:** Plus Jakarta Sans. Brand colours from CLAUDE.md: blue-to-cyan accent (#3B82F6 → #22D3EE) on near-black #0A0A0A for video, or #2563EB → #10A5BE on white for stills.
 
 ---
 

@@ -58,7 +58,7 @@ Each of those did far better than the author's other recent posts. What they sha
 - A reframe at the end.
 - No credentials, no personal story.
 
-Visual: `visuals/pipeline.gif` (animated, levels build bottom to top), `visuals/pipeline.png` (static), `visuals/pipeline.mp4`. Source: `visuals/pipeline-maturity-stack.html`. Add `?photo=<your headshot path>` to swap the "C" badge for your face, then re-render with `node gif.js`.
+Visual (stackle.io colours, see CLAUDE.md): `visuals/pipeline.gif` (animated, levels build bottom to top), `visuals/pipeline.png` (static), `visuals/pipeline.mp4`. Source: `visuals/pipeline-maturity-stack.html`. Add `?photo=<your headshot path>` to swap the "C" badge for your face, then re-render with `node gif.js`.
 
 ```
 Anyone can build a data pipeline.

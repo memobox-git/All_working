@@ -241,7 +241,7 @@ Drop a comment and tell me, are you coming from product, from engineering, or fr
 
 **Shortened on-screen labels (not word for word from the script):** Graphic 2, the tile lines in Graphic 7, the Graphic 9 questions, and the phase card titles. Every number on screen matches the script.
 
-**Style for all graphics:** Plus Jakarta Sans. Amber #F59E0B on dark charcoal #1E1C1D, or amber #BA7517 on cream #FAF8F1.
+**Style for all graphics:** Plus Jakarta Sans. Brand colours from CLAUDE.md: blue-to-cyan accent (#3B82F6 → #22D3EE) on near-black #0A0A0A for video, or #2563EB → #10A5BE on white for stills.
 
 ---
 

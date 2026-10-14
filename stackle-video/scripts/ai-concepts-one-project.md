@@ -757,7 +757,7 @@ The video has one main picture, **the map**, which comes back at the start of ev
 
 **Shortened on-screen labels (not word for word from the script):** the map's area names, the Graphic 9 column steps, the Graphic 10 row label, the Graphic 13 layer labels, the Graphic 15 step labels and the Graphic 19 loop labels. Every number on screen matches the script.
 
-**Style for all graphics:** Plus Jakarta Sans. Amber #F59E0B on dark charcoal #1E1C1D, or amber #BA7517 on cream #FAF8F1.
+**Style for all graphics:** Plus Jakarta Sans. Brand colours from CLAUDE.md: blue-to-cyan accent (#3B82F6 → #22D3EE) on near-black #0A0A0A for video, or #2563EB → #10A5BE on white for stills.
 
 **Thumbnail idea:** the finished map from Graphic 25, small and busy on the left, and "20 AI CONCEPTS" in large text on the right, with Chris pointing at the map. The original's thumbnail is text and a person only, so the map makes ours look different in search results.
 
