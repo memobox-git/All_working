@@ -6,22 +6,21 @@ How to use: read each post once (30 seconds), check the one line marked "Check",
 
 Visual: two-row image. Top row in grey with the first bullet. Bottom row "Example" in your accent color with the second bullet. Header with your face and handle.
 
-Check: "I have three questions ready for you before you even sit down" is in your voice. Make sure it's true for how you interview.
 
 ```
-"Built ETL pipelines using Spark, Airflow and Snowflake."
-This bullet is on almost every data engineering resume. That's the problem. 👇
+Your resume says "Built ETL pipelines using Spark, Airflow and Snowflake."
+So does everyone else's.
 
-When I'm on the hiring side, it tells me one thing: you've used three tools. So has everyone else in the pile.
+That line tells a recruiter which tools you've touched. It doesn't tell them anything you did.
 
-Now read this one (example):
-"Rebuilt the nightly sales pipeline in Spark. Runtime went from 6 hours to 40 minutes, so finance had numbers before their 9 AM meeting."
+Try this instead:
+"Rebuilt the nightly sales pipeline in Spark. It went from 6 hours to 40 minutes, so finance had numbers before their 9 AM meeting."
 
-Same tools. But now I know what was broken, what you changed, and who cared. I have three questions ready for you before you even sit down.
+Same tools. Now there's a problem, a result, and someone who cared.
 
-Rewrite your top bullet tonight with a real number from your own work. If you don't know the number, go find it. That search is better interview prep than another tutorial.
+Don't have a number? Go find one. Runtime, cost, rows, how many people query your table. Finding it is the best interview prep you'll do this week, because someone is going to ask.
 
-Tools tell me where you've been. A number tells me what you did there.
+Tools tell them where you've been. A number tells them what you did there.
 ```
 
 ---
