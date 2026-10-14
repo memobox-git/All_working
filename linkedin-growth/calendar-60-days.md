@@ -49,14 +49,14 @@ One post a day on your proven weekly rhythm, with AI brought in through the care
 | Oct 17 | Sat | Newsletter: Across the Table | Across the Table #1: 3 rounds at a healthcare startup, and how to prepare for each (written) | Newsletter cover: plain card with the question |
 | Oct 18 | Sun | Founder story | A free workshop I ran on Claude drew 511 people. This Thursday: a live mock data engineering interview. (written) | Real photo: you at a meetup or workshop |
 | Oct 19 | Mon | Across the Table | I've run 200+ data engineering interviews. One small word always gets a follow-up from me: "we". (written) | Text + one photo of you (no stock) |
-| Oct 20 | Tue | Money & offers | $[verified]† total comp for a senior data engineer at Databricks. Round 3 of the loop is pure Spark internals.* | Simple image: the number big, 4 rounds listed under it |
+| Oct 20 | Tue | Money & offers | On Levels.fyi, the median AI engineer in the US makes $151K a year. The median data engineer makes $159K. (written) | Three bars: data engineer $159K, AI engineer $151K, ML engineer $280K + source line |
 | Oct 21 | Wed | Inside the Interview | Airbnb asked me to design their data warehouse in an interview last year. Most people start drawing tables. That's step 4. (written) | Whiteboard-style diagram of your actual design (redrawn clean) |
 | Oct 22 | Thu | Before & After | Weak answer vs passing answer: "Tell me about a pipeline that broke in production." (Live tonight: mock interview, link in Featured) | Two-column image: weak vs passing |
 | Oct 23 | Fri | What Big Tech (and AI labs) Expect | What OpenAI expects from a data engineer, from their actual job posts.† | Cheat-sheet image, OpenAI posting quoted (no logo misuse) |
 | Oct 24 | Sat | Newsletter: Across the Table | Across the Table #2: the SQL question I stopped asking, and what I ask instead.* | Newsletter cover |
 | Oct 25 | Sun | Founder story | 511 people showed up to a free Claude workshop. The question they asked most wasn't about Claude.* | Real screenshot of the attendee count or a room photo |
 | Oct 26 | Mon | Across the Table | From the interviewer's chair: what I write in my notes during the first 5 minutes of a data engineering interview.* | Photo of a (redacted, recreated) interview scorecard |
-| Oct 27 | Tue | Money & offers | Data engineer vs AI engineer at Google: $[A] vs $[B] on Levels.fyi.† The skills gap is smaller than the pay gap. | Bar image: two numbers, source line at the bottom |
+| Oct 27 | Tue | Money & offers | Amazon data engineer: L5 averages $231K, L6 averages $334K on Levels.fyi. Most of the $103K gap is stock. (verified, source-facts B4) | Bar image: two numbers, source line at the bottom |
 | Oct 28 | Wed | Inside the Interview | A healthcare AI startup gave me 3 rounds. Round 3, with their head of data and AI, was the one I almost lost.* | Text + simple 3-step image of the rounds |
 | Oct 29 | Thu | Before & After | Before: "Built ETL pipelines using Spark." After: the version a big tech recruiter actually stops on.* | Before/after image |
 | Oct 30 | Fri | What Big Tech (and AI labs) Expect | What Uber expects from an entry-level data engineer, line by line from their job post.† | Cheat-sheet image |
@@ -70,28 +70,28 @@ One post a day on your proven weekly rhythm, with AI brought in through the care
 | Nov 07 | Sat | Newsletter: Across the Table | Across the Table #4: the 3 red flags I look for in a take-home data assignment.* | Newsletter cover |
 | Nov 08 | Sun | Founder story | My first big tech loop in 2019 didn't go as planned. What I changed before 2021.* | Real photo (then and now if you have one) |
 | Nov 09 | Mon | Across the Table | The data modeling question that separates mid-level from senior data engineers in my interviews.* | Diagram image: star schema sketch, clean |
-| Nov 10 | Tue | Money & offers | $[verified]† for a data engineer at JPMorgan vs $[verified]† at a fintech startup. What the second number hides. | Number comparison image |
+| Nov 10 | Tue | Money & offers | Same title, three banks: data engineer median $145K at JPMorgan Chase, $180K at Capital One, $230K at Goldman Sachs (Levels.fyi). (verified, B3) | Number comparison image |
 | Nov 11 | Wed | Inside the Interview | The AI question that showed up in my data engineering interview at [Company].* I didn't expect it in a DE loop. | Text + one-line card with the question |
 | Nov 12 | Thu | Before & After | This LinkedIn headline got a data engineer zero recruiter messages. The rewrite got [real number].* | Before/after screenshot (with permission, anonymised) |
 | Nov 13 | Fri | What Big Tech (and AI labs) Expect | What Databricks expects from a data engineer in the AI era, from their job posts.† | Cheat-sheet image |
 | Nov 14 | Sat | Newsletter: Across the Table | Across the Table #5: how I'd prepare for a data engineering loop in 30 days if I were starting today.* | Newsletter cover |
 | Nov 15 | Sun | Founder story | Stackle's first paying student signed up on [real date]. What they told me on the first call.* | Real photo or a (permissioned) screenshot |
 | Nov 16 | Mon | Across the Table | Most people fail the system design round before they draw a single box. What I watch for instead.* | Photo of you at a whiteboard |
-| Nov 17 | Tue | Money & offers | Mid-level to senior data engineer at Amazon is a $[verified]† jump. The skill gap behind it is smaller than people think.* | Simple number image: L5 vs L6 with source line |
+| Nov 17 | Tue | Money & offers | Meta data engineer on Levels.fyi: $170K at E3, $355K at E5. What changes between the two levels.* (comp verified, B5; 'what changes' needs your view or job-post research) | Simple number image: L5 vs L6 with source line |
 | Nov 18 | Wed | Inside the Interview | Pair programming round at a startup: the bug I found in minute 12 and what the interviewer said next.* | Code screenshot (recreated, no proprietary code) |
 | Nov 19 | Thu | Before & After | Weak vs passing answer to "Design a pipeline for 1 billion events a day." | Carousel 8-12 slides |
 | Nov 20 | Fri | What Big Tech (and AI labs) Expect | What Microsoft expects from a data engineer on Fabric and Azure teams, from their job posts.† | Cheat-sheet image |
 | Nov 21 | Sat | Newsletter: Across the Table | Across the Table #6: the behavioral question that sinks strong engineers.* | Newsletter cover |
 | Nov 22 | Sun | Founder story | One year ago I ran my first meetup. Today the group has [real number] members.* | Real meetup photo |
 | Nov 23 | Mon | Across the Table | I've interviewed data engineers in banking, healthcare, automotive and exchanges. The skill every single one of them needed wasn't technical.* | Text + photo |
-| Nov 24 | Tue | Money & offers | $[verified]† for a data engineer at a trading firm vs $[verified]† at big tech. I've seen people turn down the bigger number.* | Number comparison image + source line |
+| Nov 24 | Tue | Money & offers | Google data engineer vs machine learning engineer at L5: $291K vs $445K average on Levels.fyi. (verified, B2) | Number comparison image + source line |
 | Nov 25 | Wed | Inside the Interview | "Explain a slowly changing dimension to a product manager." I ask this to test something that isn't SQL.* | Text + diagram |
 | Nov 26 | Thu | Before & After | Thankful post: the 3 engineers from my meetups who landed data roles this year and the one thing each did.* (only with their permission) | Real photos with permission |
 | Nov 27 | Fri | What Big Tech (and AI labs) Expect | What Snowflake expects from a data engineer, from their job posts.† | Cheat-sheet image |
 | Nov 28 | Sat | Newsletter: Across the Table | Across the Table #7: the question I'd ask an AI engineer, and the answer that would get the offer.* | Newsletter cover |
 | Nov 29 | Sun | Founder story | Running Stackle with a young son at home. The schedule that actually works.* | Real photo (your call) |
 | Nov 30 | Mon | Across the Table | The take-home assignment I'd give a senior data engineer in 2026, and why AI tools are allowed.* | Image of the assignment brief |
-| Dec 01 | Tue | Money & offers | $[verified]† — what a data engineer moving into AI engineering can ask for in 2026, from Levels.fyi data. | Number image + source line |
+| Dec 01 | Tue | Money & offers | Apple's new data engineer post (Oct 12, 2026): $129,300 to $194,700 base for 1-4 years of experience, and hands-on LLM use is a minimum qualification. (verified, A8) | Number image + source line |
 | Dec 02 | Wed | Inside the Interview | My [Company] interview: the follow-up question after I gave the 'right' answer.* | Text-only or simple card |
 | Dec 03 | Thu | Before & After | Before and after: a data engineer's GitHub profile that recruiters skipped vs the one they opened.* | Before/after screenshot (with permission) |
 | Dec 04 | Fri | What Big Tech (and AI labs) Expect | What Nvidia expects from a data engineer, from their job posts.† | Cheat-sheet image |

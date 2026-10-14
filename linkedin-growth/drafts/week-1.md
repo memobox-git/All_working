@@ -239,9 +239,42 @@ Your team built the pipeline. The interview is about what you did inside it.
 
 ---
 
-## Tue Oct 20 · Money & offers · IN PROGRESS
+## Tue Oct 20 · Money & offers · READY
 
-Being written from real Levels.fyi numbers (a research helper is pulling them now). It won't claim anything about the Databricks loop you haven't told me.
+Source: Levels.fyi job-family pages, US median total compensation, read Oct 14, 2026 (details and URLs in `source-facts.md`, section B6, and Google in B2).
+
+Visual: three horizontal bars, one per title, each labelled with its dollar figure and number of reports. Source line at the bottom: "Levels.fyi, US median total comp, Oct 2026".
+
+```
+On Levels.fyi, the median AI engineer in the US makes $151K a year.
+The median data engineer makes $159K. 👇
+
+US median total compensation, October 2026:
+
+Data engineer
+→ $159K, from 1,189 reports
+
+AI engineer
+→ $151K, from 334 reports
+
+Machine learning engineer
+→ $280K, from 1,065 reports
+
+Google shows the same order: data engineer $280K, AI engineer $260K, machine learning engineer $354K.
+
+So if you're a data engineer looking at AI:
+
+Don't switch for the title
+→ on these numbers, the title alone pays less than the job you already have
+
+Look at the work behind the bigger number
+→ machine learning engineers build and run models in production, and their median is $121K higher
+
+Bring AI into the role you have
+→ Meta's and Apple's data engineer job posts now list AI skills as requirements
+
+AI on your skills is showing up in job posts. AI in your job title isn't showing up in pay.
+```
 
 ---
 
