@@ -44,7 +44,7 @@ Courses teach you the tools. Interviews test your decisions.
 
 ---
 
-## "Data Pipeline Maturity Stack" · Mastery map · READY (visual done)
+## SUPERSEDED: "Data Pipeline Maturity Stack" (too close to Abhisek Sahu's post; use "Day 1 vs Day 90" in week-1.md)
 
 The style Chris pointed to with his examples:
 - Abhisek Sahu, "SQL is easy to start. Mastering it is a different story.": 1,435 reactions on 179k followers.
