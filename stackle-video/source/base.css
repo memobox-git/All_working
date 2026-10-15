@@ -1,16 +1,31 @@
+@font-face{font-family:PJS;font-weight:200;src:url(node_modules/@fontsource/plus-jakarta-sans/files/plus-jakarta-sans-latin-200-normal.woff2)}
+@font-face{font-family:PJS;font-weight:300;src:url(node_modules/@fontsource/plus-jakarta-sans/files/plus-jakarta-sans-latin-300-normal.woff2)}
 @font-face{font-family:PJS;font-weight:400;src:url(node_modules/@fontsource/plus-jakarta-sans/files/plus-jakarta-sans-latin-400-normal.woff2)}
+@font-face{font-family:PJS;font-weight:500;src:url(node_modules/@fontsource/plus-jakarta-sans/files/plus-jakarta-sans-latin-500-normal.woff2)}
 @font-face{font-family:PJS;font-weight:600;src:url(node_modules/@fontsource/plus-jakarta-sans/files/plus-jakarta-sans-latin-600-normal.woff2)}
-@font-face{font-family:PJS;font-weight:800;src:url(node_modules/@fontsource/plus-jakarta-sans/files/plus-jakarta-sans-latin-800-normal.woff2)}
+/* Stackle video theme: black with soft, grainy brown and gold light, thin type, gold accents. */
+:root{--bg:#050403;--panel:rgba(255,248,235,.035);--gold:#D2A75B;--gold-rgb:210,167,91;--text:#F4F0E9;
+  --sub:#B9B1A5;--muted:#8C8378;--bad:#E08A6A;--line:rgba(244,240,233,.14)}
 *{margin:0;box-sizing:border-box}
-body{width:1920px;height:1080px;overflow:hidden;background:#1E1C1D;color:#FAF8F1;font-family:PJS,sans-serif;position:relative}
-.grid{position:absolute;inset:0;background-image:linear-gradient(rgba(245,158,11,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(245,158,11,.06) 1px,transparent 1px);background-size:80px 80px}
-.ring{position:absolute;width:900px;height:900px;right:-250px;top:-250px;border:2px dashed rgba(245,158,11,.25);border-radius:50%}
-.beat{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:0 180px}
-.amber{color:#F59E0B}.big{font-size:260px;font-weight:800;line-height:1}
-.h1{font-size:110px;font-weight:800;line-height:1.05}.h2{font-size:64px;font-weight:600;line-height:1.2}
-.sub{font-size:44px;color:#c9c4b8;margin-top:24px}
+body{width:1920px;height:1080px;overflow:hidden;background:var(--bg);color:var(--text);font-family:PJS,sans-serif;font-weight:300;position:relative}
+/* .grid is the brown sweep of light plus film grain; .ring is the gold glow in the top-right corner. */
+.grid{position:absolute;inset:-200px;background:
+  radial-gradient(ellipse 1100px 360px at 42% 14%,rgba(138,84,40,.62),transparent 70%),
+  radial-gradient(ellipse 760px 420px at 6% 58%,rgba(112,68,32,.58),transparent 70%),
+  radial-gradient(ellipse 620px 300px at 22% 36%,rgba(122,76,36,.42),transparent 70%);filter:blur(40px)}
+.grid::after{content:"";position:absolute;inset:200px;opacity:.16;mix-blend-mode:overlay;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+.ring{position:absolute;width:1400px;height:1400px;right:-700px;top:-760px;border-radius:50%;
+  background:radial-gradient(circle at 40% 60%,rgba(214,160,72,.55),rgba(150,96,40,.18) 38%,transparent 62%);filter:blur(30px)}
+.beat{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:0 200px}
+.amber{color:var(--gold)}.big{font-size:240px;font-weight:200;line-height:1;letter-spacing:-.02em}
+.h1{font-size:104px;font-weight:300;line-height:1.08;letter-spacing:.01em}
+.h1::after{content:"";display:block;width:84px;height:5px;background:var(--gold);margin-top:34px;border-radius:2px}
+.h1.norule::after{display:none}
+.h2{font-size:60px;font-weight:400;line-height:1.22}
+.sub{font-size:42px;color:var(--sub);margin-top:24px;font-weight:300;line-height:1.35}
 .chips{display:flex;gap:28px;margin-top:56px;flex-wrap:wrap}
-.chip{border:3px solid #F59E0B;border-radius:60px;padding:18px 40px;font-size:42px;font-weight:600}
-.bar{height:10px;background:#F59E0B;border-radius:6px;margin-top:40px}
-.tag{font-size:34px;letter-spacing:.2em;text-transform:uppercase;color:#F59E0B;font-weight:600;margin-bottom:24px}
-.brand{position:absolute;left:180px;bottom:70px;font-size:30px;font-weight:600;color:#8a857a}
+.chip{border:1.5px solid rgba(var(--gold-rgb),.75);border-radius:60px;padding:18px 40px;font-size:40px;font-weight:400}
+.bar{height:6px;background:linear-gradient(90deg,var(--gold),rgba(var(--gold-rgb),.35));border-radius:3px;margin-top:40px}
+.tag{font-size:30px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:26px}
+.brand{position:absolute;left:200px;bottom:70px;font-size:28px;font-weight:400;letter-spacing:.08em;color:var(--muted)}
+.icon{width:96px;height:96px;stroke:var(--text);stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round;margin-bottom:34px}

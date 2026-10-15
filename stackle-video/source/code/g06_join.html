@@ -1,14 +1,15 @@
 <!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../base.css"><link rel="stylesheet" href="code.css"></head><body>
-<div class="grid"></div><div class="ring" data-spin="6"></div>
-<div class="beat" style="padding:0 120px"><div class="tag" data-in="0.1" data-fx="left">A join combines two tables</div>
+<div class="grid"></div><div class="ring" data-spin="1.5"></div>
+<div class="beat" style="padding:0 140px"><svg class="icon" viewBox="0 0 24 24" data-in="0" data-fx="fade"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18"/></svg><div class="tag" data-in="0.1" data-fx="left">An example from SQL</div>
+ <div class="h2" data-in="1.2" style="margin-bottom:46px">A <span class="amber">join</span> combines two tables</div>
  <div style="display:flex;gap:70px;align-items:flex-start">
-  <div data-in="3.0"><div class="tname">orders</div><table class="t"><tr><th>order_id</th><th>total</th></tr><tr><td>1001</td><td>$100</td></tr></table></div>
-  <div data-in="4.5"><div class="tname">payments</div><table class="t"><tr><th>order_id</th><th>paid</th></tr><tr><td>1001</td><td>$60</td></tr><tr><td>1001</td><td>$40</td></tr></table></div>
-  <div class="arrow" data-in="7.0" style="margin-top:110px">&rarr;</div>
-  <div data-in="7.5"><div class="tname">joined result</div><table class="t"><tr><th>order_id</th><th>total</th></tr><tr class="dup"><td>1001</td><td>$100</td></tr><tr class="dup"><td>1001</td><td>$100</td></tr></table></div>
+  <div data-in="7.6"><div class="tname">orders</div><table class="t"><tr><th>order_id</th><th>total</th></tr><tr><td>1001</td><td>$100</td></tr></table></div>
+  <div data-in="8.4"><div class="tname">payments</div><table class="t"><tr><th>order_id</th><th>paid</th></tr><tr><td>1001</td><td>$60</td></tr><tr><td>1001</td><td>$40</td></tr></table></div>
+  <div class="arrow" data-in="11.6" style="margin-top:110px">&rarr;</div>
+  <div data-in="11.8"><div class="tname">joined result</div><table class="t"><tr><th>order_id</th><th>total</th></tr><tr class="dup"><td>1001</td><td>$100</td></tr><tr class="dup"><td>1001</td><td>$100</td></tr></table></div>
  </div>
- <div class="h2" data-in="10.5" style="margin-top:60px">Revenue report: <span class="amber">$200</span> &nbsp;<span class="muted">The company made $100.</span></div>
- <div class="sub" data-in="11.5">The result comes back without an error.</div>
+ <div class="h2" data-in="14.4" style="margin-top:56px">Revenue report: <span class="amber">$200</span> &nbsp;<span class="muted">The company made $100.</span></div>
+ <div class="sub" data-in="16.6">No error. Just a wrong number.</div>
 </div>
 <div class="brand" data-in="0" data-fx="fade">stackle.io</div>
 <script src="../base.js"></script></body></html>

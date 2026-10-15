@@ -1,33 +1,39 @@
 /* Extra layouts for the "Is learning to code still worth it" graphics. Builds on ../base.css. */
-.two{display:grid;grid-template-columns:1fr 1fr;gap:90px;align-items:start}
-.stat{font-size:200px;font-weight:800;line-height:1}
-.muted{color:#8a857a}
-.lbl{font-size:46px;font-weight:600;line-height:1.25;margin-top:18px}
-.src{position:absolute;right:120px;bottom:70px;font-size:26px;color:#8a857a}
-.hbar{display:grid;grid-template-columns:520px 1fr 170px;align-items:center;gap:30px;margin-top:38px;font-size:44px;font-weight:600}
-.hbar .track{height:46px;background:rgba(250,248,241,.07);border-radius:10px;overflow:hidden}
-.hbar .fill{height:100%;background:#F59E0B;border-radius:10px;width:0}
-.hbar .fill.neg{background:#8a857a}
-.hbar .val{text-align:right}
-.box{border:3px solid rgba(245,158,11,.45);border-radius:28px;padding:56px 60px;background:rgba(250,248,241,.03)}
-.box.hot{border-color:#F59E0B;background:rgba(245,158,11,.08)}
-.box .h2{margin-bottom:20px}
-.mono{font-family:'DejaVu Sans Mono',monospace}
-.codeblk{font-family:'DejaVu Sans Mono',monospace;font-size:48px;line-height:1.55;background:#151314;border:2px solid rgba(245,158,11,.3);border-radius:24px;padding:48px 60px;white-space:pre}
-.kw{color:#F59E0B}.num{color:#e9c46a}.cm{color:#8a857a}
-table.t{border-collapse:separate;border-spacing:0;font-size:38px;font-family:'DejaVu Sans Mono',monospace}
-table.t th{color:#F59E0B;text-align:left;padding:16px 30px;border-bottom:3px solid rgba(245,158,11,.5);font-weight:600}
-table.t td{padding:14px 30px;border-bottom:1px solid rgba(250,248,241,.12)}
-table.t tr.dup td{background:rgba(245,158,11,.16)}
-.tname{font-size:34px;font-weight:600;color:#c9c4b8;margin-bottom:14px;letter-spacing:.06em;text-transform:uppercase}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:110px;align-items:start}
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:90px;align-items:start}
+.stat{font-size:190px;font-weight:200;line-height:1;letter-spacing:-.02em}
+.muted{color:var(--muted)}
+.lbl{font-size:44px;font-weight:400;line-height:1.3;margin-top:18px}
+.src{position:absolute;right:200px;bottom:70px;font-size:24px;color:var(--muted);letter-spacing:.04em}
+.hbar{display:grid;grid-template-columns:540px 1fr 170px;align-items:center;gap:34px;margin-top:46px;font-size:42px;font-weight:400}
+.hbar .track{height:10px;background:var(--line);border-radius:5px;overflow:hidden}
+.hbar .fill{height:100%;background:linear-gradient(90deg,rgba(var(--gold-rgb),.55),var(--gold));border-radius:5px;width:0}
+.hbar .fill.neg{background:var(--muted)}
+.hbar .val{text-align:right;font-weight:300}
+.box{border-top:1.5px solid var(--line);padding:40px 0 0}
+.box.hot{border-top-color:var(--gold)}
+.box .h2{margin-bottom:18px}
+.codeblk{font-family:'DejaVu Sans Mono',monospace;font-size:46px;line-height:1.6;background:rgba(0,0,0,.45);border:1px solid var(--line);border-radius:22px;padding:48px 60px;white-space:pre}
+.kw{color:var(--gold)}.num{color:#EBCF97}.cm{color:var(--muted)}
+table.t{border-collapse:separate;border-spacing:0;font-size:36px;font-family:'DejaVu Sans Mono',monospace}
+table.t th{color:var(--gold);text-align:left;padding:14px 30px;border-bottom:1.5px solid rgba(var(--gold-rgb),.6);font-weight:400}
+table.t td{padding:14px 30px;border-bottom:1px solid var(--line)}
+table.t tr.dup td{background:rgba(var(--gold-rgb),.14)}
+.tname{font-size:26px;font-weight:500;color:var(--sub);margin-bottom:14px;letter-spacing:.24em;text-transform:uppercase}
 .flow{display:flex;align-items:center;gap:26px;flex-wrap:nowrap}
-.node{border:3px solid #F59E0B;border-radius:24px;padding:30px 36px;font-size:40px;font-weight:600;text-align:center;background:rgba(245,158,11,.07)}
-.arrow{font-size:60px;color:#F59E0B;font-weight:800}
-.phone{width:620px;height:900px;border:6px solid #3a3637;border-radius:70px;background:#151314;padding:120px 46px;position:relative}
-.bubble{background:#F59E0B;color:#1E1C1D;font-size:52px;font-weight:600;border-radius:40px 40px 8px 40px;padding:34px 40px;margin-left:auto;width:fit-content;max-width:100%}
-.swap{position:relative;display:inline-block}
-.under{border-bottom:6px solid #1E1C1D}
-.ok{color:#F59E0B}.bad{color:#f87171}
+.node{border:1.5px solid rgba(var(--gold-rgb),.7);border-radius:18px;padding:28px 34px;font-size:38px;font-weight:400;text-align:center;background:rgba(0,0,0,.35)}
+.arrow{font-size:52px;color:var(--gold);font-weight:300}
+.phone{width:600px;height:880px;border:1.5px solid var(--line);border-radius:70px;background:rgba(0,0,0,.5);padding:120px 46px;position:relative}
+.bubble{background:var(--gold);color:#140d07;font-size:50px;font-weight:500;border-radius:40px 40px 8px 40px;padding:34px 40px;margin-left:auto;width:fit-content;max-width:100%}
+.under{border-bottom:5px solid #140d07}
+.ok{color:var(--gold)}.bad{color:var(--bad)}
 .qs{display:flex;flex-direction:column;gap:30px;margin-top:40px}
-.q{font-size:50px;font-weight:600;border-left:10px solid #F59E0B;padding:10px 0 10px 36px}
-.note{font-size:40px;color:#c9c4b8;margin-top:50px}
+.q{font-size:48px;font-weight:300;border-left:4px solid var(--gold);padding:8px 0 8px 36px}
+.note{font-size:40px;color:var(--sub);margin-top:56px;line-height:1.35}
+/* Card panels: rendered full frame, then the right 768px is cropped and placed beside the camera. */
+.panel{position:absolute;top:0;right:0;width:768px;height:1080px;padding:0 84px;display:flex;flex-direction:column;justify-content:center;border-left:1px solid var(--line);background:rgba(0,0,0,.25)}
+.panel .h2{font-size:52px}
+.steps{display:flex;flex-direction:column;gap:44px;margin-top:20px}
+.step{display:grid;grid-template-columns:minmax(70px,auto) 1fr;gap:26px;font-size:42px;font-weight:400;line-height:1.25;opacity:.32}
+.step.on{opacity:1}
+.step .n{color:var(--gold);font-weight:300;font-size:46px}
