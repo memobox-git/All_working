@@ -449,47 +449,50 @@ All graphics use Plus Jakarta Sans, with white text and blue #2F7CF6 highlights 
 
 Other options:
 
-- Forward Deployed Engineer Roadmap: Skills, Pay and Interviews
 - How to Become a Forward Deployed Engineer in 2026 (Full Roadmap)
+- Forward Deployed Engineer: Skills, Pay and Interview (2026 Roadmap)
 
-**Description:**
+**Description** (chapter times match the final all-graphics version, 11:06):
 
-Job postings for forward deployed engineers in the United States are up more than 1,000% from last year, and the median advertised salary is more than $188,000. In this video I explain what a forward deployed engineer (FDE) actually does, what the job really pays and asks for, the skills to learn in five phases, and how the FDE interview works. Every number comes from a job post or a published report, and the sources are listed below.
+```
+US job postings for forward deployed engineers jumped from about 1,200 in 2025 to more than 5,200 in the first seven months of 2026, about seven times more a month, and the median advertised salary is more than $188,000. In this video I explain what a forward deployed engineer (FDE) does, what the job really pays, the skills to learn in five phases, and how the FDE interview works.
 
 Chapters
-0:00 Why forward deployed engineers are in demand
-0:00 What a forward deployed engineer does
-0:00 FDE vs software engineer, solutions engineer and consultant
-0:00 Is the FDE job right for you?
-0:00 What the job pays and asks for
-0:00 The roadmap: five phases
-0:00 Phase 1: Software foundations
-0:00 Phase 2: Data and cloud
-0:00 Phase 3: Applied AI
-0:00 Phase 4: Customer skills
-0:00 Phase 5: Proof of work
-0:00 The FDE interview
-0:00 Your turn
+0:00 What this video covers
+0:10 Why forward deployed engineers are in demand
+1:00 What a forward deployed engineer does
+2:52 FDE vs solutions engineer and consultant
+3:18 Is the FDE job right for you?
+3:40 What the job really pays
+4:23 Experience and travel
+4:51 The roadmap in five phases
+5:15 Phase 1: Software foundations
+5:51 Phase 2: Data and cloud
+6:45 Phase 3: Applied AI
+8:07 Phase 4: Customer skills
+8:54 Phase 5: Proof of work
+9:35 The FDE interview
+10:29 Your turn
 
 Book a free 15-minute career call: https://calendar.app.google/2HjLnF1HSov9m5Gk9
 Stackle Data Engineering Masterclass: https://stackle.io/courses/data-engineering-masterclass-get-job-ready-in-10-weeks
 
 Sources
-- FDE job postings and median advertised salary: Lightcast data, reported by Fortune, Sep 3, 2026
-- FDE postings by year: Lightcast, "Forward deployed engineer" blog
-- Palantir origin (Shyam Sankar, 2006): House Armed Services Committee bio, Sep 2024
-- Palantir Devs and Deltas: Palantir blog, "Dev versus Delta"
-- Echo and Delta: Bob McGrew on Y Combinator's Lightcone podcast, Sep 2025
+- FDE job postings by year: Lightcast, "Forward deployed engineer" blog
+- Median advertised salary (FDE and software engineer): Lightcast data reported by Fortune, Sep 3, 2026
+- Palantir origin (Shyam Sankar, employee 13): House Armed Services Committee bio, Sep 2024
+- Palantir Devs and Deltas: Palantir blog, "Dev versus Delta"; Echo: Bob McGrew on Y Combinator's Lightcone podcast, Sep 2025
 - AI pilots and returns: MIT Project NANDA, "The GenAI Divide: State of AI in Business 2025"
 - OpenAI FDE team and deployment company: Colin Jarvis on X, Jan 2025; OpenAI, May 11, 2026
 - Salesforce 1,000 FDEs: Salesforce blog
-- Salaries, experience and travel: OpenAI, Anthropic and Palantir job posts (Oct 2026); Levels.fyi FDE median (Oct 2026)
-- Skills and experience across about 1,000 FDE job posts: Bloomberry, Nov 2025
-- Model Context Protocol: Anthropic, Nov 2024
-- "Accountability to the customer": Natalie Meurer (Sierra), AI Engineer World's Fair 2026
 - FDE titles that look like consulting: The Pragmatic Engineer, 2026
+- Salary ranges and travel: OpenAI, Anthropic and Palantir job posts (Oct 2026)
+- Experience, Python and AWS across about 1,000 FDE job posts: Bloomberry, Nov 2025
+- Model Context Protocol: Anthropic, Nov 2024
+- Interview rounds: reports from people who interviewed, not official company pages
 
 Book a Call — https://calendar.app.google/2HjLnF1HSov9m5Gk9 | LinkedIn — https://www.linkedin.com/in/crispusroshan | DE Roadmap — https://stackle.io/resources/data-engineering-roadmap | DE Masterclass — https://stackle.io/courses/data-engineering-masterclass-get-job-ready-in-10-weeks | Meetup — https://www.meetup.com/stackle-your-career-lab
+```
 
 ---
 
