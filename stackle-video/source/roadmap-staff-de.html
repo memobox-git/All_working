@@ -1,0 +1,173 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<!-- 15-week Senior to Staff Data Engineer roadmap.
+     Render with: node render-still.js roadmap-staff-de.html <out.png> <width> <height>
+     Add ?wide to the URL for the 16:9 video layout. -->
+<style>
+@font-face{font-family:PJS;font-weight:500;src:url(node_modules/@fontsource/plus-jakarta-sans/files/plus-jakarta-sans-latin-500-normal.woff2)}
+@font-face{font-family:PJS;font-weight:600;src:url(node_modules/@fontsource/plus-jakarta-sans/files/plus-jakarta-sans-latin-600-normal.woff2)}
+@font-face{font-family:PJS;font-weight:700;src:url(node_modules/@fontsource/plus-jakarta-sans/files/plus-jakarta-sans-latin-700-normal.woff2)}
+@font-face{font-family:PJS;font-weight:800;src:url(node_modules/@fontsource/plus-jakarta-sans/files/plus-jakarta-sans-latin-800-normal.woff2)}
+:root{
+  --white:#FFFFFF; --ink:#0B0B0F; --muted:#5A5F6E; --line:#E4E7EE;
+  --blue:#1F4FFF; --blue-soft:#EBF0FF; --yellow:#FFCC1A; --yellow-soft:#FFF6D1;
+  --wk:30px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{background:var(--white)}
+body{width:1080px;height:1350px;overflow:hidden;color:var(--ink);font-family:PJS,sans-serif;position:relative;padding:50px 60px 0}
+
+/* header */
+.kicker{display:inline-flex;align-items:center;gap:12px;background:var(--ink);color:var(--white);font-weight:700;font-size:17px;letter-spacing:.14em;text-transform:uppercase;padding:10px 18px;border-radius:999px}
+.kicker i{width:9px;height:9px;border-radius:50%;background:var(--yellow);display:block}
+h1{font-size:72px;line-height:1.02;font-weight:800;letter-spacing:-.03em;margin-top:20px}
+h1 .blue{color:var(--blue)}
+.pay{display:flex;align-items:center;gap:18px;margin-top:20px}
+.pay .tag{font-size:17px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;line-height:1.25}
+.pay .chip{font-size:34px;font-weight:800;padding:8px 18px;border-radius:14px;letter-spacing:-.01em}
+.pay .from{background:var(--blue-soft);color:var(--blue)}
+.pay .to{background:var(--yellow);color:var(--ink)}
+.pay svg{width:40px;height:20px}
+
+/* gantt */
+.gantt{margin-top:28px;border:2px solid var(--ink);border-radius:22px;padding:20px 24px 16px;position:relative}
+.ghead,.row{display:grid;grid-template-columns:72px minmax(0,1fr) calc(var(--wk)*15);align-items:center;column-gap:18px}
+.ghead{font-size:13px;font-weight:700;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;padding-bottom:10px;border-bottom:2px solid var(--line)}
+.weeks{display:grid;grid-template-columns:repeat(15,var(--wk));text-align:center;font-size:13px;letter-spacing:0}
+.weeks span.now{color:var(--yellow);background:var(--ink);font-weight:800;border-radius:6px;margin:0 3px}
+.row{height:48px;border-bottom:1px solid var(--line)}
+.row:last-child{border-bottom:0}
+.wk{font-size:15px;font-weight:800;color:var(--blue);white-space:nowrap}
+.topic{font-size:21px;font-weight:700;line-height:1.15;white-space:nowrap}
+.topic small{display:block;font-size:13.5px;font-weight:500;color:var(--muted);margin-top:2px}
+.track{position:relative;height:26px;display:grid;grid-template-columns:repeat(15,var(--wk))}
+.track::before{content:"";position:absolute;inset:12px 0;background:repeating-linear-gradient(90deg,var(--line) 0 2px,transparent 2px var(--wk))}
+.bar{position:relative;height:26px;border-radius:8px}
+.b-ink{background:var(--ink)} .b-blue{background:var(--blue)} .b-yel{background:var(--yellow);box-shadow:inset 0 0 0 2px var(--ink)}
+.row.here{background:var(--yellow-soft);margin:0 -24px;padding:0 24px;border-radius:12px}
+.here-tag{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;background:var(--ink);color:var(--yellow);padding:2px 7px;border-radius:5px;margin-left:8px;vertical-align:1px}
+.nowline{position:absolute;width:3px;background:var(--ink);border-radius:2px;z-index:2}
+.legend{display:flex;gap:22px;margin-top:12px;font-size:14px;font-weight:600;color:var(--muted)}
+.legend span{display:flex;align-items:center;gap:8px}
+.legend i{width:18px;height:12px;border-radius:4px;display:block}
+
+/* targets */
+.targets{margin-top:22px}
+.targets h2{font-size:15px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);margin-bottom:12px}
+.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.tile{border:2px solid var(--line);border-radius:16px;padding:12px 18px 13px}
+.tile b{display:block;font-size:32px;font-weight:800;letter-spacing:-.02em;line-height:1}
+.tile span{display:block;font-size:15.5px;font-weight:600;color:var(--muted);margin-top:5px;line-height:1.25;white-space:nowrap}
+.tile.hi{background:var(--blue);border-color:var(--blue);color:var(--white)}
+.tile.hi span{color:#D6E0FF}
+
+/* build vs design */
+.bd{margin-top:20px;font-size:22px;font-weight:700;letter-spacing:-.01em;line-height:1.35}
+.bd .b{color:var(--blue)}
+.bd .d{background:var(--yellow);padding:0 6px;border-radius:6px}
+
+/* footer */
+footer{position:absolute;left:0;right:0;bottom:0;height:78px;background:var(--ink);color:var(--white);display:flex;align-items:center;justify-content:space-between;padding:0 60px}
+footer .rule{font-size:17px;font-weight:600;color:#C9CCD6}
+footer .rule b{color:var(--yellow);font-weight:800}
+footer .site{font-size:22px;font-weight:800;letter-spacing:-.01em}
+footer .site i{font-style:normal;color:var(--yellow)}
+
+/* 16:9 layout for the video */
+body.wide{width:1920px;height:1080px;padding:70px 80px 0;display:grid;grid-template-columns:640px minmax(0,1fr);column-gap:64px;align-content:start}
+body.wide .left{grid-column:1}
+body.wide .gantt{grid-column:2;grid-row:1 / span 2;margin-top:0;--wk:38px}
+body.wide h1{font-size:84px}
+body.wide .pay{flex-wrap:wrap}
+body.wide .targets{margin-top:56px}
+body.wide .bd{font-size:26px;margin-top:28px}
+body.wide .tiles{grid-template-columns:repeat(2,1fr)}
+body.wide .row{height:76px}
+body.wide .topic{font-size:24px}
+body.wide .topic small{font-size:15px}
+body.wide footer{padding:0 80px;height:86px}
+</style>
+</head>
+<body>
+<div class="left">
+  <div class="kicker"><i></i>15-week study plan · Sep 21 → Jan 3</div>
+  <h1>Senior → Staff<br><span class="blue">Data Engineer</span></h1>
+  <div class="pay">
+    <span class="chip from">$220K</span>
+    <svg viewBox="0 0 40 20"><path d="M2 10h32M26 3l8 7-8 7" stroke="#0B0B0F" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <span class="chip to">$350K–$400K</span>
+    <span class="tag">US total pay<br>per year</span>
+  </div>
+</div>
+
+<section class="gantt" id="gantt">
+  <div class="ghead"><span>Week</span><span>Topic</span><div class="weeks" id="weeks"></div></div>
+  <div id="rows"></div>
+  <div class="legend">
+    <span><i class="b-ink"></i>Coding + interviews</span>
+    <span><i class="b-blue"></i>Data systems</span>
+    <span><i class="b-yel"></i>AI</span>
+  </div>
+</section>
+
+<section class="targets left">
+  <h2>By January 3</h2>
+  <div class="tiles">
+    <div class="tile hi"><b>15+</b><span>system designs</span></div>
+    <div class="tile"><b>120–150</b><span>DSA problems</span></div>
+    <div class="tile"><b>40–50</b><span>advanced SQL problems</span></div>
+    <div class="tile"><b>20+</b><span>debugging scenarios</span></div>
+    <div class="tile"><b>10</b><span>stories from my own work</span></div>
+    <div class="tile"><b>1</b><span>real project: a distributed AI platform</span></div>
+  </div>
+  <p class="bd">Senior gets you hired for what you can <span class="b">build</span>.<br>Staff gets you hired for what you can <span class="d">design</span>.</p>
+</section>
+
+<footer>
+  <div class="rule"><b>#1</b> System design &nbsp;·&nbsp; <b>#2</b> Coding &nbsp;·&nbsp; <b>Edge</b> Data + AI infrastructure</div>
+  <div class="site">joinstackle<i>.</i>com</div>
+</footer>
+
+<script>
+const NOW = 4;
+const plan = [
+  ['1–2',  'Python, SQL, DSA',               'Sep 21 – Oct 4',  1, 2, 'ink'],
+  ['3–4',  'Distributed systems + Kafka',    'Oct 5 – Oct 18',  3, 4, 'blue'],
+  ['5–6',  'Spark',                          'Oct 19 – Nov 1',  5, 6, 'blue'],
+  ['7–8',  'Data architecture',              'Nov 2 – Nov 15',  7, 8, 'blue'],
+  ['9',    'AWS + Kubernetes',               'Nov 16 – Nov 22', 9, 9, 'blue'],
+  ['10',   'ML basics',                      'Nov 23 – Nov 29', 10, 10, 'yel'],
+  ['11',   'AI engineering',                 'Nov 30 – Dec 6',  11, 11, 'yel'],
+  ['12',   'AI infrastructure',              'Dec 7 – Dec 13',  12, 12, 'yel'],
+  ['13',   'Debugging',                      'Dec 14 – Dec 20', 13, 13, 'ink'],
+  ['14–15','Interview mode',                 'Dec 21 – Jan 3',  14, 15, 'ink'],
+];
+if (location.search.includes('wide')) document.body.classList.add('wide');
+document.getElementById('weeks').innerHTML =
+  Array.from({length:15}, (_, i) => `<span class="${i + 1 === NOW ? 'now' : ''}">${i + 1}</span>`).join('');
+document.getElementById('rows').innerHTML = plan.map(([wk, topic, dates, a, b, c]) => {
+  const here = NOW >= a && NOW <= b;
+  return `<div class="row${here ? ' here' : ''}">
+    <span class="wk">Wk ${wk}</span>
+    <span class="topic">${topic}<small>${dates}${here ? `<span class="here-tag">I’m here · week ${NOW}</span>` : ''}</small></span>
+    <div class="track"><div class="bar b-${c}" style="grid-column:${a} / ${b + 1}"></div></div>
+  </div>`;
+}).join('');
+// Vertical "now" line through the middle of the current week column.
+requestAnimationFrame(() => {
+  const g = document.getElementById('gantt').getBoundingClientRect();
+  const cell = document.querySelectorAll('#weeks span')[NOW - 1].getBoundingClientRect();
+  const line = document.createElement('div');
+  line.className = 'nowline';
+  const rows = document.getElementById('rows').getBoundingClientRect();
+  line.style.left = (cell.left + cell.width / 2 - g.left - 1.5) + 'px';
+  line.style.top = (cell.bottom - g.top + 4) + 'px';
+  line.style.height = (rows.bottom - cell.bottom - 10) + 'px';
+  document.getElementById('gantt').appendChild(line);
+  document.body.dataset.ready = '1';
+});
+</script>
+</body>
+</html>
