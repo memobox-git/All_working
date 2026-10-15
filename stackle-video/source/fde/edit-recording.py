@@ -1,10 +1,13 @@
 # Edits Chris's full FDE recording into the final video.
 # Camera scenes show the recording; every other line plays his voice over the matching graphic,
 # with the graphic's beats re-timed to the moment he says each word.
+# Version 2: lines he did not record are spoken by his HeyGen digital twin (cloned voice over the graphics,
+# and the avatar on camera for scene 5).
 # Usage: python3 edit-recording.py plan | audio | camera | graphics | final | check
 # Inputs (in the working folder V2): the Descript export of the "FDE" recording, its 10 ms loudness
 # (db10ms.npy), Whisper word timings of the raw recording (words.json) and of the edited voice
-# (build/voice-words.json), and the 9-minute script lines (vo9.json) the graphics were first timed to.
+# (build2/voice-words.json), the 9-minute script lines (vo9.json) the graphics were first timed to,
+# and in HG the HeyGen speech files (voice 'Crispus Puli') and the avatar clip (look fbbc419faab744d896e63c5d25f82fdf).
 import json, os, re, subprocess, sys, difflib
 import numpy as np
 
@@ -12,7 +15,8 @@ SP = '/tmp/claude-0/-home-user-All-working/7bd9d8a4-9175-5617-901d-8569546f116a/
 V2 = f'{SP}/v2'
 REPO = '/home/user/All_working/stackle-video'
 RAW = f'{V2}/fde-v2-raw.mp4'
-OUT = f'{V2}/build'
+OUT = f'{V2}/build2'
+HG = f'{SP}/heygen'                         # HeyGen speech (tts/*.wav) and the avatar video
 FPS = 30
 os.makedirs(OUT, exist_ok=True)
 
@@ -21,10 +25,11 @@ os.makedirs(OUT, exist_ok=True)
 EDL = [
     ('c', 1, [(1.30, 10.85)]),                                       # In this video, I'm going to explain...
     ('g', 1, [(42.92, 44.88), (55.65, 61.85), (62.40, 80.65), (81.00, 86.05)]),
-    ('g', 2, [(90.85, 96.60), (100.30, 106.85), (107.55, 111.01)]),    # ends "...data and AI engineering"
+    ('g', 2, [(90.85, 96.60), (100.30, 106.85), (107.55, 111.01), ('tts', 'g02_linkedin', 0.15)]),
     ('g', 3, [(119.05, 123.60)]),
     ('g', 4, [(125.00, 131.35), (132.00, 136.65), (137.78, 141.30), (152.60, 161.45)]),
     ('g', 5, [(165.20, 169.28), (171.12, 175.00)]),
+    ('g', 6, [('tts', 'g06')]),
     ('g', 7, [(191.20, 205.30)]),
     ('g', 8, [(221.22, 230.40), (231.75, 241.95)]),
     ('g', 9, [(252.75, 267.80)]),
@@ -34,6 +39,10 @@ EDL = [
     ('g', 13, [(315.00, 318.70), (322.05, 327.10)]),
     ('c', 2, [(327.80, 329.05), (337.15, 350.76), (351.24, 355.40)]),   # drops "will be,"
     ('g', 14, [(361.20, 372.60)]),
+    ('g', 15, [('tts', 'g15')]),
+    ('g', 16, [('tts', 'g16')]),
+    ('g', 17, [('tts', 'g17')]),
+    ('g', 18, [('tts', 'g18')]),
     ('c', 3, [(413.55, 426.90)]),                                     # last clean start
     ('g', 19, [(434.15, 441.70)]),
     ('g', 20, [(442.65, 451.76), (452.36, 452.95, 0.06), (456.70, 476.60, 0.28)]),   # "...an AI engineer first."
@@ -45,7 +54,7 @@ EDL = [
     ('g', 26, [(626.85, 634.10), (635.18, 639.30, 0.0)]),            # drops "leave a,"
     ('g', 27, [(640.55, 648.10)]),
     ('g', 28, [(650.15, 660.10)]),
-    ('g', 29, [(660.85, 676.20)]),
+    ('g', 29, [(660.85, 676.20), ('tts', 'g29_example', 0.2)]),
     ('g', 30, [(688.62, 694.72), (699.35, 703.95), (709.10, 711.40), (718.60, 725.75), (726.20, 737.50)]),
     ('g', 31, [(739.95, 747.40)]),
     ('g', 32, [(752.70, 763.20)]),
@@ -53,12 +62,13 @@ EDL = [
     ('g', 34, [(788.50, 789.80), (792.85, 810.00)]),
     ('g', 35, [(819.55, 837.75)]),
     ('c', 4, [(874.45, 884.25)]),
-    ('g', 36, [(928.00, 931.70), (932.65, 943.40), (948.15, 955.15)]),
+    ('g', 36, [('tts', 'g36_interviewed'), (928.00, 931.70, 0.25), (932.65, 943.40), (948.15, 955.15)]),
+    ('a', 5, [('avatar', f'{HG}/c5-avatar.mp4')]),          # "Here's one thing to do this week..."
     ('g', 37, [(970.40, 976.20), (987.35, 989.55), (989.90, 995.35)]),
     ('c', 6, [(1009.60, 1014.15)]),
 ]
 # edges set by hand at measured quiet points (not snapped)
-EXTRA = {('g', 14): 1.2, ('g', 33): 0.6, ('g', 35): 0.8}
+EXTRA = {('g', 14): 0.8, ('g', 33): 0.6, ('g', 35): 0.8}
 EXACT = {634.10, 635.18, 451.76, 452.36, 350.76, 351.24, 413.55, 452.95, 44.88, 111.01, 169.28, 171.12, 137.78, 141.30, 221.22, 230.40, 699.35, 711.40}
 
 db = np.load(f'{V2}/db10ms.npy')          # 10 ms loudness of the recording, dB
@@ -106,36 +116,54 @@ def plan():
     for i, (kind, n, segs) in enumerate(EDL):
         pieces = []
         for si, seg in enumerate(segs):
+            if seg[0] == 'avatar':
+                pieces.append(('avatar', seg[1], quant(clip_len(seg[1])))); continue
+            gap_before = seg[-1] if len(seg) > 2 or (seg[0] == 'tts' and len(seg) == 3) else 0.12
+            if si and kind == 'g': pieces.append(('gap', gap_before))   # a breath of room tone between takes
+            if seg[0] == 'tts':
+                pieces.append(('tts', seg[1], round(clip_len(f'{HG}/tts/{seg[1]}.wav'), 3))); continue
             s, e = seg[:2]
             s2, e2 = snap_start(s), snap_end(e)
-            if si and kind == 'g': pieces.append(('gap', seg[2] if len(seg) > 2 else 0.12))   # a breath of room tone between takes
             pieces += split_pauses(s2, e2, 0.70, 0.40) if kind == 'c' else split_pauses(s2, e2, 0.45, 0.30)
         # every piece a whole number of frames, so picture and sound stay locked
-        pieces = [p if p[0] == 'gap' else (p[0], p[0] + quant(p[1] - p[0])) for p in pieces]
-        plen = lambda p: p[1] if p[0] == 'gap' else p[1] - p[0]
+        pieces = [p if isinstance(p[0], str) else (p[0], p[0] + quant(p[1] - p[0])) for p in pieces]
+        plen = lambda p: p[1] if p[0] == 'gap' else p[2] if p[0] in ('tts', 'avatar') else p[1] - p[0]
         dur = sum(plen(p) for p in pieces)
         nxt = EDL[i + 1][0] if i + 1 < len(EDL) else None
-        gap = 0.0 if kind == 'c' else (0.30 if nxt == 'g' else 0.20)
+        gap = 0.0 if kind in 'ca' else (0.30 if nxt == 'g' else 0.20)
         if nxt is None: gap = 0.0
         gap += EXTRA.get((kind, n), 0.0)
         total = quant(dur + gap)
         # where each spoken word lands inside the block
         bw, off = [], 0.0
         for p in pieces:
-            if p[0] == 'gap': off += p[1]; continue
+            if isinstance(p[0], str): off += plen(p); continue
             a, b = p
             for w in words:
                 if a <= (w[0] + w[1]) / 2 < b: bw.append([round(off + max(w[0], a) - a, 3), round(off + min(w[1], b) - a, 3), w[2].strip()])
             off += b - a
         blocks.append({'kind': kind, 'n': n, 'start': round(t, 4), 'dur': round(total, 4), 'speech': round(dur, 4),
-                       'pieces': [list(p) if p[0] == 'gap' else [round(p[0], 3), round(p[1], 3)] for p in pieces], 'words': bw})
+                       'pieces': [list(p) if isinstance(p[0], str) else [round(p[0], 3), round(p[1], 3)] for p in pieces], 'words': bw})
         t += total
     json.dump(blocks, open(f'{OUT}/plan.json', 'w'), indent=1)
     print(f'{len(blocks)} blocks, {t:.1f} s ({int(t // 60)}:{t % 60:04.1f})')
     for b in blocks:
-        print(f"{'cam' if b['kind'] == 'c' else 'G'}{b['n']:>2}  {b['start']:7.2f}  {b['dur']:6.2f}s  {len(b['pieces'])} pieces  " + ' '.join(w[2] for w in b['words'])[:90])
+        print(f"{ {'c': 'cam', 'a': 'avt', 'g': 'G'}[b['kind']] }{b['n']:>2}  {b['start']:7.2f}  {b['dur']:6.2f}s  {len(b['pieces'])} pieces  " + ' '.join(w[2] for w in b['words'])[:90])
 
 def run(cmd): subprocess.run(cmd, check=True)
+
+def clip_len(path):
+    return float(subprocess.run(['ffprobe', '-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', path],
+                                capture_output=True, text=True).stdout)
+
+def load48(path):
+    raw = subprocess.run(['ffmpeg', '-v', 'error', '-i', path, '-ac', '1', '-ar', '48000', '-f', 'f32le', '-'], capture_output=True, check=True).stdout
+    return np.frombuffer(raw, dtype=np.float32).copy()
+
+def speech_rms(x, sr=48000):
+    fr = x[:len(x) // (sr // 100) * (sr // 100)].reshape(-1, sr // 100)
+    r = np.sqrt((fr ** 2).mean(1))
+    return np.median(r[r > np.percentile(r, 60)])
 
 def audio():
     blocks = json.load(open(f'{OUT}/plan.json'))
@@ -146,12 +174,24 @@ def audio():
     A = np.fromfile(full, dtype=np.float32)
     tone = A[int(386 * sr):int(397 * sr)]                   # room tone from a silent stretch of the recording
     fade = int(0.012 * sr)
+    his = speech_rms(A[int(42 * sr):int(355 * sr)])
+    def heygen(path):
+        x = load48(path)
+        x = x * (his / speech_rms(x))                        # same speaking level as the recording
+        x = x + np.resize(tone, len(x))                      # and the same room behind it
+        x[:fade] *= np.linspace(0, 1, fade); x[-fade:] *= np.linspace(1, 0, fade)
+        return x
     out = []
     for b in blocks:
-        n0 = sum(len(x) for x in out)
-        for a, e in b['pieces']:
+        for p in b['pieces']:
+            a, e = p[0], p[1]
             if a == 'gap':
                 out.append(np.resize(tone, int(round(e * sr)))); continue
+            if a == 'tts':
+                out.append(heygen(f'{HG}/tts/{e}.wav')); continue
+            if a == 'avatar':
+                x = heygen(e)[:int(round(p[2] * sr))]
+                out.append(np.concatenate([x, np.resize(tone, int(round(p[2] * sr)) - len(x))])); continue
             x = A[int(round(a * sr)):int(round(a * sr)) + int(round((e - a) * sr))].copy()
             x[:fade] *= np.linspace(0, 1, fade); x[-fade:] *= np.linspace(1, 0, fade)
             out.append(x)
@@ -172,6 +212,12 @@ def audio():
 def camera():
     blocks = json.load(open(f'{OUT}/plan.json'))
     for b in blocks:
+        if b['kind'] == 'a':
+            _, path, d = b['pieces'][0]
+            run(['ffmpeg', '-y', '-v', 'error', '-i', path, '-frames:v', str(int(round(d * FPS))), '-an',
+                 '-vf', f'crop=1422:800:249:0,scale=1920:1080,fps={FPS},format=yuv420p', '-c:v', 'libx264', '-crf', '18', '-preset', 'medium',
+                 f"{OUT}/avatar{b['n']}.mp4"])
+            print('wrote avatar scene', b['n']); continue
         if b['kind'] != 'c': continue
         for k, (a, e) in enumerate(b['pieces']):
             out = f"{OUT}/cam{b['n']}-{k}.mp4"
@@ -204,11 +250,13 @@ def warp_for(n, bw, speech):
     return anchors
 
 def wordtime(bw, text, nth=0):
-    """Block time of the start of the nth match of a word sequence in the block."""
-    seq = [norm(x) for x in text.split()]
+    """Block time of the start of the nth match of a word sequence in the block ("a|b" tries a, then b)."""
     ws = [norm(w[2]) for w in bw]
-    hits = [k for k in range(len(ws)) if ws[k:k + len(seq)] == seq]
-    return bw[hits[nth]][0]
+    for alt in text.split('|'):
+        seq = [norm(x) for x in alt.split()]
+        hits = [k for k in range(len(ws)) if ws[k:k + len(seq)] == seq]
+        if len(hits) > nth: return bw[hits[nth]][0]
+    raise KeyError(f'not in block: {text}  ({" ".join(ws)[:200]})')
 
 def timing_for(b, man):
     n, bw = b['n'], b['words']
@@ -221,7 +269,19 @@ def timing_for(b, man):
     if n == 14:   # the strike and the "typical" card land on "that's only true..."
         return {'tmap': [[0, 3.2, 0, 1.4], [3.4, 3.6, W('seen videos'), W('a million') - 0.3], [8.6, 8.6, W('only true'), W('only true')],
                          [15.4, 15.4, W('most of that money'), W('most of that money')],
-                         [20.2, 23.2, W('stock') + 0.2, W('stock') + 1.0]]}
+                         [20.2, 23.2, W('stock') - 0.1, W('stock') + 0.5]]}
+    if n == 15:   # ranges on "real job posts", then the math beat line by line
+        tm = W('do the math')
+        return {'tmap': [[0.2, 0.6, 0.2, 0.6], [5.6, 6.4, 0.9, 1.1], [15.8, 16.0, 1.7, 1.9], [20.2, 20.4, 2.5, 2.7],
+                         [40, 41, tm - 0.4, tm], [42, 42, W('the median fde|median fde|the median'), W('the median fde|median fde|the median')],
+                         [43, 43, W('median software'), W('median software')], [44, 44, W('minus'), W('minus')],
+                         [45, 45, W('five years|5 years'), W('five years|5 years')], [46, 46, W('what would it'), W('what would it')]]}
+    if n == 29:   # definition, then the eval run plays with the example
+        tl = W("let's say you change|lets say you change")
+        return {'tmap': [[0.4, 0.6, 0.2, 0.4], [4.6, 5.6, 1.4, 2.4], [10.2, 12.4, W('test questions') - 0.4, W('known answers')],
+                         [15.8, 15.8, W('after every change'), W('after every change')], [19.8, 19.8, W('prove'), W('prove')],
+                         [22.6, 23.8, tl - 0.3, W('one line')], [27.4, 27.4, W('hundred test|100 test'), W('hundred test|100 test')],
+                         [30.0, 31.2, W('score goes up'), W('score goes up') + 1.2], [32.6, 32.6, W('customers trust'), W('customers trust')]]}
     if n == 26:   # flow steps on "finds the right documents", "the model", "answers"; example on "leave policy"
         tf, tl = W('finds the right documents'), W('like a leave policy')
         ta = b['speech'] - 1.3
@@ -238,7 +298,6 @@ def timing_for(b, man):
         return {'tmap': [[0.1, 0.3, 0.1, 0.3], [8.4, 8.4, tl, tl], [11.2, 11.6, tj - 0.3, tj + 0.1],
                          [19.8, 19.8, W('data'), W('data')], [20.8, 20.8, b['speech'] - 1.5, b['speech'] - 1.5]]}   # the transcript stops at "Data"
     t = {'ts': man.get('ts'), 'tmap': man.get('tmap')}
-    if n == 2: t['tmap'] = [[0, 19.1, 0, 19.1]]       # he stops at "data and AI engineering": end on the Stackle beat
     t['twarp'] = warp_for(n, bw, b['speech'])
     return t
 
@@ -308,10 +367,11 @@ def final():
     files = []
     for b in blocks:
         if b['kind'] == 'g': files.append(f"{OUT}/g{b['n']:02d}.mp4")
+        elif b['kind'] == 'a': files.append(f"{OUT}/avatar{b['n']}.mp4")
         else: files += [f"{OUT}/cam{b['n']}-{k}.mp4" for k in range(len(b['pieces']))]
     open(f'{OUT}/video-list.txt', 'w').write(''.join(f"file '{f}'\n" for f in files))
     run(['ffmpeg', '-y', '-v', 'error', '-f', 'concat', '-safe', '0', '-i', f'{OUT}/video-list.txt', '-c', 'copy', f'{OUT}/video-only.mp4'])
-    out = f'{V2}/FDE-Roadmap-2026-final-1080p.mp4'
+    out = f'{V2}/FDE-Roadmap-2026-final-v2-1080p.mp4'
     run(['ffmpeg', '-y', '-v', 'error', '-i', f'{OUT}/video-only.mp4', '-i', f'{OUT}/voice.wav', '-map', '0:v', '-map', '1:a',
          '-c:v', 'copy', '-c:a', 'aac', '-b:a', '192k', '-movflags', '+faststart', '-shortest', out])
     print('wrote', out)
