@@ -1,0 +1,30 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="theme.css"><style>
+.top{display:flex;justify-content:space-between;align-items:flex-end;margin-top:28px}
+.top .h1{margin-top:0}
+.top .weekstrip{width:820px;margin-bottom:10px}
+.list{margin-top:64px;display:flex;flex-direction:column;gap:26px}
+.row{display:grid;grid-template-columns:150px 470px 1fr;align-items:center;gap:30px;padding:38px 32px;border-radius:24px;background:var(--soft)}
+.row .chip{font-size:24px;justify-self:start}
+.row b{font-size:52px;font-weight:800;letter-spacing:-.02em}
+.row span:last-child{font-size:36px;font-weight:600;color:var(--muted);line-height:1.25}
+.row.key{background:var(--yellow-soft);box-shadow:inset 0 0 0 4px var(--ink)}
+.row.key span:last-child{color:var(--ink)}
+.fits{margin-top:28px;align-self:flex-end;font-size:30px;font-weight:800;background:var(--ink);color:var(--yellow);padding:12px 22px;border-radius:14px}
+</style></head>
+<!-- Graphic 6: weeks 10 to 12 highlighted -->
+<body data-dur="9" data-steps="1.9,3.4,5.0,6.4">
+<div class="stage">
+  <div class="kicker" data-in="0.1" data-fx="left"><i></i>Block three · Weeks 10–12</div>
+  <div class="top">
+    <div class="h1" data-in="0.3">AI</div>
+    <div class="weekstrip" data-range="10-12" data-color="yel" data-now="4" data-in="0.6" data-fx="fade"></div>
+  </div>
+  <div class="list">
+    <div class="row" data-in="1.2" data-fx="left"><span class="chip ink">Wk 10</span><b>ML basics</b><span>How models learn from data</span></div>
+    <div class="row" data-in="2.7" data-fx="left"><span class="chip ink">Wk 11</span><b>AI engineering</b><span>Building products on top of large language models</span></div>
+    <div class="row key" data-in="4.3" data-fx="left"><span class="chip yel">Wk 12</span><b>AI infrastructure</b><span>The data systems that feed and serve the model</span></div>
+  </div>
+  <div class="fits" data-in="5.6">Where a data engineer really fits in</div>
+</div>
+<div class="foot" data-in="0" data-fx="fade"><span></span><span class="site">joinstackle<i>.</i>com</span></div>
+<script src="../base.js"></script><script src="engine.js"></script></body></html>

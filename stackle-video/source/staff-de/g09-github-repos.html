@@ -1,0 +1,35 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="theme.css"><style>
+.repo{position:absolute;left:140px;width:740px;height:180px;border:3px solid var(--line);border-radius:26px;padding:26px 32px;background:var(--white)}
+.repo .nm{display:flex;align-items:center;gap:16px;font-size:40px;font-weight:800;letter-spacing:-.01em}
+.repo .nm svg{width:36px;height:36px;flex:none;color:var(--blue)}
+.repo p{font-size:26px;font-weight:600;color:var(--muted);margin-top:10px;line-height:1.3;max-width:640px}
+.repo .chip{position:absolute;right:26px;top:26px;font-size:20px}
+.r1{top:300px} .r2{top:510px} .r3{top:720px}
+.big{position:absolute;left:1140px;top:455px;width:640px;height:260px;border-radius:32px;background:var(--ink);color:var(--white);padding:40px 44px}
+.big .nm{display:flex;align-items:center;gap:16px;white-space:nowrap;font-size:36px;font-weight:800;color:var(--yellow)}
+.big .nm svg{width:38px;height:38px;color:var(--yellow)}
+.big p{color:#C9CCD6;font-size:30px;font-weight:600;margin-top:16px;line-height:1.3}
+.big .chip{margin-top:22px;font-size:22px}
+svg.links{position:absolute;left:0;top:0;width:1920px;height:1080px;pointer-events:none}
+svg.links path{fill:none;stroke:var(--blue);stroke-width:5;stroke-linecap:round}
+</style></head>
+<!-- Graphic 9: GitHub repos stacking up week by week, then arrows into "distributed-ai-platform" -->
+<body data-dur="8.5" data-steps="1.2,2.4,3.6,6.0">
+<svg width="0" height="0" style="position:absolute"><defs>
+  <symbol id="repo" viewBox="0 0 24 24"><path d="M5 3.5h11.5a2.5 2.5 0 0 1 2.5 2.5v15H7.5A2.5 2.5 0 0 1 5 18.5z M5 18.5A2.5 2.5 0 0 1 7.5 16H19" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/></symbol>
+</defs></svg>
+<div class="stage">
+  <div class="kicker" data-in="0.1" data-fx="left"><i></i>Building it in public</div>
+  <div class="h1" data-in="0.3">Every project goes on GitHub</div>
+</div>
+<div class="repo r1" data-in="0.6" data-fx="left"><div class="nm"><svg><use href="#repo"/></svg>dsa-practice</div><span class="chip soft">Weeks 1–15</span><p>Every problem I solve, with a note on the pattern</p></div>
+<div class="repo r2" data-in="1.8" data-fx="left"><div class="nm"><svg><use href="#repo"/></svg>kafka-events</div><span class="chip soft">Weeks 3–4</span><p>Streams events, handles the same event arriving twice, keeps running when a machine fails</p></div>
+<div class="repo r3" data-in="3.0" data-fx="left"><div class="nm"><svg><use href="#repo"/></svg>spark-jobs</div><span class="chip soft">Weeks 5–6</span><p>The Spark work goes in the same way</p></div>
+<svg class="links" viewBox="0 0 1920 1080">
+  <path pathLength="1" data-draw="4.2" d="M890 390 C 1010 390, 1010 585, 1130 585"/>
+  <path pathLength="1" data-draw="4.4" d="M890 600 C 1010 600, 1010 585, 1130 585"/>
+  <path pathLength="1" data-draw="4.6" d="M890 810 C 1010 810, 1010 585, 1130 585"/>
+</svg>
+<div class="big" data-in="5.2" data-fx="scale"><div class="nm"><svg><use href="#repo"/></svg>distributed-ai-platform</div><p>One system I can walk an interviewer through</p><span class="chip yel">By January 3</span></div>
+<div class="foot" data-in="0" data-fx="fade"><span></span><span class="site">joinstackle<i>.</i>com</span></div>
+<script src="../base.js"></script><script src="engine.js"></script></body></html>

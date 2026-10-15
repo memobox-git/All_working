@@ -1,0 +1,27 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="theme.css"><style>
+.rows{display:flex;flex-direction:column;gap:26px;margin-top:56px}
+.r{display:flex;align-items:center;gap:40px;border:3px solid var(--line);border-radius:30px;padding:30px 44px}
+.badge{width:132px;height:132px;border-radius:28px;display:flex;align-items:center;justify-content:center;font-size:62px;font-weight:800;flex:none}
+.badge svg{width:64px;height:64px}
+.t{font-size:80px;font-weight:800;letter-spacing:-.03em;line-height:1.05}
+.r1{border:4px solid var(--ink)} .r1 .badge{background:var(--yellow)}
+.r2 .badge{background:var(--ink);color:var(--white)}
+.r3{background:var(--blue);border-color:var(--blue);color:var(--white)} .r3 .badge{background:var(--white)}
+.r3 small{display:block;font-size:26px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--yellow);margin-bottom:8px}
+.r3 .t{font-size:72px}
+</style></head>
+<!-- Graphic 3: "#1 System design", "#2 Coding", "How I stand out: data + AI infrastructure" -->
+<body data-dur="7" data-steps="1.4,2.7,3.9">
+<div class="stage">
+  <div class="kicker" data-in="0.1" data-fx="left"><i></i>My priorities</div>
+  <div class="rows">
+    <div class="r r1" data-in="0.5" data-fx="left"><div class="badge">#1</div><div class="t">System design</div></div>
+    <div class="r r2" data-in="1.8" data-fx="left"><div class="badge">#2</div><div class="t">Coding</div></div>
+    <div class="r r3" data-in="3.0" data-fx="left">
+      <div class="badge"><svg viewBox="0 0 24 24"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z" fill="#1F4FFF"/></svg></div>
+      <div><small>How I stand out</small><div class="t">Data + AI infrastructure</div></div>
+    </div>
+  </div>
+</div>
+<div class="foot" data-in="0" data-fx="fade"><span></span><span class="site">joinstackle<i>.</i>com</span></div>
+<script src="../base.js"></script><script src="engine.js"></script></body></html>

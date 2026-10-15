@@ -1,0 +1,31 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="theme.css"><style>
+.split{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:52px;flex:1}
+.panel{border-radius:36px;padding:56px 60px;display:flex;flex-direction:column;justify-content:center}
+.p-senior{border:4px solid var(--ink)}
+.p-staff{background:var(--blue);color:var(--white)}
+.lab{font-size:28px;font-weight:800;letter-spacing:.16em;text-transform:uppercase}
+.p-senior .lab{color:var(--blue)} .p-staff .lab{color:var(--yellow)}
+.big{font-size:84px;font-weight:800;line-height:1.06;letter-spacing:-.03em;margin-top:22px}
+.p-staff .mark{color:var(--ink)}
+.sub{font-size:34px;font-weight:600;line-height:1.3;margin-top:36px}
+.p-senior .sub{color:var(--muted)} .p-staff .sub{color:#D6E0FF}
+</style></head>
+<!-- Graphic 1: "Senior: hired for what you can build" beside "Staff: hired for what you can design" -->
+<body data-dur="6.5">
+<div class="stage">
+  <div class="kicker" data-in="0.1" data-fx="left"><i></i>Senior vs staff</div>
+  <div class="split">
+    <div class="panel p-senior" data-in="0.4">
+      <div class="lab">Senior</div>
+      <div class="big">Hired for what you can <span class="blue">build</span></div>
+      <div class="sub" data-in="2.2">Takes a hard problem and builds it well</div>
+    </div>
+    <div class="panel p-staff" data-in="1.0">
+      <div class="lab">Staff</div>
+      <div class="big">Hired for what you can <span class="mark" data-hl="1.7">design</span></div>
+      <div class="sub" data-in="3.0">Decides how all the pipelines fit together, across many teams</div>
+    </div>
+  </div>
+</div>
+<div class="foot" data-in="0" data-fx="fade"><span></span><span class="site">joinstackle<i>.</i>com</span></div>
+<script src="../base.js"></script><script src="engine.js"></script></body></html>

@@ -355,6 +355,35 @@ I'm in week four right now. Tell me in the comments: which week of this plan wou
 
 **Existing graphics:** intro.mp4 and cta.mp4 in `stackle-video/graphics/`, and the roadmap images in the same folder.
 
+**Rendered graphics files** are in `stackle-video/graphics/staff-de/`. Every graphic is 1920×1080 in the roadmap's look (white, blue, black and yellow, Plus Jakarta Sans), and each one comes three ways:
+- `gNN-name.mp4`: the animated version, 30 fps, 6.5 to 13 seconds. The build-in finishes about 2 seconds before the end, so the editor can freeze the last frame for as long as Chris talks.
+- `gNN-name.png`: the final frame as a still.
+- `gNN-name-stepN.png`: one still per beat, for the graphics that build up as Chris speaks (Graphics 3, 5 to 13, and 15 to 17). Use these to cut on his words instead of letting the animation run.
+
+| Graphic | File |
+|---|---|
+| 1 | g01-build-vs-design |
+| 2 | g02-dropbox-staff-level |
+| 3 | g03-priorities |
+| 4 | g04-roadmap (the roadmap image, with the bars growing in) |
+| 5 | g05-block-two-data-systems |
+| 6 | g06-block-three-ai |
+| 7 | g07-targets |
+| 8 | g08-weekly-math |
+| 9 | g09-github-repos |
+| 10 | g10-ai-platform |
+| 11 | g11-job-anthropic |
+| 12 | g12-job-openai |
+| 13 | g13-job-google |
+| 14 | g14-postings-to-plan |
+| 15 | g15-resume-lines |
+| 16 | g16-story-parts |
+| 17 | g17-story-grid |
+
+The cards beside Chris are transparent PNGs (at 2x), to place on the right of the frame: `c1-opening-pay.png`, `c2-three-teams.png`, `c3-weeks-1-2.png`, `c4-weeks-13-15.png` and `c5-resume-rules.png`.
+
+The source for every graphic is in `stackle-video/source/staff-de/`, one HTML file each. To change a word or a timing, edit the file and run `node render-all.js g08` (or `node render-all.js g08 --stills` for the PNGs only) from that folder.
+
 **Take screenshots of the postings on the day you film.** Pay ranges and postings change, and the OpenAI posting first went up in June 2024.
 
 **On-screen labels I shortened or made up (please check):**
@@ -363,9 +392,13 @@ I'm in week four right now. Tell me in the comments: which week of this plan wou
 - "How I stand out" on Graphic 3. Your post says "Data and AI infrastructure is how I stand out."
 - The question types on Graphic 17.
 - "Average prep time in a 2025 study" on Graphic 8.
-- The repo names on Graphic 9, which are placeholders until you create the repos.
+- The repo names on Graphic 9, which are placeholders until you create the repos. The DSA repo line is shortened to "Every problem I solve, with a note on the pattern".
+- The small labels at the top of each graphic, such as "Senior vs staff", "My priorities", "Job 1 of 3", "From the posting" and "In my plan", and the headings "Every project goes on GitHub", "Two resume lines" and "Each story answers 2 or 3 questions".
+- "Where a data engineer really fits in" on Graphic 6, and "131 people, all prep, in total" on Graphic 8.
+- On the cards: "Base salary, US", "own copy", "All 3 teams agree to use it", "The coding base", "Find and fix a broken system" and "One practice round where AI is allowed".
+- "Story 2" to "Story 10" on Graphic 17, and which question types each one ticks. They show the idea, not your real stories.
 
-All other on-screen text uses the script's words or quotes the postings exactly.
+All other on-screen text uses the script's words or quotes the postings exactly. The quotes on Graphics 11 to 13 are copied from the postings, with "…" where words are left out.
 
 ---
 

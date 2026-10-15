@@ -1,0 +1,50 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="theme.css"><style>
+.stage{padding-top:80px}
+.h1{font-size:68px;margin-top:22px}
+.grid{margin-top:30px;display:grid;grid-template-columns:440px repeat(5,1fr);row-gap:6px;align-items:center}
+.gh{font-size:20px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);text-align:center;padding-bottom:12px;line-height:1.2;align-self:end}
+.gh:first-child{text-align:left}
+.lab{font-size:28px;font-weight:700;height:46px;display:flex;align-items:center}
+.lab.first{font-weight:800}
+.cell{display:flex;justify-content:center;align-items:center;height:46px}
+.tick{width:42px;height:42px;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center}
+.tick svg{width:24px;height:24px}
+.tick.first{background:var(--yellow);box-shadow:0 0 0 3px var(--ink)}
+.dot{width:10px;height:10px;border-radius:50%;background:var(--line)}
+</style></head>
+<!-- Graphic 17: 10 stories x 5 question types; each story covers 2 or 3 types -->
+<body data-dur="9" data-steps="2.6,6.4">
+<div class="stage">
+  <div class="kicker" data-in="0.1" data-fx="left"><i></i>Ten stories</div>
+  <div class="h1" data-in="0.3">Each story answers 2 or 3 questions</div>
+  <div class="grid" id="grid"></div>
+</div>
+<div class="foot" data-in="0" data-fx="fade"><span></span><span class="site">joinstackle<i>.</i>com</span></div>
+<script>
+// Columns: Conflict, Failure, Influence, Unclear problem, Hard technical call.
+// Story 1 is the failing-pipeline example from the script: failure, conflict, influence.
+const cols = ['Conflict', 'Failure', 'Influence', 'Unclear problem', 'Hard technical call'];
+const rows = [
+  ['Story 1: the failing pipeline', [1, 1, 1, 0, 0]],
+  ['Story 2', [0, 0, 0, 1, 1]], ['Story 3', [1, 0, 0, 0, 1]], ['Story 4', [0, 1, 1, 1, 0]],
+  ['Story 5', [0, 0, 1, 0, 1]], ['Story 6', [1, 0, 0, 1, 0]], ['Story 7', [0, 1, 0, 1, 1]],
+  ['Story 8', [1, 0, 1, 0, 0]], ['Story 9', [0, 1, 0, 1, 0]], ['Story 10', [1, 0, 1, 0, 1]],
+];
+const order = [1, 0, 2]; // ticks for story 1 appear in the order the script says them
+const check = '<svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+const checkInk = check.replace('#fff', '#0B0B0F');
+let html = `<div class="gh" data-in="0.6" data-fx="fade">Story</div>` +
+  cols.map(c => `<div class="gh" data-in="0.6" data-fx="fade">${c}</div>`).join('');
+rows.forEach(([name, ticks], r) => {
+  const t = r === 0 ? 1.0 : 3.0 + 0.3 * (r - 1);
+  html += `<div class="lab${r === 0 ? ' first' : ''}" data-in="${t}" data-fx="left">${name}</div>`;
+  ticks.forEach((on, c) => {
+    const tt = r === 0 && on ? 1.4 + 0.4 * order.indexOf(c) : t + 0.1;
+    html += `<div class="cell">${on
+      ? `<div class="tick${r === 0 ? ' first' : ''}" data-in="${tt.toFixed(2)}" data-fx="scale">${r === 0 ? checkInk : check}</div>`
+      : `<div class="dot" data-in="${t}" data-fx="fade"></div>`}</div>`;
+  });
+});
+document.getElementById('grid').innerHTML = html;
+</script>
+<script src="../base.js"></script><script src="engine.js"></script></body></html>

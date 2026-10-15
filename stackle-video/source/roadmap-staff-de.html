@@ -90,7 +90,7 @@ body.wide .topic small{font-size:15px}
 body.wide footer{padding:0 80px;height:86px}
 </style>
 </head>
-<body>
+<body data-dur="7" data-manual-ready>
 <div class="left">
   <div class="kicker"><i></i>15-week study plan · Sep 21 → Jan 3</div>
   <h1>Senior → Staff<br><span class="blue">Data Engineer</span></h1>
@@ -147,12 +147,12 @@ const plan = [
 if (location.search.includes('wide')) document.body.classList.add('wide');
 document.getElementById('weeks').innerHTML =
   Array.from({length:15}, (_, i) => `<span class="${i + 1 === NOW ? 'now' : ''}">${i + 1}</span>`).join('');
-document.getElementById('rows').innerHTML = plan.map(([wk, topic, dates, a, b, c]) => {
+document.getElementById('rows').innerHTML = plan.map(([wk, topic, dates, a, b, c], i) => {
   const here = NOW >= a && NOW <= b;
   return `<div class="row${here ? ' here' : ''}">
     <span class="wk">Wk ${wk}</span>
     <span class="topic">${topic}<small>${dates}${here ? `<span class="here-tag">I’m here · week ${NOW}</span>` : ''}</small></span>
-    <div class="track"><div class="bar b-${c}" style="grid-column:${a} / ${b + 1}"></div></div>
+    <div class="track"><div class="bar b-${c}" style="grid-column:${a} / ${b + 1}" data-grow="${(0.6 + 0.4 * i).toFixed(1)}"></div></div>
   </div>`;
 }).join('');
 // Vertical "now" line through the middle of the current week column.
@@ -169,5 +169,7 @@ requestAnimationFrame(() => {
   document.body.dataset.ready = '1';
 });
 </script>
+<!-- Timeline engine: bars grow in for the video version (Graphic 4); stills show the final frame. -->
+<script src="base.js"></script><script src="staff-de/engine.js"></script>
 </body>
 </html>

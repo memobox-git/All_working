@@ -1,0 +1,29 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="theme.css"><style>
+.top{display:flex;justify-content:space-between;align-items:flex-end;margin-top:28px}
+.top .h1{margin-top:0}
+.top .weekstrip{width:820px;margin-bottom:10px}
+.list{margin-top:44px;display:flex;flex-direction:column;gap:14px}
+.row{display:grid;grid-template-columns:150px 430px 1fr;align-items:center;gap:30px;padding:16px 28px;border-radius:20px;background:var(--soft)}
+.row .chip{font-size:24px;justify-self:start}
+.row b{font-size:42px;font-weight:800;letter-spacing:-.02em}
+.row span:last-child{font-size:32px;font-weight:600;color:var(--muted)}
+</style></head>
+<!-- Graphic 5: weeks 3 to 9 highlighted, one line under each tool -->
+<body data-dur="10.5" data-steps="2.2,3.4,4.8,6.2,7.4,8.2">
+<div class="stage">
+  <div class="kicker" data-in="0.1" data-fx="left"><i></i>Block two · Weeks 3–9</div>
+  <div class="top">
+    <div class="h1" data-in="0.3">Data systems</div>
+    <div class="weekstrip" data-range="3-9" data-color="blue" data-now="4" data-in="0.6" data-fx="fade"></div>
+  </div>
+  <div class="list">
+    <div class="row" data-in="1.4" data-fx="left"><span class="chip soft">Wk 3–4</span><b>Distributed systems</b><span>Many machines working as one</span></div>
+    <div class="row" data-in="2.6" data-fx="left"><span class="chip soft">Wk 3–4</span><b>Kafka</b><span>Moves events between systems as they happen</span></div>
+    <div class="row" data-in="4.0" data-fx="left"><span class="chip soft">Wk 5–6</span><b>Spark</b><span>Splits huge data jobs across many machines</span></div>
+    <div class="row" data-in="5.4" data-fx="left"><span class="chip soft">Wk 7–8</span><b>Data architecture</b><span>How the whole platform fits together</span></div>
+    <div class="row" data-in="6.6" data-fx="left"><span class="chip soft">Wk 9</span><b>AWS</b><span>Amazon’s cloud</span></div>
+    <div class="row" data-in="7.4" data-fx="left"><span class="chip soft">Wk 9</span><b>Kubernetes</b><span>Runs your programs and restarts them when they crash</span></div>
+  </div>
+</div>
+<div class="foot" data-in="0" data-fx="fade"><span></span><span class="site">joinstackle<i>.</i>com</span></div>
+<script src="../base.js"></script><script src="engine.js"></script></body></html>

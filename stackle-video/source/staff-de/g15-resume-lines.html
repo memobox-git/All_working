@@ -1,0 +1,26 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="theme.css"><style>
+.head{display:flex;align-items:center;gap:24px}
+.head .h1{margin-top:0;font-size:72px}
+.lines{margin-top:52px;display:flex;flex-direction:column;gap:30px}
+.rl{border-radius:30px;padding:36px 48px;border:3px solid var(--line)}
+.rl .lab{font-size:24px;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
+.rl .txt{font-size:54px;font-weight:700;line-height:1.28;margin-top:12px;letter-spacing:-.01em}
+.rl.s .lab{color:var(--muted)} .rl.s .txt{color:#3A3E4A}
+.rl.st{border:4px solid var(--blue)} .rl.st .lab{color:var(--blue)}
+.cap{margin-top:44px;font-size:40px;font-weight:700}
+</style></head>
+<!-- Graphic 15: senior resume line, then staff resume line (a "let's say" example) -->
+<body data-dur="8.5" data-steps="1.4,5.4">
+<div class="stage">
+  <div class="head">
+    <div class="letssay" data-in="0.1" data-fx="left">Let’s say</div>
+    <div class="h1" data-in="0.2">Two resume lines</div>
+  </div>
+  <div class="lines">
+    <div class="rl s" data-in="0.6"><div class="lab">Senior line</div><div class="txt">“Built a Spark pipeline that processes 2 TB a day”</div></div>
+    <div class="rl st" data-in="2.4"><div class="lab">Staff line</div><div class="txt">“<span class="mark" data-hl="3.2">Designed</span> a shared data model <span class="mark" data-hl="3.8">used by 4 teams</span>, which <span class="mark" data-hl="4.4">removed 3 duplicate pipelines</span>”</div></div>
+  </div>
+  <div class="cap" data-in="5.6">Same engineer, same skills. The second line shows <span class="blue">the decision</span> and <span class="blue">the reach</span>.</div>
+</div>
+<div class="foot" data-in="0" data-fx="fade"><span></span><span class="site">joinstackle<i>.</i>com</span></div>
+<script src="../base.js"></script><script src="engine.js"></script></body></html>
