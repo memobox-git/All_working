@@ -4,7 +4,7 @@ From now on, Monday and Wednesday posts go with that day's YouTube video (`youtu
 
 | Day | Format (from Chris's examples) | Hook | Visual | Status |
 |---|---|---|---|---|
-| Thu Oct 15 | Rewrite of Jean Lee's Python mind map (377 on 69k) | Python runs almost every part of an AI system. | `visuals/python-for-ai-engineering.png` | FINAL, below |
+| Thu Oct 15 | Rewrite of Jean Lee's Python mind map (377 on 69k) | Python runs almost every part of an AI system. | `visuals/python-for-ai-engineering.gif` (still: `.png`) | FINAL, below |
 | Fri Oct 16 | Rebrand of Sivasankar Natarajan's MCP explainer (1,623 on 26.7k) | Everyone's talking about MCP. | `visuals/mcp-explained.png` | FINAL in `rebrands-oct.md` |
 | Sat Oct 17 | Rebrand of Alex Freberg's skills list (1,353, text-only) | In 2016, SQL and one ETL tool could get you a data engineering job. | Text-only | FINAL in `rebrands-oct.md` |
 | Sun Oct 18 | Rebrand of Andreas Horn's "fix your data" (1,956) | Gartner predicted… 60% of AI projects… | Text-only | FINAL in `rebrands-oct.md` |
@@ -19,7 +19,7 @@ Post at 8:30 AM ET. Upload the image with the post, and keep links out of the bo
 
 ## FINAL · Thu Oct 15 · Python for AI engineering (rewrite of Jean Lee's post)
 
-Image: `visuals/python-for-ai-engineering.png` (1080x1350). It shows the same 40 libraries as the post, with their logos.
+Image: `visuals/python-for-ai-engineering.gif` (1080x1350, about 9 seconds, 1.1 MB): the 10 rows slide in one at a time, each row's logos pop in, then a highlight sweeps down the list. If LinkedIn shows it as a still image, upload `python-for-ai-engineering.mp4`. The still version is `python-for-ai-engineering.png`. Same 40 libraries as the post.
 
 ```
 Python runs almost every part of an AI system.
