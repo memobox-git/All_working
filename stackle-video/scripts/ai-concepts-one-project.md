@@ -2,11 +2,11 @@
 
 **Title:** AI Concepts Explained: 20 Terms Every Engineer Should Know
 
-**Spoken words:** about 3,950 · **Estimated length:** about 26 minutes at 150 words a minute
+**Spoken words:** about 4,040 · **Estimated length:** about 27 minutes at 150 words a minute
 
 **Type:** Concepts video. It is rebuilt from Gaurav Sen's "20 AI Concepts Explained in 40 Minutes". It keeps the promise of twenty terms, with a new structure, our own examples, fixes for the original's mistakes, and four terms the original left out.
 
-**Style:** Alex Hormozi's real speaking style (see `skills/hormozi-style`). The video opens with "In this video, I'm going to..." and numbers every point. Each point is a short rule, then why, then a "let's say" example, then one short landing line. Terms are defined as "X just means Y", followed by a mirror pair, and the maths is done out loud before a money question. Sentences are medium length (about 13 words on average), with contractions and only a few short punch lines. The Stackle structure stays: promise, standard intro, parts, your turn, and the call to action.
+**Style:** Alex Hormozi's real speaking style (see `skills/hormozi-style`). The video opens with "In this video, I'm going to..." and numbers every point. Each point is a short rule, then why, then a "let's say" example, then one short landing line. Terms are defined as "X just means Y", followed by a mirror pair, and the maths is done out loud before a money question. Sentences are medium length (about 13 words on average), with contractions and only a few short punch lines. The English is kept at an 8th-grade level: everyday words, no idioms, and every technical term named once and then explained in plain words. The Stackle structure stays: promise, standard intro, parts, your turn, and the call to action.
 
 **Research date:** 13 October 2026
 
@@ -143,7 +143,7 @@ Smaller list videos that cover 2026 terms: Shaw Talebi, "30 AI Engineering Terms
 7. **A one-sentence definition for every concept,** on a card and then on one cheat sheet at the end. This serves the viewers who watch for interview revision.
 8. **Four terms added** (context window, hallucination, tool calling and evals), and five folded into others, so the count stays at twenty. Evals and hallucination are the biggest gaps across all thirteen videos (the original and the twelve competitors).
 9. **Real token counts,** including the same question in English and Hindi, because many Stackle viewers are in India.
-10. **Much shorter:** about 26 minutes instead of 43.
+10. **Much shorter:** about 27 minutes instead of 43.
 
 ### How the twenty terms map from the original to ours
 
@@ -216,9 +216,9 @@ Smaller list videos that cover 2026 terms: Shaw Talebi, "30 AI Engineering Terms
 
 **[On camera]**
 
-In this video, I'm going to explain the twenty AI concepts you keep hearing in every AI meeting, from tokens and embeddings to RAG, MCP and agents. I'll do it in plain English, with one example for each. By the end, you'll be able to explain every one of them in a single sentence.
+In this video, I'm going to explain the twenty AI words you keep hearing at work, from tokens to RAG, MCP and agents. I'll use simple words and one example for each. By the end, you'll be able to explain every one of them in one sentence.
 
-And the reason this matters is because these words show up in job ads, in interviews and in your first week on an AI team. If you don't know them, you end up nodding along and hoping nobody asks you anything, right?
+And the reason this matters is because these words show up in job posts, in interviews and in your first week on an AI team. If you don't know them, you just nod along and hope nobody asks you anything, right?
 
 ### Intro
 
@@ -226,11 +226,11 @@ And the reason this matters is because these words show up in job ads, in interv
 
 If you are new here, I am Chris. I have worked in data engineering for more than ten years. I have interviewed more than two hundred engineers for companies in healthcare, banking, automotive, and financial exchanges. Today I run Stackle, where I teach data and AI engineering, and more than two hundred thousand people follow me on LinkedIn.
 
-**[Graphic 1, full screen]** The map: five empty areas called "Inside the model", "How it was trained", "What you send it", "How it takes action" and "How you ship it".
+**[Graphic 1, full screen]** The map: five empty boxes called "Inside the model", "How it learns", "What you give it", "How it does things" and "How you launch it".
 
 *[pause]*
 
-So I've put the twenty concepts into five groups: what's inside the model, how it was trained, what you send it, how it takes action, and how you ship it. Each group builds on the one before, so by the end you'll see how they all fit together.
+So I've put the twenty words into five groups. First is what's inside the model, and then how it learns. After that comes what you give it, how it does things, and how you launch it for real people. Each group builds on the one before, so by the end you'll see how they all fit together.
 
 *[pause]*
 
@@ -238,35 +238,35 @@ So I've put the twenty concepts into five groups: what's inside the model, how i
 
 **[On camera]**
 
-So let's start inside the model, because everything else sits on top of these four ideas.
+So let's start inside the model, because everything else is built on these four ideas.
 
 #### 1. Large language model
 
-**[Card beside you]** 1. LLM just means a program that has learned to predict the next piece of text.
+**[Card beside you]** 1. LLM just means a program that guesses the next word.
 
-Number one is the large language model, or LLM. An LLM just means a program that has learned to predict the next piece of text. It predicts one piece, adds it to the text, and predicts again. And so a full answer is really hundreds of small predictions in a row.
+Number one is the large language model, or LLM. An LLM just means a program that has learned to guess the next word. It guesses one word, adds it to the sentence, and then guesses the next one. And so a full answer is really hundreds of small guesses, one after another.
 
-**[Graphic 2, full screen]** "The nightly data load failed because the input file was ___". Three guesses appear with bars for how likely each one is, and "missing" is the tallest.
+**[Graphic 2, full screen]** "The nightly data load failed because the file was ___". Three guesses appear with bars for how likely each one is, and "missing" is the tallest.
 
 *[pause]*
 
-Let's say you type, "The nightly data load failed because the input file was". The model looks at every word before the gap. Then it predicts the most likely next word, which might be "missing".
+Let's say you type, "The nightly data load failed because the file was". The model looks at every word before the gap. Then it picks the word that most often comes next, which might be "missing".
 
 *[pause]*
 
 **[On camera]**
 
-Inside, an LLM is a neural network, which just means a huge set of numbers called parameters. Training adjusts those numbers until the predictions get good. A model with a lot of parameters can hold a lot of patterns, but it costs a lot to run. A model with fewer parameters is cheap to run, but it holds less. And models that can also read images and audio are called multimodal.
+Inside, an LLM is a neural network, which just means a giant pile of numbers called parameters. Training changes those numbers until the guesses get good. A model with a lot of parameters can learn a lot, but it costs a lot to run. A model with fewer parameters is cheap to run, but it knows less. And models that can also read pictures and sound are called multimodal.
 
-So an LLM predicts. It doesn't look things up.
+So an LLM guesses. It doesn't look things up.
 
 #### 2. Token
 
 **[Card beside you]** 2. A token just means a small piece of text.
 
-Number two is the token, and the rule is that everything in AI is counted in tokens. A token just means a small piece of text, and a long word is often split into more than one.
+Number two is the token, and the rule is that AI counts everything in tokens. A token just means a small piece of text. A short word is usually one token, and a long word is often cut into two or more.
 
-**[Graphic 3, full screen]** "Why is the sales dashboard empty this morning?" split into nine colored tokens. Below it, "Snowflake" splits into "Snow" and "flake". At the bottom, "Hello, why is the dashboard empty?" is 8 tokens in English and 15 in Hindi. Label: "OpenAI tokenizer used by GPT-4o".
+**[Graphic 3, full screen]** "Why is the sales dashboard empty this morning?" cut into nine colored tokens. Below it, "Snowflake" cut into "Snow" and "flake". At the bottom, "Hello, why is the dashboard empty?" is 8 tokens in English and 15 in Hindi. Label: "OpenAI tokenizer used by GPT-4o".
 
 *[pause]*
 
@@ -276,13 +276,13 @@ On OpenAI's tokenizer, "Why is the sales dashboard empty this morning?" is nine 
 
 **[On camera]**
 
-And the reason you care is money, because you pay for every token in and every token out. A lot of tokens means a big bill and a slow answer. A few tokens means a small bill and a fast one.
+And the reason you care is money, because you pay for every token you send and every token you get back. A lot of tokens means a big bill and a slow answer. A few tokens means a small bill and a fast one.
 
-**[Graphic 4, full screen]** The maths builds line by line. "Let's say: $3 per million tokens." "1,000 questions × 5,000 tokens = 5 million tokens a day." "= $15 a day = about $450 a month." Last line: "Hindi: 15 tokens instead of 8. Close to double?"
+**[Graphic 4, full screen]** The maths builds line by line. "Let's say: $3 per million tokens." "1,000 questions × 5,000 tokens = 5 million tokens a day." "= $15 a day = about $450 a month." Last line: "Hindi: 15 tokens instead of 8. Almost double?"
 
 *[pause]*
 
-So let's do the math. Let's say a model charges three dollars for every million tokens. Let's say your app gets a thousand questions a day, and each one sends five thousand tokens. That's five million tokens a day, which is fifteen dollars a day, or about four hundred and fifty a month. That adds up fast, right? Now, that short question took eight tokens in English and fifteen in Hindi. So if your users write in Hindi, are you ready for a bill that's close to double?
+So let's do the math. Let's say a model costs three dollars for every million tokens. Let's say your app gets a thousand questions a day, and each one sends five thousand tokens. That's five million tokens a day, which is fifteen dollars a day, or about four hundred and fifty a month. That adds up fast, right? Now, that short question took eight tokens in English and fifteen in Hindi. So if your users write in Hindi, are you ready for a bill that's almost double?
 
 *[pause]*
 
@@ -292,15 +292,15 @@ Tokens are what you pay in.
 
 #### 3. Embedding
 
-**[Card beside you]** 3. An embedding just means a list of numbers that captures what a piece of text means.
+**[Card beside you]** 3. An embedding just means a list of numbers that shows what a piece of text means.
 
-Number three is the embedding. An embedding just means a list of numbers that captures what a piece of text means. Think of it as a spot on a map of meaning. Text that means a lot of the same thing lands close together. Text that means very different things lands far apart.
+Number three is the embedding. An embedding just means a list of numbers that shows what a piece of text means. Think of it as a dot on a map. Two sentences that mean almost the same thing sit close together. Two sentences that mean very different things sit far apart.
 
-**[Graphic 5, full screen]** A map of points. "Why is the dashboard empty?" sits right next to "Missing rows in the sales table". "Change the dashboard colors" is a little further away. "Today's lunch menu" is far off in a corner.
+**[Graphic 5, full screen]** A map of dots. "Why is the dashboard empty?" sits right next to "Missing rows in the sales table". "Change the dashboard colors" is a little further away. "Today's lunch menu" is far off in a corner.
 
 *[pause]*
 
-Let's say your team has a runbook page called "Missing rows in the sales table". Someone asks, "Why is the dashboard empty?" Those two share almost no words, right? But they mean nearly the same thing, so their embeddings land right next to each other.
+Let's say your team has a help page called "Missing rows in the sales table". Someone asks, "Why is the dashboard empty?" Those two don't share many words, right? But they mean almost the same thing, so their dots sit right next to each other.
 
 *[pause]*
 
@@ -310,109 +310,109 @@ Embeddings match meaning, not words.
 
 #### 4. Transformer and attention
 
-**[Card beside you]** 4. Attention just means each word looks at the words around it to work out what it means. A transformer is a design built around attention.
+**[Card beside you]** 4. Attention just means each word looks at the words around it to work out what it means. A transformer is the design built on attention.
 
-Number four is the transformer, and the key part inside it is called attention. Attention just means each word looks at the words around it to work out what it means. It needs to do that because one word can mean very different things.
+Number four is the transformer, and the most important part inside it is called attention. Attention just means each word looks at the words around it to work out what it means. It has to do that because one word can mean very different things.
 
 **[Graphic 6, full screen]** Two sentences. "The pipeline failed last night", with arrows from "pipeline" to "failed" and "night". "The pipeline looks strong this quarter", with arrows from "pipeline" to "strong" and "quarter".
 
 *[pause]*
 
-Let's say you hear the word "pipeline". If a data engineer says the pipeline failed last night, they mean jobs that move data. If someone in sales says the pipeline looks strong this quarter, they mean their deals. The words nearby tell you which one, and that's exactly what attention looks at.
+Let's say you hear the word "pipeline". If a data engineer says the pipeline failed last night, they mean the jobs that move data. If someone in sales says the pipeline looks strong this quarter, they mean their deals. The words around "pipeline" tell you which one they mean, and that's what attention looks at.
 
 *[pause]*
 
-**[Graphic 7, full screen]** A tall stack of identical blocks, each saying "Attention" then "Process". Beside it: "2017: Attention Is All You Need" and "GPT = Generative Pre-trained Transformer".
+**[Graphic 7, full screen]** A tall stack of the same block, each saying "Attention" then "Think". Beside it: "2017: Attention Is All You Need" and "GPT = Generative Pre-trained Transformer".
 
 *[pause]*
 
-A transformer just means a design for a neural network that's built around attention. It repeats attention many times, so each round understands the text a little better. Google researchers introduced it in 2017, in a paper called "Attention Is All You Need". It's the T in GPT.
-
-*[pause]*
-
-**[On camera]**
-
-Almost every LLM is a transformer underneath.
-
-### Part 2: How the model was trained
-
-**[Graphic 1 again]** The map. "Inside the model" is filled in, and "How it was trained" lights up.
+A transformer just means the design that almost every LLM is built on, and attention is at its center. It runs attention again and again, and each round it understands the text a little better. Google researchers shared it in 2017, in a paper called "Attention Is All You Need". It's the T in GPT.
 
 *[pause]*
 
 **[On camera]**
 
-So now you know what's inside the model, and the next five concepts are about how it learned all of that.
+Almost every LLM is a transformer inside.
+
+### Part 2: How the model learns
+
+**[Graphic 1 again]** The map. "Inside the model" is filled in, and "How it learns" lights up.
+
+*[pause]*
+
+**[On camera]**
+
+So now you know what's inside the model, and the next five words are about how it learned all of that.
 
 #### 5. Pre-training
 
-**[Card beside you]** 5. Pre-training just means the model reads a huge amount of text and practices guessing the next token.
+**[Card beside you]** 5. Pre-training just means the model reads a huge amount of text and practices guessing the next word.
 
-Number five is pre-training, which is the first and biggest stage of training. Pre-training just means the model reads a huge amount of text and practices guessing the next token.
+Number five is pre-training, which is the first and biggest step of training. Pre-training just means the model reads a huge amount of text and practices guessing the next word.
 
-**[Graphic 8, full screen]** "Please send the report by ____". After a beat, the hidden word appears: "Friday". Underneath: "The text is its own answer key."
+**[Graphic 8, full screen]** "Please send the report by ____". After a beat, the hidden word appears: "Friday". Under it: "The text is its own answer key."
 
 *[pause]*
 
-And what makes it work is that nobody has to label the answers, because the text already has them. Let's say the sentence is "Please send the report by Friday." You hide the last word, the model guesses, and then it sees the real word and learns. This is called self-supervised learning, which just means the data provides its own answers.
+And what makes it work is that nobody has to write down the answers, because the text already has them. Let's say the sentence is "Please send the report by Friday." You hide the last word, the model guesses, and then it sees the real word and learns. This is called self-supervised learning, which just means the text is its own answer key.
 
 *[pause]*
 
 **[On camera]**
 
-And if you think about it, that's why it scales. If people had to label every answer, you'd get a little data at a high cost. Because the text labels itself, you get a lot of data at a low cost.
+And if you think about it, that's why it works so well. If people had to write every answer, you'd get a little data for a lot of money. Because the text checks itself, you get a lot of data for very little money.
 
-After pre-training, you have a base model, which only continues text. If you ask it a question, it might just write three more questions back. It's smart, but it's not helpful yet.
+After pre-training, you have a base model, which only keeps writing text. If you ask it a question, it might just write three more questions back. It's smart, but it's not helpful yet.
 
 #### 6. Fine-tuning
 
-**[Card beside you]** 6. Fine-tuning just means extra training on a smaller set of examples that you choose.
+**[Card beside you]** 6. Fine-tuning just means extra training on a small set of examples you pick.
 
-Number six is fine-tuning, and it's how you change the way a model behaves. Fine-tuning just means extra training on a smaller set of examples that you choose. That's how a base model becomes an assistant. A lot of good examples can teach a model a new habit, and a few bad ones can teach it a bad one.
+Number six is fine-tuning, and it's how you change the way a model acts. Fine-tuning just means extra training on a small set of examples that you pick. That's how a base model becomes a helpful assistant. A lot of good examples can teach a model a good habit, and a few bad ones can teach it a bad one.
 
-**[Graphic 9, full screen]** Two columns. Left, "Fine-tune": collect examples, train, test, and repeat when a new model comes out. Right, "Instructions first": write the rule, add two examples, try it today.
+**[Graphic 9, full screen]** Two columns. Left, "Fine-tune": collect examples, train, test, and do it again when a new model comes out. Right, "Instructions first": write the rule, add two examples, try it today.
 
 *[pause]*
 
-Let's say you want every answer from your help bot in three lines: what broke, why, and what to do next. You could fine-tune a model for that. Or you could write that rule in the instructions and add two examples, which you can try today.
+Let's say you want every answer from your help bot in three lines: what broke, why, and what to do next. You could fine-tune a model for that. Or you could just write that rule in your instructions and add two examples, and you can try that today.
 
 *[pause]*
 
 **[On camera]** *(Advice line. Chris to confirm.)*
 
-And so most teams try better instructions and better documents first. They only fine-tune when that isn't enough. Fix the instructions before you retrain the model.
+And so most teams try better instructions and better documents first. They only fine-tune when that isn't enough. Fix your instructions before you retrain the model.
 
 #### 7. Reinforcement learning
 
-**[Card beside you]** 7. Reinforcement learning just means the model tries, gets a score, and learns to do more of what scored well.
+**[Card beside you]** 7. Reinforcement learning just means the model tries, gets a score, and does more of what scored well.
 
-Number seven is reinforcement learning, or RL. Reinforcement learning just means the model tries something, gets a score, and learns to do more of what scored well. Answers that score well become more likely. Answers that score badly become less likely.
+Number seven is reinforcement learning, or RL. Reinforcement learning just means the model tries something, gets a score, and learns to do more of what scored well. Answers that score well show up more. Answers that score badly show up less.
 
-**[Graphic 10, full screen]** Top row, "Learning from people": two answers, a person picks one, a reward model learns the choice, and the LLM is trained to score higher. Bottom row: "1.3 billion parameters beat 175 billion. 175 ÷ 1.3 ≈ 135 times smaller." Source: OpenAI, 2022.
+**[Graphic 10, full screen]** Top row, "Learning from people": two answers, a person picks one, a second model learns what people like, and the LLM is trained to score higher. Bottom row: "1.3 billion parameters beat 175 billion. 175 ÷ 1.3 ≈ 135 times smaller." Source: OpenAI, 2022.
 
 *[pause]*
 
-The best-known kind is RL from human feedback, or RLHF. Let's say a person sees two answers and picks the better one. Those choices train a reward model, and then the LLM is trained to score higher with it.
+The best-known kind is RL from human feedback, or RLHF. Let's say a person sees two answers and picks the better one. Those picks train a second model to guess what people like. Then the LLM is trained to get a higher score from that second model.
 
-And the results are kind of wild. In OpenAI's 2022 research, people preferred a 1.3 billion parameter model trained this way over a 175 billion one that wasn't. If you do the math, 175 divided by 1.3 is about 135. So a model about 135 times smaller won, just because of how it was trained.
+And the result surprised a lot of people. In OpenAI's 2022 study, people liked a 1.3 billion parameter model trained this way more than a 175 billion one that wasn't. If you do the math, 175 divided by 1.3 is about 135. So a model about 135 times smaller won, just because of how it was trained.
 
 *[pause]*
 
 **[On camera]**
 
-The newer kind of RL uses automatic checks instead of people. If the task is maths with one right answer, or code with tests, a program can score it. That means the model can practice far more than people could ever score. You get what you reward.
+The newer kind of RL lets a computer do the scoring instead of people. If it's a maths problem with one right answer, or code that has tests, a program can check it. That means the model can practice far more than people could ever check by hand. You get what you reward.
 
 #### 8. Reasoning model
 
-**[Card beside you]** 8. A reasoning model just means a model that works through a problem step by step before it answers.
+**[Card beside you]** 8. A reasoning model just means a model that works out a problem step by step before it answers.
 
-Number eight is the reasoning model, which came out of that newer kind of RL. A reasoning model just means a model that works through a problem step by step before it answers. Those written steps are called a chain of thought. It started in 2022 as a prompting trick. Then models like OpenAI's o1 in 2024 and DeepSeek's R1 in 2025 were trained to do it on their own.
+Number eight is the reasoning model, which came out of that newer kind of RL. A reasoning model just means a model that works out a problem step by step before it answers. Those written steps are called a chain of thought. It started in 2022 as a trick people used in their prompts. Then models like OpenAI's o1 in 2024 and DeepSeek's R1 in 2025 were trained to do it on their own.
 
 **[Graphic 11, full screen]** The question "Which of our ten biggest customers spent less this quarter than last quarter?" and four steps under it: find the ten customers, get this quarter's spend, get last quarter's spend, compare.
 
 *[pause]*
 
-Let's say you ask, "Which of our ten biggest customers spent less this quarter than last?" The model has to find the ten customers, get two numbers for each, and compare them before it answers. A model that writes those steps out has a much better shot than one that answers in one go.
+Let's say you ask, "Which of our ten biggest customers spent less this quarter than last?" The model has to find the ten customers, get two numbers for each one, and compare them. A model that writes those steps down is much more likely to get it right than one that answers in one go.
 
 *[pause]*
 
@@ -422,163 +422,163 @@ But thinking costs tokens. A hard question with a lot of steps is worth that cos
 
 #### 9. Hallucination
 
-**[Card beside you]** 9. A hallucination just means an answer that sounds confident but is false.
+**[Card beside you]** 9. A hallucination just means an answer that sounds sure but is wrong.
 
-Number nine is hallucination, and it's the side effect of everything we just covered. A hallucination just means an answer that sounds confident but is false. It happens because the model is trained to produce likely text, and likely isn't the same as true.
+Number nine is hallucination, and it comes from everything we just covered. A hallucination just means an answer that sounds sure but is wrong. It happens because the model is trained to guess what sounds right, and what sounds right isn't always true.
 
 **[Graphic 12, full screen]** A SQL query that filters on "region_code", and a red error under it: "column region_code does not exist".
 
 *[pause]*
 
-Let's say you ask an AI assistant to write a query on your sales table. It filters on a column called "region_code", and it looks completely right. But your table doesn't have that column. The query fails.
+Let's say you ask an AI to write a query on your sales table. It uses a column called "region_code", and the query looks perfect. But your table doesn't have that column. The query breaks.
 
 *[pause]*
 
 **[On camera]**
 
-In 2025, OpenAI researchers argued that the way models are tested actually rewards guessing. So let's say a test has a hundred questions, and the model doesn't know ten of them. If it says "I don't know", it scores zero on those ten. If it guesses, it gets a few right by luck. Which means guessing beats being honest.
+In 2025, OpenAI researchers said the way we train and test models actually rewards guessing. So let's say a test has a hundred questions, and the model doesn't know ten of them. If it says "I don't know", it gets zero on those ten. If it guesses, it gets a few right by luck. Which means guessing scores better than being honest.
 
-And so a model with a lot of real facts in front of it has less room to guess. A model with few facts fills the gap with something that sounds right. You can't fully train this away yet, so you design around it.
+And so a model with a lot of real facts in front of it has less room to guess. A model with only a few facts fills the gap with something that sounds right. You can't fully train this out yet, so you build around it.
 
-### Part 3: What you send the model
+### Part 3: What you give the model
 
-**[Graphic 1 again]** The map. The first two areas are filled in, and "What you send it" lights up.
+**[Graphic 1 again]** The map. The first two boxes are filled in, and "What you give it" lights up.
 
 *[pause]*
 
 **[On camera]**
 
-So a model can't know your company's facts unless you give them to it, and the next four concepts are about what you send it.
+So a model can't know your company's facts unless you give them to it, and the next four words are about what you give it.
 
 #### 10. Context window
 
-**[Card beside you]** 10. The context window just means the most text a model can work with at one time.
+**[Card beside you]** 10. The context window just means the most text a model can read at one time.
 
-Number ten is the context window. The context window just means the most text a model can work with at one time, counted in tokens. Your instructions, your documents, the chat so far and the answer all have to fit inside it. The newest models from Anthropic, OpenAI and Google hold about one million tokens.
+Number ten is the context window. The context window just means the most text a model can read at one time, counted in tokens. Your instructions, your documents, the chat so far and the answer all have to fit inside it. The newest models from Anthropic, OpenAI and Google can hold about one million tokens.
 
-**[Graphic 13, full screen]** A box labelled "Context window: about 1 million tokens" filling up with instructions, examples, documents, tool results, chat history and the answer. Beside it, a pile labelled "Three years of logs" that does not fit. Under it: "Context rot: 18 models got less reliable as inputs grew (Chroma, 2025)."
+**[Graphic 13, full screen]** A box labelled "Context window: about 1 million tokens" filling up with instructions, examples, documents, tool results, the chat so far and the answer. Beside it, a pile labelled "Three years of logs" that does not fit. Under it: "Context rot: 18 models got worse as the text got longer (Chroma, 2025)."
 
 *[pause]*
 
-Let's say you want an assistant to explain why a job failed, and you have three years of logs. Even at a million tokens, they won't fit, right? And even if they did, models get worse at finding the right detail as the input gets longer. One study of eighteen models found exactly that, and people call it context rot.
+Let's say you want an AI to explain why a job failed, and you have three years of logs. Even at a million tokens, they won't fit, right? And even if they did, models get worse at finding the right detail when you give them more text. One study of eighteen models found exactly that, and people call it context rot.
 
 *[pause]*
 
 **[On camera]**
 
-So a lot of text is slow, expensive and easy to get lost in. A little text is fast and cheap, but it might miss what matters. Choosing what goes in is the skill.
+So a lot of text is slow, costly and easy to get lost in. A little text is fast and cheap, but it might miss what matters. Picking what goes in is the real skill.
 
 #### 11. Prompt
 
 **[Card beside you]** 11. A prompt just means the text you send to the model. Few-shot prompting just means adding a few examples.
 
-Number eleven is the prompt. A prompt just means the text you send to the model, and in an app it has two parts. The system prompt holds the instructions you write once. The user message is the question, which changes every time.
+Number eleven is the prompt. A prompt just means the text you send to the model, and in an app it has two parts. The system prompt is the set of rules you write once. The user's message is the question, which changes every time.
 
 **[Graphic 14, full screen]** A system prompt: "You help the data team answer questions about dashboards and pipelines. Answer in three lines: what broke, why, and what to do next. If you're not sure, say so." Below it, two example answers in the same three-line format.
 
 *[pause]*
 
-Let's say you're building a help bot for a data team. Your system prompt could say, "You help the data team answer questions about dashboards and pipelines. Answer in three lines: what broke, why, and what to do next. If you're not sure, say so." That last line is your first defence against hallucination, because it lets the model say it doesn't know.
+Let's say you're building a help bot for a data team. Your system prompt could say, "You help the data team answer questions about dashboards and pipelines. Answer in three lines: what broke, why, and what to do next. If you're not sure, say so." That last line is your first guard against hallucination, because it lets the model say it doesn't know.
 
 *[pause]*
 
 **[On camera]**
 
-Then there's few-shot prompting, which just means you add a few examples of good answers. With no examples, the model guesses the format. With two or three, it copies the format. Examples beat explanations.
+Then there's few-shot prompting, which just means you add a few examples of good answers. With no examples, the model guesses what you want. With two or three, it copies them. Showing beats telling.
 
 #### 12. Retrieval-augmented generation
 
 **[Card beside you]** 12. RAG just means you find the right documents and add them to the prompt before the model answers.
 
-Number twelve is RAG, which stands for retrieval-augmented generation. RAG just means you find the right documents and add them to the prompt before the model answers. So you retrieve the documents, augment the prompt with them, and then generate the answer.
+Number twelve is RAG, which stands for retrieval-augmented generation. RAG just means you find the right documents and add them to the prompt before the model answers. Retrieve means find, augment means add, and generate means write the answer.
 
-**[Graphic 15, full screen]** Three steps. Retrieve: "Find the runbook page." Augment: "Add it to the prompt." Generate: "Answer from your steps."
+**[Graphic 15, full screen]** Three steps. Retrieve: "Find the right help page." Augment: "Add it to the prompt." Generate: "Answer from your steps."
 
 *[pause]*
 
-Let's say someone asks your help bot, "How do I restart the billing pipeline?" The model has never seen your runbook, which is your team's guide for fixing things. Without RAG, it answers from memory and guesses. With RAG, your code finds the right page and puts it in the prompt. Now the model answers from your actual steps.
+Let's say someone asks your help bot, "How do I restart the billing pipeline?" The model has never seen your team's help pages, so without RAG it answers from memory and guesses. With RAG, your code finds the right page and puts it in the prompt. Now the model answers from your real steps.
 
 *[pause]*
 
 **[On camera]**
 
-And notice that nothing about the model changes, because the prompt is what gets augmented. You might hear that RAG is dead. What really changed is how the finding happens, because many AI tools now let the model search for itself. The job is still the same.
+And notice that the model itself doesn't change, because only the prompt gets the extra pages. You might hear people say RAG is dead. What really changed is how the finding happens, because a lot of AI tools now let the model search for itself. The job is still the same.
 
 #### 13. Vector database
 
-**[Card beside you]** 13. A vector database just means a database that stores embeddings and finds the ones closest to a question.
+**[Card beside you]** 13. A vector database just means a database that stores embeddings and finds the closest ones to a question.
 
-Number thirteen is the vector database, and it's how RAG usually finds the right pages. A vector database just means a database that stores embeddings and finds the ones closest to a question. Keyword search finds the same words. Vector search finds the same meaning.
+Number thirteen is the vector database, and it's how RAG usually finds the right pages. A vector database just means a database that stores embeddings and finds the closest ones to a question. Normal search finds the same words. Vector search finds the same meaning.
 
-**[Graphic 16, full screen]** Runbook pages cut into chunks, each chunk turned into an embedding and stored. The question "Why is the dashboard empty?" becomes an embedding and lands next to "Missing rows in the sales table". In a corner: "Keyword search + vector search" and "Postgres + pgvector".
-
-*[pause]*
-
-Let's say your team has two hundred runbook pages. You split them into small chunks, turn each chunk into an embedding, and store it. When a question comes in, you turn it into an embedding too, and the database returns the closest chunks. That's how "Why is the dashboard empty?" finds the page about missing rows.
+**[Graphic 16, full screen]** Help pages cut into small pieces, and each piece turned into an embedding and stored. The question "Why is the dashboard empty?" becomes an embedding and sits next to "Missing rows in the sales table". In a corner: "Word search + vector search" and "Postgres + pgvector".
 
 *[pause]*
 
-**[On camera]**
-
-Meaning search can miss exact names like a job ID, so a lot of teams add keyword search too. And if you already run Postgres, an extension called pgvector adds vector search to it. Keeping those embeddings fresh is a data pipeline, and you already know how to build those.
-
-### Part 4: How the model takes action
-
-**[Graphic 1 again]** The map. Three areas are filled in, and "How it takes action" lights up.
+Let's say your team has two hundred help pages. You cut them into small pieces, turn each piece into an embedding, and store it. When a question comes in, you turn it into an embedding too, and the database finds the closest pieces. That's how "Why is the dashboard empty?" finds the page about missing rows.
 
 *[pause]*
 
 **[On camera]**
 
-So far, the model can read and answer. But a lot of answers live in real systems, like your job scheduler, and the next four concepts are about how the model reaches them.
+Meaning search can miss exact names like a job ID, so a lot of teams use normal word search too. And if you already use Postgres, a free add-on called pgvector gives it vector search. Keeping those embeddings up to date is a data pipeline, and you already know how to build those.
+
+### Part 4: How the model does things
+
+**[Graphic 1 again]** The map. Three boxes are filled in, and "How it does things" lights up.
+
+*[pause]*
+
+**[On camera]**
+
+So far, the model can read and answer. But a lot of answers live in your real systems, like the tool that runs your data jobs. The next four words are about how the model gets to them.
 
 #### 14. Tool calling
 
-**[Card beside you]** 14. Tool calling just means the model asks your code to run a function, and your code sends back the result.
+**[Card beside you]** 14. Tool calling just means the model asks your code to do something, and your code sends back the result.
 
-Number fourteen is tool calling, and the rule is that the model never runs anything itself. Tool calling just means the model asks your code to run a function. Your code runs it and sends the result back.
+Number fourteen is tool calling, and the rule is that the model never does anything by itself. Tool calling just means the model asks your code to do something. Your code does it and sends the result back.
 
-**[Graphic 17, full screen]** Four steps between the model and your code. 1. The model asks: "Call get_job_status for the sales job." 2. Your code runs it. 3. Your code sends back: "Failed at 3:10 a.m." 4. The model answers with that fact.
+**[Graphic 17, full screen]** Four steps between the model and your code. 1. The model asks: "Run get_job_status for the sales job." 2. Your code runs it. 3. Your code sends back: "Failed at 3:10 a.m." 4. The model answers with that fact.
 
 *[pause]*
 
-Let's say you give a model a tool called "get job status". Someone asks, "Did the sales job run last night?" The model asks your code to call "get job status" for the sales job. Your code runs it, gets back "failed at 3:10 a.m.", and sends that back. Now the model answers with real data instead of a guess.
+Let's say you give a model a tool called "get job status". Someone asks, "Did the sales job run last night?" The model asks your code to run "get job status" for the sales job. Your code runs it, gets back "failed at 3:10 a.m.", and sends that back. Now the model answers with a real fact instead of a guess.
 
 *[pause]*
 
 **[On camera]**
 
-Your code does the running, which means you stay in control. The more tools you give a model, the more it can do, and the more it can break. With read-only access, it can't delete a table, even by mistake. The model asks. Your code decides.
+Your code does the work, which means you stay in control. The more tools you give a model, the more it can do, and the more it can break. If it can only read your data and not change it, it can't delete a table, even by mistake. The model asks. Your code decides.
 
 #### 15. Model Context Protocol
 
-**[Card beside you]** 15. MCP just means one standard way to plug tools and data into AI apps.
+**[Card beside you]** 15. MCP just means one shared way to plug tools into AI apps.
 
-Number fifteen is MCP, which stands for Model Context Protocol. MCP just means one standard way to plug tools and data into AI apps. It's kind of like how USB-C is one plug for lots of devices.
+Number fifteen is MCP, which stands for Model Context Protocol. MCP just means one shared way to plug tools into AI apps. Think of it like a phone charger that fits every phone.
 
-**[Graphic 18, full screen]** Left, "Without MCP": ten apps and ten tools joined by a tangle of lines, "10 × 10 = 100 connectors". Right, "With MCP": each connects once to MCP in the middle, "10 + 10 = 20". Bottom line: "Let's say one week each: 100 weeks or 20?"
+**[Graphic 18, full screen]** Left, "Without MCP": ten apps and ten tools joined by a mess of lines, "10 × 10 = 100 connectors". Right, "With MCP": each one plugs in once, "10 + 10 = 20". Bottom line: "Let's say one week each: 100 weeks or 20?"
 
 *[pause]*
 
-And the reason MCP exists is the math. Before MCP, every AI app built its own connector for every tool. So let's say there are ten AI apps and ten tools, and ten times ten is a hundred connectors. With MCP, each tool is wrapped once as an MCP server, and each app learns MCP once. That's ten plus ten, which is twenty. Now let's say each connector takes a week to build. Would you rather pay for a hundred weeks of work or twenty? That's five times less work.
+And the reason MCP exists is the math. Before MCP, every AI app had to build its own connector for every tool. So let's say there are ten AI apps and ten tools, and ten times ten is a hundred connectors. With MCP, each tool plugs in once, and each app plugs in once. That's ten plus ten, which is twenty. Now let's say each connector takes a week to build. Would you rather pay for a hundred weeks of work or twenty? That's five times less work.
 
 *[pause]*
 
 **[On camera]**
 
-Anthropic introduced MCP in November 2024. In December 2025, it handed MCP to the Agentic AI Foundation, under the Linux Foundation. So before you build a connector, check if an MCP server already exists.
+Anthropic made MCP in November 2024. In December 2025, it gave MCP to a group run by the Linux Foundation, so no single company owns it. So before you build a connector, check if an MCP one already exists.
 
 #### 16. Agent
 
-**[Card beside you]** 16. An agent just means a model that uses tools in a loop until the job is done.
+**[Card beside you]** 16. An agent just means a model that uses tools again and again until the job is done.
 
-Number sixteen is the agent. An agent just means a model that uses tools in a loop until the job is done. You give it the goal, and it picks each next step based on what it found in the last one.
+Number sixteen is the agent. An agent just means a model that uses tools again and again until the job is done. You give it the goal, and it picks each next step based on what it found in the last one.
 
-**[Graphic 19, full screen]** A loop: "Decide", "Use a tool", "Read the result", and back to "Decide". Beside it, the steps: no rows today, the load job failed, "input file not found", then "Re-run the job when the file lands?" for a person to approve.
+**[Graphic 19, full screen]** A loop: "Decide", "Use a tool", "Read the result", and back to "Decide". Beside it, the steps: no rows today, the load job failed, "file not found", then "Re-run the job when the file arrives?" for a person to approve.
 
 *[pause]*
 
-Let's say someone on your sales team asks, "Why is the sales dashboard empty this morning?" An agent checks the table behind the dashboard and sees no rows for today. Then it checks the job that loads that table and sees it failed. It reads the log and finds "input file not found". So it replies with the reason and asks if it should re-run the job once the file lands. And if you think about it, nobody wrote those steps in advance.
+Let's say someone on your sales team asks, "Why is the sales dashboard empty this morning?" An agent checks the table behind the dashboard and sees no rows for today. Then it checks the job that fills that table and sees it failed. It reads the log and finds "file not found". So it replies with the reason and asks if it should re-run the job when the file arrives. And if you think about it, nobody wrote those steps for it.
 
 *[pause]*
 
@@ -586,19 +586,19 @@ Let's say someone on your sales team asks, "Why is the sales dashboard empty thi
 
 *[pause]*
 
-But every step costs tokens, so let's do that math too. Let's say each step sends twenty thousand tokens, and the agent takes ten steps. That's two hundred thousand tokens for one question. At three dollars per million, that's sixty cents a question. And at a thousand questions a day, that's six hundred dollars a day. So is the agent worth six hundred dollars a day to you? Sometimes it is, and sometimes a simple script does the job for almost nothing.
+But every step costs tokens, so let's do that math too. Let's say each step sends twenty thousand tokens, and the agent takes ten steps. That's two hundred thousand tokens for one question. At three dollars per million, that's sixty cents a question. And at a thousand questions a day, that's six hundred dollars a day. So is the agent worth six hundred dollars a day to you? Sometimes it is, and sometimes a simple script does the same job for almost nothing.
 
 *[pause]*
 
 **[On camera]**
 
-A lot of freedom means an agent can solve problems you didn't plan for. It also means it can make mistakes you didn't plan for. So give it only the tools it needs, and have a person approve anything that changes data.
+A lot of freedom means an agent can fix problems you didn't plan for. It also means it can make mistakes you didn't plan for. So give it only the tools it needs, and have a person say yes before anything changes your data.
 
 #### 17. Context engineering
 
-**[Card beside you]** 17. Context engineering just means choosing what goes into the context window at every step.
+**[Card beside you]** 17. Context engineering just means picking what goes into the context window at every step.
 
-Number seventeen is context engineering, and it matters most for agents. Context engineering just means choosing what goes into the context window at every step. Prompt engineering is about the words in one message. Context engineering is about everything the model sees, including documents, tool results and notes from earlier steps.
+Number seventeen is context engineering, and it matters most for agents. Context engineering just means picking what goes into the context window at every step. Prompt engineering is about the words in one message. Context engineering is about everything the model sees, like documents, tool results and notes from earlier steps.
 
 **[Graphic 21, full screen]** Two bars. "Whole log: 50,000 lines × 20 tokens = 1,000,000 tokens." "Error lines only: 12 lines × 20 tokens = 240 tokens." Below: "Plus a short summary of the earlier steps."
 
@@ -610,17 +610,17 @@ Let's say the agent checking that empty dashboard opens a log with fifty thousan
 
 **[On camera]**
 
-Good context engineering also means swapping old steps for a short summary. A demo works on one clean question. A product has to keep the right information in front of the model, step after step.
+Good context engineering also means turning old steps into a short summary. A demo works on one clean question. A real product has to keep the right facts in front of the model, step after step.
 
-### Part 5: How you ship it
+### Part 5: How you launch it
 
-**[Graphic 1 again]** The map. Four areas are filled in, and "How you ship it" lights up.
+**[Graphic 1 again]** The map. Four boxes are filled in, and "How you launch it" lights up.
 
 *[pause]*
 
 **[On camera]**
 
-So now the assistant can read, answer and act. Before real people rely on it, you need to know if it's good and if you can afford it, and that's the last three concepts.
+So now the assistant can read, answer and do things. But before real people use it, you need to know if it's good and if you can pay for it, and that's the last three words.
 
 #### 18. Evals
 
@@ -628,83 +628,83 @@ So now the assistant can read, answer and act. Before real people rely on it, yo
 
 Number eighteen is evals, and it's the one most videos on this topic skip. An eval just means a test for your AI. You give it real questions where you already know the right answer, and you score what it says.
 
-**[Graphic 22, full screen]** A table of fifty past incidents with four columns: the question, the real cause, the AI's answer, and pass or fail. The bottom line builds: "46 ÷ 50 = 92%. Good enough?" Beside it: "Data tests check your data. Evals check your AI."
+**[Graphic 22, full screen]** A table of fifty past problems with four columns: the question, the real cause, the AI's answer, and pass or fail. The bottom line builds: "46 ÷ 50 = 92%. Good enough?" Beside it: "Data tests check your data. Evals check your AI."
 
 *[pause]*
 
-Let's say you have fifty past incidents where you already know the real cause. You run your assistant on all fifty, and let's say it gets forty-six right, which is ninety-two percent. Now the question is whether ninety-two percent is good enough for your team. That call is your job.
+Let's say you have fifty past problems where you already know the real cause. You run your assistant on all fifty, and let's say it gets forty-six right, which is ninety-two percent. Now the question is whether ninety-two percent is good enough for your team. That call is your job.
 
 *[pause]*
 
 **[On camera]**
 
-Some checks are simple code, like "did it name the right job?" Others need judgment, so another model grades each answer against a checklist, which is called LLM-as-a-judge. With evals, every change is measured. Without them, every change is a guess. Data tests check your data, and evals check your AI.
+Some checks are easy for code, like "did it name the right job?" Others need judgment, so you have another AI grade each answer against a checklist, which people call LLM-as-a-judge. With evals, you know if a change helped. Without them, you're just guessing. Data tests check your data, and evals check your AI.
 
 #### 19. Distillation and small language models
 
-**[Card beside you]** 19. Distillation just means training a small model to copy a big model's answers.
+**[Card beside you]** 19. Distillation just means a big model teaches a small model to give the same answers.
 
-Number nineteen is distillation. Distillation just means training a small model to copy a big model's answers. The big model is the teacher, and the small one is the student. When DeepSeek released its R1 reasoning model in January 2025, it also released six smaller versions trained on R1's answers.
+Number nineteen is distillation. Distillation just means a big model teaches a small model to give the same answers. The big model is the teacher, and the small one is the student. When DeepSeek put out its R1 reasoning model in January 2025, it also put out six smaller models trained on R1's answers.
 
-When the student is small enough, it's called a small language model. There's no official cut-off, but it usually means up to about ten billion parameters. Small models are cheaper and faster, and they can run on your own servers.
+When the student is small enough, it's called a small language model. There's no exact line, but it usually means up to about ten billion parameters. Small models are cheaper and faster, and you can run them on your own computers.
 
-**[Graphic 23, full screen]** A router. Easy questions go to a small model, hard ones to a big model. The maths builds: "All big: 10,000 × 1¢ = $100 a day." "Routed: 8,000 × 0.1¢ = $8, plus 2,000 × 1¢ = $20." "= $28 a day." Last line: "$100 or $28?"
+**[Graphic 23, full screen]** Easy questions go to a small model, and hard ones go to a big model. The maths builds: "All big: 10,000 × 1¢ = $100 a day." "Split: 8,000 × 0.1¢ = $8, plus 2,000 × 1¢ = $20." "= $28 a day." Last line: "$100 or $28?"
 
 *[pause]*
 
-And so a common setup is to send easy questions to a small model and hard ones to a big model. Let's say a big model costs one cent a question, and a small one costs a tenth of a cent. Let's say you get ten thousand questions a day. If they all go to the big model, that's a hundred dollars a day. Now let's say eight thousand are easy and go to the small model. That's eight dollars, plus twenty for the two thousand hard ones, so twenty-eight dollars a day.
+And so a lot of teams send easy questions to a small model and hard ones to a big model. Let's say a big model costs one cent a question, and a small one costs a tenth of a cent. Let's say you get ten thousand questions a day. If they all go to the big model, that's a hundred dollars a day. Now let's say eight thousand are easy and go to the small model. That's eight dollars, plus twenty for the two thousand hard ones, so twenty-eight dollars a day.
 
 *[pause]*
 
 **[On camera]**
 
-So would you rather pay a hundred dollars a day or twenty-eight? Your evals tell you if the small model is good enough to switch. Not every question needs the biggest model.
+So would you rather pay a hundred dollars a day or twenty-eight? Your evals tell you if the small model is good enough to make the switch. Not every question needs the biggest model.
 
 #### 20. Quantization
 
-**[Card beside you]** 20. Quantization just means storing a model's numbers with fewer bits so it needs less memory.
+**[Card beside you]** 20. Quantization just means saving a model's numbers in a smaller size so it needs less memory.
 
-Number twenty is quantization, and it's the last one. Quantization just means storing a model's numbers with fewer bits so it needs less memory. More bits keeps a little more quality and needs a lot more memory. Fewer bits loses a little quality and needs a lot less.
+Number twenty is quantization, and it's the last one. Quantization just means saving a model's numbers in a smaller size so it needs less memory. A bigger size keeps a little more quality but needs a lot more memory. A smaller size loses a little quality but needs a lot less.
 
-**[Graphic 24, full screen]** A model with 8 billion parameters as three bars. "16-bit: 8 billion × 2 bytes = 16 GB." "8-bit: about 8 GB." "4-bit: 8 billion × half a byte = 4 GB." A laptop icon next to the 4-bit bar.
+**[Graphic 24, full screen]** A model with 8 billion parameters as three bars. "16-bit: 8 billion × 2 bytes = 16 GB." "8-bit: about 8 GB." "4-bit: 8 billion × half a byte = 4 GB." A laptop next to the 4-bit bar.
 
 *[pause]*
 
-Let's do the math. Many open models are released with sixteen bits for each parameter, which is two bytes. So let's say you have a model with eight billion parameters. Eight billion times two bytes is sixteen gigabytes, just to hold the numbers. At four bits, which is half a byte, that's four gigabytes, plus some extra while it runs. So do you rent a big graphics card for sixteen gigabytes, or run it on a good laptop at four?
+Let's do the math. Many open models save each number in sixteen bits, which is two bytes. So let's say you have a model with eight billion parameters. Eight billion times two bytes is sixteen gigabytes, just to hold the numbers. At four bits, which is half a byte, that's four gigabytes, plus a bit more while it runs. So do you rent a big, costly computer for sixteen gigabytes, or run it on a good laptop at four?
 
 *[pause]*
 
 **[On camera]**
 
-Quantization happens after training, so it doesn't make training cheaper. It makes running cheaper.
+Quantization happens after training, so it doesn't make training cheaper. It makes running the model cheaper.
 
 ### Putting it all together
 
-**[Graphic 25, full screen]** The completed map. All twenty concepts sit in their five areas, joined by the path of the empty-dashboard question.
+**[Graphic 25, full screen]** The finished map. All twenty words sit in their five boxes, joined by the path of the empty-dashboard question.
 
 *[pause]*
 
-So let's put all twenty together with the agent example, "Why is the sales dashboard empty this morning?" The question becomes tokens and embeddings, and a transformer uses attention to work out what it means. That model was pre-trained, fine-tuned and trained with RL, and it can reason, but it can still hallucinate. So you fill its context window with a clear prompt, a few examples, and the runbook pages RAG finds in a vector database. Tool calling and MCP let it check real systems, and as an agent, it loops until it finds the missing file. Context engineering keeps each step clean, and evals tell you it works. Distillation and quantization make it cheap to run.
+So let's put all twenty together with the agent example, "Why is the sales dashboard empty this morning?" The question gets cut into tokens and turned into embeddings, and a transformer uses attention to work out what it means. That model was pre-trained, fine-tuned and trained with RL, and it can reason, but it can still hallucinate. So you fill its context window with a clear prompt, a few examples, and the help pages that RAG finds in a vector database. Tool calling and MCP let it check your real systems, and as an agent, it keeps going until it finds the missing file. Context engineering keeps each step clean, and evals tell you it works. Distillation and quantization make it cheap to run.
 
 *[pause]*
 
 **[On camera]** *(Added line. Chris to confirm.)*
 
-And if you look at the map again, only the first two groups are the model itself. Everything else is getting the right data in and checking what comes out, which means documents, pipelines, logs and tests. That's data engineering work. So if you're a data engineer, you're a lot closer to AI engineering than you think.
+And if you look at the map again, only the first two boxes are the model itself. Everything else is about getting the right data in and checking what comes out, so documents, pipelines, logs and tests. That's data engineering work. So if you're a data engineer, you're a lot closer to AI engineering than you think.
 
 ### Your turn
 
-**[Graphic 26, full screen]** The cheat sheet: all twenty "just means" definitions from the cards, on one page.
+**[Graphic 26, full screen]** The cheat sheet: all twenty "just means" lines from the cards, on one page.
 
 *[pause]*
 
 **[On camera]**
 
-So here's what I want you to do this week. Pick five of these twenty concepts and explain each one out loud in one sentence, without looking. Then pick one and explain where it fits in a project you've already built. Most people will watch this and forget half of it by tomorrow. The ones who say it out loud are the ones who can explain it when it counts.
+So here's what I want you to do this week. Pick five of these twenty words and explain each one out loud in one sentence, without looking. Then pick one and explain where it fits in a project you've already built. Most people will watch this and forget half of it by tomorrow. The people who say it out loud are the ones who can explain it in an interview.
 
 **[On camera]** *(Added line. Chris to confirm.)*
 
-And in an AI engineering interview, explaining how you'd stop an assistant from making things up will usually get you further than explaining how attention works.
+And in an AI engineering interview, explaining how you'd stop an AI from making things up will usually help you more than explaining how attention works.
 
 ### Call to action
 
@@ -718,44 +718,44 @@ And if you want to build projects like this step by step, that's what the Stackl
 
 **[On camera]**
 
-And drop a comment telling me which of these twenty is still confusing for you. I'll take the one that comes up most and make a full video on it.
+And drop a comment and tell me which of these twenty words still confuses you. I'll take the one that comes up most and make a full video on it.
 
 ---
 
 ## Graphics list
 
-The video has one main picture, **the map**, which comes back at the start of every part with more areas filled in. Build it once with five empty areas, and add each concept's box as a layer. Every "let's say" number on screen gets a small "Let's say" label, so nobody reads it as a real price.
+The video has one main picture, **the map**, which comes back at the start of every part with more boxes filled in. Build it once with five empty boxes, and add each concept's box as a layer. Every "let's say" number on screen gets a small "Let's say" label, so nobody reads it as a real price.
 
-1. **The map:** five areas called "Inside the model", "How it was trained", "What you send it", "How it takes action" and "How you ship it". Shown empty in the intro, then again at the start of Parts 2 to 5 with the earlier areas filled in.
-2. **LLM:** "The nightly data load failed because the input file was ___", with three guesses and bars for how likely each one is. "missing" is the tallest.
-3. **Tokens:** "Why is the sales dashboard empty this morning?" split into nine colored tokens: "Why", " is", " the", " sales", " dashboard", " empty", " this", " morning", "?". "Snowflake" becomes "Snow" and "flake". "Hello, why is the dashboard empty?" is 8 tokens in English, and "नमस्ते, डैशबोर्ड खाली क्यों है?" is 15. Label: "OpenAI tokenizer used by GPT-4o".
-4. **Token maths:** "Let's say: $3 per million tokens." "1,000 questions × 5,000 tokens = 5 million tokens a day." "= $15 a day = about $450 a month." "Hindi: 15 tokens instead of 8. Close to double?"
-5. **Embeddings:** "Why is the dashboard empty?" right next to "Missing rows in the sales table". "Change the dashboard colors" a little further away. "Today's lunch menu" far off in a corner.
+1. **The map:** five boxes called "Inside the model", "How it learns", "What you give it", "How it does things" and "How you launch it". Shown empty in the intro, then again at the start of Parts 2 to 5 with the earlier boxes filled in.
+2. **LLM:** "The nightly data load failed because the file was ___", with three guesses and bars for how likely each one is. "missing" is the tallest.
+3. **Tokens:** "Why is the sales dashboard empty this morning?" cut into nine colored tokens: "Why", " is", " the", " sales", " dashboard", " empty", " this", " morning", "?". "Snowflake" becomes "Snow" and "flake". "Hello, why is the dashboard empty?" is 8 tokens in English, and "नमस्ते, डैशबोर्ड खाली क्यों है?" is 15. Label: "OpenAI tokenizer used by GPT-4o".
+4. **Token maths:** "Let's say: $3 per million tokens." "1,000 questions × 5,000 tokens = 5 million tokens a day." "= $15 a day = about $450 a month." "Hindi: 15 tokens instead of 8. Almost double?"
+5. **Embeddings:** a map of dots. "Why is the dashboard empty?" right next to "Missing rows in the sales table". "Change the dashboard colors" a little further away. "Today's lunch menu" far off in a corner.
 6. **Attention:** "The pipeline failed last night", with arrows from "pipeline" to "failed" and "night". "The pipeline looks strong this quarter", with arrows to "strong" and "quarter".
-7. **Transformer:** a tall stack of identical blocks, each saying "Attention" then "Process". Beside it: "2017: Attention Is All You Need" and "GPT = Generative Pre-trained Transformer".
+7. **Transformer:** a tall stack of the same block, each saying "Attention" then "Think". Beside it: "2017: Attention Is All You Need" and "GPT = Generative Pre-trained Transformer".
 8. **Pre-training:** "Please send the report by ____", then "Friday" appears. Underneath: "The text is its own answer key."
 9. **Fine-tuning versus instructions:** left, "Fine-tune": collect examples, train, test, repeat when a new model comes out. Right, "Instructions first": write the rule, add two examples, try it today.
-10. **RLHF:** two answers, a person picks one, a reward model learns the choice, and the LLM is trained to score higher. Under it: "1.3 billion parameters beat 175 billion. 175 ÷ 1.3 ≈ 135 times smaller." Source: OpenAI, 2022.
+10. **RLHF:** two answers, a person picks one, a second model learns what people like, and the LLM is trained to score higher. Under it: "1.3 billion parameters beat 175 billion. 175 ÷ 1.3 ≈ 135 times smaller." Source: OpenAI, 2022.
 11. **Reasoning:** "Which of our ten biggest customers spent less this quarter than last quarter?" with four steps: find the ten customers, get this quarter's spend, get last quarter's spend, compare.
 12. **Hallucination:** a SQL query that filters on "region_code", with a red error: "column region_code does not exist".
-13. **Context window:** a box labelled "Context window: about 1 million tokens" filling up with instructions, examples, documents, tool results, chat history and the answer. A pile labelled "Three years of logs" that does not fit. Under it: "Context rot: 18 models got less reliable as inputs grew (Chroma, 2025)."
+13. **Context window:** a box labelled "Context window: about 1 million tokens" filling up with instructions, examples, documents, tool results, chat history and the answer. A pile labelled "Three years of logs" that does not fit. Under it: "Context rot: 18 models got worse as the text got longer (Chroma, 2025)."
 14. **Prompt:** the system prompt text, with two example answers in the same three-line format below it.
-15. **RAG:** Retrieve, "Find the runbook page". Augment, "Add it to the prompt". Generate, "Answer from your steps".
-16. **Vector database:** runbook pages cut into chunks, each becoming an embedding. The question's embedding lands next to "Missing rows in the sales table". In a corner: "Keyword search + vector search" and "Postgres + pgvector".
-17. **Tool calling:** four steps. 1. The model asks: "Call get_job_status for the sales job." 2. Your code runs it. 3. Your code sends back: "Failed at 3:10 a.m." 4. The model answers with that fact.
-18. **MCP maths:** left, "Without MCP": ten apps and ten tools in a tangle, "10 × 10 = 100 connectors". Right, "With MCP": each connects once, "10 + 10 = 20". Bottom: "Let's say one week each: 100 weeks or 20?"
-19. **Agent:** the loop "Decide", "Use a tool", "Read the result" and back to "Decide". Beside it, the steps: no rows today, the load job failed, "input file not found", then "Re-run the job when the file lands?" for a person to approve.
+15. **RAG:** Retrieve, "Find the right help page". Augment, "Add it to the prompt". Generate, "Answer from your steps".
+16. **Vector database:** help pages cut into small pieces, each becoming an embedding. The question's embedding sits next to "Missing rows in the sales table". In a corner: "Word search + vector search" and "Postgres + pgvector".
+17. **Tool calling:** four steps. 1. The model asks: "Run get_job_status for the sales job." 2. Your code runs it. 3. Your code sends back: "Failed at 3:10 a.m." 4. The model answers with that fact.
+18. **MCP maths:** left, "Without MCP": ten apps and ten tools joined by a mess of lines, "10 × 10 = 100 connectors". Right, "With MCP": each one plugs in once, "10 + 10 = 20". Bottom: "Let's say one week each: 100 weeks or 20?"
+19. **Agent:** the loop "Decide", "Use a tool", "Read the result" and back to "Decide". Beside it, the steps: no rows today, the load job failed, "file not found", then "Re-run the job when the file arrives?" for a person to approve.
 20. **Agent maths:** "Let's say 20,000 tokens a step × 10 steps = 200,000 tokens." "At $3 per million = 60 cents a question." "× 1,000 questions = $600 a day." "Worth it?"
 21. **Context engineering maths:** "Whole log: 50,000 lines × 20 tokens = 1,000,000 tokens." "Error lines only: 12 lines × 20 tokens = 240 tokens." "Plus a short summary of the earlier steps."
-22. **Evals:** a table of fifty past incidents with the question, the real cause, the AI's answer, and pass or fail. "46 ÷ 50 = 92%. Good enough?" Beside it: "Data tests check your data. Evals check your AI."
-23. **Distillation and routing maths:** easy questions go to a small model and hard ones to a big model. "All big: 10,000 × 1¢ = $100 a day." "Routed: 8,000 × 0.1¢ = $8, plus 2,000 × 1¢ = $20." "= $28 a day." "$100 or $28?"
+22. **Evals:** a table of fifty past problems with the question, the real cause, the AI's answer, and pass or fail. "46 ÷ 50 = 92%. Good enough?" Beside it: "Data tests check your data. Evals check your AI."
+23. **Distillation and split maths:** easy questions go to a small model and hard ones to a big model. "All big: 10,000 × 1¢ = $100 a day." "Split: 8,000 × 0.1¢ = $8, plus 2,000 × 1¢ = $20." "= $28 a day." "$100 or $28?"
 24. **Quantization maths:** an 8-billion-parameter model as three bars. "16-bit: 8 billion × 2 bytes = 16 GB." "8-bit: about 8 GB." "4-bit: 8 billion × half a byte = 4 GB." A laptop icon next to the 4-bit bar.
-25. **The full map:** all twenty concepts in their five areas, joined by the path of the empty-dashboard question.
-26. **Cheat sheet:** the twenty "just means" definitions from the cards, on one page.
+25. **The finished map:** all twenty words in their five boxes, joined by the path of the empty-dashboard question.
+26. **Cheat sheet:** the twenty "just means" lines from the cards, on one page.
 
 **Cards beside you:** one for each concept, with the number and the "just means" definition, word for word from the script.
 
-**Shortened on-screen labels (not word for word from the script):** the map's area names, the Graphic 9 column steps, the Graphic 10 row label, the Graphic 13 layer labels, the Graphic 15 step labels and the Graphic 19 loop labels. Every number on screen matches the script.
+**Shortened on-screen labels (not word for word from the script):** the map's box names, the "Think" label in Graphic 7, the Graphic 9 column steps, the Graphic 10 row label, the Graphic 13 layer labels, the Graphic 15 step labels and the Graphic 19 loop labels. Every number on screen matches the script.
 
 **Style for all graphics:** Plus Jakarta Sans. Amber #F59E0B on dark charcoal #1E1C1D, or amber #BA7517 on cream #FAF8F1.
 
@@ -771,10 +771,10 @@ AI Concepts Explained: 20 Terms Every Engineer Should Know
 
 ## YouTube description
 
-In this video, I explain the twenty AI concepts you keep hearing in every AI meeting, from tokens and embeddings to RAG, MCP and agents. Each one gets a plain-English definition, one example, and the maths where it matters, so by the end you can explain every one of them in a single sentence and see how they fit together.
+In this video, I explain the twenty AI words you keep hearing at work, from tokens to RAG, MCP and agents. Each one gets a simple meaning, one example, and the maths where it matters. By the end, you can explain every one of them in one sentence and see how they fit together.
 
 Chapters
-0:00 Twenty AI concepts in plain English
+0:00 Twenty AI words in plain English
 0:00 1. Large language model
 0:00 2. Token
 0:00 3. Embedding
@@ -824,7 +824,7 @@ Book a Call — https://calendar.app.google/2HjLnF1HSov9m5Gk9 | LinkedIn — htt
 
 ## Facts, examples and lines added for Chris to check
 
-- **Style check.** `skills/hormozi-style/scripts/style_check.py` on the spoken script gives a median sentence length of 13 words (mean 13.5) and 8% short lines, with no clichés and no fragment runs. Only 12% of sentences are 20 words or longer, which is below Hormozi's 18% to 30%, because you asked for an average of about 13 words. To sound a little more like him, join a few pairs of sentences with "and so".
+- **Style and reading level.** `skills/hormozi-style/scripts/style_check.py` on the spoken script gives a median sentence length of 13 words, 8% short lines, no clichés and no fragment runs. Only 13% of sentences are 20 words or longer, below Hormozi's 18% to 30%, because you asked for an average of about 13 words. A Flesch-Kincaid estimate puts the spoken text at about grade 5. The words longer than two syllables are everyday ones such as "every", "already" and "examples", apart from the twenty technical names, which are each explained in plain words the first time.
 - **Every "let's say" number is made up, and the script says so out loud.** These are $3 per million tokens, a thousand questions a day at five thousand tokens each, twenty thousand tokens a step for ten steps, one cent against a tenth of a cent a question, ten thousand questions with eight thousand easy ones, a week per connector, fifty thousand log lines at twenty tokens each, twelve error lines, forty-six out of fifty, two hundred runbook pages, and the 3:10 a.m. failure. Each one is labelled "Let's say" on screen too. If you have real numbers from your own work, swap them in.
 - **The long running example is gone.** Each concept has its own short "let's say", as your rules ask. The empty-dashboard question is used once, in the agent concept, and comes back only in "Putting it all together" to close the loop.
 - **Nothing is reused from the original video.** The car and engine line, "All that glitters", and the apple example are not in this version. The pipeline example keeps the same idea (one word, two meanings) with our own word.
@@ -832,7 +832,7 @@ Book a Call — https://calendar.app.google/2HjLnF1HSov9m5Gk9 | LinkedIn — htt
 - **Added lines to confirm:** the fine-tuning advice ("most teams try better instructions and better documents first"), the data engineering point after the full map, and the interview line in "Your turn". Keep the interview line only if it matches what you see.
 - **"It's the one most videos on this topic skip"** (evals) is backed by the competitor research: only one of the twelve competitor videos gives evals its own section.
 - **The comment promise** ("I'll take the one that comes up most and make a full video on it") commits you to a follow-up video. Cut it if you do not want that.
-- **Length:** about 26 minutes, which is about two minutes longer than the first version, because every concept now has a rule, a reason, a "let's say" and a landing line. To get to about 25 minutes, cut the MCP history paragraph, the "RAG is dead" lines, the two vector database tips and the reasoning-model history, which saves about 160 words.
+- **Length:** about 27 minutes. Plain words sometimes take a few more words than technical ones. To save a little over a minute (about 170 words), cut the MCP history paragraph, the "RAG is dead" lines, the two vector database tips and the reasoning-model history.
 - **Graphics load:** twenty-six full-screen graphics plus twenty cards is heavy. Graphics 8, 9 and 12 are the easiest to turn into cards beside you.
 - **Next videos from the gaps:** temperature, mixture of experts, guardrails and prompt injection, and prompt caching are missing from almost every competitor too. The comment question at the end will tell you which one people want.
 - **Research method:** your rules say to research in your Chrome. It was not connected in this cloud session, so the research used yt-dlp and web search, as the brief explains.
