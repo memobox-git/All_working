@@ -87,10 +87,14 @@ body.wide .tiles{grid-template-columns:repeat(2,1fr)}
 body.wide .row{height:76px}
 body.wide .topic{font-size:24px}
 body.wide .topic small{font-size:15px}
-body.wide footer{padding:0 80px;height:86px}
+body.wide footer{padding:0 80px;height:86px;background:var(--blue)}
+body.wide footer .rule{color:#E3E9FF}
+body.wide .gantt,body.wide .tile:not(.hi){background:var(--white)}
+body.wide .kicker{background:none;color:var(--blue);padding:0;font-size:21px;letter-spacing:.18em}
+body.wide .kicker i{display:none}
 </style>
 </head>
-<body data-dur="7" data-manual-ready>
+<body data-dur="7" data-manual-ready data-template="wide-only">
 <div class="left">
   <div class="kicker"><i></i>15-week study plan · Sep 21 → Jan 3</div>
   <h1>Senior → Staff<br><span class="blue">Data Engineer</span></h1>

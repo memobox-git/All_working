@@ -105,7 +105,7 @@ I'm a senior data engineer at Meta, where the average base salary at my level is
 
 ### Intro
 
-**[PAUSE] [Intro motion graphic, full screen: intro.mp4]**
+**[PAUSE] [Intro motion graphic, full screen: intro-blue.mp4]**
 
 If you are new here, I am Chris. I have worked in data engineering for more than ten years. I have interviewed more than two hundred engineers for companies in healthcare, banking, automotive, and financial exchanges. Today I run Stackle, where I teach data and AI engineering, and more than two hundred thousand people follow me on LinkedIn.
 
@@ -297,7 +297,7 @@ So here's your one task for this week. Write down one story from your own work, 
 
 ### Call to action
 
-**[PAUSE] [CTA motion graphic, full screen: cta.mp4]**
+**[PAUSE] [CTA motion graphic, full screen: cta-blue.mp4]**
 
 If you want help building your own plan, book a free fifteen-minute career call with me. The link is in the description. And if you want a structured path with real projects and feedback, the Stackle Data Engineering Masterclass is linked there too.
 
@@ -353,9 +353,9 @@ I'm in week four right now. Tell me in the comments: which week of this plan wou
 - "Week 13: Debugging", "Weeks 14–15: Interview mode".
 - The three resume rules: "1 Match every requirement with proof", "2 Show the decision, not just the build", "3 Put the GitHub at the top".
 
-**Existing graphics:** intro.mp4 and cta.mp4 in `stackle-video/graphics/`, and the roadmap images in the same folder.
+**Intro and CTA:** use `intro-blue.mp4` and `cta-blue.mp4` in `stackle-video/graphics/`. They are your usual intro and CTA animations, re-rendered in blue, white and yellow to match this video. The amber originals (`intro.mp4`, `cta.mp4`) are unchanged for your other videos. The roadmap images are in the same folder.
 
-**Rendered graphics files** are in `stackle-video/graphics/staff-de/`. Every graphic is 1920×1080 in the roadmap's look (white, blue, black and yellow, Plus Jakarta Sans), and each one comes three ways:
+**Rendered graphics files** are in `stackle-video/graphics/staff-de/`. Every graphic is 1920×1080 and uses the Stackle video template from the intro and CTA (the faint grid, the slowly turning dashed ring, the spaced capital labels, pill chips and the brand bottom-left) in blue, white and yellow instead of brown, black and gold, with Plus Jakarta Sans. Each one comes three ways:
 - `gNN-name.mp4`: the animated version, 30 fps, 6.5 to 13 seconds. The build-in finishes about 2 seconds before the end, so the editor can freeze the last frame for as long as Chris talks.
 - `gNN-name.png`: the final frame as a still.
 - `gNN-name-stepN.png`: one still per beat, for the graphics that build up as Chris speaks (Graphics 3, 5 to 13, and 15 to 17). Use these to cut on his words instead of letting the animation run.

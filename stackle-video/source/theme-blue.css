@@ -1,0 +1,11 @@
+/* Blue, white and yellow version of the shared intro/CTA template (base.css), for the Senior to Staff video.
+   intro-blue.html and cta-blue.html load this after base.css; the original amber files stay as they are. */
+body{background:#FFFFFF;color:#0B0B0F}
+.grid{background-image:linear-gradient(rgba(31,79,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(31,79,255,.07) 1px,transparent 1px)}
+.ring{border-color:rgba(31,79,255,.28)}
+.amber{color:#1F4FFF}
+.sub{color:#5A5F6E}
+.chip{border-color:#1F4FFF}
+.bar{background:#FFCC1A}
+.tag{color:#1F4FFF}
+.brand{color:#5A5F6E}

@@ -16,6 +16,19 @@ document.querySelectorAll('.weekstrip').forEach(el => {
   }).join('') + (now ? `<div class="here" style="left:${((now - 0.5) / 15) * 100}%">I’m here</div>` : '');
 });
 
+// The Stackle video template: a faint grid and a slowly turning dashed ring behind every full-screen graphic.
+// Cards skip it; the roadmap page only gets it in its 16:9 video layout (data-template="wide-only").
+if (!document.body.classList.contains('card-page') &&
+    (document.body.dataset.template !== 'wide-only' || document.body.classList.contains('wide'))) {
+  const grid = document.createElement('div');
+  grid.style.cssText = 'position:absolute;inset:0;pointer-events:none;background-size:80px 80px;' +
+    'background-image:linear-gradient(rgba(31,79,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(31,79,255,.07) 1px,transparent 1px)';
+  const ring = document.createElement('div');
+  ring.dataset.spin = '6';
+  ring.style.cssText = 'position:absolute;width:900px;height:900px;right:-250px;top:-250px;border:2px dashed rgba(31,79,255,.28);border-radius:50%;pointer-events:none';
+  document.body.prepend(grid, ring);
+}
+
 const baseRender = window.render;
 window.render = t => {
   baseRender(t);
