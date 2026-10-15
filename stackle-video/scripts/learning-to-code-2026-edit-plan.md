@@ -27,3 +27,11 @@ timecodes from the Descript transcript; exact cut points get snapped to word tim
 | Verdict | 24:27, 24:34 second half | "learn to lead" slip | On camera |
 | Your turn | 24:58 to 26:09, last clean pieces | repeats | On camera |
 | CTA | 26:24 last sentence, 26:55, 27:11 "That's it for now. See you in the next video." | **"Subscribe"** (banned phrase), 26:42 retake | CTA graphic, then on camera |
+
+## Final cut (8:27)
+
+- Rendered locally with ffmpeg from the Descript export; takes chosen from a per-pause Whisper transcript and every cut snapped to the quietest 10 ms.
+- Intro plays as a card beside Chris (`c00_intro`), not a full-screen graphic.
+- The CTA graphic (`g17_cta`) follows what was said: free 15-minute call, the Data Engineering Masterclass, then the Data Engineering and AI Engineering roadmaps.
+- Fixes found by re-transcribing the cut: the repeated "that are almost right", the "You will never type fa--" stumble, the "the jobs, in fact" restart, a stray "or" before "without AI", and a clipped "Python".
+- Graphic 9 (Indeed postings) is not in the cut because that paragraph was never finished.
