@@ -25,6 +25,7 @@ Log of what's been used, so the next image picks a different one:
 - Thu Oct 15, Python map: Dark
 - Fri Oct 16, MCP diagram: Emerald
 - SQL orbit GIF, 118 logos (Thu Oct 22 slot): Dark (motion)
+- Data engineer toolkit GIF, 8 blocks: Dark (motion), each block with its own accent
 
 ## Never use
 Amber/gold `#F59E0B`, `#BA7517`, charcoal `#1E1C1D` and cream `#FAF8F1`. This is the old brown-and-gold video palette, retired on Oct 14, 2026. If any skill or older file says these are "the Stackle colours", this file wins.
