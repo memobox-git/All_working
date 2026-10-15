@@ -89,7 +89,7 @@ The documented tactics are a launch event announced to the existing audience (Za
   - The two outlets give slightly different upload figures.
 
 ### Inferences
-- ESTIMATED: The best-evidenced lever for Chris is an event, not a link in individual posts. For example, a free "14-day Data Engineer / AI Engineer bootcamp" on YouTube, announced repeatedly to 200K LinkedIn followers with a fixed start date and daily episodes, and tied to the free career call or Masterclass (the Zach pattern).
+- ESTIMATED: The best-evidenced lever for Chris is an event, not a link in individual posts. For example, a free "14-day Data Engineer / AI Engineer bootcamp" on YouTube, announced repeatedly to 13K LinkedIn followers with a fixed start date and daily episodes, and tied to the free career call or Masterclass (the Zach pattern).
 - ESTIMATED: Chris's LinkedIn post analytics can act as a free idea-testing lab. Text posts with outlier engagement become YouTube long-form topics (the Hormozi pattern). Long-form transcripts in turn feed LinkedIn posts and Shorts.
 - ESTIMATED: Native LinkedIn video clips of the long-form (vertical, captioned, text matching the video) fit the format LinkedIn says it is growing. Whether they convert to YouTube subscribers is untested in any source I found.
 

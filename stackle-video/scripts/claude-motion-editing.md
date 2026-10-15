@@ -133,7 +133,7 @@ In this video I am going to show you what Claude Motion is, who can use it today
 
 **[On camera, with one picture for each fact]**
 
-If you are new here, I am Chris. I have worked in data engineering for more than ten years. Today I run Stackle, where I teach data and AI engineering, and more than two hundred thousand people follow me on LinkedIn.
+If you are new here, I am Chris. I have worked in data engineering for more than ten years. Today I run Stackle, where I teach data and AI engineering, and more than thirteen thousand people follow me on LinkedIn.
 
 **[On camera]** *(Added line. Chris to confirm.)*
 

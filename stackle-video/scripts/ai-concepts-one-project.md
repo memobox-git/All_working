@@ -221,7 +221,7 @@ And the reason this matters is because these words show up in job posts, in inte
 
 **[On camera, with one picture for each fact]**
 
-If you are new here, I am Chris. I have worked in data engineering for more than ten years. I have interviewed more than two hundred engineers for companies in healthcare, banking, automotive, and financial exchanges. Today I run Stackle, where I teach data and AI engineering, and more than two hundred thousand people follow me on LinkedIn.
+If you are new here, I am Chris. I have worked in data engineering for more than ten years. I have interviewed more than two hundred engineers for companies in healthcare, banking, automotive, and financial exchanges. Today I run Stackle, where I teach data and AI engineering, and more than thirteen thousand people follow me on LinkedIn.
 
 **[Graphic 1, full screen]** The map: five empty boxes called "Inside the model", "How it learns", "What you give it", "How it does things" and "How you launch it".
 

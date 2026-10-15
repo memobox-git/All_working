@@ -114,7 +114,7 @@ In this video, I'm going to show you exactly how much Python you need to become 
 
 **[PAUSE] [Intro motion graphic, full screen: intro.mp4]**
 
-If you are new here, I am Chris. I have worked in data engineering for more than ten years. I have interviewed more than two hundred engineers for companies in healthcare, banking, automotive, and financial exchanges. Today I run Stackle, where I teach data and AI engineering, and more than two hundred thousand people follow me on LinkedIn.
+If you are new here, I am Chris. I have worked in data engineering for more than ten years. I have interviewed more than two hundred engineers for companies in healthcare, banking, automotive, and financial exchanges. Today I run Stackle, where I teach data and AI engineering, and more than thirteen thousand people follow me on LinkedIn.
 
 **[PAUSE]**
 
