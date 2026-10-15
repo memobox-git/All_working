@@ -1,6 +1,6 @@
 # Data engineer toolkit (GIF)
 
-Visual: `visuals/data-engineer-toolkit.gif` (1080x1350, about 9.5 seconds, 1.9 MB). MP4 fallback: `visuals/data-engineer-toolkit.mp4`. Still: `visuals/data-engineer-toolkit.png`.
+Visual: `visuals/data-engineer-toolkit.gif` (1080x1350, 7.5-second loop, 1.5 MB). Everything is on screen from the first frame; only the arrows and the travelling dot move. MP4 fallback: `visuals/data-engineer-toolkit.mp4`. Still: `visuals/data-engineer-toolkit.png`. The older version that builds up from an empty screen is kept as `data-engineer-toolkit-buildup.gif`.
 
 What it shows: "Data Engineer" in the centre, with 8 skill blocks around it in learning order. Arrow badges in the gaps run 1 → 8 and back to the centre, and a data dot travels the path.
 
