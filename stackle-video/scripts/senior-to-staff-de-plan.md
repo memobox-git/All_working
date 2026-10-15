@@ -126,13 +126,29 @@ And then the pieces join into the one real project, the distributed AI platform.
 
 **[On camera]**
 
-Next is the resume, and I didn't want to write it for "staff data engineer" in general. I'm writing it for three real jobs, so let me show you them.
+Next is the resume, and I'm not writing it for "staff data engineer" in general. I'm writing it for three real jobs that are open right now, so let me show you them. The pay ranges are copied straight from the postings, and they're base salary, which just means the pay before stock and bonus.
 
-{{JOBS}}
+**[PAUSE] [Graphic 10, full screen: the Anthropic posting: "Staff+ Software Engineer, Data Infrastructure", "$405,000–$485,000 base salary", with three lines highlighted: "10+ years building data infrastructure", "Can set technical direction for a team, not just execute within it", "petabyte-scale data"]**
 
-**[PAUSE] [Graphic 13, full screen: what all three postings ask for: {{OVERLAP}}]**
+The first one is at Anthropic, and it's called Staff Plus Software Engineer, Data Infrastructure. The base salary is four hundred five to four hundred eighty-five thousand dollars a year. It asks for ten or more years building data infrastructure, and it says you should be able to set technical direction for a team, not just execute within it. That one line is the whole difference between senior and staff, and the company wrote it down for you.
 
-{{OVERLAP_PARAGRAPH}}
+**[PAUSE] [Graphic 11, full screen: the OpenAI posting: "Software Engineer, Data Infrastructure", "$266K–$445K + equity", with three lines highlighted: "some of the largest Spark compute fleets in production", "streaming platforms on Kafka and Flink", "debugging large-scale distributed systems"]**
+
+The second one is at OpenAI, and it's Software Engineer, Data Infrastructure. The salary range is two hundred sixty-six to four hundred forty-five thousand, and equity comes on top. The posting talks about running some of the largest Spark systems in production and streaming on Kafka and Flink, which is another streaming tool. And it asks for experience debugging large distributed systems. So that one posting covers weeks three to six and week thirteen of my plan, right?
+
+**[PAUSE] [Graphic 12, full screen: the Google posting: "Staff Software Engineer, AI Foundry Data Quality and Training Data", "$207K–$300K + 20% bonus target + equity", with three lines highlighted: "training data pipelines for Large Language Models", "hundreds of billions of documents", "2 years of experience in a people management, supervision/team leadership role"]**
+
+The third one is at Google, and it's Staff Software Engineer, AI Foundry Data Quality and Training Data. The base is two hundred seven to three hundred thousand, plus a twenty percent bonus target and equity. The job is building the pipelines that clean training data for large language models, across hundreds of billions of documents. That's the AI infrastructure week of my plan. It also asks for two years of leading people, which is a good reminder to read every line of a posting before you apply.
+
+**[PAUSE]**
+
+**[On camera]**
+
+And notice that two of those three jobs aren't called "data engineer" at all. At the staff level, a lot of data jobs are called "software engineer, data infrastructure." And so if you only search for "data engineer," you'll miss some of the best-paid roles. In fact, if you search Google's careers site for "staff data engineer" right now, you get zero results.
+
+**[PAUSE] [Graphic 13, full screen: what all three postings ask for, each mapped to the plan: "Python + SQL → weeks 1–2", "Spark or distributed processing → weeks 3–6", "Designing pipelines at scale + data modeling → weeks 7–8", "Cloud + Kubernetes → week 9", "Data for AI → weeks 10–12", "Debugging and reliability → week 13", "Setting direction + working across teams → your stories"]**
+
+Now when I put the three side by side, the same things show up in all of them. They all want Python and SQL, Spark or something like it, pipelines designed for huge scale, data modeling, data quality, and data for AI. And they all want someone who sets technical direction and works well with other teams. Every one of those maps to a week of the plan, and the last one maps to your stories, which I'll get to in a minute.
 
 **[On camera]**
 
