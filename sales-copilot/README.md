@@ -55,4 +55,5 @@ Audio goes to Deepgram (or to Google, if you use the browser's free speech engin
 | Your words show up as "Prospect" | You're on speakers. Use headphones. |
 | "Couldn't connect to Deepgram" | Check the Deepgram key and that the account has credit. |
 | "Anthropic rejected the API key" | Re-paste the key in Settings. Make sure the account has billing set up. |
+| "This API key is not scoped to a workspace…" | Your key belongs to your whole Anthropic organization. In Settings, paste the **Anthropic workspace ID** (Anthropic Console → Settings → Workspaces, starts with `wrkspc_`), or create a new key inside a workspace. Press **Check key** to confirm. |
 | Pop out does nothing | Needs Chrome or Edge version 116 or newer. Alternatively, place this window side by side with your call. |

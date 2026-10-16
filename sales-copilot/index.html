@@ -365,6 +365,15 @@ body.pip .card-actions { display: none; }
           <span class="hint">Powers the suggestions. Create one at <a href="https://console.anthropic.com/settings/keys" target="_blank" rel="noopener">console.anthropic.com</a>.</span>
         </div>
         <div class="field">
+          <label for="sWs">Anthropic workspace ID <span style="color:var(--muted); font-weight:400">(only if Anthropic asks for one)</span></label>
+          <input id="sWs" placeholder="wrkspc_…" spellcheck="false" autocomplete="off">
+          <span class="hint">Some keys belong to your whole organization rather than one workspace, and then every request has to name a workspace. Find its ID at <a href="https://console.anthropic.com/settings/workspaces" target="_blank" rel="noopener">console.anthropic.com → Settings → Workspaces</a> (it starts with <code>wrkspc_</code>). Or leave this blank and create a key inside a workspace instead.</span>
+        </div>
+        <div class="row" style="align-items:center; margin:-4px 0 14px">
+          <button type="button" class="small" id="btnCheckKey">Check key</button>
+          <span class="hint" id="keyCheck" style="font-size:13px"></span>
+        </div>
+        <div class="field">
           <label for="sDg">Deepgram API key <span style="color:var(--muted); font-weight:400">(needed to hear both sides of an online call)</span></label>
           <div class="inline"><input id="sDg" type="password" placeholder="Paste your Deepgram key" spellcheck="false"><button type="button" class="small" data-reveal="sDg">Show</button></div>
           <span class="hint">Live transcription. Sign up at <a href="https://console.deepgram.com/signup" target="_blank" rel="noopener">console.deepgram.com</a>; new accounts come with free credit. Without it, the copilot can only use your microphone (via the browser's free speech recognition).</span>
@@ -568,7 +577,7 @@ const el = {
   toasts: $("#toasts"),
   dlgStart: $("#dlgStart"), startForm: $("#startForm"), callNotes: $("#callNotes"), startWarn: $("#startWarn"),
   dlgSettings: $("#dlgSettings"), settingsForm: $("#settingsForm"),
-  sKey: $("#sKey"), sDg: $("#sDg"), sModel: $("#sModel"), sAuto: $("#sAuto"), sEngine: $("#sEngine"), sLang: $("#sLang"),
+  sKey: $("#sKey"), sWs: $("#sWs"), sDg: $("#sDg"), sModel: $("#sModel"), sAuto: $("#sAuto"), sEngine: $("#sEngine"), sLang: $("#sLang"),
   sPlaybook: $("#sPlaybook"), pbCount: $("#pbCount"), pbFile: $("#pbFile"),
   dlgWrap: $("#dlgWrap"), wrapOut: $("#wrapOut"), wrapStatus: $("#wrapStatus"),
 };
@@ -628,7 +637,7 @@ async function copyText(text) {
 
 // --------------------------------------------------------------- settings
 const DEFAULTS = {
-  anthropicKey: "", deepgramKey: "", model: MODELS[0].id, auto: "auto", engine: "deepgram",
+  anthropicKey: "", workspaceId: "", deepgramKey: "", model: MODELS[0].id, auto: "auto", engine: "deepgram",
   lang: "en-US", playbook: TEMPLATE, notes: "", mode: "call",
 };
 const settings = { ...DEFAULTS, ...readStore(STORE_KEY, {}) };
@@ -1011,20 +1020,48 @@ let fallbackSupported = true;
 async function getClient() {
   const key = settings.anthropicKey.trim();
   if (!key) throw new UserError("Add your Anthropic API key in Settings to get suggestions.");
-  if (!AnthropicSDK) {
-    try { AnthropicSDK = (await import(SDK_URL)).default; }
-    catch { throw new UserError("Couldn't load the Claude library. Check your internet connection."); }
-  }
-  if (!client || clientKey !== key) {
-    client = new AnthropicSDK({ apiKey: key, dangerouslyAllowBrowser: true, maxRetries: 1 });
-    clientKey = key;
+  const workspace = settings.workspaceId.trim();
+  if (!client || clientKey !== key + "|" + workspace) {
+    client = makeClient(await loadSDK(), key, workspace, 1);
+    clientKey = key + "|" + workspace;
   }
   return client;
 }
 
-function friendlyError(err) {
+async function loadSDK() {
+  if (!AnthropicSDK) {
+    try { AnthropicSDK = (await import(SDK_URL)).default; }
+    catch { throw new UserError("Couldn't load the Claude library. Check your internet connection."); }
+  }
+  return AnthropicSDK;
+}
+
+function makeClient(SDK, key, workspace, maxRetries) {
+  // Organization-level keys that aren't scoped to a workspace must name one on every request.
+  return new SDK({
+    apiKey: key, dangerouslyAllowBrowser: true, maxRetries,
+    defaultHeaders: workspace ? { "anthropic-workspace-id": workspace } : undefined,
+  });
+}
+
+const isWorkspaceError = (err) => /workspace/i.test(String(err?.message || ""));
+
+// Shows an API error, with a shortcut to the setting that fixes it when there is one.
+function errorToast(err) {
+  const msg = friendlyError(err);
+  const A = AnthropicSDK;
+  const fixInSettings = isWorkspaceError(err) || (A && (err instanceof A.AuthenticationError || err instanceof A.NotFoundError || err instanceof A.PermissionDeniedError));
+  toast(msg, { error: true, ms: fixInSettings ? 15000 : 6000, action: fixInSettings ? { label: "Open settings", run: () => openSettings(isWorkspaceError(err) ? el.sWs : null) } : undefined });
+}
+
+function friendlyError(err, workspaceInUse) {
   if (err instanceof UserError) return err.message;
   const A = AnthropicSDK;
+  if (isWorkspaceError(err) && A && err instanceof A.APIError && err.status < 500) {
+    return (workspaceInUse ?? settings.workspaceId).trim()
+      ? "Anthropic didn't accept the workspace ID in Settings. Check it matches a workspace in your Anthropic Console (it starts with wrkspc_)."
+      : "Your Anthropic key needs a workspace ID. Paste it in Settings → Anthropic workspace ID (find it in the Anthropic Console under Settings → Workspaces), or create a key inside a workspace.";
+  }
   if (A) {
     if (err instanceof A.AuthenticationError) return "Anthropic rejected the API key. Check it in Settings.";
     if (err instanceof A.PermissionDeniedError) return "This API key isn't allowed to use that model. Try another model in Settings.";
@@ -1260,7 +1297,7 @@ async function suggest(trigger, question = "") {
     const msg = friendlyError(err);
     if (card) { card.error = msg; card.done = true; renderLive(); }
     setAi("", "Suggestion failed");
-    toast(msg, { error: true });
+    errorToast(err);
   } finally {
     if (S.ai.holder === holder) {
       S.ai.busy = false;
@@ -1488,8 +1525,9 @@ async function popOut() {
 }
 
 // --------------------------------------------------------------- dialogs
-function openSettings() {
+function openSettings(focusField) {
   el.sKey.value = settings.anthropicKey;
+  el.sWs.value = settings.workspaceId;
   el.sDg.value = settings.deepgramKey;
   el.sModel.value = settings.model;
   el.sAuto.value = settings.auto;
@@ -1497,14 +1535,15 @@ function openSettings() {
   el.sLang.value = settings.lang;
   el.sPlaybook.value = settings.playbook;
   updatePbCount();
-  el.dlgSettings.showModal();
+  if (!el.dlgSettings.open) el.dlgSettings.showModal();
+  if (focusField instanceof HTMLElement) { focusField.focus(); focusField.scrollIntoView({ block: "center" }); }
 }
 function updatePbCount() { el.pbCount.textContent = `${words(el.sPlaybook.value)} words`; }
 
 el.dlgSettings.addEventListener("close", () => {
   if (el.dlgSettings.returnValue !== "save") return;
   Object.assign(settings, {
-    anthropicKey: el.sKey.value.trim(), deepgramKey: el.sDg.value.trim(), model: el.sModel.value,
+    anthropicKey: el.sKey.value.trim(), workspaceId: el.sWs.value.trim(), deepgramKey: el.sDg.value.trim(), model: el.sModel.value,
     auto: el.sAuto.value, engine: el.sEngine.value, lang: el.sLang.value, playbook: el.sPlaybook.value,
   });
   saveSettings();
@@ -1522,6 +1561,27 @@ el.settingsForm.addEventListener("click", (e) => {
   e.target.textContent = input.type === "password" ? "Show" : "Hide";
 });
 el.sPlaybook.addEventListener("input", updatePbCount);
+
+// Checks the key (and workspace) typed in the form without spending tokens: looking up a model is free.
+const keyCheck = $("#keyCheck");
+$("#btnCheckKey").addEventListener("click", async () => {
+  const key = el.sKey.value.trim();
+  const workspace = el.sWs.value.trim();
+  keyCheck.style.color = "var(--muted)";
+  if (!key) { keyCheck.textContent = "Paste your Anthropic key first."; return; }
+  keyCheck.textContent = "Checking…";
+  try {
+    const model = el.sModel.value;
+    await makeClient(await loadSDK(), key, workspace, 0).models.retrieve(model);
+    keyCheck.style.color = "var(--ok)";
+    keyCheck.textContent = `✓ Works. ${MODELS.find((m) => m.id === model)?.label.split(":")[0] || model} is ready. Press Save.`;
+  } catch (err) {
+    keyCheck.style.color = "var(--bad)";
+    keyCheck.textContent = friendlyError(err, workspace);
+    if (isWorkspaceError(err)) el.sWs.focus();
+  }
+});
+el.dlgSettings.addEventListener("close", () => { keyCheck.textContent = ""; });
 $("#btnLoadPb").addEventListener("click", () => el.pbFile.click());
 el.pbFile.addEventListener("change", async () => {
   const f = el.pbFile.files?.[0];
