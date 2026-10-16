@@ -1,0 +1,1652 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Live Sales Copilot</title>
+<style>
+:root {
+  --bg: #f4f5f8;
+  --panel: #ffffff;
+  --panel-2: #eef0f4;
+  --text: #151821;
+  --muted: #5b6474;
+  --faint: #8a93a3;
+  --border: #e0e3e9;
+  --accent: #2f6bff;
+  --accent-ink: #ffffff;
+  --ok: #129a4d;
+  --warn: #c98100;
+  --bad: #d23f3f;
+  --you: #2f6bff;
+  --them: #dd5f22;
+  --spk2: #8a4fff;
+  --t-question: #2f6bff;
+  --t-objection: #dd5f22;
+  --t-competitor: #8a4fff;
+  --t-pricing: #0b9468;
+  --t-buying: #129a4d;
+  --t-discovery: #0b8aa3;
+  --t-next: #b04bc4;
+  --t-info: #5b6474;
+  --chip-ink: #ffffff;
+  --shadow: 0 1px 2px rgba(15, 20, 30, .06), 0 6px 20px rgba(15, 20, 30, .06);
+  --radius: 14px;
+  --font: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0d1015;
+    --panel: #151920;
+    --panel-2: #1c212a;
+    --text: #e8ecf2;
+    --muted: #a0a9b8;
+    --faint: #6f7888;
+    --border: #2a303b;
+    --accent: #5b8cff;
+    --you: #6e9bff;
+    --them: #ff8a4c;
+    --spk2: #b08cff;
+    --t-question: #6e9bff;
+    --t-objection: #ff8a4c;
+    --t-competitor: #b08cff;
+    --t-pricing: #34c38f;
+    --t-buying: #3ccf76;
+    --t-discovery: #3bbfd6;
+    --t-next: #db7ff0;
+    --t-info: #a0a9b8;
+    --chip-ink: #0d1015;
+    --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 6px 20px rgba(0, 0, 0, .25);
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0d1015; --panel: #151920; --panel-2: #1c212a; --text: #e8ecf2; --muted: #a0a9b8; --faint: #6f7888;
+  --border: #2a303b; --accent: #5b8cff; --you: #6e9bff; --them: #ff8a4c; --spk2: #b08cff;
+  --t-question: #6e9bff; --t-objection: #ff8a4c; --t-competitor: #b08cff; --t-pricing: #34c38f; --t-buying: #3ccf76;
+  --t-discovery: #3bbfd6; --t-next: #db7ff0; --t-info: #a0a9b8; --chip-ink: #0d1015; --shadow: 0 1px 2px rgba(0,0,0,.3), 0 6px 20px rgba(0,0,0,.25);
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0; background: var(--bg); color: var(--text); font: 15px/1.45 var(--font);
+  -webkit-font-smoothing: antialiased;
+}
+button, input, select, textarea { font: inherit; color: inherit; }
+button {
+  border: 1px solid var(--border); background: var(--panel); border-radius: 10px; padding: 8px 14px;
+  cursor: pointer; white-space: nowrap; transition: background .15s, border-color .15s, opacity .15s;
+}
+button:hover { border-color: var(--faint); }
+button:disabled { opacity: .5; cursor: default; }
+button.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); font-weight: 600; }
+button.danger { background: var(--bad); border-color: var(--bad); color: #fff; font-weight: 600; }
+button.ghost { background: transparent; }
+button.small { padding: 4px 10px; font-size: 13px; border-radius: 8px; }
+kbd {
+  font: 11px var(--mono); border: 1px solid var(--border); border-bottom-width: 2px; border-radius: 5px;
+  padding: 1px 5px; color: var(--muted); background: var(--panel-2);
+}
+a { color: var(--accent); }
+[hidden] { display: none !important; }
+
+/* ---------- top bar ---------- */
+.topbar {
+  position: sticky; top: 0; z-index: 5; display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  padding: 10px 16px; background: var(--panel); border-bottom: 1px solid var(--border);
+}
+.brand { display: flex; align-items: center; gap: 10px; font-weight: 700; letter-spacing: -.01em; font-size: 16px; }
+.dot { width: 10px; height: 10px; border-radius: 50%; background: var(--faint); flex: none; }
+.dot.listening { background: var(--ok); animation: pulse 1.6s infinite; }
+.dot.thinking { background: var(--warn); animation: pulse .8s infinite; }
+@keyframes pulse { 0% { box-shadow: 0 0 0 0 currentColor; } 70% { box-shadow: 0 0 0 7px transparent; } 100% { box-shadow: 0 0 0 0 transparent; } }
+.dot.listening { color: color-mix(in srgb, var(--ok) 45%, transparent); }
+.dot.thinking { color: color-mix(in srgb, var(--warn) 45%, transparent); }
+.status { color: var(--muted); font-size: 14px; }
+.timer { font: 13px var(--mono); color: var(--muted); }
+.spacer { flex: 1; }
+
+/* ---------- layout ---------- */
+.layout {
+  display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 16px; padding: 16px;
+  max-width: 1400px; margin: 0 auto; min-height: calc(100vh - 60px);
+}
+.col { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.panel { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); }
+.col-head { display: flex; align-items: center; gap: 8px; }
+.col-head h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin: 0; flex: 1; }
+@media (max-width: 900px) { .layout { grid-template-columns: 1fr; } }
+
+/* ---------- focus (live card) ---------- */
+.focus { display: flex; flex-direction: column; gap: 10px; }
+.focus-head { display: flex; align-items: center; gap: 8px; }
+.ai-state { flex: 1; font-size: 13px; color: var(--muted); display: flex; align-items: center; gap: 8px; min-width: 0; }
+.ai-state span:last-child { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.heard {
+  font-size: 13px; color: var(--muted); padding: 0 4px; overflow: hidden; display: -webkit-box;
+  -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+}
+.heard b { color: var(--them); font-weight: 600; }
+
+.card { padding: 16px 18px; display: flex; flex-direction: column; gap: 10px; }
+.card-top { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.chip {
+  font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; padding: 3px 8px;
+  border-radius: 999px; color: var(--chip-ink); background: var(--t-info); flex: none;
+}
+.chip.question { background: var(--t-question); }
+.chip.objection { background: var(--t-objection); }
+.chip.competitor { background: var(--t-competitor); }
+.chip.pricing { background: var(--t-pricing); }
+.chip.buying { background: var(--t-buying); }
+.chip.discovery { background: var(--t-discovery); }
+.chip.next { background: var(--t-next); }
+.sum { color: var(--muted); font-size: 14px; flex: 1; min-width: 120px; }
+.time { color: var(--faint); font: 12px var(--mono); }
+.say { margin: 0; font-size: 22px; line-height: 1.35; font-weight: 600; letter-spacing: -.01em; }
+.say.streaming::after { content: "▍"; color: var(--accent); animation: blink 1s steps(2) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+.points { margin: 0; padding-left: 20px; color: var(--text); font-size: 15px; }
+.points li { margin: 2px 0; }
+.points li.warn { color: var(--warn); }
+.next-q { margin: 0; font-size: 15px; padding: 8px 12px; border-radius: 10px; background: var(--panel-2); }
+.next-q b { color: var(--accent); font-weight: 700; }
+.card-actions { display: flex; gap: 8px; justify-content: flex-end; }
+.card .err { color: var(--bad); font-size: 14px; margin: 0; }
+.card.history { padding: 12px 14px; gap: 6px; }
+.card.history .say { font-size: 16px; font-weight: 600; }
+.card.history .points, .card.history .next-q { font-size: 14px; }
+.card.history .next-q { padding: 6px 10px; }
+
+.empty-state { padding: 22px; display: flex; flex-direction: column; gap: 14px; }
+.empty-state h1 { margin: 0; font-size: 22px; letter-spacing: -.02em; }
+.empty-state p { margin: 0; color: var(--muted); }
+.checklist { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.checklist li { display: flex; gap: 10px; align-items: flex-start; }
+.checklist .mark {
+  flex: none; width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; font-size: 13px;
+  font-weight: 700; border: 1.5px solid var(--border); color: var(--faint);
+}
+.checklist .mark.done { background: var(--ok); border-color: var(--ok); color: #fff; }
+.checklist .mark.opt { border-style: dashed; }
+.row { display: flex; gap: 8px; flex-wrap: wrap; }
+
+.waiting { padding: 26px 22px; color: var(--muted); display: flex; flex-direction: column; gap: 6px; }
+.waiting strong { color: var(--text); font-size: 17px; }
+
+.ask { display: flex; gap: 8px; }
+.ask input {
+  flex: 1; min-width: 0; padding: 10px 12px; border-radius: 10px; border: 1px solid var(--border); background: var(--panel);
+}
+.ask input:focus, .field input:focus, .field select:focus, .field textarea:focus, textarea:focus {
+  outline: 2px solid color-mix(in srgb, var(--accent) 40%, transparent); outline-offset: 1px;
+}
+.history-head { display: flex; align-items: center; gap: 8px; margin-top: 4px; }
+.history-head h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin: 0; flex: 1; }
+.history-list { display: flex; flex-direction: column; gap: 10px; }
+.cost { font-size: 12px; color: var(--faint); }
+.pip-note { padding: 14px 16px; display: flex; align-items: center; gap: 10px; color: var(--muted); }
+.pip-note span { flex: 1; }
+
+/* ---------- transcript ---------- */
+.tx-wrap { flex: 1; display: flex; flex-direction: column; min-height: 320px; }
+.tx { flex: 1; overflow-y: auto; padding: 12px 14px; display: flex; flex-direction: column; gap: 8px; max-height: calc(100vh - 150px); }
+.line { display: grid; grid-template-columns: 82px 1fr; gap: 10px; align-items: baseline; }
+.who { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; text-align: right; color: var(--faint); }
+.who.you { color: var(--you); }
+.who.them, .who.spk0 { color: var(--them); }
+.who.spk1, .who.spk2, .who.spk3 { color: var(--spk2); }
+.who .t { display: block; font: 10px var(--mono); font-weight: 400; color: var(--faint); letter-spacing: 0; text-transform: none; }
+.line .txt { white-space: pre-wrap; overflow-wrap: anywhere; }
+.line .interim { color: var(--faint); }
+.line.cont .who { visibility: hidden; }
+.tx-empty { padding: 26px; color: var(--muted); text-align: center; margin: auto; max-width: 360px; }
+.divider { text-align: center; color: var(--faint); font-size: 12px; margin: 6px 0; }
+
+/* ---------- dialogs ---------- */
+dialog {
+  border: 1px solid var(--border); border-radius: 16px; padding: 0; background: var(--panel); color: var(--text);
+  width: min(720px, calc(100vw - 32px)); max-height: calc(100vh - 48px); box-shadow: 0 20px 60px rgba(0,0,0,.3);
+}
+dialog::backdrop { background: rgba(10, 12, 18, .5); }
+.dlg { display: flex; flex-direction: column; max-height: calc(100vh - 50px); }
+.dlg-head { display: flex; align-items: center; gap: 10px; padding: 16px 20px; border-bottom: 1px solid var(--border); }
+.dlg-head h2 { margin: 0; font-size: 18px; flex: 1; }
+.dlg-body { padding: 18px 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 18px; }
+.dlg-foot { display: flex; gap: 8px; justify-content: flex-end; padding: 14px 20px; border-top: 1px solid var(--border); flex-wrap: wrap; }
+.section h3 { margin: 0 0 8px; font-size: 13px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+.field { display: flex; flex-direction: column; gap: 5px; margin-bottom: 12px; }
+.field label { font-weight: 600; font-size: 14px; }
+.field .hint { font-size: 13px; color: var(--muted); }
+.field input, .field select, .field textarea, textarea {
+  width: 100%; padding: 9px 11px; border-radius: 10px; border: 1px solid var(--border); background: var(--bg);
+}
+textarea { resize: vertical; line-height: 1.45; }
+textarea.playbook { min-height: 300px; font: 13px/1.5 var(--mono); }
+.inline { display: flex; gap: 8px; align-items: center; }
+.inline input { flex: 1; }
+.choice {
+  display: flex; gap: 12px; align-items: flex-start; padding: 12px 14px; border: 1.5px solid var(--border);
+  border-radius: 12px; cursor: pointer; margin-bottom: 10px;
+}
+.choice:has(input:checked) { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 7%, transparent); }
+.choice input { margin-top: 4px; }
+.choice b { display: block; }
+.choice span { color: var(--muted); font-size: 14px; }
+.note { font-size: 13px; color: var(--muted); background: var(--panel-2); border-radius: 10px; padding: 10px 12px; }
+.note.warn { color: var(--text); background: color-mix(in srgb, var(--warn) 16%, transparent); }
+
+.md { font-size: 15px; }
+.md h2, .md h3 { font-size: 15px; margin: 18px 0 6px; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); }
+.md h2:first-child, .md h3:first-child { margin-top: 0; }
+.md p { margin: 6px 0; }
+.md ul { margin: 6px 0; padding-left: 20px; }
+
+/* ---------- toast ---------- */
+.toasts { position: fixed; bottom: 16px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; gap: 8px; z-index: 50; width: min(560px, calc(100vw - 32px)); }
+.toast {
+  background: var(--text); color: var(--bg); padding: 10px 14px; border-radius: 12px; box-shadow: var(--shadow);
+  display: flex; gap: 10px; align-items: center; font-size: 14px;
+}
+.toast span { flex: 1; }
+.toast.error { background: var(--bad); color: #fff; }
+.toast button { background: transparent; color: inherit; border-color: currentColor; padding: 3px 10px; font-size: 13px; }
+
+/* ---------- floating (picture-in-picture) window ---------- */
+body.pip { padding: 10px; background: var(--bg); }
+body.pip .focus { gap: 8px; }
+body.pip .card { padding: 12px 14px; gap: 8px; }
+body.pip .say { font-size: 19px; }
+body.pip .points, body.pip .next-q { font-size: 14px; }
+body.pip .empty-state, body.pip .waiting { padding: 14px; }
+body.pip .empty-state h1 { font-size: 17px; }
+body.pip .card-actions { display: none; }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand"><span class="dot" id="statusDot"></span>Live Sales Copilot</div>
+  <div class="status" id="statusText">Ready</div>
+  <div class="timer" id="timer" hidden>00:00</div>
+  <div class="spacer"></div>
+  <button id="btnStart" class="primary">Start call</button>
+  <button id="btnStop" class="danger" hidden>End call</button>
+  <button id="btnPip" title="Open a small window that floats on top of Zoom, Meet or Teams">Pop out</button>
+  <button id="btnWrap" title="Summary, next steps and a follow-up email">Wrap-up</button>
+  <button id="btnSettings">Settings</button>
+</header>
+
+<main class="layout">
+  <section class="col">
+    <div id="focusHome">
+      <div id="focus" class="focus">
+        <div class="focus-head">
+          <div class="ai-state"><span class="dot" id="aiDot"></span><span id="aiText">Copilot is waiting for a call</span></div>
+          <button id="btnHelp" class="small" title="Get a suggestion for this moment">Help me now <kbd>Space</kbd></button>
+        </div>
+        <div id="liveCard" class="panel"></div>
+        <div class="heard" id="heard" hidden></div>
+      </div>
+    </div>
+    <div id="pipNote" class="panel pip-note" hidden>
+      <span>The copilot is in the floating window.</span>
+      <button id="btnPipBack" class="small">Bring it back</button>
+    </div>
+    <form id="askForm" class="ask" autocomplete="off">
+      <input id="askInput" placeholder="Ask privately, e.g. &quot;what's our refund policy?&quot;">
+      <button type="submit" id="btnAsk">Ask</button>
+      <button type="button" id="btnAsProspect" title="Practise: add this text to the transcript as if the prospect said it">Prospect said</button>
+    </form>
+    <div class="history-head">
+      <h2>Earlier suggestions</h2>
+      <span class="cost" id="costText"></span>
+    </div>
+    <div class="history-list" id="history"></div>
+  </section>
+
+  <section class="col">
+    <div class="panel tx-wrap">
+      <div class="col-head" style="padding: 12px 14px 0;">
+        <h2>Live transcript</h2>
+        <button id="btnDownloadTx" class="small">Download</button>
+      </div>
+      <div class="tx" id="transcript">
+        <div class="tx-empty" id="txEmpty">Your conversation will appear here, labelled <b style="color:var(--you)">You</b> and <b style="color:var(--them)">Prospect</b>.</div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="toasts" id="toasts"></div>
+
+<!-- ======================= Start call ======================= -->
+<dialog id="dlgStart">
+  <form method="dialog" class="dlg" id="startForm">
+    <div class="dlg-head"><h2>Start a call</h2><button value="cancel" class="ghost small" formnovalidate>Close</button></div>
+    <div class="dlg-body">
+      <div class="section">
+        <h3>Where is the call happening?</h3>
+        <label class="choice">
+          <input type="radio" name="mode" value="call" checked>
+          <div><b>On this computer (Zoom, Google Meet, Teams, Slack, phone dialer…)</b>
+            <span>Next you'll pick what to listen to. Choose the browser tab with your call and turn on <i>Also share tab audio</i>. On Windows you can choose <i>Entire screen</i> and turn on <i>Also share system audio</i> to cover desktop apps. Your mic is recorded separately, so the copilot knows who said what. Wear headphones.</span></div>
+        </label>
+        <label class="choice">
+          <input type="radio" name="mode" value="mic">
+          <div><b>Speakerphone or in person (microphone only)</b>
+            <span>The copilot listens through your mic. Use this when your phone is on speaker next to the laptop, or when you're meeting someone face to face.</span></div>
+        </label>
+        <div class="note warn" id="startWarn" hidden></div>
+      </div>
+      <div class="section">
+        <h3>About this call (optional)</h3>
+        <textarea id="callNotes" rows="3" placeholder="Who you're talking to, their company, what you know so far, and what you want from this call. Example: Priya, Head of Finance at Northwind (120 staff). Inbound demo request. Goal: book a pilot."></textarea>
+      </div>
+    </div>
+    <div class="dlg-foot">
+      <button value="cancel" formnovalidate>Cancel</button>
+      <button value="go" class="primary" id="btnGo">Start listening</button>
+    </div>
+  </form>
+</dialog>
+
+<!-- ======================= Settings ======================= -->
+<dialog id="dlgSettings">
+  <form method="dialog" class="dlg" id="settingsForm">
+    <div class="dlg-head"><h2>Settings</h2><button value="cancel" class="ghost small" formnovalidate>Close</button></div>
+    <div class="dlg-body">
+      <div class="section">
+        <h3>Keys</h3>
+        <div class="field">
+          <label for="sKey">Anthropic API key <span style="color:var(--bad)">*</span></label>
+          <div class="inline"><input id="sKey" type="password" placeholder="sk-ant-…" spellcheck="false"><button type="button" class="small" data-reveal="sKey">Show</button></div>
+          <span class="hint">Powers the suggestions. Create one at <a href="https://console.anthropic.com/settings/keys" target="_blank" rel="noopener">console.anthropic.com</a>.</span>
+        </div>
+        <div class="field">
+          <label for="sDg">Deepgram API key <span style="color:var(--muted); font-weight:400">(needed to hear both sides of an online call)</span></label>
+          <div class="inline"><input id="sDg" type="password" placeholder="Paste your Deepgram key" spellcheck="false"><button type="button" class="small" data-reveal="sDg">Show</button></div>
+          <span class="hint">Live transcription. Sign up at <a href="https://console.deepgram.com/signup" target="_blank" rel="noopener">console.deepgram.com</a>; new accounts come with free credit. Without it, the copilot can only use your microphone (via the browser's free speech recognition).</span>
+        </div>
+        <p class="note">Your keys, playbook and transcripts stay in this browser on this computer. Audio goes to Deepgram (or to Google if you use the browser's free speech engine) to become text, and the text goes to Anthropic to produce suggestions. Nothing else is sent anywhere.</p>
+      </div>
+
+      <div class="section">
+        <h3>Copilot</h3>
+        <div class="field">
+          <label for="sModel">Model</label>
+          <select id="sModel"></select>
+          <span class="hint">If suggestions feel slow, switch to Sonnet or Haiku. The card shows how long each one took.</span>
+        </div>
+        <div class="field">
+          <label for="sAuto">Suggestions</label>
+          <select id="sAuto">
+            <option value="auto">Automatic: after the prospect speaks (plus Help me now)</option>
+            <option value="manual">Only when I press Help me now or Space</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>Transcription</h3>
+        <div class="field">
+          <label for="sEngine">Speech engine</label>
+          <select id="sEngine">
+            <option value="deepgram">Deepgram: accurate, hears both sides (recommended)</option>
+            <option value="browser">Browser built-in: free, microphone only, Chrome/Edge</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="sLang">Call language</label>
+          <select id="sLang"></select>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>Your playbook</h3>
+        <div class="field">
+          <span class="hint">Everything the copilot should know: what you sell, pricing, proof points, competitors, and how you answer common objections. Short bullet points work best. Paste your existing sales docs here if you like.</span>
+          <textarea id="sPlaybook" class="playbook" spellcheck="false"></textarea>
+          <div class="row" style="align-items:center">
+            <button type="button" class="small" id="btnLoadPb">Load from file…</button>
+            <button type="button" class="small" id="btnResetPb">Reset to blank template</button>
+            <span class="hint" id="pbCount" style="margin-left:auto"></span>
+            <input type="file" id="pbFile" accept=".txt,.md,.markdown,.csv,text/plain" hidden>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="dlg-foot">
+      <button value="cancel" formnovalidate>Cancel</button>
+      <button value="save" class="primary">Save</button>
+    </div>
+  </form>
+</dialog>
+
+<!-- ======================= Wrap-up ======================= -->
+<dialog id="dlgWrap">
+  <div class="dlg">
+    <div class="dlg-head"><h2>Call wrap-up</h2><button class="ghost small" id="btnWrapClose">Close</button></div>
+    <div class="dlg-body"><div class="md" id="wrapOut"></div></div>
+    <div class="dlg-foot">
+      <span class="hint" id="wrapStatus" style="margin-right:auto; align-self:center; color:var(--muted); font-size:13px"></span>
+      <button id="btnWrapCopy">Copy</button>
+      <button id="btnWrapDl">Download</button>
+      <button id="btnWrapRedo">Regenerate</button>
+    </div>
+  </div>
+</dialog>
+
+<script type="module">
+// =====================================================================
+// Live Sales Copilot: hears the call, transcribes both sides (Deepgram
+// or the browser's speech engine) and asks Claude, with your playbook,
+// what to say next. Runs entirely in the browser; no server.
+// =====================================================================
+
+const SDK_URL = "https://cdn.jsdelivr.net/npm/@anthropic-ai/sdk@0.131.0/+esm";
+const STORE_KEY = "lsc.settings.v1";
+const LAST_KEY = "lsc.lastCall.v1";
+
+const MODELS = [
+  { id: "claude-opus-5-5", label: "Claude Opus 5.5: sharpest answers (default)", inM: 4, outM: 20, fallback: true },
+  { id: "claude-sonnet-5-5", label: "Claude Sonnet 5.5: quicker, still sharp", inM: 2, outM: 10, fallback: true },
+  { id: "claude-haiku-5-5", label: "Claude Haiku 5.5: fastest and cheapest", inM: 0.1, outM: 0.5, fallback: false },
+];
+
+// Deepgram's English model handles regional accents itself; the browser
+// engine needs the specific locale.
+const LANGS = [
+  { v: "en-US", label: "English (US)", dg: "en", web: "en-US" },
+  { v: "en-IN", label: "English (India)", dg: "en", web: "en-IN" },
+  { v: "en-GB", label: "English (UK)", dg: "en", web: "en-GB" },
+  { v: "en-AU", label: "English (Australia)", dg: "en", web: "en-AU" },
+  { v: "multi", label: "Mixed languages, e.g. Hinglish (Deepgram only)", dg: "multi", web: "en-IN" },
+  { v: "hi", label: "Hindi", dg: "hi", web: "hi-IN" },
+  { v: "es", label: "Spanish", dg: "es", web: "es-ES" },
+  { v: "fr", label: "French", dg: "fr", web: "fr-FR" },
+  { v: "de", label: "German", dg: "de", web: "de-DE" },
+  { v: "pt", label: "Portuguese", dg: "pt", web: "pt-BR" },
+];
+
+const TEMPLATE = `# MY SALES PLAYBOOK
+(Replace the blanks with your own details. Short bullets work best. Delete any section you don't need.)
+
+## What I sell
+- Product / service:
+- One-line pitch:
+- Ideal customer (industry, size, role I talk to):
+- Top 3 outcomes customers get:
+
+## Pricing & packages
+- Plans and prices:
+- Discounts or offers I'm allowed to make:
+- Things I must never promise:
+
+## Proof points
+- Customer results (with numbers):
+- Well-known customers I can mention:
+- Security / compliance / guarantees:
+
+## Discovery questions I like to ask
+-
+-
+
+## Objections and how I answer them
+- "It's too expensive" ->
+- "We already use [competitor/tool]" ->
+- "Just send me an email" / "I need to think about it" ->
+- "Now isn't the right time" ->
+- "I need to check with my boss / team" ->
+
+## Competitors
+- [Competitor]: where they're weaker / our edge:
+
+## The next step I want from a call
+- e.g. book a demo with the decision-maker, start a trial, send a proposal
+
+## My style
+- e.g. friendly and consultative, never pushy, short sentences
+`;
+
+// A made-up company used only by Test drive, so the demo has something to work with.
+const DEMO_PLAYBOOK = `# DEMO PLAYBOOK: Brightline (fictional company, used only in Test drive)
+
+## What I sell
+- Brightline: accounts-payable automation for companies with 20-500 employees.
+- Reads invoices automatically, routes approvals in Slack or email, pays vendors, syncs to QuickBooks, Xero and NetSuite.
+- Outcomes: invoice processing time down about 70%, books closed 3 days faster, no more late fees.
+
+## Pricing
+- Starter $399/month (up to 300 invoices a month). Growth $899/month (up to 1,500 invoices). Enterprise: custom.
+- Annual prepay: 15% off. I may offer a free 30-day pilot on Growth if a decision-maker joins the next call.
+- Never go below Starter pricing and never promise custom integrations.
+
+## Proof points
+- Northwind Foods: 4,000 invoices a month, freed up 2 full-time people from data entry.
+- Manual processing costs about $12-15 per invoice; with Brightline it's under $3.
+- SOC 2 Type II, encryption at rest, SSO on Growth and above.
+- Average setup: 2 weeks, with a dedicated onboarding manager.
+
+## Competitors
+- Bill.com: strong at payments, weaker approval workflows and multi-entity support; per-user pricing gets expensive as teams grow. We import Bill.com vendor data in a day.
+- HubSpot / CRMs: not AP tools. We integrate, we don't replace them.
+- Spreadsheets: hidden cost is staff hours and late fees.
+
+## Objections
+- Too expensive: anchor on cost per invoice (manual ~$12-15 vs under $3), then offer the pilot.
+- Need to think: ask what specifically is unresolved; offer a 20-minute follow-up with the decision-maker.
+- Bad timing: onboarding takes 2 weeks and can start right after month-end close.
+
+## Discovery questions
+- How many invoices a month? Who approves them? Which accounting system? What happens when an invoice is paid late?
+
+## Next step I want
+- A demo with the CFO or controller, then start the 30-day pilot.
+`;
+
+const DEMO_SCRIPT = [
+  { who: "you", text: "Thanks for making time today, Priya. What made you want to take this call?" },
+  { who: "them", text: "We're growing fast and our finance team is drowning in invoices. Honestly everything is manual right now." },
+  { who: "you", text: "Got it. Roughly how many invoices do you handle in a month?" },
+  { who: "them", text: "Around eight hundred. But I looked at your pricing page and it seems pretty expensive for a team our size." },
+  { who: "them", text: "We also already use Bill.com for payments. Why would we switch to you?" },
+  { who: "them", text: "Okay, and if we did go ahead, how long does setup take? Our month-end close is in two weeks." },
+];
+
+// --------------------------------------------------------------- helpers
+const $ = (sel) => document.querySelector(sel);
+const el = {
+  statusDot: $("#statusDot"), statusText: $("#statusText"), timer: $("#timer"),
+  btnStart: $("#btnStart"), btnStop: $("#btnStop"), btnPip: $("#btnPip"), btnWrap: $("#btnWrap"), btnSettings: $("#btnSettings"),
+  focusHome: $("#focusHome"), focus: $("#focus"), aiDot: $("#aiDot"), aiText: $("#aiText"), btnHelp: $("#btnHelp"),
+  liveCard: $("#liveCard"), heard: $("#heard"), pipNote: $("#pipNote"), btnPipBack: $("#btnPipBack"),
+  askForm: $("#askForm"), askInput: $("#askInput"), btnAsProspect: $("#btnAsProspect"),
+  history: $("#history"), costText: $("#costText"),
+  transcript: $("#transcript"), txEmpty: $("#txEmpty"), btnDownloadTx: $("#btnDownloadTx"),
+  toasts: $("#toasts"),
+  dlgStart: $("#dlgStart"), startForm: $("#startForm"), callNotes: $("#callNotes"), startWarn: $("#startWarn"),
+  dlgSettings: $("#dlgSettings"), settingsForm: $("#settingsForm"),
+  sKey: $("#sKey"), sDg: $("#sDg"), sModel: $("#sModel"), sAuto: $("#sAuto"), sEngine: $("#sEngine"), sLang: $("#sLang"),
+  sPlaybook: $("#sPlaybook"), pbCount: $("#pbCount"), pbFile: $("#pbFile"),
+  dlgWrap: $("#dlgWrap"), wrapOut: $("#wrapOut"), wrapStatus: $("#wrapStatus"),
+};
+
+function h(tag, attrs = {}, ...kids) {
+  const n = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs)) {
+    if (v == null || v === false) continue;
+    if (k === "class") n.className = v;
+    else if (k.startsWith("on")) n.addEventListener(k.slice(2), v);
+    else n.setAttribute(k, v === true ? "" : v);
+  }
+  for (const kid of kids.flat()) if (kid != null && kid !== false) n.append(kid);
+  return n;
+}
+
+function readStore(key, fallback) {
+  try { const raw = localStorage.getItem(key); return raw ? JSON.parse(raw) : fallback; } catch { return fallback; }
+}
+function writeStore(key, value) {
+  try { localStorage.setItem(key, JSON.stringify(value)); } catch { /* private mode or storage full */ }
+}
+
+function clock(ms) {
+  const s = Math.max(0, Math.floor(ms / 1000));
+  const m = Math.floor(s / 60);
+  const hh = Math.floor(m / 60);
+  const pad = (x) => String(x).padStart(2, "0");
+  return hh ? `${hh}:${pad(m % 60)}:${pad(s % 60)}` : `${pad(m)}:${pad(s % 60)}`;
+}
+const wallTime = (d = new Date()) => d.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+const words = (s) => (s.trim().match(/\S+/g) || []).length;
+
+function toast(msg, { error = false, action, ms = 6000 } = {}) {
+  const t = h("div", { class: "toast" + (error ? " error" : "") }, h("span", {}, msg));
+  if (action) t.append(h("button", { onclick: () => { action.run(); t.remove(); } }, action.label));
+  t.append(h("button", { onclick: () => t.remove(), "aria-label": "Dismiss" }, "×"));
+  el.toasts.append(t);
+  while (el.toasts.children.length > 3) el.toasts.firstChild.remove();
+  if (ms) setTimeout(() => t.remove(), ms);
+  return t;
+}
+
+class UserError extends Error {}
+
+function download(name, text, type = "text/plain") {
+  const url = URL.createObjectURL(new Blob([text], { type: type + ";charset=utf-8" }));
+  const a = h("a", { href: url, download: name });
+  document.body.append(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 2000);
+}
+
+async function copyText(text) {
+  try { await navigator.clipboard.writeText(text); toast("Copied", { ms: 1500 }); }
+  catch { toast("Couldn't copy. Select the text and copy it manually.", { error: true }); }
+}
+
+// --------------------------------------------------------------- settings
+const DEFAULTS = {
+  anthropicKey: "", deepgramKey: "", model: MODELS[0].id, auto: "auto", engine: "deepgram",
+  lang: "en-US", playbook: TEMPLATE, notes: "", mode: "call",
+};
+const settings = { ...DEFAULTS, ...readStore(STORE_KEY, {}) };
+const saveSettings = () => writeStore(STORE_KEY, settings);
+const playbookFilled = () => settings.playbook.trim() && settings.playbook.trim() !== TEMPLATE.trim();
+const useDeepgram = () => settings.engine === "deepgram" && !!settings.deepgramKey.trim();
+
+for (const m of MODELS) el.sModel.append(h("option", { value: m.id }, m.label));
+for (const l of LANGS) el.sLang.append(h("option", { value: l.v }, l.label));
+
+// --------------------------------------------------------------- state
+const S = {
+  running: false,      // a call (or test drive) is in progress
+  demo: false,         // test drive
+  mode: "call",        // "call" | "mic" | "demo"
+  startedAt: 0,
+  lines: [],           // {id, who, text, interim, t, closed, node}
+  media: [],           // MediaStreams to stop at the end
+  engines: [],         // transcription engines
+  cards: [],
+  ai: { busy: false, pending: false, holder: null, autoTimer: 0 },
+  usage: { calls: 0, cost: 0 },
+  timerId: 0,
+  restored: false,
+};
+let lineSeq = 0;
+
+// --------------------------------------------------------------- status
+function setStatus(kind, text) {
+  el.statusDot.className = "dot " + (kind || "");
+  el.statusText.textContent = text;
+}
+function setAi(kind, text) {
+  el.aiDot.className = "dot " + (kind || "");
+  el.aiText.textContent = text;
+}
+function updateButtons() {
+  el.btnStart.hidden = S.running;
+  el.btnStop.hidden = !S.running;
+  el.btnStop.textContent = S.demo ? "Stop test drive" : "End call";
+  el.timer.hidden = !S.running;
+}
+
+// --------------------------------------------------------------- transcript
+const WHO_LABEL = { you: "You", them: "Prospect", call: "Call", spk0: "Speaker 1", spk1: "Speaker 2", spk2: "Speaker 3", spk3: "Speaker 4" };
+const WHO_AI = { you: "Rep", them: "Prospect", call: "Unknown speaker", spk0: "Speaker 1", spk1: "Speaker 2", spk2: "Speaker 3", spk3: "Speaker 4" };
+
+function newLine(who) {
+  const line = { id: ++lineSeq, who, text: "", interim: "", t: S.running ? Date.now() - S.startedAt : 0, closed: false, node: null };
+  S.lines.push(line);
+  return line;
+}
+
+function renderLine(line) {
+  el.txEmpty.hidden = true;
+  if (!line.node) {
+    const who = h("div", { class: "who " + line.who }, WHO_LABEL[line.who] || line.who, h("span", { class: "t" }, clock(line.t)));
+    const txt = h("div", { class: "txt" });
+    line.node = h("div", { class: "line" }, who, txt);
+    el.transcript.append(line.node);
+  }
+  const prev = line.node.previousElementSibling;
+  const prevLine = prev && S.lines.find((l) => l.node === prev);
+  line.node.classList.toggle("cont", !!(prevLine && prevLine.who === line.who && line.t - prevLine.t < 60000));
+  const txt = line.node.lastChild;
+  txt.replaceChildren(line.text, line.interim ? h("span", { class: "interim" }, (line.text ? " " : "") + line.interim) : "");
+  const tx = el.transcript;
+  if (tx.scrollHeight - tx.scrollTop - tx.clientHeight < 160) tx.scrollTop = tx.scrollHeight;
+}
+
+function removeLine(line) {
+  line.node?.remove();
+  S.lines = S.lines.filter((l) => l !== line);
+}
+
+// A "source" is anything that produces speech for one channel (an engine or the test drive).
+function addFinal(src, who, text) {
+  text = text.trim();
+  if (!text) return;
+  if (src.line && src.line.who !== who) closeLine(src);
+  if (!src.line) src.line = newLine(who);
+  src.line.text = (src.line.text + " " + text).trim();
+  src.line.interim = "";
+  renderLine(src.line);
+}
+
+function setInterim(src, who, text) {
+  if (src.line && src.line.who !== who && src.line.text) closeLine(src);
+  if (!src.line) {
+    if (!text.trim()) return;
+    src.line = newLine(who);
+  }
+  src.line.who = who;
+  src.line.interim = text.trim();
+  renderLine(src.line);
+}
+
+function closeLine(src) {
+  const line = src.line;
+  src.line = null;
+  if (!line) return;
+  line.interim = "";
+  if (!line.text) { removeLine(line); return; }
+  line.closed = true;
+  renderLine(line);
+  saveLastCall();
+  onUtterance(line);
+}
+
+function transcriptText(lines, { forAi = false } = {}) {
+  return lines
+    .map((l) => {
+      const text = (l.text + (l.interim ? " " + l.interim : "")).trim();
+      if (!text) return "";
+      const who = forAi ? WHO_AI[l.who] : WHO_LABEL[l.who];
+      return `[${clock(l.t)}] ${who}: ${text}${forAi && !l.closed ? " (still speaking)" : ""}`;
+    })
+    .filter(Boolean)
+    .join("\n");
+}
+
+function recentTranscript(maxChars = 12000, maxLines = 80) {
+  const lines = S.lines.slice(-maxLines);
+  let text = transcriptText(lines, { forAi: true });
+  if (text.length > maxChars) text = "…" + text.slice(text.length - maxChars);
+  return text;
+}
+
+let saveTimer = 0;
+function saveLastCall() {
+  if (S.demo) return;
+  clearTimeout(saveTimer);
+  saveTimer = setTimeout(() => {
+    writeStore(LAST_KEY, {
+      startedAt: S.startedAt, mode: S.mode, notes: settings.notes,
+      lines: S.lines.filter((l) => l.closed).map(({ who, text, t }) => ({ who, text, t })),
+    });
+  }, 400);
+}
+
+function restoreLastCall() {
+  const last = readStore(LAST_KEY, null);
+  if (!last || !Array.isArray(last.lines) || !last.lines.length) return;
+  S.restored = true;
+  S.startedAt = last.startedAt || 0;
+  S.mode = last.mode || "call";
+  const when = last.startedAt ? new Date(last.startedAt).toLocaleString([], { dateStyle: "medium", timeStyle: "short" }) : "earlier";
+  el.transcript.append(h("div", { class: "divider" }, `Last call (${when}). Download it or open Wrap-up before you start a new one.`));
+  for (const l of last.lines) {
+    const line = newLine(l.who);
+    Object.assign(line, { text: l.text, t: l.t, closed: true });
+    renderLine(line);
+  }
+}
+
+function clearTranscript() {
+  S.lines = [];
+  el.transcript.replaceChildren(el.txEmpty);
+  el.txEmpty.hidden = false;
+  S.restored = false;
+}
+
+// --------------------------------------------------------------- engines
+class DeepgramEngine {
+  constructor({ stream, who, diarize }) {
+    this.stream = stream; this.who = who; this.diarize = diarize;
+    this.line = null; this.active = false; this.failures = 0;
+  }
+  async start() {
+    this.active = true;
+    const lang = LANGS.find((l) => l.v === settings.lang) || LANGS[0];
+    const p = new URLSearchParams({
+      model: "nova-3", language: lang.dg, smart_format: "true", interim_results: "true",
+      utterance_end_ms: "1200", vad_events: "true", endpointing: "400",
+    });
+    if (this.diarize) p.set("diarize", "true");
+    const ws = new WebSocket("wss://api.deepgram.com/v1/listen?" + p, ["token", settings.deepgramKey.trim()]);
+    this.ws = ws;
+    await new Promise((resolve, reject) => {
+      ws.onopen = resolve;
+      ws.onclose = () => reject(new UserError("Couldn't connect to Deepgram. Check your Deepgram key in Settings (and that your account has credit)."));
+    });
+    if (!this.active) { ws.close(); return; } // stopped while connecting
+    ws.onmessage = (e) => this.onMessage(e);
+    ws.onclose = (e) => this.onClose(e);
+    const mime = ["audio/webm;codecs=opus", "audio/webm", "audio/mp4"].find((m) => MediaRecorder.isTypeSupported(m));
+    this.rec = new MediaRecorder(new MediaStream(this.stream.getAudioTracks()), mime ? { mimeType: mime } : undefined);
+    this.rec.ondataavailable = (e) => { if (e.data.size && ws.readyState === 1) ws.send(e.data); };
+    this.rec.start(250);
+    clearInterval(this.keepAlive);
+    this.keepAlive = setInterval(() => { if (ws.readyState === 1) ws.send(JSON.stringify({ type: "KeepAlive" })); }, 8000);
+    this.failures = 0;
+  }
+  onMessage(e) {
+    let msg;
+    try { msg = JSON.parse(e.data); } catch { return; }
+    if (msg.type === "Results") {
+      const alt = msg.channel?.alternatives?.[0];
+      const text = alt?.transcript || "";
+      let who = this.who;
+      if (this.diarize && alt?.words?.length) {
+        const counts = {};
+        for (const w of alt.words) counts[w.speaker ?? 0] = (counts[w.speaker ?? 0] || 0) + 1;
+        const top = Object.entries(counts).sort((a, b) => b[1] - a[1])[0][0];
+        who = "spk" + Math.min(3, Number(top) || 0);
+      } else if (this.diarize && this.line) {
+        who = this.line.who;
+      }
+      if (msg.is_final) {
+        if (text) addFinal(this, who, text);
+        else if (this.line && !this.line.text) setInterim(this, who, "");
+        if (msg.speech_final) closeLine(this);
+      } else {
+        setInterim(this, who, text);
+      }
+    } else if (msg.type === "UtteranceEnd") {
+      closeLine(this);
+    }
+  }
+  async onClose(e) {
+    clearInterval(this.keepAlive);
+    try { if (this.rec?.state !== "inactive") this.rec.stop(); } catch {}
+    if (!this.active) return;
+    closeLine(this);
+    // Unexpected drop: reconnect with a fresh recorder (Deepgram needs the container header again).
+    if (++this.failures > 3) {
+      toast(`Transcription stopped (Deepgram closed the connection, code ${e.code}). End the call and start again.`, { error: true, ms: 0 });
+      return;
+    }
+    setStatus("thinking", "Reconnecting transcription…");
+    await new Promise((r) => setTimeout(r, 800 * this.failures));
+    if (!this.active) return;
+    try { await this.start(); setStatus("listening", "Listening"); }
+    catch (err) { this.onClose({ code: err.message }); }
+  }
+  stop() {
+    this.active = false;
+    clearInterval(this.keepAlive);
+    try { if (this.rec && this.rec.state !== "inactive") this.rec.stop(); } catch {}
+    const ws = this.ws;
+    try { if (ws?.readyState === 1) ws.send(JSON.stringify({ type: "CloseStream" })); } catch {}
+    setTimeout(() => { try { ws?.close(); } catch {} }, 1500);
+    closeLine(this);
+  }
+}
+
+class BrowserSpeechEngine {
+  constructor({ who }) { this.who = who; this.line = null; this.active = false; }
+  async start() {
+    const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!SR) throw new UserError("This browser has no built-in speech recognition. Use Chrome or Edge, or add a Deepgram key in Settings.");
+    this.active = true;
+    const lang = LANGS.find((l) => l.v === settings.lang) || LANGS[0];
+    const rec = new SR();
+    rec.continuous = true; rec.interimResults = true; rec.lang = lang.web;
+    rec.onresult = (e) => {
+      let interim = "";
+      for (let i = e.resultIndex; i < e.results.length; i++) {
+        const r = e.results[i];
+        if (r.isFinal) { addFinal(this, this.who, r[0].transcript); closeLine(this); }
+        else interim += r[0].transcript;
+      }
+      if (interim) setInterim(this, this.who, interim);
+    };
+    rec.onerror = (e) => {
+      if (e.error === "not-allowed" || e.error === "service-not-allowed") {
+        this.active = false;
+        toast("Microphone access was blocked. Allow the mic for this page and start again.", { error: true, ms: 0 });
+      } else if (e.error === "network") {
+        toast("The browser's speech service is unreachable. Check your connection, or use a Deepgram key.", { error: true });
+      }
+    };
+    rec.onend = () => { if (this.active) setTimeout(() => { try { rec.start(); } catch {} }, 250); };
+    this.rec = rec;
+    rec.start();
+  }
+  stop() { this.active = false; try { this.rec?.stop(); } catch {} closeLine(this); }
+}
+
+// --------------------------------------------------------------- call lifecycle
+async function startCall(mode) {
+  if (S.running) return;
+  const engines = [];
+  const media = [];
+  try {
+    if (mode === "call") {
+      if (!useDeepgram()) throw new UserError("Listening to both sides of an online call needs a Deepgram key (Settings → Keys). Or choose “Speakerphone or in person”.");
+      setStatus("thinking", "Choose the call to listen to…");
+      const display = await navigator.mediaDevices.getDisplayMedia({
+        video: { displaySurface: "browser" },
+        audio: { echoCancellation: false, noiseSuppression: false, autoGainControl: false },
+        systemAudio: "include", selfBrowserSurface: "exclude", surfaceSwitching: "include", preferCurrentTab: false,
+      });
+      media.push(display);
+      if (!display.getAudioTracks().length) {
+        throw new UserError("No audio was shared. Start again, pick the tab with your call and switch on “Also share tab audio” (or “Also share system audio” for the whole screen).");
+      }
+      setStatus("thinking", "Allow your microphone…");
+      const mic = await navigator.mediaDevices.getUserMedia({ audio: { echoCancellation: true, noiseSuppression: true, autoGainControl: true } });
+      media.push(mic);
+      engines.push(new DeepgramEngine({ stream: display, who: "them" }));
+      engines.push(new DeepgramEngine({ stream: mic, who: "you" }));
+      display.getAudioTracks()[0].addEventListener("ended", () => { if (S.running) { toast("Screen/tab sharing stopped, so the call has ended."); stopCall(); } });
+    } else {
+      setStatus("thinking", "Allow your microphone…");
+      if (useDeepgram()) {
+        const mic = await navigator.mediaDevices.getUserMedia({ audio: { echoCancellation: true, noiseSuppression: true, autoGainControl: true } });
+        media.push(mic);
+        engines.push(new DeepgramEngine({ stream: mic, who: "call", diarize: true }));
+      } else {
+        engines.push(new BrowserSpeechEngine({ who: "call" }));
+      }
+    }
+    setStatus("thinking", "Connecting transcription…");
+    await Promise.all(engines.map((e) => e.start()));
+  } catch (err) {
+    engines.forEach((e) => { try { e.stop(); } catch {} });
+    media.forEach((m) => m.getTracks().forEach((t) => t.stop()));
+    setStatus("", "Ready");
+    if (err?.name === "NotAllowedError") toast("Permission was declined, so the call didn't start.", { error: true });
+    else toast(err instanceof UserError ? err.message : "Couldn't start: " + (err?.message || err), { error: true, ms: 12000 });
+    return;
+  }
+  beginSession(mode);
+  S.engines = engines;
+  S.media = media;
+  setStatus("listening", mode === "call" ? "Listening to the call and your mic" : "Listening through your mic");
+}
+
+function beginSession(mode) {
+  if (S.restored || S.lines.length) clearTranscript();
+  S.cards = [];
+  el.history.replaceChildren();
+  wrapText = "";
+  wrapKey = "";
+  S.usage = { calls: 0, cost: 0 };
+  updateCost();
+  S.running = true;
+  S.demo = mode === "demo";
+  S.mode = mode;
+  S.startedAt = Date.now();
+  el.heard.hidden = true;
+  clearInterval(S.timerId);
+  S.timerId = setInterval(() => { el.timer.textContent = clock(Date.now() - S.startedAt); }, 500);
+  el.timer.textContent = "00:00";
+  updateButtons();
+  renderWaiting();
+  setAi("", settings.auto === "auto" ? "Listening. Suggestions appear when the prospect speaks." : "Press Space or Help me now for a suggestion.");
+}
+
+function stopCall() {
+  if (!S.running) return;
+  S.running = false;
+  S.engines.forEach((e) => { try { e.stop(); } catch {} });
+  S.engines = [];
+  S.media.forEach((m) => m.getTracks().forEach((t) => t.stop()));
+  S.media = [];
+  clearInterval(S.timerId);
+  clearTimeout(S.ai.autoTimer);
+  demoRun++;
+  const wasDemo = S.demo;
+  S.demo = false;
+  updateButtons();
+  setStatus("", "Call ended");
+  if (!S.ai.busy) setAi("", "Call ended");
+  if (!S.cards.length) renderIdle();
+  saveLastCall();
+  if (S.lines.some((l) => l.closed)) {
+    toast(wasDemo ? "Test drive finished." : "Call ended. Want the summary and follow-up email?", {
+      action: { label: "Wrap-up", run: openWrap }, ms: 15000,
+    });
+  }
+}
+
+// --------------------------------------------------------------- Claude
+let AnthropicSDK = null;
+let client = null, clientKey = "";
+let fallbackSupported = true;
+
+async function getClient() {
+  const key = settings.anthropicKey.trim();
+  if (!key) throw new UserError("Add your Anthropic API key in Settings to get suggestions.");
+  if (!AnthropicSDK) {
+    try { AnthropicSDK = (await import(SDK_URL)).default; }
+    catch { throw new UserError("Couldn't load the Claude library. Check your internet connection."); }
+  }
+  if (!client || clientKey !== key) {
+    client = new AnthropicSDK({ apiKey: key, dangerouslyAllowBrowser: true, maxRetries: 1 });
+    clientKey = key;
+  }
+  return client;
+}
+
+function friendlyError(err) {
+  if (err instanceof UserError) return err.message;
+  const A = AnthropicSDK;
+  if (A) {
+    if (err instanceof A.AuthenticationError) return "Anthropic rejected the API key. Check it in Settings.";
+    if (err instanceof A.PermissionDeniedError) return "This API key isn't allowed to use that model. Try another model in Settings.";
+    if (err instanceof A.NotFoundError) return "That model isn't available on your API account. Pick another in Settings.";
+    if (err instanceof A.RateLimitError) return "Anthropic rate limit reached. Wait a few seconds and try again.";
+    if (err instanceof A.BadRequestError) return "Anthropic refused the request: " + (err.error?.error?.message || err.message);
+    if (err instanceof A.APIConnectionError) return "Can't reach Anthropic. Check your internet connection.";
+    if (err instanceof A.APIError) return `Anthropic error ${err.status ?? ""}: ${err.message}`;
+  }
+  return String(err?.message || err);
+}
+const isAbort = (err) => err?.name === "AbortError" || (AnthropicSDK && err instanceof AnthropicSDK.APIUserAbortError);
+
+function system(demo) {
+  const playbook = demo ? DEMO_PLAYBOOK : (playbookFilled() ? settings.playbook.trim() : "(The rep hasn't filled in a playbook yet.)");
+  return [{
+    type: "text",
+    text:
+`You support a salesperson (the "rep") during and after their sales calls. Their playbook below is your source of truth about what they sell, prices, proof points, competitors and how they like to handle objections.
+
+<playbook>
+${playbook}
+</playbook>`,
+    cache_control: { type: "ephemeral" },
+  }];
+}
+
+function trackUsage(msg) {
+  const m = MODELS.find((x) => x.id === msg?.model) || MODELS.find((x) => x.id === settings.model);
+  const u = msg?.usage;
+  if (!m || !u) return;
+  const inTok = (u.input_tokens || 0) + 1.25 * (u.cache_creation_input_tokens || 0) + 0.1 * (u.cache_read_input_tokens || 0);
+  S.usage.cost += (inTok * m.inM + (u.output_tokens || 0) * m.outM) / 1e6;
+  S.usage.calls++;
+  updateCost();
+}
+function updateCost() {
+  el.costText.textContent = S.usage.calls ? `${S.usage.calls} AI call${S.usage.calls > 1 ? "s" : ""} · ≈ $${S.usage.cost.toFixed(S.usage.cost < 1 ? 3 : 2)}` : "";
+}
+
+// Streams a reply. onText receives the whole text written so far.
+async function askClaude({ prompt, effort, maxTokens, onText, holder, demo = false }) {
+  const c = await getClient();
+  const model = settings.model;
+  const params = { model, max_tokens: maxTokens, system: system(demo), messages: [{ role: "user", content: prompt }], output_config: { effort } };
+  if (fallbackSupported && MODELS.find((m) => m.id === model)?.fallback) {
+    params.betas = ["server-side-fallback-2026-07-01"];
+    params.fallbacks = "default";
+  }
+  const stream = c.beta.messages.stream(params);
+  holder.stream = stream;
+  stream.on("text", (_delta, snapshot) => { if (!holder.cancelled) onText(snapshot); });
+  let msg;
+  try {
+    msg = await stream.finalMessage();
+  } catch (err) {
+    if (params.fallbacks && err instanceof AnthropicSDK.BadRequestError && /fallback/i.test(err.message)) {
+      fallbackSupported = false;
+      return askClaude({ prompt, effort, maxTokens, onText, holder, demo });
+    }
+    throw err;
+  }
+  trackUsage(msg);
+  if (msg.stop_reason === "refusal") throw new UserError("Claude declined to answer this one.");
+  return msg.content.filter((b) => b.type === "text").map((b) => b.text).join("");
+}
+
+// --------------------------------------------------------------- live suggestions
+const LIVE_TASK =
+`TASK: live whisper card.
+You are whispering to the rep in real time during a live sales call. They will glance at your card for two seconds while the conversation keeps going, so every word must earn its place.
+
+Work out what the rep needs right now, mostly from the prospect's latest words: a question to answer, an objection or worry to handle, a competitor mention, a pricing question, a buying signal to act on, or a good moment for a discovery question or the next step.
+
+Reply in exactly this plain-text format, with no markdown and nothing before or after it:
+TYPE: <Question | Objection | Competitor | Pricing | Buying signal | Discovery | Next step | Info> — <what they said or need, in 3 to 7 words>
+SAY: <1-2 short sentences the rep can say out loud word for word, in a natural spoken tone>
+POINTS:
+- <a supporting fact or proof point from the playbook, at most 12 words>
+- <optional second point>
+ASK: <one short follow-up question that moves the deal forward>
+
+Ground every fact in the playbook and the call. Never invent prices, features, numbers, customers or policies. If the playbook doesn't cover what was asked, the SAY line should acknowledge it and offer to confirm (for example "Good question. Let me confirm the exact details and send them over today."), and the first point should be "Not in playbook: confirm after the call".
+The transcript comes from live speech recognition and can contain misheard words; infer what was meant.`;
+
+function livePrompt(trigger, question) {
+  const parts = [LIVE_TASK];
+  if (settings.notes.trim() && !S.demo) parts.push(`<call_notes>\n${settings.notes.trim()}\n</call_notes>`);
+  if (S.demo) parts.push(`<call_notes>\nPriya, Head of Finance at a 120-person company. Inbound demo request. Goal: book the 30-day pilot.\n</call_notes>`);
+  const tx = recentTranscript();
+  const labels = S.mode === "mic" && useDeepgram()
+    ? "Speakers are labelled automatically (Speaker 1, Speaker 2) and the labels can be wrong; work out from context which one is the rep."
+    : S.mode === "mic"
+      ? "Both people are captured by one microphone, so lines are not labelled by speaker; work out from context who said what."
+      : "Lines are labelled Rep and Prospect.";
+  parts.push(`<transcript>\n${tx || "(nothing said yet)"}\n</transcript>\n${labels}`);
+  if (trigger === "auto") {
+    parts.push(`Someone just finished speaking. If nothing needs the rep's attention right now (small talk, the rep is mid-explanation, the prospect only agreed or said nothing new), reply with exactly: NONE`);
+  } else if (trigger === "help") {
+    parts.push(`The rep pressed "Help me now". Don't reply NONE. Give the most useful card for this exact moment; if nothing is pending, suggest the best next discovery question or next step.`);
+  } else {
+    parts.push(`The rep typed this private question to you (the prospect can't see it): "${question}"\nAnswer it using the playbook and the call so far. Don't reply NONE. Put the answer the rep can say out loud in SAY.`);
+  }
+  return parts.join("\n\n");
+}
+
+const TYPE_CLASS = [
+  [/question/i, "question"], [/objection|concern|worry|pushback/i, "objection"], [/competitor/i, "competitor"],
+  [/pric|budget|cost/i, "pricing"], [/buying|signal/i, "buying"], [/discovery/i, "discovery"], [/next/i, "next"],
+];
+
+function parseCard(raw) {
+  const out = { type: "", summary: "", say: "", points: [], ask: "", loose: [] };
+  let cur = null;
+  for (let line of raw.split("\n")) {
+    line = line.replace(/\*\*/g, "").trim();
+    let m;
+    if ((m = line.match(/^TYPE:\s*(.*)$/i))) {
+      const [type, ...rest] = m[1].split(/\s+[—–-]\s+/);
+      out.type = type.trim(); out.summary = rest.join(" - ").trim(); cur = "type";
+    } else if ((m = line.match(/^SAY:\s*(.*)$/i))) { out.say = m[1]; cur = "say"; }
+    else if (/^POINTS:?\s*$/i.test(line)) { cur = "points"; }
+    else if ((m = line.match(/^(?:ASK|THEN ASK|NEXT):\s*(.*)$/i))) { out.ask = m[1]; cur = "ask"; }
+    else if (line) {
+      if (cur === "points") out.points.push(line.replace(/^[-•*]\s*/, ""));
+      else if (cur === "say") out.say += " " + line;
+      else if (cur === "ask") out.ask += " " + line;
+      else out.loose.push(line);
+    }
+  }
+  const unquote = (s) => s.trim().replace(/^["“]+|["”]+$/g, "");
+  out.say = unquote(out.say); out.ask = unquote(out.ask);
+  if (!out.say && !out.type && out.loose.length) out.say = out.loose.join(" ");
+  return out;
+}
+
+function cardNode(card, { big }) {
+  const p = parseCard(card.raw || "");
+  const cls = (TYPE_CLASS.find(([re]) => re.test(p.type)) || [null, ""])[1];
+  const top = h("div", { class: "card-top" },
+    p.type ? h("span", { class: "chip " + cls }, p.type) : h("span", { class: "chip" }, card.trigger === "ask" ? "Answer" : "…"),
+    h("span", { class: "sum" }, card.trigger === "ask" ? `You asked: ${card.question}` : p.summary),
+    h("span", { class: "time" }, card.time + (card.ms ? ` · ${(card.ms / 1000).toFixed(1)}s` : "")),
+  );
+  const node = h("div", { class: "card" + (big ? "" : " panel history") }, top);
+  const streaming = !card.done && !card.error;
+  if (p.say || streaming) node.append(h("p", { class: "say" + (streaming && !p.points.length && !p.ask ? " streaming" : "") }, p.say || (big ? "Thinking…" : "")));
+  if (p.points.length) {
+    node.append(h("ul", { class: "points" }, p.points.map((pt) => h("li", { class: /not in playbook/i.test(pt) ? "warn" : "" }, pt))));
+  }
+  if (p.ask) node.append(h("p", { class: "next-q" }, h("b", {}, "Then ask: "), p.ask));
+  if (card.error) node.append(h("p", { class: "err" }, card.error));
+  if (big && card.done && p.say) {
+    node.append(h("div", { class: "card-actions" },
+      h("button", { class: "small ghost", onclick: () => copyText(p.say + (p.ask ? "\n\n" + p.ask : "")) }, "Copy")));
+  }
+  return node;
+}
+
+function renderLive() {
+  const card = S.cards[S.cards.length - 1];
+  if (!card) return;
+  el.liveCard.replaceChildren(cardNode(card, { big: true }));
+}
+
+function pushHistory(card) {
+  if (!card || !card.done) return;
+  const node = cardNode(card, { big: false });
+  el.history.prepend(node);
+  while (el.history.children.length > 40) el.history.lastChild.remove();
+}
+
+function newCard(trigger, question) {
+  const prev = S.cards[S.cards.length - 1];
+  pushHistory(prev);
+  const card = { trigger, question, raw: "", time: wallTime(), started: performance.now(), done: false, error: "", ms: 0 };
+  S.cards.push(card);
+  return card;
+}
+
+function isNoneish(text) {
+  const t = text.trim().toUpperCase();
+  return "NONE".startsWith(t) || /^NONE\b/.test(t);
+}
+
+async function suggest(trigger, question = "") {
+  if (!settings.anthropicKey.trim()) {
+    toast("Add your Anthropic API key in Settings to get suggestions.", { action: { label: "Settings", run: openSettings } });
+    return;
+  }
+  const manual = trigger !== "auto";
+  if (S.ai.busy) {
+    if (!manual) { S.ai.pending = true; return; }
+    // A manual request replaces whatever is running.
+    const old = S.ai.holder;
+    if (old) { old.cancelled = true; old.stream?.abort(); }
+  }
+  const holder = { cancelled: false, stream: null };
+  S.ai.holder = holder;
+  S.ai.busy = true;
+  S.ai.pending = false;
+  setAi("thinking", trigger === "ask" ? "Looking that up…" : manual ? "Thinking…" : "Reading the moment…");
+  const t0 = performance.now();
+  const startCard = () => { const c = newCard(trigger, question); c.started = t0; return c; };
+  let card = null;
+  if (manual) { card = startCard(); renderLive(); }
+  try {
+    const text = await askClaude({
+      prompt: livePrompt(trigger, question), effort: "low", maxTokens: 16000, holder, demo: S.demo,
+      onText: (snap) => {
+        if (!card) {
+          if (isNoneish(snap)) return;
+          card = startCard();
+        }
+        card.raw = snap;
+        renderLive();
+      },
+    });
+    if (holder.cancelled) return;
+    if (!card && !isNoneish(text)) { card = startCard(); card.raw = text; }
+    if (card) {
+      if (isNoneish(text)) card.raw = "TYPE: Info — nothing pending\nSAY: Keep going. Nothing needs an answer right now.";
+      card.done = true;
+      card.ms = performance.now() - card.started;
+      renderLive();
+      setAi(S.running ? "listening" : "", `Suggestion ready in ${(card.ms / 1000).toFixed(1)}s`);
+    } else {
+      setAi(S.running ? "listening" : "", "Listening. Nothing to flag right now.");
+    }
+  } catch (err) {
+    if (holder.cancelled || isAbort(err)) return;
+    const msg = friendlyError(err);
+    if (card) { card.error = msg; card.done = true; renderLive(); }
+    setAi("", "Suggestion failed");
+    toast(msg, { error: true });
+  } finally {
+    if (S.ai.holder === holder) {
+      S.ai.busy = false;
+      S.ai.holder = null;
+      if (S.ai.pending && S.running) { S.ai.pending = false; scheduleAuto(150); }
+    }
+  }
+}
+
+function cancelSuggestion() {
+  const hd = S.ai.holder;
+  if (!hd) return;
+  hd.cancelled = true;
+  hd.stream?.abort();
+  S.ai.busy = false;
+  S.ai.holder = null;
+  const card = S.cards[S.cards.length - 1];
+  if (card && !card.done) { card.done = true; card.error = "Stopped."; renderLive(); }
+  setAi(S.running ? "listening" : "", "Stopped");
+}
+
+function scheduleAuto(delay = 500) {
+  clearTimeout(S.ai.autoTimer);
+  S.ai.autoTimer = setTimeout(() => { if (S.running) suggest("auto"); }, delay);
+}
+
+function onUtterance(line) {
+  if (line.who !== "you") {
+    el.heard.hidden = false;
+    el.heard.replaceChildren(h("b", {}, (WHO_LABEL[line.who] || "Heard") + ": "), line.text);
+  }
+  if (!S.running || (settings.auto !== "auto" && !S.demo)) return;
+  if (line.who === "you") return;
+  if (words(line.text) < 3) return;
+  scheduleAuto();
+}
+
+// --------------------------------------------------------------- idle / waiting views
+function renderIdle() {
+  const hasKey = !!settings.anthropicKey.trim();
+  const hasPb = playbookFilled();
+  const hasDg = !!settings.deepgramKey.trim();
+  const item = (done, opt, title, detail) => h("li", {},
+    h("span", { class: "mark" + (done ? " done" : "") + (opt ? " opt" : "") }, done ? "✓" : ""),
+    h("div", {}, h("b", {}, title), h("div", { style: "color:var(--muted);font-size:14px" }, detail)));
+  el.liveCard.replaceChildren(h("div", { class: "empty-state" },
+    h("h1", {}, hasKey && hasPb ? "Ready when you are" : "Set up in about two minutes"),
+    h("p", {}, "During a call, the copilot listens and shows you what to say next, drawn from your playbook."),
+    h("ul", { class: "checklist" },
+      item(hasKey, false, "Anthropic API key", "Needed for suggestions."),
+      item(hasPb, false, "Your playbook", hasPb ? `${words(settings.playbook)} words loaded.` : "Paste what you sell, your pricing and your objection answers."),
+      item(hasDg, true, "Deepgram key (recommended)", hasDg ? "Both sides of online calls will be transcribed." : "Needed to hear the other person on Zoom, Meet or Teams. Without it, mic only.")),
+    h("div", { class: "row" },
+      h("button", { class: hasKey && hasPb ? "" : "primary", onclick: openSettings }, hasKey && hasPb ? "Settings" : "Open settings"),
+      h("button", { onclick: startDemo, title: "Plays a short sample call so you can see how it works (uses your Anthropic key)" }, "Test drive"),
+      hasKey && hasPb ? h("button", { class: "primary", onclick: openStart }, "Start call") : null),
+  ));
+}
+
+function renderWaiting() {
+  el.liveCard.replaceChildren(h("div", { class: "waiting" },
+    h("strong", {}, S.demo ? "Test drive: a sample call is playing" : "Listening…"),
+    h("span", {}, settings.auto === "auto"
+      ? "Suggestions appear here when the prospect asks something, pushes back or mentions a competitor. Press Space any time for help."
+      : "Press Space or Help me now whenever you want a suggestion."),
+    S.demo ? h("span", {}, "This uses a made-up company called Brightline. Real calls use your playbook.") : null,
+  ));
+}
+
+// --------------------------------------------------------------- test drive
+let demoRun = 0;
+async function startDemo() {
+  if (S.running) return;
+  if (!settings.anthropicKey.trim()) {
+    toast("Add your Anthropic API key first. Test drive uses it to make real suggestions.", { action: { label: "Settings", run: openSettings } });
+    return;
+  }
+  const run = ++demoRun;
+  beginSession("demo");
+  setStatus("listening", "Test drive");
+  const sources = { you: { line: null }, them: { line: null } };
+  const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+  const alive = () => run === demoRun && S.running;
+  await sleep(600);
+  for (const step of DEMO_SCRIPT) {
+    if (!alive()) return;
+    const src = sources[step.who];
+    const ws = step.text.split(" ");
+    for (let i = 1; i <= ws.length; i++) {
+      if (!alive()) return;
+      setInterim(src, step.who, ws.slice(0, i).join(" "));
+      await sleep(110);
+    }
+    addFinal(src, step.who, step.text);
+    closeLine(src);
+    if (step.who === "them") {
+      // Wait for the suggestion, then leave a moment to read it.
+      await sleep(900);
+      const t0 = Date.now();
+      while (alive() && S.ai.busy && Date.now() - t0 < 45000) await sleep(250);
+      await sleep(3500);
+    } else {
+      await sleep(900);
+    }
+  }
+  if (alive()) stopCall();
+}
+
+// --------------------------------------------------------------- wrap-up
+const WRAP_TASK =
+`TASK: post-call wrap-up. The call is over. Using the transcript, write the rep's wrap-up in Markdown with exactly these sections:
+
+## Summary
+3-5 bullets.
+## What they need
+Pains, goals, decision criteria, who decides, timeline and budget (only what was actually said).
+## Questions and objections
+Each one raised, how the rep handled it, and a stronger answer from the playbook if the rep's answer was weak.
+## Next steps
+Each with an owner and a date if one was mentioned.
+## Follow-up email
+Ready to send, in the rep's voice: a subject line and a short body. Use [brackets] only for details that are genuinely missing.
+## Coaching
+2-3 specific, practical tips for the rep's next call.
+
+Keep it tight. Don't invent anything that isn't in the transcript or the playbook. The transcript comes from speech recognition and may contain misheard words.`;
+
+let wrapHolder = null;
+let wrapText = "";
+let wrapKey = "";
+const transcriptKey = () => `${S.startedAt}:${S.lines.length}:${S.lines.reduce((n, l) => n + l.text.length, 0)}`;
+
+function renderMarkdown(md, target) {
+  target.replaceChildren();
+  let list = null;
+  const inline = (s) => {
+    const frag = document.createDocumentFragment();
+    s.split(/(\*\*[^*]+\*\*)/g).forEach((part) => {
+      if (/^\*\*[^*]+\*\*$/.test(part)) frag.append(h("strong", {}, part.slice(2, -2)));
+      else if (part) frag.append(part);
+    });
+    return frag;
+  };
+  for (const raw of md.split("\n")) {
+    const line = raw.trimEnd();
+    let m;
+    if ((m = line.match(/^#{1,4}\s+(.*)/))) { list = null; target.append(h("h2", {}, m[1])); }
+    else if ((m = line.match(/^\s*[-*•]\s+(.*)/)) || (m = line.match(/^\s*\d+[.)]\s+(.*)/))) {
+      if (!list) { list = h("ul"); target.append(list); }
+      list.append(h("li", {}, inline(m[1])));
+    } else if (line.trim()) { list = null; target.append(h("p", {}, inline(line))); }
+    else list = null;
+  }
+}
+
+function openWrap() {
+  const lines = S.lines.filter((l) => (l.text || l.interim).trim());
+  if (!lines.length) { toast("There's no transcript yet. Start a call (or a test drive) first."); return; }
+  if (!el.dlgWrap.open) el.dlgWrap.showModal();
+  if (wrapHolder) return; // already writing
+  if (!wrapText || wrapKey !== transcriptKey()) runWrap(); // otherwise reuse the last result
+}
+
+async function runWrap() {
+  if (wrapHolder) { wrapHolder.cancelled = true; wrapHolder.stream?.abort(); }
+  const holder = { cancelled: false, stream: null };
+  wrapHolder = holder;
+  wrapText = "";
+  wrapKey = transcriptKey();
+  el.wrapOut.replaceChildren(h("p", { style: "color:var(--muted)" }, "Writing your wrap-up… this usually takes 15-40 seconds."));
+  el.wrapStatus.textContent = "";
+  const demo = S.mode === "demo";
+  const parts = [WRAP_TASK];
+  if (demo) parts.push(`<call_notes>\nTest drive with a sample prospect (Priya, Head of Finance).\n</call_notes>`);
+  else if (settings.notes.trim()) parts.push(`<call_notes>\n${settings.notes.trim()}\n</call_notes>`);
+  let tx = transcriptText(S.lines, { forAi: true });
+  if (tx.length > 200000) tx = "…" + tx.slice(-200000);
+  parts.push(`<transcript>\n${tx}\n</transcript>`);
+  try {
+    const text = await askClaude({
+      prompt: parts.join("\n\n"), effort: "medium", maxTokens: 32000, holder, demo,
+      onText: (snap) => { wrapText = snap; renderMarkdown(snap, el.wrapOut); },
+    });
+    if (holder.cancelled) return;
+    wrapText = text;
+    renderMarkdown(text, el.wrapOut);
+    el.wrapStatus.textContent = "Done";
+  } catch (err) {
+    if (holder.cancelled || isAbort(err)) return;
+    el.wrapOut.append(h("p", { style: "color:var(--bad)" }, friendlyError(err)));
+    wrapText = "";
+    wrapKey = "";
+  } finally {
+    if (wrapHolder === holder) wrapHolder = null;
+  }
+}
+
+// --------------------------------------------------------------- floating window
+let pipWin = null;
+async function popOut() {
+  if (pipWin) { pipWin.focus?.(); return; }
+  if (!("documentPictureInPicture" in window)) {
+    toast("Floating windows need a recent Chrome or Edge. Alternatively, put this window side by side with your call.", { error: true, ms: 9000 });
+    return;
+  }
+  try {
+    pipWin = await window.documentPictureInPicture.requestWindow({ width: 460, height: 380 });
+  } catch (err) {
+    toast("Couldn't open the floating window: " + (err?.message || err), { error: true });
+    return;
+  }
+  for (const s of document.querySelectorAll("style")) pipWin.document.head.append(s.cloneNode(true));
+  const theme = document.documentElement.getAttribute("data-theme");
+  if (theme) pipWin.document.documentElement.setAttribute("data-theme", theme);
+  pipWin.document.title = "Sales Copilot";
+  pipWin.document.body.className = "pip";
+  pipWin.document.body.append(el.focus);
+  pipWin.document.addEventListener("keydown", onKey);
+  el.pipNote.hidden = false;
+  pipWin.addEventListener("pagehide", () => {
+    el.focusHome.append(el.focus);
+    el.pipNote.hidden = true;
+    pipWin = null;
+  });
+}
+
+// --------------------------------------------------------------- dialogs
+function openSettings() {
+  el.sKey.value = settings.anthropicKey;
+  el.sDg.value = settings.deepgramKey;
+  el.sModel.value = settings.model;
+  el.sAuto.value = settings.auto;
+  el.sEngine.value = settings.engine;
+  el.sLang.value = settings.lang;
+  el.sPlaybook.value = settings.playbook;
+  updatePbCount();
+  el.dlgSettings.showModal();
+}
+function updatePbCount() { el.pbCount.textContent = `${words(el.sPlaybook.value)} words`; }
+
+el.dlgSettings.addEventListener("close", () => {
+  if (el.dlgSettings.returnValue !== "save") return;
+  Object.assign(settings, {
+    anthropicKey: el.sKey.value.trim(), deepgramKey: el.sDg.value.trim(), model: el.sModel.value,
+    auto: el.sAuto.value, engine: el.sEngine.value, lang: el.sLang.value, playbook: el.sPlaybook.value,
+  });
+  saveSettings();
+  welcomeToast?.remove();
+  toast("Settings saved", { ms: 1800 });
+  if (!S.running && !S.cards.length) renderIdle();
+  if (S.running && S.engines.length) toast("Transcription changes apply from your next call.", { ms: 4000 });
+});
+
+el.settingsForm.addEventListener("click", (e) => {
+  const id = e.target?.dataset?.reveal;
+  if (!id) return;
+  const input = document.getElementById(id);
+  input.type = input.type === "password" ? "text" : "password";
+  e.target.textContent = input.type === "password" ? "Show" : "Hide";
+});
+el.sPlaybook.addEventListener("input", updatePbCount);
+$("#btnLoadPb").addEventListener("click", () => el.pbFile.click());
+el.pbFile.addEventListener("change", async () => {
+  const f = el.pbFile.files?.[0];
+  if (!f) return;
+  const text = await f.text();
+  const cur = el.sPlaybook.value.trim();
+  el.sPlaybook.value = !cur || cur === TEMPLATE.trim() ? text : cur + "\n\n" + text;
+  el.pbFile.value = "";
+  updatePbCount();
+});
+$("#btnResetPb").addEventListener("click", () => {
+  if (el.sPlaybook.value.trim() && el.sPlaybook.value.trim() !== TEMPLATE.trim() && !confirm("Replace your playbook with the blank template?")) return;
+  el.sPlaybook.value = TEMPLATE;
+  updatePbCount();
+});
+
+function openStart() {
+  if (S.running) return;
+  if (!settings.anthropicKey.trim()) {
+    toast("Add your Anthropic API key first.", { action: { label: "Settings", run: openSettings } });
+    return;
+  }
+  el.callNotes.value = settings.notes;
+  const radios = el.startForm.elements.mode;
+  radios.value = useDeepgram() ? settings.mode : "mic";
+  updateStartWarn();
+  el.dlgStart.showModal();
+}
+function updateStartWarn() {
+  const mode = el.startForm.elements.mode.value;
+  const warn = [];
+  if (mode === "call" && !useDeepgram()) warn.push("Hearing both sides of an online call needs a Deepgram key (Settings → Keys).");
+  if (mode === "mic" && !useDeepgram()) warn.push("Using the browser's free speech engine (Chrome or Edge). Accuracy is lower and speakers aren't labelled. A Deepgram key improves both.");
+  if (!playbookFilled()) warn.push("Your playbook is still the blank template, so answers will be generic. Add it in Settings.");
+  el.startWarn.hidden = !warn.length;
+  el.startWarn.replaceChildren(...warn.map((w) => h("div", {}, w)));
+}
+el.startForm.addEventListener("change", updateStartWarn);
+el.dlgStart.addEventListener("close", () => {
+  if (el.dlgStart.returnValue !== "go") return;
+  settings.notes = el.callNotes.value;
+  settings.mode = el.startForm.elements.mode.value;
+  saveSettings();
+  startCall(settings.mode);
+});
+
+// --------------------------------------------------------------- wiring
+el.btnStart.addEventListener("click", openStart);
+el.btnStop.addEventListener("click", stopCall);
+el.btnSettings.addEventListener("click", openSettings);
+el.btnPip.addEventListener("click", popOut);
+el.btnPipBack.addEventListener("click", () => pipWin?.close());
+el.btnWrap.addEventListener("click", openWrap);
+el.btnHelp.addEventListener("click", () => suggest("help"));
+el.btnDownloadTx.addEventListener("click", () => {
+  const text = transcriptText(S.lines);
+  if (!text) { toast("Nothing to download yet."); return; }
+  const date = new Date(S.startedAt || Date.now());
+  const stamp = date.toISOString().slice(0, 16).replace(/[T:]/g, "-");
+  const head = `Call transcript, ${date.toLocaleString()}\n${settings.notes.trim() ? "Notes: " + settings.notes.trim() + "\n" : ""}\n`;
+  download(`call-transcript-${stamp}.txt`, head + text);
+});
+el.askForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const q = el.askInput.value.trim();
+  if (!q) return;
+  el.askInput.value = "";
+  suggest("ask", q);
+});
+el.btnAsProspect.addEventListener("click", () => {
+  const q = el.askInput.value.trim();
+  if (!q) { el.askInput.focus(); toast("Type what the prospect said, then press Prospect said. Handy for practising objections."); return; }
+  el.askInput.value = "";
+  const running = S.running;
+  if (!running && (S.restored || S.mode === "demo")) { clearTranscript(); S.mode = "practice"; }
+  const src = { line: null };
+  addFinal(src, S.mode === "mic" && running ? "call" : "them", q);
+  const line = src.line;
+  line.closed = true;
+  renderLine(line);
+  el.heard.hidden = false;
+  el.heard.replaceChildren(h("b", {}, "Prospect: "), line.text);
+  clearTimeout(S.ai.autoTimer);
+  suggest("help");
+});
+$("#btnWrapClose").addEventListener("click", () => el.dlgWrap.close());
+$("#btnWrapCopy").addEventListener("click", () => wrapText && copyText(wrapText));
+$("#btnWrapDl").addEventListener("click", () => wrapText && download("call-wrap-up.md", wrapText, "text/markdown"));
+$("#btnWrapRedo").addEventListener("click", runWrap);
+
+function onKey(e) {
+  const t = e.target;
+  const typing = t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName));
+  if (document.querySelector("dialog[open]")) return;
+  if (typing) {
+    if (e.key === "Escape") t.blur();
+    return;
+  }
+  if (e.key === " " || e.code === "Space") {
+    // Space is the hotkey even when a button still has focus from a click.
+    e.preventDefault();
+    if (t && t.tagName === "BUTTON") t.blur();
+    if (!e.repeat) suggest("help");
+  } else if (e.key === "/") {
+    e.preventDefault();
+    if (pipWin) window.focus();
+    el.askInput.focus();
+  } else if (e.key === "Escape") {
+    cancelSuggestion();
+  }
+}
+document.addEventListener("keydown", onKey);
+
+window.addEventListener("beforeunload", (e) => {
+  if (S.running && !S.demo) { e.preventDefault(); e.returnValue = ""; }
+});
+
+// --------------------------------------------------------------- boot
+restoreLastCall();
+renderIdle();
+let welcomeToast = null;
+if (!settings.anthropicKey) {
+  setTimeout(() => {
+    if (!settings.anthropicKey) welcomeToast = toast("Welcome! Start in Settings: add your API key and playbook.", { action: { label: "Open settings", run: openSettings }, ms: 12000 });
+  }, 400);
+}
+</script>
+</body>
+</html>
