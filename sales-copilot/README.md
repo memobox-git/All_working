@@ -48,8 +48,14 @@ Audio goes to Deepgram (or to Google, if you use the browser's free speech engin
 
 ## Troubleshooting
 
+During a call, the top of the transcript panel shows a sound meter and a status for each source (Prospect, You, or Mic). If the transcript stays empty, read what it says there. It tells you whether sound is reaching the page, whether words are coming back, and what to change. **Check** buttons next to both keys in Settings confirm the keys work before a call.
+
 | Problem | Fix |
 |---|---|
+| Nothing appears and there's a red message about the speech engine | You're using the free browser engine in a browser that doesn't include it (Brave, Opera, Arc, Vivaldi, or an app's built-in browser). Open the page in Google Chrome or Microsoft Edge, or add a Deepgram key. |
+| "No sound from the call yet" | The wrong tab was shared, or "Also share tab audio" was off. End the call and start again. |
+| "Your microphone is silent" | Unmute your mic, or pick the right one from the icon at the left of the address bar. |
+| "Hearing sound, but no words are coming back" | Check Settings → Call language matches the call. |
 | "No audio was shared" | When Chrome asks what to share, switch on **Also share tab audio** (or **system audio** for the whole screen). |
 | Only your side shows up | You probably picked a tab without the call, or audio sharing was off. End the call and start again. |
 | Your words show up as "Prospect" | You're on speakers. Use headphones. |

@@ -201,6 +201,18 @@ a { color: var(--accent); }
 .line .txt { white-space: pre-wrap; overflow-wrap: anywhere; }
 .line .interim { color: var(--faint); }
 .line.cont .who { visibility: hidden; }
+.audio-strip { display: flex; flex-direction: column; gap: 6px; padding: 10px 14px 6px; border-bottom: 1px solid var(--border); }
+.src { display: grid; grid-template-columns: 82px 1fr; gap: 10px; align-items: center; font-size: 13px; }
+.src-name { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; text-align: right; color: var(--muted); }
+.src-name.them { color: var(--them); }
+.src-name.you { color: var(--you); }
+.src-body { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.meter { flex: none; width: 84px; height: 6px; border-radius: 3px; background: var(--panel-2); overflow: hidden; }
+.meter i { display: block; height: 100%; width: 0; background: var(--ok); transition: width .12s linear; }
+.src-state { color: var(--muted); min-width: 0; }
+.src-state.good { color: var(--ok); }
+.src-state.warn { color: var(--warn); }
+.src-state.bad { color: var(--bad); }
 .tx-empty { padding: 26px; color: var(--muted); text-align: center; margin: auto; max-width: 360px; }
 .divider { text-align: center; color: var(--faint); font-size: 12px; margin: 6px 0; }
 
@@ -312,6 +324,7 @@ body.pip .card-actions { display: none; }
         <h2>Live transcript</h2>
         <button id="btnDownloadTx" class="small">Download</button>
       </div>
+      <div class="audio-strip" id="audioStrip" hidden></div>
       <div class="tx" id="transcript">
         <div class="tx-empty" id="txEmpty">Your conversation will appear here, labelled <b style="color:var(--you)">You</b> and <b style="color:var(--them)">Prospect</b>.</div>
       </div>
@@ -375,7 +388,8 @@ body.pip .card-actions { display: none; }
         </div>
         <div class="field">
           <label for="sDg">Deepgram API key <span style="color:var(--muted); font-weight:400">(needed to hear both sides of an online call)</span></label>
-          <div class="inline"><input id="sDg" type="password" placeholder="Paste your Deepgram key" spellcheck="false"><button type="button" class="small" data-reveal="sDg">Show</button></div>
+          <div class="inline"><input id="sDg" type="password" placeholder="Paste your Deepgram key" spellcheck="false"><button type="button" class="small" data-reveal="sDg">Show</button><button type="button" class="small" id="btnCheckDg">Check</button></div>
+          <span class="hint" id="dgCheck" style="font-size:13px"></span>
           <span class="hint">Live transcription. Sign up at <a href="https://console.deepgram.com/signup" target="_blank" rel="noopener">console.deepgram.com</a>; new accounts come with free credit. Without it, the copilot can only use your microphone (via the browser's free speech recognition).</span>
         </div>
         <p class="note">Your keys, playbook and transcripts stay in this browser on this computer. Audio goes to Deepgram (or to Google if you use the browser's free speech engine) to become text, and the text goes to Anthropic to produce suggestions. Nothing else is sent anywhere.</p>
@@ -573,7 +587,7 @@ const el = {
   liveCard: $("#liveCard"), heard: $("#heard"), pipNote: $("#pipNote"), btnPipBack: $("#btnPipBack"),
   askForm: $("#askForm"), askInput: $("#askInput"), btnAsProspect: $("#btnAsProspect"),
   history: $("#history"), costText: $("#costText"),
-  transcript: $("#transcript"), txEmpty: $("#txEmpty"), btnDownloadTx: $("#btnDownloadTx"),
+  transcript: $("#transcript"), txEmpty: $("#txEmpty"), audioStrip: $("#audioStrip"), btnDownloadTx: $("#btnDownloadTx"),
   toasts: $("#toasts"),
   dlgStart: $("#dlgStart"), startForm: $("#startForm"), callNotes: $("#callNotes"), startWarn: $("#startWarn"),
   dlgSettings: $("#dlgSettings"), settingsForm: $("#settingsForm"),
@@ -717,6 +731,7 @@ function removeLine(line) {
 function addFinal(src, who, text) {
   text = text.trim();
   if (!text) return;
+  src.lastWordAt = Date.now();
   if (src.line && src.line.who !== who) closeLine(src);
   if (!src.line) src.line = newLine(who);
   src.line.text = (src.line.text + " " + text).trim();
@@ -725,6 +740,7 @@ function addFinal(src, who, text) {
 }
 
 function setInterim(src, who, text) {
+  if (text.trim()) src.lastWordAt = Date.now();
   if (src.line && src.line.who !== who && src.line.text) closeLine(src);
   if (!src.line) {
     if (!text.trim()) return;
@@ -801,14 +817,19 @@ function clearTranscript() {
 }
 
 // --------------------------------------------------------------- engines
+// Each engine turns one audio source into transcript lines. They report
+// state, error and lastWordAt so the audio check can say what's wrong.
+const langNow = () => LANGS.find((l) => l.v === settings.lang) || LANGS[0];
+
 class DeepgramEngine {
-  constructor({ stream, who, diarize }) {
-    this.stream = stream; this.who = who; this.diarize = diarize;
-    this.line = null; this.active = false; this.failures = 0;
+  constructor({ stream, who, label, diarize }) {
+    this.stream = stream; this.meterStream = stream; this.who = who; this.label = label; this.diarize = diarize;
+    this.line = null; this.active = false; this.failures = 0; this.state = "connecting"; this.error = "";
   }
   async start() {
     this.active = true;
-    const lang = LANGS.find((l) => l.v === settings.lang) || LANGS[0];
+    this.state = this.failures ? "reconnecting" : "connecting";
+    const lang = langNow();
     const p = new URLSearchParams({
       model: "nova-3", language: lang.dg, smart_format: "true", interim_results: "true",
       utterance_end_ms: "1200", vad_events: "true", endpointing: "400",
@@ -818,7 +839,8 @@ class DeepgramEngine {
     this.ws = ws;
     await new Promise((resolve, reject) => {
       ws.onopen = resolve;
-      ws.onclose = () => reject(new UserError("Couldn't connect to Deepgram. Check your Deepgram key in Settings (and that your account has credit)."));
+      ws.onclose = () => reject(new UserError("Couldn't connect to Deepgram. In Settings, press Check next to the Deepgram key, and make sure your Deepgram account has credit"
+        + (lang.dg === "en" ? "." : ". If that's fine, try English as the call language.")));
     });
     if (!this.active) { ws.close(); return; } // stopped while connecting
     ws.onmessage = (e) => this.onMessage(e);
@@ -830,6 +852,8 @@ class DeepgramEngine {
     clearInterval(this.keepAlive);
     this.keepAlive = setInterval(() => { if (ws.readyState === 1) ws.send(JSON.stringify({ type: "KeepAlive" })); }, 8000);
     this.failures = 0;
+    this.state = "live";
+    this.error = "";
   }
   onMessage(e) {
     let msg;
@@ -864,13 +888,15 @@ class DeepgramEngine {
     closeLine(this);
     // Unexpected drop: reconnect with a fresh recorder (Deepgram needs the container header again).
     if (++this.failures > 3) {
-      toast(`Transcription stopped (Deepgram closed the connection, code ${e.code}). End the call and start again.`, { error: true, ms: 0 });
+      this.state = "error";
+      this.error = `Transcription stopped: Deepgram closed the connection (${e.code}). End the call and start again.`;
+      toast(this.error, { error: true, ms: 0 });
       return;
     }
-    setStatus("thinking", "Reconnecting transcription…");
+    this.state = "reconnecting";
     await new Promise((r) => setTimeout(r, 800 * this.failures));
     if (!this.active) return;
-    try { await this.start(); setStatus("listening", "Listening"); }
+    try { await this.start(); }
     catch (err) { this.onClose({ code: err.message }); }
   }
   stop() {
@@ -884,16 +910,28 @@ class DeepgramEngine {
   }
 }
 
+const SPEECH_ERRORS = {
+  "not-allowed": "Microphone blocked. Click the icon at the left of the address bar, allow the microphone, then start again.",
+  "service-not-allowed": "This browser won't let the page use its speech engine. Open the page in Google Chrome or Microsoft Edge, or add a Deepgram key in Settings.",
+  "audio-capture": "No microphone found. Plug one in, or check your computer's sound settings.",
+  "network": "This browser's free speech engine isn't available (Brave, Opera, Arc, Vivaldi and apps with a built-in browser don't include it). Open the page in Google Chrome or Microsoft Edge, or add a Deepgram key in Settings.",
+  "language-not-supported": "The browser's speech engine doesn't support this language. Change Settings → Call language.",
+};
+
 class BrowserSpeechEngine {
-  constructor({ who }) { this.who = who; this.line = null; this.active = false; }
+  constructor({ who, label, meterStream }) {
+    this.who = who; this.label = label; this.meterStream = meterStream;
+    this.line = null; this.active = false; this.state = "connecting"; this.error = ""; this.errors = 0;
+  }
   async start() {
     const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
-    if (!SR) throw new UserError("This browser has no built-in speech recognition. Use Chrome or Edge, or add a Deepgram key in Settings.");
+    if (!SR) throw new UserError("This browser has no free speech engine. Open the page in Google Chrome or Microsoft Edge, or add a Deepgram key in Settings.");
     this.active = true;
-    const lang = LANGS.find((l) => l.v === settings.lang) || LANGS[0];
     const rec = new SR();
-    rec.continuous = true; rec.interimResults = true; rec.lang = lang.web;
+    rec.continuous = true; rec.interimResults = true; rec.lang = langNow().web;
+    rec.onstart = () => { if (this.state !== "error") this.state = "live"; };
     rec.onresult = (e) => {
+      this.errors = 0;
       let interim = "";
       for (let i = e.resultIndex; i < e.results.length; i++) {
         const r = e.results[i];
@@ -903,28 +941,121 @@ class BrowserSpeechEngine {
       if (interim) setInterim(this, this.who, interim);
     };
     rec.onerror = (e) => {
-      if (e.error === "not-allowed" || e.error === "service-not-allowed") {
-        this.active = false;
-        toast("Microphone access was blocked. Allow the mic for this page and start again.", { error: true, ms: 0 });
-      } else if (e.error === "network") {
-        toast("The browser's speech service is unreachable. Check your connection, or use a Deepgram key.", { error: true });
-      }
+      if (e.error === "no-speech" || e.error === "aborted") return;
+      // A single network blip can happen; twice in a row means the engine isn't available here.
+      if (e.error === "network" && ++this.errors < 2) return;
+      this.active = false;
+      this.state = "error";
+      this.error = SPEECH_ERRORS[e.error] || `The browser's speech engine stopped (${e.error}). Try Google Chrome, or add a Deepgram key in Settings.`;
+      toast(this.error, { error: true, ms: 0 });
     };
-    rec.onend = () => { if (this.active) setTimeout(() => { try { rec.start(); } catch {} }, 250); };
+    rec.onend = () => { if (this.active) setTimeout(() => { if (!this.active) return; try { rec.start(); } catch {} }, 250); };
     this.rec = rec;
     rec.start();
   }
   stop() { this.active = false; try { this.rec?.stop(); } catch {} closeLine(this); }
 }
 
+// --------------------------------------------------------------- audio check
+// A sound meter and a plain-English status for each source, so problems
+// (nothing shared, muted mic, blocked speech engine) show up on screen.
+function makeMeter(stream) {
+  try {
+    const ctx = new AudioContext();
+    const source = ctx.createMediaStreamSource(new MediaStream(stream.getAudioTracks()));
+    const analyser = ctx.createAnalyser();
+    analyser.fftSize = 1024;
+    const mute = ctx.createGain();
+    mute.gain.value = 0;
+    source.connect(analyser); analyser.connect(mute); mute.connect(ctx.destination);
+    ctx.resume?.().catch(() => {});
+    const buf = new Float32Array(analyser.fftSize);
+    return {
+      level() {
+        analyser.getFloatTimeDomainData(buf);
+        let sum = 0;
+        for (let i = 0; i < buf.length; i++) sum += buf[i] * buf[i];
+        return Math.sqrt(sum / buf.length);
+      },
+      close() { ctx.close().catch(() => {}); },
+    };
+  } catch { return null; }
+}
+
+const Monitor = {
+  chans: [], timer: 0, t0: 0,
+  start(engines) {
+    this.stop();
+    this.t0 = Date.now();
+    el.audioStrip.replaceChildren();
+    for (const eng of engines) {
+      const bar = h("i");
+      const state = h("span", { class: "src-state" }, "Connecting…");
+      el.audioStrip.append(h("div", { class: "src" },
+        h("div", { class: "src-name " + eng.who }, eng.label),
+        h("div", { class: "src-body" }, h("span", { class: "meter", title: "Sound level" }, bar), state)));
+      this.chans.push({ eng, meter: eng.meterStream ? makeMeter(eng.meterStream) : null, bar, state, loudMs: 0, heardAny: false, text: "" });
+    }
+    el.audioStrip.hidden = false;
+    this.timer = setInterval(() => this.tick(), 200);
+  },
+  tick() {
+    const now = Date.now();
+    for (const c of this.chans) {
+      const e = c.eng;
+      if (c.meter) {
+        const lvl = c.meter.level();
+        const db = 20 * Math.log10(lvl + 1e-8);
+        c.bar.style.width = Math.max(0, Math.min(100, ((db + 60) / 50) * 100)).toFixed(0) + "%";
+        if (lvl > 0.01) { c.heardAny = true; c.loudMs += 200; }
+      }
+      const sinceWords = e.lastWordAt ? now - e.lastWordAt : Infinity;
+      if (sinceWords < 4000) c.loudMs = 0;
+      let kind = "", text;
+      if (e.state === "error") { kind = "bad"; text = e.error; }
+      else if (e.state === "connecting") text = "Connecting…";
+      else if (e.state === "reconnecting") { kind = "warn"; text = "Connection dropped, reconnecting…"; }
+      else if (sinceWords < 6000) { kind = "good"; text = "Transcribing ✓"; }
+      else if (c.loudMs > 8000) {
+        kind = "warn";
+        text = e instanceof BrowserSpeechEngine
+          ? "Hearing sound, but no words are coming back. Check Settings → Call language, open the page in Google Chrome, or add a Deepgram key."
+          : "Hearing sound, but no words are coming back. Check Settings → Call language.";
+      } else if (c.meter && !c.heardAny && now - this.t0 > 12000) {
+        kind = "warn";
+        text = e.who === "them"
+          ? "No sound from the call yet. If they're talking, the wrong tab was shared or “Also share tab audio” was off: end the call and start again."
+          : "Your microphone is silent. Check it isn't muted and the right mic is selected (the icon at the left of the address bar).";
+      } else text = e.lastWordAt ? "Listening" : c.heardAny ? "Hearing sound…" : "Listening… waiting for sound";
+      if (c.text !== text) { c.state.textContent = text; c.state.className = "src-state " + kind; c.text = text; }
+    }
+  },
+  stop() {
+    clearInterval(this.timer);
+    for (const c of this.chans) c.meter?.close();
+    this.chans = [];
+    el.audioStrip.hidden = true;
+  },
+};
+
 // --------------------------------------------------------------- call lifecycle
+const MIC_CONSTRAINTS = { audio: { echoCancellation: true, noiseSuppression: true, autoGainControl: true } };
+
 async function startCall(mode) {
   if (S.running) return;
   const engines = [];
   const media = [];
+  let step = "";
   try {
+    if (!navigator.mediaDevices?.getUserMedia) {
+      throw new UserError("This browser can't use the microphone on this page. Open it in Google Chrome or Microsoft Edge on a computer.");
+    }
     if (mode === "call") {
       if (!useDeepgram()) throw new UserError("Listening to both sides of an online call needs a Deepgram key (Settings → Keys). Or choose “Speakerphone or in person”.");
+      if (!navigator.mediaDevices.getDisplayMedia) {
+        throw new UserError("This device can't share a call's sound (phones and tablets can't). Use Chrome or Edge on a computer, or choose “Speakerphone or in person”.");
+      }
+      step = "share";
       setStatus("thinking", "Choose the call to listen to…");
       const display = await navigator.mediaDevices.getDisplayMedia({
         video: { displaySurface: "browser" },
@@ -933,37 +1064,43 @@ async function startCall(mode) {
       });
       media.push(display);
       if (!display.getAudioTracks().length) {
-        throw new UserError("No audio was shared. Start again, pick the tab with your call and switch on “Also share tab audio” (or “Also share system audio” for the whole screen).");
+        throw new UserError("No sound was shared. Start again, pick the browser tab your call is in, and switch on “Also share tab audio”. "
+          + "On Windows you can share the entire screen with “Also share system audio”. On a Mac, desktop apps like Zoom can't share their sound: "
+          + "join the call in the browser instead, or choose “Speakerphone or in person”.");
       }
+      step = "mic";
       setStatus("thinking", "Allow your microphone…");
-      const mic = await navigator.mediaDevices.getUserMedia({ audio: { echoCancellation: true, noiseSuppression: true, autoGainControl: true } });
+      const mic = await navigator.mediaDevices.getUserMedia(MIC_CONSTRAINTS);
       media.push(mic);
-      engines.push(new DeepgramEngine({ stream: display, who: "them" }));
-      engines.push(new DeepgramEngine({ stream: mic, who: "you" }));
+      engines.push(new DeepgramEngine({ stream: display, who: "them", label: "Prospect" }));
+      engines.push(new DeepgramEngine({ stream: mic, who: "you", label: "You" }));
       display.getAudioTracks()[0].addEventListener("ended", () => { if (S.running) { toast("Screen/tab sharing stopped, so the call has ended."); stopCall(); } });
     } else {
+      step = "mic";
       setStatus("thinking", "Allow your microphone…");
-      if (useDeepgram()) {
-        const mic = await navigator.mediaDevices.getUserMedia({ audio: { echoCancellation: true, noiseSuppression: true, autoGainControl: true } });
-        media.push(mic);
-        engines.push(new DeepgramEngine({ stream: mic, who: "call", diarize: true }));
-      } else {
-        engines.push(new BrowserSpeechEngine({ who: "call" }));
-      }
+      const mic = await navigator.mediaDevices.getUserMedia(MIC_CONSTRAINTS);
+      media.push(mic);
+      engines.push(useDeepgram()
+        ? new DeepgramEngine({ stream: mic, who: "call", label: "Mic", diarize: true })
+        : new BrowserSpeechEngine({ who: "call", label: "Mic", meterStream: mic }));
     }
+    step = "";
     setStatus("thinking", "Connecting transcription…");
     await Promise.all(engines.map((e) => e.start()));
   } catch (err) {
     engines.forEach((e) => { try { e.stop(); } catch {} });
     media.forEach((m) => m.getTracks().forEach((t) => t.stop()));
     setStatus("", "Ready");
-    if (err?.name === "NotAllowedError") toast("Permission was declined, so the call didn't start.", { error: true });
-    else toast(err instanceof UserError ? err.message : "Couldn't start: " + (err?.message || err), { error: true, ms: 12000 });
+    if (err?.name === "NotAllowedError" && step === "share") toast("Sharing was cancelled, so the call didn't start.", { error: true });
+    else if (err?.name === "NotAllowedError") toast("Microphone permission was declined. Click the icon at the left of the address bar, allow the microphone, and start again.", { error: true, ms: 12000 });
+    else if (err?.name === "NotFoundError") toast("No microphone found. Plug one in, or check your computer's sound settings.", { error: true, ms: 12000 });
+    else toast(err instanceof UserError ? err.message : "Couldn't start: " + (err?.message || err), { error: true, ms: 15000 });
     return;
   }
   beginSession(mode);
   S.engines = engines;
   S.media = media;
+  Monitor.start(engines);
   setStatus("listening", mode === "call" ? "Listening to the call and your mic" : "Listening through your mic");
 }
 
@@ -995,6 +1132,7 @@ function stopCall() {
   S.engines = [];
   S.media.forEach((m) => m.getTracks().forEach((t) => t.stop()));
   S.media = [];
+  Monitor.stop();
   clearInterval(S.timerId);
   clearTimeout(S.ai.autoTimer);
   demoRun++;
@@ -1581,7 +1719,34 @@ $("#btnCheckKey").addEventListener("click", async () => {
     if (isWorkspaceError(err)) el.sWs.focus();
   }
 });
-el.dlgSettings.addEventListener("close", () => { keyCheck.textContent = ""; });
+el.dlgSettings.addEventListener("close", () => { keyCheck.textContent = ""; dgCheck.textContent = ""; });
+
+// Opens and closes a Deepgram connection with the typed key and language; no audio is sent.
+const dgCheck = $("#dgCheck");
+$("#btnCheckDg").addEventListener("click", async () => {
+  const key = el.sDg.value.trim();
+  dgCheck.style.color = "var(--muted)";
+  if (!key) { dgCheck.textContent = "Paste your Deepgram key first."; return; }
+  dgCheck.textContent = "Checking…";
+  const lang = LANGS.find((l) => l.v === el.sLang.value) || LANGS[0];
+  const ok = await new Promise((resolve) => {
+    let done = false;
+    const ws = new WebSocket(`wss://api.deepgram.com/v1/listen?model=nova-3&language=${encodeURIComponent(lang.dg)}`, ["token", key]);
+    const finish = (result) => {
+      if (done) return;
+      done = true;
+      try { if (ws.readyState === 1) ws.send(JSON.stringify({ type: "CloseStream" })); ws.close(); } catch {}
+      resolve(result);
+    };
+    ws.onopen = () => finish(true);
+    ws.onclose = () => finish(false);
+    setTimeout(() => finish(false), 10000);
+  });
+  dgCheck.style.color = ok ? "var(--ok)" : "var(--bad)";
+  dgCheck.textContent = ok
+    ? `✓ Works (${lang.label}). Press Save.`
+    : "Deepgram didn't accept this key" + (lang.dg === "en" ? "" : " with this language") + ". Check the key was copied in full and your Deepgram account has credit.";
+});
 $("#btnLoadPb").addEventListener("click", () => el.pbFile.click());
 el.pbFile.addEventListener("change", async () => {
   const f = el.pbFile.files?.[0];
@@ -1613,8 +1778,15 @@ function openStart() {
 function updateStartWarn() {
   const mode = el.startForm.elements.mode.value;
   const warn = [];
-  if (mode === "call" && !useDeepgram()) warn.push("Hearing both sides of an online call needs a Deepgram key (Settings → Keys).");
-  if (mode === "mic" && !useDeepgram()) warn.push("Using the browser's free speech engine (Chrome or Edge). Accuracy is lower and speakers aren't labelled. A Deepgram key improves both.");
+  const ua = navigator.userAgent;
+  const chromeOrEdge = !navigator.brave && (/Edg\//.test(ua) || (/Chrome\//.test(ua) && !/OPR\/|Vivaldi|YaBrowser|SamsungBrowser|Electron/.test(ua)));
+  if (mode === "call" && !navigator.mediaDevices?.getDisplayMedia) warn.push("This device can't share a call's sound (phones and tablets can't). Use Chrome or Edge on a computer, or choose “Speakerphone or in person”.");
+  else if (mode === "call" && !useDeepgram()) warn.push("Hearing both sides of an online call needs a Deepgram key (Settings → Keys).");
+  if (mode === "mic" && !useDeepgram()) {
+    warn.push(chromeOrEdge
+      ? "Using the browser's free speech engine. Accuracy is lower and speakers aren't labelled. A Deepgram key improves both."
+      : "This browser probably doesn't include the free speech engine. Open the page in Google Chrome or Microsoft Edge, or add a Deepgram key in Settings.");
+  }
   el.startWarn.hidden = !warn.length;
   el.startWarn.replaceChildren(...warn.map((w) => h("div", {}, w)));
 }
