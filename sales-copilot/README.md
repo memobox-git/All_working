@@ -4,13 +4,15 @@ Listens to your sales call and, the moment the prospect asks something, pushes b
 
 It's a single file (`index.html`) that runs in Chrome or Edge. There's nothing to install and no server. Your keys and notes stay in your browser.
 
+**Live at https://live-sales-copilot.netlify.app.** Open it in Chrome or Edge, or open `index.html` directly.
+
 ## Setup (about 2 minutes)
 
 1. **Open `index.html` in Chrome or Edge.** Double-click it, or drag it into a browser window.
 2. **Settings → Keys**
    - **Anthropic API key** (required): powers the suggestions. Create one at [console.anthropic.com](https://console.anthropic.com/settings/keys).
    - **Deepgram API key** (recommended): turns the call audio into text and hears both sides of an online call. Sign up at [console.deepgram.com](https://console.deepgram.com/signup); new accounts get free credit. Without it the app uses the browser's free speech recognition, which only hears your microphone.
-3. **Settings → Your playbook.** Fill in the template: what you sell, pricing, proof points, competitors, and how you answer common objections. You can paste existing sales docs or load a `.txt` or `.md` file.
+3. **Settings → Your playbook (optional).** Without a playbook, the copilot answers from Claude's own knowledge. When you're ready, fill in the template (what you sell, pricing, proof points, competitors, how you answer objections) and answers about your company come from it. You can paste existing sales docs or load a `.txt` or `.md` file.
 4. Click **Test drive** to watch a sample call play out with a made-up company.
 
 ## On a call
@@ -21,7 +23,7 @@ It's a single file (`index.html`) that runs in Chrome or Edge. There's nothing t
 2. Optionally add a line about who you're calling and your goal for the call.
 3. Talk normally. Cards appear on the left:
    - **The big line** is something you can say word for word.
-   - **The bullets** are supporting facts from your playbook. If something isn't in your playbook, the card says so instead of making it up.
+   - **The bullets** are supporting facts. With a playbook, facts about your company come from it, and if something isn't covered the card says so instead of making it up. Without one, it answers from Claude's own knowledge and flags anything you should confirm, such as your exact price.
    - **Then ask** is a follow-up question that moves the deal forward.
 4. Shortcuts:
    - **Space**: get a card for this exact moment.

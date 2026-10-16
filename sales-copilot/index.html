@@ -404,9 +404,9 @@ body.pip .card-actions { display: none; }
       </div>
 
       <div class="section">
-        <h3>Your playbook</h3>
+        <h3>Your playbook (optional)</h3>
         <div class="field">
-          <span class="hint">Everything the copilot should know: what you sell, pricing, proof points, competitors, and how you answer common objections. Short bullet points work best. Paste your existing sales docs here if you like.</span>
+          <span class="hint">Leave the template as it is and the copilot answers from Claude's own knowledge. Fill it in (what you sell, pricing, proof points, competitors, how you answer objections) and answers about your company come from here. Short bullets work best, and you can paste existing sales docs.</span>
           <textarea id="sPlaybook" class="playbook" spellcheck="false"></textarea>
           <div class="row" style="align-items:center">
             <button type="button" class="small" id="btnLoadPb">Load from file…</button>
@@ -1038,18 +1038,17 @@ function friendlyError(err) {
 }
 const isAbort = (err) => err?.name === "AbortError" || (AnthropicSDK && err instanceof AnthropicSDK.APIUserAbortError);
 
+const hasPlaybook = (demo) => demo || !!playbookFilled();
+
 function system(demo) {
-  const playbook = demo ? DEMO_PLAYBOOK : (playbookFilled() ? settings.playbook.trim() : "(The rep hasn't filled in a playbook yet.)");
-  return [{
-    type: "text",
-    text:
-`You support a salesperson (the "rep") during and after their sales calls. Their playbook below is your source of truth about what they sell, prices, proof points, competitors and how they like to handle objections.
+  const text = hasPlaybook(demo)
+    ? `You support a salesperson (the "rep") during and after their sales calls. Their playbook below is your source of truth about what they sell, prices, proof points, competitors and how they like to handle objections. For anything the playbook doesn't cover, use your own knowledge.
 
 <playbook>
-${playbook}
-</playbook>`,
-    cache_control: { type: "ephemeral" },
-  }];
+${demo ? DEMO_PLAYBOOK : settings.playbook.trim()}
+</playbook>`
+    : `You support a salesperson (the "rep") during and after their sales calls. They haven't added a playbook, so answer from your own knowledge: sales best practice, industries, products, companies, competitors and how things work. Give direct, confident, useful answers.`;
+  return [{ type: "text", text, cache_control: { type: "ephemeral" } }];
 }
 
 function trackUsage(msg) {
@@ -1093,7 +1092,7 @@ async function askClaude({ prompt, effort, maxTokens, onText, holder, demo = fal
 }
 
 // --------------------------------------------------------------- live suggestions
-const LIVE_TASK =
+const liveTask = (playbook) =>
 `TASK: live whisper card.
 You are whispering to the rep in real time during a live sales call. They will glance at your card for two seconds while the conversation keeps going, so every word must earn its place.
 
@@ -1103,15 +1102,17 @@ Reply in exactly this plain-text format, with no markdown and nothing before or 
 TYPE: <Question | Objection | Competitor | Pricing | Buying signal | Discovery | Next step | Info> — <what they said or need, in 3 to 7 words>
 SAY: <1-2 short sentences the rep can say out loud word for word, in a natural spoken tone>
 POINTS:
-- <a supporting fact or proof point from the playbook, at most 12 words>
+- <a supporting fact or proof point, at most 12 words>
 - <optional second point>
 ASK: <one short follow-up question that moves the deal forward>
 
-Ground every fact in the playbook and the call. Never invent prices, features, numbers, customers or policies. If the playbook doesn't cover what was asked, the SAY line should acknowledge it and offer to confirm (for example "Good question. Let me confirm the exact details and send them over today."), and the first point should be "Not in playbook: confirm after the call".
+${playbook
+  ? `Use the playbook for anything about the rep's own company: its products, prices, customers and policies. Never invent those. If the playbook doesn't cover one, the SAY line should acknowledge it and offer to confirm (for example "Good question. Let me confirm the exact details and send them over today."), and the first point should be "Not in playbook: confirm after the call". For everything else (general questions, industry facts, how other products work, objection-handling technique), answer directly from your own knowledge.`
+  : `There's no playbook, so answer directly from your own knowledge. The one thing not to make up is a specific fact about the rep's own company that you can't know, like their exact price, customer names or contract terms. For those, give a natural line that keeps the conversation moving, and make the first point "Confirm: <what to check>".`}
 The transcript comes from live speech recognition and can contain misheard words; infer what was meant.`;
 
 function livePrompt(trigger, question) {
-  const parts = [LIVE_TASK];
+  const parts = [liveTask(hasPlaybook(S.demo))];
   if (settings.notes.trim() && !S.demo) parts.push(`<call_notes>\n${settings.notes.trim()}\n</call_notes>`);
   if (S.demo) parts.push(`<call_notes>\nPriya, Head of Finance at a 120-person company. Inbound demo request. Goal: book the 30-day pilot.\n</call_notes>`);
   const tx = recentTranscript();
@@ -1126,7 +1127,7 @@ function livePrompt(trigger, question) {
   } else if (trigger === "help") {
     parts.push(`The rep pressed "Help me now". Don't reply NONE. Give the most useful card for this exact moment; if nothing is pending, suggest the best next discovery question or next step.`);
   } else {
-    parts.push(`The rep typed this private question to you (the prospect can't see it): "${question}"\nAnswer it using the playbook and the call so far. Don't reply NONE. Put the answer the rep can say out loud in SAY.`);
+    parts.push(`The rep typed this private question to you (the prospect can't see it): "${question}"\nAnswer it directly, using the playbook where it covers the question and your own knowledge otherwise, plus anything relevant from the call so far. Don't reply NONE. Put the answer the rep can say out loud in SAY.`);
   }
   return parts.join("\n\n");
 }
@@ -1173,7 +1174,7 @@ function cardNode(card, { big }) {
   const streaming = !card.done && !card.error;
   if (p.say || streaming) node.append(h("p", { class: "say" + (streaming && !p.points.length && !p.ask ? " streaming" : "") }, p.say || (big ? "Thinking…" : "")));
   if (p.points.length) {
-    node.append(h("ul", { class: "points" }, p.points.map((pt) => h("li", { class: /not in playbook/i.test(pt) ? "warn" : "" }, pt))));
+    node.append(h("ul", { class: "points" }, p.points.map((pt) => h("li", { class: /not in playbook|^confirm:/i.test(pt) ? "warn" : "" }, pt))));
   }
   if (p.ask) node.append(h("p", { class: "next-q" }, h("b", {}, "Then ask: "), p.ask));
   if (card.error) node.append(h("p", { class: "err" }, card.error));
@@ -1306,16 +1307,16 @@ function renderIdle() {
     h("span", { class: "mark" + (done ? " done" : "") + (opt ? " opt" : "") }, done ? "✓" : ""),
     h("div", {}, h("b", {}, title), h("div", { style: "color:var(--muted);font-size:14px" }, detail)));
   el.liveCard.replaceChildren(h("div", { class: "empty-state" },
-    h("h1", {}, hasKey && hasPb ? "Ready when you are" : "Set up in about two minutes"),
-    h("p", {}, "During a call, the copilot listens and shows you what to say next, drawn from your playbook."),
+    h("h1", {}, hasKey ? "Ready when you are" : "Set up in about two minutes"),
+    h("p", {}, "During a call, the copilot listens and shows you what to say next. You can also type any question in the box below."),
     h("ul", { class: "checklist" },
       item(hasKey, false, "Anthropic API key", "Needed for suggestions."),
-      item(hasPb, false, "Your playbook", hasPb ? `${words(settings.playbook)} words loaded.` : "Paste what you sell, your pricing and your objection answers."),
-      item(hasDg, true, "Deepgram key (recommended)", hasDg ? "Both sides of online calls will be transcribed." : "Needed to hear the other person on Zoom, Meet or Teams. Without it, mic only.")),
+      item(hasDg, true, "Deepgram key (recommended)", hasDg ? "Both sides of online calls will be transcribed." : "Needed to hear the other person on Zoom, Meet or Teams. Without it, mic only."),
+      item(hasPb, true, "Your playbook (optional)", hasPb ? `${words(settings.playbook)} words loaded. Answers about your company come from it.` : "Not added, so answers come from Claude's own knowledge. Add your pricing and objection answers any time to make them specific to you.")),
     h("div", { class: "row" },
-      h("button", { class: hasKey && hasPb ? "" : "primary", onclick: openSettings }, hasKey && hasPb ? "Settings" : "Open settings"),
+      h("button", { class: hasKey ? "" : "primary", onclick: openSettings }, hasKey ? "Settings" : "Open settings"),
       h("button", { onclick: startDemo, title: "Plays a short sample call so you can see how it works (uses your Anthropic key)" }, "Test drive"),
-      hasKey && hasPb ? h("button", { class: "primary", onclick: openStart }, "Start call") : null),
+      hasKey ? h("button", { class: "primary", onclick: openStart }, "Start call") : null),
   ));
 }
 
@@ -1377,7 +1378,7 @@ const WRAP_TASK =
 ## What they need
 Pains, goals, decision criteria, who decides, timeline and budget (only what was actually said).
 ## Questions and objections
-Each one raised, how the rep handled it, and a stronger answer from the playbook if the rep's answer was weak.
+Each one raised, how the rep handled it, and a stronger answer (from the playbook if there is one, otherwise from sales best practice) if the rep's answer was weak.
 ## Next steps
 Each with an owner and a date if one was mentioned.
 ## Follow-up email
@@ -1385,7 +1386,7 @@ Ready to send, in the rep's voice: a subject line and a short body. Use [bracket
 ## Coaching
 2-3 specific, practical tips for the rep's next call.
 
-Keep it tight. Don't invent anything that isn't in the transcript or the playbook. The transcript comes from speech recognition and may contain misheard words.`;
+Keep it tight. Don't invent things that happened or were said on the call. The transcript comes from speech recognition and may contain misheard words.`;
 
 let wrapHolder = null;
 let wrapText = "";
@@ -1554,7 +1555,6 @@ function updateStartWarn() {
   const warn = [];
   if (mode === "call" && !useDeepgram()) warn.push("Hearing both sides of an online call needs a Deepgram key (Settings → Keys).");
   if (mode === "mic" && !useDeepgram()) warn.push("Using the browser's free speech engine (Chrome or Edge). Accuracy is lower and speakers aren't labelled. A Deepgram key improves both.");
-  if (!playbookFilled()) warn.push("Your playbook is still the blank template, so answers will be generic. Add it in Settings.");
   el.startWarn.hidden = !warn.length;
   el.startWarn.replaceChildren(...warn.map((w) => h("div", {}, w)));
 }
