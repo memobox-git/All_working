@@ -31,6 +31,10 @@ Every key is listed in [`.env.example`](.env.example). Add the same keys in Verc
 | `NEXT_PUBLIC_SITE_URL` | Your Vercel URL (used for login redirects) |
 | `CRON_SECRET` | Any long random string |
 
+## Database
+
+OBIE uses the Supabase project "Stacklebot". The schema is in [`supabase/migrations/`](supabase/migrations/): eleven tables with row-level security (each owner sees only their workspace), the `ltree` extension for agent paths, a `credit_balances` view, and Realtime on `messages`, `tasks` and `approvals`.
+
 ## Deploy
 
 The Vercel project uses `obie` as its Root Directory, so it builds only this folder.
