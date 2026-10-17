@@ -34,6 +34,21 @@ It's a single file (`index.html`) that runs in Chrome or Edge. There's nothing t
 
 **Practise before a real call:** type an objection into the box and press **Prospect said** to see how the copilot would answer it.
 
+## Save calls to your database (Stacklebot on Supabase)
+
+Every call's transcript, suggestions and wrap-up can be saved to the `copilot_calls` table in your Stacklebot Supabase project. You can reopen calls from **Calls**.
+
+One-time setup:
+1. In [Supabase → Stacklebot → Edge Functions → Secrets](https://supabase.com/dashboard/project/oshlofyxapvmgxvkldub/functions/secrets), add a secret named `COPILOT_SYNC_CODE`. Set its value to a code you make up, at least 8 characters, like a password.
+2. In the copilot, open **Settings → Save calls to your database**, type the same code, and press **Check**. It should say "Connected". Then press **Save**.
+
+From then on, each call is saved every 45 seconds while it runs, again when it ends, and again with its wrap-up. Test drives and practice lines aren't saved.
+
+How it works:
+- The page talks to the `copilot-calls` edge function (`supabase/functions/copilot-calls`). The function only answers requests that carry your sync code.
+- The table has row-level security on and no policies, so your project's public key can't read or change it. Only the function can.
+- The table is defined in `supabase/migrations/`.
+
 ## Tips
 
 - **Playbook quality = answer quality.** Specific numbers, customer stories and your exact objection responses make the cards much sharper.

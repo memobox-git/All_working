@@ -185,6 +185,14 @@ a { color: var(--accent); }
 .history-head { display: flex; align-items: center; gap: 8px; margin-top: 4px; }
 .history-head h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin: 0; flex: 1; }
 .history-list { display: flex; flex-direction: column; gap: 10px; }
+.calls-list { display: flex; flex-direction: column; gap: 8px; }
+.call-row { display: flex; gap: 10px; align-items: center; padding: 10px 12px; border: 1px solid var(--border); border-radius: 12px; }
+.call-row .meta { flex: 1; min-width: 0; }
+.call-row .meta b { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.call-row .meta span { color: var(--muted); font-size: 13px; }
+.sync-state { font-size: 12px; color: var(--faint); max-width: 260px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.sync-state.good { color: var(--ok); }
+.sync-state.bad { color: var(--bad); }
 .cost { font-size: 12px; color: var(--faint); }
 .pip-note { padding: 14px 16px; display: flex; align-items: center; gap: 10px; color: var(--muted); }
 .pip-note span { flex: 1; }
@@ -287,6 +295,7 @@ body.pip .card-actions { display: none; }
   <button id="btnStop" class="danger" hidden>End call</button>
   <button id="btnPip" title="Open a small window that floats on top of Zoom, Meet or Teams">Pop out</button>
   <button id="btnWrap" title="Summary, next steps and a follow-up email">Wrap-up</button>
+  <button id="btnCalls" title="Calls saved to your database">Calls</button>
   <button id="btnSettings">Settings</button>
 </header>
 
@@ -322,6 +331,7 @@ body.pip .card-actions { display: none; }
     <div class="panel tx-wrap">
       <div class="col-head" style="padding: 12px 14px 0;">
         <h2>Live transcript</h2>
+        <span class="sync-state" id="syncState" hidden></span>
         <button id="btnDownloadTx" class="small">Download</button>
       </div>
       <div class="audio-strip" id="audioStrip" hidden></div>
@@ -427,6 +437,24 @@ body.pip .card-actions { display: none; }
       </div>
 
       <div class="section">
+        <h3>Save calls to your database (optional)</h3>
+        <div class="field">
+          <span class="hint">Saves every call's transcript, suggestions and wrap-up to your Stacklebot Supabase database, so you can reopen them from <b>Calls</b>. One-time setup: in <a href="https://supabase.com/dashboard/project/oshlofyxapvmgxvkldub/functions/secrets" target="_blank" rel="noopener">Supabase → Edge Functions → Secrets</a>, add a secret named <code>COPILOT_SYNC_CODE</code> with a code you make up (at least 8 characters), then type the same code here.</span>
+        </div>
+        <div class="field">
+          <label for="sSyncCode">Sync code</label>
+          <div class="inline"><input id="sSyncCode" type="password" placeholder="The code you saved as COPILOT_SYNC_CODE" spellcheck="false" autocomplete="off"><button type="button" class="small" data-reveal="sSyncCode">Show</button><button type="button" class="small" id="btnCheckSync">Check</button></div>
+          <span class="hint" id="syncCheck" style="font-size:13px"></span>
+        </div>
+        <div class="field">
+          <label for="sSyncUrl">Database address</label>
+          <input id="sSyncUrl" spellcheck="false" autocomplete="off">
+          <span class="hint">Already set to your Stacklebot project. Leave it as it is.</span>
+        </div>
+        <label style="display:flex; gap:8px; align-items:center; font-size:14px"><input type="checkbox" id="sSyncOn"> Save every call automatically</label>
+      </div>
+
+      <div class="section">
         <h3>Your playbook (optional)</h3>
         <div class="field">
           <span class="hint">Leave the template as it is and the copilot answers from Claude's own knowledge. Fill it in (what you sell, pricing, proof points, competitors, how you answer objections) and answers about your company come from here. Short bullets work best, and you can paste existing sales docs.</span>
@@ -445,6 +473,14 @@ body.pip .card-actions { display: none; }
       <button value="save" class="primary">Save</button>
     </div>
   </form>
+</dialog>
+
+<!-- ======================= Saved calls ======================= -->
+<dialog id="dlgCalls">
+  <div class="dlg">
+    <div class="dlg-head"><h2>Saved calls</h2><button class="ghost small" id="btnCallsClose">Close</button></div>
+    <div class="dlg-body" id="callsBody"></div>
+  </div>
 </dialog>
 
 <!-- ======================= Wrap-up ======================= -->
@@ -471,6 +507,8 @@ body.pip .card-actions { display: none; }
 const SDK_URL = "https://cdn.jsdelivr.net/npm/@anthropic-ai/sdk@0.131.0/+esm";
 const STORE_KEY = "lsc.settings.v1";
 const LAST_KEY = "lsc.lastCall.v1";
+// The copilot-calls edge function in the Stacklebot Supabase project (see supabase/functions).
+const SYNC_URL_DEFAULT = "https://oshlofyxapvmgxvkldub.supabase.co/functions/v1/copilot-calls";
 
 const MODELS = [
   { id: "claude-opus-5-5", label: "Claude Opus 5.5: sharpest answers (default)", inM: 4, outM: 20, fallback: true },
@@ -594,6 +632,8 @@ const el = {
   sKey: $("#sKey"), sWs: $("#sWs"), sDg: $("#sDg"), sModel: $("#sModel"), sAuto: $("#sAuto"), sEngine: $("#sEngine"), sLang: $("#sLang"),
   sPlaybook: $("#sPlaybook"), pbCount: $("#pbCount"), pbFile: $("#pbFile"),
   dlgWrap: $("#dlgWrap"), wrapOut: $("#wrapOut"), wrapStatus: $("#wrapStatus"),
+  btnCalls: $("#btnCalls"), syncState: $("#syncState"), dlgCalls: $("#dlgCalls"), callsBody: $("#callsBody"),
+  sSyncCode: $("#sSyncCode"), sSyncUrl: $("#sSyncUrl"), sSyncOn: $("#sSyncOn"),
 };
 
 function h(tag, attrs = {}, ...kids) {
@@ -653,6 +693,7 @@ async function copyText(text) {
 const DEFAULTS = {
   anthropicKey: "", workspaceId: "", deepgramKey: "", model: MODELS[0].id, auto: "auto", engine: "deepgram",
   lang: "en-US", playbook: TEMPLATE, notes: "", mode: "call",
+  syncUrl: SYNC_URL_DEFAULT, syncCode: "", syncOn: true,
 };
 const settings = { ...DEFAULTS, ...readStore(STORE_KEY, {}) };
 const saveSettings = () => writeStore(STORE_KEY, settings);
@@ -675,6 +716,10 @@ const S = {
   ai: { busy: false, pending: false, holder: null, autoTimer: 0 },
   usage: { calls: 0, cost: 0 },
   timerId: 0,
+  syncTimer: 0,        // autosave to the database during a call
+  callId: null,        // database id of the call on screen
+  callNotes: "",       // the notes this call was started with
+  endedAt: 0,
   restored: false,
 };
 let lineSeq = 0;
@@ -788,7 +833,7 @@ function saveLastCall() {
   clearTimeout(saveTimer);
   saveTimer = setTimeout(() => {
     writeStore(LAST_KEY, {
-      startedAt: S.startedAt, mode: S.mode, notes: settings.notes,
+      callId: S.callId, startedAt: S.startedAt, endedAt: S.endedAt, mode: S.mode, notes: S.callNotes ?? settings.notes,
       lines: S.lines.filter((l) => l.closed).map(({ who, text, t }) => ({ who, text, t })),
     });
   }, 400);
@@ -799,7 +844,10 @@ function restoreLastCall() {
   if (!last || !Array.isArray(last.lines) || !last.lines.length) return;
   S.restored = true;
   S.startedAt = last.startedAt || 0;
+  S.endedAt = last.endedAt || 0;
   S.mode = last.mode || "call";
+  S.callId = last.callId || null;
+  S.callNotes = last.notes || "";
   const when = last.startedAt ? new Date(last.startedAt).toLocaleString([], { dateStyle: "medium", timeStyle: "short" }) : "earlier";
   el.transcript.append(h("div", { class: "divider" }, `Last call (${when}). Download it or open Wrap-up before you start a new one.`));
   for (const l of last.lines) {
@@ -1116,6 +1164,15 @@ function beginSession(mode) {
   S.demo = mode === "demo";
   S.mode = mode;
   S.startedAt = Date.now();
+  S.endedAt = 0;
+  S.callId = S.demo ? null : crypto.randomUUID();
+  S.callNotes = S.demo ? "" : settings.notes;
+  lastSyncedKey = "";
+  clearInterval(S.syncTimer);
+  if (!S.demo && syncReady()) {
+    setSyncState("", "Saving to your database");
+    S.syncTimer = setInterval(() => saveCall("auto"), 45000);
+  } else setSyncState("", "");
   el.heard.hidden = true;
   clearInterval(S.timerId);
   S.timerId = setInterval(() => { el.timer.textContent = clock(Date.now() - S.startedAt); }, 500);
@@ -1134,7 +1191,9 @@ function stopCall() {
   S.media = [];
   Monitor.stop();
   clearInterval(S.timerId);
+  clearInterval(S.syncTimer);
   clearTimeout(S.ai.autoTimer);
+  S.endedAt = Date.now();
   demoRun++;
   const wasDemo = S.demo;
   S.demo = false;
@@ -1143,6 +1202,7 @@ function stopCall() {
   if (!S.ai.busy) setAi("", "Call ended");
   if (!S.cards.length) renderIdle();
   saveLastCall();
+  if (!wasDemo) saveCall("end");
   if (S.lines.some((l) => l.closed)) {
     toast(wasDemo ? "Test drive finished." : "Call ended. Want the summary and follow-up email?", {
       action: { label: "Wrap-up", run: openWrap }, ms: 15000,
@@ -1367,7 +1427,8 @@ function renderLive() {
 }
 
 function pushHistory(card) {
-  if (!card || !card.done) return;
+  if (!card || !card.done || card.inHistory) return;
+  card.inHistory = true;
   const node = cardNode(card, { big: false });
   el.history.prepend(node);
   while (el.history.children.length > 40) el.history.lastChild.remove();
@@ -1487,6 +1548,7 @@ function renderIdle() {
     h("ul", { class: "checklist" },
       item(hasKey, false, "Anthropic API key", "Needed for suggestions."),
       item(hasDg, true, "Deepgram key (recommended)", hasDg ? "Both sides of online calls will be transcribed." : "Needed to hear the other person on Zoom, Meet or Teams. Without it, mic only."),
+      item(!!settings.syncCode.trim() && settings.syncOn, true, "Save calls to your database (optional)", settings.syncCode.trim() && settings.syncOn ? "Calls are saved to your Stacklebot database. Reopen them from Calls." : "Keep every transcript, suggestion and wrap-up in your Stacklebot database."),
       item(hasPb, true, "Your playbook (optional)", hasPb ? `${words(settings.playbook)} words loaded. Answers about your company come from it.` : "Not added, so answers come from Claude's own knowledge. Add your pricing and objection answers any time to make them specific to you.")),
     h("div", { class: "row" },
       h("button", { class: hasKey ? "" : "primary", onclick: openSettings }, hasKey ? "Settings" : "Open settings"),
@@ -1610,7 +1672,7 @@ async function runWrap() {
   const demo = S.mode === "demo";
   const parts = [WRAP_TASK];
   if (demo) parts.push(`<call_notes>\nTest drive with a sample prospect (Priya, Head of Finance).\n</call_notes>`);
-  else if (settings.notes.trim()) parts.push(`<call_notes>\n${settings.notes.trim()}\n</call_notes>`);
+  else if ((S.callNotes ?? settings.notes).trim()) parts.push(`<call_notes>\n${(S.callNotes ?? settings.notes).trim()}\n</call_notes>`);
   let tx = transcriptText(S.lines, { forAi: true });
   if (tx.length > 200000) tx = "…" + tx.slice(-200000);
   parts.push(`<transcript>\n${tx}\n</transcript>`);
@@ -1623,6 +1685,8 @@ async function runWrap() {
     wrapText = text;
     renderMarkdown(text, el.wrapOut);
     el.wrapStatus.textContent = "Done";
+    wrapHolder = null;
+    saveCall("wrap");
   } catch (err) {
     if (holder.cancelled || isAbort(err)) return;
     el.wrapOut.append(h("p", { style: "color:var(--bad)" }, friendlyError(err)));
@@ -1631,6 +1695,182 @@ async function runWrap() {
   } finally {
     if (wrapHolder === holder) wrapHolder = null;
   }
+}
+
+// --------------------------------------------------------------- database (Supabase)
+// Calls are saved through the copilot-calls edge function in the Stacklebot
+// project. The page holds no database keys: the function checks the sync code.
+const syncReady = () => !!(settings.syncOn && settings.syncCode.trim() && settings.syncUrl.trim());
+
+function syncMessage(code, message, status) {
+  if (code === "bad_code") return "Wrong sync code. It must exactly match the COPILOT_SYNC_CODE secret in Supabase.";
+  if (code === "not_configured") return "The database isn't set up yet. Add a secret named COPILOT_SYNC_CODE in Supabase → Edge Functions → Secrets.";
+  if (status === 404 && !code) return "Nothing found at the database address. Check it in Settings.";
+  return message || `Database error (${status}).`;
+}
+
+async function syncRequest(query = "", init = {}, conn = {}) {
+  const url = (conn.url ?? settings.syncUrl).trim();
+  const code = (conn.code ?? settings.syncCode).trim();
+  let res;
+  try {
+    res = await fetch(url + query, { ...init, headers: { "x-copilot-code": code, ...(init.body ? { "content-type": "application/json" } : {}) } });
+  } catch {
+    throw Object.assign(new Error("Can't reach the database. Check your internet connection and the database address in Settings."), { code: "network" });
+  }
+  const data = await res.json().catch(() => null);
+  if (!res.ok) throw Object.assign(new Error(syncMessage(data?.error, data?.message, res.status)), { code: data?.error || res.status });
+  return data;
+}
+
+function setSyncState(kind, text) {
+  el.syncState.hidden = !text;
+  el.syncState.className = "sync-state " + (kind || "");
+  el.syncState.textContent = text || "";
+  el.syncState.title = text || "";
+}
+
+function callTitle() {
+  const first = (S.callNotes || "").trim().split("\n")[0].trim();
+  return first ? first.slice(0, 120) : "Call on " + new Date(S.startedAt).toLocaleString([], { dateStyle: "medium", timeStyle: "short" });
+}
+
+function callPayload() {
+  const payload = {
+    id: S.callId,
+    started_at: new Date(S.startedAt).toISOString(),
+    ended_at: S.running ? null : new Date(S.endedAt || Date.now()).toISOString(),
+    mode: S.mode,
+    title: callTitle(),
+    notes: S.callNotes || "",
+    transcript: S.lines.filter((l) => l.closed && l.text).map(({ who, text, t }) => ({ who, text, t })),
+    suggestions: S.cards.filter((c) => c.done && !c.error && c.raw)
+      .map((c) => ({ time: c.time, trigger: c.trigger, question: c.question || null, text: c.raw })),
+  };
+  if (wrapText && !wrapHolder && wrapKey === transcriptKey()) payload.wrap_up = wrapText;
+  return payload;
+}
+const payloadKey = (p) => JSON.stringify([p.transcript.length, p.suggestions.length, p.ended_at, p.wrap_up?.length || 0, p.title]);
+
+let lastSyncedKey = "";
+let syncChain = Promise.resolve();
+
+// Saves are queued so they reach the database in order; unchanged calls are skipped.
+function saveCall(reason) {
+  if (!syncReady() || !S.callId || S.demo || S.mode === "demo" || S.mode === "practice") return syncChain;
+  syncChain = syncChain.then(async () => {
+    const payload = callPayload();
+    const key = payloadKey(payload);
+    if (!payload.transcript.length || key === lastSyncedKey) return;
+    setSyncState("", "Saving…");
+    try {
+      await syncRequest("", { method: "POST", body: JSON.stringify({ call: payload }) });
+      lastSyncedKey = key;
+      setSyncState("good", `Saved to database ${wallTime()}`);
+    } catch (err) {
+      setSyncState("bad", "Not saved: " + err.message);
+      if (reason !== "auto") toast("Couldn't save this call to your database. " + err.message, { error: true, ms: 10000, action: { label: "Settings", run: () => openSettings(el.sSyncCode) } });
+    }
+  });
+  return syncChain;
+}
+
+// Closing the tab mid-call: one last best-effort save that outlives the page.
+window.addEventListener("pagehide", () => {
+  if (!S.running || S.demo || !S.callId || !syncReady()) return;
+  const body = JSON.stringify({ call: callPayload() });
+  if (body.length > 60000) return; // browsers cap keepalive bodies at 64 KB
+  fetch(settings.syncUrl.trim(), {
+    method: "POST", keepalive: true, body,
+    headers: { "x-copilot-code": settings.syncCode.trim(), "content-type": "application/json" },
+  }).catch(() => {});
+});
+
+async function openCalls() {
+  if (!el.dlgCalls.open) el.dlgCalls.showModal();
+  if (!settings.syncCode.trim()) {
+    el.callsBody.replaceChildren(
+      h("p", { class: "note" }, "Connect your Stacklebot database first: Settings → Save calls to your database."),
+      h("div", { class: "row" }, h("button", { class: "primary", onclick: () => { el.dlgCalls.close(); openSettings(el.sSyncCode); } }, "Open settings")));
+    return;
+  }
+  el.callsBody.replaceChildren(h("p", { style: "color:var(--muted); margin:0" }, "Loading your calls…"));
+  try {
+    const { calls, total } = await syncRequest("?limit=50");
+    if (!calls.length) {
+      el.callsBody.replaceChildren(h("p", { style: "color:var(--muted); margin:0" }, "No saved calls yet. Each call is saved automatically while it runs and when it ends."));
+      return;
+    }
+    el.callsBody.replaceChildren(
+      h("p", { class: "hint", style: "margin:0; color:var(--muted); font-size:13px" },
+        total > calls.length ? `Your latest ${calls.length} of ${total} calls.` : `${total} saved call${total === 1 ? "" : "s"}.`),
+      h("div", { class: "calls-list" }, calls.map(callRow)));
+  } catch (err) {
+    el.callsBody.replaceChildren(h("p", { style: "color:var(--bad); margin:0" }, err.message));
+  }
+}
+
+function callRow(c) {
+  const when = new Date(c.started_at).toLocaleString([], { dateStyle: "medium", timeStyle: "short" });
+  const mins = c.ended_at ? Math.max(1, Math.round((Date.parse(c.ended_at) - Date.parse(c.started_at)) / 60000)) : null;
+  const plural = (n, word) => `${n} ${word}${n === 1 ? "" : "s"}`;
+  const details = [when, mins && `${mins} min`, plural(c.line_count, "line"), plural(c.suggestion_count, "suggestion"), c.has_wrap_up && "wrap-up ✓"]
+    .filter(Boolean).join(" · ");
+  const row = h("div", { class: "call-row" },
+    h("div", { class: "meta" }, h("b", {}, c.title || "Untitled call"), h("span", {}, details)),
+    h("button", { class: "small", onclick: () => openSavedCall(c.id) }, "Open"),
+    h("button", {
+      class: "small ghost", title: "Delete this call from your database",
+      onclick: async () => {
+        if (!confirm(`Delete “${c.title || "this call"}” from your database? This can't be undone.`)) return;
+        try {
+          await syncRequest(`?id=${encodeURIComponent(c.id)}`, { method: "DELETE" });
+          row.remove();
+          if (S.callId === c.id) lastSyncedKey = "";
+          toast("Call deleted", { ms: 2000 });
+        } catch (err) { toast(err.message, { error: true }); }
+      },
+    }, "Delete"));
+  return row;
+}
+
+async function openSavedCall(id) {
+  if (S.running) { toast("End the current call before opening a saved one."); return; }
+  try {
+    const { call } = await syncRequest(`?id=${encodeURIComponent(id)}`);
+    loadCall(call);
+    el.dlgCalls.close();
+    toast("Saved call opened. Use Wrap-up or Download.", { ms: 4000 });
+  } catch (err) { toast(err.message, { error: true }); }
+}
+
+function loadCall(call) {
+  clearTranscript();
+  S.restored = true;
+  S.callId = call.id;
+  S.startedAt = Date.parse(call.started_at);
+  S.endedAt = call.ended_at ? Date.parse(call.ended_at) : 0;
+  S.mode = call.mode || "call";
+  S.callNotes = call.notes || "";
+  const when = new Date(S.startedAt).toLocaleString([], { dateStyle: "medium", timeStyle: "short" });
+  el.transcript.append(h("div", { class: "divider" }, `Saved call from ${when}: ${call.title || "untitled"}`));
+  for (const l of call.transcript || []) {
+    const line = newLine(l.who);
+    Object.assign(line, { text: l.text, t: l.t || 0, closed: true });
+    renderLine(line);
+  }
+  S.cards = (call.suggestions || []).map((s) => ({
+    trigger: s.trigger || "auto", question: s.question || "", raw: s.text, time: s.time || "", done: true, error: "", ms: 0, inHistory: true,
+  }));
+  el.history.replaceChildren(...S.cards.slice().reverse().map((c) => cardNode(c, { big: false })));
+  renderIdle();
+  wrapText = call.wrap_up || "";
+  wrapKey = wrapText ? transcriptKey() : "";
+  if (wrapText) { renderMarkdown(wrapText, el.wrapOut); el.wrapStatus.textContent = "Saved"; }
+  else { el.wrapOut.replaceChildren(); el.wrapStatus.textContent = ""; }
+  lastSyncedKey = payloadKey(callPayload());
+  saveLastCall();
+  setSyncState("good", "Opened from your database");
 }
 
 // --------------------------------------------------------------- floating window
@@ -1666,6 +1906,9 @@ async function popOut() {
 function openSettings(focusField) {
   el.sKey.value = settings.anthropicKey;
   el.sWs.value = settings.workspaceId;
+  el.sSyncCode.value = settings.syncCode;
+  el.sSyncUrl.value = settings.syncUrl;
+  el.sSyncOn.checked = settings.syncOn;
   el.sDg.value = settings.deepgramKey;
   el.sModel.value = settings.model;
   el.sAuto.value = settings.auto;
@@ -1682,6 +1925,7 @@ el.dlgSettings.addEventListener("close", () => {
   if (el.dlgSettings.returnValue !== "save") return;
   Object.assign(settings, {
     anthropicKey: el.sKey.value.trim(), workspaceId: el.sWs.value.trim(), deepgramKey: el.sDg.value.trim(), model: el.sModel.value,
+    syncCode: el.sSyncCode.value.trim(), syncUrl: el.sSyncUrl.value.trim() || SYNC_URL_DEFAULT, syncOn: el.sSyncOn.checked,
     auto: el.sAuto.value, engine: el.sEngine.value, lang: el.sLang.value, playbook: el.sPlaybook.value,
   });
   saveSettings();
@@ -1719,7 +1963,25 @@ $("#btnCheckKey").addEventListener("click", async () => {
     if (isWorkspaceError(err)) el.sWs.focus();
   }
 });
-el.dlgSettings.addEventListener("close", () => { keyCheck.textContent = ""; dgCheck.textContent = ""; });
+el.dlgSettings.addEventListener("close", () => { keyCheck.textContent = ""; dgCheck.textContent = ""; syncCheck.textContent = ""; });
+
+// Lists one call with the typed address and code, so a wrong code or missing secret shows up here.
+const syncCheck = $("#syncCheck");
+$("#btnCheckSync").addEventListener("click", async () => {
+  const code = el.sSyncCode.value.trim();
+  const url = el.sSyncUrl.value.trim() || SYNC_URL_DEFAULT;
+  syncCheck.style.color = "var(--muted)";
+  if (!code) { syncCheck.textContent = "Type your sync code first."; return; }
+  syncCheck.textContent = "Checking…";
+  try {
+    const { total } = await syncRequest("?limit=1", {}, { url, code });
+    syncCheck.style.color = "var(--ok)";
+    syncCheck.textContent = `✓ Connected to your database (${total} saved call${total === 1 ? "" : "s"}). Press Save.`;
+  } catch (err) {
+    syncCheck.style.color = "var(--bad)";
+    syncCheck.textContent = err.message;
+  }
+});
 
 // Opens and closes a Deepgram connection with the typed key and language; no audio is sent.
 const dgCheck = $("#dgCheck");
@@ -1806,6 +2068,8 @@ el.btnSettings.addEventListener("click", openSettings);
 el.btnPip.addEventListener("click", popOut);
 el.btnPipBack.addEventListener("click", () => pipWin?.close());
 el.btnWrap.addEventListener("click", openWrap);
+el.btnCalls.addEventListener("click", openCalls);
+$("#btnCallsClose").addEventListener("click", () => el.dlgCalls.close());
 el.btnHelp.addEventListener("click", () => suggest("help"));
 el.btnDownloadTx.addEventListener("click", () => {
   const text = transcriptText(S.lines);
@@ -1827,7 +2091,7 @@ el.btnAsProspect.addEventListener("click", () => {
   if (!q) { el.askInput.focus(); toast("Type what the prospect said, then press Prospect said. Handy for practising objections."); return; }
   el.askInput.value = "";
   const running = S.running;
-  if (!running && (S.restored || S.mode === "demo")) { clearTranscript(); S.mode = "practice"; }
+  if (!running && (S.restored || S.mode === "demo")) { clearTranscript(); S.mode = "practice"; S.callId = null; }
   const src = { line: null };
   addFinal(src, S.mode === "mic" && running ? "call" : "them", q);
   const line = src.line;
