@@ -1,0 +1,184 @@
+@import "tailwindcss";
+
+/*
+  OBIE color tokens. The palette is white, blue, black and yellow, nothing else.
+  Use the semantic names (bg-background, text-foreground, bg-primary, text-accent...)
+  so every screen works in light and dark mode without extra classes.
+  Yellow is for fills (the star, highlights), never for text on white.
+*/
+:root {
+  --background: #ffffff;
+  --surface: #f4f7fc;
+  --foreground: #0a0f1e;
+  --muted: #5b6478;
+  --border: #e3e8f2;
+  --primary: #1f5eff;
+  --primary-hover: #1849d6;
+  --primary-foreground: #ffffff;
+  --primary-soft: #e8efff;
+  --accent: #ffd60a;
+  --accent-foreground: #0a0f1e;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #07090f;
+    --surface: #10141f;
+    --foreground: #f5f7fb;
+    --muted: #98a2b8;
+    --border: #1e2433;
+    --primary: #2f6bff;
+    --primary-hover: #4a7dff;
+    --primary-foreground: #ffffff;
+    --primary-soft: #131d38;
+    --accent: #ffd60a;
+    --accent-foreground: #0a0f1e;
+  }
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-soft: var(--primary-soft);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --font-sans: var(--font-jakarta);
+}
+
+html {
+  color-scheme: light dark;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+/* ---------- OBIE orb ---------- */
+
+.obie-orb .obie-star,
+.obie-orb .obie-body,
+.obie-orb .obie-ripple,
+.obie-orb .obie-spark {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.obie-orb .obie-star {
+  filter: drop-shadow(0 0 2px rgb(255 214 10 / 0.55));
+}
+
+.obie-orb .obie-spark,
+.obie-orb .obie-ripple {
+  opacity: 0;
+}
+
+/* Working: the star sparkles. */
+.obie-orb[data-state="working"] .obie-star {
+  animation: obie-twinkle 1.2s ease-in-out infinite;
+}
+
+.obie-orb[data-state="working"] .obie-spark {
+  animation: obie-spark 1.2s ease-out infinite;
+}
+
+.obie-orb[data-state="working"] .obie-spark:nth-of-type(2) {
+  animation-delay: 0.3s;
+}
+
+.obie-orb[data-state="working"] .obie-spark:nth-of-type(3) {
+  animation-delay: 0.6s;
+}
+
+.obie-orb[data-state="working"] .obie-spark:nth-of-type(4) {
+  animation-delay: 0.9s;
+}
+
+/* Listening: the orb pulses. */
+.obie-orb[data-state="listening"] .obie-body {
+  animation: obie-pulse 1.4s ease-in-out infinite;
+}
+
+.obie-orb[data-state="listening"] .obie-ripple {
+  animation: obie-ripple 1.4s ease-out infinite;
+}
+
+.obie-float {
+  animation: obie-float 6s ease-in-out infinite;
+}
+
+@keyframes obie-twinkle {
+  0%,
+  100% {
+    transform: scale(1) rotate(0deg);
+    filter: drop-shadow(0 0 2px rgb(255 214 10 / 0.55));
+  }
+  50% {
+    transform: scale(1.3) rotate(18deg);
+    filter: drop-shadow(0 0 6px rgb(255 214 10 / 0.95));
+  }
+}
+
+@keyframes obie-spark {
+  0% {
+    opacity: 0;
+    transform: scale(0.2);
+  }
+  30% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+}
+
+@keyframes obie-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.045);
+  }
+}
+
+@keyframes obie-ripple {
+  0% {
+    opacity: 0.45;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.28);
+  }
+}
+
+@keyframes obie-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .obie-orb *,
+  .obie-float {
+    animation: none !important;
+  }
+
+  .obie-orb[data-state="working"] .obie-spark {
+    opacity: 1;
+  }
+}
