@@ -4,3 +4,8 @@ node_modules
 .env
 next-env.d.ts
 *.tsbuildinfo
+
+# render-pro.js work files
+*.parts/
+*.picture.mp4
+*.picture.cues.json
