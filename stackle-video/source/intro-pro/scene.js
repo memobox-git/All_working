@@ -252,6 +252,9 @@ function build() {
   const flyOrigin = `${dotX - lockR.left}px ${dotY - lockR.top}px`;
   const pr = $('#s6-pipe').getBoundingClientRect(), pa = $('#pill-de').getBoundingClientRect(), pb = $('#pill-ai').getBoundingClientRect();
   const px0 = pa.right - pr.left + 18, px1 = pb.left - pr.left - 18;
+  const nameR = $('#s1-name').getBoundingClientRect(), ruleR = $('#s1-line').getBoundingClientRect();
+  Object.assign($('#s1-burst').style, { left: `${nameR.left + nameR.width / 2}px`, top: `${nameR.top + nameR.height / 2}px` });
+  Object.assign($('#flare').style, { left: `${ruleR.left + 440}px`, top: `${ruleR.top + 2}px` });
 
   // timing landmarks (seconds of video)
   const S2 = at('i', 0) + .75;           // hold the name a beat into the next line
@@ -289,6 +292,18 @@ function build() {
   impact(tChris + .04, 1, 'impact_1', 1);
   tl.fromTo('#s1-burst', { scale: .3, opacity: 1 }, { scale: 4.2, opacity: 0, duration: 1.1, ease: 'expo.out', immediateRender: false }, tChris + .04);
   tl.fromTo('#s1-line', { scaleX: 0 }, { scaleX: 1, duration: 1, ease: 'expo.out' }, tChris + .1);
+  // the portrait rises in on "Hi" and pulses with the name
+  const tHi = at('hi');
+  tl.fromTo('#s1-disc', { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 1.4, ease: 'expo.out' }, tHi - .2);
+  tl.fromTo('#s1-ring', { scale: .6, opacity: 0, rotation: -40 }, { scale: 1, opacity: 1, rotation: 0, duration: 1.6, ease: 'expo.out' }, tHi);
+  tl.to('#s1-ring', { rotation: 50, duration: S2 - tHi - 1.6, ease: 'none' }, tHi + 1.6);
+  tl.fromTo('#s1-img', { y: 170, opacity: 0, scale: 1.05 }, { y: 0, opacity: 1, scale: 1, duration: 1.3, ease: 'expo.out' }, tHi + .05);
+  tl.fromTo('#s1-glow', { opacity: 0 }, { opacity: .42, duration: 1.2 }, tHi + .3);
+  tl.fromTo('#s1-photo', { scale: 1 }, { scale: 1.04, duration: S2 - tHi, ease: 'none' }, tHi);
+  sfx(tHi + .02, 'whoosh_3', .35);
+  tl.fromTo('#s1-glow', { opacity: .95 }, { opacity: .42, duration: .9, ease: 'power2.out', immediateRender: false }, tChris + .04);
+  tl.fromTo('#s1-disc', { scale: 1.12 }, { scale: 1, duration: .9, ease: 'expo.out', immediateRender: false }, tChris + .04);
+  tl.to('#s1-photo', { x: 300, opacity: 0, duration: .45, ease: 'power2.in' }, S2 - .3);
   scramble('#s1-full', tChris + .3, .7);
   scramble('#s1-role', tChris + .45, .7);
   tl.to('#s1-wrap', { scale: 1.55, opacity: 0, duration: .5, ease: 'power2.in' }, S2 - .08);
