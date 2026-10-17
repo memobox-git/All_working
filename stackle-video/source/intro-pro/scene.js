@@ -105,7 +105,7 @@ const EDGES = [];
 NODES.forEach((a, i) => NODES.forEach((b, j) => { if (j > i && Math.hypot(a.x - b.x, a.y - b.y) < 250) EDGES.push([i, j]); }));
 const sprite = document.createElement('canvas'); sprite.width = sprite.height = 64;
 { const g = sprite.getContext('2d'), r = g.createRadialGradient(32, 32, 0, 32, 32, 32);
-  r.addColorStop(0, 'rgba(255,236,190,1)'); r.addColorStop(.18, 'rgba(252,211,77,.85)'); r.addColorStop(.45, 'rgba(245,158,11,.22)'); r.addColorStop(1, 'rgba(245,158,11,0)');
+  r.addColorStop(0, 'rgba(225,240,255,1)'); r.addColorStop(.18, 'rgba(34,211,238,.85)'); r.addColorStop(.45, 'rgba(79,139,255,.22)'); r.addColorStop(1, 'rgba(79,139,255,0)');
   g.fillStyle = r; g.fillRect(0, 0, 64, 64); }
 
 function orb(x, y, r, c) {
@@ -116,13 +116,13 @@ function orb(x, y, r, c) {
 function drawBg(t) {
   const travel = t * .045 + cam.boost;
   const base = bg.createRadialGradient(960, 470, 0, 960, 540, 1250);
-  base.addColorStop(0, '#2b2627'); base.addColorStop(.55, '#1a1718'); base.addColorStop(1, '#0c0a0b');
+  base.addColorStop(0, '#16203d'); base.addColorStop(.55, '#0b1124'); base.addColorStop(1, '#04060d');
   bg.globalCompositeOperation = 'source-over';
   bg.fillStyle = base; bg.fillRect(0, 0, 1920, 1080);
   bg.globalCompositeOperation = 'lighter';
-  orb(960 + Math.sin(t * .21) * 420, 430 + Math.cos(t * .17) * 130, 950, `rgba(245,158,11,${.12 * cam.glow})`);
-  orb(260 + Math.cos(t * .13) * 220, 930, 760, 'rgba(194,65,12,.09)');
-  orb(1700, 160 + Math.sin(t * .11) * 90, 640, 'rgba(252,211,77,.05)');
+  orb(960 + Math.sin(t * .21) * 420, 430 + Math.cos(t * .17) * 130, 950, `rgba(79,139,255,${.12 * cam.glow})`);
+  orb(260 + Math.cos(t * .13) * 220, 930, 760, 'rgba(99,102,241,.09)');
+  orb(1700, 160 + Math.sin(t * .11) * 90, 640, 'rgba(34,211,238,.05)');
 
   // perspective floor grid that flows toward the camera
   if (cam.grid > 0) {
@@ -131,7 +131,7 @@ function drawBg(t) {
     for (let k = -26; k <= 26; k++) {
       const xb = vx + k * 150;
       const g = bg.createLinearGradient(0, hy, 0, 1080);
-      g.addColorStop(0, 'rgba(245,158,11,0)'); g.addColorStop(1, `rgba(245,158,11,${.16 * cam.grid})`);
+      g.addColorStop(0, 'rgba(79,139,255,0)'); g.addColorStop(1, `rgba(79,139,255,${.16 * cam.grid})`);
       bg.strokeStyle = g; bg.beginPath(); bg.moveTo(vx + k * 6, hy); bg.lineTo(xb + (xb - vx) * 1.2, 1080); bg.stroke();
     }
     const fr = (travel * 6) % 1;
@@ -139,10 +139,10 @@ function drawBg(t) {
       const z = 16 - i - fr, y = hy + 1400 / (z + 3.2) - 1400 / 19.2;
       if (y > 1080) continue;
       const a = clamp((y - hy) / 390) * .2 * cam.grid;
-      bg.strokeStyle = `rgba(245,158,11,${a})`; bg.beginPath(); bg.moveTo(0, y); bg.lineTo(1920, y); bg.stroke();
+      bg.strokeStyle = `rgba(79,139,255,${a})`; bg.beginPath(); bg.moveTo(0, y); bg.lineTo(1920, y); bg.stroke();
     }
     const hg = bg.createLinearGradient(0, hy - 60, 0, hy + 60);
-    hg.addColorStop(0, 'rgba(245,158,11,0)'); hg.addColorStop(.5, `rgba(245,158,11,${.12 * cam.grid})`); hg.addColorStop(1, 'rgba(245,158,11,0)');
+    hg.addColorStop(0, 'rgba(79,139,255,0)'); hg.addColorStop(.5, `rgba(79,139,255,${.12 * cam.grid})`); hg.addColorStop(1, 'rgba(79,139,255,0)');
     bg.fillStyle = hg; bg.fillRect(0, hy - 60, 1920, 120);
   }
 
@@ -152,7 +152,7 @@ function drawBg(t) {
     for (const [i, j] of EDGES) {
       const a = NODES[i], b = NODES[j];
       const pulse = .5 + .5 * Math.sin(t * 2 + a.ph + b.ph);
-      bg.strokeStyle = `rgba(245,158,11,${.13 * cam.net * pulse})`;
+      bg.strokeStyle = `rgba(79,139,255,${.13 * cam.net * pulse})`;
       bg.beginPath(); bg.moveTo(a.x, a.y); bg.lineTo(b.x, b.y); bg.stroke();
     }
     for (const n of NODES) {
@@ -209,7 +209,7 @@ function makeGrain() {
 
 // ---------------------------------------------------------------- builders
 function buildStack(svg) {
-  const plates = [['#3b3536', '#2a2526', '#211d1e', 'rgba(245,158,11,.85)'], ['#FAF8F1', '#ddd5c4', '#c3baa6', null], ['#F59E0B', '#C2410C', '#9A3412', null]];
+  const plates = [['#1B2440', '#141B33', '#0F1529', 'rgba(79,139,255,.85)'], ['#F1F5FF', '#CBD5E8', '#A9B6D0', null], ['#4F8BFF', '#1E40AF', '#1E3A8A', null]];
   svg.innerHTML = plates.map((c, i) => {
     const y = 140 - i * 34;
     return `<g class="plate"><polygon points="30,${y} 100,${y + 40} 100,${y + 54} 30,${y + 14}" fill="${c[1]}"/>` +
@@ -325,10 +325,10 @@ function build() {
   const inv = p => { let lo = 0, hi = 1; const e = gsap.parseEase('power2.inOut'); for (let k = 0; k < 30; k++) { const m = (lo + hi) / 2; e(m) < p ? lo = m : hi = m; } return lo; };
   segs.forEach((s, i) => {
     const ts = S2 + .1 + inv((i + 1) / 10) * (t10 + .12 - S2 - .1);
-    tl.to(s, { stroke: '#F59E0B', duration: .18, ease: 'none' }, ts - .1);
+    tl.to(s, { stroke: '#4F8BFF', duration: .18, ease: 'none' }, ts - .1);
   });
   sfx(S2 + .15, 'blips_1', .45);
-  tl.set(segs, { filter: 'drop-shadow(0 0 14px rgba(245,158,11,.9))' }, t10 + .1);
+  tl.set(segs, { filter: 'drop-shadow(0 0 14px rgba(79,139,255,.9))' }, t10 + .1);
   impact(t10 + .1, .45, 'impact_2', .45);
   scramble('#s2-tag', S2 + .15, .6);
   tl.fromTo('#s2-years', { x: 120, opacity: 0 }, { x: 0, opacity: 1, duration: .8, ease: 'expo.out' }, S2 + .25);
@@ -346,7 +346,7 @@ function build() {
   const t200 = at('200');
   counter('#s3-count', 200, S3 + .15, t200 + .35, 'power2.inOut');
   tl.fromTo(people, { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: .45, ease: 'back.out(2.2)', stagger: { grid: [10, 20], from: 'start', amount: 1.1 } }, S3 + .1);
-  tl.to(people, { fill: '#F59E0B', duration: .25, ease: 'none', stagger: { grid: [10, 20], from: 'start', amount: 1.1 } }, S3 + .35);
+  tl.to(people, { fill: '#4F8BFF', duration: .25, ease: 'none', stagger: { grid: [10, 20], from: 'start', amount: 1.1 } }, S3 + .35);
   sfx(S3 + .2, 'blips_2', .4);
   tl.fromTo('#s3-label', { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: .6 }, at('engineers', 0) - .05);
   const tFor = at('for', 1);
@@ -357,7 +357,7 @@ function build() {
     const t = at(w) - .12;
     tl.fromTo(sel, { rotationX: -95, y: 60, opacity: 0, transformPerspective: 1200 }, { rotationX: 0, y: 0, opacity: 1, duration: .75, ease: 'back.out(1.4)' }, t);
     tl.fromTo(`${sel} svg *`, { drawSVG: '0%' }, { drawSVG: '100%', duration: .8, ease: 'power2.inOut', stagger: .06 }, t + .1);
-    tl.fromTo(sel, { boxShadow: '0 0 0 rgba(245,158,11,0)' }, { boxShadow: '0 0 60px rgba(245,158,11,.35)', duration: .25, yoyo: true, repeat: 1 }, t + .3);
+    tl.fromTo(sel, { boxShadow: '0 0 0 rgba(79,139,255,0)' }, { boxShadow: '0 0 60px rgba(79,139,255,.35)', duration: .25, yoyo: true, repeat: 1 }, t + .3);
     sfx(t + .05, 'whoosh_2', .35);
   });
   tl.to('.icard', { rotationX: 70, y: 120, opacity: 0, duration: .45, ease: 'power2.in', stagger: .05 }, S4 - .3);
@@ -486,8 +486,7 @@ function build() {
   lw.forEach((w, k) => tl.fromTo(w, { yPercent: 110 }, { yPercent: 0, duration: .5, ease: 'expo.out' }, WORDS[i0 + k].s + OFF - .06));
   const tH2 = at('hired', 1);
   tl.fromTo('#s8-mark', { scaleX: 0 }, { scaleX: 1, duration: .26, ease: 'power3.out' }, tH2 - .04);
-  tl.to('#s8-line .hl', { color: '#1E1C1D', duration: .1 }, tH2 + .2);
-  impact(tH2 + .05, .45, 'impact_2', .4);
+    impact(tH2 + .05, .45, 'impact_2', .4);
   const tNo = at('no'), tJust = at('just');
   tl.set(['#s8-tag', '#s8-line'], { autoAlpha: 0 }, tNo - .02);
   tl.set('#s8-nf', { autoAlpha: 1 }, tNo - .02);
@@ -513,7 +512,7 @@ function build() {
   impact(LOCK, 1.4, 'impact_4', 1);
   tl.fromTo('#s9-lock', { scale: 1.12 }, { scale: 1, duration: 1.4, ease: 'expo.out' }, LOCK);
   scramble('#s9-meta', LOCK + .3, .8);
-  // fly through the amber full stop into the video
+  // fly through the blue full stop into the video
   const tFly = END - .95;
   tl.to('#s9-lock', { scale: 42, x: 960 - dotX, y: 540 - dotY, transformOrigin: flyOrigin, duration: .75, ease: 'power4.in' }, tFly);
   tl.fromTo('#s9-dot', { scale: 0 }, { scale: 48, duration: .32, ease: 'power2.in', immediateRender: false }, tFly + .38);
@@ -521,7 +520,7 @@ function build() {
   tl.to('#black', { opacity: 1, duration: .2, ease: 'none' }, END - .2);
 
   // pipe dots between the two pills (positions need laid-out fonts)
-  $('#pipe-dots').innerHTML = Array.from({ length: 7 }, () => '<circle r="7" cy="60" fill="#FCD34D" opacity="0" style="filter:drop-shadow(0 0 8px #F59E0B)"/>').join('');
+  $('#pipe-dots').innerHTML = Array.from({ length: 7 }, () => '<circle r="7" cy="60" fill="#22D3EE" opacity="0" style="filter:drop-shadow(0 0 8px #4F8BFF)"/>').join('');
   pipe = { x0: px0, x1: px1, dots: $$('#pipe-dots circle') };
 
   window.render = t => {

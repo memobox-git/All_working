@@ -1,5 +1,5 @@
 # Cuts the presenter out of a photo and bakes the intro look into it:
-# warm grade, amber rim light on the edges, a fade where the photo is cropped,
+# neutral grade, a cool blue rim light on the edges, a fade where the photo is cropped,
 # and a separate soft glow layer that sits behind the cutout.
 # Usage: python make-portrait.py <photo> <out-dir> [model]
 # Needs: pip install "rembg[cpu]" pillow numpy
@@ -21,7 +21,7 @@ rgb, a = cut.convert('RGB'), cut.getchannel('A')
 rgb = ImageEnhance.Contrast(rgb).enhance(1.06)
 rgb = ImageEnhance.Color(rgb).enhance(0.92)
 px = np.asarray(rgb).astype(np.float32)
-px = px * np.array([1.04, 1.0, 0.93])          # nudge toward the amber palette
+px = px * np.array([0.99, 1.0, 1.03])          # nudge toward the cool palette
 alpha = np.asarray(a).astype(np.float32) / 255
 
 # rim light: the outer few pixels of the silhouette, brightest on the left and top
@@ -30,18 +30,18 @@ edge = np.clip(alpha - inner, 0, 1)
 h, w = alpha.shape
 side = np.clip(1.25 - np.linspace(0, 1, w)[None, :] * .9 - np.linspace(0, 1, h)[:, None] * .35, 0, 1)
 rim = (edge * side)[..., None] * .85
-px = px * (1 - rim) + np.array([255, 196, 120]) * rim
+px = px * (1 - rim) + np.array([160, 205, 255]) * rim
 
 # fade out where the photo is cropped at the bottom
 fade = np.clip((h - np.arange(h)) / (h * .26), 0, 1)[:, None]
 alpha = alpha * fade
 Image.fromarray(np.dstack([np.clip(px, 0, 255), alpha * 255]).astype(np.uint8), 'RGBA').save(f'{out_dir}/portrait.png', optimize=True)
 
-# glow layer: a blurred amber silhouette, padded so the blur is not clipped
+# glow layer: a blurred blue silhouette, padded so the blur is not clipped
 pad = 120
 sil = Image.new('L', (w + pad * 2, h + pad * 2), 0)
 sil.paste(Image.fromarray((alpha * 255).astype(np.uint8)), (pad, pad))
 glow = sil.filter(ImageFilter.GaussianBlur(46))
 g = np.asarray(glow).astype(np.float32) / 255 * .9
-Image.fromarray(np.dstack([np.full_like(g, 245), np.full_like(g, 158), np.full_like(g, 11), g * 255]).astype(np.uint8), 'RGBA').save(f'{out_dir}/portrait-glow.png', optimize=True)
+Image.fromarray(np.dstack([np.full_like(g, 79), np.full_like(g, 139), np.full_like(g, 255), g * 255]).astype(np.uint8), 'RGBA').save(f'{out_dir}/portrait-glow.png', optimize=True)
 print('portrait', w, 'x', h, '-> glow pad', pad)
