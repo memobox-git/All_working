@@ -1,0 +1,10 @@
+# Netlify builds OBIE from this folder. The Next.js runtime turns the server
+# pages, route handlers and proxy.ts into Netlify Functions and Edge Functions.
+# It's declared here because sites created through the API don't get it
+# installed automatically.
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"

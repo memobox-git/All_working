@@ -1,5 +1,6 @@
 import type { EmailOtpType } from "@supabase/supabase-js";
 import { NextResponse, type NextRequest } from "next/server";
+import { redirectUrl } from "@/lib/redirect-url";
 import { safeNext } from "@/lib/safe-next";
 import { createClient } from "@/lib/supabase/server";
 
@@ -31,9 +32,9 @@ export async function GET(request: NextRequest) {
   if (failed) {
     return toLogin(request, "link");
   }
-  return NextResponse.redirect(new URL(next, request.url));
+  return NextResponse.redirect(redirectUrl(request, next));
 }
 
 function toLogin(request: NextRequest, reason: string) {
-  return NextResponse.redirect(new URL(`/login?error=${reason}`, request.url));
+  return NextResponse.redirect(redirectUrl(request, `/login?error=${reason}`));
 }
