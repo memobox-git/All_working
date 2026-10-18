@@ -40,7 +40,8 @@ OBIE uses the Supabase project "Stacklebot". The schema is in [`supabase/migrati
    - `https://YOUR-VERCEL-DOMAIN/**`
    - `https://obie-*-memobox-gits-projects.vercel.app/**` (preview deployments)
    - `http://localhost:3000/**`
-2. Optional, for Google sign-in: create an OAuth client (type: Web application) in Google Cloud > APIs & Services > Credentials, with the redirect URI `https://oshlofyxapvmgxvkldub.supabase.co/auth/v1/callback`. Paste its client ID and secret into Supabase > Authentication > Sign In / Providers > Google, and turn it on. The login page shows the Google button as soon as it is on.
+2. Optional, so email links work even when they open inside an email app's own browser: in Authentication > Email Templates, change the link in **Magic Link** and **Confirm signup** to `{{ .SiteURL }}/auth/callback?token_hash={{ .TokenHash }}&type=email`.
+3. Optional, for Google sign-in: create an OAuth client (type: Web application) in Google Cloud > APIs & Services > Credentials, with the redirect URI `https://oshlofyxapvmgxvkldub.supabase.co/auth/v1/callback`. Paste its client ID and secret into Supabase > Authentication > Sign In / Providers > Google, and turn it on. The login page shows the Google button as soon as it is on.
 
 ## Deploy
 
