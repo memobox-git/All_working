@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { Suspense } from "react";
+import { ObieDesk } from "@/components/obie-desk";
 import { ObieOrb } from "@/components/obie-orb";
 import { createClient } from "@/lib/supabase/server";
 
@@ -68,17 +69,11 @@ async function WorkspaceHome() {
       </header>
 
       <Centered>
-        <ObieOrb size={132} float />
-        <h1 className="mt-8 text-3xl font-extrabold tracking-tight sm:text-4xl">
-          {workspace.created ? "Welcome to OBIE" : "Welcome back"}
-        </h1>
-        <p className="mt-3 max-w-md text-lg leading-relaxed text-muted">
-          {firstName ? `Hi ${firstName}. ` : "Hi. "}
-          I&apos;m OBIE, your front desk. I&apos;ll learn your business, then build your team.
-        </p>
-        <p className="mt-8 max-w-sm rounded-2xl bg-surface px-4 py-2.5 text-sm text-muted">
-          OBIE&apos;s onboarding chat arrives in the next build step.
-        </p>
+        <ObieDesk
+          workspaceId={workspace.workspace_id}
+          title={workspace.created ? "Welcome to OBIE" : "Welcome back"}
+          greeting={`${firstName ? `Hi ${firstName}. ` : "Hi. "}I'm OBIE, your front desk. I'll learn your business, then build your team.`}
+        />
         <Link href="/" className="mt-6 text-sm font-semibold text-primary">
           Back to home
         </Link>
