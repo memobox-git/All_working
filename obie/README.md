@@ -28,7 +28,6 @@ Every key is listed in [`.env.example`](.env.example). Add the same keys in Verc
 | `ANTHROPIC_API_KEY` | console.anthropic.com > API Keys |
 | `TRANSCRIBE_PROVIDER` | `elevenlabs`, `deepgram` or `openai` |
 | `ELEVENLABS_API_KEY` / `DEEPGRAM_API_KEY` / `OPENAI_API_KEY` | Only the one for your chosen provider |
-| `NEXT_PUBLIC_SITE_URL` | Your Vercel URL (used for login redirects) |
 | `CRON_SECRET` | Any long random string |
 
 ## Database
