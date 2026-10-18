@@ -239,6 +239,39 @@ Fix anything that breaks. Then give me a short list: what works, what's rough, a
 
 ---
 
+## Day 2: Agents with their own computers
+
+Modeled on OpenAI's Dots: every main agent gets its own cloud computer, memory and approval gates, and you can watch its browser. Nano tasks stay plain model calls, so they stay fast and cheap.
+
+### Prompt 12: Agent computers
+
+```
+Give each main agent its own cloud computer, the way OpenAI's Dots work, using Claude Managed Agents.
+- Each main agent (and OBIE) becomes a Managed Agent with its own instructions, its stack's tools, and a memory store that keeps what it learns about my business between sessions.
+- Nano tasks stay plain model calls. Only tasks marked "needs computer" (browse, run code, make files) run inside their main agent's session, as a helper that ends when the task is done.
+- Every tool that sends, posts, publishes or spends is set to always ask. Each pause becomes an approval card in Needs you, and my answer goes back to the session.
+- Stream the session's activity into the agent's channel thread so I can watch it work. Add Pause and Stop.
+- Give every session a spend cap that matches the credits reserved for the plan, and log its cost in agent_runs.
+- Save the agent and session ids in a new table (agent_computers) with workspace_id and row-level security.
+Test: I ask the Marketing agent to research 5 competitors' LinkedIn pages and watch the steps appear in the thread.
+```
+
+### Prompt 13: Watch the browser
+
+```
+Let me see and control the browser an agent is using.
+- Use a hosted cloud browser with a live view (for example Browserbase or E2B Desktop; pick one and tell me why in one line). Each main agent gets its own saved browser profile, so it stays logged in to the sites I log it into.
+- The agent drives the browser with Claude's computer use toolset, and OBIE runs each action on the cloud browser.
+- In the channel, a Watch button opens the live browser: a right-hand panel on desktop, a full-screen sheet on the phone.
+- Take over pauses the agent and gives me the mouse and keyboard (for logins, captchas, or fixing something). Hand back resumes the agent.
+- Before any click that submits, sends, posts, buys or deletes, the agent stops and asks for approval, with a screenshot of what it is about to do.
+- The agent never types or stores passwords. I log in myself during Take over.
+- Show the browser's running cost next to the Watch button.
+Test: on my phone, I open Watch, see the agent browsing, tap Take over, log in to LinkedIn, tap Hand back, and the agent carries on.
+```
+
+---
+
 ## Version 2 (next)
 
 - **Inbox:** LinkedIn, WhatsApp, Instagram and email through Unipile, Slack through its own API, contacts merged into one person, and an Inbox agent that sorts messages and drafts replies.
