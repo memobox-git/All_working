@@ -48,6 +48,7 @@ PROJECT NOTES
 - Database: the Supabase project "Stacklebot" (ref `oshlofyxapvmgxvkldub`). It is shared with other Stackle tools (the olist SQL Lab tables, `copilot_calls`), so only touch OBIE's tables. Migrations live in `supabase/migrations/`, named `<version>_<name>.sql` to match the project's migration history.
 - RLS: owners read and write their workspace's rows through `private.is_workspace_owner(workspace_id)`. `credit_ledger` and `agent_runs` are read-only for owners; only server code using the service role writes them. Catalog blueprints have no workspace_id and are readable by every signed-in user.
 - Supabase clients: `lib/supabase/client.ts` (browser), `lib/supabase/server.ts` (server components, route handlers, server actions), `lib/supabase/admin.ts` (service role, server only, bypasses RLS), `lib/supabase/proxy.ts` (session refresh).
+- Auth: `/login` (email magic link, plus Google when it is switched on in Supabase), `/auth/callback` finishes either flow, `/auth/signout` signs out this device only. `proxy.ts` keeps signed-out visitors out of `/app`. `/app` calls the `ensure_my_workspace` RPC, which creates the workspace and the OBIE agent on first sign-in.
 - Colors are tokens in `app/globals.css` (`bg-background`, `text-foreground`, `bg-primary`, `text-accent` and so on). Use the tokens, not raw hex values, so light and dark mode both work.
 - The OBIE avatar is `components/obie-orb.tsx`. Its `state` prop drives the star: `idle` (steady), `working` (sparkles), `listening` (the orb pulses).
 

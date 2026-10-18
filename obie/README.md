@@ -34,6 +34,14 @@ Every key is listed in [`.env.example`](.env.example). Add the same keys in Verc
 
 OBIE uses the Supabase project "Stacklebot". The schema is in [`supabase/migrations/`](supabase/migrations/): eleven tables with row-level security (each owner sees only their workspace), the `ltree` extension for agent paths, a `credit_balances` view, and Realtime on `messages`, `tasks` and `approvals`.
 
+## Login setup (Supabase dashboard, once)
+
+1. Authentication > URL Configuration: set **Site URL** to the Vercel production URL, and add these **Redirect URLs**:
+   - `https://YOUR-VERCEL-DOMAIN/**`
+   - `https://obie-*-memobox-gits-projects.vercel.app/**` (preview deployments)
+   - `http://localhost:3000/**`
+2. Optional, for Google sign-in: create an OAuth client (type: Web application) in Google Cloud > APIs & Services > Credentials, with the redirect URI `https://oshlofyxapvmgxvkldub.supabase.co/auth/v1/callback`. Paste its client ID and secret into Supabase > Authentication > Sign In / Providers > Google, and turn it on. The login page shows the Google button as soon as it is on.
+
 ## Deploy
 
 The Vercel project uses `obie` as its Root Directory, so it builds only this folder.

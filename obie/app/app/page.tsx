@@ -76,7 +76,7 @@ async function WorkspaceHome() {
           {firstName ? `Hi ${firstName}. ` : "Hi. "}
           I&apos;m OBIE, your front desk. I&apos;ll learn your business, then build your team.
         </p>
-        <p className="mt-8 rounded-full bg-surface px-4 py-2 text-sm text-muted">
+        <p className="mt-8 max-w-sm rounded-2xl bg-surface px-4 py-2.5 text-sm text-muted">
           OBIE&apos;s onboarding chat arrives in the next build step.
         </p>
         <Link href="/" className="mt-6 text-sm font-semibold text-primary">
