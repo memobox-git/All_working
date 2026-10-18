@@ -24,6 +24,10 @@ Every goal hangs off the one above it. If a task doesn't move a goal, it waits.
 
 Each goal has a "done when" and a due date. "Grow the channel" is not a goal. "10,000 subscribers by 31 Dec" is.
 
+## Start a check-in
+
+Type `/planner` in any Claude Code session on this repo. Add `week`, `month`, `quarter` or `year` for a review, or `add …` to drop in a new task or goal. Plain words work too: "what should I do today?"
+
 ## The daily check-in (about 10 minutes)
 
 1. **Look back.** What got done yesterday, what didn't, and why.
