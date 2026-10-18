@@ -1,0 +1,1153 @@
+<title>Stackle Content Engine</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..800&family=Instrument+Sans:wght@400..700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: a wire-desk console. Sticky masthead with tabs, then one working surface per tab; a right-hand drawer for the idea you are editing. */
+:root {
+  --paper: #F3F5F8;
+  --panel: #FFFFFF;
+  --ink: #131A2B;
+  --ink-2: #485267;
+  --ink-3: #7A8499;
+  --line: #D9DFE7;
+  --line-2: #E9EDF2;
+  --accent: #2342D2;
+  --accent-ink: #FFFFFF;
+  --accent-soft: #E5EAFC;
+  --p0: #C9341B; --p0-soft: #FBE7E2;
+  --p1: #A86500; --p1-soft: #FAEFD8;
+  --p2: #0E7465; --p2-soft: #DFF2EE;
+  --p3: #5A6880; --p3-soft: #E9EDF3;
+  --skip: #98A1B0;
+  --shadow: 0 10px 30px rgba(19, 26, 43, .12);
+  --f-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --f-body: "Instrument Sans", "Segoe UI", system-ui, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --r: 8px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0D1220; --panel: #141A2A; --ink: #E6E9F1; --ink-2: #AEB6C8; --ink-3: #7D879D;
+    --line: #283048; --line-2: #1C2335; --accent: #7F97FF; --accent-ink: #0D1220; --accent-soft: #1D2853;
+    --p0: #FF7B5E; --p0-soft: #3A1A15; --p1: #F2B54E; --p1-soft: #32260F; --p2: #4FC8B3; --p2-soft: #0F2D29;
+    --p3: #9CA8BE; --p3-soft: #222A3C; --skip: #6B7489; --shadow: 0 10px 30px rgba(0, 0, 0, .45);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0D1220; --panel: #141A2A; --ink: #E6E9F1; --ink-2: #AEB6C8; --ink-3: #7D879D;
+  --line: #283048; --line-2: #1C2335; --accent: #7F97FF; --accent-ink: #0D1220; --accent-soft: #1D2853;
+  --p0: #FF7B5E; --p0-soft: #3A1A15; --p1: #F2B54E; --p1-soft: #32260F; --p2: #4FC8B3; --p2-soft: #0F2D29;
+  --p3: #9CA8BE; --p3-soft: #222A3C; --skip: #6B7489; --shadow: 0 10px 30px rgba(0, 0, 0, .45);
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body { background: var(--paper); color: var(--ink); font: 15px/1.5 var(--f-body); }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--panel); }
+button, input, select, textarea { font: inherit; color: inherit; }
+button { cursor: pointer; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+a { color: var(--accent); }
+.wrap { max-width: 1240px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.mono { font-family: var(--f-mono); font-variant-numeric: tabular-nums; }
+.muted { color: var(--ink-3); }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+
+/* masthead */
+.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: var(--panel); border-bottom: 1px solid var(--line); }
+.top .wrap { display: flex; flex-wrap: wrap; align-items: end; gap: 8px 24px; padding-block: 14px 0; }
+.brand { display: grid; gap: 2px; padding-bottom: 12px; min-width: 0; }
+.brand h1 { margin: 0; font: 800 22px/1.05 var(--f-display); font-stretch: 118%; letter-spacing: -.01em; text-wrap: balance; }
+.brand p { margin: 0; font-size: 13px; color: var(--ink-3); }
+.tabs { display: flex; gap: 2px; margin-left: auto; overflow-x: auto; max-width: 100%; }
+.tab { border: 0; background: none; padding: 10px 14px 12px; font: 650 14px var(--f-display); font-stretch: 105%; color: var(--ink-2); border-bottom: 3px solid transparent; white-space: nowrap; }
+.tab[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--accent); }
+.tab .n { font: 600 11px var(--f-mono); color: var(--ink-3); margin-left: 4px; }
+.tab .n.hot { color: var(--p0); }
+
+main { padding-block: 22px 80px; }
+.banner { padding: 12px 14px; border: 1px solid var(--line); border-radius: var(--r); background: var(--panel); margin-bottom: 18px; font-size: 14px; color: var(--ink-2); }
+.banner strong { color: var(--ink); }
+
+h2.sec { font: 750 13px var(--f-display); font-stretch: 112%; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-2); margin: 28px 0 10px; display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+h2.sec:first-child { margin-top: 0; }
+h2.sec .count { font: 600 12px var(--f-mono); color: var(--ink-3); letter-spacing: 0; text-transform: none; }
+h2.sec .hint { font: 400 13px var(--f-body); letter-spacing: 0; text-transform: none; color: var(--ink-3); }
+
+/* tiers and chips */
+.tier { display: inline-flex; align-items: center; gap: 6px; padding: 2px 8px 2px 6px; border-radius: 999px; font: 650 12px var(--f-display); font-stretch: 105%; white-space: nowrap; }
+.tier::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+.t-P0 { color: var(--p0); background: var(--p0-soft); }
+.t-P1 { color: var(--p1); background: var(--p1-soft); }
+.t-P2 { color: var(--p2); background: var(--p2-soft); }
+.t-P3 { color: var(--p3); background: var(--p3-soft); }
+.t-SKIP { color: var(--skip); background: var(--p3-soft); }
+.chip { display: inline-flex; align-items: center; gap: 4px; padding: 1px 7px; border: 1px solid var(--line); border-radius: 4px; font-size: 12px; color: var(--ink-2); white-space: nowrap; background: var(--panel); }
+.chip.hero { border-color: var(--accent); color: var(--accent); font-weight: 600; }
+.chips { display: flex; flex-wrap: wrap; gap: 4px; }
+.aud { font: 600 11px var(--f-mono); padding: 1px 5px; border-radius: 3px; background: var(--line-2); color: var(--ink-2); }
+.score { font: 600 22px/1 var(--f-mono); font-variant-numeric: tabular-nums; }
+.score.P0 { color: var(--p0); } .score.P1 { color: var(--p1); } .score.P2 { color: var(--p2); } .score.P3, .score.SKIP { color: var(--p3); }
+
+.btn { border: 1px solid var(--line); background: var(--panel); border-radius: 6px; padding: 6px 12px; font-weight: 600; font-size: 13px; color: var(--ink); }
+.btn:hover { border-color: var(--ink-3); }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.btn.danger { color: var(--p0); }
+.btn.ghost { border-color: transparent; background: none; color: var(--ink-2); }
+.btn:disabled { opacity: .5; cursor: default; }
+.row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+
+/* radar */
+.strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--r); overflow: hidden; margin-bottom: 8px; }
+.strip > div { background: var(--panel); padding: 12px 14px; min-width: 0; }
+.strip .k { font-size: 12px; color: var(--ink-3); }
+.strip .v { font: 700 18px/1.3 var(--f-display); font-stretch: 108%; }
+.strip .v small { font: 500 13px var(--f-body); color: var(--ink-3); }
+
+.cards { display: grid; gap: 12px; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--r); padding: 14px 16px; display: grid; gap: 10px; min-width: 0; }
+.card.P0 { border-left: 4px solid var(--p0); }
+.card-head { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: 13px; color: var(--ink-3); }
+.card h3 { margin: 0; font: 700 18px/1.25 var(--f-display); font-stretch: 102%; text-wrap: balance; }
+.card h3 button { all: unset; cursor: pointer; }
+.card h3 button:hover { text-decoration: underline; text-underline-offset: 3px; }
+.card .angle { margin: 0; color: var(--ink-2); max-width: 75ch; }
+.plan { display: grid; gap: 0; border: 1px solid var(--line-2); border-radius: 6px; overflow: hidden; }
+.plan-row { display: grid; grid-template-columns: 92px 120px 1fr auto; gap: 10px; align-items: center; padding: 7px 10px; font-size: 13px; border-top: 1px solid var(--line-2); }
+.plan-row:first-child { border-top: 0; }
+.plan-row .ch { font-weight: 650; }
+.due { font: 600 12px var(--f-mono); }
+.due.soon { color: var(--p0); } .due.late { color: var(--ink-3); text-decoration: line-through; }
+.plan-row .state { font-size: 12px; color: var(--p2); white-space: nowrap; }
+.list { background: var(--panel); border: 1px solid var(--line); border-radius: var(--r); }
+.li { display: grid; grid-template-columns: 52px 1fr auto; gap: 12px; align-items: center; padding: 10px 14px; border-top: 1px solid var(--line-2); }
+.li:first-child { border-top: 0; }
+.li .t { font-weight: 600; min-width: 0; }
+.li .s { font-size: 13px; color: var(--ink-3); }
+.empty { background: var(--panel); border: 1px dashed var(--line); border-radius: var(--r); padding: 18px; color: var(--ink-2); font-size: 14px; }
+.empty strong { color: var(--ink); }
+.brief { background: var(--panel); border: 1px solid var(--line); border-radius: var(--r); padding: 16px; display: grid; gap: 8px; }
+.brief p { margin: 0; max-width: 80ch; }
+.brief ol { margin: 0; padding-left: 20px; }
+
+/* ideas */
+.tools { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 12px; }
+.tools input[type=search] { flex: 1 1 220px; min-width: 0; padding: 7px 10px; border: 1px solid var(--line); border-radius: 6px; background: var(--panel); }
+.tools select { padding: 7px 8px; border: 1px solid var(--line); border-radius: 6px; background: var(--panel); max-width: 100%; }
+.summary { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 13px; color: var(--ink-3); margin-bottom: 10px; }
+.summary b { color: var(--ink); font-family: var(--f-mono); font-weight: 600; }
+.table { background: var(--panel); border: 1px solid var(--line); border-radius: var(--r); }
+.tr { display: grid; grid-template-columns: 56px minmax(0, 1fr) 150px 210px 92px; gap: 14px; align-items: center; padding: 10px 14px; border-top: 1px solid var(--line-2); cursor: pointer; }
+.tr:first-child { border-top: 0; }
+.tr:hover { background: var(--paper); }
+.tr.head { cursor: default; font-size: 12px; color: var(--ink-3); text-transform: uppercase; letter-spacing: .06em; padding-block: 8px; }
+.tr.head:hover { background: none; }
+.tr .title { font-weight: 600; line-height: 1.35; }
+.tr .sub { font-size: 13px; color: var(--ink-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.tr .meta { display: grid; gap: 4px; justify-items: start; font-size: 13px; color: var(--ink-2); }
+.status { font-size: 12px; color: var(--ink-2); }
+.status.scheduled, .status.ready { color: var(--p2); font-weight: 600; }
+.status.new { color: var(--p0); font-weight: 600; }
+.status.skipped, .status.archived { color: var(--ink-3); }
+.more { display: block; width: 100%; padding: 10px; border: 0; border-top: 1px solid var(--line-2); background: none; color: var(--accent); font-weight: 600; }
+
+/* calendar */
+.cal-tools { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 12px; }
+.cal-tools h2 { margin: 0 8px 0 0; font: 750 20px var(--f-display); font-stretch: 112%; }
+.legend { display: flex; flex-wrap: wrap; gap: 12px; margin-left: auto; font-size: 12px; color: var(--ink-3); }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.sw { width: 18px; height: 12px; border-radius: 3px; border: 1px solid var(--line); background: var(--panel); }
+.sw.held { border: 1px dashed var(--accent); background: var(--accent-soft); }
+.sw.lock { border-color: var(--ink-3); background: var(--line-2); }
+.grid-scroll { overflow-x: auto; border: 1px solid var(--line); border-radius: var(--r); background: var(--panel); }
+.cal { display: grid; grid-template-columns: 96px repeat(7, minmax(126px, 1fr)); min-width: 980px; }
+.cal > div { border-top: 1px solid var(--line-2); border-left: 1px solid var(--line-2); padding: 6px; min-width: 0; }
+.cal .dh { border-top: 0; padding: 8px; font: 650 13px var(--f-display); font-stretch: 105%; background: var(--panel); }
+.cal .dh .d { font: 600 12px var(--f-mono); color: var(--ink-3); margin-left: 4px; }
+.cal .dh.today { color: var(--accent); box-shadow: inset 0 -3px 0 var(--accent); }
+.cal .rh { border-left: 0; font: 650 12px var(--f-display); font-stretch: 105%; color: var(--ink-2); padding: 10px 8px; }
+.cal .corner { border: 0; }
+.cal .cell { display: grid; gap: 5px; align-content: start; }
+.cal .cell.past { opacity: .55; }
+.cal .cell.today { background: color-mix(in srgb, var(--accent-soft) 45%, transparent); }
+.slot { all: unset; box-sizing: border-box; display: grid; gap: 3px; width: 100%; padding: 6px 7px; border-radius: 5px; border: 1px solid var(--line); background: var(--panel); cursor: pointer; font-size: 12px; line-height: 1.3; }
+.slot:hover { border-color: var(--ink-3); }
+.slot:focus-visible { outline: 2px solid var(--accent); }
+.slot .st { font-weight: 600; color: var(--ink); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.slot .sn { color: var(--ink-3); display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; }
+.slot .top-line { display: flex; gap: 5px; align-items: center; font: 600 10px var(--f-mono); color: var(--ink-3); }
+.dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; flex: none; }
+.dot.P0 { background: var(--p0); } .dot.P1 { background: var(--p1); } .dot.P2 { background: var(--p2); } .dot.P3, .dot.SKIP { background: var(--p3); }
+.slot.news { border-color: var(--p0); }
+.slot.locked { background: var(--line-2); }
+.slot.held { border: 1px dashed var(--accent); background: var(--accent-soft); color: var(--accent); font-weight: 600; }
+.slot.open { border-style: dashed; color: var(--ink-3); }
+.slot.derived { border-style: dashed; color: var(--ink-3); font-style: italic; }
+.cal-foot { margin-top: 10px; font-size: 13px; color: var(--ink-3); max-width: 90ch; }
+
+/* rules */
+.rules { display: grid; gap: 16px; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; }
+@media (max-width: 860px) { .rules { grid-template-columns: minmax(0, 1fr); } }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: var(--r); padding: 16px; display: grid; gap: 10px; min-width: 0; }
+.panel h3 { margin: 0; font: 750 16px var(--f-display); font-stretch: 108%; }
+.panel p { margin: 0; color: var(--ink-2); font-size: 14px; }
+.formula { font: 500 14px/1.7 var(--f-mono); background: var(--paper); border-radius: 6px; padding: 10px 12px; overflow-x: auto; white-space: nowrap; }
+.dl { display: grid; grid-template-columns: max-content 1fr; gap: 6px 12px; font-size: 14px; }
+.dl dt { font-weight: 650; }
+.dl dd { margin: 0; color: var(--ink-2); }
+.tbl-scroll { overflow-x: auto; }
+table.t { border-collapse: collapse; width: 100%; font-size: 13px; }
+table.t th, table.t td { text-align: left; padding: 7px 8px; border-top: 1px solid var(--line-2); vertical-align: top; }
+table.t th { font-weight: 650; color: var(--ink-2); border-top: 0; white-space: nowrap; }
+.sched { display: grid; gap: 10px; }
+.sched > div { border-top: 1px solid var(--line-2); padding-top: 10px; display: grid; gap: 2px; }
+.sched > div:first-child { border-top: 0; padding-top: 0; }
+.sched b { font-family: var(--f-display); font-stretch: 105%; }
+.sched .when { font: 600 12px var(--f-mono); color: var(--accent); }
+
+/* sliders (drawer + try-it) */
+.dims { display: grid; gap: 10px; }
+.dim { display: grid; grid-template-columns: 120px 1fr 28px; gap: 10px; align-items: center; font-size: 13px; }
+.dim label { font-weight: 600; }
+.dim input[type=range] { width: 100%; accent-color: var(--accent); }
+.dim .v { font: 600 13px var(--f-mono); text-align: right; }
+.dim .help { grid-column: 1 / -1; margin-top: -6px; font-size: 12px; color: var(--ink-3); }
+.result { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; padding: 10px 12px; background: var(--paper); border-radius: 6px; }
+
+/* drawer */
+.scrim { position: fixed; inset: 0; background: rgba(13, 18, 32, .35); z-index: 40; }
+.drawer { position: fixed; top: 0; right: 0; bottom: 0; width: min(560px, 100%); background: var(--panel); z-index: 41; box-shadow: var(--shadow); display: flex; flex-direction: column; padding-top: env(safe-area-inset-top, 0px); padding-right: env(safe-area-inset-right, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+.drawer header { display: flex; align-items: center; gap: 10px; padding: 14px 18px; border-bottom: 1px solid var(--line); }
+.drawer header .score { font-size: 26px; }
+.drawer header .x { margin-left: auto; }
+.drawer .body { overflow-y: auto; padding: 16px 18px 28px; display: grid; gap: 18px; }
+.drawer footer { display: flex; gap: 8px; padding: 12px 18px; border-top: 1px solid var(--line); flex-wrap: wrap; }
+.fld { display: grid; gap: 4px; }
+.fld > label, .fld > .lbl { font-size: 12px; font-weight: 650; color: var(--ink-2); text-transform: uppercase; letter-spacing: .06em; }
+.fld input[type=text], .fld input[type=url], .fld textarea, .fld select { width: 100%; padding: 7px 9px; border: 1px solid var(--line); border-radius: 6px; background: var(--panel); }
+.fld textarea { resize: vertical; min-height: 44px; }
+.fld textarea.title-in { font: 700 17px/1.3 var(--f-display); font-stretch: 102%; }
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.checks { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 14px; }
+.checks label { display: inline-flex; gap: 6px; align-items: center; }
+.box { border: 1px solid var(--line-2); border-radius: 6px; padding: 10px 12px; display: grid; gap: 6px; font-size: 14px; }
+.draft-out { white-space: pre-wrap; font-size: 14px; background: var(--paper); border-radius: 6px; padding: 10px 12px; max-height: 360px; overflow-y: auto; }
+
+/* modal */
+.modal { position: fixed; z-index: 42; left: 50%; top: 50%; transform: translate(-50%, -50%); width: min(520px, calc(100% - 32px)); max-height: min(640px, calc(100% - 48px)); background: var(--panel); border-radius: 10px; box-shadow: var(--shadow); display: flex; flex-direction: column; }
+.modal header { padding: 14px 16px; border-bottom: 1px solid var(--line); display: grid; gap: 2px; }
+.modal header b { font: 750 16px var(--f-display); font-stretch: 108%; }
+.modal .body { padding: 12px 16px 16px; overflow-y: auto; display: grid; gap: 10px; }
+.pick { all: unset; box-sizing: border-box; display: grid; grid-template-columns: 40px 1fr; gap: 10px; align-items: center; padding: 8px; border-radius: 6px; cursor: pointer; }
+.pick:hover, .pick:focus-visible { background: var(--paper); }
+.pick .score { font-size: 15px; }
+.pick .t { font-weight: 600; font-size: 14px; line-height: 1.3; }
+.pick .s { font-size: 12px; color: var(--ink-3); }
+
+.toast { position: fixed; left: 50%; bottom: calc(18px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); background: var(--ink); color: var(--paper); padding: 9px 14px; border-radius: 8px; font-size: 14px; z-index: 50; max-width: calc(100% - 32px); box-shadow: var(--shadow); }
+
+@media (max-width: 860px) {
+  .tr { grid-template-columns: 48px minmax(0, 1fr); }
+  .tr .meta, .tr .chan, .tr .stat { grid-column: 2; }
+  .tr.head { display: none; }
+  .plan-row { grid-template-columns: 80px 1fr auto; }
+  .plan-row .why { grid-column: 1 / -1; color: var(--ink-3); }
+  .two { grid-template-columns: 1fr; }
+  .tabs { margin-left: 0; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .drawer { animation: slide .18s ease-out; }
+  @keyframes slide { from { transform: translateX(24px); opacity: .6; } to { transform: none; opacity: 1; } }
+}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brand">
+      <h1>Stackle Content Engine</h1>
+      <p id="sub">Data &amp; AI content for engineers, analysts, career switchers and solo founders</p>
+    </div>
+    <nav class="tabs" role="tablist" id="tabs">
+      <button class="tab" role="tab" data-tab="radar" id="tab-radar">News radar <span class="n" id="n-radar"></span></button>
+      <button class="tab" role="tab" data-tab="ideas" id="tab-ideas">Idea bank <span class="n" id="n-ideas"></span></button>
+      <button class="tab" role="tab" data-tab="calendar" id="tab-calendar">Calendar</button>
+      <button class="tab" role="tab" data-tab="rules" id="tab-rules">How scoring works</button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <div id="banner"></div>
+  <section id="view-radar" hidden></section>
+  <section id="view-ideas" hidden></section>
+  <section id="view-calendar" hidden></section>
+  <section id="view-rules" hidden></section>
+</main>
+
+<div id="overlay"></div>
+<div id="toast" class="toast" hidden></div>
+
+<script src="engine.js"></script>
+<script>
+(function () {
+  'use strict';
+  const E = window.Engine;
+  const DAY = 86400000, HOUR = 3600000;
+  const TZ = 'America/Los_Angeles';
+  const CH = E.CHANNELS;
+  const ACTIVE = ['new', 'idea', 'scheduled', 'drafting', 'ready'];
+  const SCHEDULERS = [
+    { key: 'launch-radar', name: 'Launch Radar', times: [[5, 48], [9, 48], [13, 48], [17, 48], [21, 48]], days: [0, 1, 2, 3, 4, 5, 6],
+      when: '5:48, 9:48 am, 1:48, 5:48, 9:48 pm PT, every day',
+      what: 'AI model and tool launches: Anthropic, OpenAI, Google, Meta, Microsoft, Databricks, Snowflake, dbt and the AI coding tools. Checks official newsrooms, fresh web search, Hacker News, and X when an X API key is set. P0 items go straight into the calendar.' },
+    { key: 'daily-pulse', name: 'Daily Pulse', times: [[6, 49]], days: [0, 1, 2, 3, 4, 5, 6],
+      when: '6:49 am PT, every day',
+      what: 'The data stack (Spark, Iceberg, dbt, Airflow, Fabric, BigQuery), the data and AI job market (layoffs, hiring, visas), AI for small business, and what data people are arguing about online.' },
+    { key: 'weekly-planner', name: 'Weekly Planner', times: [[16, 46]], days: [0],
+      when: 'Sundays, 4:46 pm PT',
+      what: 'Re-ranks the whole bank, archives stale news, fills next week’s open calendar slots, adds 5 evergreen ideas from the week’s trends, and writes the week’s brief and email outline.' },
+  ];
+
+  const S = {
+    db: null, dbState: 'loading', canWrite: true,
+    ideas: new Map(), slots: new Map(), runs: [], briefs: [], settingsDoc: null, settings: E.mergeSettings(null),
+    loaded: { ideas: false, slots: false },
+    tab: 'radar', week: null,
+    f: { q: '', pillar: '', icp: '', tier: '', status: 'active', kind: '', sort: 'score' }, limit: 60,
+    open: null, draft: null, dirty: false, confirmDelete: false, modal: null, drafting: null,
+  };
+  const idx = { byIdea: new Map(), byCell: new Map() };
+  // On Sundays the week ahead is the one worth looking at.
+  function planningWeek() { const d = new Date(); return E.mondayOf(d.getDay() === 0 ? E.addDays(d, 1) : d); }
+  S.week = planningWeek();
+
+  // ---------- helpers ----------
+  const $ = (s, el) => (el || document).querySelector(s);
+  const esc = (v) => String(v == null ? '' : v).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const nowIso = () => new Date().toISOString();
+  const ev = (idea, now) => E.evaluate(idea, now || Date.now());
+  const tierChip = (t) => `<span class="tier t-${t}">${E.TIERS[t].short === E.TIERS[t].label ? esc(E.TIERS[t].label) : esc(E.TIERS[t].short) + ' · ' + esc(E.TIERS[t].label)}</span>`;
+  const audChips = (icp) => (icp || []).map((k) => `<span class="aud" title="${esc(E.ICP[k] || k)}">${esc(({ de: 'DE', da: 'DA', switch: 'SW', solo: 'SOLO' })[k] || k)}</span>`).join(' ');
+  const fmtDay = (d) => d.toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric' });
+  function rel(ms) {
+    const a = Math.abs(ms), m = Math.round(a / 60000), h = Math.round(a / HOUR), d = Math.round(a / DAY);
+    const s = m < 60 ? m + 'm' : h < 48 ? h + 'h' : d + 'd';
+    return ms >= 0 ? 'in ' + s : s + ' ago';
+  }
+  function foundAt(idea) {
+    const s = idea.source || {};
+    const t = Date.parse(s.found || s.published || idea.createdAt || '');
+    return isFinite(t) ? t : null;
+  }
+  function toast(msg) {
+    const t = $('#toast'); t.textContent = msg; t.hidden = false;
+    clearTimeout(toast._t); toast._t = setTimeout(() => { t.hidden = true; }, 3800);
+  }
+  function fail(e) { console.error(e); toast((e && e.message) ? 'Could not save: ' + e.message : 'Could not save. Try again.'); }
+  function needDb() { if (!S.db) { toast('Open this page signed in to claude.ai to make changes.'); return false; } return true; }
+
+  function ptParts(d) {
+    const p = {};
+    new Intl.DateTimeFormat('en-US', { timeZone: TZ, hour12: false, weekday: 'short', hour: '2-digit', minute: '2-digit' })
+      .formatToParts(d).forEach((x) => { p[x.type] = x.value; });
+    return { dow: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].indexOf(p.weekday), min: (Number(p.hour) % 24) * 60 + Number(p.minute) };
+  }
+  function nextRun(sch) {
+    const { dow, min } = ptParts(new Date());
+    for (let add = 0; add <= 7; add++) {
+      const day = (dow + add) % 7;
+      if (!sch.days.includes(day)) continue;
+      for (const [h, m] of sch.times) {
+        const t = h * 60 + m;
+        if (add === 0 && t <= min) continue;
+        const label = (h % 12 || 12) + ':' + String(m).padStart(2, '0') + (h < 12 ? ' am' : ' pm') + ' PT';
+        const dayLabel = add === 0 ? 'Today' : add === 1 ? 'Tomorrow' : ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'][day];
+        return { inMin: add * 1440 + t - min, label: dayLabel + ' ' + label };
+      }
+    }
+    return null;
+  }
+
+  function rebuildIndex() {
+    idx.byIdea.clear(); idx.byCell.clear();
+    S.slots.forEach((s, id) => {
+      if (!idx.byIdea.has(s.ideaId)) idx.byIdea.set(s.ideaId, []);
+      idx.byIdea.get(s.ideaId).push({ id, ...s });
+      const k = s.date + '|' + s.channel;
+      if (!idx.byCell.has(k)) idx.byCell.set(k, []);
+      idx.byCell.get(k).push({ id, ...s });
+    });
+    idx.byCell.forEach((l) => l.sort((a, b) => a.n - b.n));
+  }
+  const slotsOf = (ideaId) => (idx.byIdea.get(ideaId) || []).slice().sort((a, b) => a.date.localeCompare(b.date));
+
+  // ---------- data ----------
+  async function boot() {
+    render();
+    let db = null;
+    try { db = window.claude && window.claude.use ? await window.claude.use('db') : null; } catch (e) { db = null; }
+    if (!db) { S.dbState = 'absent'; render(); return; }
+    S.db = db; S.dbState = 'ready';
+    try {
+      const user = await window.claude.use('user');
+      if (user && user.can) { const c = await user.can('data.write'); if (c === false) S.canWrite = false; }
+    } catch (e) { /* keep inputs; refused writes decide */ }
+    const onErr = (e) => { console.error(e); if (e && e.code === 'revoked') { S.dbState = 'absent'; render(); } };
+    db.collection('ideas').onSnapshot((snap) => {
+      S.ideas = new Map(snap.docs.map((d) => [d.id, d.data()]));
+      S.loaded.ideas = true; render();
+    }, onErr);
+    db.collection('slots').onSnapshot((snap) => {
+      S.slots = new Map(snap.docs.map((d) => [d.id, d.data()]));
+      S.loaded.slots = true; rebuildIndex(); render();
+    }, onErr);
+    db.collection('runs').orderBy('at', 'desc').limit(30).onSnapshot((snap) => {
+      S.runs = snap.docs.map((d) => ({ id: d.id, ...d.data() })); render();
+    }, onErr);
+    db.collection('briefs').orderBy('weekStart', 'desc').limit(4).onSnapshot((snap) => {
+      S.briefs = snap.docs.map((d) => ({ id: d.id, ...d.data() })); render();
+    }, onErr);
+    db.doc('meta/settings').onSnapshot((d) => {
+      S.settingsDoc = d.exists ? d.data() : null; S.settings = E.mergeSettings(S.settingsDoc); render();
+    }, onErr);
+  }
+
+  async function saveIdea(id, patch) {
+    const idea = S.ideas.get(id);
+    const next = Object.assign({}, idea, patch);
+    const e = ev(next);
+    await S.db.collection('ideas').doc(id).update(Object.assign({}, patch, { score: e.score, tier: e.tier, updatedAt: nowIso() }));
+  }
+
+  // After an idea leaves a slot, put it back in the bank if it has no slot left.
+  async function release(ideaId, info) {
+    const idea = S.ideas.get(ideaId);
+    if (!idea) return;
+    const left = slotsOf(ideaId).filter((s) => !info || s.id !== info.slot);
+    if (left.length === 0 && (idea.status === 'scheduled')) {
+      await saveIdea(ideaId, { status: 'idea', bumped: info && info.by ? info : null });
+    }
+  }
+
+  async function writeSlot(cell, ideaId, note) {
+    const id = E.slotId(cell.date, cell.channel, cell.n);
+    const prev = S.slots.get(id);
+    await S.db.collection('slots').doc(id).set({ date: cell.date, channel: cell.channel, n: cell.n, ideaId, note: note || '', locked: false, by: 'chris', at: nowIso() });
+    S.slots.set(id, { date: cell.date, channel: cell.channel, n: cell.n, ideaId, note: note || '', locked: false });
+    rebuildIndex();
+    const idea = S.ideas.get(ideaId);
+    if (idea && ['new', 'idea'].includes(idea.status)) await saveIdea(ideaId, { status: 'scheduled', bumped: null });
+    if (prev && prev.ideaId !== ideaId) await release(prev.ideaId, { slot: id, channel: cell.channel, by: ideaId, at: nowIso() });
+    return prev;
+  }
+
+  async function clearSlot(id) {
+    const s = S.slots.get(id);
+    if (!s) return;
+    await S.db.collection('slots').doc(id).delete();
+    S.slots.delete(id); rebuildIndex();
+    await release(s.ideaId, null);
+  }
+
+  // Free cells for a channel between two times, earliest first; held cells first on the same day.
+  function freeCells(channel, fromMs, toMs) {
+    const start = new Date(fromMs); start.setHours(0, 0, 0, 0);
+    const days = Math.max(1, Math.ceil((toMs - start.getTime()) / DAY));
+    return E.cells(start, days, S.settings).filter((c) => c.channel === channel && !S.slots.has(c.id))
+      .sort((a, b) => a.date.localeCompare(b.date) || (b.held - a.held) || a.n - b.n);
+  }
+  function extraCell(channel, date) {
+    let n = 1; while (S.slots.has(E.slotId(date, channel, n))) n++;
+    return { date, channel, n };
+  }
+
+  // Put an idea on the calendar following its channel plan. News keeps to its
+  // deadlines: X, Shorts, email and WhatsApp get an extra slot when the day is
+  // full; LinkedIn and long videos bump the lowest-scoring unlocked item (a
+  // long video never lands sooner than 3 days out). Evergreen only takes open
+  // slots in the next three weeks.
+  async function planIdea(id) {
+    if (!needDb()) return;
+    const idea = S.ideas.get(id); if (!idea) return;
+    const now = Date.now(), e = ev(idea, now), found = foundAt(idea) || now;
+    const done = [];
+    try {
+      for (const ch of e.channels) {
+        if (slotsOf(id).some((s) => s.channel === ch.c)) { done.push(E.CHANNEL_LABEL[ch.c] + ': already on'); continue; }
+        if (ch.c === 'email' && ch.due == null) { done.push('Email: in Thursday’s roundup'); continue; }
+        const isNews = idea.kind === 'news';
+        // A long video needs at least 3 days to make.
+        const from = isNews && ch.c === 'long' ? now + 3 * DAY : now;
+        const until = isNews && ch.due != null ? Math.max(found + ch.due * HOUR, from + DAY) : now + 21 * DAY;
+        let cell = freeCells(ch.c, from, until)[0];
+        let bumped = null;
+        if (!cell && isNews && !['long', 'linkedin'].includes(ch.c)) cell = extraCell(ch.c, E.ymd(new Date(now)));
+        if (!cell && isNews) {
+          const start = new Date(from); start.setHours(0, 0, 0, 0);
+          const days = Math.max(1, Math.ceil((until - start.getTime()) / DAY));
+          const scoreOf = (s) => { const i = S.ideas.get(s.ideaId); return i ? ev(i, now).score : -1; };
+          const taken = E.cells(start, days, S.settings).filter((c) => c.channel === ch.c && S.slots.has(c.id))
+            .map((c) => ({ c, s: S.slots.get(c.id), sc: scoreOf(S.slots.get(c.id)) }))
+            .filter((o) => !o.s.locked && o.s.ideaId !== id && o.sc < e.score)
+            .sort((a, b) => a.sc - b.sc || b.c.date.localeCompare(a.c.date));
+          if (taken.length) { cell = taken[0].c; bumped = taken[0].s.ideaId; }
+        }
+        if (!cell) { done.push(E.CHANNEL_LABEL[ch.c] + ': no open slot'); continue; }
+        await writeSlot(cell, id, ch.why);
+        done.push(E.CHANNEL_LABEL[ch.c] + ' ' + fmtDay(E.parseYmd(cell.date)) + (bumped ? ' (bumped one)' : ''));
+      }
+      toast('Planned. ' + done.join(' · '));
+    } catch (err) { fail(err); }
+  }
+
+  // Re-slot a bumped idea into the next open slot of the channel it lost.
+  async function reslot(id) {
+    if (!needDb()) return;
+    const idea = S.ideas.get(id); const ch = idea && idea.bumped && idea.bumped.channel;
+    if (!ch) return planIdea(id);
+    const cell = freeCells(ch, Date.now(), Date.now() + 28 * DAY)[0];
+    if (!cell) { toast('No open ' + E.CHANNEL_LABEL[ch] + ' slot in the next 4 weeks.'); return; }
+    try { await writeSlot(cell, id, ''); toast('Moved to ' + E.CHANNEL_LABEL[ch] + ', ' + fmtDay(E.parseYmd(cell.date))); } catch (e) { fail(e); }
+  }
+
+  async function setStatus(id, status) {
+    if (!needDb()) return;
+    try {
+      if (status === 'skipped' || status === 'archived') {
+        for (const s of slotsOf(id)) { if (!s.locked) { await S.db.collection('slots').doc(s.id).delete(); S.slots.delete(s.id); } }
+        rebuildIndex();
+      }
+      await saveIdea(id, { status });
+      toast(E.STATUSES[status]);
+    } catch (e) { fail(e); }
+  }
+
+  // ---------- rendering ----------
+  function render() {
+    const now = Date.now();
+    document.querySelectorAll('.tab').forEach((b) => b.setAttribute('aria-selected', String(b.dataset.tab === S.tab)));
+    ['radar', 'ideas', 'calendar', 'rules'].forEach((t) => { $('#view-' + t).hidden = t !== S.tab; });
+    const news = [...S.ideas.values()].filter((i) => i.kind === 'news' && ACTIVE.includes(i.status));
+    const hot = news.filter((i) => ev(i, now).tier === 'P0').length;
+    $('#n-radar').textContent = news.length ? String(news.length) : '';
+    $('#n-radar').className = 'n' + (hot ? ' hot' : '');
+    $('#n-ideas').textContent = S.ideas.size ? String(S.ideas.size) : '';
+    renderBanner();
+    if (S.tab === 'radar') renderRadar(now);
+    if (S.tab === 'ideas') renderIdeas(now);
+    if (S.tab === 'calendar') renderCalendar(now);
+    if (S.tab === 'rules') renderRules(now);
+    renderOverlay();
+  }
+
+  function renderBanner() {
+    let h = '';
+    if (S.dbState === 'absent') h = '<div class="banner"><strong>Your ideas and calendar live in this page’s database.</strong> Open the page signed in to claude.ai to load them. The scoring rules below still work.</div>';
+    else if (S.dbState === 'ready' && !S.canWrite) h = '<div class="banner">You can view this page. Only its owner and editors can change ideas or the calendar.</div>';
+    else if (S.dbState === 'loading') h = '<div class="banner">Loading your ideas…</div>';
+    $('#banner').innerHTML = h;
+  }
+
+  function planRows(idea, now, id) {
+    const e = ev(idea, now), found = foundAt(idea) || now;
+    const on = id ? slotsOf(id) : [];
+    return '<div class="plan">' + e.channels.map((ch) => {
+      let due = '<span class="due muted">no deadline</span>';
+      if (ch.due != null && idea.kind === 'news') {
+        const left = found + ch.due * HOUR - now;
+        due = left < -DAY ? '<span class="due late">window passed</span>'
+          : left < 0 ? '<span class="due soon">overdue ' + rel(left).replace(' ago', '') + '</span>'
+            : `<span class="due${left < 8 * HOUR ? ' soon' : ''}">due ${rel(left)}</span>`;
+      } else if (ch.c === 'email' && idea.kind === 'news') due = '<span class="due muted">Thursday roundup</span>';
+      const s = on.find((x) => x.channel === ch.c);
+      const state = s ? `<span class="state">✓ ${esc(fmtDay(E.parseYmd(s.date)))}</span>` : '<span></span>';
+      return `<div class="plan-row"><span class="ch">${esc(E.CHANNEL_LABEL[ch.c])}</span>${due}<span class="why">${esc(ch.why)}</span>${state}</div>`;
+    }).join('') + '</div>';
+  }
+
+  function newsCard(id, idea, now) {
+    const e = ev(idea, now), src = idea.source || {};
+    const pub = Date.parse(src.published || src.found || '');
+    const meta = [src.outlet, isFinite(pub) ? rel(pub - now) : '', src.scheduler ? 'via ' + src.scheduler.replace('-', ' ') : ''].filter(Boolean).map(esc).join(' · ');
+    const planned = e.channels.length && e.channels.every((ch) => (ch.c === 'email' && ch.due == null) || slotsOf(id).some((s) => s.channel === ch.c));
+    return `<article class="card ${e.tier}">
+      <div class="card-head">${tierChip(e.tier)}<span class="score ${e.tier} mono">${e.score}</span><span>${meta}</span></div>
+      <h3><button data-act="open" data-id="${esc(id)}">${esc(idea.title)}</button></h3>
+      ${idea.angle ? `<p class="angle">${esc(idea.angle)}</p>` : ''}
+      <div class="row">${audChips(idea.icp)} <span class="chip">${esc(E.PILLARS[idea.pillar] || idea.pillar || '')}</span>${idea.why ? `<span class="muted" style="font-size:13px">${esc(idea.why)}</span>` : ''}</div>
+      ${e.channels.length ? planRows(idea, now, id) : ''}
+      <div class="row">
+        ${S.canWrite ? `<button class="btn primary" data-act="plan" data-id="${esc(id)}" ${planned ? 'disabled' : ''}>${planned ? 'On the calendar' : 'Plan it'}</button>
+        <button class="btn" data-act="open" data-id="${esc(id)}">Edit or draft</button>
+        <button class="btn ghost" data-act="status" data-status="skipped" data-id="${esc(id)}">Skip</button>` : ''}
+        ${src.url ? `<a class="btn ghost" href="${esc(src.url)}" target="_blank" rel="noopener">Source ↗</a>` : ''}
+      </div>
+    </article>`;
+  }
+
+  function renderRadar(now) {
+    const el = $('#view-radar');
+    const all = [...S.ideas.entries()];
+    const news = all.filter(([, i]) => i.kind === 'news' && ACTIVE.includes(i.status))
+      .map(([id, i]) => ({ id, i, e: ev(i, now) })).sort((a, b) => b.e.score - a.e.score);
+    const by = (t) => news.filter((x) => x.e.tier === t);
+    const p0 = by('P0'), p1 = by('P1'), low = news.filter((x) => x.e.tier === 'P2' || x.e.tier === 'P3');
+    const bumped = all.filter(([, i]) => i.bumped && i.status === 'idea');
+    const weekAgo = now - 7 * DAY;
+    const thisWeek = all.filter(([, i]) => i.kind === 'news' && Date.parse(i.createdAt || '') > weekAgo).length;
+    const nexts = SCHEDULERS.map((s) => ({ s, n: nextRun(s) })).filter((x) => x.n).sort((a, b) => a.n.inMin - b.n.inMin);
+    const lastRun = S.runs[0];
+    let h = `<div class="strip">
+      <div><div class="k">Drop everything</div><div class="v">${p0.length} <small>P0 news open</small></div></div>
+      <div><div class="k">Next up</div><div class="v">${p1.length} <small>P1 news open</small></div></div>
+      <div><div class="k">Found this week</div><div class="v">${thisWeek} <small>news topics</small></div></div>
+      <div><div class="k">Next scan</div><div class="v">${nexts[0] ? esc(nexts[0].n.label) : '—'} <small>${nexts[0] ? esc(nexts[0].s.name) : ''}</small></div></div>
+      <div><div class="k">Last scan</div><div class="v">${lastRun ? esc(rel(Date.parse(lastRun.at) - now)) : 'none yet'} <small>${lastRun ? esc((SCHEDULERS.find((s) => s.key === lastRun.scheduler) || {}).name || lastRun.scheduler) : ''}</small></div></div>
+    </div>`;
+
+    const brief = S.briefs[0];
+    if (brief) {
+      h += `<h2 class="sec">This week’s brief <span class="hint">from the Weekly Planner, week of ${esc(fmtDay(E.parseYmd(brief.weekStart)))}</span></h2>
+      <div class="brief"><p>${esc(brief.summary || '')}</p>
+      ${(brief.emailOutline || []).length ? `<div><b>Thursday email outline</b><ol>${brief.emailOutline.map((x) => `<li>${esc(x)}</li>`).join('')}</ol></div>` : ''}</div>`;
+    }
+
+    h += `<h2 class="sec">Drop everything <span class="count">${p0.length}</span><span class="hint">Fresh, squarely in your lane. The radar already put these on the calendar.</span></h2>`;
+    h += p0.length ? `<div class="cards">${p0.map((x) => newsCard(x.id, x.i, now)).join('')}</div>`
+      : `<div class="empty"><strong>No P0 news right now.</strong> A P0 needs a score of 75+, audience fit of 4+, and to be less than about a day old. ${nexts[0] ? 'The next scan is ' + esc(nexts[0].n.label) + '.' : ''}</div>`;
+    h += `<h2 class="sec">Next up <span class="count">${p1.length}</span><span class="hint">Strong news. Press Plan it to put it on the calendar.</span></h2>`;
+    h += p1.length ? `<div class="cards">${p1.map((x) => newsCard(x.id, x.i, now)).join('')}</div>` : '<div class="empty">Nothing in P1. News drops here from P0 after about a day, or lands here when it is good but not urgent.</div>';
+    if (low.length) {
+      h += `<h2 class="sec">Lower priority <span class="count">${low.length}</span><span class="hint">A quick take on X or LinkedIn at most, plus a line in the weekly email.</span></h2><div class="list">`;
+      h += low.map((x) => `<div class="li"><span class="score ${x.e.tier} mono" style="font-size:16px">${x.e.score}</span><div><div class="t">${esc(x.i.title)}</div><div class="s">${esc(E.TIERS[x.e.tier].label)} · ${x.e.channels.map((c) => E.CHANNEL_LABEL[c.c]).join(', ')}${x.i.source && x.i.source.outlet ? ' · ' + esc(x.i.source.outlet) : ''}</div></div><button class="btn" data-act="open" data-id="${esc(x.id)}">Open</button></div>`).join('');
+      h += '</div>';
+    }
+    if (bumped.length) {
+      h += `<h2 class="sec">Bumped to make room <span class="count">${bumped.length}</span><span class="hint">Lost their slot to a P0. Put them back with one click.</span></h2><div class="list">`;
+      h += bumped.map(([id, i]) => { const by = S.ideas.get(i.bumped.by); return `<div class="li"><span class="score ${ev(i, now).tier} mono" style="font-size:16px">${ev(i, now).score}</span><div><div class="t">${esc(i.title)}</div><div class="s">Was ${esc(E.CHANNEL_LABEL[i.bumped.channel] || '')} ${i.bumped.slot ? esc(fmtDay(E.parseYmd(i.bumped.slot.slice(0, 10)))) : ''}${by ? ' · bumped by “' + esc(by.title.slice(0, 60)) + '”' : ''}</div></div>${S.canWrite ? `<button class="btn" data-act="reslot" data-id="${esc(id)}">Re-slot</button>` : ''}</div>`; }).join('');
+      h += '</div>';
+    }
+    const skipped = [];
+    S.runs.slice(0, 12).forEach((r) => (r.skipped || []).forEach((s) => skipped.push({ ...s, at: r.at })));
+    if (skipped.length) {
+      h += `<h2 class="sec">Seen and skipped <span class="count">${skipped.length}</span><span class="hint">Big news that does not fit your audience never takes a slot.</span></h2><div class="list">`;
+      h += skipped.slice(0, 15).map((s) => `<div class="li"><span class="muted mono" style="font-size:12px">${esc(rel(Date.parse(s.at) - now))}</span><div><div class="t">${esc(s.headline || '')}</div><div class="s">${esc(s.reason || '')}</div></div>${s.url ? `<a class="btn ghost" href="${esc(s.url)}" target="_blank" rel="noopener">↗</a>` : '<span></span>'}</div>`).join('');
+      h += '</div>';
+    }
+    h += `<h2 class="sec">Scan log <span class="hint">Every scheduler run, newest first</span></h2>`;
+    h += S.runs.length ? '<div class="list">' + S.runs.slice(0, 10).map((r) => {
+      const nm = (SCHEDULERS.find((s) => s.key === r.scheduler) || {}).name || r.scheduler;
+      const added = (r.added || []).length;
+      return `<div class="li"><span class="muted mono" style="font-size:12px">${esc(rel(Date.parse(r.at) - now))}</span><div><div class="t">${esc(nm)}: ${added} added${r.p0 && r.p0.length ? ', ' + r.p0.length + ' P0' : ''}${r.scanned ? ' from ' + r.scanned + ' headlines' : ''}</div><div class="s">${esc(r.summary || '')}</div></div><span></span></div>`;
+    }).join('') + '</div>' : '<div class="empty">No scans yet. The three schedulers write a line here after every run.</div>';
+    el.innerHTML = h;
+  }
+
+  function filtered(now) {
+    const f = S.f, q = f.q.trim().toLowerCase();
+    let rows = [...S.ideas.entries()].map(([id, i]) => ({ id, i, e: ev(i, now) }));
+    rows = rows.filter(({ i, e }) => {
+      if (f.status === 'active' ? !ACTIVE.includes(i.status) : (f.status && i.status !== f.status)) return false;
+      if (f.pillar && i.pillar !== f.pillar) return false;
+      if (f.icp && !(i.icp || []).includes(f.icp)) return false;
+      if (f.tier && e.tier !== f.tier) return false;
+      if (f.kind && i.kind !== f.kind) return false;
+      if (q && !((i.title || '') + ' ' + (i.angle || '') + ' ' + (i.proof || '')).toLowerCase().includes(q)) return false;
+      return true;
+    });
+    const sorters = {
+      score: (a, b) => b.e.score - a.e.score,
+      newest: (a, b) => String(b.i.createdAt || '').localeCompare(String(a.i.createdAt || '')) || b.e.score - a.e.score,
+      title: (a, b) => String(a.i.title).localeCompare(String(b.i.title)),
+    };
+    return rows.sort(sorters[f.sort] || sorters.score);
+  }
+
+  function opt(v, label, cur) { return `<option value="${esc(v)}"${v === cur ? ' selected' : ''}>${esc(label)}</option>`; }
+
+  function renderIdeas(now) {
+    const el = $('#view-ideas');
+    const f = S.f;
+    const rows = filtered(now);
+    const activeAll = [...S.ideas.values()].filter((i) => ACTIVE.includes(i.status));
+    const tierCount = {}; const audCount = {};
+    activeAll.forEach((i) => { const t = ev(i, now).tier; tierCount[t] = (tierCount[t] || 0) + 1; (i.icp || []).forEach((k) => { audCount[k] = (audCount[k] || 0) + 1; }); });
+    const focus = document.activeElement && document.activeElement.id === 'f-q';
+    const caret = focus ? document.activeElement.selectionStart : null;
+    let h = `<div class="tools">
+      <label class="sr" for="f-q">Search ideas</label><input type="search" id="f-q" placeholder="Search titles, angles, proof" value="${esc(f.q)}">
+      <label class="sr" for="f-pillar">Pillar</label><select id="f-pillar">${opt('', 'All pillars', f.pillar)}${Object.entries(E.PILLARS).map(([k, v]) => opt(k, v, f.pillar)).join('')}</select>
+      <label class="sr" for="f-icp">Audience</label><select id="f-icp">${opt('', 'All audiences', f.icp)}${Object.entries(E.ICP).map(([k, v]) => opt(k, v, f.icp)).join('')}</select>
+      <label class="sr" for="f-tier">Tier</label><select id="f-tier">${opt('', 'All tiers', f.tier)}${Object.entries(E.TIERS).map(([k, v]) => opt(k, v.short + ' · ' + v.label, f.tier)).join('')}</select>
+      <label class="sr" for="f-status">Status</label><select id="f-status">${opt('active', 'Active', f.status)}${opt('', 'Any status', f.status)}${Object.entries(E.STATUSES).map(([k, v]) => opt(k, v, f.status)).join('')}</select>
+      <label class="sr" for="f-kind">Type</label><select id="f-kind">${opt('', 'News + evergreen', f.kind)}${opt('news', 'News', f.kind)}${opt('evergreen', 'Evergreen', f.kind)}</select>
+      <label class="sr" for="f-sort">Sort</label><select id="f-sort">${opt('score', 'Highest score', f.sort)}${opt('newest', 'Newest', f.sort)}${opt('title', 'Title A–Z', f.sort)}</select>
+      ${S.canWrite ? '<button class="btn primary" data-act="new">New idea</button>' : ''}
+    </div>
+    <div class="summary"><span>Active: <b>${activeAll.length}</b></span>${['P0', 'P1', 'P2', 'P3'].map((t) => `<span>${E.TIERS[t].short} ${E.TIERS[t].label}: <b>${tierCount[t] || 0}</b></span>`).join('')}<span>·</span>${Object.keys(E.ICP).map((k) => `<span>${E.ICP[k]}: <b>${audCount[k] || 0}</b></span>`).join('')}</div>`;
+    if (!S.loaded.ideas && S.dbState !== 'absent') h += '<div class="empty">Loading ideas…</div>';
+    else if (!S.ideas.size) h += `<div class="empty"><strong>No ideas yet.</strong> ${S.dbState === 'absent' ? 'Open this page signed in to load the idea bank.' : 'Press New idea to add the first one, or wait for the next radar scan.'}</div>`;
+    else if (!rows.length) h += '<div class="empty">No ideas match these filters.</div>';
+    else {
+      h += `<div class="table" role="table"><div class="tr head" role="row"><span>Score</span><span>Idea</span><span>Pillar · audience</span><span>Channels</span><span>Status</span></div>`;
+      h += rows.slice(0, S.limit).map(({ id, i, e }) => `<div class="tr" role="row" tabindex="0" data-act="open" data-id="${esc(id)}">
+        <span class="score ${e.tier} mono">${e.score}</span>
+        <div style="min-width:0"><div class="title">${esc(i.title)}</div><div class="sub">${i.kind === 'news' ? '<b style="color:var(--p0)">News</b> · ' : ''}${esc(i.angle || '')}</div></div>
+        <div class="meta"><span>${esc(E.PILLARS[i.pillar] || '')}</span><span>${audChips(i.icp)}</span></div>
+        <div class="chips chan">${e.channels.map((c) => `<span class="chip${c.c === e.hero ? ' hero' : ''}">${esc(E.CHANNEL_LABEL[c.c])}</span>`).join('') || '<span class="muted">none</span>'}</div>
+        <div class="stat"><span class="tier t-${e.tier}">${esc(E.TIERS[e.tier].short)}</span><div class="status ${esc(i.status)}">${esc(E.STATUSES[i.status] || i.status)}</div></div>
+      </div>`).join('');
+      if (rows.length > S.limit) h += `<button class="more" data-act="more">Show ${Math.min(60, rows.length - S.limit)} more of ${rows.length - S.limit}</button>`;
+      h += '</div>';
+    }
+    el.innerHTML = h;
+    if (focus) { const q = $('#f-q'); q.focus(); try { q.setSelectionRange(caret, caret); } catch (e) { /* ignore */ } }
+  }
+
+  function latestLongBefore(date) {
+    let best = null;
+    S.slots.forEach((s) => { if (s.channel === 'long' && s.date <= date && (!best || s.date > best.date)) best = s; });
+    return best;
+  }
+
+  function slotHtml(cellId, cell, s, now) {
+    if (s) {
+      const idea = S.ideas.get(s.ideaId);
+      const e = idea ? ev(idea, now) : null;
+      const cls = ['slot', idea && idea.kind === 'news' ? 'news' : '', s.locked ? 'locked' : ''].join(' ');
+      return `<button class="${cls}" data-act="cell" data-cell="${esc(cellId)}">
+        <span class="top-line">${e ? `<span class="dot ${e.tier}"></span>${e.score}` : ''}${idea && idea.kind === 'news' ? ' · NEWS' : ''}${s.locked ? ' · LOCKED' : ''}</span>
+        <span class="st">${esc(idea ? idea.title : 'Missing idea')}</span>${s.note ? `<span class="sn">${esc(s.note)}</span>` : ''}</button>`;
+    }
+    if (cell.held) return `<button class="slot held" data-act="cell" data-cell="${esc(cellId)}">Held for radar</button>`;
+    if (cell.channel === 'short' && cell.n === 2) {
+      const l = latestLongBefore(cell.date); const li = l && S.ideas.get(l.ideaId);
+      if (li) return `<button class="slot derived" data-act="cell" data-cell="${esc(cellId)}">Cut-down: ${esc(li.title.slice(0, 54))}${li.title.length > 54 ? '…' : ''}</button>`;
+    }
+    return `<button class="slot open" data-act="cell" data-cell="${esc(cellId)}">+ Open</button>`;
+  }
+
+  function renderCalendar(now) {
+    const el = $('#view-calendar');
+    const mon = S.week, sun = E.addDays(mon, 6), today = E.ymd(new Date());
+    const cadence = E.cells(mon, 7, S.settings);
+    const cellMap = new Map(cadence.map((c) => [c.id, c]));
+    let h = `<div class="cal-tools">
+      <h2>${esc(mon.toLocaleDateString(undefined, { month: 'short', day: 'numeric' }))} – ${esc(sun.toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' }))}</h2>
+      <button class="btn" data-act="week" data-d="-7" aria-label="Previous week">←</button>
+      <button class="btn" data-act="week" data-d="0">Coming up</button>
+      <button class="btn" data-act="week" data-d="7" aria-label="Next week">→</button>
+      <div class="legend"><span><i class="sw held"></i>Held for radar news</span><span><i class="sw"></i>Planned</span><span><i class="sw lock"></i>Locked (filmed or final)</span><span><i class="dot P0"></i>News item</span></div>
+    </div><div class="grid-scroll"><div class="cal" role="grid"><div class="corner"></div>`;
+    for (let k = 0; k < 7; k++) {
+      const d = E.addDays(mon, k), ds = E.ymd(d);
+      h += `<div class="dh${ds === today ? ' today' : ''}">${esc(d.toLocaleDateString(undefined, { weekday: 'short' }))}<span class="d">${d.getDate()}</span></div>`;
+    }
+    CH.forEach((c) => {
+      h += `<div class="rh">${esc(E.CHANNEL_LABEL[c])}</div>`;
+      for (let k = 0; k < 7; k++) {
+        const ds = E.ymd(E.addDays(mon, k));
+        const per = S.settings.perDay[c] || 1;
+        const ids = [];
+        for (let n = 1; n <= per; n++) { const id = E.slotId(ds, c, n); if (cellMap.has(id)) ids.push(id); }
+        (idx.byCell.get(ds + '|' + c) || []).forEach((s) => { if (!ids.includes(s.id)) ids.push(s.id); });
+        ids.sort((a, b) => Number(a.split('_')[2]) - Number(b.split('_')[2]));
+        h += `<div class="cell${ds === today ? ' today' : ds < today ? ' past' : ''}">${ids.map((id) => slotHtml(id, cellMap.get(id) || { date: ds, channel: c, n: Number(id.split('_')[2]) }, S.slots.get(id), now)).join('')}</div>`;
+      }
+    });
+    h += `</div></div><p class="cal-foot">Publish dates in your local time. Click any slot to fill, swap, lock or clear it. A P0 from the radar takes a held slot first; if none is free before its deadline, X, Shorts, email and WhatsApp get an extra post that day, while LinkedIn and long videos bump the lowest-scoring unlocked item, which then waits under “Bumped to make room” on the radar. Lock a slot once it is filmed so nothing can bump it.</p>`;
+    el.innerHTML = h;
+  }
+
+  function dimRows(prefix, scores, editable) {
+    return E.DIMENSIONS.map((d) => `<div class="dim"><label for="${prefix}-${d.key}">${esc(d.label)}</label>
+      <input type="range" id="${prefix}-${d.key}" min="0" max="5" step="1" value="${Number(scores[d.key]) || 0}" data-dim="${d.key}" ${editable ? '' : 'disabled'}>
+      <span class="v" id="${prefix}-${d.key}-v">${Number(scores[d.key]) || 0}</span><span class="help">${esc(d.help)}</span></div>`).join('');
+  }
+
+  const TRY = { title: 'Your headline', kind: 'news', depth: 3, actionable: false, pillar: 'tools', icp: ['da'], scores: { fit: 5, edge: 5, urgency: 5, demand: 5, business: 4 }, source: { published: null } };
+  function tryResult() {
+    const i = Object.assign({}, TRY, { source: { published: new Date().toISOString() } });
+    const e = ev(i);
+    return `${tierChip(e.tier)}<span class="score ${e.tier} mono">${e.score}</span><span class="chips">${e.channels.map((c) => `<span class="chip">${esc(E.CHANNEL_LABEL[c.c])}${c.due ? ' · ' + c.due + 'h' : ''}</span>`).join('') || '<span class="muted">No channels: skip it</span>'}</span>`;
+  }
+
+  function renderRules(now) {
+    const el = $('#view-rules');
+    if (el.dataset.built) { renderRulesLive(now); return; }
+    el.dataset.built = '1';
+    const ex = (title, sc, opts) => {
+      const i = Object.assign({ title, kind: 'news', depth: 2, pillar: 'tools', icp: ['da'], actionable: false, source: { published: new Date(now - 2 * HOUR).toISOString() } }, opts || {}, { scores: { fit: sc[0], edge: sc[1], urgency: sc[2], demand: sc[3], business: sc[4] } });
+      const e = ev(i, now);
+      return `<tr><td>${esc(title)}</td><td class="mono" style="white-space:nowrap">${sc.join(' · ')}</td><td><span class="score ${e.tier} mono" style="font-size:15px">${e.score}</span></td><td>${tierChip(e.tier)}</td><td>${e.channels.map((c) => esc(E.CHANNEL_LABEL[c.c]) + (c.due ? ' <span class="muted mono">' + c.due + 'h</span>' : '')).join(', ') || '<span class="muted">none</span>'}</td></tr>`;
+    };
+    const w = E.WEIGHTS;
+    el.innerHTML = `<div class="rules">
+      <div class="panel"><h3>The score</h3>
+        <p>Every topic, seeded or found by the radar, gets five scores from 0 to 5. One formula turns them into a score out of 100.</p>
+        <div class="formula">score = 100 × (${w.fit} fit + ${w.edge} edge + ${w.urgency} urgency + ${w.demand} demand + ${w.business} business) ÷ 5</div>
+        <dl class="dl">${E.DIMENSIONS.map((d) => `<dt>${esc(d.label)} <span class="muted mono">${Math.round(w[d.key] * 100)}%</span></dt><dd>${esc(d.help)}</dd>`).join('')}</dl>
+      </div>
+      <div class="panel"><h3>Tiers</h3>
+        <div class="tbl-scroll"><table class="t"><thead><tr><th>Tier</th><th>Rule</th><th>What happens</th></tr></thead><tbody>
+          <tr><td>${tierChip('P0')}</td><td>News only. Score 75+, audience fit 4+, urgency still 4+ (about the first day)</td><td>Radar puts it on the calendar now: X within 6h, LinkedIn 24h, Short 48h, long video 3–7 days out if it can carry one</td></tr>
+          <tr><td>${tierChip('P1')}</td><td>Score 82+</td><td>Next in line. News gets X in 24h and LinkedIn in 48h; evergreen fills the next open slots</td></tr>
+          <tr><td>${tierChip('P2')}</td><td>Score 65–81</td><td>Backlog. News gets one short take and a line in the email</td></tr>
+          <tr><td>${tierChip('P3')}</td><td>Below 65, or audience fit 0–1</td><td>A quote-post or a line in the roundup at most</td></tr>
+          <tr><td>${tierChip('SKIP')}</td><td>Audience fit 0–1 and Chris’s edge 0–1</td><td>Logged under “Seen and skipped”, never stored as an idea</td></tr>
+        </tbody></table></div>
+        <p>News urgency halves every ${E.HALF_LIFE_DAYS} days, so a P0 slides to P1 after about a day and to backlog after a week. Evergreen ideas keep their score.</p>
+      </div>
+      <div class="panel" style="grid-column:1/-1"><h3>Worked examples</h3>
+        <p>Scores are fit · edge · urgency · demand · business, for news found two hours ago.</p>
+        <div class="tbl-scroll"><table class="t"><thead><tr><th>Headline</th><th>Scores</th><th>Score</th><th>Tier</th><th>Channels and deadlines</th></tr></thead><tbody>
+          ${ex('Elon Musk unveils a new Tesla car', [0, 0, 5, 5, 0])}
+          ${ex('The data angle: how Tesla’s self-driving data pipeline works', [2, 2, 5, 4, 1])}
+          ${ex('OpenAI releases a new ChatGPT model', [4, 3, 5, 5, 3], { depth: 3 })}
+          ${ex('Anthropic launches a dashboard tool for data analysts', [5, 5, 5, 5, 4], { depth: 3, actionable: true })}
+          ${ex('Databricks ships a minor notebook feature', [4, 4, 5, 2, 2])}
+          ${ex('Big tech cuts data team jobs', [4, 4, 5, 4, 3], { pillar: 'career' })}
+        </tbody></table></div>
+        <p>The big car launch is hot news, but none of your four audiences learns anything for their work from it, so it is skipped. The Anthropic data tool is squarely in your lane, you can demo it, and readers can try it today, so every channel fires with a deadline.</p>
+      </div>
+      <div class="panel"><h3>Try a headline</h3>
+        <p>Move the sliders to see where a topic would land.</p>
+        <div class="two">
+          <div class="fld"><label for="try-kind">Type</label><select id="try-kind">${opt('news', 'News (just broke)', 'news')}${opt('evergreen', 'Evergreen', 'news')}</select></div>
+          <div class="fld"><label for="try-depth">Depth</label><select id="try-depth">${opt('1', 'One point (Short-sized)', '3')}${opt('2', 'Post-sized', '3')}${opt('3', 'Can carry a long video', '3')}</select></div>
+        </div>
+        <div class="checks"><label><input type="checkbox" id="try-act"> Readers can act on it today</label></div>
+        <div class="dims" id="try-dims">${dimRows('try', TRY.scores, true)}</div>
+        <div class="result" id="try-result">${tryResult()}</div>
+      </div>
+      <div class="panel"><h3>Channel playbook</h3>
+        <div class="tbl-scroll"><table class="t"><thead><tr><th>Channel</th><th>Use it for</th></tr></thead><tbody>
+          <tr><td><b>X</b></td><td>Speed. First take on P0 news within 6 hours, P1 within a day. Threads for evergreen ideas.</td></tr>
+          <tr><td><b>LinkedIn</b></td><td>Your strongest channel. Career and hiring angles, “what this means for your job” takes, launch-day posts for every long video.</td></tr>
+          <tr><td><b>Short</b></td><td>One clear point under 60 seconds. News explainers within 48 hours; 3–5 cut-downs from every long video.</td></tr>
+          <tr><td><b>Long video</b></td><td>Only topics with depth: demos, tutorials, roadmaps, real interviews. P0 news within 7 days if you can demo it.</td></tr>
+          <tr><td><b>Email</b></td><td>The Thursday roundup collects all news of the week with what to do about it. A dedicated email only for P0 news readers can use right away.</td></tr>
+          <tr><td><b>WhatsApp</b></td><td>Alerts people act on: a tool to try today, a free resource, a new video, the bootcamp. Two or three a week at most.</td></tr>
+        </tbody></table></div>
+      </div>
+      <div class="panel"><h3>The three schedulers</h3><div class="sched" id="sched-list"></div>
+        <p>They run in the cloud and write straight into this page. Without an X API key they read official newsrooms, fresh web search and Hacker News; with one, they also search X.</p>
+      </div>
+      <div class="panel"><h3>Weekly cadence</h3><div id="cadence"></div></div>
+    </div>`;
+    renderRulesLive(now);
+  }
+
+  function renderRulesLive(now) {
+    const list = $('#sched-list');
+    if (list) list.innerHTML = SCHEDULERS.map((s) => {
+      const last = S.runs.find((r) => r.scheduler === s.key); const nx = nextRun(s);
+      return `<div><b>${esc(s.name)}</b><span class="when">${esc(s.when)}</span><span class="muted" style="font-size:13px">${esc(s.what)}</span><span class="muted mono" style="font-size:12px">Next: ${nx ? esc(nx.label) : '—'} · Last: ${last ? esc(rel(Date.parse(last.at) - now)) : 'not run yet'}</span></div>`;
+    }).join('');
+    const cad = $('#cadence');
+    if (cad) {
+      const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+      cad.innerHTML = '<div class="tbl-scroll"><table class="t"><thead><tr><th>Channel</th><th>Days</th><th>Per day</th><th>Held for radar</th></tr></thead><tbody>' +
+        CH.map((c) => `<tr><td><b>${esc(E.CHANNEL_LABEL[c])}</b></td><td>${(S.settings.cadence[c] || []).map((d) => days[d]).join(' ')}</td><td class="mono">${S.settings.perDay[c] || 1}</td><td>${(S.settings.held[c] || []).map((d) => days[d]).join(' ') || '—'}</td></tr>`).join('') +
+        '</tbody></table></div>';
+    }
+  }
+
+  // ---------- drawer ----------
+  function blankIdea() {
+    return { title: '', angle: '', pillar: 'career', icp: [], kind: 'evergreen', scores: { fit: 3, edge: 3, urgency: 1, demand: 3, business: 3 }, depth: 2, actionable: false, effort: 'S', proof: '', note: '', status: 'idea', source: { type: 'manual' } };
+  }
+  function openIdea(id) {
+    S.open = id; S.confirmDelete = false; S.dirty = false; S.drafting = null;
+    const base = id === 'new' ? blankIdea() : S.ideas.get(id);
+    S.draft = JSON.parse(JSON.stringify(base || blankIdea()));
+    S.modal = null; renderOverlay(true);
+  }
+  function closeOverlay() { S.open = null; S.draft = null; S.modal = null; renderOverlay(true); }
+
+  function renderOverlay(force) {
+    const el = $('#overlay');
+    if (!S.open && !S.modal) { el.innerHTML = ''; return; }
+    if (S.modal) {
+      const typing = document.activeElement && document.activeElement.id === 'm-q' ? document.activeElement.selectionStart : null;
+      el.innerHTML = '<div class="scrim" data-act="close"></div>' + modalHtml();
+      if (typing != null) { const q = $('#m-q'); if (q) { q.focus(); try { q.setSelectionRange(typing, typing); } catch (er) { /* ignore */ } } }
+      return;
+    }
+    // Keep the drawer as is while it is open, unless asked, or the idea changed remotely and nothing is unsaved.
+    if (!force && el.dataset.for === S.open && (S.dirty || S.drafting)) { updateDrawerScore(); updateDrawerSlots(); return; }
+    if (!force && el.dataset.for === S.open && S.open !== 'new') {
+      const fresh = S.ideas.get(S.open); if (fresh) S.draft = JSON.parse(JSON.stringify(fresh));
+    }
+    el.dataset.for = S.open;
+    el.innerHTML = '<div class="scrim" data-act="close"></div>' + drawerHtml();
+  }
+
+  function drawerHtml() {
+    const d = S.draft, isNew = S.open === 'new', e = ev(d), src = d.source || {};
+    const ro = !S.canWrite || !S.db;
+    const dis = ro ? 'disabled' : '';
+    return `<aside class="drawer" role="dialog" aria-modal="true" aria-label="Idea">
+      <header><span id="dr-tier">${tierChip(e.tier)}</span><span class="score ${e.tier} mono" id="dr-score">${e.score}</span>
+        <span class="muted mono" style="font-size:12px" id="dr-urg">${d.kind === 'news' ? 'urgency now ' + e.urgencyNow : ''}</span>
+        <button class="btn ghost x" data-act="close" aria-label="Close">Close</button></header>
+      <div class="body">
+        <div class="fld"><label for="d-title">Title</label><textarea id="d-title" class="title-in" rows="2" data-f="title" ${dis}>${esc(d.title)}</textarea></div>
+        <div class="fld"><label for="d-angle">Angle: why it matters to your audience</label><textarea id="d-angle" rows="2" data-f="angle" ${dis}>${esc(d.angle)}</textarea></div>
+        <div class="fld"><span class="lbl">Scores</span><div class="dims" id="d-dims">${dimRows('d', d.scores || {}, !ro)}</div></div>
+        <div class="two">
+          <div class="fld"><label for="d-kind">Type</label><select id="d-kind" data-f="kind" ${dis}>${opt('evergreen', 'Evergreen', d.kind)}${opt('news', 'News', d.kind)}</select></div>
+          <div class="fld"><label for="d-depth">Depth</label><select id="d-depth" data-f="depth" data-num="1" ${dis}>${opt('1', 'One point (Short-sized)', String(d.depth))}${opt('2', 'Post-sized', String(d.depth))}${opt('3', 'Can carry a long video', String(d.depth))}</select></div>
+          <div class="fld"><label for="d-pillar">Pillar</label><select id="d-pillar" data-f="pillar" ${dis}>${Object.entries(E.PILLARS).map(([k, v]) => opt(k, v, d.pillar)).join('')}</select></div>
+          <div class="fld"><label for="d-status">Status</label><select id="d-status" data-f="status" ${dis}>${Object.entries(E.STATUSES).map(([k, v]) => opt(k, v, d.status)).join('')}</select></div>
+          <div class="fld"><label for="d-effort">Effort</label><select id="d-effort" data-f="effort" ${dis}>${opt('S', 'S: one filming session', d.effort)}${opt('M', 'M: needs a demo or prep', d.effort)}${opt('L', 'L: a course or big build', d.effort)}</select></div>
+          <div class="fld"><span class="lbl">Readers can act on it</span><div class="checks"><label><input type="checkbox" id="d-act" data-f="actionable" ${d.actionable ? 'checked' : ''} ${dis}> Yes, today</label></div></div>
+        </div>
+        <div class="fld"><span class="lbl">Audience</span><div class="checks">${Object.entries(E.ICP).map(([k, v]) => `<label><input type="checkbox" data-icp="${k}" ${(d.icp || []).includes(k) ? 'checked' : ''} ${dis}> ${esc(v)}</label>`).join('')}</div></div>
+        <div class="fld"><span class="lbl">Channel plan</span><div id="d-plan">${drawerPlan()}</div></div>
+        ${isNew ? '' : `<div class="fld"><span class="lbl">On the calendar</span><div id="d-slots">${drawerSlots()}</div></div>`}
+        ${d.kind === 'news' || src.url ? `<div class="fld"><span class="lbl">Source</span><div class="box">
+          ${src.headline ? `<div><b>${esc(src.headline)}</b></div>` : ''}
+          <div class="muted">${esc([src.outlet, src.published ? new Date(src.published).toLocaleString() : '', src.scheduler ? 'found by ' + src.scheduler : ''].filter(Boolean).join(' · '))}</div>
+          ${src.url ? `<a href="${esc(src.url)}" target="_blank" rel="noopener">${esc(src.url)}</a>` : ''}
+          ${d.why ? `<div class="muted">Radar’s reasoning: ${esc(d.why)}</div>` : ''}</div></div>` : ''}
+        <div class="fld"><label for="d-proof">Proof it will get attention</label><textarea id="d-proof" rows="2" data-f="proof" ${dis}>${esc(d.proof)}</textarea></div>
+        <div class="fld"><label for="d-note">Notes</label><textarea id="d-note" rows="2" data-f="note" ${dis}>${esc(d.note)}</textarea></div>
+        ${isNew ? '' : `<div class="fld"><span class="lbl">Draft it with Claude</span><div class="row">
+          <label class="sr" for="d-draft-ch">Channel</label><select id="d-draft-ch">${CH.map((c) => opt(c, E.CHANNEL_LABEL[c], e.hero || 'linkedin')).join('')}</select>
+          <button class="btn" data-act="draft" id="d-draft-btn">Write a draft</button>
+          <button class="btn ghost" data-act="copy-draft" id="d-copy" hidden>Copy</button></div>
+          <div class="draft-out" id="d-draft-out" hidden></div></div>`}
+      </div>
+      <footer>
+        ${ro ? '<span class="muted">Read only</span>' : `<button class="btn primary" data-act="save" id="d-save" ${isNew || S.dirty ? '' : 'disabled'}>${isNew ? 'Add idea' : 'Save changes'}</button>
+        ${isNew ? '' : `<button class="btn" data-act="plan" data-id="${esc(S.open)}">Plan it</button>`}
+        ${isNew ? '' : `<button class="btn danger" data-act="delete" style="margin-left:auto">${S.confirmDelete ? 'Confirm delete' : 'Delete'}</button>`}`}
+      </footer>
+    </aside>`;
+  }
+
+  function drawerPlan() {
+    return ev(S.draft).channels.length ? planRows(S.draft, Date.now(), S.open === 'new' ? '' : S.open) : '<div class="muted">No channels. This topic would be skipped.</div>';
+  }
+  function drawerSlots() {
+    const list = slotsOf(S.open);
+    const rows = list.map((s) => `<div class="li" style="grid-template-columns:110px 1fr auto"><span class="mono" style="font-size:12px">${esc(fmtDay(E.parseYmd(s.date)))}</span><span>${esc(E.CHANNEL_LABEL[s.channel])}${s.locked ? ' · locked' : ''}${s.note ? ' <span class="muted">· ' + esc(s.note) + '</span>' : ''}</span>${S.canWrite && S.db ? `<button class="btn ghost" data-act="unslot" data-slot="${esc(s.id)}">Remove</button>` : ''}</div>`).join('');
+    const ch = ev(S.draft).channels.map((c) => c.c).filter((c) => !list.some((s) => s.channel === c));
+    const adders = S.canWrite && S.db && ch.length ? `<div class="row" style="margin-top:8px"><span class="muted" style="font-size:13px">Next open slot:</span>${ch.map((c) => `<button class="btn" data-act="addslot" data-ch="${c}">${esc(E.CHANNEL_LABEL[c])}</button>`).join('')}</div>` : '';
+    return (rows ? `<div class="list">${rows}</div>` : '<div class="muted">Not on the calendar yet.</div>') + adders;
+  }
+  function updateDrawerScore() {
+    if (!S.draft || !$('#dr-score')) return;
+    const e = ev(S.draft);
+    $('#dr-tier').innerHTML = tierChip(e.tier);
+    const sc = $('#dr-score'); sc.textContent = e.score; sc.className = 'score mono ' + e.tier;
+    $('#dr-urg').textContent = S.draft.kind === 'news' ? 'urgency now ' + e.urgencyNow : '';
+    $('#d-plan').innerHTML = drawerPlan();
+    const save = $('#d-save'); if (save) save.disabled = !(S.open === 'new' || S.dirty);
+  }
+  function updateDrawerSlots() { const el = $('#d-slots'); if (el) el.innerHTML = drawerSlots(); }
+
+  async function saveDraft() {
+    if (!needDb()) return;
+    const d = S.draft;
+    if (!d.title.trim()) { toast('Give the idea a title first.'); return; }
+    const e = ev(d);
+    const body = Object.assign({}, d, { title: d.title.trim(), score: e.score, tier: e.tier, updatedAt: nowIso() });
+    try {
+      if (S.open === 'new') {
+        const id = 'm-' + Date.now().toString(36);
+        body.createdAt = nowIso();
+        await S.db.collection('ideas').doc(id).set(body);
+        toast('Idea added'); S.open = id; S.dirty = false; renderOverlay(true);
+      } else {
+        const patch = {};
+        ['title', 'angle', 'pillar', 'icp', 'kind', 'scores', 'depth', 'actionable', 'effort', 'status', 'proof', 'note'].forEach((k) => { patch[k] = body[k]; });
+        await saveIdea(S.open, patch);
+        S.dirty = false; toast('Saved'); updateDrawerScore();
+      }
+    } catch (err) { fail(err); }
+  }
+
+  async function deleteIdea() {
+    if (!S.confirmDelete) { S.confirmDelete = true; const b = document.querySelector('[data-act="delete"]'); if (b) b.textContent = 'Confirm delete'; return; }
+    if (!needDb()) return;
+    const id = S.open;
+    try {
+      for (const s of slotsOf(id)) await S.db.collection('slots').doc(s.id).delete();
+      await S.db.collection('ideas').doc(id).delete();
+      toast('Deleted'); closeOverlay();
+    } catch (e) { fail(e); }
+  }
+
+  async function addSlot(ch) {
+    if (!needDb()) return;
+    const cell = freeCells(ch, Date.now(), Date.now() + 28 * DAY)[0];
+    if (!cell) { toast('No open ' + E.CHANNEL_LABEL[ch] + ' slot in the next 4 weeks.'); return; }
+    try {
+      if (S.dirty) await saveDraft();
+      await writeSlot(cell, S.open, '');
+      toast(E.CHANNEL_LABEL[ch] + ': ' + fmtDay(E.parseYmd(cell.date)));
+      updateDrawerSlots();
+    } catch (e) { fail(e); }
+  }
+
+  const DRAFT_RULES = {
+    x: 'One post under 270 characters, or a thread of 4 to 6 numbered posts if the topic needs it. The first line is the hook. No hashtags.',
+    linkedin: '120 to 220 words. A one-line hook, short paragraphs, one clear takeaway, and a closing question. No hashtags except at most two at the end.',
+    short: 'A script for a 45-second vertical video: a hook for the first 2 seconds, three beats, one line the viewer could say in an interview or use at work, and a spoken call to action. Add [On screen] text cues.',
+    long: 'A YouTube package: 3 title options, 3 thumbnail text ideas (4 words max), the first 30 seconds of the script word for word, and an outline of 6 to 8 beats with what to show on screen.',
+    email: '3 subject line options, one preview line, then a 150 to 250 word body with one clear call to action.',
+    whatsapp: 'Under 60 words, friendly, one clear action, a [link] placeholder.',
+  };
+  async function draft() {
+    let sample = null;
+    try { sample = await window.claude.use('sample'); } catch (e) { sample = null; }
+    if (!sample) { toast('Drafting is not available in this view.'); return; }
+    const d = S.draft, ch = $('#d-draft-ch').value, out = $('#d-draft-out'), btn = $('#d-draft-btn'), src = d.source || {};
+    out.hidden = false; out.textContent = 'Thinking…'; btn.disabled = true; S.drafting = ch;
+    const prompt = [
+      'You write first drafts for Chris (Crispus Roshan), founder of Stackle, which helps people get data and AI jobs.',
+      'Chris is a data engineer who has run more than 200 interviews. He speaks plainly: short sentences, concrete examples, the hiring-side view. No hype words, no emojis.',
+      'Audience: ' + ((d.icp || []).map((k) => E.ICP[k]).join(', ') || 'data and AI professionals') + '.',
+      'Channel: ' + E.CHANNEL_LABEL[ch] + '. Format: ' + DRAFT_RULES[ch],
+      'Topic: ' + d.title,
+      d.angle ? 'Angle: ' + d.angle : '',
+      d.proof ? 'Why people want this: ' + d.proof : '',
+      src.headline ? 'News: ' + src.headline + (src.outlet ? ' (' + src.outlet + ')' : '') + (src.url ? ' ' + src.url : '') : '',
+      d.note ? 'Chris’s notes: ' + d.note : '',
+      'Mark every factual claim Chris must confirm with [CHECK]. Return only the draft.',
+    ].filter(Boolean).join('\n');
+    try {
+      const r = await sample(prompt, { onText: ({ text }) => { out.textContent = text; }, cache: false });
+      out.textContent = r.text; $('#d-copy').hidden = false;
+    } catch (e) {
+      out.textContent = e && e.code === 'not_granted' ? 'Drafting needs your permission. Allow it from the page’s Permissions menu.' : e && e.code === 'rate_limited' ? 'Too many drafts at once. Try again in a minute.' : 'The draft failed. Try again.';
+    } finally { btn.disabled = false; S.drafting = null; }
+  }
+
+  // ---------- slot modal ----------
+  function openCell(cellId) {
+    const [date, channel, n] = cellId.split('_');
+    S.modal = { cellId, date, channel, n: Number(n), q: '' };
+    renderOverlay(true);
+    const q = $('#m-q'); if (q) q.focus();
+  }
+  function modalHtml() {
+    const m = S.modal, now = Date.now(), s = S.slots.get(m.cellId), idea = s && S.ideas.get(s.ideaId);
+    const cad = E.cells(E.parseYmd(m.date), 1, S.settings).find((c) => c.id === m.cellId);
+    const q = m.q.trim().toLowerCase();
+    const cands = [...S.ideas.entries()].filter(([id, i]) => ACTIVE.includes(i.status) && (!s || id !== s.ideaId))
+      .map(([id, i]) => ({ id, i, e: ev(i, now) }))
+      .filter((x) => x.e.channels.some((c) => c.c === m.channel) && !slotsOf(x.id).some((sl) => sl.channel === m.channel))
+      .filter((x) => !q || x.i.title.toLowerCase().includes(q))
+      .sort((a, b) => b.e.score - a.e.score).slice(0, 40);
+    const can = S.canWrite && S.db;
+    return `<div class="modal" role="dialog" aria-modal="true" aria-label="Calendar slot">
+      <header><b>${esc(E.CHANNEL_LABEL[m.channel])} · ${esc(fmtDay(E.parseYmd(m.date)))}${m.n > 1 ? ' · slot ' + m.n : ''}</b>
+        <span class="muted" style="font-size:13px">${s ? 'Planned' : cad && cad.held ? 'Held for radar news. You can still fill it.' : 'Open slot'}</span></header>
+      <div class="body">
+        ${idea ? `<div class="box"><b>${esc(idea.title)}</b>${s.note ? `<span class="muted">${esc(s.note)}</span>` : ''}
+          <div class="row"><button class="btn" data-act="open" data-id="${esc(s.ideaId)}">Open idea</button>
+          ${can ? `<button class="btn" data-act="lock" data-cell="${esc(m.cellId)}">${s.locked ? 'Unlock' : 'Lock (filmed)'}</button>
+          <button class="btn danger" data-act="unslot" data-slot="${esc(m.cellId)}">Remove</button>` : ''}</div></div>` : ''}
+        ${can ? `<div class="fld"><label for="m-q">${s ? 'Swap for another idea' : 'Pick an idea'} <span class="muted" style="text-transform:none;letter-spacing:0">ranked by score, only ideas planned for ${esc(E.CHANNEL_LABEL[m.channel])}</span></label>
+          <input type="text" id="m-q" placeholder="Filter by title" value="${esc(m.q)}"></div>
+          <div id="m-list">${cands.map((x) => `<button class="pick" data-act="assign" data-id="${esc(x.id)}"><span class="score ${x.e.tier} mono">${x.e.score}</span><span><span class="t">${esc(x.i.title)}</span><br><span class="s">${esc(E.TIERS[x.e.tier].label)} · ${esc(E.PILLARS[x.i.pillar] || '')}${x.i.kind === 'news' ? ' · News' : ''}</span></span></button>`).join('') || '<div class="muted">No matching ideas.</div>'}</div>` : ''}
+        <div class="row"><button class="btn ghost" data-act="close">Close</button></div>
+      </div></div>`;
+  }
+
+  // ---------- events ----------
+  document.addEventListener('click', async (ev0) => {
+    const t = ev0.target.closest('[data-act], .tab');
+    if (!t) return;
+    if (t.classList.contains('tab')) { S.tab = t.dataset.tab; render(); return; }
+    const act = t.dataset.act, id = t.dataset.id;
+    if (act === 'open') { openIdea(id); return; }
+    if (act === 'new') { openIdea('new'); return; }
+    if (act === 'close') { closeOverlay(); return; }
+    if (act === 'more') { S.limit += 60; render(); return; }
+    if (act === 'plan') { t.disabled = true; await planIdea(id); render(); return; }
+    if (act === 'reslot') { await reslot(id); return; }
+    if (act === 'status') { await setStatus(id, t.dataset.status); return; }
+    if (act === 'week') { const d = Number(t.dataset.d); S.week = d === 0 ? planningWeek() : E.addDays(S.week, d); render(); return; }
+    if (act === 'cell') { openCell(t.dataset.cell); return; }
+    if (act === 'save') { await saveDraft(); return; }
+    if (act === 'delete') { await deleteIdea(); return; }
+    if (act === 'draft') { await draft(); return; }
+    if (act === 'addslot') { await addSlot(t.dataset.ch); return; }
+    if (act === 'copy-draft') {
+      const txt = $('#d-draft-out').textContent;
+      try { await navigator.clipboard.writeText(txt); toast('Copied'); } catch (e) { const r = document.createRange(); r.selectNodeContents($('#d-draft-out')); const sel = getSelection(); sel.removeAllRanges(); sel.addRange(r); toast('Selected. Press copy on your keyboard.'); }
+      return;
+    }
+    if (act === 'unslot') {
+      if (!needDb()) return;
+      try { await clearSlot(t.dataset.slot); toast('Removed from the calendar'); if (S.modal) closeOverlay(); else updateDrawerSlots(); } catch (e) { fail(e); }
+      return;
+    }
+    if (act === 'lock') {
+      if (!needDb()) return;
+      const s = S.slots.get(t.dataset.cell);
+      try { await S.db.collection('slots').doc(t.dataset.cell).update({ locked: !s.locked }); toast(s.locked ? 'Unlocked' : 'Locked'); closeOverlay(); } catch (e) { fail(e); }
+      return;
+    }
+    if (act === 'assign') {
+      if (!needDb()) return;
+      const m = S.modal;
+      try { const prev = await writeSlot({ date: m.date, channel: m.channel, n: m.n }, id, ''); toast(prev ? 'Swapped' : 'Planned'); closeOverlay(); } catch (e) { fail(e); }
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && (S.open || S.modal)) closeOverlay();
+    if (e.key === 'Enter' && e.target.classList && e.target.classList.contains('tr')) openIdea(e.target.dataset.id);
+  });
+
+  document.addEventListener('input', (e) => {
+    const t = e.target;
+    if (t.id === 'f-q') { S.f.q = t.value; S.limit = 60; render(); return; }
+    if (t.id === 'm-q') {
+      S.modal.q = t.value;
+      const pos = t.selectionStart; renderOverlay(true);
+      const q = $('#m-q'); q.focus(); try { q.setSelectionRange(pos, pos); } catch (er) { /* ignore */ }
+      return;
+    }
+    if (t.closest('#try-dims') && t.dataset.dim) {
+      TRY.scores[t.dataset.dim] = Number(t.value); $('#try-' + t.dataset.dim + '-v').textContent = t.value;
+      $('#try-result').innerHTML = tryResult(); return;
+    }
+    if (t.closest('#d-dims') && t.dataset.dim && S.draft) {
+      S.draft.scores = Object.assign({}, S.draft.scores, { [t.dataset.dim]: Number(t.value) });
+      $('#d-' + t.dataset.dim + '-v').textContent = t.value; S.dirty = true; updateDrawerScore(); return;
+    }
+    if (S.draft && t.dataset.f && (t.tagName === 'TEXTAREA' || t.type === 'text')) { S.draft[t.dataset.f] = t.value; S.dirty = true; updateDrawerScore(); }
+  });
+
+  document.addEventListener('change', (e) => {
+    const t = e.target;
+    const fmap = { 'f-pillar': 'pillar', 'f-icp': 'icp', 'f-tier': 'tier', 'f-status': 'status', 'f-kind': 'kind', 'f-sort': 'sort' };
+    if (fmap[t.id]) { S.f[fmap[t.id]] = t.value; S.limit = 60; render(); return; }
+    if (t.id === 'try-kind') { TRY.kind = t.value; $('#try-result').innerHTML = tryResult(); return; }
+    if (t.id === 'try-depth') { TRY.depth = Number(t.value); $('#try-result').innerHTML = tryResult(); return; }
+    if (t.id === 'try-act') { TRY.actionable = t.checked; $('#try-result').innerHTML = tryResult(); return; }
+    if (!S.draft) return;
+    if (t.dataset.icp) {
+      const set = new Set(S.draft.icp || []); t.checked ? set.add(t.dataset.icp) : set.delete(t.dataset.icp);
+      S.draft.icp = Object.keys(E.ICP).filter((k) => set.has(k)); S.dirty = true; updateDrawerScore(); return;
+    }
+    if (t.dataset.f && t.tagName === 'SELECT') { S.draft[t.dataset.f] = t.dataset.num ? Number(t.value) : t.value; S.dirty = true; updateDrawerScore(); return; }
+    if (t.dataset.f && t.type === 'checkbox') { S.draft[t.dataset.f] = t.checked; S.dirty = true; updateDrawerScore(); }
+  });
+
+  const startTab = (location.hash || '').replace('#', '');
+  if (['radar', 'ideas', 'calendar', 'rules'].includes(startTab)) S.tab = startTab;
+  // Countdowns and "next scan" stay current without any writes.
+  setInterval(() => { if (!S.open && !S.modal && document.visibilityState === 'visible' && S.tab !== 'ideas') render(); }, 60000);
+  boot();
+})();
+</script>
