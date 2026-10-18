@@ -41,7 +41,8 @@ WORKING RULES
 - If something is unclear, make a sensible choice, tell me in one line, and keep going.
 
 PROJECT NOTES
-- The app lives in `obie/` inside the All_working repo. Run every command from `obie/`. On Vercel the project's Root Directory is `obie`.
+- The app lives in `obie/` inside the All_working repo. Run every command from `obie/`.
+- Hosting: live on Netlify at https://obie-y75k.netlify.app (site id `16afaf3c-1f19-4219-b393-2a1a3b263b90`, team `memobox-git`), because the Vercel connector can't create projects. `netlify.toml` declares the Next.js runtime; without it API-created sites publish static files only. Deploy by running the Netlify MCP `deploy-site` command from `obie/`. Route handlers build redirect URLs with `lib/redirect-url.ts` so they stay on the visitor's host. Vercel stays an option: import the repo with Root Directory `obie`.
 - The full build plan, with the numbered prompts, is in `docs/build-plan.md`.
 - Commands: `npm run dev`, `npm run build`, `npm run lint`, `npm run typecheck`.
 - Next.js 16: request interception lives in `proxy.ts` (the old `middleware.ts`), and Cache Components is on, so anything that reads cookies or headers sits behind a `<Suspense>` boundary. Read `node_modules/next/dist/docs/` before using an API you are unsure of.
