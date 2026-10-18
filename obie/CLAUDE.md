@@ -51,5 +51,6 @@ PROJECT NOTES
 - Auth: `/login` (email magic link, plus Google when it is switched on in Supabase), `/auth/callback` finishes either flow, `/auth/signout` signs out this device only. `proxy.ts` keeps signed-out visitors out of `/app`. `/app` calls the `ensure_my_workspace` RPC, which creates the workspace and the OBIE agent on first sign-in.
 - Colors are tokens in `app/globals.css` (`bg-background`, `text-foreground`, `bg-primary`, `text-accent` and so on). Use the tokens, not raw hex values, so light and dark mode both work.
 - The OBIE avatar is `components/obie-orb.tsx`. Its `state` prop drives the star: `idle` (steady), `working` (sparkles), `listening` (the orb pulses).
+- Inbox (pulled forward from Version 2, LinkedIn only for now): `/app/inbox`, through Unipile (`lib/unipile.ts`). Inbox tables are read-only for owners; `lib/inbox/store.ts` writes them with the service role after an ownership check. Drafts come from `lib/inbox/draft.ts` (claude-sonnet-5-5), are logged to `agent_runs` under the workspace's Inbox agent (path `inbox`), and each open draft has an `approvals` row of kind `reply`.
 
 @AGENTS.md

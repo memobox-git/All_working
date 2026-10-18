@@ -241,7 +241,7 @@ Fix anything that breaks. Then give me a short list: what works, what's rough, a
 
 ## Version 2 (next)
 
-- **Inbox:** LinkedIn, WhatsApp, Instagram and email through Unipile, Slack through its own API, contacts merged into one person, and an Inbox agent that sorts messages and drafts replies.
+- **Inbox:** LinkedIn, WhatsApp, Instagram and email through Unipile, Slack through its own API, contacts merged into one person, and an Inbox agent that sorts messages and drafts replies. (LinkedIn DMs with drafted replies are built early: see "LinkedIn inbox" in the README.)
 - **Real connectors:** Google Calendar, Gmail send, Drive (file-level access), Slack, Stripe.
 - **OBIE Pages:** hosted landing and sales pages with forms that feed the Sales agent, a free subdomain, and custom domains.
 - **OBIE Book, Forms and Links:** booking, forms, link-in-bio and short links.
