@@ -422,14 +422,16 @@ table.t th { font-weight: 650; color: var(--ink-2); border-top: 0; white-space: 
     await S.db.collection('ideas').doc(id).update(Object.assign({}, patch, { score: e.score, tier: e.tier, updatedAt: nowIso() }));
   }
 
-  // After an idea leaves a slot, put it back in the bank if it has no slot left.
+  // After an idea leaves a slot: note who bumped it, and put it back in the
+  // bank if it has no slot left.
   async function release(ideaId, info) {
     const idea = S.ideas.get(ideaId);
     if (!idea) return;
     const left = slotsOf(ideaId).filter((s) => !info || s.id !== info.slot);
-    if (left.length === 0 && (idea.status === 'scheduled')) {
-      await saveIdea(ideaId, { status: 'idea', bumped: info && info.by ? info : null });
-    }
+    const patch = {};
+    if (info && info.by) patch.bumped = info;
+    if (left.length === 0 && idea.status === 'scheduled') patch.status = 'idea';
+    if (Object.keys(patch).length) await saveIdea(ideaId, patch);
   }
 
   async function writeSlot(cell, ideaId, note) {
@@ -439,7 +441,10 @@ table.t th { font-weight: 650; color: var(--ink-2); border-top: 0; white-space: 
     S.slots.set(id, { date: cell.date, channel: cell.channel, n: cell.n, ideaId, note: note || '', locked: false });
     rebuildIndex();
     const idea = S.ideas.get(ideaId);
-    if (idea && ['new', 'idea'].includes(idea.status)) await saveIdea(ideaId, { status: 'scheduled', bumped: null });
+    const patch = {};
+    if (idea && ['new', 'idea'].includes(idea.status)) patch.status = 'scheduled';
+    if (idea && idea.bumped && idea.bumped.channel === cell.channel) patch.bumped = null;
+    if (Object.keys(patch).length) await saveIdea(ideaId, patch);
     if (prev && prev.ideaId !== ideaId) await release(prev.ideaId, { slot: id, channel: cell.channel, by: ideaId, at: nowIso() });
     return prev;
   }
@@ -595,7 +600,7 @@ table.t th { font-weight: 650; color: var(--ink-2); border-top: 0; white-space: 
       .map(([id, i]) => ({ id, i, e: ev(i, now) })).sort((a, b) => b.e.score - a.e.score);
     const by = (t) => news.filter((x) => x.e.tier === t);
     const p0 = by('P0'), p1 = by('P1'), low = news.filter((x) => x.e.tier === 'P2' || x.e.tier === 'P3');
-    const bumped = all.filter(([, i]) => i.bumped && i.status === 'idea');
+    const bumped = all.filter(([id, i]) => i.bumped && ACTIVE.includes(i.status) && !slotsOf(id).some((s) => s.channel === i.bumped.channel));
     const weekAgo = now - 7 * DAY;
     const thisWeek = all.filter(([, i]) => i.kind === 'news' && Date.parse(i.createdAt || '') > weekAgo).length;
     const nexts = SCHEDULERS.map((s) => ({ s, n: nextRun(s) })).filter((x) => x.n).sort((a, b) => a.n.inMin - b.n.inMin);
