@@ -14,4 +14,5 @@
 
 ## Done
 
+- [x] ~~Send Mark Freeman II the Skip the Line invite~~ - for Wed 21 Oct, 6 pm; he accepted (19 Oct 2026)
 - [x] ~~Set up the planner~~ (18 Oct 2026)
