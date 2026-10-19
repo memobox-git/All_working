@@ -39,7 +39,7 @@ export function ObieDesk({
               {sent}
             </p>
             <p className="w-fit max-w-[85%] rounded-2xl rounded-bl-md bg-surface px-4 py-2.5 text-sm text-muted">
-              Got it. OBIE&apos;s replies arrive in the next build step (Prompt 5).
+              Got it. Chatting with OBIE here arrives with the full workspace, a couple of steps from now.
             </p>
           </div>
         )}
