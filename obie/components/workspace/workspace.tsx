@@ -14,6 +14,7 @@ import {
 import { createClient } from "@/lib/supabase/client";
 import { Composer } from "../composer";
 import { Avatar } from "./avatar";
+import { ApprovalCard, OutputCard, PlanCard, TASK_COLUMNS, type TaskRow } from "./cards";
 import { MessageItem } from "./message-item";
 import { sameView, Sidebar, type View } from "./sidebar";
 import { StatusPill } from "./status-pill";
@@ -27,18 +28,6 @@ export type WorkspaceProps = {
   initialApprovals: Approval[];
   initialView: View;
   initialThreadId: string | null;
-  // Extra pieces later steps plug in: cards inside messages, the Needs you
-  // page and header items such as the credit balance.
-  renderCard?: (message: Message, ctx: CardContext) => React.ReactNode;
-  needsYou?: (ctx: CardContext) => React.ReactNode;
-  headerExtra?: React.ReactNode;
-};
-
-export type CardContext = {
-  agents: Map<string, Agent>;
-  approvals: Approval[];
-  openView: (view: View) => void;
-  openThread: (id: string) => void;
 };
 
 function viewKey(view: View) {
@@ -64,6 +53,7 @@ export function Workspace(props: WorkspaceProps) {
   // Messages of the open conversation, tagged with the view they belong to.
   const [loaded, setLoaded] = useState<{ key: string; messages: Message[] } | null>(null);
   const [waiting, setWaiting] = useState<Record<string, boolean>>({});
+  const [tasks, setTasks] = useState<TaskRow[]>([]);
   const [unread, setUnread] = useState<Set<string>>(new Set());
   const [drawer, setDrawer] = useState(false);
   const viewRef = useRef(view);
@@ -102,6 +92,16 @@ export function Workspace(props: WorkspaceProps) {
       if (cancelled) return;
       setLoaded({ key: viewKey(view), messages: (data ?? []) as Message[] });
     });
+    if (view.type === "channel") {
+      supabase
+        .from("tasks")
+        .select(TASK_COLUMNS)
+        .eq("channel_id", view.channelId)
+        .order("created_at", { ascending: true })
+        .then(({ data }) => {
+          if (!cancelled) setTasks((data ?? []) as TaskRow[]);
+        });
+    }
     return () => {
       cancelled = true;
     };
@@ -148,6 +148,13 @@ export function Workspace(props: WorkspaceProps) {
             const c = row as Channel;
             return list.some((x) => x.id === c.id) ? list.map((x) => (x.id === c.id ? c : x)) : [c, ...list];
           });
+      })
+      .on("postgres_changes", { event: "*", schema: "public", table: "tasks", filter }, ({ eventType, new: row }) => {
+        if (eventType === "DELETE") return;
+        const task = row as TaskRow;
+        const current = viewRef.current;
+        if (current.type !== "channel" || task.channel_id !== current.channelId) return;
+        setTasks((list) => (list.some((t) => t.id === task.id) ? list.map((t) => (t.id === task.id ? task : t)) : [...list, task]));
       })
       .on("postgres_changes", { event: "*", schema: "public", table: "approvals", filter }, ({ eventType, new: row, old }) => {
         if (eventType === "DELETE") setApprovals((list) => list.filter((a) => a.id !== (old as Approval).id));
@@ -239,7 +246,32 @@ export function Workspace(props: WorkspaceProps) {
   const threadRoot = threadId ? messages.find((m) => m.id === threadId) : null;
   const threadReplies = threadId ? messages.filter((m) => m.thread_id === threadId) : [];
 
-  const ctx: CardContext = { agents: agentMap, approvals, openView, openThread: setThreadId };
+  const channelTasks = view.type === "channel" ? tasks.filter((t) => t.channel_id === view.channelId) : [];
+  // If tasks sit ready with nothing running (the server-side run ended or
+  // never started), nudge the worker. Claims are atomic, so extra nudges are harmless.
+  const hasReady = channelTasks.some((t) => t.status === "ready");
+  const hasRunning = channelTasks.some((t) => t.status === "running");
+  const nudging = useRef(false);
+  useEffect(() => {
+    if (!hasReady || hasRunning) return;
+    const timer = setTimeout(() => {
+      if (nudging.current) return;
+      nudging.current = true;
+      fetch("/api/worker", { method: "POST" })
+        .catch(() => undefined)
+        .finally(() => {
+          nudging.current = false;
+        });
+    }, 4000);
+    return () => clearTimeout(timer);
+  }, [hasReady, hasRunning]);
+
+  const renderCard = (m: Message) => {
+    if (m.kind === "plan") return <PlanCard message={m} tasks={channelTasks} agents={agentMap} />;
+    if (m.kind === "approval") return <ApprovalCard approval={approvals.find((a) => a.id === m.data?.approvalId)} />;
+    if (typeof m.data?.output === "string") return <OutputCard text={m.data.output} />;
+    return null;
+  };
   const dmAgent = view.type === "dm" ? agentMap.get(view.agentId) : null;
   const channel = view.type === "channel" ? channels.find((c) => c.id === view.channelId) : null;
   const owner = channel?.owner_agent_id ? agentMap.get(channel.owner_agent_id) : null;
@@ -310,11 +342,10 @@ export function Workspace(props: WorkspaceProps) {
             )}
           </div>
           {dmAgent && dmAgent.status !== "idle" && <StatusPill status={dmAgent.status} />}
-          {props.headerExtra}
         </header>
 
         {view.type === "needs" ? (
-          <div className="flex-1 overflow-y-auto">{props.needsYou?.(ctx) ?? <NeedsYouFallback approvals={pending} />}</div>
+          <div className="flex-1 overflow-y-auto"><NeedsYouFallback approvals={pending} /></div>
         ) : (
           <>
             <MessageList
@@ -324,7 +355,7 @@ export function Workspace(props: WorkspaceProps) {
               agents={agentMap}
               replyCounts={replyCounts}
               onOpenThread={setThreadId}
-              renderCard={(m) => props.renderCard?.(m, ctx)}
+              renderCard={renderCard}
               waitingFor={isWaiting ? (dmAgent ?? owner ?? null) : null}
               empty={
                 dmAgent ? (
@@ -375,7 +406,7 @@ export function Workspace(props: WorkspaceProps) {
               messages={[threadRoot, ...threadReplies]}
               agents={agentMap}
               replyCounts={new Map()}
-              renderCard={(m) => props.renderCard?.(m, ctx)}
+              renderCard={renderCard}
               waitingFor={null}
               empty={null}
             />
