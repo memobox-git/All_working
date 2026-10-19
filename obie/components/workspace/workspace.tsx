@@ -17,7 +17,8 @@ import { Avatar } from "./avatar";
 import { ApprovalCard, OutputCard, PlanCard, RedoButton, TASK_COLUMNS, type TaskRow } from "./cards";
 import { NeedsYou } from "./needs-you";
 import { MessageItem } from "./message-item";
-import { sameView, Sidebar, type View } from "./sidebar";
+import { isPage, PAGE_TITLES, sameView, Sidebar, type View } from "./sidebar";
+import { BoardPage, ConnectorsPage, ProfilePage, SettingsPage } from "./pages";
 import { StatusPill } from "./status-pill";
 
 export type WorkspaceProps = {
@@ -36,7 +37,7 @@ export type WorkspaceProps = {
 export type CreditBadgeData = { enabled: boolean; balance: number; dailyLeft: number };
 
 function viewKey(view: View) {
-  return view.type === "dm" ? view.agentId : view.type === "channel" ? view.channelId : "needs";
+  return view.type === "dm" ? view.agentId : view.type === "channel" ? view.channelId : view.type;
 }
 
 function inView(message: Message, view: View) {
@@ -67,7 +68,7 @@ export function Workspace(props: WorkspaceProps) {
     viewRef.current = view;
   }, [view]);
   const key = viewKey(view);
-  const loading = view.type !== "needs" && loaded?.key !== key;
+  const loading = !isPage(view) && loaded?.key !== key;
   const messages = useMemo(() => (loaded?.key === key ? loaded.messages : []), [loaded, key]);
   const setMessages = useCallback((update: (list: Message[]) => Message[], forKey?: string) => {
     setLoaded((current) =>
@@ -83,14 +84,14 @@ export function Workspace(props: WorkspaceProps) {
     const params = new URLSearchParams();
     if (view.type === "dm") params.set("dm", view.agentId);
     if (view.type === "channel") params.set("c", view.channelId);
-    if (view.type === "needs") params.set("view", "needs");
+    if (isPage(view)) params.set("view", view.type);
     if (threadId) params.set("t", threadId);
     window.history.replaceState(null, "", `/app?${params}`);
   }, [view, threadId]);
 
   // Load the open conversation, threads included.
   useEffect(() => {
-    if (view.type === "needs") return;
+    if (isPage(view)) return;
     let cancelled = false;
     let query = supabase.from("messages").select(MESSAGE_COLUMNS).order("created_at", { ascending: true }).limit(500);
     query = view.type === "dm" ? query.eq("dm_agent_id", view.agentId) : query.eq("channel_id", view.channelId);
@@ -206,7 +207,7 @@ export function Workspace(props: WorkspaceProps) {
         if (ap.data) setApprovals(ap.data as Approval[]);
       });
       const current = viewRef.current;
-      if (current.type !== "needs") {
+      if (!isPage(current)) {
         let query = supabase.from("messages").select(MESSAGE_COLUMNS).order("created_at", { ascending: true }).limit(500);
         query = current.type === "dm" ? query.eq("dm_agent_id", current.agentId) : query.eq("channel_id", current.channelId);
         void query.then(({ data }) => {
@@ -232,7 +233,7 @@ export function Workspace(props: WorkspaceProps) {
   const send = useCallback(
     async (text: string, inThread: string | null) => {
       const current = viewRef.current;
-      if (current.type === "needs") return false;
+      if (isPage(current)) return false;
       const key = viewKey(current);
       setWaiting((w) => ({ ...w, [key]: true }));
       try {
@@ -302,7 +303,7 @@ export function Workspace(props: WorkspaceProps) {
   const isWaiting = !!waiting[key];
 
   const title =
-    view.type === "needs" ? "Needs you" : view.type === "dm" ? (dmAgent?.name ?? "Agent") : `# ${channel?.name ?? "channel"}`;
+    isPage(view) ? PAGE_TITLES[view.type] : view.type === "dm" ? (dmAgent?.name ?? "Agent") : `# ${channel?.name ?? "channel"}`;
 
   const sidebar = (
     <Sidebar
@@ -369,9 +370,13 @@ export function Workspace(props: WorkspaceProps) {
           <CreditBadge credits={credits} />
         </header>
 
-        {view.type === "needs" ? (
+        {isPage(view) ? (
           <div className="flex-1 overflow-y-auto">
-            <NeedsYou approvals={approvals} agents={agents} channels={channels} openView={openView} />
+            {view.type === "needs" && <NeedsYou approvals={approvals} agents={agents} channels={channels} openView={openView} />}
+            {view.type === "board" && <BoardPage workspaceId={workspaceId} agents={agentMap} channels={channels} openView={openView} />}
+            {view.type === "profile" && <ProfilePage workspaceId={workspaceId} />}
+            {view.type === "connectors" && <ConnectorsPage />}
+            {view.type === "settings" && <SettingsPage workspaceId={workspaceId} />}
           </div>
         ) : (
           <>
@@ -405,7 +410,7 @@ export function Workspace(props: WorkspaceProps) {
       </main>
 
       {/* Thread: right pane on desktop, bottom sheet on the phone */}
-      {threadRoot && view.type !== "needs" && (
+      {threadRoot && !isPage(view) && (
         <>
           <button
             type="button"

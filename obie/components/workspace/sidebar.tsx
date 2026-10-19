@@ -1,11 +1,11 @@
 "use client";
 
 import type { Agent, Channel } from "@/lib/chat-types";
+import { PAGE_TITLES, type View } from "@/lib/views";
 import { Avatar } from "./avatar";
 import { StatusPill } from "./status-pill";
 
-export type View = { type: "dm"; agentId: string } | { type: "channel"; channelId: string } | { type: "needs" };
-
+export { isPage, PAGE_TITLES, PAGES, type PageType, type View } from "@/lib/views";
 export function sameView(a: View, b: View) {
   if (a.type !== b.type) return false;
   if (a.type === "dm" && b.type === "dm") return a.agentId === b.agentId;
@@ -113,8 +113,37 @@ export function Sidebar({
             </ul>
           )}
         </div>
+        <div>
+          <h2 className="px-2.5 pb-1 text-xs font-semibold tracking-wide text-muted uppercase">Workspace</h2>
+          <ul className="space-y-0.5">
+            {(["board", "profile", "connectors", "settings"] as const).map((page) => (
+              <li key={page}>
+                <button type="button" onClick={() => onOpen({ type: page })} className={item(view.type === page)}>
+                  <span className="flex size-6 items-center justify-center" aria-hidden>
+                    <PageIcon page={page} />
+                  </span>
+                  <span className="flex-1">{page === "profile" ? "Profile" : PAGE_TITLES[page]}</span>
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
       {footer}
     </nav>
+  );
+}
+
+function PageIcon({ page }: { page: "board" | "profile" | "connectors" | "settings" }) {
+  const paths = {
+    board: "M4 5h4v14H4zM10 5h4v9h-4zM16 5h4v6h-4z",
+    profile: "M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM4 20a8 8 0 0 1 16 0",
+    connectors: "M9 7V3M15 7V3M7 7h10v4a5 5 0 0 1-10 0V7ZM12 16v5",
+    settings: "M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM19 12h2M3 12h2M12 3v2M12 19v2M17 7l1.4-1.4M5.6 18.4 7 17M17 17l1.4 1.4M5.6 5.6 7 7",
+  };
+  return (
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d={paths[page]} />
+    </svg>
   );
 }

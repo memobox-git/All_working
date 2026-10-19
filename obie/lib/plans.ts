@@ -82,7 +82,9 @@ ${teamText(agents)}
 
 async function createPlan(ctx: ReplyContext, plan: z.infer<typeof PlanSchema>, subs: Agent[]) {
   const { supabase, workspaceId, agent } = ctx;
-  const deadline = parseDeadline(plan.deadline);
+  const { data: ws } = await supabase.from("workspaces").select("settings").eq("id", workspaceId).maybeSingle();
+  const defaultDays = Number((ws?.settings as { default_deadline_days?: number } | null)?.default_deadline_days) || 7;
+  const deadline = parseDeadline(plan.deadline, defaultDays);
   const name = slug(plan.channel_name ?? plan.goal ?? "new-goal");
 
   const { data: channel, error } = await supabase
@@ -167,14 +169,14 @@ async function createPlan(ctx: ReplyContext, plan: z.infer<typeof PlanSchema>, s
   return channel.id as string;
 }
 
-// Midnight UTC at the end of the given day, or a week from now.
-function parseDeadline(value: string | null) {
+// End of the given day (UTC), or the workspace's default deadline from now.
+function parseDeadline(value: string | null, defaultDays: number) {
   const match = value?.match(/^(\d{4})-(\d{2})-(\d{2})/);
   if (match) {
     const date = new Date(Date.UTC(+match[1], +match[2] - 1, +match[3], 23, 59, 0));
     if (!Number.isNaN(date.getTime())) return date.toISOString();
   }
-  return new Date(Date.now() + 7 * 864e5).toISOString();
+  return new Date(Date.now() + defaultDays * 864e5).toISOString();
 }
 
 function slug(text: string) {

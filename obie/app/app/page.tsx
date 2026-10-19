@@ -4,7 +4,7 @@ import { Suspense } from "react";
 import { ObieOrb } from "@/components/obie-orb";
 import { OnboardingChat, type ChatMessage } from "@/components/onboarding-chat";
 import { TeamBuilder, type TeamRow, type TeamStack } from "@/components/team-builder";
-import type { View } from "@/components/workspace/sidebar";
+import { PAGES, type PageType, type View } from "@/lib/views";
 import { Workspace } from "@/components/workspace/workspace";
 import { toProfile } from "@/lib/business-profile";
 import {
@@ -155,8 +155,8 @@ async function WorkspaceHome({ searchParams }: { searchParams: SearchParams }) {
   const dm = one("dm");
   const c = one("c");
   const initialView: View =
-    one("view") === "needs"
-      ? { type: "needs" }
+    (PAGES as readonly string[]).includes(one("view") ?? "")
+      ? { type: one("view") as PageType }
       : c && channelList.some((x) => x.id === c)
         ? { type: "channel", channelId: c }
         : dm && agentList.some((a) => a.id === dm && a.level === "main")
