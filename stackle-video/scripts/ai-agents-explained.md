@@ -4,7 +4,9 @@
 
 **Spoken words:** about 915 · **Length:** 4:48 of voiceover, plus the 47-second channel intro, about 5:36 in total
 
-**Type:** Animated explainer. No filming: Chris's ElevenLabs voice over motion graphics. The video is at `stackle-video/graphics/ai-agents-explained.mp4`, and the project that renders it is at `stackle-video/source/agents-explained/`.
+**Type:** Animated explainer. No filming: Chris's ElevenLabs voice over motion graphics. The project that renders it is at `stackle-video/source/agents-explained/`. There are two cuts in `stackle-video/graphics/`:
+- `ai-agents-explained.mp4` (5:39): music, sound effects and the channel intro.
+- `ai-agents-explained-voice-only.mp4` (4:52): only Chris's voice and no intro. Chris asked for this one, for his own editing.
 
 **Style:** Hormozi style (see `skills/hormozi-style`): "In this video I am going to...", five numbered points, "X just means Y" definitions, one "let's say" example, and short lines to land each point. Style check: median sentence 13 words, 29% of sentences have 20 words or more, 7% have 5 or fewer. Contractions run at about 2.7 per 100 words.
 
@@ -46,7 +48,7 @@ Every fact was checked on its own (see the sources below), and the example is ou
 | Microsoft Agent Framework is the direct successor to AutoGen and Semantic Kernel, and works in Python and .NET (Go is in preview) | learn.microsoft.com/en-us/agent-framework/overview (updated 25 Aug 2026) | 19 Oct 2026 |
 
 ### Lines Chris should check
-- **No interviews line and no personal story.** The channel intro is cut in after the promise instead, so the video has no bio lines to confirm.
+- **The interviews line.** Chris confirmed on 19 October 2026 that he has interviewed more than 200 engineers. This take doesn't say it, because the channel intro carried the bio, so adding it means a new voice take.
 - **"Plan and execute is often cheaper on long tasks"** is hedged with "often" on purpose. It depends on the model you use for planning.
 - **The 2 a.m. pipeline** is a "let's say" example, not a real incident.
 

@@ -2,14 +2,16 @@
 // (window.SFX, saved by render-pro.js as <video>.cues.json), ducks the bed under
 // the voice and normalises to YouTube loudness (-14 LUFS). Sound effects are
 // shared with the channel intro (../intro-pro/audio/sfx).
-// Usage: node mix.js <video.cues.json> <out.wav>
+// Usage: node mix.js <video.cues.json> <out.wav> [--voice-only]
+// --voice-only leaves out the bed and every sound effect.
 const { spawnSync } = require('child_process');
 const fs = require('fs');
 const path = require('path');
 
 const VO = path.join(__dirname, 'audio', 'vo.mp3');
 const SFX = path.join(__dirname, '..', 'intro-pro', 'audio', 'sfx');
-const [cuesFile, out] = process.argv.slice(2);
+const [cuesFile, out, flag] = process.argv.slice(2);
+const voiceOnly = flag === '--voice-only';
 const { duration, offset, sfx } = JSON.parse(fs.readFileSync(cuesFile, 'utf8'));
 
 // level of each kind of sound before the per-cue gain; quieter than the intro,
@@ -24,14 +26,16 @@ const ff = args => {
 const fmt = 'aformat=sample_rates=48000:channel_layouts=stereo';
 const D = duration.toFixed(3);
 
-const inputs = ['-i', VO, '-stream_loop', '-1', '-i', path.join(SFX, 'bed.mp3')];
-const graph = [
-  `[0:a]${fmt},highpass=f=70,acompressor=threshold=-20dB:ratio=3:attack=5:release=120:makeup=1.6,adelay=${Math.round(offset * 1000)}:all=1,apad=whole_dur=${D},asplit=2[vo][key]`,
+const inputs = ['-i', VO];
+const voice = `[0:a]${fmt},highpass=f=70,acompressor=threshold=-20dB:ratio=3:attack=5:release=120:makeup=1.6,adelay=${Math.round(offset * 1000)}:all=1,apad=whole_dur=${D}`;
+const graph = voiceOnly ? [`${voice}[vo]`] : [
+  `${voice},asplit=2[vo][key]`,
   `[1:a]${fmt},atrim=0:${D},volume=${LEVEL.bed},afade=t=in:d=1.2,afade=t=out:st=${(duration - 2.5).toFixed(3)}:d=2.5[bedraw]`,
   `[bedraw][key]sidechaincompress=threshold=0.015:ratio=4:attack=40:release=600[bed]`,
 ];
-const labels = ['[vo]', '[bed]'];
-sfx.filter(c => c.file !== 'bed').forEach((c, i) => {
+if (!voiceOnly) inputs.push('-stream_loop', '-1', '-i', path.join(SFX, 'bed.mp3'));
+const labels = voiceOnly ? ['[vo]'] : ['[vo]', '[bed]'];
+(voiceOnly ? [] : sfx).filter(c => c.file !== 'bed').forEach((c, i) => {
   const kind = c.file.replace(/_\d+$/, '');
   const lead = LEAD[c.file] || 0, start = Math.max(0, lead - c.t), delay = Math.max(0, c.t - lead);
   inputs.push('-i', path.join(SFX, c.file + '.mp3'));
@@ -51,4 +55,4 @@ const probe = spawnSync('ffmpeg', ['-hide_banner', '-i', raw, '-af', 'loudnorm=I
 const m = JSON.parse(probe.stderr.match(/\{[\s\S]*\}/)[0]);
 ff(['-i', raw, '-af', `loudnorm=I=-14:TP=-1.5:LRA=11:measured_I=${m.input_i}:measured_TP=${m.input_tp}:measured_LRA=${m.input_lra}:measured_thresh=${m.input_thresh}:offset=${m.target_offset}:linear=true`, '-ar', '48000', '-c:a', 'pcm_s24le', out]);
 fs.rmSync(raw);
-console.log(`wrote ${out}: ${sfx.length} cues, input ${m.input_i} LUFS -> -14 LUFS`);
+console.log(`wrote ${out}: ${voiceOnly ? 'voice only' : sfx.length + ' cues'}, input ${m.input_i} LUFS -> -14 LUFS`);

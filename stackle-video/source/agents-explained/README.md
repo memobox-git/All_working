@@ -8,9 +8,10 @@ A 5½-minute animated explainer (4:48 of voiceover plus the 47-second channel in
 cd stackle-video/source && npm install
 cd agents-explained && ./build.sh                   # full quality, about 45 minutes on 4 cores
 ./build.sh /tmp/draft.mp4 --sub 1                   # fast draft, no motion blur
+VOICE_ONLY=1 INTRO=0 ./build.sh ../../graphics/ai-agents-explained-voice-only.mp4   # voice only, no intro
 ```
 
-`build.sh` renders the picture, mixes the soundtrack, then cuts `graphics/stackle-intro.mp4` in after the promise, just before "Number one". Rendering is split into chunks, so a stopped build picks up where it left off when run again.
+`build.sh` renders the picture, mixes the soundtrack, then cuts `graphics/stackle-intro.mp4` in after the promise, just before "Number one". `VOICE_ONLY=1` leaves out the music bed and every sound effect. `INTRO=0` skips the channel intro. Rendering is split into chunks, so a stopped build picks up where it left off when run again.
 
 ## How it fits together
 
