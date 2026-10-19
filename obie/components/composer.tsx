@@ -13,11 +13,15 @@ export function Composer({
   placeholder = "Message OBIE",
   onSend,
   onVoiceStateChange,
+  disabled = false,
 }: {
   workspaceId: string;
   placeholder?: string;
-  onSend: (text: string) => void;
+  // Return false (or a promise of false) to put the text back, e.g. when sending failed.
+  onSend: (text: string) => void | boolean | Promise<void | boolean>;
   onVoiceStateChange?: (state: VoiceState) => void;
+  // Blocks sending (e.g. while waiting for a reply); typing and voice still work.
+  disabled?: boolean;
 }) {
   const [text, setText] = useState("");
   const textarea = useRef<HTMLTextAreaElement>(null);
@@ -46,9 +50,11 @@ export function Composer({
   function submit(event?: FormEvent) {
     event?.preventDefault();
     const message = text.trim();
-    if (!message || voice.state !== "idle") return;
-    onSend(message);
+    if (!message || disabled || voice.state !== "idle") return;
     setText("");
+    void Promise.resolve(onSend(message)).then((ok) => {
+      if (ok === false) setText((current) => current || message);
+    });
   }
 
   function onKeyDown(event: KeyboardEvent<HTMLTextAreaElement>) {
@@ -136,7 +142,7 @@ export function Composer({
           <button
             type="submit"
             aria-label="Send"
-            disabled={!text.trim() || working}
+            disabled={!text.trim() || working || disabled}
             className="flex size-11 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground transition-colors hover:bg-primary-hover disabled:bg-surface disabled:text-muted"
           >
             <SendIcon />
