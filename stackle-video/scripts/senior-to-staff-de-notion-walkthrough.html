@@ -23,10 +23,6 @@ body { background: var(--bg); color: var(--fg); font-family: var(--font-body); f
 .wrap { max-width: 1120px; margin: 0 auto; padding-block: 32px 64px;
   padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
   display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 48px }
-@media (max-width: 860px) { .wrap { grid-template-columns: minmax(0, 1fr); gap: 24px }
-  nav.toc { position: static; display: flex; flex-wrap: wrap; gap: 6px }
-  nav.toc .label { width: 100%; margin-bottom: 0 }
-  nav.toc a { border: 1px solid var(--line); border-radius: 999px; padding: 3px 10px; font-size: .8rem } }
 header.top { grid-column: 1 / -1; display: grid; gap: 12px; border-bottom: 2px solid var(--fg); padding-bottom: 20px }
 .eyebrow { font-weight: 700; font-size: .78rem; letter-spacing: .16em; text-transform: uppercase; color: var(--accent) }
 h1 { font-family: var(--font-display); font-size: clamp(1.9rem, 4.5vw, 2.8rem); line-height: 1.05; letter-spacing: -.02em; margin: 0; text-wrap: balance }
@@ -61,6 +57,12 @@ section.notes ol { margin: 0; padding-left: 20px; display: grid; gap: 10px }
 section.notes ul { margin: 6px 0 0; padding-left: 18px }
 code { font-family: var(--font-mono); font-size: .88em; background: var(--surface); padding: 1px 5px; border-radius: 4px }
 @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth } }
+/* Phone and tablet: one column, and the part index becomes a static row of chips above the script. Kept last so it wins over the desktop rules. */
+@media (max-width: 860px) { .wrap { grid-template-columns: minmax(0, 1fr); gap: 24px }
+  nav.toc { position: static; display: flex; flex-wrap: wrap; gap: 6px }
+  nav.toc .label { width: 100%; margin-bottom: 0 }
+  nav.toc a { border: 1px solid var(--line); border-left-width: 1px; border-radius: 999px; padding: 3px 10px; font-size: .8rem }
+  nav.toc a:hover { border-left-color: var(--accent) } }
 </style>
 <div class="wrap">
   <header class="top">
