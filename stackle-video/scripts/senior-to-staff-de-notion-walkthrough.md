@@ -2,7 +2,7 @@
 
 **Version:** screen-share version. Chris shares his Notion page and goes through the plan week by week. The original version, built on full-screen graphics, is in `senior-to-staff-de-plan.md`; its research brief and sources apply to this script too.
 **Notion page:** https://app.notion.com/p/3fad2edf55f38147ad81e9bb2b03766c
-**Word count (spoken):** about 2,490 words | **Estimated length:** about 16.5 minutes at 150 words a minute
+**Word count (spoken):** about 2,600 words | **Estimated length:** about 17.5 minutes at 150 words a minute
 **Style:** Alex Hormozi's speaking style, as in the original version (style checker: median sentence 14 words, 8% short, 28% long, all inside the target bands).
 
 **Labels:** "Screen share" means the Notion page fills the screen, scrolled to the section named, and Chris's voice continues. Open each week's toggle as you reach it.
@@ -15,7 +15,7 @@
 
 **[On camera]**
 
-I'm a senior data engineer at Meta, where the average base salary at my level is about two hundred twenty thousand dollars a year. The staff-level data jobs I'm going after at AI companies pay three hundred fifty to four hundred thousand in base salary, and some pay more. So I built a fifteen-week plan to make that jump, and I'm in week four right now. In this video, I'm going to open the exact Notion page I'm using and walk you through it week by week. You'll see what I study, the problems I solve, the system designs I practise, the project I'm building, and the three real jobs I'm preparing for. You can copy all of it.
+I'm a senior data engineer at Meta, where the average base salary at my level is about two hundred twenty thousand dollars a year. The staff-level data jobs I'm going after at AI companies pay three hundred fifty to four hundred thousand in base salary, and some pay more. So I built a fifteen-week plan to make that jump, and I'm in week four right now. In this video, I'm going to open the exact Notion page I'm using and walk you through it week by week. You'll see what I study, the problems I solve, the system designs I practise, the project I'm building, and the three real jobs I'm preparing for. If you're a senior engineer who wants to make the same jump, you can copy all of it. And at the end, I'll show you the part I think most people miss.
 
 **[Card beside you: c1-opening-pay.png]**
 
@@ -193,13 +193,19 @@ So let's say your resume says, "Built a Spark pipeline that processes two teraby
 
 **[Screen share: "Behavioral questions and the story bank"]**
 
-The last part is the one I think most people miss, which is getting your stories right. A behavioral round just means the interview where they ask about things you've actually done, like "Tell me about a time you disagreed with another team." Amazon's own interview guide says each interviewer will typically ask two or three of these questions. So the page has twenty-four questions, two a week, and ten story slots.
+Now let's get to the part I promised you at the start. It's the one I think most people miss, which is getting your stories right. A behavioral round just means the interview where they ask about things you've actually done, like "Tell me about a time you disagreed with another team." Amazon's own interview guide says each interviewer will typically ask two or three of these questions. So the page has twenty-four questions, two a week, and ten story slots.
 
 **[PAUSE] [Graphic 16, full screen: g16-story-parts]**
 
 Every story gets the same five parts: the situation, the decision I made, the trade-off, the result, and what I'd do differently. A weak story is about what happened. A strong story is about what you decided, and why. And each story should answer two or three different questions, so ten deep stories can cover almost anything they ask.
 
 **[PAUSE]**
+
+### Recap
+
+**[On camera]**
+
+So the whole plan comes down to three things. Senior gets you hired for what you can build, and staff gets you hired for what you can design. The order is system design first, then coding, then data and AI infrastructure. And the proof is one real project, a resume where every line shows a decision, and ten stories you've written down.
 
 ### Your turn
 
@@ -233,5 +239,5 @@ I'm in week four right now. Tell me in the comments: which week of this plan wou
    - Collapse every week toggle, so you can open them one at a time.
    - The page sits inside your LinkedIn Content Calendar, so the path at the top shows that. Move the page if you don't want that on screen.
    - The story bank is empty on purpose; don't show internal system names or numbers if you fill it in first.
-5. **Lines new in this version that need your OK:** "because that's the part most plans leave out", the week-by-week descriptions (taken from the Notion page), "the question senior interviewers love most", and the architecture walkthrough.
+5. **Lines new in this version that need your OK:** the viewer line and the promise at the end of the opening ("If you're a senior engineer who wants to make the same jump..." and "at the end, I'll show you the part I think most people miss"), the line that pays it off in Part 6, the recap, "because that's the part most plans leave out", the week-by-week descriptions (taken from the Notion page), "the question senior interviewers love most", and the architecture walkthrough.
 6. **The optional template line** only works if you publish a copy of the page with your personal parts removed. Cut it otherwise.
