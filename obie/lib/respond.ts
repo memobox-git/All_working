@@ -169,10 +169,14 @@ ${HOUSE_RULES}
   return insertAgentMessage(ctx, data.reply);
 }
 
-// Picks who answers and how. OBIE runs the front desk; main agents chat
-// about their area.
+// Picks who answers and how. OBIE runs the front desk; a main agent turns
+// goals sent by DM into plans, and chats in its channels and threads.
 export async function respond(ctx: ReplyContext) {
   const agents = await loadAgents(ctx.supabase, ctx.workspaceId);
   if (ctx.agent.id === ctx.obieId) return obieReply(ctx, agents);
+  if ("dmAgentId" in ctx.place && !ctx.threadId) {
+    const { planReply } = await import("./plans");
+    return planReply(ctx, agents);
+  }
   return agentChatReply(ctx, agents);
 }

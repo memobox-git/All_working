@@ -60,17 +60,17 @@ export function MessageItem({
           </div>
         )}
         {message.data?.customStack ? <StackDesignCard design={message.data.customStack as CustomStackDesign} /> : null}
-        {onOpenThread && (replies > 0 || message.kind === "plan") && (
+        {onOpenThread && replies > 0 && (
           <button
             type="button"
             onClick={onOpenThread}
             className="mt-1.5 text-sm font-semibold text-primary hover:underline"
           >
-            {replies > 0 ? `${replies} ${replies === 1 ? "reply" : "replies"}` : "Open thread"}
+            {replies} {replies === 1 ? "reply" : "replies"}
           </button>
         )}
       </div>
-      {onOpenThread && replies === 0 && message.kind !== "plan" && (
+      {onOpenThread && replies === 0 && (
         <button
           type="button"
           onClick={onOpenThread}
