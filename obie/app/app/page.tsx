@@ -4,9 +4,12 @@ import { Suspense } from "react";
 import { ObieDesk } from "@/components/obie-desk";
 import { ObieOrb } from "@/components/obie-orb";
 import { OnboardingChat, type ChatMessage } from "@/components/onboarding-chat";
+import { TeamBuilder, type TeamRow, type TeamStack } from "@/components/team-builder";
 import { toProfile } from "@/lib/business-profile";
 import { OBIE_GREETING } from "@/lib/onboarding";
+import { recommendTeam, type Pick } from "@/lib/recommender";
 import { createClient } from "@/lib/supabase/server";
+import { loadBlueprints } from "@/lib/team";
 import { firstNameOf, loadWorkspace, type WorkspaceContext } from "@/lib/workspace";
 
 export const metadata: Metadata = { title: "OBIE" };
@@ -76,6 +79,37 @@ async function WorkspaceHome() {
     );
   }
 
+  const { count: teamSize } = await supabase
+    .from("agents")
+    .select("id", { count: "exact", head: true })
+    .eq("workspace_id", workspace.workspace_id)
+    .neq("path", "obie");
+
+  if (!teamSize) {
+    const { stacks, suggestions } = recommendTeam(toProfile(profileRow.data), await loadBlueprints(supabase));
+    const row = (p: Pick): TeamRow => ({
+      id: p.blueprint.id,
+      parentId: p.blueprint.parent_id,
+      role: p.blueprint.role,
+      reason: p.reason,
+      credits: p.weeklyCredits,
+      depth: p.depth,
+      on: p.on,
+    });
+    const teamStacks: TeamStack[] = stacks.map((s) => ({
+      stack: s.stack,
+      title: s.title,
+      main: row(s.main),
+      agents: s.agents.map(row),
+    }));
+    return (
+      <>
+        {header}
+        <TeamBuilder stacks={teamStacks} suggestions={suggestions} />
+      </>
+    );
+  }
+
   const firstName = firstNameOf(claims);
   return (
     <>
@@ -84,7 +118,7 @@ async function WorkspaceHome() {
         <ObieDesk
           workspaceId={workspace.workspace_id}
           title={firstName ? `Welcome back, ${firstName}` : "Welcome back"}
-          greeting="Your Business Profile is saved. Next, I'll recommend your team."
+          greeting={`Your team of ${teamSize} agents is ready. The full workspace, where you talk to them, comes next.`}
         />
       </Centered>
     </>
