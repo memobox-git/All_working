@@ -18,6 +18,7 @@ import {
 import { OBIE_GREETING } from "@/lib/onboarding";
 import { recommendTeam, type Pick } from "@/lib/recommender";
 import { createClient } from "@/lib/supabase/server";
+import { creditSummary } from "@/lib/credits-server";
 import { loadBlueprints } from "@/lib/team";
 import { loadWorkspace, type WorkspaceContext } from "@/lib/workspace";
 
@@ -133,7 +134,7 @@ async function WorkspaceHome({ searchParams }: { searchParams: SearchParams }) {
 
   const params = await searchParams;
   const one = (key: string) => (typeof params[key] === "string" ? (params[key] as string) : null);
-  const [{ data: agents }, { data: channels }, { data: approvals }] = await Promise.all([
+  const [{ data: agents }, { data: channels }, { data: approvals }, credits, { data: wsRow }] = await Promise.all([
     supabase.from("agents").select(AGENT_COLUMNS).eq("workspace_id", workspace.workspace_id),
     supabase
       .from("channels")
@@ -146,6 +147,8 @@ async function WorkspaceHome({ searchParams }: { searchParams: SearchParams }) {
       .eq("workspace_id", workspace.workspace_id)
       .order("created_at", { ascending: false })
       .limit(200),
+    creditSummary(supabase, workspace.workspace_id),
+    supabase.from("workspaces").select("timezone").eq("id", workspace.workspace_id).maybeSingle(),
   ]);
   const agentList = (agents ?? []) as Agent[];
   const channelList = (channels ?? []) as Channel[];
@@ -170,6 +173,8 @@ async function WorkspaceHome({ searchParams }: { searchParams: SearchParams }) {
       initialApprovals={(approvals ?? []) as Approval[]}
       initialView={initialView}
       initialThreadId={one("t")}
+      initialCredits={{ enabled: credits.enabled, balance: credits.balance, dailyLeft: credits.dailyLeft }}
+      timezone={wsRow?.timezone ?? "UTC"}
     />
   );
 }
