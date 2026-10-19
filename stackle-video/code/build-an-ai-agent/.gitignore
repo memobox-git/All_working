@@ -1,0 +1,8 @@
+# Built by get_data.py
+*.parquet
+taxi_zone_lookup.csv
+taxi.duckdb
+# Written by the agent
+reports/
+__pycache__/
+.venv/
