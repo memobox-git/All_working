@@ -1,29 +1,39 @@
 "use client";
 
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useMemo, useState, type FormEvent } from "react";
 import { safeNext } from "@/lib/safe-next";
 import { createClient } from "@/lib/supabase/client";
 import { isSupabaseConfigured, supabaseAnonKey, supabaseUrl } from "@/lib/supabase/env";
 
 const linkErrors: Record<string, string> = {
-  link: "That sign-in link expired or was already used. Send yourself a new one.",
+  link: "That email link expired, or it was opened in a different browser from the one you asked in. Ask for a new one here.",
   provider: "Google sign-in didn't finish. Try again, or use your email.",
 };
 
 type GoogleState = "checking" | "on" | "off";
+type Mode = "signin" | "signup" | "reset";
 
+const TITLES: Record<Mode, string> = {
+  signin: "Sign in",
+  signup: "Create account",
+  reset: "Email me a password link",
+};
+
+// Email and password, plus Google when it's switched on. "Set or reset
+// password" emails a link for accounts made before passwords existed.
 export function LoginForm() {
+  const router = useRouter();
   const searchParams = useSearchParams();
   const next = safeNext(searchParams.get("next"));
   const supabase = useMemo(() => (isSupabaseConfigured ? createClient() : null), []);
 
+  const [mode, setMode] = useState<Mode>("signin");
   const [email, setEmail] = useState("");
-  const [sentTo, setSentTo] = useState<string | null>(null);
-  const [sending, setSending] = useState(false);
-  const [error, setError] = useState<string | null>(
-    linkErrors[searchParams.get("error") ?? ""] ?? null,
-  );
+  const [password, setPassword] = useState("");
+  const [busy, setBusy] = useState(false);
+  const [notice, setNotice] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(linkErrors[searchParams.get("error") ?? ""] ?? null);
   const [google, setGoogle] = useState<GoogleState>("checking");
 
   // Ask Supabase whether Google sign-in is switched on, so the button never
@@ -40,34 +50,69 @@ export function LoginForm() {
     return (
       <p className="mt-8 rounded-2xl border border-border bg-surface p-4 text-sm leading-relaxed">
         Sign-in isn&apos;t connected yet. Add the Supabase keys from{" "}
-        <code className="font-semibold">.env.example</code> to Vercel, then redeploy.
+        <code className="font-semibold">.env.example</code> to the site, then redeploy.
       </p>
     );
   }
 
-  const callbackUrl = () =>
-    `${window.location.origin}/auth/callback?next=${encodeURIComponent(next)}`;
+  const callbackUrl = (to: string) => `${window.location.origin}/auth/callback?next=${encodeURIComponent(to)}`;
 
-  async function sendLink(event: FormEvent<HTMLFormElement>) {
+  function switchMode(next: Mode) {
+    setMode(next);
+    setError(null);
+    setNotice(null);
+  }
+
+  async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (!supabase) return;
-    setSending(true);
+    setBusy(true);
     setError(null);
+    setNotice(null);
     const address = email.trim();
-    const { error } = await supabase.auth.signInWithOtp({
-      email: address,
-      options: { emailRedirectTo: callbackUrl() },
-    });
-    setSending(false);
-    if (error) {
-      setError(
-        error.status === 429
-          ? "Too many sign-in emails in a short time. Wait a minute, then try again."
-          : error.message,
-      );
-      return;
+    try {
+      if (mode === "signin") {
+        const { error } = await supabase.auth.signInWithPassword({ email: address, password });
+        if (error) {
+          throw new Error(
+            error.message.toLowerCase().includes("invalid")
+              ? "That email and password don't match. New here? Create an account. Signed in before with an email link? Set a password first."
+              : error.message,
+          );
+        }
+        router.replace(next);
+        router.refresh();
+      } else if (mode === "signup") {
+        const { data, error } = await supabase.auth.signUp({
+          email: address,
+          password,
+          options: { emailRedirectTo: callbackUrl(next) },
+        });
+        if (error) {
+          throw new Error(
+            error.message.toLowerCase().includes("registered")
+              ? "There's already an account with that email. Sign in, or set a password if you used an email link before."
+              : error.message,
+          );
+        }
+        if (data.session) {
+          router.replace(next);
+          router.refresh();
+        } else {
+          setNotice(`Check ${address} to confirm your account, then sign in.`);
+        }
+      } else {
+        const { error } = await supabase.auth.resetPasswordForEmail(address, {
+          redirectTo: callbackUrl("/auth/reset"),
+        });
+        if (error) throw new Error(error.status === 429 ? "Too many emails in a short time. Wait a minute, then try again." : error.message);
+        setNotice(`We sent a link to ${address}. Open it in this browser to set your password.`);
+      }
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Something went wrong. Try again.");
+    } finally {
+      setBusy(false);
     }
-    setSentTo(address);
   }
 
   async function continueWithGoogle() {
@@ -75,54 +120,34 @@ export function LoginForm() {
     setError(null);
     const { error } = await supabase.auth.signInWithOAuth({
       provider: "google",
-      options: { redirectTo: callbackUrl() },
+      options: { redirectTo: callbackUrl(next) },
     });
     if (error) setError(error.message);
   }
 
-  if (sentTo) {
-    return (
-      <div className="mt-8 rounded-2xl border border-border bg-surface p-5" role="status">
-        <p className="font-semibold">Check your email</p>
-        <p className="mt-2 text-sm leading-relaxed text-muted">
-          We sent a sign-in link to <span className="font-semibold text-foreground">{sentTo}</span>.
-          Open it on this device, in this browser.
-        </p>
-        <button
-          type="button"
-          onClick={() => setSentTo(null)}
-          className="mt-4 text-sm font-semibold text-primary"
-        >
-          Use a different email
-        </button>
-      </div>
-    );
-  }
+  const input =
+    "h-12 w-full rounded-xl border border-border bg-background px-4 text-base outline-none transition-colors placeholder:text-muted focus:border-primary focus:ring-2 focus:ring-primary/20";
 
   return (
     <div className="mt-8">
-      <button
-        type="button"
-        onClick={continueWithGoogle}
-        disabled={google !== "on"}
-        className="flex h-12 w-full items-center justify-center gap-3 rounded-full border border-border bg-background font-semibold transition-colors hover:bg-surface disabled:cursor-not-allowed disabled:opacity-50"
-      >
-        <GoogleMark />
-        Continue with Google
-      </button>
-      {google === "off" && (
-        <p className="mt-2 text-center text-xs text-muted">
-          Google sign-in isn&apos;t switched on yet. Use your email for now.
-        </p>
+      {mode !== "reset" && (
+        <div className="mb-6 grid grid-cols-2 rounded-full bg-surface p-1 text-sm font-semibold" role="tablist">
+          {(["signin", "signup"] as const).map((m) => (
+            <button
+              key={m}
+              type="button"
+              role="tab"
+              aria-selected={mode === m}
+              onClick={() => switchMode(m)}
+              className={`rounded-full py-2 transition-colors ${mode === m ? "bg-background shadow-sm" : "text-muted"}`}
+            >
+              {TITLES[m]}
+            </button>
+          ))}
+        </div>
       )}
 
-      <div className="my-6 flex items-center gap-3 text-xs font-semibold uppercase tracking-wider text-muted">
-        <span className="h-px flex-1 bg-border" />
-        or
-        <span className="h-px flex-1 bg-border" />
-      </div>
-
-      <form onSubmit={sendLink} className="space-y-3">
+      <form onSubmit={submit} className="space-y-3">
         <label htmlFor="email" className="block text-sm font-semibold">
           Email
         </label>
@@ -135,21 +160,74 @@ export function LoginForm() {
           placeholder="you@business.com"
           value={email}
           onChange={(event) => setEmail(event.target.value)}
-          className="h-12 w-full rounded-xl border border-border bg-background px-4 text-base outline-none transition-colors placeholder:text-muted focus:border-primary focus:ring-2 focus:ring-primary/20"
+          className={input}
         />
+        {mode !== "reset" && (
+          <>
+            <label htmlFor="password" className="block pt-1 text-sm font-semibold">
+              Password
+            </label>
+            <input
+              id="password"
+              type="password"
+              required
+              minLength={mode === "signup" ? 8 : undefined}
+              autoComplete={mode === "signup" ? "new-password" : "current-password"}
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
+              className={input}
+            />
+            {mode === "signup" && <p className="text-xs text-muted">At least 8 characters.</p>}
+          </>
+        )}
         <button
           type="submit"
-          disabled={sending}
+          disabled={busy}
           className="h-12 w-full rounded-full bg-primary font-semibold text-primary-foreground transition-colors hover:bg-primary-hover disabled:opacity-60"
         >
-          {sending ? "Sending..." : "Email me a sign-in link"}
+          {busy ? "One moment..." : TITLES[mode]}
         </button>
       </form>
 
+      <div className="mt-4 text-center text-sm">
+        {mode === "reset" ? (
+          <button type="button" onClick={() => switchMode("signin")} className="font-semibold text-primary">
+            Back to sign in
+          </button>
+        ) : (
+          <button type="button" onClick={() => switchMode("reset")} className="font-semibold text-primary">
+            Set or reset password
+          </button>
+        )}
+      </div>
+
+      {notice && (
+        <p role="status" className="mt-4 rounded-xl bg-primary-soft p-3 text-sm leading-relaxed">
+          {notice}
+        </p>
+      )}
       {error && (
         <p role="alert" className="mt-4 rounded-xl bg-surface p-3 text-sm leading-relaxed">
           {error}
         </p>
+      )}
+
+      {google === "on" && mode !== "reset" && (
+        <>
+          <div className="my-6 flex items-center gap-3 text-xs font-semibold uppercase tracking-wider text-muted">
+            <span className="h-px flex-1 bg-border" />
+            or
+            <span className="h-px flex-1 bg-border" />
+          </div>
+          <button
+            type="button"
+            onClick={continueWithGoogle}
+            className="flex h-12 w-full items-center justify-center gap-3 rounded-full border border-border bg-background font-semibold transition-colors hover:bg-surface"
+          >
+            <GoogleMark />
+            Continue with Google
+          </button>
+        </>
       )}
     </div>
   );
