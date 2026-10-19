@@ -1,5 +1,8 @@
 import "server-only";
+import type { SupabaseClient } from "@supabase/supabase-js";
 import { z } from "zod";
+import { structuredCall } from "./ai";
+import { toProfile } from "./business-profile";
 
 export const CustomStackSchema = z.object({
   name: z.string().describe("Short stack name, one or two words, e.g. 'Podcast'"),
@@ -37,3 +40,44 @@ The owner is asking for a custom stack. Design it:
 - Agents draft and prepare; anything sent, posted, published or paid for goes to the owner for approval first. Don't promise otherwise.
 
 If the request mostly duplicates an existing stack (listed below), fill in overlap: name that stack and suggest the one agent to add there instead. Still return your best design, in case they want it anyway.`;
+
+// OBIE designs a custom stack for the workspace. Nothing is saved.
+export async function designStack(
+  supabase: SupabaseClient,
+  ctx: { workspaceId: string; obieId: string },
+  ask: string,
+): Promise<CustomStack> {
+  const { workspaceId, obieId } = ctx;
+  const [{ data: profileRow }, { data: blueprints }, { data: agents }] = await Promise.all([
+    supabase.from("business_profiles").select("data").eq("workspace_id", workspaceId).maybeSingle(),
+    supabase.from("blueprints").select("stack, role, level").neq("stack", "obie"),
+    supabase.from("agents").select("stack, name, level").eq("workspace_id", workspaceId),
+  ]);
+
+  const stacks = new Map<string, Set<string>>();
+  for (const { stack, role, level } of [
+    ...(blueprints ?? []),
+    ...(agents ?? []).map((a) => ({ stack: a.stack, role: a.name, level: a.level })),
+  ]) {
+    if (stack === "obie") continue;
+    if (!stacks.has(stack)) stacks.set(stack, new Set());
+    if (level !== "main") stacks.get(stack)!.add(role);
+  }
+  const stackList = [...stacks].map(([stack, roles]) => `- ${stack}: ${[...roles].join(", ")}`).join("\n");
+
+  const { data } = await structuredCall({
+    run: { workspaceId, agentId: obieId, path: "obie" },
+    system: CUSTOM_STACK_SYSTEM,
+    messages: [
+      {
+        role: "user",
+        content: `<existing_stacks>\n${stackList}\n</existing_stacks>\n<business_profile>${JSON.stringify(
+          toProfile(profileRow?.data),
+        )}</business_profile>\n\nThe owner asks: ${ask}`,
+      },
+    ],
+    schema: CustomStackSchema,
+    effort: "medium",
+  });
+  return data;
+}
