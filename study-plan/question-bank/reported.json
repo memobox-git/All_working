@@ -1,0 +1,151 @@
+[
+  {
+    "name": "Coding: Python and DSA",
+    "weeks": "Weeks 1–2",
+    "qs": [
+      {"q": "A bookstore has customer comments from each shop location. Find the most common comment across all locations, ignoring duplicates from the same location.", "who": "Meta · DE screen", "when": "Apr 2025", "url": "https://www.teamblind.com/post/meta-data-engineer-2025-interview-experience-zuvy6qgj"},
+      {"q": "Given a list of workshops, return the largest number of classes hosted in total across any run of consecutive years that each had at least one workshop.", "who": "Meta · DE screen", "when": "Apr 2025", "url": "https://www.teamblind.com/post/meta-data-engineer-2025-interview-experience-zuvy6qgj"},
+      {"q": "Given meetings with a start time, an end time and a number of people, find the most people that were in a meeting at once.", "who": "Meta · DE screen", "when": "Apr 2025", "url": "https://www.teamblind.com/post/meta-data-engineer-2025-interview-experience-zuvy6qgj"},
+      {"q": "Given an array of book prices and a budget, find the maximum number of unique books you can buy.", "who": "Meta · DE screen", "when": "Apr 2025", "url": "https://www.teamblind.com/post/meta-data-engineer-2025-interview-experience-zuvy6qgj"},
+      {"q": "Given employee, department and salary data stored in a dictionary, find the second-highest salary in each department.", "who": "Meta · Senior DE screen", "when": "2026", "url": "https://www.aced.io/experiences/meta-facebook-senior-data-engineer-interview-f71127"},
+      {"q": "Write a function that reads and processes a CSV file, and handles the case where the file is not found.", "who": "Meta · Senior DE screen", "when": "2026", "url": "https://www.aced.io/experiences/meta-facebook-senior-data-engineer-interview-f71127"},
+      {"q": "Given a stream of Uber ride requests, count the requests in every 15-minute tumbling window.", "who": "Meta · Senior DE onsite", "when": "2026", "url": "https://www.aced.io/experiences/meta-facebook-senior-data-engineer-interview-f71127"},
+      {"q": "Given a dictionary of users and their values, find the values that only the current user has and no other user has.", "who": "Meta · Senior+ DE screen (IC6 target)", "when": "Sep 2026", "url": "https://prachub.com/interview-experiences/meta-seniorplus-data-engineer-interview-experience-leadership-and-fullstack-phone-screen-rejected-over-not-enough-impact"},
+      {"q": "Given user view times as (start, end) tuples that may overlap, find the unique time ranges viewed.", "who": "Netflix · L5 DE screen", "when": "Dec 2024", "url": "https://www.teamblind.com/post/netflix-data-engineer-thread-tl3ludjt"},
+      {"q": "Take a single-threaded solution, turn it into a Spark job, then into a real-time streaming version, and explain the trade-offs at each step.", "who": "Netflix · Senior DE (L5)", "when": "Oct 2025", "url": "https://leetcode.com/discuss/post/7264613/state-of-data-engineer-interviews-europe-6zh6/"},
+      {"q": "Traverse a hierarchy in Python (depth-first search).", "who": "Airbnb · Senior DE", "when": "Oct 2024", "url": "https://www.teamblind.com/post/airbnb-sr-data-engineer-interview-u7dzzrpf"},
+      {"q": "Course Schedule I and II (topological sort), and a problem combining merge intervals with binary search.", "who": "Uber · DE (SDE 2)", "when": "Jan 2024", "url": "https://leetcode.com/discuss/post/6286740/uber-data-engineer-sde-2-role-by-anonymo-jo2l/"},
+      {"q": "Using a users_viewership table, design an algorithm for the view count of each movie (merge-intervals logic).", "who": "Uber · L4 DE", "when": "Apr 2024", "url": "https://leetcode.com/discuss/post/5147739/uber-l4-sde-2-data-engineer-hyderabad-ap-0crm/"},
+      {"q": "Solve a hard LeetCode problem (BFS plus dynamic programming) in Python in 25 minutes.", "who": "DoorDash · Staff DE screen", "when": "Feb 2024", "url": "https://leetcode.com/discuss/post/4669851/doordash-data-engineer-by-anonymous_user-b0uk/"},
+      {"q": "House Robber II and binary tree serialize/deserialize. Solve each in SQL first, then write the equivalent Python.", "who": "LinkedIn · Staff DE", "when": "Jan 2024", "url": "https://leetcode.com/discuss/post/4810609/linkedin-staff-data-engineer-india-janua-jwwo/"},
+      {"q": "Merge two sorted arrays. Then: find the smallest missing positive integer.", "who": "Amazon · DE II phone screen", "when": "Dec 2024", "url": "https://leetcode.com/discuss/post/6145648/amazon-data-engineer-ii-phone-interview-2dt5r/"},
+      {"q": "A variant of merge intervals. Follow-up: how would you solve it at scale?", "who": "Google · SWE L6 (staff)", "when": "Mar 2025", "url": "https://leetcode.com/discuss/post/6535469/google-interview-experience-l6-bengaluru-dl55/"},
+      {"q": "Compute shipping cost with tiered pricing. Then: compute transaction fees from a CSV string.", "who": "Stripe · DE screen", "when": "2025–2026", "url": "https://prachub.com/companies/stripe/positions/data-engineer"}
+    ]
+  },
+  {
+    "name": "Coding: concurrency and low-level design",
+    "weeks": "Not in the plan yet",
+    "qs": [
+      {"q": "Build a web crawler. Follow-up: make it multithreaded, using thread pool executors and asyncio.", "who": "Anthropic · ML infra phone screen", "when": "Jan 2026", "url": "https://leetcode.com/discuss/post/7530004/anthropic-phone-screen-experience-5-yoe-5ub66/"},
+      {"q": "Build an encoder and decoder using RLE and BP.", "who": "Databricks · Senior SWE", "when": "Apr 2026", "url": "https://leetcode.com/discuss/post/7736707/brutal-system-design-round-databricks-se-kfng/"},
+      {"q": "Write an iterator for a set that can return a snapshot of the set at any point in time.", "who": "Databricks · Senior SWE", "when": "Apr 2026", "url": "https://leetcode.com/discuss/post/7736707/brutal-system-design-round-databricks-se-kfng/"},
+      {"q": "Design a log writer that is multi-threaded but keeps the writes in order.", "who": "Databricks · Senior SWE (low-level design)", "when": "Apr 2026", "url": "https://leetcode.com/discuss/post/7736707/brutal-system-design-round-databricks-se-kfng/"},
+      {"q": "In a distributed N-ary tree where nodes talk only by async messages, count the nodes and print the result at the root.", "who": "Snowflake · Backend SWE", "when": "Jun 2026", "url": "https://leetcode.com/discuss/post/8354847/snowflake-interview-experience-backend-e-32sz/"}
+    ]
+  },
+  {
+    "name": "SQL",
+    "weeks": "Weeks 1–2",
+    "qs": [
+      {"q": "Calculate the percentage of total sales completed on the same day the customer registered.", "who": "Meta · DE screen", "when": "Apr 2025", "url": "https://www.teamblind.com/post/meta-data-engineer-2025-interview-experience-zuvy6qgj"},
+      {"q": "Find customers who bought 3 or more books on both the first and last day of sales, excluding those with only one transaction.", "who": "Meta · DE screen", "when": "Apr 2025", "url": "https://www.teamblind.com/post/meta-data-engineer-2025-interview-experience-zuvy6qgj"},
+      {"q": "Find the top 5 customers, ordered by the average payment per book made by the people they invited.", "who": "Meta · DE screen", "when": "Apr 2025", "url": "https://www.teamblind.com/post/meta-data-engineer-2025-interview-experience-zuvy6qgj"},
+      {"q": "Follow-up on your answer: how would you write it without a CTE?", "who": "Meta · DE onsite", "when": "Apr 2025", "url": "https://www.teamblind.com/post/meta-data-engineer-2025-interview-experience-zuvy6qgj"},
+      {"q": "Find the number of people who checked out a book on the same day that another person returned that same book.", "who": "Meta · Senior DE screen", "when": "2026", "url": "https://www.aced.io/experiences/meta-facebook-senior-data-engineer-interview-f71127"},
+      {"q": "Car rental schema: daily rental utilisation by city and car size, compared against inventory.", "who": "Meta · DE onsite", "when": "Dec 2025", "url": "https://prachub.com/interview-experiences/meta-data-engineer-interview-experience-three-vo-rounds-reel-car-rental-carpool-end-in-an-add-on-interview"},
+      {"q": "Rewrite your query to minimise table scans.", "who": "Meta · DE onsite", "when": "Sep 2025", "url": "https://prachub.com/interview-experiences/meta-data-engineer-interview-experience-onsite-loop-product-sense-data-modeling-python-sql"},
+      {"q": "How long did each user stay on a page? (LEAD, then a difference.)", "who": "Airbnb · DE onsite", "when": "Sep 2026", "url": "https://prachub.com/interview-experiences/airbnb-data-engineer-interview-experience-four-round-onsite-then-a-recruiter-who-ghosted-me"},
+      {"q": "Find super users: users with impressions on 7 consecutive days. Then: top N, and how do you handle ties?", "who": "Airbnb · DE onsite", "when": "Sep 2026", "url": "https://prachub.com/interview-experiences/airbnb-data-engineer-interview-experience-four-round-onsite-then-a-recruiter-who-ghosted-me"},
+      {"q": "Find super hosts: at least three listings, an average rating above a threshold, and at least 90% of listings with a review in the last 30 days.", "who": "Airbnb · DE", "when": "Sep 2026", "url": "https://prachub.com/interview-experiences/airbnb-data-engineer-interview-experience-four-round-onsite-then-a-recruiter-who-ghosted-me"},
+      {"q": "Find the median price for each city.", "who": "Airbnb · DE online assessment", "when": "Sep 2026", "url": "https://prachub.com/interview-experiences/airbnb-data-engineer-interview-experience-four-round-onsite-then-a-recruiter-who-ghosted-me"},
+      {"q": "Find drivers who haven't taken a trip in the first 7 days after signup. Then: how would you optimise it as the data grows?", "who": "Uber · L4 DE", "when": "Apr 2024", "url": "https://leetcode.com/discuss/post/5147739/uber-l4-sde-2-data-engineer-hyderabad-ap-0crm/"},
+      {"q": "Find the top 3 cities each month.", "who": "Uber · L4 DE", "when": "Apr 2024", "url": "https://leetcode.com/discuss/post/5147739/uber-l4-sde-2-data-engineer-hyderabad-ap-0crm/"},
+      {"q": "Find the total time each driver spent driving each day, when a trip's start and end can fall on different days.", "who": "Uber · L4 DE", "when": "Apr 2024", "url": "https://leetcode.com/discuss/post/5147739/uber-l4-sde-2-data-engineer-hyderabad-ap-0crm/"},
+      {"q": "A hard SQL problem with window functions. Then: how would you solve it without window functions?", "who": "Uber · DE screen", "when": "Feb 2025", "url": "https://www.youtube.com/watch?v=o7YigOzfkzg"},
+      {"q": "Find users who changed their city more than 3 times in the last year.", "who": "Amazon · DE II phone screen", "when": "Dec 2024", "url": "https://leetcode.com/discuss/post/6145648/amazon-data-engineer-ii-phone-interview-2dt5r/"},
+      {"q": "Print the distinct pairs of connected cities, where a→b and b→a count once.", "who": "Amazon · DE II phone screen", "when": "Dec 2024", "url": "https://leetcode.com/discuss/post/6145648/amazon-data-engineer-ii-phone-interview-2dt5r/"},
+      {"q": "Implement row_number() without using window functions.", "who": "Amazon · DE", "when": "May 2024", "url": "https://leetcode.com/discuss/post/5227254/amazon-data-engineer-2-worst-experience-8iiu8/"},
+      {"q": "Live SQL: find users with consecutive logins.", "who": "Amazon · DE", "when": "Jul 2026", "url": "https://leetcode.com/discuss/post/8401103/amazon-data-engineer-interview-experienc-ubdx/"}
+    ]
+  },
+  {
+    "name": "Data modeling",
+    "weeks": "Weeks 7–8",
+    "qs": [
+      {"q": "Netflix is launching an ad-supported plan and your team builds the ad system. Design the data models that let ad operations and business teams traffic direct-sold demand into the system.", "who": "Netflix · Senior SWE (data modeling round)", "when": "Oct 2025", "url": "https://leetcode.com/discuss/post/7291543/netflix-data-modeling-round-senior-softw-8j2q/"},
+      {"q": "Design a model for cumulative booking metrics that also shows first and last booking times. Then defend every design choice, and optimise the queries and tables.", "who": "Airbnb · DE", "when": "Sep 2026", "url": "https://prachub.com/interview-experiences/airbnb-data-engineer-interview-experience-four-round-onsite-then-a-recruiter-who-ghosted-me"},
+      {"q": "Reels case: model the entities for feed content and shares.", "who": "Meta · DE onsite", "when": "Dec 2025", "url": "https://prachub.com/interview-experiences/meta-data-engineer-interview-experience-three-vo-rounds-reel-car-rental-carpool-end-in-an-add-on-interview"},
+      {"q": "Follow-ups on your model: what if I want to track changes to this? Is it one-to-many or many-to-many? How do you handle a many-to-many relationship?", "who": "Meta · DE onsite", "when": "Sep 2025", "url": "https://prachub.com/interview-experiences/meta-data-engineer-interview-experience-onsite-loop-product-sense-data-modeling-python-sql"},
+      {"q": "Design a data model for an Uber ride app. How would you optimise the transactional table once it grows beyond 1 TB? Round-robin or hash partitioning?", "who": "Meta · Senior DE onsite", "when": "2026", "url": "https://www.aced.io/experiences/meta-facebook-senior-data-engineer-interview-f71127"},
+      {"q": "Extend the model to answer new business questions. Design physical tables that handle big data at scale, then optimise them for the key analytical questions.", "who": "Meta · L7 DE screen (recruiter agenda)", "when": "Feb 2025", "url": "https://leetcode.com/discuss/post/6395510/l7-meta-data-engineer-by-anonymous_user-0euy/"},
+      {"q": "Build a data model for an app you use every day, then answer a set of SQL queries on it. (Graded on whether the queries are easy or complex on your model; bridge tables and SCD came up.)", "who": "Uber · DE", "when": "Feb 2025", "url": "https://www.youtube.com/watch?v=o7YigOzfkzg"},
+      {"q": "For a top-10-movies report, design the remaining source tables and the warehouse tables (facts and dimensions).", "who": "Uber · L4 DE", "when": "Apr 2024", "url": "https://leetcode.com/discuss/post/5147739/uber-l4-sde-2-data-engineer-hyderabad-ap-0crm/"},
+      {"q": "An orders and transactions schema with facts and dimensions, handling Prime status as a slowly changing dimension. A clickstream and session schema, with partitions and sort keys.", "who": "Amazon · DE (candidate's prep list)", "when": "Sep 2025", "url": "https://www.teamblind.com/post/my-amazon-data-engineer-interview-experience-2025-8bpk8w0m"}
+    ]
+  },
+  {
+    "name": "Pipeline and system design",
+    "weeks": "Weeks 3–8 and 14–15",
+    "qs": [
+      {"q": "Design an experimentation (A/B testing) platform, and build the data pipeline for it.", "who": "LinkedIn · Staff DE", "when": "Jan 2024", "url": "https://leetcode.com/discuss/post/4810609/linkedin-staff-data-engineer-india-janua-jwwo/"},
+      {"q": "Design a key-value store.", "who": "LinkedIn · Staff DE", "when": "Jan 2024", "url": "https://leetcode.com/discuss/post/4810609/linkedin-staff-data-engineer-india-janua-jwwo/"},
+      {"q": "Design config rollout and click aggregation.", "who": "Netflix · DE onsite", "when": "Dec 2025", "url": "https://prachub.com/interview-questions/design-config-rollout-and-click-aggregation"},
+      {"q": "Design a pipeline for Netflix clickstream events, feeding an hourly dashboard of the top trending movies in each location.", "who": "Uber · L4 DE", "when": "Apr 2024", "url": "https://leetcode.com/discuss/post/5147739/uber-l4-sde-2-data-engineer-hyderabad-ap-0crm/"},
+      {"q": "Design the backend of a near-real-time dashboard that shows the trending dishes in a city.", "who": "Uber · DE (SDE 2)", "when": "Jan 2024", "url": "https://leetcode.com/discuss/post/6286740/uber-data-engineer-sde-2-role-by-anonymo-jo2l/"},
+      {"q": "Design a system that returns the top 10 products.", "who": "Amazon · DE II", "when": "Dec 2024", "url": "https://leetcode.com/discuss/post/6121910/amazon-data-engineer-2-interview-experie-62mb/"},
+      {"q": "ETL design: how do you handle messy or late data, retries and idempotency? When do you choose streaming over batch?", "who": "Amazon · DE", "when": "Sep 2025", "url": "https://www.teamblind.com/post/my-amazon-data-engineer-interview-experience-2025-8bpk8w0m"},
+      {"q": "Walk through the steps data takes from capture to the end, and how you'd optimise the queries and tables along the way.", "who": "Meta · Senior+ DE screen (IC6 target)", "when": "Sep 2026", "url": "https://prachub.com/interview-experiences/meta-seniorplus-data-engineer-interview-experience-leadership-and-fullstack-phone-screen-rejected-over-not-enough-impact"},
+      {"q": "Build a payment system for an online game platform, covering refunds, credits and in-game items. Then: concurrent transactions, and how failure recovery works.", "who": "Databricks · Senior SWE", "when": "Apr 2026", "url": "https://leetcode.com/discuss/post/7736707/brutal-system-design-round-databricks-se-kfng/"},
+      {"q": "Here is a design on the screen. Walk the end-to-end flow, critique it, and tell us what you would change.", "who": "Anthropic · EM, Data Infrastructure", "when": "2026", "url": "https://www.aced.io/experiences/anthropic-engineering-manager-interview-028476"},
+      {"q": "Infra-heavy design with the maths done out loud: throughput, latency, data size, TPS.", "who": "Anthropic · infra/platform, staff-level candidate", "when": "Feb 2026", "url": "https://www.teamblind.com/post/lessons-learned-from-a-failed-anthropic-interview-and-what-role-ai-played-in-prep-nzwtuar1"},
+      {"q": "Design an S3-like object store. Design a distributed job scheduler like Airflow. Design a messaging system like Kafka.", "who": "Amazon, Pinterest, Airbnb · senior/staff loops", "when": "Sep 2026", "url": "https://www.teamblind.com/post/are-seniorstaff-engineering-interviews-testing-experience-anymore-or-just-system-design-preparation-xi66i47f"},
+      {"q": "Design a distributed task scheduler.", "who": "LinkedIn · Senior DE", "when": "Sep 2024", "url": "https://leetcode.com/discuss/post/5758771/linkedin-senior-data-engineer-by-anonymo-c92j/"},
+      {"q": "Design a system that ingests data for both product and warehousing uses, and explain how you make it resilient. Then: describe a RAG pipeline.", "who": "Unnamed AI-adjacent company · Senior DE", "when": "Apr 2026", "url": "https://www.reddit.com/r/dataengineering/comments/1sbpbpa/"}
+    ]
+  },
+  {
+    "name": "Product sense and metrics",
+    "weeks": "Not in the plan yet",
+    "qs": [
+      {"q": "How would you evaluate short video's impact on the news feed? (Users, content, interactions.)", "who": "Meta · DE onsite", "when": "Dec 2025", "url": "https://prachub.com/interview-experiences/meta-data-engineer-interview-experience-three-vo-rounds-reel-car-rental-carpool-end-in-an-add-on-interview"},
+      {"q": "How would you measure monetization for a gaming company's product, what reports would you build, and how would you verify that a broken feature was actually fixed?", "who": "Meta · Senior+ DE screen (IC6 target)", "when": "Sep 2026", "url": "https://prachub.com/interview-experiences/meta-seniorplus-data-engineer-interview-experience-leadership-and-fullstack-phone-screen-rejected-over-not-enough-impact"},
+      {"q": "A metric drops on the dashboard of an Instagram-like product. What do you do? Should this metric be on the dashboard while you do the root-cause analysis?", "who": "Meta · DE", "when": "2025", "url": "https://www.aced.io/experiences/meta-facebook-data-engineer-interview-6679f7"},
+      {"q": "Define the success metrics for a project (Lyft, Twitter or video theme).", "who": "Meta · DE onsite", "when": "Aug 2024", "url": "https://leetcode.com/discuss/post/5681814/meta-data-engineer-onsite-interview-by-a-qsa1/"},
+      {"q": "Define the KPIs you'd track for a ride-share algorithm.", "who": "Meta · IC4 DE", "when": "Nov 2024", "url": "https://www.teamblind.com/post/meta-ic4-de-interview-breakdown-lro6gmpm"},
+      {"q": "Define a success metric. The metric drops: find the root cause. What is the leading metric? What segments would you look at?", "who": "Meta · DE onsite", "when": "Sep 2025", "url": "https://prachub.com/interview-experiences/meta-data-engineer-interview-experience-onsite-loop-product-sense-data-modeling-python-sql"},
+      {"q": "Design visualizations for streaming metrics.", "who": "Meta · DE", "when": "Aug 2025", "url": "https://prachub.com/interview-experiences/meta-data-engineer-interview-experience-three-onsite-case-studies-on-private-accounts-carpooling-and-netflix"},
+      {"q": "Product sense in the phone screen: pick the metrics, then design the ETL (facts and dimensions) behind them.", "who": "Netflix · Senior DE (L5)", "when": "Oct 2025", "url": "https://leetcode.com/discuss/post/7264613/state-of-data-engineer-interviews-europe-6zh6/"},
+      {"q": "Describe building and improving a dashboard.", "who": "Google · DE screen", "when": "Mar 2025", "url": "https://prachub.com/companies/google/positions/data-engineer"}
+    ]
+  },
+  {
+    "name": "Project deep dive",
+    "weeks": "Start in week 1",
+    "qs": [
+      {"q": "Walk me through your most impactful project. (Manager round, with a domain deep dive and a Spark deep dive.)", "who": "Netflix · L5 DE", "when": "Dec 2024", "url": "https://www.teamblind.com/post/netflix-data-engineer-thread-tl3ludjt"},
+      {"q": "Give a presentation of one of your previous projects (domain deep dive).", "who": "Databricks · Senior Staff (L7)", "when": "May 2025", "url": "https://www.teamblind.com/post/databricks-interview-for-senior-staff-engg-l7-infoadeo"},
+      {"q": "Present a recent large project end to end. How many people were involved? Can we go deeper on the GDPR data management part?", "who": "Anthropic · EM, Data Infrastructure", "when": "2026", "url": "https://www.aced.io/experiences/anthropic-engineering-manager-interview-028476"},
+      {"q": "Go deeper on each of the last three companies on your resume. What changed because of your work?", "who": "Anthropic · EM, Data Infrastructure (phone)", "when": "2026", "url": "https://www.aced.io/experiences/anthropic-engineering-manager-interview-028476"},
+      {"q": "Talk through your technical projects: their scale, complexity, and the decisions and trade-offs you made.", "who": "Databricks · Senior SWE (behavioral)", "when": "Nov 2025", "url": "https://www.youtube.com/watch?v=Fdd0PjsieWk"},
+      {"q": "Walk through the details of an end-to-end project.", "who": "Airbnb · DE (behavioral)", "when": "Sep 2026", "url": "https://prachub.com/interview-experiences/airbnb-data-engineer-interview-experience-four-round-onsite-then-a-recruiter-who-ghosted-me"},
+      {"q": "Tell me about the best projects you've worked on, or the achievements you're proudest of.", "who": "Uber · DE (collaboration and leadership)", "when": "Feb 2025", "url": "https://www.youtube.com/watch?v=o7YigOzfkzg"}
+    ]
+  },
+  {
+    "name": "Behavioral and leadership",
+    "weeks": "Start in week 1",
+    "qs": [
+      {"q": "Explain the impact of your project, how you mentor, and how you split work and assign credit on a team. (The candidate was rejected because the impact 'wasn't big enough'.)", "who": "Meta · Senior+ DE leadership round (IC6 target)", "when": "Sep 2026", "url": "https://prachub.com/interview-experiences/meta-seniorplus-data-engineer-interview-experience-leadership-and-fullstack-phone-screen-rejected-over-not-enough-impact"},
+      {"q": "Tell me about a time you had a conflict and made a data-driven decision.", "who": "Meta · DE ownership round", "when": "Aug 2024", "url": "https://leetcode.com/discuss/post/5681814/meta-data-engineer-onsite-interview-by-a-qsa1/"},
+      {"q": "Tell me about a conflict with your team lead or manager. A process you improved that had business impact. A time you learned a tool quickly and delivered.", "who": "Meta · DE", "when": "2025", "url": "https://www.aced.io/experiences/meta-facebook-data-engineer-interview-6679f7"},
+      {"q": "Tell me about a project where a stakeholder changed priority after work had started. What would you do about a feature that is profitable for the company but clearly costs customers more money? Tell me about a bug or mistake you shipped.", "who": "Anthropic · EM, Data Infrastructure", "when": "2026", "url": "https://www.aced.io/experiences/anthropic-engineering-manager-interview-028476"},
+      {"q": "What is your view on AI safety? (Recruiter call: 'develop a strong opinion'.)", "who": "Anthropic · ML infra", "when": "Jan 2026", "url": "https://leetcode.com/discuss/post/7530004/anthropic-phone-screen-experience-5-yoe-5ub66/"},
+      {"q": "Tell me about a time you led a difficult project. How did you handle conflict with a teammate? Which part of your work are you most proud of?", "who": "Databricks · hiring manager round", "when": "Nov 2025", "url": "https://www.youtube.com/watch?v=Fdd0PjsieWk"},
+      {"q": "Leadership Principles in every screen. Prepare Dive Deep (debugging a critical pipeline under pressure) and Insist on the Highest Standards (raising data quality when deadlines were tight).", "who": "Amazon · DE (offer)", "when": "Sep 2025", "url": "https://www.teamblind.com/post/my-amazon-data-engineer-interview-experience-2025-8bpk8w0m"},
+      {"q": "Talk about projects where you involved many teams or got leadership buy-in, and how you led and mentored others.", "who": "Airbnb and others · Senior/Staff DE loops", "when": "Dec 2025", "url": "https://www.teamblind.com/post/from-layoff-to-airbnb-g9-my-story-and-interview-tips-de-q7bhj5u3"}
+    ]
+  },
+  {
+    "name": "Debugging and Spark depth",
+    "weeks": "Weeks 5–6 and 13",
+    "qs": [
+      {"q": "How will Spark behave when you join an X GB dataset with a Y GB dataset and don't have enough resources? What can go wrong, and how would you optimise it?", "who": "Uber · DE screen", "when": "Feb 2025", "url": "https://www.youtube.com/watch?v=o7YigOzfkzg"},
+      {"q": "Explain the physical join types: hash join and broadcast nested loop join. Then: idempotency, and change data capture (CDC).", "who": "Amazon · DE", "when": "Jul 2026", "url": "https://leetcode.com/discuss/post/8401103/amazon-data-engineer-interview-experienc-ubdx/"},
+      {"q": "Design pipelines, then debug scenarios on them.", "who": "Netflix · Senior DE (L5)", "when": "Oct 2025", "url": "https://leetcode.com/discuss/post/7264613/state-of-data-engineer-interviews-europe-6zh6/"},
+      {"q": "Query and table optimisation questions, asked without context.", "who": "Airbnb · DE (data modeling round)", "when": "Sep 2026", "url": "https://prachub.com/interview-experiences/airbnb-data-engineer-interview-experience-four-round-onsite-then-a-recruiter-who-ghosted-me"},
+      {"q": "Unit and integration testing for ETL, performance tuning, and speed versus memory trade-offs in big data processing.", "who": "Amazon · DE onsite (recruiter prep call)", "when": "Jan 2025", "url": "https://www.reddit.com/r/dataengineering/comments/1hxnysl/"},
+      {"q": "An AI debugging round, alongside full-stack and behavioral rounds.", "who": "Meta · level 6 DE onsite (one comment)", "when": "Jul 2026", "url": "https://www.teamblind.com/post/looking-for-meta-de-onsite-guidance-wryoqexf"}
+    ]
+  }
+]

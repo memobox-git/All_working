@@ -4,6 +4,7 @@ Usage: python3 build_pdf.py   (writes question-bank.html, then render_pdf.js tur
 """
 import html
 import json
+from urllib.parse import urlparse
 from pathlib import Path
 
 HERE = Path(__file__).parent
@@ -17,6 +18,9 @@ NAMES = [
 ]
 
 topics = json.loads((HERE / "questions.json").read_text())
+reported = json.loads((HERE / "reported.json").read_text())
+SOURCES = {"www.teamblind.com": "Blind", "leetcode.com": "LeetCode", "prachub.com": "PracHub",
+           "www.aced.io": "Aced", "www.reddit.com": "Reddit", "www.youtube.com": "YouTube"}
 
 
 def esc(s):
@@ -55,6 +59,33 @@ for i, (t, name) in enumerate(zip(topics, NAMES), 1):
         f'<h2>{html.escape(name)}</h2><p class="meta">100 questions · {senior} Senior · {100 - senior} Staff</p></header>'
         + "".join(secs) + "</article>")
 
+# The reported questions go last, as a 12th section with a source line under each question.
+rq, rep_secs = 0, []
+for s in reported:
+    items = []
+    for q in s["qs"]:
+        rq += 1
+        src = SOURCES[urlparse(q["url"]).netloc]
+        items.append(
+            f'<li><span class="box"></span><span class="id">RQ-{rq:02d}</span>'
+            f'<span class="q">{esc(q["q"])}<span class="src">{html.escape(q["who"])} · {q["when"]} · '
+            f'<a href="{html.escape(q["url"])}">{src}</a></span></span></li>')
+    rep_secs.append(f'<section><h3>{html.escape(s["name"])} <span class="wk">{html.escape(s["weeks"])}</span></h3>'
+                    f'<ol>{"".join(items)}</ol></section>')
+toc_rows.append(
+    f'<tr><td class="n">12</td><td>Reported in real interviews</td>'
+    f'<td class="ids">RQ-01 – RQ-{rq:02d}</td><td class="num">–</td><td class="num">–</td></tr>')
+body.append(
+    '<article class="topic rep"><header><div class="kicker">Bonus</div>'
+    '<h2>Reported in real interviews</h2>'
+    f'<p class="meta">{rq} questions from public write-ups, 2024–2026 · each links to its source</p></header>'
+    '<div class="how"><ul>'
+    "<li>Each question comes from one person's write-up on Blind, LeetCode Discuss, Reddit, YouTube or an interview-prep site. "
+    'Treat it as a sample of what gets asked, not a list of what will be asked.</li>'
+    '<li>Wording is quoted or closely paraphrased. Few write-ups come from staff loops; where one does, the line says so.</li>'
+    '<li>Sections marked <b>Not in the plan yet</b> are rounds the 15 weeks don\'t train.</li>'
+    '</ul></div>' + "".join(rep_secs) + "</article>")
+
 page = f"""<!doctype html><html><head><meta charset="utf-8"><title>Staff Data Engineer Interview Question Bank</title>
 <style>
 {''.join(font_face(w) for w in (400, 600, 700, 800))}
@@ -91,18 +122,22 @@ section{{margin-top:4.5mm}}
 h3{{font-size:10.5pt;margin:0 0 2mm;font-weight:800;break-after:avoid}}
 h3 .wk{{font-weight:600;font-size:8pt;color:var(--blue);background:var(--blue-soft);padding:.4mm 2mm;border-radius:2mm;margin-left:1.5mm;white-space:nowrap}}
 ol{{list-style:none;margin:0;padding:0}}
-.topic li{{display:grid;grid-template-columns:4.2mm 15mm 12mm 1fr;column-gap:2mm;align-items:baseline;padding:1.5mm 0;border-bottom:.6px solid var(--line);break-inside:avoid}}
+.topic ol>li{{display:grid;grid-template-columns:4.2mm 15mm 12mm 1fr;column-gap:2mm;align-items:baseline;padding:1.5mm 0;border-bottom:.6px solid var(--line);break-inside:avoid}}
 .box{{width:3.2mm;height:3.2mm;border:1.2px solid var(--ink);border-radius:.7mm;display:inline-block;transform:translateY(.5mm)}}
 .id{{font-family:"DejaVu Sans Mono",monospace;font-size:8pt;color:var(--muted)}}
 .lvl{{font-size:7pt;font-weight:700;letter-spacing:.06em;text-transform:uppercase;text-align:center;border-radius:1.5mm;padding:.3mm 0}}
 .lvl.senior{{background:var(--blue-soft);color:var(--blue)}}
 .lvl.staff{{background:var(--yellow);color:var(--ink)}}
+.topic.rep ol>li{{grid-template-columns:4.2mm 13mm 1fr}}
+.topic.rep .how{{margin:0 0 2mm}}
+.src{{display:block;font-size:7.8pt;color:var(--muted);margin-top:.6mm}}
+.src a{{color:var(--blue);text-decoration:none}}
 </style></head><body>
 <div class="cover">
   <div class="kicker">Senior → Staff Data Engineer</div>
   <h1>Interview Question Bank<br><span>1,100 questions</span></h1>
-  <p class="sub">100 questions for each of the 11 topics in the 15-week plan, from Python and SQL to system design, AI infrastructure and behavioral rounds. Questions only: practise answering out loud, then tick the box.</p>
-  <div class="stats"><div class="stat"><b>1,100</b><span>questions</span></div><div class="stat"><b>11</b><span>topics</span></div><div class="stat"><b>15</b><span>weeks</span></div></div>
+  <p class="sub">100 questions for each of the 11 topics in the 15-week plan, from Python and SQL to system design, AI infrastructure and behavioral rounds. Questions only: practise answering out loud, then tick the box. At the back: {rq} questions reported from real interviews, with sources.</p>
+  <div class="stats"><div class="stat"><b>1,100</b><span>questions</span></div><div class="stat"><b>11</b><span>topics</span></div><div class="stat"><b>15</b><span>weeks</span></div><div class="stat"><b>+{rq}</b><span>reported in real interviews</span></div></div>
   <div class="how"><h2>How to use it</h2><ul>
     <li><b>Senior</b> questions are the ones to answer cold, in under 2 minutes.</li>
     <li><b>Staff</b> questions go deeper: trade-offs, scale, and why you'd choose one option over another. Answer them the way you'd explain a decision to another team.</li>
