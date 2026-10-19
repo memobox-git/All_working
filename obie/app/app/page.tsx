@@ -1,42 +1,63 @@
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import { Suspense } from "react";
-import { ObieDesk } from "@/components/obie-desk";
 import { ObieOrb } from "@/components/obie-orb";
 import { OnboardingChat, type ChatMessage } from "@/components/onboarding-chat";
 import { TeamBuilder, type TeamRow, type TeamStack } from "@/components/team-builder";
+import type { View } from "@/components/workspace/sidebar";
+import { Workspace } from "@/components/workspace/workspace";
 import { toProfile } from "@/lib/business-profile";
+import {
+  AGENT_COLUMNS,
+  APPROVAL_COLUMNS,
+  CHANNEL_COLUMNS,
+  type Agent,
+  type Approval,
+  type Channel,
+} from "@/lib/chat-types";
 import { OBIE_GREETING } from "@/lib/onboarding";
 import { recommendTeam, type Pick } from "@/lib/recommender";
 import { createClient } from "@/lib/supabase/server";
 import { loadBlueprints } from "@/lib/team";
-import { firstNameOf, loadWorkspace, type WorkspaceContext } from "@/lib/workspace";
+import { loadWorkspace, type WorkspaceContext } from "@/lib/workspace";
 
 export const metadata: Metadata = { title: "OBIE" };
 
-export default function AppHome() {
+type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
+
+export default function AppHome({ searchParams }: { searchParams: SearchParams }) {
   return (
-    <div className="flex min-h-dvh flex-col pt-[env(safe-area-inset-top)]">
-      <Suspense fallback={<Opening />}>
-        <WorkspaceHome />
-      </Suspense>
-    </div>
+    <Suspense
+      fallback={
+        <div className="flex min-h-dvh flex-col">
+          <Opening />
+        </div>
+      }
+    >
+      <WorkspaceHome searchParams={searchParams} />
+    </Suspense>
   );
 }
 
-async function WorkspaceHome() {
+function Page({ children }: { children: React.ReactNode }) {
+  return <div className="flex min-h-dvh flex-col pt-[env(safe-area-inset-top)]">{children}</div>;
+}
+
+async function WorkspaceHome({ searchParams }: { searchParams: SearchParams }) {
   const supabase = await createClient();
   let ctx: WorkspaceContext | null;
   try {
     ctx = await loadWorkspace(supabase);
   } catch (error) {
     return (
+      <Page>
       <Centered>
         <ObieOrb size={72} />
         <h1 className="mt-6 text-2xl font-bold tracking-tight">OBIE couldn&apos;t open your workspace</h1>
         <p className="mt-2 max-w-sm text-muted">Refresh the page to try again.</p>
         <p className="mt-4 text-xs text-muted">{error instanceof Error ? error.message : null}</p>
       </Centered>
+      </Page>
     );
   }
   if (!ctx) redirect("/login");
@@ -67,7 +88,7 @@ async function WorkspaceHome() {
     const draft = lastObie?.data?.ready ? toProfile(lastObie.data.profile) : null;
 
     return (
-      <>
+      <Page>
         {header}
         <OnboardingChat
           workspaceId={workspace.workspace_id}
@@ -75,7 +96,7 @@ async function WorkspaceHome() {
           initialMessages={messages}
           initialProfile={draft}
         />
-      </>
+      </Page>
     );
   }
 
@@ -103,25 +124,53 @@ async function WorkspaceHome() {
       agents: s.agents.map(row),
     }));
     return (
-      <>
+      <Page>
         {header}
         <TeamBuilder stacks={teamStacks} suggestions={suggestions} />
-      </>
+      </Page>
     );
   }
 
-  const firstName = firstNameOf(claims);
+  const params = await searchParams;
+  const one = (key: string) => (typeof params[key] === "string" ? (params[key] as string) : null);
+  const [{ data: agents }, { data: channels }, { data: approvals }] = await Promise.all([
+    supabase.from("agents").select(AGENT_COLUMNS).eq("workspace_id", workspace.workspace_id),
+    supabase
+      .from("channels")
+      .select(CHANNEL_COLUMNS)
+      .eq("workspace_id", workspace.workspace_id)
+      .order("created_at", { ascending: false }),
+    supabase
+      .from("approvals")
+      .select(APPROVAL_COLUMNS)
+      .eq("workspace_id", workspace.workspace_id)
+      .order("created_at", { ascending: false })
+      .limit(200),
+  ]);
+  const agentList = (agents ?? []) as Agent[];
+  const channelList = (channels ?? []) as Channel[];
+  const dm = one("dm");
+  const c = one("c");
+  const initialView: View =
+    one("view") === "needs"
+      ? { type: "needs" }
+      : c && channelList.some((x) => x.id === c)
+        ? { type: "channel", channelId: c }
+        : dm && agentList.some((a) => a.id === dm && a.level === "main")
+          ? { type: "dm", agentId: dm }
+          : { type: "dm", agentId: obieId };
+
   return (
-    <>
-      {header}
-      <Centered>
-        <ObieDesk
-          workspaceId={workspace.workspace_id}
-          title={firstName ? `Welcome back, ${firstName}` : "Welcome back"}
-          greeting={`Your team of ${teamSize} agents is ready. The full workspace, where you talk to them, comes next.`}
-        />
-      </Centered>
-    </>
+    <Workspace
+      workspaceId={workspace.workspace_id}
+      workspaceName={workspace.workspace_name}
+      email={claims.email}
+      initialAgents={agentList}
+      initialChannels={channelList}
+      initialApprovals={(approvals ?? []) as Approval[]}
+      initialView={initialView}
+      initialThreadId={one("t")}
+    />
   );
 }
 
