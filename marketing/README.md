@@ -27,7 +27,7 @@ Notion, in the **Stackle Content Calendar**, in the view **Agent drafts to revie
 | Every Monday, 4:50am | **Weekly pack** for next week: 3 long videos (research, package and script), 14 Shorts, and 7 LinkedIn topics |
 | Every day, 6:50am | **LinkedIn post** for that morning's 8am slot |
 
-Each run sends a phone notification when it finishes, with links to the new drafts and a list of what needs Chris.
+Both run inside one Claude Code session, "Stackle marketing agents (scheduled runs)", which has this repo on the `claude/building-agents-75r4jg` branch and the Notion connection. Open that session to see each run's full report. Each run ends with a phone notification that links to the new drafts and lists what needs Chris. The daily run skips the notification when the post was already written.
 
 ## Asking for something yourself
 
