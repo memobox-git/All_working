@@ -1,5 +1,6 @@
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
+import { isAllowedEmail } from "../allowlist";
 import { isSupabaseConfigured, supabaseAnonKey, supabaseUrl } from "./env";
 
 // Pages that need a signed-in user.
@@ -50,6 +51,20 @@ export async function updateSession(request: NextRequest) {
     const login = new URL("/login", request.url);
     login.searchParams.set("next", path + request.nextUrl.search);
     return carryCookies(response, NextResponse.redirect(login), noCacheHeaders);
+  }
+  // Signed in, but not on the private list: /app shows "This OBIE is private"
+  // and the API refuses, so nobody else can spend AI credits.
+  if (signedIn && !isAllowedEmail(data?.claims?.email)) {
+    if (path.startsWith("/api/")) {
+      return carryCookies(
+        response,
+        NextResponse.json({ error: "This OBIE is private." }, { status: 403 }),
+        noCacheHeaders,
+      );
+    }
+    if (isProtected) {
+      return carryCookies(response, NextResponse.redirect(new URL("/private", request.url)), noCacheHeaders);
+    }
   }
   if (signedIn && path === "/login") {
     return carryCookies(response, NextResponse.redirect(new URL("/app", request.url)), noCacheHeaders);

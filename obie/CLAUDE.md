@@ -35,7 +35,7 @@ DESIGN RULES
 - OBIE's look: a glossy blue orb with a friendly face and a small yellow star above it. The star is a status light: steady when idle, sparkling while working. Main agents are smaller orbs with initials. Nano agents are tiny dots that appear, do their task and fade out.
 
 WORKING RULES
-- Build in small steps. After each step, tell me exactly how to test it on desktop and on my phone.
+- Build in small steps, verifying each one yourself (build, typecheck, lint, Playwright at desktop and phone sizes). For Version 1, build straight through and don't ask me to test anything until all of it is built and live; then send me one test guide for desktop and phone.
 - Secrets go in environment variables only. Never commit keys.
 - Database changes go in migration files.
 - If something is unclear, make a sensible choice, tell me in one line, and keep going.
@@ -49,7 +49,7 @@ PROJECT NOTES
 - Database: the Supabase project "Stacklebot" (ref `oshlofyxapvmgxvkldub`). It is shared with other Stackle tools (the olist SQL Lab tables, `copilot_calls`), so only touch OBIE's tables. Migrations live in `supabase/migrations/`, named `<version>_<name>.sql` to match the project's migration history.
 - RLS: owners read and write their workspace's rows through `private.is_workspace_owner(workspace_id)`. `credit_ledger` and `agent_runs` are read-only for owners; only server code using the service role writes them. Catalog blueprints have no workspace_id and are readable by every signed-in user.
 - Supabase clients: `lib/supabase/client.ts` (browser), `lib/supabase/server.ts` (server components, route handlers, server actions), `lib/supabase/admin.ts` (service role, server only, bypasses RLS), `lib/supabase/proxy.ts` (session refresh).
-- Auth: `/login` (email magic link, plus Google when it is switched on in Supabase), `/auth/callback` finishes either flow, `/auth/signout` signs out this device only. `proxy.ts` keeps signed-out visitors out of `/app`. `/app` calls the `ensure_my_workspace` RPC, which creates the workspace and the OBIE agent on first sign-in.
+- Auth: `/login` is email + password (sign in, create account, and "Set or reset password", which emails a link to `/auth/reset`), plus Google when it is switched on in Supabase. "Confirm email" is off in Supabase for the MVP. `/auth/callback` finishes email links and Google, `/auth/signout` signs out this device only. `proxy.ts` keeps signed-out visitors out of `/app`, and only emails in `ALLOWED_EMAILS` (`lib/allowlist.ts`, defaults to the founder's addresses) can open `/app` or call `/api/*`; anyone else sees `/private`. `/app` calls the `ensure_my_workspace` RPC, which creates the workspace and the OBIE agent on first sign-in.
 - Colors are tokens in `app/globals.css` (`bg-background`, `text-foreground`, `bg-primary`, `text-accent` and so on). Use the tokens, not raw hex values, so light and dark mode both work.
 - The OBIE avatar is `components/obie-orb.tsx`. Its `state` prop drives the star: `idle` (steady), `working` (sparkles), `listening` (the orb pulses).
 

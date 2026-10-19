@@ -50,7 +50,7 @@ export default function LoginPage() {
         <div className="mx-auto flex w-full max-w-sm flex-1 flex-col justify-center pb-16">
           <ObieOrb size={56} className="lg:hidden" />
           <h1 className="mt-6 text-3xl font-extrabold tracking-tight lg:mt-0">Sign in to OBIE</h1>
-          <p className="mt-2 text-muted">New here? The same steps create your account.</p>
+          <p className="mt-2 text-muted">Use your email and password. New here? Create an account.</p>
           <Suspense fallback={<div className="mt-8 h-64" />}>
             <LoginForm />
           </Suspense>

@@ -4,7 +4,7 @@ import { redirectUrl } from "@/lib/redirect-url";
 import { safeNext } from "@/lib/safe-next";
 import { createClient } from "@/lib/supabase/server";
 
-// Magic links and Google sign-in both land here. A `code` comes from the
+// Password emails, confirmation links and Google sign-in all land here. A `code` comes from the
 // standard flow; `token_hash` comes from an email template that links here
 // directly. Either way the session cookie is set, then we open the workspace.
 export async function GET(request: NextRequest) {

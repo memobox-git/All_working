@@ -1,5 +1,6 @@
 import "server-only";
 import type { JwtPayload, SupabaseClient } from "@supabase/supabase-js";
+import { isAllowedEmail } from "./allowlist";
 
 export type Workspace = { workspace_id: string; workspace_name: string; created: boolean };
 
@@ -15,6 +16,7 @@ export async function loadWorkspace(supabase: SupabaseClient): Promise<Workspace
   const { data } = await supabase.auth.getClaims();
   const claims = data?.claims;
   if (!claims) return null;
+  if (!isAllowedEmail(claims.email)) throw new Error("This OBIE is private.");
 
   const firstName = firstNameOf(claims);
   const { data: workspace, error } = await supabase
