@@ -1,0 +1,130 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Apache Airflow, explained</title>
+<link rel="stylesheet" href="style.css"></head>
+<body>
+<canvas id="bg" width="1920" height="1080"></canvas>
+
+<div id="stage">
+
+  <!-- S1 · "Every morning … what to do when one fails." -->
+  <section class="scene" id="s1">
+    <div class="s1-head">
+      <div class="s1-clock" id="s1-clock"><span class="sun"></span>06:00<small>AM</small></div>
+      <div class="kicker center" id="s1-sub">Before anyone logs in</div>
+    </div>
+    <div class="runs" id="s1-runs"><div class="runs-grid" id="s1-grid"></div><div class="fail-ring" id="s1-ring"></div></div>
+    <div class="qs">
+      <div class="q" id="q1"><span class="tile" data-icon="clock"></span><span>When to start</span></div>
+      <div class="q" id="q2"><span class="tile" data-icon="order"></span><span>In what order</span></div>
+      <div class="q q-fail" id="q3"><span class="tile" data-icon="alert"></span><span>What to do when one fails</span></div>
+    </div>
+  </section>
+
+  <!-- S2 · "… that something is Apache Airflow. Airflow is an open-source tool …" -->
+  <section class="scene" id="s2">
+    <div class="lock" id="lock2">
+      <svg class="wheel" id="wheel2" viewBox="-100 -100 200 200"></svg>
+      <div class="word"><span class="wm-m"><span class="wm-a" id="wm2a">Apache</span></span> <span class="wm-m"><span class="wm-b" id="wm2b">Airflow</span></span></div>
+    </div>
+    <div class="def" id="def"></div>
+
+    <div class="kicker center" id="s2-tag">Orchestrating just means running</div>
+    <div class="right-cards">
+      <div class="rc" id="rc1"><span class="num">01</span><span class="tile big" data-icon="task"></span><div class="rc-t">The <b>right</b> task</div></div>
+      <div class="rc" id="rc2"><span class="num">02</span><span class="tile big" data-icon="clock"></span><div class="rc-t">At the <b>right</b> time</div></div>
+      <div class="rc" id="rc3"><span class="num">03</span><span class="tile big" data-icon="order"></span><div class="rc-t">In the <b>right</b> order</div></div>
+    </div>
+
+    <div class="kicker center" id="s2-tag2">Where it came from</div>
+    <div class="tline" id="tline">
+      <div class="tl-track"><i id="tl-fill"></i></div>
+      <div class="tl-node" id="tn1" style="left:100px"><b>2014</b><i class="dot"></i><span>Born at Airbnb</span></div>
+      <div class="tl-node" id="tn2" style="left:660px"><b>2016</b><i class="dot"></i><span>Joins the Apache Incubator</span></div>
+      <div class="tl-node now" id="tn3" style="left:1220px"><b>2019</b><i class="dot"></i><span>Top-level Apache project</span></div>
+    </div>
+  </section>
+
+  <!-- S3 · DAGs: code on the left, the graph it makes on the right -->
+  <section class="scene" id="s3">
+    <div class="code" id="code">
+      <div class="code-bar"><i></i><i></i><i></i><span>orders_pipeline.py</span></div>
+      <div class="code-body" id="code-body"><div class="code-hl" id="code-hl"></div></div>
+    </div>
+    <div class="dag-letters">
+      <div class="dl" id="dl1" style="left:930px"><b>D</b><span>Directed</span></div>
+      <div class="dl" id="dl2" style="left:1265px"><b>A</b><span>Acyclic</span></div>
+      <div class="dl" id="dl3" style="left:1600px"><b>G</b><span>Graph</span></div>
+    </div>
+    <svg class="links" id="s3-links" viewBox="0 0 1920 1080"></svg>
+    <div class="node" id="n-extract" style="left:930px"><div class="node-t">extract</div><div class="node-s"><i class="sd"></i><span>queued</span></div></div>
+    <div class="node" id="n-transform" style="left:1265px"><div class="node-t">transform</div><div class="node-s"><i class="sd"></i><span>queued</span></div></div>
+    <div class="node" id="n-load" style="left:1600px"><div class="node-t">load</div><div class="node-s"><i class="sd"></i><span>queued</span></div></div>
+    <div class="chip" id="wh"><span class="tile sm" data-icon="warehouse"></span>warehouse</div>
+    <div class="arrow-label" id="dep-label" style="left:1212px;top:614px">dependency</div>
+  </section>
+
+  <!-- S4 · the architecture, built one component at a time -->
+  <section class="scene" id="s4">
+    <div class="s4-title" id="s4-title">
+      <div class="kicker center">The architecture</div>
+      <div class="s4-h">What runs your DAGs</div>
+    </div>
+    <div id="world">
+      <svg class="links" id="s4-links" viewBox="0 0 1920 1080"></svg>
+      <div class="card comp" id="c-files" style="left:100px;top:495px;--c:#F79009;--tint:#FFFAEB"><span class="tile" data-icon="file"></span><div><h3>DAG files</h3><p>orders_pipeline.py</p></div><i class="ring"></i></div>
+      <div class="card comp" id="c-proc" style="left:500px;top:495px;--c:#7A5AF8;--tint:#F4F3FF"><span class="tile" data-icon="cpu"></span><div><h3>DAG processor</h3><p>parses DAG files</p></div><i class="ring"></i></div>
+      <div class="card comp" id="c-sched" style="left:1120px;top:495px;--c:#017CEE;--tint:#EFF8FF"><span class="tile" data-icon="calendar"></span><div><h3>Scheduler</h3><p>decides what runs</p></div><i class="ring"></i><span class="badge" id="ready">3 ready</span></div>
+      <div class="card comp" id="c-exec" style="left:1520px;top:495px;--c:#0E9384;--tint:#F0FDF9"><span class="tile" data-icon="send"></span><div><h3>Executor</h3><p>in the scheduler</p></div><i class="ring"></i></div>
+      <div class="card comp wide" id="c-db" style="left:500px;top:765px;--c:#444CE7;--tint:#EEF4FF"><span class="tile" data-icon="db"></span><div><h3>Metadata database</h3><p>DAGs · runs · task states</p></div>
+        <div class="pills"><span class="pill" id="p-queued" style="--c:#98A2B3">queued</span><span class="pill" id="p-running" style="--c:#2E90FA">running</span><span class="pill" id="p-success" style="--c:#12B76A">success</span><span class="pill" id="p-failed" style="--c:#F04438">failed</span></div><i class="ring"></i></div>
+      <div class="card comp workers" id="c-work" style="left:1520px;top:752px;--c:#12B76A;--tint:#ECFDF3"><div class="w-head"><span class="tile" data-icon="server"></span><h3>Workers</h3></div>
+        <div class="w-rows"><div class="w-row"><span>w1</span><i><b id="wb1"></b></i></div><div class="w-row"><span>w2</span><i><b id="wb2"></b></i></div><div class="w-row"><span>w3</span><i><b id="wb3"></b></i></div></div><i class="ring"></i></div>
+      <div class="card comp ui" id="c-ui" style="left:640px;top:225px;--c:#DD2590;--tint:#FDF2FA"><span class="tile" data-icon="monitor"></span><div><h3>Web UI</h3><p>runs · logs · retries</p></div>
+        <div class="mini"><div class="mini-l"><span>extract</span><span>transform</span><span>load</span></div><div class="mini-g" id="mini"></div></div><i class="ring"></i></div>
+      <div class="logs" id="logs">
+        <div class="logs-h">load · attempt 1 · log</div>
+        <div><b>06:00:01</b> extract <span class="ok">success</span></div>
+        <div><b>06:00:07</b> transform <span class="ok">success</span></div>
+        <div><b>06:00:09</b> load <span class="bad" id="log-bad">failed: timeout</span><span class="ok" id="log-ok">success on retry</span></div>
+      </div>
+      <div class="ripple" id="ripple"></div>
+      <svg class="cursor" id="cursor" viewBox="0 0 24 24"><path d="M5 2.5 19 12l-6.3 1.4L9.6 19.6z"/></svg>
+      <div class="arrow-label" style="left:662px;top:680px">serialized DAGs</div>
+      <div class="arrow-label" style="left:1298px;top:680px">state</div>
+      <div class="arrow-label" style="left:1682px;top:680px">tasks</div>
+      <div class="arrow-label" style="left:1428px;top:790px">results</div>
+      <div class="arrow-label" style="left:974px;top:430px">reads runs &amp; logs</div>
+    </div>
+  </section>
+
+  <!-- S5 · "So when a team says …" + closing title -->
+  <section class="scene" id="s5">
+    <div class="kicker center" id="s5-tag">When a team says</div>
+    <div class="quote" id="quote"></div>
+    <div class="takeaways">
+      <div class="ta" id="ta1"><span class="tick" data-icon="check"></span>Pipelines are code.</div>
+      <div class="ta" id="ta2"><span class="tick" data-icon="check"></span>They run on a schedule, in the right order.</div>
+      <div class="ta" id="ta3"><span class="tick" data-icon="check"></span>When something breaks, you know exactly where.</div>
+    </div>
+    <div class="lock" id="lock5">
+      <svg class="wheel" id="wheel5" viewBox="-100 -100 200 200"></svg>
+      <div class="word"><span class="wm-m"><span class="wm-a" id="wm5a">Apache</span></span> <span class="wm-m"><span class="wm-b" id="wm5b">Airflow</span></span></div>
+    </div>
+    <div class="kicker center" id="lock5-sub">Workflow orchestration, explained</div>
+    <div class="credit" id="credit">Stackle · Explained for data engineers</div>
+  </section>
+
+</div>
+
+<div id="hud">
+  <div class="hud-tl"><svg class="wheel mini-wheel" id="hud-wheel" viewBox="-100 -100 200 200"></svg>Apache Airflow</div>
+  <div class="hud-tr"><span id="hud-num">01</span><span class="sep"></span><span id="hud-chap">The problem</span></div>
+  <div class="hud-bar"><i id="hud-prog"></i></div>
+</div>
+<div id="fade"></div>
+
+<script src="cues.js"></script>
+<script src="../node_modules/gsap/dist/gsap.min.js"></script>
+<script src="../node_modules/gsap/dist/DrawSVGPlugin.min.js"></script>
+<script src="scene.js"></script>
+</body></html>
