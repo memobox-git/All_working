@@ -72,6 +72,27 @@ function TYPE(el, t, text, cps = 38) {
   tl.to(o, { n: text.length, duration: text.length / cps, ease: 'none', onUpdate: () => (el.textContent = text.slice(0, Math.round(o.n))) }, t);
 }
 
+// Real footage: clips are pre-extracted JPEG frames (see clips.sh), shown in an
+// <img> and stepped in render(t), so every frame is exact and repeatable.
+const CLIPS = [];
+function CLIP(img, name, t0, { fps = 30, rate = 1 } = {}) {
+  const n = (window.CLIP_FRAMES || {})[name];
+  if (!n) throw Error('clip not extracted: ' + name + ' (run clips.sh)');
+  CLIPS.push({ img, name, t0, fps, rate, n, cur: -1 });
+  img.src = `clips/${name}/f00001.jpg`;
+}
+async function syncClips(t) {
+  const waits = [];
+  for (const c of CLIPS) {
+    const k = Math.min(c.n, Math.max(1, 1 + Math.floor((t - c.t0) * c.fps * c.rate)));
+    if (k === c.cur) continue;
+    c.cur = k;
+    c.img.src = `clips/${c.name}/f${String(k).padStart(5, '0')}.jpg`;
+    waits.push(c.img.decode().catch(() => {}));
+  }
+  await Promise.all(waits);
+}
+
 function hud(chapter) {
   add(`<div id="hud"><div class="corner c-tl"></div><div class="corner c-tr"></div><div class="corner c-bl"></div><div class="corner c-br"></div>
     <div class="hud-tl"><b>■</b> STACKLE · PERSONAL AI AGENTS</div><div class="hud-tr">${chapter}</div></div>`, document.body);
@@ -84,11 +105,13 @@ window.addEventListener('load', async () => {
   const s = SCENES[ID];
   if (!s) throw Error('no scene ' + ID);
   const at = speech(s.text);
-  if (s.chapter) hud(s.chapter);
+  if (s.chapter && !document.body.classList.contains('light')) hud(s.chapter);
   s.build(at);
   window.DURATION = +(s.duration || at.end + TAIL).toFixed(2);
   await document.fonts.ready;
-  window.render = t => { tl.seek(t, false); }; // return nothing: Playwright would try to serialise the timeline
-  window.render(0);
+  // resolve to nothing: Playwright would try to serialise the timeline
+  window.render = async t => { tl.seek(t, false); await syncClips(t); };
+  await window.render(0);
+  await Promise.all([...document.images].map(i => i.decode().catch(() => {})));
   window.READY = true;
 });

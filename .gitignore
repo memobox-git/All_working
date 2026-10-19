@@ -9,3 +9,7 @@ next-env.d.ts
 *.parts/
 *.picture.mp4
 *.picture.cues.json
+
+# official launch footage and the frames cut from it (rebuilt by personal-agents/clips.sh)
+stackle-video/footage/
+stackle-video/source/personal-agents/clips/
