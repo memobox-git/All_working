@@ -4,6 +4,7 @@ import { z } from "zod";
 import { MODELS, structuredCall } from "./ai";
 import { toProfile } from "./business-profile";
 import { creditsForCost } from "./credits";
+import { releaseOnHold, settleTask } from "./credits-server";
 
 // The worker: picks tasks whose dependencies are done and runs each one as a
 // nano agent (one task, one model call, only the context it needs). It saves
@@ -16,7 +17,7 @@ type Task = {
   channel_id: string | null;
   agent_id: string | null;
   title: string;
-  input: { key?: string; instructions?: string; kind?: "simple" | "writing"; publishes?: boolean };
+  input: { key?: string; instructions?: string; kind?: "simple" | "writing"; publishes?: boolean; free_redo?: boolean };
   output: { text?: string; summary?: string } | null;
   depends_on: string[];
   status: "waiting" | "ready" | "running" | "done" | "failed";
@@ -161,6 +162,7 @@ async function runTask(db: SupabaseClient, task: Task): Promise<boolean> {
         });
       }
     }
+    await settleTask(task, true, costUsd).catch((e) => console.error("settle failed", e));
     await afterTask(db, task, true);
     return true;
   } catch (error) {
@@ -169,6 +171,7 @@ async function runTask(db: SupabaseClient, task: Task): Promise<boolean> {
     await post(`Couldn't finish this one. ${error instanceof Error && /ANTHROPIC/.test(error.message) ? error.message : "It can be redone."}`, {
       status: "failed",
     });
+    await settleTask(task, false, 0).catch((e) => console.error("settle failed", e));
     await afterTask(db, task, false);
     return false;
   }
@@ -221,6 +224,7 @@ async function afterTask(db: SupabaseClient, task: Task, ok: boolean) {
     .eq("status", "pending");
 
   if (!failedCount) await db.from("channels").update({ status: "done" }).eq("id", channel.id);
+  else await releaseOnHold(channel.id).catch((e) => console.error("release failed", e));
   if (channel.owner_agent_id) {
     await db.from("agents").update({ status: failedCount ? "stuck" : "idle" }).eq("id", channel.owner_agent_id);
   }

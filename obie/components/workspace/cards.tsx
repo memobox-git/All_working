@@ -132,3 +132,35 @@ export function OutputCard({ text }: { text: string }) {
     </div>
   );
 }
+
+// Runs a stuck or rejected task again.
+export function RedoButton({ taskId }: { taskId: string }) {
+  const [state, setState] = useState<"idle" | "busy" | "done">("idle");
+  const [error, setError] = useState<string | null>(null);
+
+  async function redo() {
+    setState("busy");
+    setError(null);
+    const res = await fetch(`/api/tasks/${taskId}/redo`, { method: "POST" });
+    const body = (await res.json().catch(() => ({}))) as { error?: string };
+    if (res.ok) setState("done");
+    else {
+      setState("idle");
+      setError(body.error ?? "Couldn't redo it.");
+    }
+  }
+
+  return (
+    <div className="mt-1.5 flex flex-wrap items-center gap-2">
+      <button
+        type="button"
+        disabled={state !== "idle"}
+        onClick={redo}
+        className="rounded-full border border-border px-3 py-1.5 text-sm font-semibold hover:bg-surface disabled:opacity-60"
+      >
+        {state === "done" ? "Redoing" : state === "busy" ? "Starting..." : "Redo"}
+      </button>
+      {error && <span className="text-sm text-muted">{error}</span>}
+    </div>
+  );
+}

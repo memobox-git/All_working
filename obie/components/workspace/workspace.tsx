@@ -14,7 +14,8 @@ import {
 import { createClient } from "@/lib/supabase/client";
 import { Composer } from "../composer";
 import { Avatar } from "./avatar";
-import { ApprovalCard, OutputCard, PlanCard, TASK_COLUMNS, type TaskRow } from "./cards";
+import { ApprovalCard, OutputCard, PlanCard, RedoButton, TASK_COLUMNS, type TaskRow } from "./cards";
+import { NeedsYou } from "./needs-you";
 import { MessageItem } from "./message-item";
 import { sameView, Sidebar, type View } from "./sidebar";
 import { StatusPill } from "./status-pill";
@@ -28,7 +29,11 @@ export type WorkspaceProps = {
   initialApprovals: Approval[];
   initialView: View;
   initialThreadId: string | null;
+  initialCredits: CreditBadgeData;
+  timezone: string;
 };
+
+export type CreditBadgeData = { enabled: boolean; balance: number; dailyLeft: number };
 
 function viewKey(view: View) {
   return view.type === "dm" ? view.agentId : view.type === "channel" ? view.channelId : "needs";
@@ -54,6 +59,7 @@ export function Workspace(props: WorkspaceProps) {
   const [loaded, setLoaded] = useState<{ key: string; messages: Message[] } | null>(null);
   const [waiting, setWaiting] = useState<Record<string, boolean>>({});
   const [tasks, setTasks] = useState<TaskRow[]>([]);
+  const [credits, setCredits] = useState(props.initialCredits);
   const [unread, setUnread] = useState<Set<string>>(new Set());
   const [drawer, setDrawer] = useState(false);
   const viewRef = useRef(view);
@@ -149,6 +155,16 @@ export function Workspace(props: WorkspaceProps) {
             return list.some((x) => x.id === c.id) ? list.map((x) => (x.id === c.id ? c : x)) : [c, ...list];
           });
       })
+      .on("postgres_changes", { event: "INSERT", schema: "public", table: "credit_ledger", filter }, () => {
+        void supabase
+          .from("credit_summary")
+          .select("balance, daily_left")
+          .eq("workspace_id", workspaceId)
+          .maybeSingle()
+          .then(({ data }) => {
+            if (data) setCredits((c) => ({ ...c, balance: Number(data.balance), dailyLeft: Number(data.daily_left) }));
+          });
+      })
       .on("postgres_changes", { event: "*", schema: "public", table: "tasks", filter }, ({ eventType, new: row }) => {
         if (eventType === "DELETE") return;
         const task = row as TaskRow;
@@ -169,6 +185,12 @@ export function Workspace(props: WorkspaceProps) {
       void supabase.removeChannel(channel);
     };
   }, [supabase, workspaceId, setMessages]);
+
+  // Daily credits reset at the owner's local midnight: remember their time zone.
+  useEffect(() => {
+    const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    if (tz && tz !== props.timezone) void supabase.from("workspaces").update({ timezone: tz }).eq("id", workspaceId);
+  }, [supabase, workspaceId, props.timezone]);
 
   // Realtime can miss events while a phone sleeps: refresh lists on focus.
   useEffect(() => {
@@ -270,6 +292,8 @@ export function Workspace(props: WorkspaceProps) {
     if (m.kind === "plan") return <PlanCard message={m} tasks={channelTasks} agents={agentMap} />;
     if (m.kind === "approval") return <ApprovalCard approval={approvals.find((a) => a.id === m.data?.approvalId)} />;
     if (typeof m.data?.output === "string") return <OutputCard text={m.data.output} />;
+    const redo = m.data?.redoTaskId ?? (m.data?.status === "failed" ? m.data?.taskId : null);
+    if (typeof redo === "string") return <RedoButton taskId={redo} />;
     return null;
   };
   const dmAgent = view.type === "dm" ? agentMap.get(view.agentId) : null;
@@ -342,10 +366,13 @@ export function Workspace(props: WorkspaceProps) {
             )}
           </div>
           {dmAgent && dmAgent.status !== "idle" && <StatusPill status={dmAgent.status} />}
+          <CreditBadge credits={credits} />
         </header>
 
         {view.type === "needs" ? (
-          <div className="flex-1 overflow-y-auto"><NeedsYouFallback approvals={pending} /></div>
+          <div className="flex-1 overflow-y-auto">
+            <NeedsYou approvals={approvals} agents={agents} channels={channels} openView={openView} />
+          </div>
         ) : (
           <>
             <MessageList
@@ -490,15 +517,21 @@ function EmptyDm({ agent }: { agent: Agent }) {
   );
 }
 
-function NeedsYouFallback({ approvals }: { approvals: Approval[] }) {
-  if (!approvals.length) return <p className="p-6 text-center text-muted">Nothing needs you right now.</p>;
+function CreditBadge({ credits }: { credits: CreditBadgeData }) {
+  if (!credits.enabled) {
+    return (
+      <span className="shrink-0 rounded-full bg-surface px-2.5 py-1 text-xs font-semibold text-muted" title="Credits switch on once the server key is set">
+        Credits off
+      </span>
+    );
+  }
   return (
-    <ul className="divide-y divide-border">
-      {approvals.map((a) => (
-        <li key={a.id} className="px-5 py-3">
-          {a.summary}
-        </li>
-      ))}
-    </ul>
+    <span
+      className="shrink-0 rounded-full bg-surface px-2.5 py-1 text-xs font-semibold tabular-nums"
+      title={`${Math.floor(credits.dailyLeft)} of today's daily credits left; they're used first.`}
+    >
+      {Math.floor(credits.balance).toLocaleString()} credits
+      <span className="hidden font-normal text-muted sm:inline"> · {Math.floor(credits.dailyLeft)} daily left</span>
+    </span>
   );
 }
