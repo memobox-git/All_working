@@ -1,0 +1,99 @@
+<title>Staff Interviews Newsletter</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a send kit (subject lines, preview text) above the newsletter itself, set as a single sheet the way it reads in an inbox. */
+:root {
+  --bg: #F3F5FA; --sheet: #FFFFFF; --fg: #0B0B0F; --muted: #5A5F6E; --line: #E2E6EF;
+  --accent: #1F4FFF; --on-accent: #FFFFFF; --accent-soft: #EBF0FF; --highlight: #FFCC1A; --highlight-soft: #FFF6D1;
+  --font-display: "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-body: "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #0B0E1C; --sheet: #141A33; --fg: #EEF1FA; --muted: #A3AAC2; --line: #262C4A;
+  --accent: #7C97FF; --on-accent: #0B0E1C; --accent-soft: #1B2350; --highlight: #FFCC1A; --highlight-soft: #3A3315; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #0B0E1C; --sheet: #141A33; --fg: #EEF1FA; --muted: #A3AAC2; --line: #262C4A;
+  --accent: #7C97FF; --on-accent: #0B0E1C; --accent-soft: #1B2350; --highlight: #FFCC1A; --highlight-soft: #3A3315; color-scheme: dark }
+* { box-sizing: border-box }
+body { background: var(--bg); color: var(--fg); font-family: var(--font-body); font-size: 16px; line-height: 1.6 }
+.wrap { max-width: 760px; margin: 0 auto; padding-block: 32px 64px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  display: grid; gap: 28px }
+header { display: grid; gap: 10px }
+.eyebrow { font-weight: 700; font-size: .78rem; letter-spacing: .16em; text-transform: uppercase; color: var(--accent) }
+h1 { font-family: var(--font-display); font-size: clamp(1.8rem, 5vw, 2.6rem); line-height: 1.08; letter-spacing: -.02em; margin: 0; text-wrap: balance }
+.facts { display: flex; flex-wrap: wrap; gap: 6px 18px; color: var(--muted); font-size: .9rem }
+.facts b { color: var(--fg); font-variant-numeric: tabular-nums }
+.label { font-size: .72rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin: 0 0 10px }
+.kit { display: grid; gap: 22px }
+ol.subjects { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px }
+ol.subjects li { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 12px; align-items: center;
+  background: var(--sheet); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px }
+.opt { font: 500 .74rem var(--font-mono); color: var(--muted); white-space: nowrap }
+.line { font-weight: 600; min-width: 0 }
+.preview { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 12px; align-items: center;
+  background: var(--sheet); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; color: var(--muted) }
+button { font: 600 .82rem var(--font-body); color: var(--fg); background: var(--bg); border: 1px solid var(--line);
+  border-radius: 999px; padding: 5px 12px; cursor: pointer; white-space: nowrap }
+button:hover { border-color: var(--accent); color: var(--accent) }
+button.primary { background: var(--accent); border-color: var(--accent); color: var(--on-accent) }
+button.primary:hover { color: var(--on-accent); filter: brightness(1.08) }
+button:focus-visible { outline: 3px solid var(--highlight); outline-offset: 2px }
+.sheet-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 10px }
+.sheet-head .label { margin: 0 }
+article { background: var(--sheet); border: 1px solid var(--line); border-top: 4px solid var(--accent); border-radius: 12px;
+  padding: clamp(20px, 5vw, 44px) }
+article > * { max-width: 62ch }
+article p { margin: 0 0 16px; font-size: 1.04rem }
+article h2 { font-family: var(--font-display); font-size: 1.3rem; letter-spacing: -.01em; margin: 34px 0 12px; text-wrap: balance }
+article p.pt strong { color: var(--accent) }
+.ph { background: var(--highlight-soft); border: 1px dashed var(--highlight); border-radius: 4px; padding: 1px 6px;
+  font: 500 .9rem var(--font-mono) }
+section.notes { border-left: 3px solid var(--highlight); padding: 4px 0 4px 18px }
+section.notes ul { margin: 0; padding-left: 18px; display: grid; gap: 8px; color: var(--muted) }
+.status { font-size: .82rem; color: var(--accent); min-height: 1.2em }
+@media (max-width: 520px) { ol.subjects li { grid-template-columns: minmax(0, 1fr) auto } .opt { grid-column: 1 / -1 } }
+</style>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Stackle · Newsletter draft</div>
+    <h1>What staff data interviews really ask</h1>
+    <div class="facts"><span><b>814</b> words</span><span><b>4</b> min read</span><span>Senior to staff data engineer series</span></div>
+  </header>
+  <div class="kit">
+    <div><p class="label">Subject line: pick one</p><ol class="subjects"><li><span class="opt">Option 1</span><span class="line" id="subj1">$220K to $400K: what staff data interviews really ask</span><button type="button" class="copy" data-copy="subj1">Copy</button></li><li><span class="opt">Option 2</span><span class="line" id="subj2">Meta&#x27;s staff data loop starts with the round most people prep last</span><button type="button" class="copy" data-copy="subj2">Copy</button></li><li><span class="opt">Option 3</span><span class="line" id="subj3">I checked my staff plan against 230 real interview write-ups</span><button type="button" class="copy" data-copy="subj3">Copy</button></li><li><span class="opt">Option 4</span><span class="line" id="subj4">The round my 15-week staff plan was missing</span><button type="button" class="copy" data-copy="subj4">Copy</button></li><li><span class="opt">Option 5</span><span class="line" id="subj5">Staff data interviews: 4 things my plan didn&#x27;t cover</span><button type="button" class="copy" data-copy="subj5">Copy</button></li></ol></div>
+    <div><p class="label">Preview text</p><div class="preview"><span id="preview">My plan covered SQL, data modeling and system design. It missed the round Meta asks in every full-stack interview.</span>
+      <button type="button" class="copy" data-copy="preview">Copy</button></div></div>
+  </div>
+  <div>
+    <div class="sheet-head"><p class="label">The newsletter</p>
+      <div><span class="status" id="status" role="status"></span> <button type="button" class="primary copy" data-copy="letter" data-rich="1">Copy newsletter</button></div></div>
+    <article id="letter"><p>Hi, it's Chris.</p><p>I recently shared my 15-week plan to go from senior to staff data engineer. The reason is the pay gap. At Meta, senior data engineers average about $219K in base pay, according to Levels.fyi. The three staff-level jobs I'm preparing for list these base salary ranges in their postings:</p><p class="pt"><strong>Anthropic</strong>, Staff+ Software Engineer, Data Infrastructure<br>→ $405K to $485K</p><p class="pt"><strong>OpenAI</strong>, Software Engineer, Data Infrastructure<br>→ $266K to $445K, plus equity</p><p class="pt"><strong>Google</strong>, Staff Software Engineer, AI Foundry Data Quality and Training Data<br>→ $207K to $300K, plus bonus and equity</p><p>A plan is easy to write. So before going further, I checked mine against what staff interviews actually ask. We went through about 230 public interview write-ups from 2024 to 2026, mostly on Blind and LeetCode Discuss, plus Reddit threads, YouTube interviews and prep sites. They covered Meta, Google, Amazon, Netflix, Airbnb, Uber, Databricks, Snowflake, Stripe, OpenAI and Anthropic.</p><p>One thing to know first. Each write-up is one person's experience, and only a few come from staff loops. No company publishes a staff data engineer interview guide. So read this as a strong sample, not a rulebook.</p><h2>What the plan got right</h2><p>SQL, data modeling, pipeline design, debugging and Spark all match what people reported. A few real questions:</p><p class="pt"><strong>Amazon</strong><br>→ "Implement row_number() without using window functions."</p><p class="pt"><strong>Uber</strong><br>→ Find drivers who didn't take a trip in their first 7 days after signup. Then make it fast as the data grows.</p><p class="pt"><strong>Airbnb</strong><br>→ Design a model for cumulative booking metrics, with first and last booking times. Then defend every choice.</p><p class="pt"><strong>LinkedIn, staff level</strong><br>→ Design an experimentation platform, and the data pipeline behind it.</p><p class="pt"><strong>Uber</strong><br>→ How does Spark behave when you join two big datasets without enough resources, and how would you fix it?</p><h2>What changes at staff</h2><p>At Meta, people reported that the technical questions for staff are the same as for senior. What changes is the leadership signal, and it comes early.</p><p class="pt"><strong>Meta IC6</strong><br>→ A 30-minute leadership round sits inside the first screen. One person who missed it was offered IC5 instead, or a 6-month wait to try again.</p><p class="pt"><strong>Meta Senior+</strong><br>→ One rejection reason was that the project's impact "wasn't big enough", plus a weak answer on mentoring.</p><p class="pt"><strong>Google L6</strong><br>→ Two system design rounds in one reported loop.</p><p class="pt"><strong>Databricks staff</strong><br>→ An architecture interview comes first and decides the rest of the loop. Then come project and behavioral rounds.</p><p>So at staff, the behavioral round isn't the easy round at the end. It decides your level.</p><h2>The 4 gaps in my plan</h2><p class="pt"><strong>1. Product sense and metrics</strong><br>→ Meta asks it in every full-stack round. One real question: "How would you measure monetization for a gaming product, and how would you verify that a broken feature was actually fixed?" My plan had nothing for this.</p><p class="pt"><strong>2. DSA beyond arrays</strong><br>→ Trees, graphs, intervals and simple dynamic programming came up at Uber, Airbnb, LinkedIn and DoorDash. One DoorDash staff screen expected a hard problem solved in 25 minutes.</p><p class="pt"><strong>3. Concurrency</strong><br>→ Anthropic asked people to build a web crawler, then make it multithreaded. Databricks has a whole round on it. This matters if you apply for "software engineer, data infrastructure" roles.</p><p class="pt"><strong>4. One project, told in depth</strong><br>→ Databricks, Netflix and Anthropic asked people to walk through one project in depth: the numbers, the trade-offs, and what changed because of it.</p><h2>What I over-prepared for</h2><p>Weeks 10 to 12 cover RAG, AI agents and serving large language models. No write-up showed these asked in a data engineering loop at these companies, not even at OpenAI or Anthropic. Kubernetes, in week 9, didn't come up at all. These are still useful on the job. But if interviews are your goal, this is where to cut time.</p><h2>If you&#x27;re following the plan</h2><p class="pt"><strong>Start your stories in week 1</strong><br>→ Not week 15. Write the 10 stories and one project deep dive early, and practise them every week.</p><p class="pt"><strong>Add product sense</strong><br>→ 15 to 20 cases: define a metric, explain a metric drop, pick the segments to check.</p><p class="pt"><strong>Widen your DSA</strong><br>→ Add trees, graphs, intervals and 1-D dynamic programming.</p><p class="pt"><strong>Add concurrency if you're applying to AI labs</strong><br>→ Locks, queues, thread pools, and a multithreaded web crawler.</p><p class="pt"><strong>Practise against the clock</strong><br>→ Meta's screen was reported as 5 SQL and 5 Python questions, with 25 minutes for each set.</p><h2>Free: the whole plan and 1,100 questions</h2><p>The Notion page I study from is open to everyone. It has all 15 weeks, the system designs, the debugging scenarios, the behavioral questions and the architecture diagrams.</p><p><span class="ph">[Link: Notion study plan]</span></p><p>It also links to a question bank: 1,100 interview questions across 11 topics, plus 95 questions from real interviews, each linked to its source. There's a PDF with tick boxes too.</p><p><span class="ph">[Link: Question bank]</span></p><p>At staff, the round most people prep last is the one that decides your level.</p><p>Which of the four gaps is the hardest for you? Hit reply and tell me.</p><p>Chris<br>Stackle</p></article>
+  </div>
+  <section class="notes"><p class="label">Before you send</p><ul><li>Replace the two link placeholders. Both Notion pages must be shared to the web first, or readers will hit “Request access”.</li><li>Your employer isn’t named, per your LinkedIn rule. Meta appears only as a pay example and an interview target. Say if you want the line from the video added.</li><li>“Hit reply” fits an email newsletter. On a LinkedIn newsletter, change it to “tell me in the comments”.</li><li>Every number comes from the job postings, Levels.fyi, or the interview write-ups linked on page 12 of the question bank.</li></ul></section>
+</div>
+<script>
+(() => {
+  const status = document.getElementById('status');
+  const say = (btn, msg) => { const t = btn.textContent; btn.textContent = msg; setTimeout(() => btn.textContent = t, 1600) };
+  const selectText = el => { const r = document.createRange(); r.selectNodeContents(el); const s = getSelection(); s.removeAllRanges(); s.addRange(r) };
+  document.querySelectorAll('button.copy').forEach(btn => btn.addEventListener('click', () => {
+    const el = document.getElementById(btn.dataset.copy);
+    const plain = el.innerText.trim();
+    const fallback = () => navigator.clipboard.writeText(plain);
+    let job;
+    try {
+      job = btn.dataset.rich && window.ClipboardItem
+        ? navigator.clipboard.write([new ClipboardItem({
+            'text/html': new Blob([el.innerHTML], { type: 'text/html' }),
+            'text/plain': new Blob([plain], { type: 'text/plain' }) })]).catch(fallback)
+        : fallback();
+    } catch (e) { job = Promise.reject(e) }
+    job.then(() => say(btn, 'Copied'))
+       .catch(() => { selectText(el); status.textContent = 'Copy is blocked here. The text is selected, so press Ctrl+C or Cmd+C.' });
+  }));
+})();
+</script>
