@@ -1,0 +1,197 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>AI Agents Explained</title>
+<link rel="stylesheet" href="style.css"></head>
+<body>
+<canvas id="bg" width="1920" height="1080"></canvas>
+
+<div id="stage"><div id="cam">
+
+  <!-- Hook · "A chatbot can tell you how to fix a broken data pipeline. An AI agent ..." -->
+  <section class="scene" id="s-hook">
+    <div class="hk-card glass" id="hk-bot">
+      <div class="tag">CHATBOT</div>
+      <div class="bubble" id="hk-bubble">To fix it, check the job logs, look for a schema change, then update the transform and rerun it.</div>
+    </div>
+    <div id="hk-gap"></div>
+    <div class="hk-card glass" id="hk-agent">
+      <div class="tag">AI AGENT</div>
+      <div class="act" id="hk-a1"><b>01</b><span><span class="k">open_logs(</span>"orders_daily"<span class="k">)</span></span></div>
+      <div class="act" id="hk-a2"><b>02</b><span>found: <span class="cyan">order_ts</span> is STRING, expected TIMESTAMP</span></div>
+      <div class="act" id="hk-a3"><b>03</b><span>fix: CAST(order_ts AS TIMESTAMP)</span></div>
+      <div class="approve" id="hk-approve"><span class="btn">Approve fix</span><span class="btn ghost">Reject</span></div>
+    </div>
+  </section>
+
+  <section class="scene" id="s-title">
+    <div class="hk-title"><div class="big" id="ti-big">AI <span class="grad">AGENTS</span></div><div class="sub" id="ti-sub">EXPLAINED</div></div>
+  </section>
+
+  <!-- Promise · "In this video I am going to show you ..." -->
+  <section class="scene" id="s-promise">
+    <div class="tag" id="pr-head">IN THIS VIDEO</div>
+    <div class="pr-list">
+      <div class="pr-item glass" id="pr1"><div class="n grad">01</div><div class="l">What an agent is<small>and what it isn't</small></div></div>
+      <div class="pr-item glass" id="pr2"><div class="n grad">4</div><div class="l">Parts<small>every agent is built from</small></div></div>
+      <div class="pr-item glass" id="pr3"><div class="n grad">5</div><div class="l">Patterns<small>engineers use to design them</small></div></div>
+      <div class="pr-item glass" id="pr4"><div class="n grad">3</div><div class="l">Frameworks<small>worth learning right now</small></div></div>
+    </div>
+    <div class="glass" id="pr-warn"><span class="q">FRAMEWORK ??</span><div class="stamp" id="pr-stamp">NO LONGER MAINTAINED</div></div>
+  </section>
+
+  <!-- chapter cards are built in scene.js -->
+  <div id="chapters"></div>
+
+  <!-- 01 · rules -> LLM -> agent -->
+  <section class="scene" id="s-steps">
+    <div class="st-card glass" id="st-rules">
+      <div class="step">STEP 1</div><h3>Rules</h3>
+      <div class="code"><span class="kw">if</span> file.late:<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="fn">send_alert</span>()</div>
+      <div class="unk" id="st-unk"><span class="no">✕</span> new column arrives?</div>
+    </div>
+    <div class="st-card glass" id="st-llm">
+      <div class="step">STEP 2</div><h3>LLM alone</h3>
+      <div class="verbs"><div class="verb" id="st-v1"><i></i>reads</div><div class="verb" id="st-v2"><i></i>reasons</div><div class="verb" id="st-v3"><i></i>writes</div></div>
+      <div class="badge" id="st-touch">✕ can't touch anything</div>
+    </div>
+    <div class="st-card glass" id="st-agent">
+      <div class="step">STEP 3</div><h3>Agent</h3>
+      <div class="loop" id="st-loop">
+        <svg viewBox="0 0 420 300"><ellipse id="st-ring" cx="210" cy="150" rx="150" ry="105" fill="none" stroke="rgba(79,139,255,.7)" stroke-width="3" stroke-dasharray="8 10"/><circle id="st-dot" r="10" fill="#22D3EE" style="filter:drop-shadow(0 0 10px #22D3EE)"/></svg>
+        <div class="lp" id="st-l1" style="left:210px;top:45px">LOOK</div>
+        <div class="lp" id="st-l2" style="left:360px;top:150px">DECIDE</div>
+        <div class="lp" id="st-l3" style="left:210px;top:255px">ACT</div>
+        <div class="lp" id="st-l4" style="left:60px;top:150px">CHECK</div>
+      </div>
+    </div>
+    <div class="st-label" id="st-think" style="left:820px;top:880px">THINKS</div>
+    <div class="st-label" id="st-do" style="left:1440px;top:820px">DOES</div>
+  </section>
+
+  <!-- 02 · the four parts, then the 2 am incident -->
+  <section class="scene" id="s-parts">
+    <div class="pt glass" id="pt1" style="left:150px;top:330px">
+      <svg class="ic" viewBox="0 0 48 48"><rect x="12" y="12" width="24" height="24" rx="4"/><rect x="19" y="19" width="10" height="10" rx="2"/><path d="M18 6v6M24 6v6M30 6v6M18 36v6M24 36v6M30 36v6M6 18h6M6 24h6M6 30h6M36 18h6M36 24h6M36 30h6"/></svg>
+      <h3>Model</h3><div class="role">THE BRAIN</div><p>Makes every decision</p>
+    </div>
+    <div class="pt glass" id="pt2" style="left:570px;top:330px">
+      <svg class="ic" viewBox="0 0 48 48"><path d="M30 6a10 10 0 0 0-9 14L7 34a4 4 0 0 0 6 6l14-14a10 10 0 0 0 14-9l-6 6-6-2-2-6 6-6c-1 0-2-.5-3-.5z"/></svg>
+      <h3>Tools</h3><div class="role">THE HANDS</div><div class="chips"><span class="chip">SQL</span><span class="chip">search</span><span class="chip">API</span></div>
+    </div>
+    <div class="pt glass" id="pt3" style="left:990px;top:330px">
+      <svg class="ic" viewBox="0 0 48 48"><ellipse cx="24" cy="11" rx="14" ry="5"/><path d="M10 11v26c0 3 6 5 14 5s14-2 14-5V11M10 20c0 3 6 5 14 5s14-2 14-5M10 29c0 3 6 5 14 5s14-2 14-5"/></svg>
+      <h3>Memory</h3><div class="role">WHAT IT KNOWS</div><p>This run, plus what it saved from older runs</p>
+    </div>
+    <div class="pt glass" id="pt4" style="left:1410px;top:330px">
+      <svg class="ic" viewBox="0 0 48 48"><path d="M38 18a15 15 0 0 0-27-4M10 30a15 15 0 0 0 27 4"/><path d="M11 6v8h8M37 42v-8h-8"/></svg>
+      <h3>Loop</h3><div class="role">THE CONTROL</div><p>Keeps going, and knows when to stop</p>
+    </div>
+
+    <div class="mini-pt glass" id="mp1" style="top:240px"><svg viewBox="0 0 48 48"><rect x="12" y="12" width="24" height="24" rx="4"/><rect x="19" y="19" width="10" height="10" rx="2"/></svg><b>Model</b></div>
+    <div class="mini-pt glass" id="mp2" style="top:410px"><svg viewBox="0 0 48 48"><path d="M30 6a10 10 0 0 0-9 14L7 34a4 4 0 0 0 6 6l14-14a10 10 0 0 0 14-9l-6 6-6-2-2-6 6-6c-1 0-2-.5-3-.5z"/></svg><b>Tools</b></div>
+    <div class="mini-pt glass" id="mp3" style="top:580px"><svg viewBox="0 0 48 48"><ellipse cx="24" cy="11" rx="14" ry="5"/><path d="M10 11v26c0 3 6 5 14 5s14-2 14-5V11"/></svg><b>Memory</b></div>
+    <div class="mini-pt glass" id="mp4" style="top:750px"><svg viewBox="0 0 48 48"><path d="M38 18a15 15 0 0 0-27-4M10 30a15 15 0 0 0 27 4"/><path d="M11 6v8h8M37 42v-8h-8"/></svg><b>Loop</b></div>
+    <div class="glass" id="inc">
+      <div class="inc-head"><span>02:00 · orders_daily</span><span class="st" id="inc-st"><i></i><span id="inc-st-t">FAILED</span></span></div>
+      <div class="inc-row" id="ir1"><span class="who">MODEL</span><span>reads: cannot cast STRING to TIMESTAMP</span></div>
+      <div class="inc-row" id="ir2"><span class="who">TOOL</span><span>get_logs(run_id=8812)</span></div>
+      <div class="inc-row" id="ir3"><span class="who">MEMORY</span><span>orders schema changed 7 days ago</span></div>
+      <div class="inc-row" id="ir4"><span class="who">LOOP</span><span>rerun tests … <span class="ok">passed ✓</span></span></div>
+      <div id="inc-res"></div>
+    </div>
+  </section>
+
+  <!-- 03 · autonomy -->
+  <section class="scene" id="s-auto">
+    <div class="h-title" id="au-head"><div class="tag">AUTONOMY</div><h2>How many decisions it makes <span class="grad">without you</span></h2></div>
+    <div id="au-track">
+      <div id="au-fill"></div>
+      <div class="au-stop" style="left:0%"></div><div class="au-stop" style="left:50%"></div><div class="au-stop" style="left:100%"></div>
+      <div class="au-lab" style="left:0%">LOW</div><div class="au-lab" style="left:50%">MIDDLE</div><div class="au-lab" style="left:100%">HIGH</div>
+      <div id="au-knob"></div>
+    </div>
+    <div class="au-card glass" id="au-c1" style="left:360px"><div class="who">YOU DECIDE</div><p>You write the steps. The model fills the blanks.</p></div>
+    <div class="au-card glass" id="au-c2" style="left:960px"><div class="who">IT PICKS THE PATH</div><p>The model chooses which branch to take.</p></div>
+    <div class="au-card glass" id="au-c3" style="left:1560px"><div class="who">IT DECIDES</div><p>Steps, order, and when to stop.</p></div>
+    <div class="meter" id="me1" style="top:850px"><div class="lab"><span>Handles messy problems</span></div><div class="bar"><i id="me1-b" style="background:linear-gradient(90deg,var(--accent2),var(--accent))"></i></div></div>
+    <div class="meter" id="me2" style="top:850px;left:1030px"><div class="lab"><span>Easy to predict and test</span></div><div class="bar"><i id="me2-b" style="background:linear-gradient(90deg,var(--green),#a7f3d0)"></i></div></div>
+    <div class="glass" id="au-rule">Give it the <span class="grad">least freedom</span> that still gets the job done.</div>
+  </section>
+
+  <!-- 03b · linear vs parallel -->
+  <section class="scene" id="s-lanes">
+    <div class="lane glass" id="ln-lin"><div class="tag">LINEAR</div><div class="tm" id="ln-t1"></div><svg id="ln-svg1"></svg></div>
+    <div class="lane glass" id="ln-par"><div class="tag">PARALLEL</div><div class="tm" id="ln-t2"></div><svg id="ln-svg2"></svg></div>
+    <div id="ln-cost"><span>You pay per call</span><span class="coin">$</span><span class="coin">$</span><span class="coin">$</span></div>
+  </section>
+
+  <!-- 04 · patterns -->
+  <section class="scene" id="s-pat">
+    <div id="pa-rail"></div>
+    <div class="pa glass" id="pa1"><h3>ReAct</h3><div class="sub">Reason + act, one step at a time</div></div>
+    <div class="pa glass" id="pa2"><h3>Reflection</h3><div class="sub">Draft, check its own work, fix</div></div>
+    <div class="pa glass" id="pa3"><h3>Plan and execute</h3><div class="sub">Plan once, then run the steps</div></div>
+    <div class="pa glass" id="pa4"><h3>Multi-agent</h3><div class="sub">A lead splits the job across specialists</div></div>
+    <div class="pa glass" id="pa5"><h3>Swarm</h3><div class="sub">No boss: agents hand off to each other</div></div>
+  </section>
+
+  <!-- 05 · frameworks -->
+  <section class="scene" id="s-fw1">
+    <div class="fw-head"><div class="tag">FRAMEWORK 1</div><h2>LangGraph</h2><div class="tl">Pick it for control</div></div>
+    <div class="fw-stage glass" id="fw1-stage"><svg class="dg" id="fw1-svg" style="position:absolute;inset:0;overflow:visible"></svg></div>
+  </section>
+  <section class="scene" id="s-fw2">
+    <div class="fw-head"><div class="tag">FRAMEWORK 2</div><h2>CrewAI</h2><div class="tl">Fastest to a prototype</div></div>
+    <div class="role glass" id="ro1" style="left:820px;top:330px"><div class="av"><svg viewBox="0 0 48 48"><circle cx="20" cy="20" r="11"/><path d="M28 28l12 12"/></svg></div><h4>Researcher</h4><div class="goal">GOAL</div><p>Find the facts</p></div>
+    <div class="role glass" id="ro2" style="left:1145px;top:330px"><div class="av"><svg viewBox="0 0 48 48"><path d="M32 8l8 8-22 22H10v-8z"/><path d="M28 12l8 8"/></svg></div><h4>Writer</h4><div class="goal">GOAL</div><p>Draft the report</p></div>
+    <div class="role glass" id="ro3" style="left:1470px;top:330px"><div class="av"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="16"/><path d="M16 24l6 6 11-12"/></svg></div><h4>Reviewer</h4><div class="goal">GOAL</div><p>Check it before it ships</p></div>
+  </section>
+  <section class="scene" id="s-fw3">
+    <div class="tag" style="position:absolute;left:150px;top:180px">THE UPDATE</div>
+    <div class="fwc glass" id="fw-old" style="left:150px;top:260px"><h3>AutoGen</h3><div class="meta">MICROSOFT · GITHUB README</div><div class="stamp" id="fw-stamp" style="left:120px;top:180px;font-size:34px">NO LONGER MAINTAINED</div></div>
+    <svg id="up-arrow" viewBox="0 0 240 120"><path id="up-path" d="M10 60 H210" stroke="#22D3EE" stroke-width="6" fill="none" stroke-linecap="round"/><path id="up-head" d="M180 30 L215 60 L180 90" stroke="#22D3EE" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <div class="fwc glass" id="fw-new" style="left:1130px;top:260px;border-color:var(--accent2)"><h3>Microsoft Agent Framework</h3><div class="chips"><span class="chip on">Python</span><span class="chip on">.NET</span></div></div>
+    <div class="fw3 glass" id="f3a" style="left:150px"><h4>LangGraph</h4><p>control</p></div>
+    <div class="fw3 glass" id="f3b" style="left:710px"><h4>CrewAI</h4><p>speed</p></div>
+    <div class="fw3 glass hot" id="f3c" style="left:1270px"><h4>Agent Framework</h4><p>replaces AutoGen</p></div>
+  </section>
+
+  <!-- this week -->
+  <section class="scene" id="s-week">
+    <div class="tag" style="position:absolute;left:150px;top:200px">THIS WEEK</div>
+    <div id="wk-list">
+      <div class="wk glass" id="wk1"><span class="bx" id="wk1-x"></span>One boring weekly task</div>
+      <div class="wk glass" id="wk2"><span class="bx" id="wk2-x"></span>A ReAct agent</div>
+      <div class="wk glass" id="wk3"><span class="bx" id="wk3-x"></span>Built in LangGraph</div>
+      <div class="wk glass" id="wk4"><span class="bx" id="wk4-x"></span>Just two tools</div>
+    </div>
+    <div id="wk-grid"></div>
+    <div class="glass" id="wk-built"><b>1 agent built</b><span>YOU'RE AHEAD</span></div>
+  </section>
+
+  <!-- CTA -->
+  <section class="scene" id="s-cta">
+    <div id="cta-sub"><svg viewBox="0 0 24 24"><path d="M12 22a2.5 2.5 0 0 0 2.4-2h-4.8A2.5 2.5 0 0 0 12 22zm7-6V11a7 7 0 0 0-5.5-6.8V3.5a1.5 1.5 0 0 0-3 0v.7A7 7 0 0 0 5 11v5l-2 2v1h18v-1z"/></svg>Subscribe</div>
+    <div class="glass" id="cta-q">What would you build first?</div>
+    <div class="wordmark" id="cta-word">Stackle<span class="dot">.</span></div>
+  </section>
+
+</div></div>
+
+<div id="hud">
+  <div class="hud-tl"><b>STACKLE</b> / AI AGENTS EXPLAINED</div>
+  <div class="hud-tr"><span id="hud-num">00</span> / 05 &nbsp; <span class="ch" id="hud-chap">INTRO</span></div>
+  <div class="hud-bar"><i id="hud-prog"></i></div>
+  <div class="hud-bl">CRISPUS ROSHAN · STACKLE</div>
+  <div class="hud-br">STACKLE.IO</div>
+</div>
+<div id="streak"></div>
+<div id="flash"></div>
+<div id="grain"></div>
+<div id="vignette"></div>
+<div id="black"></div>
+
+<script src="cues.js"></script>
+<script src="../node_modules/gsap/dist/gsap.min.js"></script>
+<script src="../node_modules/gsap/dist/DrawSVGPlugin.min.js"></script>
+<script src="scene.js"></script>
+</body></html>

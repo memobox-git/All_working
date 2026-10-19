@@ -1,0 +1,37 @@
+[confident] A chatbot can tell you how to fix a broken data pipeline. An AI agent opens the logs, finds the bad column, writes the fix, and asks you to approve it. That gap is the whole story of AI agents.
+
+In this video I am going to show you what an AI agent actually is, the four parts every agent is built from, the five patterns engineers use to design them, and the three frameworks worth learning right now. And one framework that a lot of agent videos still recommend is no longer maintained, so I'll tell you what to use instead.
+
+Number one is what an agent actually is, and there are three steps to it. The first step is a rule-based system, which just means a person wrote every rule, like "if the file is late, send an alert." It's reliable, but it can't handle anything nobody planned for.
+
+The second step is a large language model on its own. It can read, reason, and write, but it can't touch anything. It answers, and then it stops.
+
+The third step is an agent. An agent just means a language model running in a loop, with tools it can use. It looks at the situation, decides the next step, takes it, checks what happened, and goes again until the job is done. So the model is the thinking part, and the agent is the doing part.
+
+Number two is the four parts, because every agent you'll ever build has the same four. The model is the brain, and it makes the decisions. Tools are the hands, like a SQL query, a web search, or an API call. Memory is what it knows so far, both the steps in this run and the things it saved from older runs. And the loop is what keeps it going, and what stops it when the job is done or it hits a limit.
+
+Let's say a pipeline fails at two in the morning. The model reads the error, a tool pulls the logs, memory remembers that this table changed last week, and the loop keeps it working until the test passes. Take away any one of those, and it falls apart.
+
+Number three is how much freedom you give it. Autonomy just means how many decisions the agent makes without you. At the low end, you write the steps and the model fills in the blanks. In the middle, the model picks which path to take. And at the high end, it picks the steps, the order, and when to stop. More freedom handles messier problems, but it's harder to predict and harder to test, and so the honest advice is to give it the least freedom that still gets the job done.
+
+Then there's how the work runs, which is either linear or parallel. Linear means one step after another. Parallel means steps that don't depend on each other run at the same time, like checking three tables at once, and then the results get combined. Parallel is faster, but you pay for every one of those calls. That's the trade.
+
+Number four is the five patterns. Pattern one is ReAct, which is short for reason and act. The agent thinks, takes one action, looks at the result, and thinks again, and it's the default for most agents, so it's where you should start.
+
+Pattern two is reflection, where the agent writes a first draft, then checks its own work and fixes it. It's great for SQL and code, because a second look catches real mistakes.
+
+Pattern three is plan and execute. A planner writes the whole plan up front, and then the steps run one by one, and if a step fails, it makes a new plan. Because the big thinking happens once, it's often cheaper on long tasks.
+
+Pattern four is multi-agent, where a lead agent splits the job and hands the pieces to specialists, like one that writes the query, one that checks it, and one that writes the summary.
+
+Pattern five is the swarm, and in a swarm there's no boss. The agents hand the task to each other, based on who's best for the next step. It's flexible, but it's the hardest one to debug, right? So save it for last.
+
+Number five is the three frameworks. LangGraph lets you draw your agent as a graph, where each step is a node, the arrows decide what runs next, and the state gets saved, so you can pause, pick up again, and add a human approval step. Pick it when you need control. That's its strength.
+
+CrewAI lets you describe a team of roles, like a researcher, a writer, and a reviewer, each with its own goal. It's the fastest way to get a working prototype.
+
+And here's the update. A lot of videos still tell you to learn AutoGen, but Microsoft's own AutoGen page now says the project is no longer maintained, and it tells new users to start with Microsoft Agent Framework, which works in Python and dot NET. So if you're starting today, learn that one instead.
+
+Here's what I'd do this week. Pick one boring task you do every week, and build a ReAct agent for it in LangGraph, with just two tools. Most people will watch ten videos about agents and never build one, so if you build one, you're already ahead.
+
+[excited] If this helped, subscribe, and tell me in the comments what you'd build first.
