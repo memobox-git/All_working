@@ -45,9 +45,9 @@ And so my plan has a clear order. Number one is system design, because that's th
 
 ### Part 2: How the page works
 
-**[Screen share: the top of the Notion page, "The targets by January 3"]**
+**[Screen share: the top of the Notion page, "The targets by the end of week 15"]**
 
-So here's the page. At the top are my targets for January third. That's a hundred fifty DSA problems, forty-seven advanced SQL problems, thirty Python questions, sixteen system designs, and twenty-five debugging scenarios. It's also ten stories from my own work, and one real project, which is a distributed AI platform.
+So here's the page. At the top are my targets for the end of week fifteen. That's a hundred fifty DSA problems, forty-seven advanced SQL problems, thirty Python questions, sixteen system designs, and twenty-five debugging scenarios. It's also ten stories from my own work, and one real project, which is a distributed AI platform.
 
 **[Screen share: "How I'm going to do it"]**
 
