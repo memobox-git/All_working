@@ -4,8 +4,8 @@ import { useEffect, useRef, useState } from "react";
 
 export type ChapterIndexItem = { id: string; number: string; label: string; count: number };
 
-// Chapter index for long guides. Below 1200px it is a sticky strip of chips that scrolls sideways;
-// from 1200px it is a sticky column next to the text. Plain anchor links, so it works without JS;
+// Chapter index for long guides. Below 1200px it is a sticky strip of rounded pills that scrolls sideways;
+// from 1200px it is a calm sticky list next to the text (serif numbers, a rounded fill for the current chapter). Plain anchor links, so it works without JS;
 // the script only marks the chapter currently in view.
 export function ChapterIndex({ items, label = "Chapters" }: { items: ChapterIndexItem[]; label?: string }) {
   const [active, setActive] = useState(items[0]?.id);
@@ -52,12 +52,12 @@ export function ChapterIndex({ items, label = "Chapters" }: { items: ChapterInde
   return (
     <nav
       aria-label={label}
-      className="sticky top-[68px] z-30 min-w-0 self-start border-b hairline bg-paper/95 backdrop-blur-md md:top-[72px] min-[1200px]:border-b-0 min-[1200px]:bg-transparent min-[1200px]:backdrop-blur-none"
+      className="sticky top-[72px] z-30 min-w-0 self-start border-b hairline bg-paper/95 backdrop-blur-md md:top-[80px] min-[1200px]:border-b-0 min-[1200px]:bg-transparent min-[1200px]:pb-10 min-[1200px]:pl-10 min-[1200px]:pr-4 min-[1200px]:backdrop-blur-none"
     >
-      <p className="t-mono-sm hidden px-6 pb-4 pt-10 text-muted min-[1200px]:block">{label}</p>
+      <p className="label hidden pb-5 pt-14 min-[1200px]:inline-flex">{label}</p>
       <ol
         ref={listRef}
-        className="flex gap-2 overflow-x-auto px-5 py-3 [scrollbar-width:none] md:max-[1199px]:px-8 min-[1200px]:block min-[1200px]:overflow-visible hairline min-[1200px]:border-t min-[1200px]:px-0 min-[1200px]:py-0 [&::-webkit-scrollbar]:hidden"
+        className="flex gap-2 overflow-x-auto px-5 py-3 [scrollbar-width:none] md:max-[1199px]:px-10 min-[1200px]:flex-col min-[1200px]:gap-0.5 min-[1200px]:overflow-visible min-[1200px]:p-0 [&::-webkit-scrollbar]:hidden"
       >
         {items.map((it) => {
           const on = it.id === active;
@@ -67,17 +67,15 @@ export function ChapterIndex({ items, label = "Chapters" }: { items: ChapterInde
                 href={`#${it.id}`}
                 data-id={it.id}
                 aria-current={on ? "true" : undefined}
-                className={`group flex items-center gap-2 whitespace-nowrap border px-3 py-2.5 transition-colors min-[1200px]:gap-3 min-[1200px]:border-0 min-[1200px]:border-b min-[1200px]:px-6 min-[1200px]:py-4 ${
+                className={`flex items-baseline gap-2.5 whitespace-nowrap rounded-full border px-4 py-2 text-[14.5px] font-medium transition-colors min-[1200px]:gap-3 min-[1200px]:rounded-[10px] min-[1200px]:border-0 min-[1200px]:px-3.5 min-[1200px]:py-2.5 min-[1200px]:text-[15.5px] ${
                   on
-                    ? "border-ink bg-ink text-paper min-[1200px]:border-ink"
-                    : "border-line bg-white text-ink hover:border-ink min-[1200px]:border-line min-[1200px]:bg-transparent min-[1200px]:hover:bg-white"
+                    ? "border-ink bg-ink text-paper min-[1200px]:bg-fill min-[1200px]:text-ink"
+                    : "border-line-strong bg-white text-ink-2 hover:border-ink hover:text-ink min-[1200px]:bg-transparent min-[1200px]:hover:bg-fill/60"
                 }`}
               >
-                <span className={`t-mono-sm tabular-nums ${on ? "text-night-muted" : "text-muted"}`}>{it.number}</span>
-                <span className="t-mono">{it.label}</span>
-                <span className={`t-mono-sm ml-auto hidden pl-3 tabular-nums min-[1200px]:inline ${on ? "text-night-muted" : "text-muted"}`}>
-                  {it.count}
-                </span>
+                <span className={`t-serif text-[14px] tabular-nums min-[1200px]:text-[15px] ${on ? "text-night-muted min-[1200px]:text-ink" : "text-muted"}`}>{it.number}</span>
+                <span>{it.label}</span>
+                <span className="ml-auto hidden pl-3 text-[13px] font-normal tabular-nums text-muted min-[1200px]:inline">{it.count}</span>
               </a>
             </li>
           );

@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { CodeBlock } from "@/components/code-block";
+import { CopyButton } from "@/components/copy-button";
 import { ArrowRight, Pixel } from "@/components/icons";
 import { PixelCross } from "./glyphs";
 
@@ -55,8 +55,10 @@ function Body({ items, style, checklist }: { items: string[]; style?: string; ch
   const notes = items.filter(isNote);
   const rest = items.filter((t) => !isNote(t));
   const noteEls = notes.map((t, i) => (
-    <p key={`n${i}`} className="t-mono-sm text-muted">
-      {t.trim().slice(1, -1)}
+    <p key={`n${i}`}>
+      <span className="inline-flex rounded-full border border-line-strong bg-white px-3 py-1 text-[13.5px] leading-snug text-ink-2">
+        {t.trim().slice(1, -1)}
+      </span>
     </p>
   ));
   if (style !== "bullets" || rest.length < 2) {
@@ -83,10 +85,10 @@ function Body({ items, style, checklist }: { items: string[]; style?: string; ch
         <p key={`p${i}`}>{rich(t)}</p>
       ))}
       {checklist ? (
-        <ul className="border-t hairline">
+        <ul className="overflow-hidden rounded-[14px] border border-line bg-white">
           {bullets.map((t, i) => (
-            <li key={i} className="mt-0 flex gap-3 border-b hairline py-2.5 pl-0 before:hidden">
-              <span aria-hidden="true" className="mt-[7px] h-3.5 w-3.5 shrink-0 border border-ink bg-white" />
+            <li key={i} className="mt-0 flex gap-3.5 border-t hairline px-4 py-3 first:border-t-0 before:hidden md:px-5">
+              <span aria-hidden="true" className="mt-[5px] h-[18px] w-[18px] shrink-0 rounded-[6px] border border-line-strong bg-paper" />
               <span>{rich(t)}</span>
             </li>
           ))}
@@ -102,23 +104,32 @@ function Body({ items, style, checklist }: { items: string[]; style?: string; ch
   );
 }
 
+// "Good" / "Bad" always appears as a word next to the icon.
+function Verdict({ good, label }: { good: boolean; label: string }) {
+  return (
+    <span
+      className={`inline-flex h-7 shrink-0 items-center gap-1.5 self-start rounded-full px-3 text-[13px] font-semibold leading-none ${
+        good ? "bg-ink text-paper" : "border border-line-strong bg-paper text-ink"
+      }`}
+    >
+      {good ? <Pixel name="check" size={14} /> : <PixelCross size={14} />}
+      {label}
+    </span>
+  );
+}
+
 function Examples({ items }: { items: ExampleItem[] }) {
   return (
-    <ul className="border-t hairline">
-      {items.map((it, i) => {
-        const good = it.kind === "good";
-        return (
-          <li key={i} className="mt-0 grid grid-cols-[76px_1fr] items-start gap-4 border-b hairline py-3.5 pl-0 before:hidden">
-            <span
-              className={`t-mono-sm inline-flex h-7 items-center gap-2 px-2 ${good ? "bg-ink text-paper" : "border border-ink bg-white text-ink"}`}
-            >
-              {good ? <Pixel name="check" size={11} /> : <PixelCross size={9} />}
-              {it.label}
-            </span>
-            <span>{it.text}</span>
-          </li>
-        );
-      })}
+    <ul className="grid gap-3">
+      {items.map((it, i) => (
+        <li
+          key={i}
+          className="mt-0 flex flex-col gap-3 rounded-[12px] border border-line bg-white p-4 before:hidden sm:flex-row sm:items-start sm:gap-4 md:px-5"
+        >
+          <Verdict good={it.kind === "good"} label={it.label} />
+          <span className="text-ink">{it.text}</span>
+        </li>
+      ))}
     </ul>
   );
 }
@@ -127,31 +138,44 @@ type Marker = "do" | "avoid" | null;
 const markerFor = (title: string): Marker =>
   /^(do|what makes a great)/i.test(title) && !/^don/i.test(title) ? "do" : /avoid|^don't/i.test(title) ? "avoid" : null;
 
+function MarkerIcon({ marker }: { marker: Exclude<Marker, null> }) {
+  return marker === "do" ? (
+    <span aria-hidden="true" className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-ink text-paper">
+      <Pixel name="check" size={15} />
+    </span>
+  ) : (
+    <span aria-hidden="true" className="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-line-strong bg-paper text-ink">
+      <PixelCross size={15} />
+    </span>
+  );
+}
+
 function Subsection({ title, items, pair }: { title: string; items: (string | ExampleItem)[]; pair: boolean }) {
   const examples = items.filter((x): x is ExampleItem => typeof x !== "string");
   const strings = items.filter((x): x is string => typeof x === "string");
   const marker = pair ? markerFor(title) : null;
   return (
-    <div>
-      <h4 className="t-mono-sm flex items-center gap-2 text-muted">
-        {marker === "do" && <Pixel name="check" size={11} className="text-ink" />}
-        {marker === "avoid" && <PixelCross size={9} className="text-ink" />}
+    <div className={marker ? "rounded-[16px] border border-line bg-white p-5 md:p-6" : ""}>
+      <h4 className="flex items-center gap-3 text-[16.5px] font-semibold leading-snug text-ink">
+        {marker && <MarkerIcon marker={marker} />}
         {title}
       </h4>
       {examples.length > 0 && (
-        <div className="mt-3">
+        <div className="mt-4">
           <Examples items={examples} />
         </div>
       )}
       {strings.length > 0 &&
         (/formula/i.test(title) && strings.length === 1 ? (
-          <p className="mt-3 border hairline bg-white px-4 py-3 font-mono text-[14px] leading-[1.6] text-ink">{strings[0]}</p>
+          <p className="t-serif mt-4 rounded-[12px] border border-line bg-white px-5 py-4 text-[19px] leading-[1.45] tracking-[-0.005em] text-ink md:text-[21px]">
+            {strings[0]}
+          </p>
         ) : marker ? (
-          <ul className="mt-3">
+          <ul className="mt-4 space-y-2.5">
             {strings.map((t, i) => (
-              <li key={i} className="flex gap-3 pl-0 before:hidden">
-                <span className="mt-[0.45em] shrink-0" aria-hidden="true">
-                  {marker === "do" ? <Pixel name="check" size={11} /> : <PixelCross size={9} />}
+              <li key={i} className="mt-0 flex gap-3 pl-0 text-[16px] leading-[1.6] before:hidden">
+                <span className={`mt-[0.3em] shrink-0 ${marker === "do" ? "text-ink" : "text-muted"}`} aria-hidden="true">
+                  {marker === "do" ? <Pixel name="check" size={16} /> : <PixelCross size={16} />}
                 </span>
                 <span>{rich(t)}</span>
               </li>
@@ -170,15 +194,17 @@ function Subsection({ title, items, pair }: { title: string; items: (string | Ex
 
 function Tips({ items, label }: { items: string[]; label: string }) {
   return (
-    <aside aria-label={label} className="mt-7 border hairline bg-white px-5 py-5 md:px-6">
-      <p className="t-mono-sm flex items-center gap-2 text-muted">
-        <Pixel name="bolt" size={11} className="text-ink" />
+    <aside aria-label={label} className="mt-8 rounded-[12px] bg-fill px-5 py-5 md:px-6 md:py-6">
+      <p className="flex items-center gap-2.5 text-[15px] font-semibold text-ink">
+        <span aria-hidden="true" className="grid h-7 w-7 place-items-center rounded-full bg-white">
+          <Pixel name="bolt" size={14} />
+        </span>
         {label}
       </p>
-      <ul className="mt-3">
+      <ul className="mt-3.5 space-y-2">
         {items.map((t, i) => (
-          <li key={i} className="flex gap-3 pl-0 text-[16px] leading-[1.6] before:hidden">
-            <ArrowRight size={13} className="mt-[0.4em]" />
+          <li key={i} className="mt-0 flex gap-3 pl-0 text-[16px] leading-[1.6] before:hidden">
+            <ArrowRight size={13} className="mt-[0.45em] text-muted" />
             <span>{rich(t)}</span>
           </li>
         ))}
@@ -190,8 +216,8 @@ function Tips({ items, label }: { items: string[]; label: string }) {
 function Table({ table, caption }: { table: NonNullable<GuideSection["table"]>; caption: string }) {
   const wide = table.headers.length >= 3;
   return (
-    <div className="scroll-x mt-7 border-t hairline">
-      <table className={wide ? "min-w-[540px]" : ""}>
+    <div className="scroll-x mt-8 rounded-[14px] border border-line bg-white px-5 md:px-6">
+      <table className={`[&_tr:last-child>td]:border-b-0 [&_th]:pt-4 ${wide ? "min-w-[540px]" : ""}`}>
         <caption className="sr-only">{caption}</caption>
         <thead>
           <tr>
@@ -218,6 +244,34 @@ function Table({ table, caption }: { table: NonNullable<GuideSection["table"]>; 
   );
 }
 
+// [Placeholders] in a template get a soft highlight so they're easy to spot; the copy button copies the plain text.
+function withPlaceholders(text: string): ReactNode[] {
+  return text.split(/(\[[^\]\n]+\])/g).map((part, i) =>
+    i % 2 ? (
+      <span key={i} className="rounded-[5px] bg-fill px-1 text-ink [box-decoration-break:clone]">
+        {part}
+      </span>
+    ) : (
+      part
+    ),
+  );
+}
+
+function Template({ label, text }: { label: string; text: string }) {
+  return (
+    <figure className="panel overflow-hidden">
+      <figcaption className="flex items-center justify-between gap-3 border-b hairline py-2 pl-5 pr-2">
+        <span className="flex min-w-0 items-center gap-2.5 py-1 text-[15px] font-semibold leading-snug text-ink">
+          <Pixel name="chat" size={17} className="text-muted" />
+          {label}
+        </span>
+        <CopyButton text={text} className="shrink-0 rounded-full text-ink-2! hover:bg-fill hover:text-ink!" />
+      </figcaption>
+      <p className="whitespace-pre-wrap break-words px-5 py-5 text-[15.5px] leading-[1.7] text-ink-2">{withPlaceholders(text)}</p>
+    </figure>
+  );
+}
+
 function Section({ chapter, s }: { chapter: GuideChapterData; s: GuideSection }) {
   const id = s.number != null ? `${chapter.id}-${s.number}` : `${chapter.id}-${slugify(s.title)}`;
   const subs = s.subsections ?? [];
@@ -227,7 +281,7 @@ function Section({ chapter, s }: { chapter: GuideChapterData; s: GuideSection })
     <section id={id} aria-labelledby={`${id}-h`} className="scroll-mt-[64px] border-t hairline pt-10 md:pt-12 min-[1200px]:scroll-mt-0">
       <div className="flex items-baseline gap-4">
         {s.number != null && (
-          <span className="t-mono-sm shrink-0 text-muted">
+          <span className="t-serif shrink-0 text-[17px] tabular-nums text-muted">
             {chapter.number}.{String(s.number).padStart(2, "0")}
           </span>
         )}
@@ -238,7 +292,7 @@ function Section({ chapter, s }: { chapter: GuideChapterData; s: GuideSection })
       <div className="prose-s mt-5">
         {s.body && <Body items={s.body} style={s.bodyStyle} checklist={/checklist/i.test(s.title)} />}
         {subs.length > 0 && (
-          <div className={`mt-7 grid gap-7 ${pair ? "md:grid-cols-2 md:gap-8" : ""}`}>
+          <div className={`mt-7 grid gap-7 ${pair ? "gap-4 md:grid-cols-2 md:gap-5" : ""}`}>
             {subs.map((sub) => (
               <Subsection key={sub.title} title={sub.title} items={sub.items} pair={pair} />
             ))}
@@ -247,17 +301,11 @@ function Section({ chapter, s }: { chapter: GuideChapterData; s: GuideSection })
         {s.tips && s.tips.length > 0 && <Tips items={s.tips} label={tipLabel} />}
         {s.table && <Table table={s.table} caption={s.title} />}
       </div>
-      {/* Outside .prose-s, whose inline-code styling would otherwise reach into the code window. */}
+      {/* Outside .prose-s, whose paragraph and list spacing would otherwise reach into the cards. */}
       {s.templates && s.templates.length > 0 && (
-        <div className="mt-7 grid gap-4">
+        <div className="mt-8 grid gap-4">
           {s.templates.map((t) => (
-            <CodeBlock
-              key={t.label}
-              language="text"
-              filename={t.label}
-              code={t.text}
-              className="[&_pre]:whitespace-pre-wrap [&_pre]:break-words"
-            />
+            <Template key={t.label} label={t.label} text={t.text} />
           ))}
         </div>
       )}
@@ -273,17 +321,17 @@ export function GuideChapter({ chapter }: { chapter: GuideChapterData }) {
       className="scroll-mt-[64px] border-t hairline first:border-t-0 min-[1200px]:scroll-mt-0"
     >
       <div className="pad py-14 md:py-20">
-        <div className="max-w-[720px]">
+        <div>
           <span className="label">Chapter {chapter.number}</span>
-          <h2 id={`${chapter.id}-title`} className="t-h2 mt-6">
+          <h2 id={`${chapter.id}-title`} className="t-h2 mt-6 max-w-[820px]">
             {chapter.title}
             <br />
             <span className="t-second">{chapter.subtitle}</span>
           </h2>
-          <blockquote className="mt-8 border-l-2 border-ink pl-5 text-[1.1875rem] leading-[1.55] text-ink-2">
+          <blockquote className="t-lede mt-7 max-w-[640px]">
             <p>{chapter.intro}</p>
           </blockquote>
-          <div className="mt-12 space-y-12 md:mt-16 md:space-y-14">
+          <div className="mt-12 max-w-[720px] space-y-12 md:mt-16 md:space-y-14">
             {chapter.sections.map((s, i) => (
               <Section key={i} chapter={chapter} s={s} />
             ))}

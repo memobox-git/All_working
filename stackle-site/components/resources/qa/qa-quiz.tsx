@@ -67,7 +67,7 @@ function buildRound(pool: Item[], count: number): Asked[] {
 function Cross({ size = 10 }: { size?: number }) {
   return (
     <svg width={size} height={size} viewBox="0 0 10 10" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true" className="shrink-0">
-      <path d="m1.5 1.5 7 7m0-7-7 7" strokeLinecap="square" />
+      <path d="m1.5 1.5 7 7m0-7-7 7" strokeLinecap="round" />
     </svg>
   );
 }
@@ -164,10 +164,10 @@ export function QaQuiz({
           <div className={s.legend}>
             <p className="t-mono-sm text-muted">How answers are marked</p>
             <div>
-              <span className={`${s.step} ${s.stepOk}`} aria-hidden="true" /> Correct: solid, with a tick
+              <span className={`${s.step} ${s.stepOk}`} aria-hidden="true" /> Correct: filled, with a tick
             </div>
             <div>
-              <span className={`${s.step} ${s.stepNo}`} aria-hidden="true" /> Wrong: hatched, with a cross
+              <span className={`${s.step} ${s.stepNo}`} aria-hidden="true" /> Wrong: outlined, with a cross
             </div>
           </div>
         </div>
@@ -187,10 +187,11 @@ export function QaQuiz({
         {steps}
         <div className={s.quizBody}>
           <p className="t-mono-sm text-muted">You scored</p>
-          <p className="t-pixel mt-3 text-[56px] leading-none md:text-[72px]">
-            {score}/{round.length}
+          <p className={`${s.score} mt-4`}>
+            {score}
+            <span> / {round.length}</span>
           </p>
-          <p className="t-mono mt-4">{pct}% correct</p>
+          <p className="mt-4 text-[15px] text-muted">{pct}% correct</p>
           <h3 ref={headRef} tabIndex={-1} className="t-h4 mt-6 max-w-[560px] outline-none">
             {message}
           </h3>
@@ -199,10 +200,8 @@ export function QaQuiz({
               const ok = r.picked === r.correct;
               return (
                 <li key={r.n} className={s.reviewRow}>
-                  <span className={`${s.mark} ${ok ? s.markOk : ""}`}>{ok ? <Pixel name="check" size={11} /> : <Cross />}</span>
-                  <a href={`#q-${r.n}`} className="t-mono-sm pt-1 underline decoration-dashed underline-offset-4 hover:decoration-solid">
-                    Q{r.n}
-                  </a>
+                  <span className={`${s.mark} ${ok ? s.markOk : ""}`}>{ok ? <Pixel name="check" size={13} /> : <Cross />}</span>
+                  <a href={`#q-${r.n}`}>Q{r.n}</a>
                   <span>
                     {r.q} <span className="sr-only">{ok ? "(correct)" : "(incorrect)"}</span>
                   </span>
@@ -237,7 +236,7 @@ export function QaQuiz({
       </div>
       {steps}
       <div className={s.quizBody}>
-        <p className="t-mono-sm text-muted">Q{cur.n}</p>
+        <p className="t-serif text-[15px] text-muted">Q{cur.n}</p>
         <h3 ref={headRef} tabIndex={-1} className="t-h4 mt-3 max-w-[760px] outline-none">
           {cur.q}
         </h3>
@@ -253,7 +252,7 @@ export function QaQuiz({
                   {o}
                   {answered && isCorrect && (
                     <span className={s.optNote}>
-                      <Pixel name="check" size={11} /> {isPicked ? "Your answer: correct" : "Correct answer"}
+                      <Pixel name="check" size={14} /> {isPicked ? "Your answer: correct" : "Correct answer"}
                     </span>
                   )}
                   {answered && isPicked && !isCorrect && (
@@ -270,7 +269,7 @@ export function QaQuiz({
           <p className={s.verdict} role="status">
             {answered && (
               <>
-                <span className={`${s.mark} ${ok ? s.markOk : ""}`}>{ok ? <Pixel name="check" size={11} /> : <Cross />}</span>
+                <span className={`${s.mark} ${ok ? s.markOk : ""}`}>{ok ? <Pixel name="check" size={13} /> : <Cross />}</span>
                 {ok ? "Correct." : `Not quite. The answer is ${KEYS[cur.correct]}.`}
               </>
             )}

@@ -25,6 +25,14 @@ const chapters: GuideChapterData[] = raw.chapters.map((c) => ({
   sections: (c.sections as GuideSection[]).map((s) => (s.body ? { ...s, body: s.body.filter((b) => !RETIRED.has(b)) } : s)),
 }));
 
+// Index labels in sentence case ("Job seeking"), keeping names and acronyms ("Sales Navigator", "DMs").
+const KEEP = new Set(["Navigator", "LinkedIn"]);
+const sentence = (s: string) =>
+  s
+    .split(" ")
+    .map((w, i) => (i === 0 || KEEP.has(w) || /[A-Z].*[A-Z]/.test(w) ? w : w.toLowerCase()))
+    .join(" ");
+
 const all = chapters.flatMap((c) => c.sections);
 const count = {
   sections: all.length,
@@ -50,12 +58,12 @@ export default function Page() {
           { label: "Tables", value: String(count.tables) },
         ]}
       />
-      <Row n="03" id="guide">
-        <div className="grid grid-cols-1 min-[1200px]:grid-cols-[264px_minmax(0,1fr)]">
+      <Row id="guide">
+        <div className="grid grid-cols-1 min-[1200px]:grid-cols-[280px_minmax(0,1fr)]">
           <ChapterIndex
-            items={chapters.map((c) => ({ id: c.id, number: c.number, label: c.tabLabel, count: c.sections.length }))}
+            items={chapters.map((c) => ({ id: c.id, number: c.number, label: sentence(c.tabLabel), count: c.sections.length }))}
           />
-          <div className="min-w-0 hairline min-[1200px]:border-l">
+          <div className="min-w-0">
             {chapters.map((c) => (
               <GuideChapter key={c.id} chapter={c} />
             ))}
@@ -63,7 +71,6 @@ export default function Page() {
         </div>
       </Row>
       <ResourceCta
-        n="04"
         title="Turn your profile into more interviews."
         body="The Stackle resume and LinkedIn service rewrites both with you, so recruiters find you and your applications get answers."
         courseHref="/career"

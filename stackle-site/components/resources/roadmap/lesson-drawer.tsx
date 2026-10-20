@@ -1,7 +1,7 @@
 "use client";
 
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
-import { ArrowLeft, ArrowRight, Menu } from "@/components/icons";
+import { ArrowLeft, ArrowRight, Menu, Pixel } from "@/components/icons";
 import styles from "./roadmap.module.css";
 
 // The interactive layer of a roadmap page. Every lesson is rendered on the server (passed in as `panels`) and
@@ -195,11 +195,11 @@ export function LessonProvider({
           aria-labelledby={openId ? `lesson-${openId}-title` : undefined}
           className={styles.sheet}
         >
-          <div className="flex min-h-[60px] items-center justify-between gap-3 border-b border-line bg-white pl-5 pr-3 md:pl-8">
-            <p className="t-mono-sm whitespace-nowrap text-muted">
+          <div className="flex min-h-[64px] items-center justify-between gap-3 border-b hairline pl-5 pr-3 md:pl-8 md:pr-4">
+            <p className="whitespace-nowrap text-[14px] text-muted">
               {meta && (
                 <>
-                  {meta.phase} <span aria-hidden="true">·</span> Topic {meta.n}
+                  <span className="t-serif text-[15px] text-ink">{meta.phase}</span> <span aria-hidden="true">·</span> Topic {meta.n}
                   <span className="hidden sm:inline"> of {String(topics.length).padStart(2, "0")}</span>
                 </>
               )}
@@ -207,7 +207,7 @@ export function LessonProvider({
             <div className="flex items-center gap-2">
               <button
                 type="button"
-                className="grid h-10 w-10 place-items-center border border-line hover:border-ink disabled:opacity-40 disabled:hover:border-line"
+                className="grid h-10 w-10 place-items-center rounded-full border border-line-strong bg-white transition-colors hover:border-ink disabled:opacity-40 disabled:hover:border-line-strong"
                 onClick={() => prevTopic && open(prevTopic.id)}
                 disabled={!prevTopic}
                 aria-label={prevTopic ? `Previous topic: ${prevTopic.title}` : "No previous topic"}
@@ -216,14 +216,14 @@ export function LessonProvider({
               </button>
               <button
                 type="button"
-                className="grid h-10 w-10 place-items-center border border-line hover:border-ink disabled:opacity-40 disabled:hover:border-line"
+                className="grid h-10 w-10 place-items-center rounded-full border border-line-strong bg-white transition-colors hover:border-ink disabled:opacity-40 disabled:hover:border-line-strong"
                 onClick={() => nextTopic && open(nextTopic.id)}
                 disabled={!nextTopic}
                 aria-label={nextTopic ? `Next topic: ${nextTopic.title}` : "No next topic"}
               >
                 <ArrowRight />
               </button>
-              <button type="button" className="btn btn-line btn-chrome gap-2 px-3" onClick={close}>
+              <button type="button" className="btn btn-line btn-chrome ml-1 h-10 min-h-0 gap-2 rounded-full px-4" onClick={close}>
                 <Menu open />
                 Close
               </button>
@@ -242,7 +242,7 @@ export function LessonProvider({
   );
 }
 
-// One cell of a phase's topic grid.
+// One card in a phase's topic grid.
 export function TopicButton({ id, n, title, category, total }: { id: string; n: string; title: string; category: string; total: number }) {
   const { openId, open, checked } = useLessons();
   const done = checked[id]?.length ?? 0;
@@ -254,20 +254,31 @@ export function TopicButton({ id, n, title, category, total }: { id: string; n: 
       aria-controls={`lesson-${id}`}
       aria-haspopup="dialog"
       onClick={() => open(id)}
-      className="group flex h-full min-h-[120px] w-full flex-col gap-4 px-5 py-5 sm:min-h-[148px] sm:gap-5 text-left transition-colors hover:bg-white aria-expanded:bg-ink aria-expanded:text-paper md:px-6 md:py-6"
+      className="panel group flex h-full min-h-[176px] w-full flex-col p-5 text-left transition-[box-shadow,border-color,background-color] hover:border-line-strong hover:shadow-[0_30px_60px_-30px_rgba(21,21,19,0.35)] aria-expanded:border-ink aria-expanded:bg-ink aria-expanded:text-paper md:p-6"
     >
-      <span className="flex w-full items-center justify-between gap-3">
-        <span className="t-mono-sm text-muted group-aria-expanded:text-night-muted">{n}</span>
-        <span className="t-mono-sm flex items-center gap-2 text-muted transition-colors group-hover:text-ink group-aria-expanded:text-paper">
-          Open <ArrowRight size={12} className="transition-transform group-hover:translate-x-0.5" />
+      <span className="flex w-full items-start justify-between gap-3">
+        <span className="t-serif text-[16px] leading-none text-muted group-aria-expanded:text-night-muted">{n}</span>
+        <span className="rounded-full border border-line px-2.5 py-1 text-[12.5px] leading-none text-ink-2 group-aria-expanded:border-night-line group-aria-expanded:text-night-muted">
+          {category}
         </span>
       </span>
-      <span className="text-[18px] font-medium leading-[1.25] tracking-[-0.015em]">{title}</span>
-      <span className="mt-auto flex w-full items-end justify-between gap-3">
-        <span className="t-mono-sm text-muted group-aria-expanded:text-night-muted">{category}</span>
+      <span className="t-serif mt-5 text-[21px] leading-[1.2] tracking-[-0.01em]">{title}</span>
+      <span className="mt-auto flex w-full items-center justify-between gap-3 pt-6">
+        <span className="inline-flex items-center gap-1.5 text-[14.5px] font-semibold">
+          Open lesson <ArrowRight className="transition-transform group-hover:translate-x-0.5" />
+        </span>
         {done > 0 && (
-          <span className="t-mono-sm whitespace-nowrap" aria-label={`${done} of ${total} checklist items done`}>
-            {done === total ? "Done" : `${done}/${total}`}
+          <span
+            className="inline-flex items-center gap-1.5 whitespace-nowrap rounded-full bg-fill px-2.5 py-1 text-[12.5px] font-medium leading-none text-ink group-aria-expanded:bg-night-3 group-aria-expanded:text-paper"
+            aria-label={`${done} of ${total} checklist items done`}
+          >
+            {done === total ? (
+              <>
+                <Pixel name="check" size={13} /> Done
+              </>
+            ) : (
+              `${done} of ${total} done`
+            )}
           </span>
         )}
       </span>
@@ -283,20 +294,19 @@ export function Checklist({ id, items }: { id: string; items: string[] }) {
   return (
     <div>
       <div className="flex items-center gap-4">
-        <div className="relative h-[2px] flex-1">
-          <div className="seg absolute inset-0" />
-          <div className="absolute inset-y-0 left-0 bg-ink" style={{ width: `${(done / items.length) * 100}%` }} />
+        <div className="relative h-1 flex-1 overflow-hidden rounded-full bg-fill" aria-hidden="true">
+          <div className="absolute inset-y-0 left-0 rounded-full bg-ink transition-[width] duration-300" style={{ width: `${(done / items.length) * 100}%` }} />
         </div>
-        <p className="t-mono-sm whitespace-nowrap text-muted" aria-live="polite">
-          {done}/{items.length} done
+        <p className="whitespace-nowrap text-[13.5px] text-muted" aria-live="polite">
+          {done} of {items.length} done
         </p>
         {done > 0 && (
-          <button type="button" className="t-mono-sm text-muted underline decoration-dashed underline-offset-4 hover:text-ink" onClick={() => reset(id)}>
+          <button type="button" className="text-[13.5px] font-semibold text-ink-2 underline decoration-line-strong underline-offset-4 hover:text-ink hover:decoration-ink" onClick={() => reset(id)}>
             Clear
           </button>
         )}
       </div>
-      <ul className="mt-4 border-t border-line">
+      <ul className="mt-3 border-t hairline">
         {items.map((it, i) => (
           <li key={i}>
             <label className={styles.item}>
@@ -313,13 +323,13 @@ export function Checklist({ id, items }: { id: string; items: string[] }) {
 // Jump links between a lesson's sections (scrolls the drawer, not the page, and leaves the URL alone).
 export function SectionNav({ id, sections }: { id: string; sections: { key: string; label: string }[] }) {
   return (
-    <nav aria-label="Lesson sections" className="sticky top-0 z-10 border-y border-line bg-paper/95 backdrop-blur-sm">
-      <ul className="flex overflow-x-auto px-2 py-2 sm:gap-1 md:px-6">
+    <nav aria-label="Lesson sections" className="sticky top-0 z-10 border-y hairline bg-white/95 backdrop-blur-sm">
+      <ul className="flex gap-2 overflow-x-auto px-5 py-3 md:px-8">
         {sections.map((s) => (
           <li key={s.key} className="shrink-0">
             <button
               type="button"
-              className="t-mono-sm px-1.5 py-2 text-muted transition-colors hover:bg-white hover:text-ink sm:px-2.5"
+              className="rounded-full border border-line px-3.5 py-1.5 text-[14px] font-medium text-ink-2 transition-colors hover:border-ink hover:text-ink"
               onClick={() => {
                 const el = document.getElementById(`lesson-${id}-${s.key}`);
                 if (!el) return;

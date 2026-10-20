@@ -18,11 +18,7 @@ export default function Page() {
   return (
     <QaPage
       data={data}
-      title={
-        <>
-          <span className="t-pixel">{stats.total}</span> Tableau interview
-        </>
-      }
+      title={`${stats.total} Tableau interview`}
       second="questions and answers."
       summary={data.summary.replace(/\s*Built by Stackle[^.]*\.?\s*$/, "")}
       meta={[

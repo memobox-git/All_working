@@ -46,14 +46,14 @@ export function QaPage({
           <div className={s.layout}>
             <aside className={s.aside}>
               <nav aria-label="Categories" className={s.side}>
-                <p className={s.sideTitle}>{data.categories.length} categories</p>
+                <p className={`t-mono-sm text-muted ${s.sideTitle}`}>{data.categories.length} categories</p>
                 <ol>
                   {data.categories.map((c) => (
                     <li key={c.id} data-cat-link={c.id}>
                       <a href={`#${c.id}`} className={s.sideLink} data-side-link={c.id}>
                         <span className={s.num}>{pad2(c.number)}</span>
                         <span>{c.name}</span>
-                        <span className={s.num} data-cat-n={c.id}>
+                        <span className={s.cnt} data-cat-n={c.id}>
                           {c.questions.length}
                         </span>
                       </a>
@@ -69,7 +69,7 @@ export function QaPage({
                   <a key={c.id} href={`#${c.id}`} className={s.catChip} data-cat-link={c.id}>
                     <span className={s.num}>{pad2(c.number)}</span>
                     {c.name}
-                    <span className={s.num} data-cat-n={c.id}>
+                    <span className={s.cnt} data-cat-n={c.id}>
                       {c.questions.length}
                     </span>
                   </a>
@@ -80,7 +80,7 @@ export function QaPage({
                 <section key={c.id} id={c.id} className={s.cat} data-cat aria-labelledby={`${c.id}-h`}>
                   <header className={s.catHead}>
                     <div>
-                      <span className={s.num}>Category {pad2(c.number)}</span>
+                      <span className={s.catNum}>Category {pad2(c.number)}</span>
                       <h2 id={`${c.id}-h`} className="t-h3">
                         {c.name}
                       </h2>
@@ -109,7 +109,7 @@ export function QaPage({
       </div>
 
       {quiz && (
-        <Row n="05" id="quiz">
+        <Row n="05" id="quiz" tone="white">
           <div className="pad sec">
             <SectionHead
               label="Quiz"
