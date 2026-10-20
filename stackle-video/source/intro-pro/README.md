@@ -1,6 +1,6 @@
 # Stackle channel intro
 
-A 13-second intro voiced by the ElevenLabs "Crispus Roshan" voice: "Hi, I'm Chris. I've spent over 10 years in data engineering and interviewed more than 200 engineers. Now I run Stackle, where I teach the skills that actually get you hired. Let's get into it." The look is a quiet page that fills in as Chris talks: off-white paper, black type, hand-drawn frames and underlines, one red accent, and soft pencil and paper sounds. Output: `stackle-video/graphics/stackle-intro.mp4` (1920×1080, 30 fps, -14 LUFS) and a vertical cut, `stackle-intro-vertical.mp4` (1080×1920), for TikTok, Reels and Shorts. Every "Explained in 2 Minutes" episode plays it after its opening card (see `../explained/README.md`).
+A 13-second intro voiced by the ElevenLabs "Crispus Roshan" voice: "Hi, I'm Chris. I've spent over 10 years in data engineering and interviewed more than 200 engineers. Now I run Stackle, where I teach the skills that actually get you hired. Let's get into it." The look is a quiet page that fills in as Chris talks: off-white paper, black type, hand-drawn frames and underlines, one red accent, and soft pencil and paper sounds. Output: `stackle-video/graphics/stackle-intro.mp4` (1920×1080, 30 fps, -14 LUFS) and a vertical cut, `stackle-intro-vertical.mp4` (1080×1920), for TikTok, Reels and Shorts. Every "Explained in 2 Minutes" video plays it right after its hook (see `../explained/README.md`).
 
 ## Rebuild
 

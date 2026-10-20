@@ -4,7 +4,7 @@
 
 **Series:** Explained in 2 Minutes, episode 02
 
-**Spoken words:** 249 · **Voice:** 1:24 · **Video:** 1:48 (opening card, channel intro, episode, comment ask)
+**Spoken words:** 249 · **Voice:** 1:24 · **Video:** 1:49 (opening card, the problem as the hook, channel intro, the rest of the episode, comment ask)
 
 **Format:** the same as episode 01: both cuts (landscape for YouTube, portrait for TikTok, Reels and Shorts), the "Crispus Roshan" voice, the 120 BPM beat, word-by-word captions in the portrait cut, and each cut opening on its thumbnail. The delivery tag is `[confident]` instead of `[calm]`, to keep the energy up.
 
@@ -29,8 +29,8 @@
 | Part | Words | Picture |
 |---|---|---|
 | Opening card | (beat only) | The Kafka thumbnail (16:9 and 9:16). A temporary design for now |
-| Channel intro | "Hi, I'm Chris …" | The Stackle intro (12.9 s) |
 | The problem | "Every time you tap 'order' …" | A phone taps "Order". Arrows fan out to Payments, Warehouse and Analytics, then multiply into a tangle of service-to-service lines |
+| Channel intro | "Hi, I'm Chris …" | The Stackle intro (12.9 s), straight after the hook |
 | What it is | "Kafka is an open-source platform …" | The tangle collapses into one Kafka bar in the middle. Then "batch vs streaming" (a nightly clock vs a live flow) and a timeline: 2011 LinkedIn, 2012 top-level Apache project |
 | The core idea | "Producers write events to a topic …" | An `orders` log builds from left to right with numbered events. Producers append on the right, and two consumers read at different points, each with its own offset marker |
 | Architecture | "A Kafka cluster is a group of servers …" | Three broker cards. The topic splits into partitions P0, P1 and P2 spread across them, with leader and replica copies. One broker fails, its replica takes over, and nothing goes dark. A consumer group of three picks up one partition each. A small KRaft controller quorum sits on top, pointing at each leader |

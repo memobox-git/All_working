@@ -20,7 +20,7 @@ Each episode explains one data-engineering tool or idea in about two minutes. Ev
 | Voice | Chris's cloned voice ("Crispus Roshan" on ElevenLabs, `eleven_v4`), with one delivery tag per episode, such as `[calm]` or `[confident]`, and `[warmly]` for the last part |
 | Picture | Motion graphics on a white background, each picture timed to the word that names it. An original 120 BPM beat under the voice. No sound effects |
 | Cuts | Landscape 1920×1080 for YouTube, with an `.srt` caption file. Portrait 1080×1920 for TikTok, Instagram Reels and YouTube Shorts, with word-by-word captions burned in |
-| Opening | Each cut opens on its own thumbnail card. Then Chris's channel intro (about 12 seconds): "Hi, I'm Chris… Let's get into it." |
+| Opening | Each cut opens on its own thumbnail card, then the hook (the problem part, about 17 seconds), then Chris's channel intro (about 13 seconds): "Hi, I'm Chris… Let's get into it." |
 | Closing | "That's X.", then the voiced ask: "What should I explain next? Tell me in the comments below." Then the closing title |
 
 ### The fixed structure
@@ -28,8 +28,8 @@ Each episode explains one data-engineering tool or idea in about two minutes. Ev
 | Part | Its job | About | In the Kafka episode |
 |---|---|---|---|
 | Opening card | Your thumbnail, with the beat already playing | 2 s | The Kafka thumbnail |
-| Channel intro | "Hi, I'm Chris… Let's get into it." The same in every episode | 12 s | |
-| The problem | A concrete, everyday hook that makes the tool necessary | 45 words | One tap on "Order" that three services need, and the tangle of service-to-service wiring |
+| The problem | The hook: a concrete, everyday problem that makes the tool necessary, ending on the line that names it | 45 words | One tap on "Order" that three services need, the tangle of service-to-service wiring, and "put Apache Kafka in the middle" |
+| Channel intro | "Hi, I'm Chris… Let's get into it." The same in every episode, always after the hook | 13 s | |
 | What it is | A one-line definition, the jargon word explained, and where it came from, with dates | 40 words | "An open-source platform for streaming events". LinkedIn, then a top-level Apache project in 2012 |
 | The core idea | The one concept you must understand | 50 words | The log: a topic, new events on the end, consumers reading at their own offset |
 | Architecture | The components drawn one at a time, with one failure or scaling moment | 85 words | Brokers, partitions and replicas. One broker fails and a replica takes over |
@@ -529,6 +529,4 @@ The first time on a machine, run `npm install` in `stackle-video/source/`. A fas
 
 **Per episode, in `stackle-video/scripts/`:** `<slug>.md` (the script, the on-screen plan and the facts table) and `<slug>-posts.md` (titles, description with chapters, tags and the pinned comment).
 
-**Decided:** every episode runs thumbnail card → the shared 12.9-second intro (`graphics/stackle-intro.mp4`, and `stackle-intro-vertical.mp4` for the portrait cut) → the episode → the closing ask. The closing ask is one shared recording too (`source/explained/audio/cta.wav`), so episodes don't need to record it.
-
-**Open question for you:** viewers on TikTok and Shorts decide in the first two seconds. One option is to open the portrait cut on the hook's first line and play the intro after it, which the kit already supports (`"intro": {"after": [word, n]}` in `episode.json`, as the trailer does). Your call.
+**Decided:** every video runs thumbnail card → **the hook first** (the problem part, ending on the line that names the tool) → the shared 12.9-second intro (`graphics/stackle-intro.mp4`, and `stackle-intro-vertical.mp4` for the portrait cut) → the rest of the episode → the closing ask. Set the hook's last word in `episode.json` (`"intro": {"after": [word, n]}`). The closing ask is one shared recording too (`source/explained/audio/cta.wav`), so episodes don't need to record it.

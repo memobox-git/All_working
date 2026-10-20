@@ -1,6 +1,6 @@
 # Apache Kafka, Explained in 2 Minutes (episode 02)
 
-A 1:48 explainer on a white canvas, voiced by the ElevenLabs "Crispus Roshan" voice over the series beat. It opens on the thumbnail, then the Stackle channel intro, then the episode, and closes on the comment ask. It is built with the shared kit in `../explained/` (see its README for the running order and the tools).
+A 1:49 explainer on a white canvas, voiced by the ElevenLabs "Crispus Roshan" voice over the series beat. It opens on the thumbnail and the problem as the hook, then the Stackle channel intro, then the rest of the episode, and closes on the comment ask. It is built with the shared kit in `../explained/` (see its README for the running order and the tools).
 
 | Cut | File | For |
 |---|---|---|
@@ -32,12 +32,13 @@ cd stackle-video/source/kafka
 
 ## The scenes
 
-0. **Opening card and intro** (0:00). The thumbnail, then the channel intro.
-1. **The problem** (0:15).
+0. **Opening card** (0:00). The thumbnail.
+1. **The problem, as the hook** (0:02).
    - A shop app's "Order" tap becomes an event (a small JSON card).
    - It fans out to Payments, Warehouse and Analytics, and a copy races down every line "right now".
    - Email and Fraud check join, every service wires to every other, and the lines tangle red into spaghetti.
    - At "Apache Kafka" (where the beat drops) the tangle unwinds into one Kafka bar in the middle, and events flow in and out along its spokes.
+   - Then the channel intro (0:19). The hub is still there when it ends.
 2. **What it is** (0:32).
    - The hub steps back for the definition: "An open-source platform for streaming events" in landscape, two chips in vertical.
    - Streaming vs a nightly batch: live events pass straight through, while batch ones queue at a 2 AM gate.
@@ -50,5 +51,5 @@ cd stackle-video/source/kafka
    - Every partition is copied to another broker. Broker 2 fails, and P1's copy on broker 1 becomes the leader.
    - A consumer group of two takes the partitions, then a third consumer joins and P2 moves to it.
    - The KRaft controllers appear on top, with dashed lines to each leader and crowns on the leaders.
-5. **In short** (1:27). "We use Kafka.", three takeaways, then "That's Apache Kafka" and the closing title.
+5. **In short** (1:28). "We use Kafka.", three takeaways, then "That's Apache Kafka" and the closing title.
 6. **Comment ask** (1:41). "What should I explain next?"

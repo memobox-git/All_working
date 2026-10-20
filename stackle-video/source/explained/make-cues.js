@@ -25,6 +25,21 @@ const r3 = x => Math.round(x * 1000) / 1000;
 const norm = s => s.toLowerCase().replace(/[^a-z0-9']/g, '');
 const probe = f => Number(spawnSync('ffprobe', ['-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', f], { encoding: 'utf8' }).stdout);
 
+// the middle of the longest quiet stretch (10 ms windows under -55 dB) of the voice file between t0 and t1
+function quietCut(t0, t1) {
+  t0 = Math.max(0, t0);
+  const r = spawnSync('ffmpeg', ['-v', 'error', '-ss', String(t0), '-t', String(t1 - t0), '-i', path.join(dir, 'audio', 'vo.mp3'),
+    '-ac', '1', '-ar', '16000', '-f', 's16le', '-'], { maxBuffer: 1 << 26 });
+  const n = r.stdout.length >> 1, hop = 160;
+  let best = [0, 0], run = 0;
+  for (let k = 0; k * hop < n; k++) {
+    let e = 0;
+    for (let j = k * hop; j < Math.min(n, (k + 1) * hop); j++) e += (r.stdout.readInt16LE(j * 2) / 32768) ** 2;
+    if (10 * Math.log10(e / hop + 1e-12) < -55) { if (++run > best[1]) best = [k - run + 1, run]; } else run = 0;
+  }
+  return best[1] ? r3(t0 + (best[0] + best[1] / 2) * .01) : null;
+}
+
 const card = Number(ep.card ?? ep.offset);
 let offset = Number(ep.offset);
 let words = tr.words.filter(w => w.type === 'word').map(w => ({ w: w.text, s: w.start, e: w.end }));
@@ -50,10 +65,10 @@ if (ep.intro) {
     const a = words[i], b = words[r];
     insert.start = r3(offset + a.e + GAP_IN);
     insert.shift = r3(insert.start + duration + GAP_OUT - (offset + b.s));
-    // where the voice file is cut: just after a word ends, since the next word's sound starts
-    // a little before its transcribed start time
-    insert.cut = r3(a.e + .02);                   // the end of the first part
-    insert.resumeAt = ep.intro.resume ? r3(Math.max(insert.cut, words[r - 1].e + .05)) : insert.cut;   // and the start of the rest
+    // where the voice file is cut: in the quiet between words (the transcript's word edges are
+    // approximate, and a word's sound can start a little before its transcribed start)
+    insert.cut = quietCut(a.e - .3, words[i + 1].s + .05) ?? r3(a.e + .02);       // the end of the first part
+    insert.resumeAt = ep.intro.resume ? quietCut(words[r - 1].e - .3, b.s + .05) ?? r3(words[r - 1].e + .05) : insert.cut;   // and the start of the rest
     words = words.filter((w, j) => j <= i || j >= r).map((w, j) => j > i ? { ...w, s: r3(w.s + insert.shift), e: r3(w.e + insert.shift) } : w);
   }
   // the intro's own words, for the .srt (its voice starts `voiceOffset` seconds into the video)

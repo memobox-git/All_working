@@ -26,8 +26,8 @@ In this episode:
 • What it really means when a team says "we use Airflow"
 
 Chapters
-0:00 Intro
-0:15 Why pipelines need an orchestrator
+0:00 Why pipelines need an orchestrator
+0:18 Intro
 0:31 What is Apache Airflow?
 0:45 DAGs, explained (with code)
 1:03 Airflow architecture

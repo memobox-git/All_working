@@ -504,10 +504,10 @@
   "duration": 12.867,
   "landscape": "../../graphics/stackle-intro.mp4",
   "vertical": "../../graphics/stackle-intro-vertical.mp4",
-  "cut": 2.18,
+  "cut": 2.155,
   "shift": 12.237,
   "start": 4.26,
-  "resumeAt": 3.25,
+  "resumeAt": 3.205,
   "words": [
    {
     "w": "Hi,",

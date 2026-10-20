@@ -9,12 +9,13 @@ Everything the episodes share. Each episode is its own folder next to this one (
 | Part | Length | What plays |
 |---|---|---|
 | Opening card | 1.8 s (`card`) | The episode's thumbnail, full frame, over the start of the beat. It is the first frame, so it doubles as the TikTok cover |
-| Channel intro | 12.9 s | Chris's Stackle intro ("Hi, I'm Chris … Let's get into it."), from `../../graphics/stackle-intro.mp4` (or `stackle-intro-vertical.mp4`). The beat pauses while it plays |
-| The episode | about 1:30 | The voiceover and its motion graphics |
+| The hook | about 17 s | The episode's opening, its problem part, up to the line that names the tool ("… put Apache Kafka in the middle.") |
+| Channel intro | 12.9 s | Chris's Stackle intro ("Hi, I'm Chris … Let's get into it."), from `../../graphics/stackle-intro.mp4` (or `stackle-intro-vertical.mp4`). The voice and the beat pause while it plays |
+| The rest of the episode | about 1:05 | What it is, the core idea, architecture, in short |
 | Comment ask | 5.2 s (`cta`) | "So, what should I explain next? Tell me in the comments below, and it could be the next episode." A comment box types out ideas (`cta.js`) |
 | Fade | 1.8 s | To white |
 
-The series intro (episode 00) is the one exception: its intro plays after its first line ("One data tool. Two minutes."), set with `"after": ["minutes", 0]`. Its `"resume": ["this", 0]` picks the voice up again at "This is …" and leaves out the words in between.
+The rule for every video: **the hook first, then the channel intro.** Each episode names its last hook word in `"intro": {"after": [word, n]}`: `["middle", 0]` for Kafka, `["airflow", 0]` for Airflow. The series intro (episode 00) plays it after "One data tool. Two minutes." (`"after": ["minutes", 0]`), and its `"resume": ["this", 0]` picks the voice up again at "This is …", leaving out the words in between.
 
 ## episode.json
 
@@ -30,7 +31,7 @@ The series intro (episode 00) is the one exception: its intro plays after its fi
     "vertical": "../../graphics/stackle-intro-vertical.mp4",
     "transcript": "../intro-pro/audio/vo.transcript.json",
     "voiceOffset": 0.6,
-    "after": null
+    "after": ["middle", 0]
   },
   "cta": true,
   "music": { "drop": ["apache", 0], "chapters": [["here's", 0], ["now", 1], ["team", 0]], "break": ["that's", 0] }
@@ -42,8 +43,8 @@ The fields:
 - `card` is how long the opening card holds.
 - `offset` is where the voice would start if there were no intro.
 - `intro` is the channel intro.
-  - `after: null` plays it straight after the card.
-  - `[word, n]` plays it after the n-th time the voice says that word (counting from 0). The voice pauses for it.
+  - `after` is `[word, n]`: the intro plays after the n-th time the voice says that word (counting from 0), at the end of the hook. The voice pauses for it. (`null` would play it straight after the card, which the series doesn't do.)
+  - The voice file is cut in the quiet between words, found from the audio itself, so no syllable is clipped.
   - `resume` (optional, with `after`): `[word, n]` where the voice picks up again. The words in between are left out of the video.
 - `cta` adds the comment ask after the closing title.
 - `music` names the words the beat follows (also counted from 0):
