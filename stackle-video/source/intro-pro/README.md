@@ -1,6 +1,6 @@
 # Stackle channel intro
 
-A 15-second intro voiced by the ElevenLabs "Crispus Roshan" voice: "Hi, I'm Chris. I've spent over 10 years in data engineering and interviewed more than 200 engineers. Now I run Stackle, where I teach the skills that actually get you hired. Let's get into it." The look is a quiet page that fills in as Chris talks: off-white paper, black type, hand-drawn frames and underlines, one red accent, and soft pencil and paper sounds. Output: `stackle-video/graphics/stackle-intro.mp4` (1920×1080, 30 fps, -14 LUFS).
+A 13-second intro voiced by the ElevenLabs "Crispus Roshan" voice: "Hi, I'm Chris. I've spent over 10 years in data engineering and interviewed more than 200 engineers. Now I run Stackle, where I teach the skills that actually get you hired. Let's get into it." The look is a quiet page that fills in as Chris talks: off-white paper, black type, hand-drawn frames and underlines, one red accent, and soft pencil and paper sounds. Output: `stackle-video/graphics/stackle-intro.mp4` (1920×1080, 30 fps, -14 LUFS).
 
 ## Rebuild
 
@@ -21,7 +21,7 @@ Rendering is split into chunks, so a stopped build picks up where it left off wh
 | `audio/sfx/` | Pencil strokes, paper slides and a quiet ambience bed (ElevenLabs sound effects) |
 | `img/chris.jpg` | The photo in the opening frame |
 | `make-cues.js` | Turns the word timings into `cues.js` |
-| `index.html`, `style.css` | The four scenes: photo card with the name and two numbers, Stackle, and the close |
+| `index.html`, `style.css` | The four scenes: photo card with the name and two numbers, Stackle, and "Let's get into it" |
 | `scene.js` | One GSAP timeline keyed to spoken words (`at('stackle')`), the hand-drawn strokes, counters and sound cues |
 | `../render-pro.js` | Renders frames in parallel, with optional motion blur (`--sub`) |
 | `mix.js` | Voice, ducked bed and sound effects from the scene's cues, normalised to -14 LUFS |
