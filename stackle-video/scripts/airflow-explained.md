@@ -28,7 +28,7 @@
 
 | Time | Words | Picture |
 |---|---|---|
-| 0:00 | (beat only) | The opening card: the thumbnail, with the photo, "Explained in 2 minutes" and Apache Airflow. It clears as the voice starts |
+| 0:00 | (beat only) | The opening card: the thumbnail ("explained in 2 MINUTES", the Airflow logo, Chris pointing at it). It clears as the voice starts |
 | 0:02 | "Every morning … already run." | "06:00 AM". A 32 × 12 grid of task runs turns from grey to blue to green |
 | 0:09 | "Something decided …" | The grid moves up. Three cards: *When to start*, *In what order*, *What to do when one fails*. One task turns red |
 | 0:16 | "… Apache Airflow." | Pinwheel mark and the "Apache Airflow" wordmark |

@@ -37,25 +37,15 @@ body{font-family:PJS,sans-serif;color:var(--ink);position:relative;-webkit-font-
 .tile.sm{width:38px;height:38px;border-radius:11px}
 .tile.sm svg{width:21px;height:21px}
 
-/* S0 · the opening card, which is also the TikTok cover */
-#s0{visibility:visible;opacity:1}
-.th-portrait{position:absolute;left:160px;top:905px;width:760px;height:966px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 140px,#000 620px,transparent)}
-.th-portrait img{position:absolute;left:0;bottom:0;width:760px}
-.th-halo{position:absolute;left:98px;top:-10px;width:580px;height:580px;border-radius:50%;background:radial-gradient(circle,#DCEBFF 0%,#EDF5FF 46%,rgba(237,245,255,0) 70%)}
-.th-halo::after{content:'';position:absolute;inset:66px;border-radius:50%;border:2px solid rgba(1,124,238,.16)}
-.th-copy{position:absolute;left:0;right:0;top:300px;display:flex;flex-direction:column;align-items:center}
-.th-pill{display:inline-flex;align-items:center;gap:14px;padding:12px 30px 12px 12px;border-radius:999px;background:var(--blue);color:#fff;font-weight:800;font-size:38px;letter-spacing:-.01em;box-shadow:0 16px 34px -12px rgba(1,124,238,.6)}
-.th-clock{width:52px;height:52px;border-radius:50%;background:#fff;color:var(--blue);display:grid;place-items:center}
-.th-clock svg{width:32px;height:32px}
-.th-apache{margin-top:44px;font-weight:600;font-size:116px;letter-spacing:-.04em;line-height:1;color:#475467}
-.th-name{display:flex;align-items:center;gap:20px;margin-top:4px;font-weight:800;font-size:196px;letter-spacing:-.05em;line-height:1}
-.th-name .wheel{width:150px;height:150px}
-.th-dag{margin-top:50px;display:flex;align-items:center}
-.th-dag span{display:flex;align-items:center;gap:10px;padding:10px 18px 10px 14px;background:#fff;border:1.5px solid var(--line);border-radius:14px;box-shadow:var(--shadow);font:600 26px JBM,monospace}
-.th-dag i{width:12px;height:12px;border-radius:50%;background:var(--green)}
-.th-dag b{position:relative;width:44px;height:3px;margin:0 7px;border-radius:2px;background:#98A2B3}
-.th-dag b::after{content:'';position:absolute;right:-1px;top:-5.5px;width:11px;height:11px;border-top:3px solid #98A2B3;border-right:3px solid #98A2B3;transform:rotate(45deg);box-sizing:border-box}
-.th-ep{position:absolute;left:0;right:0;top:226px;text-align:center;font:600 21px JBM,monospace;letter-spacing:.24em;text-transform:uppercase;color:var(--faint)}
+/* S0 · the opening card: the 16:9 thumbnail (1672x941) split in two and stacked for 9:16.
+   The cut follows the gaps in the artwork: "MINUTES" ends at x 1071 and the hair starts at 1134;
+   lower down, "Airflow" ends at 921 and the pointing finger starts at 948, and below the
+   baseline (y 800) the shirt's shading starts at x 828. Clip paths are in the image's own
+   pixels; each part is then scaled and placed. */
+#s0{visibility:visible;opacity:1;background:#FEFEFE}
+.th-part{position:absolute;left:0;top:0;width:1672px;height:941px;transform-origin:0 0}
+#th-text{clip-path:polygon(20px 75px,1102px 75px,1102px 545px,924px 545px,924px 800px,400px 800px,400px 941px,20px 941px);transform:translate(21.52px,110.69px) scale(.9242)}
+#th-person{clip-path:polygon(1102px 0,1672px 0,1672px 941px,820px 941px,820px 800px,934px 800px,934px 545px,1102px 545px);transform:translate(-725.72px,904px) scale(1.08)}
 
 /* S1 · the morning run */
 .s1-head{position:absolute;top:330px;left:0;right:0;display:flex;flex-direction:column;align-items:center}
