@@ -1,0 +1,235 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>DE Interview Board</title>
+<style>
+  @font-face { font-family: "Cabin Sketch"; src: url(fonts/Cabin_Sketch.woff2) format("woff2"); font-weight: 700; }
+  @font-face { font-family: "Patrick Hand"; src: url(fonts/Patrick_Hand.woff2) format("woff2"); }
+  @font-face { font-family: "Caveat"; src: url(fonts/Caveat.woff2) format("woff2"); font-weight: 700; }
+  :root {
+    --chalk: #f1efe6; --yellow: #f6dd73; --pink: #f3a3b6; --blue: #93d2f2; --green: #a9e1a0;
+    --board: #1c2521; --line: rgba(241, 239, 230, .42);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1080px; height: 1350px; overflow: hidden; background: #5a3a1e; }
+  .frame {
+    position: absolute; top: 0; left: 0; width: 1080px; height: 1350px; padding: 18px;
+    background: linear-gradient(135deg, #8a5a2e 0%, #6a4220 35%, #7d5129 60%, #5b3819 100%);
+  }
+  .board {
+    position: relative; width: 100%; height: 100%; overflow: hidden;
+    background:
+      radial-gradient(ellipse at 20% 15%, rgba(255,255,255,.07), transparent 45%),
+      radial-gradient(ellipse at 80% 70%, rgba(255,255,255,.05), transparent 50%),
+      radial-gradient(ellipse at 50% 100%, rgba(255,255,255,.04), transparent 40%),
+      var(--board);
+    box-shadow: inset 0 0 40px rgba(0,0,0,.6), 0 0 0 3px #3e2611;
+    color: var(--chalk); font-family: "Patrick Hand", sans-serif;
+  }
+  .grain { position: absolute; inset: 0; pointer-events: none; opacity: .55; mix-blend-mode: multiply; z-index: 5; }
+  .dust { position: absolute; inset: 0; pointer-events: none; opacity: .10; z-index: 0; }
+  .chalk-text { text-shadow: 0 0 1px rgba(255,255,255,.45), 0 0 6px rgba(255,255,255,.08); }
+
+  header { position: relative; height: 222px; padding: 26px 34px 0; z-index: 1; }
+  h1 { font-family: "Cabin Sketch", cursive; font-weight: 700; line-height: .98; font-size: 70px; letter-spacing: .5px; }
+  h1 .y { color: var(--yellow); }
+  .sub { font-family: "Caveat", cursive; font-weight: 700; color: var(--pink); font-size: 40px; margin-top: 8px; display: inline-block; position: relative; }
+  .sub svg { position: absolute; left: 0; bottom: -10px; }
+  .cloud { position: absolute; right: 34px; top: 30px; width: 262px; height: 170px; }
+  .cloud span {
+    position: absolute; inset: 38px 30px 30px 40px; display: flex; align-items: center; justify-content: center; text-align: center;
+    font-family: "Caveat", cursive; font-weight: 700; font-size: 31px; line-height: 1.02; color: var(--chalk);
+  }
+
+  .grid {
+    position: relative; z-index: 1; margin: 0 22px; height: 1010px;
+    display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(4, 1fr);
+    border-top: 2px solid var(--line); border-bottom: 2px solid var(--line);
+  }
+  .card { position: relative; padding: 13px 15px 8px 15px; border-bottom: 2px dashed rgba(241,239,230,.28); }
+  .card:nth-child(3n+1), .card:nth-child(3n+2) { border-right: 2px solid var(--line); }
+  .card:nth-child(n+10) { border-bottom: none; }
+  .q { display: flex; gap: 10px; align-items: flex-start; color: var(--yellow); font-size: 20px; line-height: 1.12; min-height: 46px; }
+  .num {
+    flex: none; width: 31px; height: 31px; border: 2.5px solid var(--pink); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; color: var(--pink); font-size: 18px; margin-top: -2px;
+  }
+  .ans-label { color: var(--blue); font-size: 15px; text-decoration: underline; text-underline-offset: 3px; margin: 6px 0 2px 41px; }
+  ul { list-style: none; margin-left: 41px; }
+  li { position: relative; font-size: 15.6px; line-height: 1.22; margin: 2px 0; padding-left: 13px; }
+  li::before { content: "•"; position: absolute; left: 0; color: var(--chalk); }
+  li b { font-weight: normal; color: var(--green); }
+  li i { font-style: normal; color: var(--pink); }
+  table { margin: 4px 0 0 41px; border-collapse: collapse; font-size: 13.6px; }
+  td, th { border: 1.5px solid rgba(241,239,230,.55); padding: 1px 6px; font-weight: normal; text-align: left; }
+  th { color: var(--blue); }
+  .tag { position: absolute; right: 12px; bottom: 8px; font-family: "Caveat", cursive; font-weight: 700; font-size: 21px; color: var(--green); transform: rotate(-4deg); }
+
+  footer { position: relative; z-index: 1; height: 82px; padding: 0 34px; display: flex; align-items: center; justify-content: space-between; }
+  .brand { display: flex; align-items: baseline; gap: 14px; }
+  .brand .name { font-family: "Cabin Sketch", cursive; font-weight: 700; font-size: 44px; color: var(--yellow); }
+  .brand .tagline { font-size: 22px; color: var(--chalk); }
+  .motto { font-family: "Caveat", cursive; font-weight: 700; font-size: 30px; color: var(--blue); }
+
+  /* animation steps: cards beyond the current step are hidden; the current card can show its question only */
+  .card.hidden { visibility: hidden; }
+  .card.qonly ul, .card.qonly table, .card.qonly .ans-label, .card.qonly .tag { visibility: hidden; }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute">
+  <filter id="grainf"><feTurbulence type="fractalNoise" baseFrequency="1.1" numOctaves="2" seed="7"/><feColorMatrix values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 -1.6 1.25"/></filter>
+  <filter id="dustf"><feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="3" seed="3"/><feColorMatrix values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1.4 -0.45"/></filter>
+</svg>
+<div class="frame"><div class="board">
+  <svg class="dust" width="100%" height="100%"><rect width="100%" height="100%" filter="url(#dustf)"/></svg>
+
+  <header class="chalk-text">
+    <h1><span class="y">Data Engineer</span><br>Interview Questions</h1>
+    <div class="sub">for 4–7 years of experience
+      <svg width="420" height="14" viewBox="0 0 420 14"><path d="M2 8 C 40 2, 70 13, 110 7 S 180 2, 220 8 S 300 13, 340 6 S 400 4, 418 8" fill="none" stroke="#f3a3b6" stroke-width="3" stroke-linecap="round"/></svg>
+    </div>
+    <div class="cloud">
+      <svg width="262" height="170" viewBox="0 0 262 170"><path d="M60 140 C 22 142, 10 104, 38 92 C 18 66, 46 34, 76 46 C 84 14, 136 8, 150 36 C 170 10, 222 20, 218 56 C 252 62, 256 108, 226 120 C 236 150, 196 164, 172 148 C 156 168, 110 166, 100 146 C 88 160, 66 156, 60 140 Z" fill="none" stroke="#f1efe6" stroke-width="3" stroke-linejoin="round"/></svg>
+      <span>Know the why,<br>not just the what</span>
+    </div>
+  </header>
+
+  <main class="grid chalk-text">
+    <div class="card"><div class="q"><span class="num">1</span><span>ETL vs ELT. When do you pick each?</span></div>
+      <div class="ans-label">Answer</div>
+      <ul>
+        <li><b>ETL:</b> transform first, then load. Good when data must be cleaned or masked before it lands.</li>
+        <li><b>ELT:</b> load raw, transform inside the warehouse (Snowflake, BigQuery, Databricks).</li>
+        <li>Most modern stacks are ELT with dbt or Spark.</li>
+        <li>Say why you chose one in your last project.</li>
+      </ul></div>
+
+    <div class="card"><div class="q"><span class="num">2</span><span>Walk me through a pipeline you've built, end to end.</span></div>
+      <div class="ans-label">Answer</div>
+      <ul>
+        <li>Source → ingest → raw → clean → serve</li>
+        <li>Volume, frequency and the tool at each step</li>
+        <li>How it fails and how you recover</li>
+        <li>Who uses the output and for what</li>
+        <li>One number that proves the impact</li>
+      </ul><span class="tag">Tell it like a story</span></div>
+
+    <div class="card"><div class="q"><span class="num">3</span><span>SCD Type 1 vs Type 2</span></div>
+      <div class="ans-label">Answer</div>
+      <ul>
+        <li><b>Type 1:</b> overwrite the row. No history.</li>
+        <li><b>Type 2:</b> add a new row for every change, with start and end dates.</li>
+      </ul>
+      <table>
+        <tr><th>id</th><th>city</th><th>start</th><th>end</th></tr>
+        <tr><td>7</td><td>Austin</td><td>2024-01-01</td><td>2025-06-30</td></tr>
+        <tr><td>7</td><td>Denver</td><td>2025-07-01</td><td>NULL</td></tr>
+      </table><span class="tag">Type 2 = full history</span></div>
+
+    <div class="card"><div class="q"><span class="num">4</span><span>A Spark job is slow. Where do you start?</span></div>
+      <div class="ans-label">Answer</div>
+      <ul>
+        <li>Open the Spark UI. Find the slowest stage.</li>
+        <li>One task 10x slower? Skew. Salt the key or use AQE.</li>
+        <li>Huge shuffle? Broadcast the small table.</li>
+        <li>Thousands of tiny files? Compact them.</li>
+        <li><i>Only then</i> add more nodes.</li>
+      </ul></div>
+
+    <div class="card"><div class="q"><span class="num">5</span><span>How do you build an incremental load?</span></div>
+      <div class="ans-label">Answer</div>
+      <ul>
+        <li>Keep a watermark (e.g. updated_at) in a control table</li>
+        <li>Read only rows newer than the watermark</li>
+        <li>MERGE (upsert) them into the target</li>
+        <li>Handle deletes: soft delete or CDC</li>
+        <li>Rerun-safe: two runs, same result</li>
+      </ul></div>
+
+    <div class="card"><div class="q"><span class="num">6</span><span>Parquet, Avro, JSON or CSV?</span></div>
+      <div class="ans-label">Answer</div>
+      <ul>
+        <li><b>Parquet:</b> columnar and compressed. Best for analytics.</li>
+        <li><b>Avro:</b> row-based with a schema. Common with Kafka.</li>
+        <li><b>JSON:</b> flexible and nested, but big and slow to scan.</li>
+        <li><b>CSV:</b> simple, but no types and no schema.</li>
+      </ul></div>
+
+    <div class="card"><div class="q"><span class="num">7</span><span>Your pipeline ran twice. How do you avoid duplicates?</span></div>
+      <div class="ans-label">Answer</div>
+      <ul>
+        <li>Make every write idempotent</li>
+        <li>MERGE on a business key, not a plain INSERT</li>
+        <li>Or overwrite the whole partition for that day</li>
+        <li>Dedupe with ROW_NUMBER() over key, latest timestamp first</li>
+      </ul></div>
+
+    <div class="card"><div class="q"><span class="num">8</span><span>What do Delta Lake and Iceberg add to Parquet?</span></div>
+      <div class="ans-label">Answer</div>
+      <ul>
+        <li>ACID transactions: no half-written tables</li>
+        <li>Schema enforcement and evolution</li>
+        <li>Time travel to older versions</li>
+        <li>MERGE, UPDATE and DELETE on lake files</li>
+      </ul><span class="tag">Lake + ACID = lakehouse</span></div>
+
+    <div class="card"><div class="q"><span class="num">9</span><span>A query on 1B rows is slow. What do you check?</span></div>
+      <div class="ans-label">Answer</div>
+      <ul>
+        <li>Read the plan (EXPLAIN)</li>
+        <li>Filter early. Select only the columns you need.</li>
+        <li>Partition or cluster on the filter column so files get skipped</li>
+        <li>Duplicate join keys? Rows explode.</li>
+      </ul></div>
+
+    <div class="card"><div class="q"><span class="num">10</span><span>What goes wrong with joins?</span></div>
+      <div class="ans-label">Answer</div>
+      <ul>
+        <li>Duplicate keys multiply rows</li>
+        <li>NULL never equals NULL, so those rows vanish in an inner join</li>
+        <li>LEFT JOIN + a WHERE on the right table acts like an inner join</li>
+        <li>Compare row counts before and after</li>
+      </ul></div>
+
+    <div class="card"><div class="q"><span class="num">11</span><span>How do you handle late-arriving data?</span></div>
+      <div class="ans-label">Answer</div>
+      <ul>
+        <li>Process by event time, not load time</li>
+        <li>Reprocess a lookback window (e.g. last 3 days)</li>
+        <li>Use watermarks in streaming (Spark, Flink)</li>
+        <li>Late customer record? Load an "unknown" row, fix it later.</li>
+      </ul></div>
+
+    <div class="card"><div class="q"><span class="num">12</span><span>Scenario: 1 TB lands every day. Design it.</span></div>
+      <div class="ans-label">Answer</div>
+      <ul>
+        <li>Land raw files in S3 / ADLS / GCS</li>
+        <li>Store as Parquet or Delta, partitioned by date</li>
+        <li>Process only the new day</li>
+        <li>Run quality checks before publishing</li>
+        <li>Watch run time, cost and freshness</li>
+      </ul></div>
+  </main>
+
+  <footer class="chalk-text">
+    <div class="brand"><span class="name">Stackle</span><span class="tagline">Data engineering careers</span></div>
+    <div class="motto">Trade-offs beat definitions.</div>
+  </footer>
+
+  <svg class="grain" width="100%" height="100%"><rect width="100%" height="100%" filter="url(#grainf)"/></svg>
+</div></div>
+<script>
+  // ?step=N shows cards 1..N; ?step=N.5 also shows card N+1's question only. No step = full board.
+  const s = new URLSearchParams(location.search).get("step");
+  if (s !== null) {
+    const v = parseFloat(s), full = Math.floor(v), half = v - full >= 0.5;
+    document.querySelectorAll(".card").forEach((c, i) => {
+      if (i < full) return;
+      if (i === full && half) c.classList.add("qonly"); else c.classList.add("hidden");
+    });
+  }
+</script>
+</body>
+</html>
