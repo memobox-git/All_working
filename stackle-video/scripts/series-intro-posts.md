@@ -24,12 +24,13 @@ One data tool. Two minutes.
 Explained in 2 Minutes is a Stackle series. Every episode takes one tool or idea from data engineering and shows you what it is, why teams use it, and how it works under the hood, with the architecture drawn out step by step.
 
 Coming up:
-01 Apache Airflow
-02 Apache Kafka
-03 Apache Spark
-04 What is Data Engineering?
-05 Snowflake
-06 Databricks
+Apache Airflow
+Apache Kafka
+20 Gen AI Concepts You Actually Need
+Apache Spark
+What is Data Engineering?
+Snowflake
+Databricks
 …and that's just the start: we're going for 100 episodes.
 
 What should I explain next? Tell me in the comments.
@@ -71,7 +72,7 @@ Explained in 2 Minutes ⏱️ A new series on data engineering.
 
 One tool or idea per episode: what it is, why teams use it, and how it works under the hood.
 
-First up: Apache Airflow → Kafka → Spark → What is Data Engineering? → Snowflake → Databricks. 100 episodes planned.
+First up: Apache Airflow → Kafka → 20 Gen AI concepts → Spark → What is Data Engineering? → Snowflake → Databricks. 100 episodes planned.
 
 What should I explain next? Comment below 👇
 
@@ -91,13 +92,14 @@ I'm starting a series: Explained in 2 Minutes.
 
 One data engineering tool or idea per episode. What it is, why teams use it, and how it works under the hood, with the architecture drawn out step by step.
 
-The first six:
-01 Apache Airflow
-02 Apache Kafka
-03 Apache Spark
-04 What is Data Engineering?
-05 Snowflake
-06 Databricks
+First up:
+Apache Airflow
+Apache Kafka
+20 Gen AI Concepts You Actually Need
+Apache Spark
+What is Data Engineering?
+Snowflake
+Databricks
 
 The goal is 100 episodes. What should I explain next? 👇
 

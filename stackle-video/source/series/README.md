@@ -27,7 +27,7 @@ cd stackle-video/source/series
 | 0:17 | "This is Explained in 2 Minutes …" | The series lockup (a stopwatch mark whose arc fills toward two minutes), then "One tool or idea from data engineering, every episode" |
 | 0:24 | "… what it is, why teams use it, and how it works under the hood" | Three cards: What it is, Why teams use it, How it works |
 | 0:27 | "… with the architecture drawn out, step by step." | Source → Stream → Process → Store, one arrow per "step" |
-| 0:31 | "Here's what's coming …" | The first six episodes, each on its name: 01 Apache Airflow, 02 Apache Kafka, 03 Apache Spark, 04 What is Data Engineering?, 05 Snowflake, 06 Databricks |
+| 0:31 | "Here's what's coming …" | Six episode cards, each on its name: Apache Airflow, Apache Kafka, Apache Spark, What is Data Engineering?, Snowflake, Databricks. The cards carry no episode numbers, so the trailer stays right when the order changes (Gen AI took slot 03) |
 | 0:41 | "And that's just the start. We're going for a hundred episodes." | The six become the first tiles of a 10×10 grid that fills as the counter runs to 100 |
 | 0:44 | "So, what should I explain next? …" | The comment ask (`../explained/cta.js`) |
 | 0:49 | "See you in episode one." | The lockup, and "Next: episode 01, Apache Airflow" |

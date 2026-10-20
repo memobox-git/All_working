@@ -32,7 +32,7 @@ The line "So, what should I explain next? … it could be the next episode." is 
 | "This is Explained in 2 Minutes …" | The series lockup with the stopwatch mark, then "One tool or idea from data engineering, every episode" |
 | "… what it is, why teams use it, and how it works under the hood" | Three cards: What it is · Why teams use it · How it works |
 | "… with the architecture drawn out, step by step." | Source → Stream → Process → Store, one arrow per "step" |
-| "Here's what's coming …" | Six episode cards, each on its name: 01 Apache Airflow · 02 Apache Kafka · 03 Apache Spark · 04 What is Data Engineering? · 05 Snowflake · 06 Databricks |
+| "Here's what's coming …" | Six episode cards, each on its name and with no episode number, so the order can change: Apache Airflow · Apache Kafka · Apache Spark · What is Data Engineering? · Snowflake · Databricks |
 | "… a hundred episodes." | A 10×10 grid of episodes filling up as the counter runs from 6 to 100 |
 | "So, what should I explain next? …" | A comment box typing ideas (dbt, Apache Iceberg, …) and the Comment button pressing on "comments" |
 | "See you in episode one." | The lockup and "Next: episode 01, Apache Airflow" |
