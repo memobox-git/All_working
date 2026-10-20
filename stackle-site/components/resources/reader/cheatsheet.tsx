@@ -1,6 +1,5 @@
-import { Pixel } from "@/components/icons";
 import { Code, DataTable } from "./blocks";
-import { GroupHead, Pager, ReaderFrame } from "./course-reader";
+import { GroupHead, ItemHead, Pager, ReaderFrame } from "./course-reader";
 import { RichHtml } from "./inline";
 import { LevelFilter } from "./level-filter";
 import { ReaderNav } from "./reader-nav";
@@ -11,23 +10,10 @@ import { pad2 } from "./visuals";
 // The DE Masterclass cheat sheet: groups → topics → sections → answered questions, each with a level
 // tag. Same frame and index as the course readers, with a level filter instead of lesson paging.
 
-const PIPS: Record<string, number> = { Basic: 1, Intermediate: 2, Advanced: 3 };
-
+// A sentence-case pill. The level is plain text, so it reads the same to screen readers and in print.
 export function LevelTag({ level }: { level: string }) {
-  const n = PIPS[level];
   return (
-    <span className="t-mono-sm inline-flex items-center gap-2 border border-line bg-white px-2 py-1.5 text-ink">
-      {n ? (
-        <span aria-hidden="true" className="flex gap-[3px]">
-          {[1, 2, 3].map((i) => (
-            <span key={i} className={`h-1.5 w-1.5 ${i <= n ? "bg-ink" : "border border-faint"}`} />
-          ))}
-        </span>
-      ) : level === "Snowflake" ? (
-        <Pixel name="spark" size={10} />
-      ) : (
-        <span aria-hidden="true" className="h-1.5 w-1.5 rotate-45 border border-ink" />
-      )}
+    <span className="inline-flex items-center rounded-full border border-line-strong bg-white px-3 py-1 text-[13px] font-medium leading-snug text-ink-2">
       {level}
     </span>
   );
@@ -51,11 +37,11 @@ function Answer({ a }: { a: CsAnswer }) {
 
 function QuestionRow({ q }: { q: CsQuestion }) {
   return (
-    <div data-level={q.level} className={`${styles.q} grid gap-4 border-b border-line py-7 md:grid-cols-[minmax(0,13.5rem)_minmax(0,1fr)] md:gap-8`}>
+    <div data-level={q.level} className={`${styles.q} grid gap-4 border-b border-line py-8 md:grid-cols-[minmax(0,13.5rem)_minmax(0,1fr)] md:gap-10`}>
       <div>
-        <h5 className="text-[17px] font-medium leading-snug tracking-[-0.01em] text-ink">{q.question}</h5>
+        <h5 className="text-[17px] font-semibold leading-snug tracking-[-0.01em] text-ink">{q.question}</h5>
         {q.hint && <p className="mt-1.5 text-[14px] leading-snug text-muted">{q.hint}</p>}
-        <div className="mt-3">
+        <div className="mt-3.5">
           <LevelTag level={q.level} />
         </div>
       </div>
@@ -106,7 +92,7 @@ export function CheatsheetReader({ data, n = "03" }: { data: Cheatsheet; n?: str
         />
       }
     >
-      <div className="border-b border-line pad py-5">
+      <div className="pt-10 md:pt-12">
         <LevelFilter targetId="cheatsheet" levels={levels} total={all.length} />
       </div>
       {data.groups.map((g, gIdx) => {
@@ -124,28 +110,14 @@ export function CheatsheetReader({ data, n = "03" }: { data: Cheatsheet; n?: str
                   key={t.id}
                   id={t.id}
                   aria-labelledby={`${t.id}-title`}
-                  className={`${styles.topic} scroll-mt-14 border-b border-line pad py-12 md:py-16 min-[1200px]:scroll-mt-2`}
+                  className={`${styles.topic} scroll-mt-14 border-b border-line py-12 md:py-16 min-[1200px]:scroll-mt-2`}
                 >
-                  <div className="flex items-start justify-between gap-6">
-                    <div className="min-w-0 max-w-[720px]">
-                      <p className="t-mono flex items-center gap-2 text-muted">
-                        <span>Topic {pad2(ti + 1)}</span>
-                        <span aria-hidden="true">·</span>
-                        <span>{qn === 1 ? "1 question" : `${qn} questions`}</span>
-                      </p>
-                      <h3 id={`${t.id}-title`} className="t-h3 mt-4">
-                        {t.title}
-                      </h3>
-                      {t.subtitle && <p className="t-lede mt-3">{t.subtitle}</p>}
-                    </div>
-                    <span aria-hidden="true" className="t-pixel hidden text-[64px] leading-[0.8] text-line md:block">
-                      {pad2(ti + 1)}
-                    </span>
-                  </div>
+                  <ItemHead id={t.id} meta={[`Topic ${pad2(ti + 1)}`, qn === 1 ? "1 question" : `${qn} questions`]} title={t.title} num={pad2(ti + 1)}>
+                    {t.subtitle && <p className="t-lede mt-3">{t.subtitle}</p>}
+                  </ItemHead>
                   {t.sections.map((s) => (
-                    <section key={s.title} className={`${styles.sec} mt-10`}>
-                      <h4 className="t-mono flex items-center gap-2 border-b border-ink pb-3 text-ink">
-                        <span aria-hidden="true" className="h-1.5 w-1.5 shrink-0 bg-ink" />
+                    <section key={s.title} className={`${styles.sec} mt-12`}>
+                      <h4 className="t-serif border-b border-line pb-4 text-[1.375rem] leading-snug tracking-[-0.01em] text-ink md:text-[1.5rem]">
                         {s.title}
                       </h4>
                       {s.questions.map((q) => (
@@ -153,7 +125,7 @@ export function CheatsheetReader({ data, n = "03" }: { data: Cheatsheet; n?: str
                       ))}
                     </section>
                   ))}
-                  <p className={`${styles.empty} t-small mt-10 border border-dashed border-line bg-white px-5 py-4`}>
+                  <p className={`${styles.empty} t-small mt-10 rounded-[12px] bg-fill px-5 py-4`}>
                     No questions at this level in this topic.
                   </p>
                   <Pager className={styles.pager} unit="Topic" prev={prev && { id: prev.id, title: prev.navLabel }} next={next && { id: next.id, title: next.navLabel }} />

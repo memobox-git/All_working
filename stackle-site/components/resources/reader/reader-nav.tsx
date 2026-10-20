@@ -3,13 +3,14 @@
 import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { createPortal } from "react-dom";
 import { Menu, Pixel } from "@/components/icons";
+import styles from "./reader.module.css";
 import type { NavGroup } from "./types";
 
 const pad2 = (n: number) => String(n).padStart(2, "0");
 const DESKTOP = "(min-width: 1200px)";
 
 // The reader's index. At 1200px and up it is a sticky sidebar; below that it is a sticky bar with the
-// current lesson, a dotted progress strip and a "Contents" button that opens a bottom sheet.
+// current lesson, a thin progress line and a "Contents" button that opens a bottom sheet.
 // It only receives titles and anchors; the lesson bodies are server-rendered next to it.
 export function ReaderNav({
   groups,
@@ -47,7 +48,7 @@ export function ReaderNav({
     let raf = 0;
     const measure = () => {
       raf = 0;
-      const top = desk.matches ? 72 : (barRef.current?.getBoundingClientRect().bottom ?? 124);
+      const top = desk.matches ? 81 : (barRef.current?.getBoundingClientRect().bottom ?? 129);
       const line = top + Math.min(96, window.innerHeight * 0.15);
       let idx = 0;
       els.forEach((el, i) => {
@@ -151,7 +152,7 @@ export function ReaderNav({
 
   const bar = (className: string) => (
     <div
-      className={`h-[2px] ${className}`}
+      className={`h-[2px] rounded-full ${className}`}
       role="progressbar"
       aria-label="Reading progress"
       aria-valuemin={0}
@@ -166,8 +167,8 @@ export function ReaderNav({
   const list = (onPick?: () => void) => {
     let i = -1;
     return groups.map((g) => (
-      <div key={g.label} className="pt-5">
-        <p className="t-mono-sm px-5 pb-2 text-muted">{g.label}</p>
+      <div key={g.label} className="pt-6 first:pt-4">
+        <p className="label px-3 pb-2.5 text-[12.5px] normal-case tracking-[0.01em] text-muted">{g.label}</p>
         <ol>
           {g.items.map((it) => {
             i += 1;
@@ -180,11 +181,11 @@ export function ReaderNav({
                   data-i={idx}
                   aria-current={cur ? "location" : undefined}
                   onClick={onPick}
-                  className={`grid grid-cols-[24px_minmax(0,1fr)_10px] items-baseline gap-2 px-5 py-[9px] text-[14px] leading-snug transition-colors ${cur ? "bg-ink text-paper" : "text-ink-2 hover:bg-white hover:text-ink"}`}
+                  className={`grid grid-cols-[26px_minmax(0,1fr)_14px] items-baseline gap-2 rounded-[10px] px-3 py-2 text-[14.5px] leading-snug transition-colors ${cur ? "bg-fill text-ink" : "text-ink-2 hover:bg-fill/60 hover:text-ink"}`}
                 >
-                  <span className={`t-mono-sm ${cur ? "text-night-muted" : "text-muted"}`}>{it.num}</span>
+                  <span className={`t-serif text-[15px] ${cur ? "text-ink" : "text-muted"}`}>{it.num}</span>
                   <span>{it.title}</span>
-                  {idx < active ? <Pixel name="check" size={10} className="self-center text-muted" /> : <span />}
+                  {idx < active ? <Pixel name="check" size={13} className="self-center text-muted" /> : <span />}
                 </a>
               </li>
             );
@@ -199,14 +200,26 @@ export function ReaderNav({
     setOpen(false);
   };
 
+  const progress = (className: string) => (
+    <div className={className}>
+      <div className="flex items-center justify-between text-[13.5px]">
+        <span className="text-muted">{progressLabel}</span>
+        <span className="text-ink">
+          {unit} <span className="t-serif text-[15px]">{counter}</span>
+        </span>
+      </div>
+      {bar("relative mt-2.5")}
+    </div>
+  );
+
   return (
-    <div className="sticky top-[68px] z-30 md:top-[72px] min-[1200px]:h-[calc(100dvh-72px)] min-[1200px]:self-start">
+    <div className="sticky top-[72px] z-30 md:top-[80px] min-[1200px]:h-[calc(100dvh-80px)] min-[1200px]:self-start">
       {/* below 1200px: current lesson bar */}
-      <div ref={barRef} className="relative flex h-14 items-center gap-3 border-y border-line bg-paper pl-3 pr-4 md:pl-4 min-[1200px]:hidden">
+      <div ref={barRef} className="relative flex h-14 items-center gap-3 border-y border-line bg-paper/95 pl-3 pr-4 backdrop-blur-md md:pl-4 min-[1200px]:hidden">
         <button
           ref={toggleRef}
           type="button"
-          className="btn btn-line btn-chrome shrink-0 !min-h-[38px] gap-2 !px-3"
+          className="btn btn-line btn-chrome shrink-0 !min-h-[38px] gap-2 bg-white !px-3.5 !text-[14.5px]"
           aria-expanded={open}
           aria-controls="reader-contents"
           aria-haspopup="dialog"
@@ -215,8 +228,8 @@ export function ReaderNav({
           <Menu />
           Contents
         </button>
-        <p className="min-w-0 flex-1 truncate text-[14px] text-ink">
-          <span className="t-mono-sm mr-2 text-muted">{counter}</span>
+        <p className="min-w-0 flex-1 truncate text-[14.5px] text-ink">
+          <span className="t-serif mr-2 text-[15px] text-muted">{counter}</span>
           {current?.title}
         </p>
         {bar("absolute inset-x-0 -bottom-px")}
@@ -224,61 +237,48 @@ export function ReaderNav({
 
       {/* 1200px and up: sticky sidebar */}
       <div className="hidden h-full flex-col min-[1200px]:flex">
-        <div className="border-b border-line px-5 pb-5 pt-6">
-          <p className="t-mono-sm text-muted">Contents</p>
-          <p className="mt-2 text-[15px] font-medium tracking-[-0.01em] text-ink">{summary}</p>
-          <div className="t-mono-sm mt-5 flex items-center justify-between">
-            <span className="text-muted">{progressLabel}</span>
-            <span className="text-ink">
-              {unit} {counter}
-            </span>
-          </div>
-          {bar("relative mt-3")}
+        <div className="pb-5 pl-10 pr-6 pt-10">
+          <p className="label">Contents</p>
+          <p className="t-serif mt-4 text-[22px] leading-tight tracking-[-0.01em] text-ink">{summary}</p>
+          {progress("mt-6")}
         </div>
-        <nav ref={sideListRef} aria-label={navLabel} className="relative min-h-0 flex-1 overflow-y-auto overscroll-contain pb-6">
+        <nav ref={sideListRef} aria-label={navLabel} className="relative min-h-0 flex-1 overflow-y-auto overscroll-contain pb-6 pl-7 pr-3">
           {list()}
         </nav>
-        {extra && <div className="border-t border-line px-5 py-4">{extra}</div>}
+        {extra && <div className="mb-6 ml-7 mr-3 mt-2 rounded-[14px] border border-line bg-white p-4">{extra}</div>}
       </div>
 
       {open &&
         createPortal(
           <div className="fixed inset-0 z-[60] min-[1200px]:hidden">
-            <div className="absolute inset-0 bg-ink/40" aria-hidden="true" onClick={() => closeSheet(true)} />
+            <div className={`${styles.scrim} absolute inset-0 bg-night/40 backdrop-blur-[2px]`} aria-hidden="true" onClick={() => closeSheet(true)} />
             <div
               ref={sheetRef}
               id="reader-contents"
               role="dialog"
               aria-modal="true"
               aria-label={navLabel}
-              className="absolute inset-x-0 bottom-0 flex max-h-[85dvh] flex-col border-t border-ink bg-paper"
+              className={`${styles.sheet} absolute inset-x-0 bottom-0 flex max-h-[85dvh] flex-col rounded-t-[20px] bg-paper shadow-[var(--shadow-float)]`}
             >
-              <div className="flex items-center justify-between gap-3 border-b border-line py-2 pl-5 pr-3">
+              <span aria-hidden="true" className="mx-auto mt-2.5 h-1 w-10 shrink-0 rounded-full bg-line-strong" />
+              <div className="flex items-center justify-between gap-3 border-b border-line pb-4 pl-5 pr-4 pt-3">
                 <div>
-                  <p className="t-mono-sm text-muted">Contents</p>
-                  <p className="mt-1 text-[15px] font-medium tracking-[-0.01em] text-ink">{summary}</p>
+                  <p className="label">Contents</p>
+                  <p className="t-serif mt-2.5 text-[20px] leading-tight tracking-[-0.01em] text-ink">{summary}</p>
                 </div>
                 <button
                   type="button"
-                  className="grid h-11 w-11 place-items-center border border-ink text-ink"
+                  className="grid h-11 w-11 place-items-center rounded-full border border-line-strong bg-white text-ink transition-colors hover:border-ink"
                   aria-label="Close contents"
                   onClick={() => closeSheet(true)}
                 >
                   <Menu open />
                 </button>
               </div>
-              <nav ref={sheetListRef} aria-label={navLabel} className="relative min-h-0 flex-1 overflow-y-auto overscroll-contain pb-4">
+              <nav ref={sheetListRef} aria-label={navLabel} className="relative min-h-0 flex-1 overflow-y-auto overscroll-contain px-2 pb-4">
                 {list(() => closeSheet(false))}
               </nav>
-              <div className="border-t border-line px-5 pb-[max(14px,env(safe-area-inset-bottom))] pt-3">
-                <div className="t-mono-sm flex items-center justify-between">
-                  <span className="text-muted">{progressLabel}</span>
-                  <span className="text-ink">
-                    {unit} {counter}
-                  </span>
-                </div>
-                {bar("relative mt-2")}
-              </div>
+              {progress("border-t border-line px-5 pb-[max(14px,env(safe-area-inset-bottom))] pt-3")}
             </div>
           </div>,
           document.body,

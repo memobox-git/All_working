@@ -16,11 +16,11 @@ export function LevelFilter({ targetId, levels, total }: { targetId: string; lev
   };
   const shown = cur ? (levels.find((l) => l.level === cur)?.count ?? 0) : total;
   return (
-    <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
-      <p className="t-mono-sm text-muted" aria-live="polite">
+    <div className="flex flex-col gap-4 rounded-[var(--radius-card)] border border-line bg-white p-4 md:flex-row md:flex-wrap md:items-center md:justify-between md:gap-x-6 md:gap-y-3 md:p-5 md:pl-6">
+      <p className="whitespace-nowrap text-[14px] text-muted" aria-live="polite">
         {cur ? `Showing ${shown} of ${total} questions` : `All ${total} questions`}
       </p>
-      <div role="group" aria-label="Filter questions by level" className="flex flex-wrap gap-1.5">
+      <div role="group" aria-label="Filter questions by level" className="flex flex-wrap gap-2">
         {options.map((o) => {
           const on = cur === o.level;
           return (
@@ -29,10 +29,10 @@ export function LevelFilter({ targetId, levels, total }: { targetId: string; lev
               type="button"
               aria-pressed={on}
               onClick={() => pick(o.level)}
-              className={`t-mono-sm inline-flex min-h-9 items-center gap-2 border px-3 transition-colors ${on ? "border-ink bg-ink text-paper" : "border-line bg-white text-ink hover:border-ink"}`}
+              className={`inline-flex min-h-10 items-center gap-2 rounded-full border px-4 text-[14px] font-medium transition-colors ${on ? "border-ink bg-ink text-paper" : "border-line-strong bg-white text-ink hover:border-ink"}`}
             >
               {o.level ?? "All"}
-              <span className={on ? "text-night-muted" : "text-muted"}>{o.count}</span>
+              <span className={`t-serif text-[14px] font-normal ${on ? "text-night-muted" : "text-muted"}`}>{o.count}</span>
             </button>
           );
         })}

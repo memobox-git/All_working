@@ -59,35 +59,34 @@ export default function Page() {
       >
         <div className="flex flex-wrap items-center gap-x-5 gap-y-3">
           <DownloadButton />
-          <p className="t-mono-sm text-muted">PDF · {pdf.pages} pages · No email needed</p>
+          <p className="t-small">PDF · {pdf.pages} pages · No email needed</p>
         </div>
       </ResourceHero>
 
-      <Row n="03" id="sheet">
-        <nav aria-label="Sections" className="pad border-b hairline py-5">
+      <Row id="sheet" tone="white">
+        <nav aria-label="Sections" className="pad pb-8 pt-10 md:pb-10 md:pt-14">
           <ol className="flex flex-wrap gap-2">
             {sections.map((s) => (
               <li key={s.id}>
-                <a href={`#${s.id}`} className="t-mono-sm inline-flex items-center gap-2 border hairline bg-white px-2.5 py-2 transition-colors hover:border-ink hover:bg-ink hover:text-paper">
-                  <span className="opacity-60">{String(s.number).padStart(2, "0")}</span>
+                <a
+                  href={`#${s.id}`}
+                  className="inline-flex items-baseline gap-2 rounded-full border border-line-strong bg-white px-4 py-2 text-[14.5px] font-medium leading-snug text-ink-2 transition-colors hover:border-ink hover:text-ink"
+                >
+                  <span className="t-serif text-[14px] font-normal tabular-nums text-muted">{String(s.number).padStart(2, "0")}</span>
                   {s.title}
                 </a>
               </li>
             ))}
           </ol>
         </nav>
-        <ol>
+        <ol className="pad pb-12 md:pb-20">
           {sections.map((s) => (
-            <li
-              key={s.id}
-              id={s.id}
-              className="pad grid gap-5 border-b hairline py-9 last:border-b-0 md:grid-cols-[230px_minmax(0,1fr)] md:gap-10 md:py-12"
-            >
-              <div className="flex items-baseline gap-4 md:block">
-                <span className="t-pixel block text-[36px] leading-none md:text-[52px]" aria-hidden="true">
+            <li key={s.id} id={s.id} className="grid gap-5 border-t hairline py-9 md:grid-cols-[250px_minmax(0,1fr)] md:gap-10 md:py-12">
+              <div className="flex items-baseline gap-3 md:block">
+                <span className="t-serif block text-[17px] tabular-nums text-muted" aria-hidden="true">
                   {String(s.number).padStart(2, "0")}
                 </span>
-                <h2 className="t-h4 md:mt-4">
+                <h2 className="t-h3 md:mt-3">
                   <span className="sr-only">{s.number}. </span>
                   {s.title}
                 </h2>
@@ -96,9 +95,9 @@ export default function Page() {
                 {s.sql && <CodeBlock code={s.sql} language="sql" filename={`${s.id}.sql`} />}
                 {s.keywords.map((k, i) => (
                   <div key={i} className="flex flex-wrap items-center gap-2">
-                    <span className="t-mono-sm mr-1 text-muted">{s.sql ? "Also" : "Keywords"}</span>
+                    <span className="mr-1 text-[13.5px] font-semibold text-muted">{s.sql ? "Also" : "Keywords"}</span>
                     {k.words.map((w) => (
-                      <code key={w} className="border hairline bg-white px-2 py-1 font-mono text-[13px] text-ink">
+                      <code key={w} className="rounded-full border border-line bg-paper px-3 py-1 font-mono text-[13px] text-ink">
                         {w}
                       </code>
                     ))}
@@ -111,31 +110,33 @@ export default function Page() {
         </ol>
       </Row>
 
-      <Row n="04" id="download">
-        <div className="grid md:grid-cols-2">
-          <div className="pad py-12 md:py-16">
+      <Row id="download">
+        <div className="pad grid gap-10 py-16 md:grid-cols-2 md:items-center md:gap-14 md:py-24">
+          <div>
             <span className="label">Free PDF</span>
-            <h2 className="t-h3 mt-6">Keep a copy on your desk.</h2>
-            <p className="t-body mt-4 max-w-[440px]">
+            <h2 className="t-h2 mt-6">
+              Keep a copy <span className="t-second">on your desk.</span>
+            </h2>
+            <p className="t-body mt-5 max-w-[440px]">
               The same {sections.length} sections on {pdf.pages} printable pages. It&apos;s a direct download, with no form to fill in.
             </p>
-            <DownloadButton className="mt-7" />
-            <p className="t-mono-sm mt-4 text-muted">
+            <DownloadButton className="mt-8" />
+            <p className="mt-4 text-[13.5px] text-muted">
               {pdf.downloadFilename} · {pdfSize}
             </p>
           </div>
-          <div id="updates" className="pad border-t hairline bg-white py-12 md:border-l md:border-t-0 md:py-16">
+          <div id="updates" className="panel p-6 md:p-9">
             <span className="label label-plain">Optional</span>
-            <h2 className="t-h3 mt-6">Email me new cheat sheets.</h2>
-            <p className="t-body mt-4 max-w-[440px]">Get an email when we publish a new cheat sheet. You don&apos;t need this to download the PDF.</p>
-            <div className="mt-7 max-w-[480px]">
+            <h2 className="t-h3 mt-5">Email me new cheat sheets.</h2>
+            <p className="t-body mt-3 max-w-[440px]">Get an email when we publish a new cheat sheet. You don&apos;t need this to download the PDF.</p>
+            <div className="mt-7">
               <CheatSheetSignup source="sql-cheat-sheet" />
             </div>
           </div>
         </div>
       </Row>
 
-      <ResourceCta n="05" />
+      <ResourceCta />
     </>
   );
 }

@@ -61,7 +61,8 @@ export default function Page() {
         title: raw.cta.heading,
         body: raw.cta.body,
         href: "/courses/data-engineering-masterclass-get-job-ready-in-10-weeks",
-        label: "See the Data Engineering Masterclass",
+        // Short enough for the CTA button to fit at 390px (the body already names the masterclass).
+        label: "See the masterclass",
       }}
     />
   );

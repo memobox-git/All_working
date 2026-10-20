@@ -162,34 +162,38 @@ export function PipelineDemo({ text }: { text: PipelineDemoText }) {
         ? "Fetching products from DummyJSON"
         : `${CHIP[stage]} stage shown`;
 
+
   return (
-    <div>
-      {/* controls + stage chips */}
-      <div className="flex flex-col gap-4 px-5 py-5 md:flex-row md:items-center md:justify-between md:px-8">
-        <ol className="grid grid-cols-5 border border-line md:flex md:border-0 md:gap-1.5" aria-label="Pipeline stages">
-          {STAGES.map((s, i) => {
-            const state = idx === i ? "current" : idx > i ? "done" : "todo";
-            return (
-              <li key={s} className={`flex items-center md:gap-1.5 ${i > 0 ? "border-l border-line md:border-l-0" : ""}`}>
-                {i > 0 && <span aria-hidden="true" className={`hidden h-px w-3 md:block ${idx >= i ? "bg-ink" : "bg-line"}`} />}
-                <span
-                  aria-current={state === "current" ? "step" : undefined}
-                  className={`w-full px-1 py-2 text-center font-mono text-[10px] uppercase tracking-[0.04em] md:w-auto md:border md:px-2 md:py-1.5 md:text-[11px] md:tracking-[0.06em] ${
-                    state === "current"
-                      ? "bg-ink text-paper md:border-ink"
-                      : state === "done"
-                        ? "bg-white text-ink underline decoration-1 underline-offset-4 md:border-ink md:no-underline"
-                        : "text-muted md:border-dashed md:border-line"
-                  }`}
-                >
-                  {CHIP[s]}
-                  {state === "done" && <span className="sr-only"> (done)</span>}
-                </span>
-              </li>
-            );
-          })}
-        </ol>
-        <button type="button" className="btn btn-ink btn-chrome shrink-0" onClick={start} disabled={loading}>
+    <div className="space-y-4">
+      {/* controls + quiet stage progress */}
+      <div className="panel flex flex-col gap-5 p-5 md:flex-row md:items-center md:justify-between md:gap-10 md:px-7 md:py-6">
+        <div className="min-w-0 flex-1 md:max-w-[640px]">
+          <ol className="grid grid-cols-5 gap-1.5 sm:gap-2" aria-label="Pipeline stages">
+            {STAGES.map((s, i) => {
+              const state = idx === i ? "current" : idx > i ? "done" : "todo";
+              return (
+                <li key={s} className="min-w-0">
+                  <span aria-hidden="true" className={`block h-1 rounded-full transition-colors duration-300 ${state === "todo" ? "bg-line" : "bg-ink"}`} />
+                  <span
+                    aria-current={state === "current" ? "step" : undefined}
+                    className={`sr-only text-[13.5px] sm:not-sr-only sm:mt-2.5 sm:block sm:truncate ${
+                      state === "current" ? "font-semibold text-ink" : state === "done" ? "text-ink-2" : "text-muted"
+                    }`}
+                  >
+                    {CHIP[s]}
+                    {state === "done" && <span className="sr-only"> (done)</span>}
+                  </span>
+                </li>
+              );
+            })}
+          </ol>
+          {idx >= 0 && (
+            <p aria-hidden="true" className="mt-2.5 text-[13.5px] text-muted sm:hidden">
+              Step {idx + 1} of {STAGES.length} · <span className="font-semibold text-ink">{CHIP[STAGES[idx]]}</span>
+            </p>
+          )}
+        </div>
+        <button type="button" className="btn btn-ink btn-chrome shrink-0 self-start md:self-auto" onClick={start} disabled={loading}>
           {loading ? text.loading : stage === "idle" ? text.start : text.rerun}
         </button>
       </div>
@@ -198,11 +202,11 @@ export function PipelineDemo({ text }: { text: PipelineDemoText }) {
       </p>
 
       {stage === "idle" && (
-        <div className="border-t border-line px-5 py-12 text-center md:px-8 md:py-16">
+        <div className="panel px-5 py-12 text-center md:px-8 md:py-16">
           {error ? (
-            <div role="alert" className="mx-auto max-w-[460px] border border-ink bg-white px-5 py-5 text-left">
-              <p className="t-mono-sm">Pipeline stopped</p>
-              <p className="mt-2 font-medium">{error}</p>
+            <div role="alert" className="mx-auto max-w-[460px] rounded-[12px] border border-line-strong bg-paper px-5 py-5 text-left">
+              <p className="text-[14px] font-semibold">Pipeline stopped</p>
+              <p className="mt-2 font-semibold">{error}</p>
               <p className="t-small mt-1">DummyJSON may be down or blocked on this network. Try again in a moment.</p>
               <button type="button" className="btn btn-line btn-chrome mt-4" onClick={start}>
                 Retry
@@ -210,8 +214,8 @@ export function PipelineDemo({ text }: { text: PipelineDemoText }) {
             </div>
           ) : (
             <>
-              <p className="text-[17px] font-medium">{text.idleText}</p>
-              <p className="t-mono-sm mt-3 text-muted">{text.idleNote}</p>
+              <p className="t-serif mx-auto max-w-[520px] text-[22px] leading-snug tracking-[-0.01em] md:text-[24px]">{text.idleText}</p>
+              <p className="t-small mt-3">{text.idleNote}</p>
             </>
           )}
         </div>
@@ -220,11 +224,15 @@ export function PipelineDemo({ text }: { text: PipelineDemoText }) {
       {shown("api") && (
         <Panel stage="api" title={text.stages.api.title} subtitle={pending ?? text.stages.api.subtitle} count={run ? `${run.bronze.length} products · ${run.ms} ms` : undefined}>
           {loading || !run ? (
-            <p className="t-mono-sm flex items-center gap-2 text-muted">
-              <span className="inline-block h-2 w-2 animate-blink bg-ink" aria-hidden="true" /> Awaiting API response...
+            <p className="flex items-center gap-2.5 text-[14px] text-muted">
+              <span className="inline-block h-3.5 w-3.5 animate-spin rounded-full border-[1.5px] border-line-strong border-t-ink [animation-duration:1.1s]" aria-hidden="true" /> Awaiting API
+              response...
             </p>
           ) : (
-            <p className="t-mono-sm text-muted">200 OK · response field: products</p>
+            <p className="flex flex-wrap items-center gap-2 text-[14px] text-muted">
+              <span className="rounded-full bg-fill px-2.5 py-1 text-[12.5px] font-semibold leading-none text-ink">200 OK</span>
+              response field: <code className="font-mono text-[13px] text-ink-2">products</code>
+            </p>
           )}
         </Panel>
       )}
@@ -269,16 +277,16 @@ export function PipelineDemo({ text }: { text: PipelineDemoText }) {
       {run && shown("consumers") && (
         <Panel stage="consumers" title={text.stages.consumers.title} subtitle={text.stages.consumers.subtitle}>
           <Consumers run={run} text={text} />
-          <p className="mt-6 border-l-2 border-ink pl-4 text-[17px]">
-            <strong className="font-medium">{text.closing.strong}</strong> <span className="text-ink-2">{text.closing.text}</span>
+          <p className="mt-5 rounded-[12px] bg-fill px-5 py-4 text-[16.5px] leading-[1.55]">
+            <strong className="font-semibold">{text.closing.strong}</strong> <span className="text-ink-2">{text.closing.text}</span>
           </p>
         </Panel>
       )}
 
       {run && stage !== "idle" && NEXT_LABEL[stage] && (
-        <div className="flex justify-end border-t border-line px-5 py-5 md:px-8">
-          <button type="button" className="btn btn-line btn-chrome" onClick={advance}>
-            {NEXT_LABEL[stage]} <ArrowRight size={12} />
+        <div className="flex justify-end pt-2">
+          <button type="button" className="btn btn-ink btn-chrome" onClick={advance}>
+            {NEXT_LABEL[stage]} <ArrowRight />
           </button>
         </div>
       )}
@@ -304,34 +312,35 @@ function Panel({
   children: ReactNode;
 }) {
   return (
-    <section aria-labelledby={`pipe-${stage}`} className="border-t border-line px-5 py-7 md:px-8 md:py-8">
-      <div className="flex flex-col gap-2 md:flex-row md:items-start md:justify-between md:gap-6">
+    <section aria-labelledby={`pipe-${stage}`} className="panel min-w-0 p-5 md:p-7">
+      <div className="flex flex-col gap-3 md:flex-row md:items-start md:justify-between md:gap-6">
         <div className="min-w-0">
-          <p className="t-mono-sm text-muted">
-            {String(STAGES.indexOf(stage) + 1).padStart(2, "0")} · {CHIP[stage]}
-            {table && <span className="normal-case"> · {table}</span>}
+          <p className="flex flex-wrap items-baseline gap-x-2 gap-y-1 text-[14px] text-muted">
+            <span className="t-serif text-[15px]">{String(STAGES.indexOf(stage) + 1).padStart(2, "0")}</span>
+            <span>{CHIP[stage]}</span>
+            {table && <code className="rounded-md bg-fill px-1.5 py-0.5 font-mono text-[12px] text-ink-2">{table}</code>}
           </p>
-          <h3 id={`pipe-${stage}`} tabIndex={-1} className="t-h4 mt-2 outline-none">
+          <h3 id={`pipe-${stage}`} tabIndex={-1} className="t-h4 mt-2.5 outline-none">
             {title}
           </h3>
           <p className="t-small mt-1 break-words">{subtitle}</p>
         </div>
-        {count && <p className="t-mono-sm shrink-0 text-ink md:pt-6">{count}</p>}
+        {count && <p className="shrink-0 self-start rounded-full bg-fill px-3 py-1.5 text-[13px] font-medium leading-none text-ink">{count}</p>}
       </div>
       <div className="mt-5">{children}</div>
-      {footnote && <p className="t-mono-sm mt-3 leading-[1.6] text-muted">{footnote.replace(/\s•\s/g, " · ")}</p>}
+      {footnote && <p className="t-small mt-3 text-[13.5px]">{footnote.replace(/\s•\s/g, " · ")}</p>}
     </section>
   );
 }
 
 function DataTable({ columns, rows, dense = false }: { columns: string[]; rows: ReactNode[][]; dense?: boolean }) {
   return (
-    <div className="scroll-x border border-line bg-white">
-      <table className={`w-full border-collapse font-mono ${dense ? "text-[12.5px]" : "text-[13px]"} leading-[1.4]`}>
+    <div className="scroll-x rounded-[12px] border border-line bg-white">
+      <table className={`w-full border-collapse tabular-nums ${dense ? "text-[13px]" : "text-[13.5px]"} leading-[1.4]`}>
         <thead>
-          <tr className="border-b border-line">
+          <tr className="border-b hairline bg-paper">
             {columns.map((c) => (
-              <th key={c} scope="col" className="whitespace-nowrap px-3 py-2.5 text-left font-normal text-muted">
+              <th key={c} scope="col" className="whitespace-nowrap px-3 py-2.5 text-left font-mono text-[12px] font-normal text-muted">
                 {c}
               </th>
             ))}
@@ -339,7 +348,7 @@ function DataTable({ columns, rows, dense = false }: { columns: string[]; rows: 
         </thead>
         <tbody>
           {rows.map((r, i) => (
-            <tr key={i} className="border-b border-line last:border-b-0">
+            <tr key={i} className="border-b hairline last:border-b-0">
               {r.map((c, j) => (
                 <td key={j} className="whitespace-nowrap px-3 py-2.5">
                   {c}
@@ -353,17 +362,17 @@ function DataTable({ columns, rows, dense = false }: { columns: string[]; rows: 
   );
 }
 
-// Monochrome status badges: inversion, outline and hatching instead of colour.
+// Monochrome status pills: ink fill, soft fill and outline instead of colour.
 function Badge({ kind }: { kind: StockStatus | PriceTier }) {
   const cls: Record<StockStatus | PriceTier, string> = {
-    healthy: "border-ink bg-white text-ink",
-    low: "fill-hatch border-ink bg-white text-ink",
+    healthy: "border-line-strong bg-white text-ink",
+    low: "border-transparent bg-fill-2 text-ink",
     critical: "border-ink bg-ink text-paper",
     premium: "border-ink bg-ink text-paper",
-    mid: "border-ink bg-white text-ink",
+    mid: "border-line-strong bg-white text-ink",
     budget: "border-line bg-white text-muted",
   };
-  return <span className={`inline-block border px-1.5 py-0.5 text-[11px] uppercase tracking-[0.06em] ${cls[kind]}`}>{kind}</span>;
+  return <span className={`inline-block rounded-full border px-2.5 py-1 text-[12px] font-medium leading-none ${cls[kind]}`}>{kind}</span>;
 }
 
 function Consumers({ run, text }: { run: Run; text: PipelineDemoText }) {
@@ -391,7 +400,7 @@ function Consumers({ run, text }: { run: Run; text: PipelineDemoText }) {
   const maxRev = Math.max(...gold.map((g) => g.revenue_potential), 1);
 
   return (
-    <div className="grid gap-px border border-line bg-line lg:grid-cols-2">
+    <div className="grid gap-4 lg:grid-cols-2">
       <View role="Data Analyst" subtitle="Category performance report" badge="SQL">
         <CodeBlock code={text.analystCode} language="sql" filename="analyst.sql" />
         <div className="mt-3">
@@ -418,59 +427,59 @@ function Consumers({ run, text }: { run: Run; text: PipelineDemoText }) {
           />
         </div>
       </View>
-      <div className="bg-white px-4 py-5 md:px-6 md:py-6 lg:col-span-2">
-        <div className="flex flex-wrap items-baseline justify-between gap-2">
-          <h4 className="font-medium">Business executive dashboard</h4>
-          <p className="t-mono-sm text-muted">Product analytics · powered by gold.products</p>
+      <div className="min-w-0 rounded-[14px] border border-line bg-paper p-4 md:p-6 lg:col-span-2">
+        <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+          <h4 className="font-semibold">Business executive dashboard</h4>
+          <p className="text-[13.5px] text-muted">Product analytics · powered by gold.products</p>
         </div>
-        <dl className="mt-5 grid grid-cols-2 gap-px border border-line bg-line md:grid-cols-4">
+        <dl className="mt-5 grid grid-cols-2 gap-3 md:grid-cols-4">
           {[
             { k: "Total revenue potential", v: usd(total, 0) },
             { k: "Products in catalog", v: String(gold.length) },
             { k: "Avg price point", v: usd(avgPrice) },
             { k: "Critical stock alerts", v: String(critical), note: critical > 0 ? "Action needed" : "All clear" },
           ].map((m) => (
-            <div key={m.k} className="flex flex-col bg-paper px-4 py-4">
-              <dt className="t-mono-sm order-2 mt-2 text-muted">{m.k}</dt>
-              <dd className="t-pixel order-1 text-[26px] leading-none md:text-[30px]">{m.v}</dd>
-              {m.note && <dd className="t-mono-sm order-3 mt-1 text-ink">{m.note}</dd>}
+            <div key={m.k} className="flex min-w-0 flex-col rounded-[12px] border border-line bg-white px-4 py-4">
+              <dt className="order-2 mt-2 text-[13px] leading-snug text-muted">{m.k}</dt>
+              <dd className="t-serif order-1 text-[26px] leading-none tracking-[-0.02em] md:text-[30px]">{m.v}</dd>
+              {m.note && <dd className="order-3 mt-1.5 text-[12.5px] font-semibold text-ink">{m.note}</dd>}
             </div>
           ))}
         </dl>
-        <div className="mt-px grid gap-px border-x border-b border-line bg-line md:grid-cols-3">
+        <div className="mt-3 grid gap-3 md:grid-cols-3">
           <Chart title="Revenue by category">
-            <ul className="space-y-2.5">
+            <ul className="space-y-3">
               {cats.map((c) => (
                 <li key={c.category}>
                   <div className="flex justify-between gap-3 text-[13px]">
                     <span className="truncate">{c.category}</span>
-                    <span className="font-mono text-muted">{usd(c.pot, 0)}</span>
+                    <span className="tabular-nums text-muted">{usd(c.pot, 0)}</span>
                   </div>
-                  <div className="mt-1 h-2 bg-fill">
-                    <div className="h-full bg-ink" style={{ width: `${(c.pot / maxCat) * 100}%` }} />
+                  <div className="mt-1.5 h-1.5 overflow-hidden rounded-full bg-fill">
+                    <div className="h-full rounded-full bg-ink" style={{ width: `${(c.pot / maxCat) * 100}%` }} />
                   </div>
                 </li>
               ))}
             </ul>
           </Chart>
           <Chart title="Inventory health">
-            <div className="flex h-6 border border-ink" role="img" aria-label={`${healthy} healthy, ${low} low, ${critical} critical`}>
-              {healthy > 0 && <div className="h-full bg-ink" style={{ width: `${(healthy / gold.length) * 100}%` }} />}
-              {low > 0 && <div className="fill-hatch h-full border-l border-ink bg-white" style={{ width: `${(low / gold.length) * 100}%` }} />}
-              {critical > 0 && <div className="h-full border-l border-ink bg-white" style={{ width: `${(critical / gold.length) * 100}%` }} />}
+            <div className="flex h-3 gap-[3px] overflow-hidden rounded-full" role="img" aria-label={`${healthy} healthy, ${low} low, ${critical} critical`}>
+              {healthy > 0 && <div className="h-full rounded-full bg-ink" style={{ width: `${(healthy / gold.length) * 100}%` }} />}
+              {low > 0 && <div className="h-full rounded-full bg-faint" style={{ width: `${(low / gold.length) * 100}%` }} />}
+              {critical > 0 && <div className="h-full rounded-full bg-line-strong" style={{ width: `${(critical / gold.length) * 100}%` }} />}
             </div>
             <ul className="mt-4 space-y-2 text-[13px]">
               {[
                 { k: "Healthy", v: healthy, sw: "bg-ink" },
-                { k: "Low", v: low, sw: "fill-hatch bg-white" },
-                { k: "Critical", v: critical, sw: "bg-white" },
+                { k: "Low", v: low, sw: "bg-faint" },
+                { k: "Critical", v: critical, sw: "bg-line-strong" },
               ]
                 .filter((x) => x.v > 0)
                 .map((x) => (
                   <li key={x.k} className="flex items-center gap-2">
-                    <span aria-hidden="true" className={`h-3 w-3 border border-ink ${x.sw}`} />
+                    <span aria-hidden="true" className={`h-2.5 w-2.5 rounded-full ${x.sw}`} />
                     <span className="flex-1">{x.k}</span>
-                    <span className="font-mono text-muted">{x.v}</span>
+                    <span className="tabular-nums text-muted">{x.v}</span>
                   </li>
                 ))}
             </ul>
@@ -479,7 +488,7 @@ function Consumers({ run, text }: { run: Run; text: PipelineDemoText }) {
             <AreaChart values={gold.map((g) => g.revenue_potential)} labels={gold.map((g) => g.product_name.slice(0, 15))} max={maxRev} />
           </Chart>
         </div>
-        <p className="t-mono-sm mt-4 flex flex-wrap gap-x-5 gap-y-1 text-muted">
+        <p className="mt-4 flex flex-wrap gap-x-5 gap-y-1 text-[13px] text-muted">
           <span>Avg rating: {avgRating.toFixed(1)} / 5</span>
           <span>
             Healthy stock: {healthy}/{gold.length}
@@ -493,13 +502,13 @@ function Consumers({ run, text }: { run: Run; text: PipelineDemoText }) {
 
 function View({ role, subtitle, badge, children }: { role: string; subtitle: string; badge: string; children: ReactNode }) {
   return (
-    <div className="min-w-0 bg-white px-4 py-5 md:px-6 md:py-6">
+    <div className="min-w-0 rounded-[14px] border border-line bg-paper p-4 md:p-5">
       <div className="mb-4 flex items-start justify-between gap-3">
         <div>
-          <h4 className="font-medium">{role}</h4>
+          <h4 className="font-semibold">{role}</h4>
           <p className="t-small">{subtitle}</p>
         </div>
-        <span className="t-mono-sm border border-line px-2 py-1">{badge}</span>
+        <span className="rounded-full border border-line-strong bg-white px-2.5 py-1 text-[12.5px] font-semibold leading-none">{badge}</span>
       </div>
       {children}
     </div>
@@ -507,13 +516,13 @@ function View({ role, subtitle, badge, children }: { role: string; subtitle: str
 }
 
 function Bit({ on }: { on: boolean }) {
-  return <span className={`inline-block min-w-[22px] px-1 text-center ${on ? "bg-ink text-paper" : "text-muted"}`}>{on ? 1 : 0}</span>;
+  return <span className={`inline-grid h-6 min-w-6 place-items-center rounded-md px-1 ${on ? "bg-ink text-paper" : "text-muted"}`}>{on ? 1 : 0}</span>;
 }
 
 function Chart({ title, children }: { title: string; children: ReactNode }) {
   return (
-    <figure className="min-w-0 bg-paper px-4 py-4">
-      <figcaption className="t-mono-sm mb-4 text-muted">{title}</figcaption>
+    <figure className="min-w-0 rounded-[12px] border border-line bg-white p-4">
+      <figcaption className="mb-4 text-[13.5px] font-semibold">{title}</figcaption>
       {children}
     </figure>
   );
@@ -528,22 +537,16 @@ function AreaChart({ values, labels, max }: { values: number[]; labels: string[]
   return (
     <div>
       <svg viewBox={`0 0 ${w} ${h}`} preserveAspectRatio="none" className="block h-[120px] w-full" role="img" aria-label="Revenue potential per product">
-        <defs>
-          <pattern id="pipe-hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)">
-            <rect width="6" height="6" fill="var(--color-white)" />
-            <line x1="0" y1="0" x2="0" y2="6" stroke="var(--color-line)" strokeWidth="2" />
-          </pattern>
-        </defs>
-        <path d={`${line} L${w} ${h} L0 ${h} Z`} fill="url(#pipe-hatch)" />
-        <path d={line} fill="none" stroke="var(--color-ink)" strokeWidth="1.5" vectorEffect="non-scaling-stroke" />
+        <path d={`${line} L${w} ${h} L0 ${h} Z`} fill="rgb(21 21 19 / 0.07)" />
+        <path d={line} fill="none" stroke="var(--color-ink)" strokeWidth="1.6" strokeLinejoin="round" strokeLinecap="round" vectorEffect="non-scaling-stroke" />
       </svg>
-      <ol className="mt-3 space-y-1 text-[12px]">
+      <ol className="mt-3 space-y-1 text-[12.5px]">
         {labels.map((l, i) => (
           <li key={i} className="flex justify-between gap-3">
             <span className="truncate">
-              <span className="font-mono text-muted">{String(i + 1).padStart(2, "0")}</span> {l}
+              <span className="t-serif text-muted">{String(i + 1).padStart(2, "0")}</span> {l}
             </span>
-            <span className="font-mono text-muted">{usd(values[i], 0)}</span>
+            <span className="tabular-nums text-muted">{usd(values[i], 0)}</span>
           </li>
         ))}
       </ol>

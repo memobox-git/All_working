@@ -38,7 +38,7 @@ export default function Page() {
       <ResourceCta
         n="04"
         courseHref="/courses/data-engineering-masterclass-get-job-ready-in-10-weeks"
-        courseLabel="See the Data Engineering Masterclass"
+        courseLabel="See the DE Masterclass"
       />
     </>
   );

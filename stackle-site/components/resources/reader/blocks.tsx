@@ -25,11 +25,11 @@ export function Code({ code, language = "text", className = "" }: { code: string
   );
 }
 
-// A table in a hairline frame that scrolls sideways instead of widening the page.
+// A table in a rounded frame that scrolls sideways instead of widening the page.
 export function DataTable({ head, rows, className = "" }: { head: ReactNode[]; rows: ReactNode[][]; className?: string }) {
   const wide = head.length >= 5;
   return (
-    <div className={`scroll-x border border-line bg-white ${className}`}>
+    <div className={`scroll-x rounded-[12px] border border-line bg-white ${className}`}>
       <table className={`m-0 w-full border-collapse text-left text-[15px] leading-snug ${wide ? "min-w-[480px]" : ""}`}>
         <thead>
           <tr>
@@ -37,7 +37,7 @@ export function DataTable({ head, rows, className = "" }: { head: ReactNode[]; r
               <th
                 key={i}
                 scope="col"
-                className="border-b border-line bg-fill px-3 py-2.5 align-bottom font-mono text-[11px] font-normal uppercase tracking-[0.08em] text-muted md:px-4"
+                className="t-mono-sm border-b border-line px-4 pb-3 pt-3.5 align-bottom text-muted md:px-5"
               >
                 {h}
               </th>
@@ -52,7 +52,7 @@ export function DataTable({ head, rows, className = "" }: { head: ReactNode[]; r
                 {r.map((c, j) => (
                   <td
                     key={j}
-                    className={`px-3 py-3 align-top md:px-4 ${last ? "border-b-0" : "border-b border-line"} ${j === 0 ? "font-medium text-ink" : "text-ink-2"}`}
+                    className={`px-4 py-3.5 align-top md:px-5 ${last ? "border-b-0" : "border-b border-line"} ${j === 0 ? "font-medium text-ink" : "text-ink-2"}`}
                   >
                     {c}
                   </td>
@@ -76,7 +76,7 @@ function BlockView({ b }: { b: Block }) {
       );
     case "heading":
       return (
-        <h4 className="mt-12 text-[1.375rem] font-medium leading-tight tracking-[-0.02em] text-ink md:text-[1.5rem]">
+        <h4 className="t-serif mt-12 text-[1.5rem] leading-tight tracking-[-0.015em] text-ink md:text-[1.75rem]">
           <Inline text={b.text} />
         </h4>
       );

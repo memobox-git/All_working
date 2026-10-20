@@ -31,8 +31,10 @@ export function CheatSheetSignup({ source }: { source: string }) {
 
   if (state === "joined" || state === "already") {
     return (
-      <p role="status" className="flex items-start gap-3 border border-ink bg-white px-4 py-4 text-[15px] leading-[1.55]">
-        <Pixel name="check" size={13} className="mt-1" />
+      <p role="status" className="flex items-center gap-3 rounded-[12px] bg-fill px-4 py-4 text-[15px] leading-[1.55] text-ink">
+        <span aria-hidden="true" className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-ink text-paper">
+          <Pixel name="check" size={15} />
+        </span>
         <span>
           {state === "joined"
             ? "You're on the list. We'll email you when a new cheat sheet is out."
@@ -51,7 +53,7 @@ export function CheatSheetSignup({ source }: { source: string }) {
 
   return (
     <form noValidate onSubmit={onSubmit}>
-      <label htmlFor={`${id}-email`} className="t-mono-sm text-muted">
+      <label htmlFor={`${id}-email`} className="text-[14px] font-semibold text-ink-2">
         Email address
       </label>
       <div className="mt-2 flex flex-col gap-3 sm:flex-row">

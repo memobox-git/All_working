@@ -57,7 +57,7 @@ export function ChapterIndex({ items, label = "Chapters" }: { items: ChapterInde
       <p className="label hidden pb-5 pt-14 min-[1200px]:inline-flex">{label}</p>
       <ol
         ref={listRef}
-        className="flex gap-2 overflow-x-auto px-5 py-3 [scrollbar-width:none] md:max-[1199px]:px-10 min-[1200px]:flex-col min-[1200px]:gap-0.5 min-[1200px]:overflow-visible min-[1200px]:p-0 [&::-webkit-scrollbar]:hidden"
+        className="flex gap-2 overflow-x-auto px-5 py-3 [scrollbar-width:none] md:max-[1199px]:px-10 min-[1200px]:flex-col min-[1200px]:gap-0.5 min-[1200px]:-ml-3.5 min-[1200px]:overflow-visible min-[1200px]:p-0 [&::-webkit-scrollbar]:hidden"
       >
         {items.map((it) => {
           const on = it.id === active;

@@ -43,12 +43,12 @@ export function CodeTabs({
   };
 
   return (
-    <div className="grid min-h-0 flex-1 lg:grid-cols-[200px_minmax(0,1fr)]">
+    <div className="grid min-h-0 flex-1 gap-3 px-3 pb-3 pt-4 md:px-5 md:pb-5 lg:grid-cols-[210px_minmax(0,1fr)] lg:gap-4 lg:pl-8 lg:pt-5">
       <div
         role="tablist"
         aria-label={label}
         onKeyDown={onKey}
-        className="flex min-w-0 gap-1 overflow-x-auto border-b border-night-line p-2 lg:flex-col lg:overflow-y-auto lg:border-b-0 lg:border-r lg:p-3"
+        className="flex min-w-0 gap-1.5 overflow-x-auto px-2 py-1 [scrollbar-width:none] md:px-3 lg:flex-col lg:overflow-y-auto lg:p-1 [&::-webkit-scrollbar]:hidden"
       >
         {tabs.map((t, i) => {
           const on = i === active;
@@ -65,8 +65,8 @@ export function CodeTabs({
               aria-controls={`${base}-panel-${i}`}
               tabIndex={on ? 0 : -1}
               onClick={() => setActive(i)}
-              className={`shrink-0 whitespace-nowrap px-3 py-2.5 text-left font-mono text-[12.5px] leading-tight transition-colors ${
-                on ? "bg-paper text-ink" : "text-night-muted hover:bg-night-3 hover:text-paper"
+              className={`shrink-0 whitespace-nowrap rounded-full border px-4 py-2 text-left text-[14px] leading-tight transition-colors ${
+                on ? "border-ink bg-ink text-paper" : "border-line-strong bg-white text-ink-2 hover:border-ink hover:text-ink lg:border-transparent lg:bg-transparent lg:hover:border-line-strong"
               }`}
             >
               {t.label}

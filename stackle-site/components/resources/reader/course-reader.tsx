@@ -27,50 +27,92 @@ const plural = (n: number, one: string, many = `${one}s`) => `${n} ${n === 1 ? o
 
 type Ref = { id: string; title: string } | null;
 
-// "Previous / Next" at the end of a lesson or topic. The last one points back to the library.
-export function Pager({ prev, next, unit, className = "" }: { prev: Ref; next: Ref; unit: string; className?: string }) {
-  const cell = "group flex flex-col gap-2 bg-white p-5 transition-colors hover:bg-fill md:px-6";
+// A small round arrow button that fills with ink when its card is hovered.
+function ArrowDot({ dir }: { dir: "left" | "right" }) {
   return (
-    <div className={`mt-14 grid max-w-[720px] border border-line sm:grid-cols-2 ${className}`}>
+    <span
+      aria-hidden="true"
+      className="grid h-8 w-8 shrink-0 place-items-center rounded-full border border-line-strong text-ink transition-colors group-hover:border-ink group-hover:bg-ink group-hover:text-paper"
+    >
+      {dir === "left" ? <ArrowLeft size={13} /> : <ArrowRight size={13} />}
+    </span>
+  );
+}
+
+// "Previous / Next" at the end of a lesson or topic: two rounded cards. The last one points back to
+// the library.
+export function Pager({ prev, next, unit, className = "" }: { prev: Ref; next: Ref; unit: string; className?: string }) {
+  const card =
+    "group flex flex-col gap-4 rounded-[var(--radius-card)] border border-line bg-white p-5 transition-[border-color,box-shadow] hover:border-line-strong hover:shadow-[var(--shadow-card)] md:px-6";
+  const title = "t-serif text-[19px] leading-snug tracking-[-0.01em] text-ink";
+  const meta = "flex items-center gap-3 text-[14px] text-muted";
+  return (
+    <div className={`mt-14 grid max-w-[720px] gap-3 sm:grid-cols-2 ${className}`}>
       {prev ? (
-        <a href={`#${prev.id}`} className={cell}>
-          <span className="t-mono-sm flex items-center gap-2 text-muted">
-            <ArrowLeft size={12} /> Previous {unit.toLowerCase()}
+        <a href={`#${prev.id}`} className={card}>
+          <span className={meta}>
+            <ArrowDot dir="left" /> Previous {unit.toLowerCase()}
           </span>
-          <span className="text-[16px] font-medium leading-snug text-ink">{prev.title}</span>
+          <span className={title}>{prev.title}</span>
         </a>
       ) : (
-        <div aria-hidden="true" className="fill-hatch hidden sm:block" />
+        <div aria-hidden="true" className="hidden sm:block" />
       )}
       {next ? (
-        <a href={`#${next.id}`} className={`${cell} sm:items-end sm:text-right ${prev ? "border-t border-line sm:border-l sm:border-t-0" : "sm:border-l sm:border-line"}`}>
-          <span className="t-mono-sm flex items-center gap-2 text-muted">
-            Next {unit.toLowerCase()} <ArrowRight size={12} />
+        <a href={`#${next.id}`} className={`${card} sm:items-end sm:text-right`}>
+          <span className={meta}>
+            Next {unit.toLowerCase()} <ArrowDot dir="right" />
           </span>
-          <span className="text-[16px] font-medium leading-snug text-ink">{next.title}</span>
+          <span className={title}>{next.title}</span>
         </a>
       ) : (
-        <Link href="/resources" className={`${cell} sm:items-end sm:text-right ${prev ? "border-t border-line sm:border-l sm:border-t-0" : ""}`}>
-          <span className="t-mono-sm flex items-center gap-2 text-muted">
-            Complete <ArrowRight size={12} />
+        <Link href="/resources" className={`${card} sm:items-end sm:text-right`}>
+          <span className={meta}>
+            Complete <ArrowDot dir="right" />
           </span>
-          <span className="text-[16px] font-medium leading-snug text-ink">Back to resources</span>
+          <span className={title}>Back to resources</span>
         </Link>
       )}
     </div>
   );
 }
 
-// Header band for a module (or a cheat-sheet group) inside the reader column.
+// Heading for a module (or a cheat-sheet group) inside the reader column: an eyebrow and a serif
+// title over a hairline.
 export function GroupHead({ id, kicker, title, note }: { id: string; kicker: string; title: string; note: string }) {
   return (
-    <header className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 border-b border-line bg-white pad py-4">
-      <h2 id={id} className="text-[16px] font-medium tracking-[-0.01em] text-ink">
-        <span className="t-mono mr-3 text-muted">{kicker}</span>
-        {title}
+    <header className="flex flex-wrap items-end justify-between gap-x-6 gap-y-3 border-b border-line pb-6 pt-16 md:pb-8 md:pt-24">
+      <h2 id={id} className="flex flex-col items-start gap-4">
+        <span className="label">{kicker}</span>{" "}
+        <span className="t-serif text-[2rem] leading-[1.05] tracking-[-0.02em] text-ink md:text-[2.5rem]">{title}</span>
       </h2>
-      <p className="t-mono-sm text-muted">{note}</p>
+      <p className="text-[14px] text-muted">{note}</p>
     </header>
+  );
+}
+
+// "Lesson 04 · 8 min", the title, and a large faint serif number on the right.
+export function ItemHead({ id, meta, title, num, children }: { id: string; meta: ReactNode[]; title: string; num: string; children?: ReactNode }) {
+  return (
+    <div className="flex items-start justify-between gap-6">
+      <div className="min-w-0 max-w-[720px]">
+        <p className="t-serif flex items-center gap-2 text-[16px] text-muted">
+          {meta.map((m, i) => (
+            <span key={i} className="contents">
+              {i > 0 && <span aria-hidden="true">·</span>}
+              <span>{m}</span>
+            </span>
+          ))}
+        </p>
+        <h3 id={`${id}-title`} className="t-h3 mt-3">
+          {title}
+        </h3>
+        {children}
+      </div>
+      <span aria-hidden="true" className="t-serif -mt-2 hidden select-none text-[104px] leading-[0.8] tracking-[-0.05em] text-line md:block">
+        {num}
+      </span>
+    </div>
   );
 }
 
@@ -78,11 +120,11 @@ export function GroupHead({ id, kicker, title, note }: { id: string; kicker: str
 export function ReaderFrame({ n, nav, children, contentId, contentClassName = "" }: { n: string; nav: ReactNode; children: ReactNode; contentId?: string; contentClassName?: string }) {
   return (
     <Row n={n}>
-      <div id="reader" className="min-[1200px]:grid min-[1200px]:grid-cols-[272px_minmax(0,1fr)]">
+      <div id="reader" className="min-[1200px]:grid min-[1200px]:grid-cols-[300px_minmax(0,1fr)]">
         {nav}
         <div
           id={contentId}
-          className={`min-w-0 min-[1200px]:border-l min-[1200px]:border-line [&>section:last-child>article:last-child]:border-b-0 ${contentClassName}`}
+          className={`pad min-w-0 pb-16 md:pb-24 min-[1200px]:!pl-8 [&>section:first-child>header]:pt-10 md:[&>section:first-child>header]:pt-12 [&>section>article:last-child]:border-b-0 ${contentClassName}`}
         >
           {children}
         </div>
@@ -131,23 +173,9 @@ export function CourseReader({ course, n = "03", navLabel, sidebarExtra }: { cou
                   key={l.id}
                   id={l.id}
                   aria-labelledby={`${l.id}-title`}
-                  className="scroll-mt-14 border-b border-line pad py-12 md:py-16 min-[1200px]:scroll-mt-2"
+                  className="scroll-mt-14 border-b border-line py-12 md:py-16 min-[1200px]:scroll-mt-2"
                 >
-                  <div className="flex items-start justify-between gap-6">
-                    <div className="min-w-0 max-w-[720px]">
-                      <p className="t-mono flex items-center gap-2 text-muted">
-                        <span>Lesson {pad2(l.number)}</span>
-                        <span aria-hidden="true">·</span>
-                        <span>{l.minutes} min</span>
-                      </p>
-                      <h3 id={`${l.id}-title`} className="t-h3 mt-4">
-                        {l.title}
-                      </h3>
-                    </div>
-                    <span aria-hidden="true" className="t-pixel hidden text-[64px] leading-[0.8] text-line md:block">
-                      {pad2(l.number)}
-                    </span>
-                  </div>
+                  <ItemHead id={l.id} meta={[`Lesson ${pad2(l.number)}`, `${l.minutes} min`]} title={l.title} num={pad2(l.number)} />
                   <div className="mt-8">
                     <LessonBody blocks={l.blocks} />
                   </div>

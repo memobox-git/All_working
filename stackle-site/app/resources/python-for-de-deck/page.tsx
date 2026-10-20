@@ -97,7 +97,6 @@ export default function Page() {
         ))}
       />
       <ResourceCta
-        n="05"
         title="Write this code live, with feedback."
         body="This deck comes from the Stackle Data Engineering Masterclass: ten weeks of live sessions on SQL, Python, data modeling, Spark, Kafka, Airflow and the cloud, where you build end-to-end pipelines and present them at Demo Day."
         courseHref="/courses/data-engineering-masterclass-get-job-ready-in-10-weeks"

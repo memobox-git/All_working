@@ -318,10 +318,10 @@ export function GuideChapter({ chapter }: { chapter: GuideChapterData }) {
     <section
       id={chapter.id}
       aria-labelledby={`${chapter.id}-title`}
-      className="scroll-mt-[64px] border-t hairline first:border-t-0 min-[1200px]:scroll-mt-0"
+      className="group scroll-mt-[64px] min-[1200px]:scroll-mt-0"
     >
-      <div className="pad py-14 md:py-20">
-        <div>
+      <div className="pad">
+        <div className="border-t hairline py-14 group-first:border-t-0 md:py-20">
           <span className="label">Chapter {chapter.number}</span>
           <h2 id={`${chapter.id}-title`} className="t-h2 mt-6 max-w-[820px]">
             {chapter.title}

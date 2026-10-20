@@ -38,5 +38,18 @@
   padding-block: 40px;
 }
 
-/* the hairline under the last visible question of a section */
+/* no hairline under the last visible question of a section */
 .sec .q:last-child { border-bottom-width: 0; }
+
+/* Phone contents sheet: a gentle slide up and fade (globals.css turns animations off for reduced motion). */
+.sheet { animation: sheet-in 0.32s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+.scrim { animation: scrim-in 0.24s ease-out both; }
+
+@keyframes sheet-in {
+  from { transform: translateY(32px); opacity: 0; }
+  to { transform: none; opacity: 1; }
+}
+@keyframes scrim-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
