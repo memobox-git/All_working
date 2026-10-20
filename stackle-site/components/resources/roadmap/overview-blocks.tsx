@@ -70,7 +70,7 @@ export function CapabilityMap({ n, data }: { n: string; data: CapabilityMapData 
                 <p className="t-mono-sm text-muted">{c.label}</p>
                 <ul className="mt-4 grid grid-cols-3 border border-ink bg-white">
                   {c.options.map((o, i) => (
-                    <li key={o} className={`flex items-center justify-center px-2 py-3 text-center text-[15px] font-medium leading-tight ${i > 0 ? "border-l border-ink" : ""}`}>
+                    <li key={o} className={`flex min-h-[60px] items-center justify-center px-2 py-3 text-center text-[15px] font-medium leading-tight ${i > 0 ? "border-l border-ink" : ""}`}>
                       {o}
                     </li>
                   ))}
@@ -125,7 +125,7 @@ export function Stack({ n, data }: { n: string; data: StackData }) {
         className="border-t border-line"
         cols={{ base: 2, md: 3, lg: 6 }}
         items={data.items.map((it, i) => (
-          <div key={it.name} className="flex h-full min-h-[132px] flex-col px-5 py-5">
+          <div key={it.name} className="flex h-full min-h-[104px] flex-col px-5 py-5 md:min-h-[132px]">
             <span className="t-mono-sm flex items-center justify-between text-muted">
               {pad(i + 1)}
               {i < last && <ArrowRight size={12} className="text-faint" />}
@@ -164,13 +164,13 @@ export function SalaryTable({ n, data }: { n: string; data: SalaryTableData }) {
           <tbody>
             {data.rows.map((r) => (
               <tr key={r.phase} className={`border-b border-line last:border-b-0 ${r.isTarget ? "bg-ink text-paper" : ""}`}>
-                <th scope="row" className="pad py-4 align-top font-normal">
+                <th scope="row" className="pad py-4 align-middle font-normal">
                   <span className="t-mono block">{r.phase}</span>
                   <span className={`t-small mt-1 block md:hidden ${r.isTarget ? "!text-night-muted" : ""}`}>{r.stage}</span>
                 </th>
-                <td className="hidden py-4 pr-4 align-top font-medium md:table-cell">{r.stage}</td>
-                <td className={`py-4 pr-4 align-top ${r.isTarget ? "" : "text-ink-2"}`}>{r.role}</td>
-                <td className="py-4 pr-5 text-right align-top font-mono text-[15px] md:pr-8">{r.salary}</td>
+                <td className="hidden py-4 pr-4 align-middle font-medium md:table-cell">{r.stage}</td>
+                <td className={`py-4 pr-4 align-middle ${r.isTarget ? "" : "text-ink-2"}`}>{r.role}</td>
+                <td className={`py-4 pr-5 text-right align-middle font-mono text-[13px] sm:text-[15px] md:pr-8 ${r.isTarget ? "" : "whitespace-nowrap"}`}>{r.salary}</td>
               </tr>
             ))}
           </tbody>

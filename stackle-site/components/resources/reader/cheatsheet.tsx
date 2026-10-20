@@ -51,7 +51,7 @@ function Answer({ a }: { a: CsAnswer }) {
 
 function QuestionRow({ q }: { q: CsQuestion }) {
   return (
-    <div data-level={q.level} className={`${styles.q} grid gap-4 border-b border-line py-7 md:grid-cols-[minmax(0,15rem)_minmax(0,1fr)] md:gap-8`}>
+    <div data-level={q.level} className={`${styles.q} grid gap-4 border-b border-line py-7 md:grid-cols-[minmax(0,13.5rem)_minmax(0,1fr)] md:gap-8`}>
       <div>
         <h5 className="text-[17px] font-medium leading-snug tracking-[-0.01em] text-ink">{q.question}</h5>
         {q.hint && <p className="mt-1.5 text-[14px] leading-snug text-muted">{q.hint}</p>}
@@ -156,7 +156,7 @@ export function CheatsheetReader({ data, n = "03" }: { data: Cheatsheet; n?: str
                   <p className={`${styles.empty} t-small mt-10 border border-dashed border-line bg-white px-5 py-4`}>
                     No questions at this level in this topic.
                   </p>
-                  <Pager unit="Topic" prev={prev && { id: prev.id, title: prev.navLabel }} next={next && { id: next.id, title: next.navLabel }} />
+                  <Pager className={styles.pager} unit="Topic" prev={prev && { id: prev.id, title: prev.navLabel }} next={next && { id: next.id, title: next.navLabel }} />
                 </article>
               );
             })}

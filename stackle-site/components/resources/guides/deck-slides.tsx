@@ -54,7 +54,7 @@ function Cover({ s, part }: { s: DeckRawSlide; part: number }) {
   const [a, b, em] = titleLines(s);
   return (
     <div className="on-night relative flex h-full min-h-[420px] flex-col justify-between gap-10 overflow-hidden bg-night p-6 text-paper md:p-10 lg:min-h-0 lg:p-12">
-      <span aria-hidden="true" className="t-pixel pointer-events-none absolute -bottom-6 right-4 text-[180px] leading-none text-night-3 md:text-[280px]">
+      <span aria-hidden="true" className="t-pixel pointer-events-none absolute -bottom-6 right-4 hidden text-[180px] md:block leading-none text-night-3 md:text-[280px]">
         {part + 1}
       </span>
       <span className="label relative self-start">{s.eyebrow}</span>
@@ -153,7 +153,7 @@ function Item({ it }: { it: DeckItem }) {
   if (it.type === "callout") return <Callout html={it.html ?? ""} />;
   if (it.type === "label") return <p className="t-mono-sm text-muted">{it.text}</p>;
   if (it.type === "code")
-    return <CodeBlock code={it.code ?? ""} language={it.language ?? "python"} className="[&_pre]:text-[12.5px] [&_pre]:leading-[1.65]" />;
+    return <CodeBlock code={it.code ?? ""} language={it.language ?? "python"} className="[&_pre]:py-3 [&_pre]:text-[12.5px] [&_pre]:leading-[1.6]" />;
   if (it.type === "stack")
     return (
       <div className="flex min-w-0 flex-col gap-3">
@@ -170,11 +170,11 @@ const COLS: Record<number, string> = { 2: "md:grid-cols-2", 3: "md:grid-cols-3",
 function Content({ s }: { s: DeckRawSlide }) {
   return (
     <div className="flex h-full flex-col">
-      <div className="border-b hairline px-5 py-4 md:px-8 md:py-5">
+      <div className="border-b hairline px-5 py-4 md:px-8">
         <p className="t-mono-sm text-muted">{s.eyebrow}</p>
-        <h2 className="t-h4 mt-2 md:text-[26px]">{s.title}</h2>
+        <h2 className="t-h4 mt-2 md:text-[25px]">{s.title}</h2>
       </div>
-      <div className="min-h-0 flex-1 space-y-4 overflow-y-auto p-5 md:p-8">
+      <div className="min-h-0 flex-1 space-y-4 overflow-y-auto p-5 md:px-8 md:py-6">
         {(s.blocks ?? []).map((b, i) =>
           b.type === "grid" ? (
             <div key={i} className={`grid items-start gap-3 md:gap-4 ${COLS[b.columns ?? 2] ?? COLS[2]}`}>
@@ -194,9 +194,9 @@ function Content({ s }: { s: DeckRawSlide }) {
 function Pipeline({ s }: { s: DeckRawSlide }) {
   return (
     <div className="flex h-full flex-col">
-      <div className="border-b hairline px-5 py-4 md:px-8 md:py-5">
+      <div className="border-b hairline px-5 py-4 md:px-8">
         <p className="t-mono-sm text-muted">{s.eyebrow}</p>
-        <h2 className="t-h4 mt-2 md:text-[26px]">{s.title}</h2>
+        <h2 className="t-h4 mt-2 md:text-[25px]">{s.title}</h2>
       </div>
       <div className="flex min-h-0 flex-1 flex-col justify-center gap-8 overflow-y-auto p-5 md:p-8">
         {(s.pipelines ?? []).map((p) => (
@@ -204,13 +204,13 @@ function Pipeline({ s }: { s: DeckRawSlide }) {
             <h3 className="t-mono-sm text-muted">{p.label}</h3>
             <ol className="mt-3 flex flex-col lg:flex-row">
               {p.steps.map((st, i) => (
-                <li key={st.label} className="flex flex-col items-stretch lg:flex-1 lg:flex-row lg:items-center">
+                <li key={st.label} className="flex flex-col items-stretch lg:flex-1 lg:flex-row">
                   <div className={`flex-1 border p-3 md:p-4 ${i === p.steps.length - 1 ? "border-ink bg-ink text-paper" : "hairline bg-paper"}`}>
                     <p className="text-[16px] font-medium">{st.label}</p>
                     <p className={`t-mono-sm mt-1.5 ${i === p.steps.length - 1 ? "text-night-muted" : "text-muted"}`}>{st.sub}</p>
                   </div>
                   {i < p.steps.length - 1 && (
-                    <span aria-hidden="true" className="grid place-items-center py-1.5 text-muted lg:px-2 lg:py-0">
+                    <span aria-hidden="true" className="grid place-items-center py-1.5 text-muted lg:self-center lg:px-2 lg:py-0">
                       <ArrowRight className="rotate-90 lg:rotate-0" />
                     </span>
                   )}

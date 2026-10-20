@@ -43,8 +43,8 @@ export function DeckViewer({
   const [request, setRequest] = useState<TabRequest | null>(null);
   const [nav, setNav] = useState<Nav>({ seq: 0, mode: "none" });
   const activeRef = useRef(0);
-  const rootRef = useRef<HTMLDivElement>(null);
   const stageRef = useRef<HTMLDivElement>(null);
+  const regionRef = useRef<HTMLDivElement>(null);
   const slideRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   const go = useCallback(
@@ -79,14 +79,14 @@ export function DeckViewer({
     return () => window.removeEventListener("hashchange", onHash);
   }, [go, total]);
 
-  // Left/right arrow keys move through the deck while it is on screen.
+  // Left/right arrow keys move through the deck while the stage is on screen.
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.defaultPrevented || e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
       if (e.key !== "ArrowLeft" && e.key !== "ArrowRight") return;
       const t = e.target as HTMLElement | null;
       if (t?.closest?.("input, textarea, select, [contenteditable], [role='tablist'], pre")) return;
-      const r = rootRef.current?.getBoundingClientRect();
+      const r = stageRef.current?.getBoundingClientRect();
       if (!r || r.bottom < 120 || r.top > window.innerHeight - 120) return;
       e.preventDefault();
       go(activeRef.current + (e.key === "ArrowRight" ? 1 : -1));
@@ -95,17 +95,18 @@ export function DeckViewer({
     return () => window.removeEventListener("keydown", onKey);
   }, [go]);
 
-  // After a jump, bring the stage back into view (and move focus to the slide when asked).
+  // After a jump, bring the deck (counter bar + stage) back into view, and move focus to the slide when asked.
   useEffect(() => {
+    const region = regionRef.current;
     const stage = stageRef.current;
-    if (nav.seq === 0 || !stage) return;
-    const top = stage.getBoundingClientRect().top;
+    if (nav.seq === 0 || !region || !stage) return;
+    const top = region.getBoundingClientRect().top;
     if (nav.mode === "none") {
       // Prev/Next or arrow keys after scrolling down a long (phone) slide: start the new one at its top.
-      if (top < 64) stage.scrollIntoView({ block: "start" });
+      if (stage.getBoundingClientRect().top < 64) region.scrollIntoView({ block: "start" });
     } else if (top < 64 || top > window.innerHeight * 0.5) {
       const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      stage.scrollIntoView({ block: "start", behavior: reduce ? "auto" : "smooth" });
+      region.scrollIntoView({ block: "start", behavior: reduce ? "auto" : "smooth" });
     }
     if (nav.mode === "focus") slideRefs.current[activeRef.current]?.focus({ preventScroll: true });
   }, [nav]);
@@ -121,9 +122,9 @@ export function DeckViewer({
   return (
     <DeckContext.Provider value={{ request }}>
       <style>{PRE_HYDRATION_CSS}</style>
-      <div ref={rootRef} className="deck" data-ready={ready ? "" : undefined}>
+      <div className="deck" data-ready={ready ? "" : undefined}>
         <Row n="03" id="deck" tone="white">
-          <div role="region" aria-roledescription="slide deck" aria-label={label}>
+          <div ref={regionRef} role="region" aria-roledescription="slide deck" aria-label={label}>
             <div className="flex items-center justify-between gap-4 border-b hairline px-5 py-3.5 md:px-8">
               <span className="t-mono hidden sm:inline">{brand}</span>
               <span className="t-mono truncate text-muted">{parts[cur.part].title}</span>
@@ -204,7 +205,11 @@ export function DeckViewer({
               <h2 className="t-h3 mt-5">Every slide, by part.</h2>
             </div>
             <p className="t-mono text-muted">
-              {total} slides · {parts.length} parts · <span className="kbd">←</span> <span className="kbd">→</span> to move
+              {total} slides · {parts.length} parts
+              <span className="hidden lg:inline">
+                {" "}
+                · <span className="kbd">←</span> <span className="kbd">→</span> to move
+              </span>
             </p>
           </div>
           <div className="grid border-t hairline md:grid-cols-3">

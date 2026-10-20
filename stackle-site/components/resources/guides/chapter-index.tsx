@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 
-export type ChapterIndexItem = { id: string; number: string; label: string; title: string; count: number };
+export type ChapterIndexItem = { id: string; number: string; label: string; count: number };
 
 // Chapter index for long guides. Below 1200px it is a sticky strip of chips that scrolls sideways;
 // from 1200px it is a sticky column next to the text. Plain anchor links, so it works without JS;
@@ -57,7 +57,7 @@ export function ChapterIndex({ items, label = "Chapters" }: { items: ChapterInde
       <p className="t-mono-sm hidden px-6 pb-4 pt-10 text-muted min-[1200px]:block">{label}</p>
       <ol
         ref={listRef}
-        className="flex gap-2 overflow-x-auto px-5 py-3 [scrollbar-width:none] md:px-8 min-[1200px]:block min-[1200px]:overflow-visible hairline min-[1200px]:border-t min-[1200px]:px-0 min-[1200px]:py-0 [&::-webkit-scrollbar]:hidden"
+        className="flex gap-2 overflow-x-auto px-5 py-3 [scrollbar-width:none] md:max-[1199px]:px-8 min-[1200px]:block min-[1200px]:overflow-visible hairline min-[1200px]:border-t min-[1200px]:px-0 min-[1200px]:py-0 [&::-webkit-scrollbar]:hidden"
       >
         {items.map((it) => {
           const on = it.id === active;
@@ -67,18 +67,16 @@ export function ChapterIndex({ items, label = "Chapters" }: { items: ChapterInde
                 href={`#${it.id}`}
                 data-id={it.id}
                 aria-current={on ? "true" : undefined}
-                className={`group flex items-center gap-2 whitespace-nowrap border px-3 py-2.5 transition-colors min-[1200px]:items-start min-[1200px]:gap-3 min-[1200px]:whitespace-normal min-[1200px]:border-0 min-[1200px]:border-b min-[1200px]:px-6 min-[1200px]:py-4 ${
+                className={`group flex items-center gap-2 whitespace-nowrap border px-3 py-2.5 transition-colors min-[1200px]:gap-3 min-[1200px]:border-0 min-[1200px]:border-b min-[1200px]:px-6 min-[1200px]:py-4 ${
                   on
                     ? "border-ink bg-ink text-paper min-[1200px]:border-ink"
                     : "border-line bg-white text-ink hover:border-ink min-[1200px]:border-line min-[1200px]:bg-transparent min-[1200px]:hover:bg-white"
                 }`}
               >
-                <span className={`t-mono-sm ${on ? "text-paper" : "text-muted"} min-[1200px]:mt-[3px]`}>{it.number}</span>
-                <span className="min-w-0">
-                  <span className="t-mono block">{it.label}</span>
-                  <span className={`mt-1.5 hidden text-[13px] leading-snug min-[1200px]:block ${on ? "text-night-muted" : "text-muted"}`}>
-                    {it.title} · {it.count} sections
-                  </span>
+                <span className={`t-mono-sm tabular-nums ${on ? "text-night-muted" : "text-muted"}`}>{it.number}</span>
+                <span className="t-mono">{it.label}</span>
+                <span className={`t-mono-sm ml-auto hidden pl-3 tabular-nums min-[1200px]:inline ${on ? "text-night-muted" : "text-muted"}`}>
+                  {it.count}
                 </span>
               </a>
             </li>

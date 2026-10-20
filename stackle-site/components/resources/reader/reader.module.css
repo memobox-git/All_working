@@ -27,5 +27,16 @@
   display: block;
 }
 
+/* While filtering, drop the topic pagers and shrink topics that have nothing to show. */
+.root[data-filter] .pager { display: none; }
+
+.root[data-filter="Basic"] .topic:not(:has(.q[data-level="Basic"])),
+.root[data-filter="Intermediate"] .topic:not(:has(.q[data-level="Intermediate"])),
+.root[data-filter="Advanced"] .topic:not(:has(.q[data-level="Advanced"])),
+.root[data-filter="Concept"] .topic:not(:has(.q[data-level="Concept"])),
+.root[data-filter="Snowflake"] .topic:not(:has(.q[data-level="Snowflake"])) {
+  padding-block: 40px;
+}
+
 /* the hairline under the last visible question of a section */
 .sec .q:last-child { border-bottom-width: 0; }

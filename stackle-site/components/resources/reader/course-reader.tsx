@@ -28,10 +28,10 @@ const plural = (n: number, one: string, many = `${one}s`) => `${n} ${n === 1 ? o
 type Ref = { id: string; title: string } | null;
 
 // "Previous / Next" at the end of a lesson or topic. The last one points back to the library.
-export function Pager({ prev, next, unit }: { prev: Ref; next: Ref; unit: string }) {
+export function Pager({ prev, next, unit, className = "" }: { prev: Ref; next: Ref; unit: string; className?: string }) {
   const cell = "group flex flex-col gap-2 bg-white p-5 transition-colors hover:bg-fill md:px-6";
   return (
-    <div className="mt-14 grid max-w-[720px] border border-line sm:grid-cols-2">
+    <div className={`mt-14 grid max-w-[720px] border border-line sm:grid-cols-2 ${className}`}>
       {prev ? (
         <a href={`#${prev.id}`} className={cell}>
           <span className="t-mono-sm flex items-center gap-2 text-muted">

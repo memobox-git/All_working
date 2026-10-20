@@ -192,4 +192,9 @@
 .mark { display: inline-grid; place-items: center; width: 22px; height: 22px; border: 1px solid var(--color-ink); flex: none; }
 .markOk { background: var(--color-ink); color: var(--color-paper); }
 .review { margin-top: 28px; border-top: 1px solid var(--color-line); }
-.reviewRow { display: grid; grid-template-columns: 22px 52px minmax(0, 1fr); gap: 12px; align-items: start; padding: 12px 0; border-bottom: 1px solid var(--color-line); font-size: 15px; line-height: 1.45; }
+.reviewRow { display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 4px 12px; align-items: start; padding: 12px 0; border-bottom: 1px solid var(--color-line); font-size: 15px; line-height: 1.45; }
+.reviewRow > :last-child { grid-column: 2; }
+@media (min-width: 768px) {
+  .reviewRow { grid-template-columns: 22px 52px minmax(0, 1fr); gap: 12px; }
+  .reviewRow > :last-child { grid-column: auto; }
+}

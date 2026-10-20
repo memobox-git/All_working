@@ -190,7 +190,7 @@ export function PipelineDemo({ text }: { text: PipelineDemoText }) {
           })}
         </ol>
         <button type="button" className="btn btn-ink btn-chrome shrink-0" onClick={start} disabled={loading}>
-          {loading ? text.loading : stage === "idle" ? (error ? "Retry" : text.start) : text.rerun}
+          {loading ? text.loading : stage === "idle" ? text.start : text.rerun}
         </button>
       </div>
       <p className="sr-only" aria-live="polite">
@@ -418,7 +418,7 @@ function Consumers({ run, text }: { run: Run; text: PipelineDemoText }) {
           />
         </div>
       </View>
-      <div className="bg-white px-5 py-6 lg:col-span-2 md:px-6">
+      <div className="bg-white px-4 py-5 md:px-6 md:py-6 lg:col-span-2">
         <div className="flex flex-wrap items-baseline justify-between gap-2">
           <h4 className="font-medium">Business executive dashboard</h4>
           <p className="t-mono-sm text-muted">Product analytics · powered by gold.products</p>
@@ -493,7 +493,7 @@ function Consumers({ run, text }: { run: Run; text: PipelineDemoText }) {
 
 function View({ role, subtitle, badge, children }: { role: string; subtitle: string; badge: string; children: ReactNode }) {
   return (
-    <div className="min-w-0 bg-white px-5 py-6 md:px-6">
+    <div className="min-w-0 bg-white px-4 py-5 md:px-6 md:py-6">
       <div className="mb-4 flex items-start justify-between gap-3">
         <div>
           <h4 className="font-medium">{role}</h4>

@@ -92,6 +92,7 @@ export function QaQuiz({
   const [phase, setPhase] = useState<"intro" | "play" | "done">("intro");
   const [round, setRound] = useState<Asked[]>([]);
   const [i, setI] = useState(0);
+  const boxRef = useRef<HTMLDivElement>(null);
   const headRef = useRef<HTMLHeadingElement>(null);
   const nextRef = useRef<HTMLButtonElement>(null);
   const focusHead = useRef(false);
@@ -100,10 +101,13 @@ export function QaQuiz({
   const score = round.filter((r) => r.picked !== null && r.picked === r.correct).length;
   const answered = cur ? cur.picked !== null : false;
 
+  // Each step: bring the top of the quiz card into view, then move focus to its heading.
   useEffect(() => {
     if (focusHead.current) {
       focusHead.current = false;
-      headRef.current?.focus();
+      const box = boxRef.current;
+      if (box && (box.getBoundingClientRect().top < 72 || box.getBoundingClientRect().top > innerHeight * 0.5)) box.scrollIntoView({ block: "start" });
+      headRef.current?.focus({ preventScroll: true });
     }
   }, [phase, i]);
 
@@ -143,7 +147,7 @@ export function QaQuiz({
 
   if (phase === "intro") {
     return (
-      <div className={s.quiz}>
+      <div ref={boxRef} className={s.quiz}>
         <div className={`${s.quizBody} ${s.intro}`}>
           <div>
             <p className="t-mono-sm text-muted">
@@ -173,7 +177,7 @@ export function QaQuiz({
 
   if (phase === "done") {
     return (
-      <div className={s.quiz}>
+      <div ref={boxRef} className={s.quiz}>
         <div className={s.quizHead}>
           <span>{resultTitle.replace(/!$/, "")}</span>
           <span>
@@ -222,7 +226,7 @@ export function QaQuiz({
   if (!cur) return null;
   const ok = cur.picked === cur.correct;
   return (
-    <div className={s.quiz}>
+    <div ref={boxRef} className={s.quiz}>
       <div className={s.quizHead}>
         <span>
           Question <b>{i + 1}</b> / {round.length}

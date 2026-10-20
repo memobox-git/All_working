@@ -60,11 +60,13 @@ export function QaControls({ zoneId, total, filters, placeholder }: { zoneId: st
     if (empty) empty.hidden = n > 0;
     setShown(n);
     // If the reader is deep in the list, bring the top of the (now shorter) list back under the toolbar.
+    // Layout offsets only: right after hiding rows the scroll offset can be stale, so rects can't be trusted.
     const list = document.getElementById("questions");
     const bar = barRef.current?.closest("section");
     if (list && bar) {
-      const gap = list.getBoundingClientRect().top - bar.getBoundingClientRect().bottom;
-      if (gap < -1) window.scrollBy(0, gap);
+      const head = parseFloat(getComputedStyle(zone).getPropertyValue("--qa-head")) || 0;
+      const target = list.offsetTop - head - bar.offsetHeight;
+      if (window.scrollY > target + 1) window.scrollTo(0, target);
     }
     if (scrollTo.current && !scrollTo.current.hidden) {
       scrollTo.current.scrollIntoView();

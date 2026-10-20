@@ -113,7 +113,7 @@ export function Tiles({ items }: { items: TextItem[] }) {
       {items.map((t, i) => (
         <div role="listitem" key={i} className="bg-white p-5 md:p-6">
           <span className="t-mono-sm text-muted">{pad2(i + 1)}</span>
-          <p className="mt-6 text-[1.625rem] font-medium leading-none tracking-[-0.035em] text-ink md:mt-10 md:text-[1.875rem]">{t.title}</p>
+          <p className="mt-4 text-[1.625rem] font-medium leading-none tracking-[-0.035em] text-ink md:mt-10 md:text-[1.875rem]">{t.title}</p>
           <p className="mt-2 text-[15px] text-muted">{t.text}</p>
         </div>
       ))}
@@ -415,9 +415,9 @@ function RelationshipDiagram({ b }: { b: Extract<DiagramBlock, { diagram: "relat
       <div className="flex flex-col items-center sm:flex-row sm:justify-center">
         <div className="border border-ink bg-white px-6 py-4 text-[18px] font-medium tracking-[-0.01em] text-ink">{b.from}</div>
         <div className="relative flex flex-col items-center sm:flex-row" aria-hidden="true">
-          <span className="t-pixel px-2 py-1 text-[22px] leading-none text-ink">{b.fromCardinality}</span>
+          <span className="px-2.5 py-1.5 font-mono text-[18px] font-medium leading-none text-ink">{b.fromCardinality}</span>
           <span className="h-10 w-px bg-ink sm:h-px sm:w-28 md:w-40" />
-          <span className="t-pixel px-2 py-1 text-[22px] leading-none text-ink">{b.toCardinality}</span>
+          <span className="px-2.5 py-1.5 font-mono text-[18px] font-medium leading-none text-ink">{b.toCardinality}</span>
           <span className="t-mono-sm absolute left-[calc(50%+16px)] top-1/2 -translate-y-1/2 whitespace-nowrap text-muted sm:left-1/2 sm:top-[calc(50%+14px)] sm:-translate-x-1/2 sm:translate-y-0">
             {b.label}
           </span>

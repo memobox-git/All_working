@@ -104,7 +104,7 @@ export function ExampleView({ example }: { example: Example }) {
                       style={{ width: `${Math.round(((s.i + 1) / total) * 100)}%` }}
                     />
                   </span>
-                  <span className="col-start-2 px-4 pb-3 font-mono text-[14px] sm:col-start-3 sm:py-4 sm:text-right">{s.salary}</span>
+                  <span className="col-start-2 px-4 pb-3 pt-2 font-mono text-[14px] sm:col-start-3 sm:py-4 sm:text-right">{s.salary}</span>
                 </li>
               ))}
           </ol>

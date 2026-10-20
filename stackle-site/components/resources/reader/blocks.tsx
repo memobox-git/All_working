@@ -27,10 +27,10 @@ export function Code({ code, language = "text", className = "" }: { code: string
 
 // A table in a hairline frame that scrolls sideways instead of widening the page.
 export function DataTable({ head, rows, className = "" }: { head: ReactNode[]; rows: ReactNode[][]; className?: string }) {
-  const wide = head.length >= 4;
+  const wide = head.length >= 5;
   return (
     <div className={`scroll-x border border-line bg-white ${className}`}>
-      <table className={`m-0 w-full border-collapse text-left text-[15px] leading-snug ${wide ? "min-w-[540px]" : ""}`}>
+      <table className={`m-0 w-full border-collapse text-left text-[15px] leading-snug ${wide ? "min-w-[480px]" : ""}`}>
         <thead>
           <tr>
             {head.map((h, i) => (

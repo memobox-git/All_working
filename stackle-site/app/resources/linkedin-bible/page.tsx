@@ -53,7 +53,7 @@ export default function Page() {
       <Row n="03" id="guide">
         <div className="grid grid-cols-1 min-[1200px]:grid-cols-[264px_minmax(0,1fr)]">
           <ChapterIndex
-            items={chapters.map((c) => ({ id: c.id, number: c.number, label: c.tabLabel, title: c.subtitle, count: c.sections.length }))}
+            items={chapters.map((c) => ({ id: c.id, number: c.number, label: c.tabLabel, count: c.sections.length }))}
           />
           <div className="min-w-0 hairline min-[1200px]:border-l">
             {chapters.map((c) => (

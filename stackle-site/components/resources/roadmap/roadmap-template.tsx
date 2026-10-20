@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 import { Row, SectionHead } from "@/components/row";
 import { ResourceCta, ResourceHero } from "@/components/resources/resource-shell";
 import { ArrowRight, ArrowUpRight } from "@/components/icons";
-import { CellGrid } from "./cell-grid";
+import { CellGrid, type Cols } from "./cell-grid";
 import type { Phase, Roadmap } from "./data";
 import { LessonBody } from "./lesson-body";
 import { LessonProvider, TopicButton } from "./lesson-drawer";
@@ -145,6 +145,14 @@ function Salary({ phase }: { phase: Phase }) {
   );
 }
 
+// 4 or 5 topics fill one row on desktop; otherwise rows of 3 (or 2 for a pair).
+function topicCols(n: number): Cols {
+  if (n === 4) return { base: 1, sm: 2, lg: 4 };
+  if (n === 5) return { base: 1, sm: 2, lg: 5 };
+  if (n <= 2) return { base: 1, sm: 2 };
+  return { base: 1, sm: 2, lg: 3 };
+}
+
 function PhaseRow({ n, phase }: { n: string; phase: Phase }) {
   return (
     <Row n={n} id={phase.id}>
@@ -152,9 +160,6 @@ function PhaseRow({ n, phase }: { n: string; phase: Phase }) {
         <div className="lg:col-start-1 lg:row-start-1">
           <p className="t-mono">{phase.label}</p>
           <p className="t-mono-sm mt-2 text-muted">{phase.stage}</p>
-        </div>
-        <div className="lg:col-start-1 lg:row-start-2">
-          <Salary phase={phase} />
         </div>
         <div className="lg:col-start-2 lg:row-span-2 lg:row-start-1">
           <h3 className="t-h3 max-w-[680px]">{phase.title}</h3>
@@ -170,12 +175,15 @@ function PhaseRow({ n, phase }: { n: string; phase: Phase }) {
             </ul>
           </div>
         </div>
+        <div className="lg:col-start-1 lg:row-start-2">
+          <Salary phase={phase} />
+        </div>
       </div>
       <div className="border-t border-line">
         <CellGrid
           as="ol"
           label={`${phase.label} topics`}
-          cols={{ base: 1, sm: 2, lg: 3 }}
+          cols={topicCols(phase.topics.length)}
           items={phase.topics.map((t) => (
             <TopicButton key={t.id} id={t.id} n={t.n} title={t.title} category={t.category} total={t.checklist.length} />
           ))}

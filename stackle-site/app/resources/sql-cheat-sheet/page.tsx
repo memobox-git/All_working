@@ -83,11 +83,11 @@ export default function Page() {
               id={s.id}
               className="pad grid gap-5 border-b hairline py-9 last:border-b-0 md:grid-cols-[230px_minmax(0,1fr)] md:gap-10 md:py-12"
             >
-              <div>
-                <span className="t-pixel block text-[40px] leading-none md:text-[52px]" aria-hidden="true">
+              <div className="flex items-baseline gap-4 md:block">
+                <span className="t-pixel block text-[36px] leading-none md:text-[52px]" aria-hidden="true">
                   {String(s.number).padStart(2, "0")}
                 </span>
-                <h2 className="t-h4 mt-3 md:mt-4">
+                <h2 className="t-h4 md:mt-4">
                   <span className="sr-only">{s.number}. </span>
                   {s.title}
                 </h2>
