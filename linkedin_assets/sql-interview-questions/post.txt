@@ -1,0 +1,34 @@
+"Find the 2nd highest salary in each department."
+Use ROW_NUMBER() and a salary tie quietly drops a person. 👇
+
+That one trap is the whole question. Most common SQL interview questions have one like it.
+
+8 common ones, with the trap in each:
+
+Nth highest salary per department
+→ DENSE_RANK(), not ROW_NUMBER(), so ties share a rank.
+
+Month-over-month growth
+→ LAG() for last month. NULLIF() so a zero month doesn't break the division.
+
+Pivot rows into columns
+→ SUM(CASE WHEN ...) works in every database. PIVOT syntax doesn't.
+
+Find duplicates
+→ GROUP BY with HAVING COUNT(*) > 1. To keep one copy, use ROW_NUMBER() and keep row 1.
+
+Running totals and moving averages
+→ SUM() OVER with a ROWS frame. "6 PRECEDING" is a 7-day average only if there's one row per day.
+
+Assign levels by salary range
+→ CASE checks top to bottom. A NULL salary falls into ELSE and lands in your top level.
+
+Joins on messy keys like 1, 1, 0, 0, NULL
+→ Duplicates multiply rows. NULL never matches NULL.
+
+Count each person's direct reports, including zero
+→ LEFT self-join with COUNT(e.emp_id). COUNT(*) would say 1.
+
+The full queries are in the images.
+
+Knowing the function is step one. Knowing where it breaks is the interview.

@@ -1,0 +1,184 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>SQL Interview Slides</title>
+<style>
+  @font-face { font-family: "Cabin Sketch"; src: url(fonts/Cabin_Sketch.woff2) format("woff2"); font-weight: 700; }
+  @font-face { font-family: "Patrick Hand"; src: url(fonts/Patrick_Hand.woff2) format("woff2"); }
+  @font-face { font-family: "Caveat"; src: url(fonts/Caveat.woff2) format("woff2"); font-weight: 700; }
+  @font-face { font-family: "JetBrains Mono"; src: url(fonts/JetBrains_Mono.woff2) format("woff2"); font-weight: 500; }
+  :root { --chalk: #f4f2ea; --yellow: #f6dd73; --pink: #f3a3b6; --blue: #93d2f2; --green: #a9e1a0; --board: #1c2521; --line: rgba(244,242,234,.45); }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1080px; height: 1350px; overflow: hidden; background: #5a3a1e; }
+  .frame { position: absolute; top: 0; left: 0; width: 1080px; height: 1350px; padding: 18px;
+    background: linear-gradient(135deg, #8a5a2e 0%, #6a4220 35%, #7d5129 60%, #5b3819 100%); }
+  .board { position: relative; width: 100%; height: 100%; overflow: hidden; color: var(--chalk); font-family: "Patrick Hand", sans-serif;
+    background: radial-gradient(ellipse at 20% 15%, rgba(255,255,255,.07), transparent 45%),
+                radial-gradient(ellipse at 80% 70%, rgba(255,255,255,.05), transparent 50%), var(--board);
+    box-shadow: inset 0 0 40px rgba(0,0,0,.6), 0 0 0 3px #3e2611; }
+  .dust { position: absolute; inset: 0; opacity: .10; z-index: 0; }
+  .grain { position: absolute; inset: 0; opacity: .35; mix-blend-mode: multiply; z-index: 0; }
+  .layer { position: relative; z-index: 1; height: 100%; display: flex; flex-direction: column; }
+
+  header { padding: 26px 36px 0; height: 152px; position: relative; }
+  .t { font-family: "Cabin Sketch", cursive; font-weight: 700; font-size: 58px; line-height: 1; }
+  .t .y { color: var(--yellow); }
+  .sub { font-family: "Caveat", cursive; font-weight: 700; color: var(--pink); font-size: 38px; margin-top: 8px; }
+  .page { position: absolute; right: 36px; top: 96px; font-family: "Caveat", cursive; font-weight: 700; font-size: 36px; color: var(--blue); }
+  main { flex: 1; margin: 0 26px; border-top: 2.5px solid var(--line); border-bottom: 2.5px solid var(--line); display: flex; flex-direction: column; }
+  .block { flex: 1 1 auto; padding: 20px 12px 12px; border-bottom: 2.5px dashed rgba(244,242,234,.3); display: flex; flex-direction: column; }
+  .block:last-child { border-bottom: none; }
+  .q { display: flex; gap: 16px; align-items: center; color: var(--yellow); font-size: 39px; line-height: 1.1; }
+  .num { flex: none; width: 56px; height: 56px; border: 3px solid var(--pink); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--pink); font-size: 31px; }
+  .idea { font-size: 31px; line-height: 1.22; margin: 12px 0 0 72px; }
+  .idea b { font-weight: normal; color: var(--green); }
+  pre { font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 24.5px; line-height: 1.4; color: #eef3ea;
+        margin: 14px 0 0 72px; padding: 12px 18px; background: rgba(0,0,0,.22); border: 2px solid rgba(244,242,234,.25); border-radius: 10px; white-space: pre; }
+  pre .k { color: var(--blue); }
+  pre .c { color: #9fb19a; }
+  .trap { font-size: 30px; line-height: 1.22; margin: 14px 0 0 72px; color: var(--chalk); }
+  .trap span { color: var(--pink); }
+  .joins { margin: 14px 0 0 72px; display: flex; gap: 14px; }
+  .joins div { border: 2px solid rgba(244,242,234,.5); border-radius: 10px; padding: 8px 18px; text-align: center; font-size: 28px; }
+  .joins div b { display: block; font-weight: normal; font-size: 46px; color: var(--yellow); line-height: 1.1; }
+  footer { height: 84px; padding: 0 36px; display: flex; align-items: center; justify-content: space-between; }
+  .brand { display: flex; align-items: baseline; gap: 14px; }
+  .brand .name { font-family: "Cabin Sketch", cursive; font-weight: 700; font-size: 44px; color: var(--yellow); }
+  .brand .tagline { font-size: 24px; }
+  .motto { font-family: "Caveat", cursive; font-weight: 700; font-size: 32px; color: var(--blue); }
+
+  .center { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 0 60px; }
+  .big { font-family: "Cabin Sketch", cursive; font-weight: 700; font-size: 112px; line-height: 1.02; }
+  .big .y { color: var(--yellow); }
+  .bigsub { font-family: "Caveat", cursive; font-weight: 700; color: var(--pink); font-size: 64px; margin-top: 30px; line-height: 1.05; }
+  .chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px 16px; margin-top: 50px; max-width: 900px; }
+  .chips span { border: 2.5px solid rgba(244,242,234,.55); border-radius: 30px; padding: 6px 22px; font-size: 34px; }
+  .outro-line { font-family: "Caveat", cursive; font-weight: 700; color: var(--blue); font-size: 92px; line-height: 1.05; }
+  .outro-list { margin-top: 50px; font-size: 40px; line-height: 1.5; }
+  .outro-list b { font-weight: normal; color: var(--green); }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute">
+  <filter id="grainf"><feTurbulence type="fractalNoise" baseFrequency="1.1" numOctaves="2" seed="7"/><feColorMatrix values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 -1.6 1.25"/></filter>
+  <filter id="dustf"><feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="3" seed="3"/><feColorMatrix values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1.4 -0.45"/></filter>
+</svg>
+<div class="frame"><div class="board">
+  <svg class="dust" width="100%" height="100%"><rect width="100%" height="100%" filter="url(#dustf)"/></svg>
+  <svg class="grain" width="100%" height="100%"><rect width="100%" height="100%" filter="url(#grainf)"/></svg>
+  <div class="layer" id="root"></div>
+</div></div>
+<script>
+// Each question: [title, idea (html), sql code (plain text), trap (html)] or a join-results block.
+const Q = [
+  ["Nth highest salary in each department",
+   "<b>DENSE_RANK()</b> inside each department, then filter.",
+`SELECT dept_id, name, salary
+FROM (
+  SELECT e.*, DENSE_RANK() OVER (
+    PARTITION BY dept_id ORDER BY salary DESC) AS rnk
+  FROM employees e
+) t
+WHERE rnk = 2;  -- N = 2`,
+   "<span>Trap:</span> ROW_NUMBER() picks one person when two salaries tie. DENSE_RANK() keeps both."],
+  ["Month-over-month growth %",
+   "<b>LAG()</b> brings last month's value onto this month's row.",
+`SELECT month, revenue,
+  ROUND(100.0 * (revenue - prev)
+        / NULLIF(prev, 0), 1) AS mom_pct
+FROM (
+  SELECT month, revenue,
+    LAG(revenue) OVER (ORDER BY month) AS prev
+  FROM monthly_sales
+) t;`,
+   "<span>Trap:</span> a zero month breaks the division. NULLIF() fixes it. For YoY, LAG(revenue, 12) works only if no month is missing."],
+  ["Pivot rows into columns",
+   "<b>SUM(CASE WHEN ...)</b> turns each value into its own column.",
+`SELECT product,
+  SUM(CASE WHEN quarter = 'Q1' THEN sales END) AS q1,
+  SUM(CASE WHEN quarter = 'Q2' THEN sales END) AS q2
+  -- Q3 and Q4 the same way
+FROM sales
+GROUP BY product;`,
+   "<span>Trap:</span> PIVOT syntax is different in every database. This version works everywhere."],
+  ["Find duplicate records",
+   "<b>GROUP BY</b> the columns that should be unique, keep groups with more than one row.",
+`SELECT email, COUNT(*) AS copies
+FROM customers
+GROUP BY email
+HAVING COUNT(*) > 1;`,
+   "<span>Trap:</span> to keep one copy, use ROW_NUMBER() OVER (PARTITION BY email ORDER BY updated_at DESC) and keep row 1."],
+  ["Running total and moving average",
+   "<b>Window functions</b> with a ROWS frame, per product.",
+`SELECT product, sale_date, amount,
+  SUM(amount) OVER (
+    PARTITION BY product ORDER BY sale_date
+    ROWS UNBOUNDED PRECEDING) AS running_total,
+  AVG(amount) OVER (
+    PARTITION BY product ORDER BY sale_date
+    ROWS 6 PRECEDING) AS avg_7
+FROM sales;`,
+   "<span>Trap:</span> 6 PRECEDING is a 7-day average only if there's exactly one row per day."],
+  ["Assign levels by salary range",
+   "<b>CASE</b> checks top to bottom. The first match wins.",
+`SELECT name, salary,
+  CASE WHEN salary IS NULL   THEN 'unknown'
+       WHEN salary < 100000 THEN 'L1'
+       WHEN salary < 140000 THEN 'L2'
+       ELSE 'L3' END AS level
+FROM employees;`,
+   "<span>Trap:</span> without the NULL line, a missing salary falls into ELSE and becomes your top level."],
+  ["Join A (1, 1, 0, 0, NULL) to B (1, 0, NULL, 1). How many rows?",
+   "Join on A.x = B.x: <b>1s</b> give 2 × 2 = 4 rows, <b>0s</b> give 2 × 1 = 2 rows, NULL matches nothing.",
+   null,
+   "LEFT adds A's NULL row. RIGHT adds B's NULL row. FULL adds both. <span>Trap:</span> duplicate keys multiply rows, and NULL never equals NULL."],
+  ["Each person's direct reports, even if zero",
+   "<b>Self-join</b> the table to itself with a LEFT JOIN.",
+`SELECT m.name, COUNT(e.emp_id) AS direct_reports
+FROM employees m
+LEFT JOIN employees e
+       ON e.manager_id = m.emp_id
+GROUP BY m.emp_id, m.name;`,
+   "<span>Trap:</span> COUNT(*) says 1 for people with no reports. COUNT(e.emp_id) says 0."],
+];
+const KW = /\b(SELECT|FROM|WHERE|GROUP BY|HAVING|ORDER BY|PARTITION BY|OVER|AS|CASE|WHEN|THEN|ELSE|END|LEFT JOIN|ON|ROWS|UNBOUNDED|PRECEDING|IS NULL|DESC)\b/g;
+function codeHtml(s) {
+  const esc = s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  return esc.split("\n").map(line => {
+    const i = line.indexOf("--");
+    const code = i >= 0 ? line.slice(0, i) : line, cm = i >= 0 ? `<span class="c">${line.slice(i)}</span>` : "";
+    return code.replace(KW, '<span class="k">$1</span>') + cm;
+  }).join("\n");
+}
+const p = new URLSearchParams(location.search);
+const slide = parseInt(p.get("slide") ?? "1");
+const root = document.getElementById("root");
+const foot = (right) => `<footer><div class="brand"><span class="name">Stackle</span><span class="tagline">Data engineering careers</span></div><div class="motto">${right}</div></footer>`;
+if (slide === 0) {
+  root.innerHTML = `<div class="center">
+      <div class="big"><span class="y">8 SQL</span><br>Interview<br>Questions</div>
+      <div class="bigsub">with the answer<br>and the trap in each</div>
+      <div class="chips"><span>DENSE_RANK</span><span>LAG</span><span>CASE</span><span>GROUP BY</span><span>window frames</span><span>joins</span><span>self-join</span></div>
+    </div>${foot("")}`;
+} else if (slide === 5) {
+  root.innerHTML = `<div class="center">
+      <div class="outro-line">Knowing the function<br>is step one.</div>
+      <div class="outro-line" style="color:var(--yellow);margin-top:26px">Knowing where it breaks<br>is the interview.</div>
+      <div class="outro-list"><b>Ties</b> · <b>NULLs</b> · <b>zero rows</b> · <b>duplicates</b></div>
+    </div>${foot("")}`;
+} else {
+  const blocks = Q.slice((slide - 1) * 2, slide * 2).map((q, k) => {
+    const n = (slide - 1) * 2 + k + 1;
+    const body = q[2] !== null ? `<pre>${codeHtml(q[2])}</pre>`
+      : `<div class="joins"><div>INNER<b>6</b></div><div>LEFT<b>7</b></div><div>RIGHT<b>7</b></div><div>FULL<b>8</b></div><div>CROSS<b>20</b></div></div>`;
+    return `<section class="block"><div class="q"><span class="num">${n}</span><span>${q[0]}</span></div>
+      <div class="idea">${q[1]}</div>${body}<div class="trap">${q[3]}</div></section>`;
+  }).join("");
+  root.innerHTML = `<header><div class="t"><span class="y">SQL</span> Interview Questions</div>
+      <div class="sub">the answer, and the trap in each</div><div class="page">${slide} / 4</div></header>
+    <main>${blocks}</main>${foot("Ties · NULLs · duplicates")}`;
+}
+</script>
+</body>
+</html>
