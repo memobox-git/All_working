@@ -1,0 +1,90 @@
+// HR Analytics — All Measures table
+// Reconstructed from the measure names and visual bindings in HR_Analytics.pbix.
+// The original DAX is inside the compressed model and could not be read, so
+// these are the standard definitions for this dataset. Column names follow the
+// public HR Analytics sample (Employee, PerformanceRating, *Level lookup tables).
+// Adjust names if your columns differ.
+
+// ---------- Headline KPIs (six cards on every page) ----------
+
+Total_Employee =
+DISTINCTCOUNT ( Employee[EmployeeID] )
+
+Attrition =
+CALCULATE ( [Total_Employee], Employee[Attrition] = "Yes" )
+
+Attrition% =
+DIVIDE ( [Attrition], [Total_Employee], 0 )
+
+Retrenched% =
+DIVIDE (
+    CALCULATE ( [Total_Employee], Employee[Retrenched] = "Yes" ),
+    [Total_Employee],
+    0
+)
+
+Due for Promotion % =
+DIVIDE (
+    CALCULATE ( [Total_Employee], Employee[YearsSinceLastPromotion] >= 4 ),
+    [Total_Employee],
+    0
+)
+
+Avg_Salary =
+AVERAGE ( Employee[Salary] )
+
+Avg_Age =
+AVERAGE ( Employee[Age] )
+
+// ---------- Satisfaction and rating averages (Ratings page) ----------
+
+Avg_Env_Sat =
+AVERAGE ( PerformanceRating[EnvironmentSatisfaction] )
+
+Avg_Job_Sat =
+AVERAGE ( PerformanceRating[JobSatisfaction] )
+
+Avg_Relation_Sat =
+AVERAGE ( PerformanceRating[RelationshipSatisfaction] )
+
+Avg_Work_Bal =
+AVERAGE ( PerformanceRating[WorkLifeBalance] )
+
+Avg_Manager_Rat =
+AVERAGE ( PerformanceRating[ManagerRating] )
+
+Avg_Self_Rat =
+AVERAGE ( PerformanceRating[SelfRating] )
+
+// ---------- Calculated columns used by the slicers and charts ----------
+
+// Employee[Age Group]
+Age Group =
+SWITCH (
+    TRUE (),
+    Employee[Age] < 20, "<20",
+    Employee[Age] < 30, "20-29",
+    Employee[Age] < 40, "30-39",
+    Employee[Age] < 50, "40-49",
+    "50+"
+)
+
+// Employee[Dist_from_Home]
+Dist_from_Home =
+SWITCH (
+    TRUE (),
+    Employee[DistanceFromHome (KM)] <= 10, "0-10 km",
+    Employee[DistanceFromHome (KM)] <= 20, "11-20 km",
+    Employee[DistanceFromHome (KM)] <= 30, "21-30 km",
+    "30+ km"
+)
+
+// ---------- Calendar table (data generation in Power Query or DAX) ----------
+
+Calendar =
+ADDCOLUMNS (
+    CALENDAR ( MIN ( Employee[HireDate] ), MAX ( PerformanceRating[ReviewDate] ) ),
+    "Year", YEAR ( [Date] ),
+    "Month", FORMAT ( [Date], "MMM" ),
+    "MonthNo", MONTH ( [Date] )
+)

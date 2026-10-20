@@ -1,0 +1,165 @@
+{
+  "slug": "sql-cheat-sheet",
+  "title": "SQL Essentials Cheat Sheet",
+  "eyebrow": null,
+  "summary": "Essential SQL commands, joins, aggregations, and window functions all in one place.",
+  "category": "Cheat Sheets",
+  "seo": {
+    "title": "SQL Essentials Cheat Sheet",
+    "description": "Essential SQL commands, joins, aggregations, and window functions all in one place."
+  },
+  "hasPage": false,
+  "libraryCard": {
+    "id": "sql-cheat-sheet",
+    "badge": "Free PDF",
+    "href": "#download",
+    "action": "open-download-dialog",
+    "thumbnail": {
+      "src": "/resources/_thumbs/sql-cheat-sheet.png",
+      "originalUrl": "https://stackle.io/assets/sql-cheat-sheet-cover-EQ3l32KQ.png",
+      "width": 1080,
+      "height": 1080,
+      "alt": "SQL Essentials Cheat Sheet"
+    }
+  },
+  "gate": {
+    "type": "email",
+    "dialog": {
+      "title": "Download Free SQL Resource",
+      "resourceTitle": "SQL Resource",
+      "resourceDescription": "Essential SQL commands, joins, aggregations, and window functions all in one place.",
+      "meta": [
+        "PDF Format",
+        "2 Pages",
+        "FREE"
+      ],
+      "emailLabel": "Email Address",
+      "emailPlaceholder": "your.email@example.com",
+      "submitLabel": "Download SQL Resource",
+      "submittingLabel": "Preparing Download...",
+      "successTitle": "Download Started!",
+      "successText": "Check your downloads folder for the SQL Resource."
+    },
+    "validation": {
+      "pattern": "^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$",
+      "errorToast": {
+        "title": "Invalid Email",
+        "description": "Please enter a valid email address."
+      }
+    },
+    "request": {
+      "method": "POST",
+      "url": "https://wvdwisoaotkuyvcyybps.supabase.co/functions/v1/download-cheat-sheet",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer [object Promise]"
+      },
+      "authorizationBug": "Source is `Bearer ${supabase.auth.getSession().then(...)}`: a Promise is interpolated, so the header is always the literal string 'Bearer [object Promise]'. Works only because the function has verify_jwt=false.",
+      "body": {
+        "email": "<entered email>",
+        "cheatSheetName": "SQL Cheat Sheet",
+        "userAgent": "<navigator.userAgent>"
+      },
+      "functionVerifyJwt": false
+    },
+    "onSuccess": {
+      "download": "response.blob() saved via object URL as SQL-Cheat-Sheet.pdf",
+      "toast": {
+        "title": "Success!",
+        "description": "Your SQL Cheat Sheet is downloading now. Check your email for future updates!"
+      },
+      "closeAfterMs": 2000
+    },
+    "onError": {
+      "toast": {
+        "title": "Download Failed",
+        "description": "Something went wrong. Please try again."
+      }
+    },
+    "storesTo": {
+      "table": "public.cheat_sheet_downloads",
+      "columns": [
+        "id",
+        "email",
+        "cheat_sheet_name",
+        "downloaded_at",
+        "ip_address",
+        "user_agent",
+        "created_at"
+      ]
+    }
+  },
+  "file": {
+    "src": "/resources/sql-cheat-sheet/sql-cheat-sheet.pdf",
+    "originalUrl": "https://wvdwisoaotkuyvcyybps.supabase.co/storage/v1/object/public/cheat-sheets/sql-cheat-sheet.pdf",
+    "downloadFilename": "SQL-Cheat-Sheet.pdf",
+    "pages": 2,
+    "bytes": 3530,
+    "format": "PDF (ReportLab-generated, text only)"
+  },
+  "pdfContent": {
+    "title": "SQL Cheat Sheet",
+    "sections": [
+      {
+        "number": 1,
+        "title": "Basics",
+        "language": "sql",
+        "code": "SELECT column1, column2 FROM table;\nSELECT * FROM table;\nSELECT DISTINCT column FROM table;"
+      },
+      {
+        "number": 2,
+        "title": "Filtering",
+        "language": "sql",
+        "code": "SELECT * FROM table WHERE age > 30;\nSELECT * FROM table WHERE age > 30 AND city = 'NY';\nSELECT * FROM table WHERE country IN ('US', 'UK');\nSELECT * FROM table WHERE age BETWEEN 20 AND 30;\nSELECT * FROM table WHERE name LIKE 'A%';"
+      },
+      {
+        "number": 3,
+        "title": "Sorting",
+        "language": "sql",
+        "code": "SELECT * FROM table ORDER BY age DESC;"
+      },
+      {
+        "number": 4,
+        "title": "Aggregations",
+        "language": "sql",
+        "code": "SELECT COUNT(*) FROM table;\nSELECT SUM(salary) FROM employees;\nSELECT AVG(price) FROM products;\nSELECT MIN(age), MAX(age) FROM users;\nSELECT department, AVG(salary) FROM employees GROUP BY department;\nSELECT department, AVG(salary) FROM employees GROUP BY department HAVING AVG(salary) > 50000;"
+      },
+      {
+        "number": 5,
+        "title": "Joins",
+        "language": "sql",
+        "code": "SELECT a.name, b.order_id FROM customers a INNER JOIN orders b ON a.id = b.customer_id;\nLEFT JOIN, RIGHT JOIN, FULL JOIN (syntax similar to INNER JOIN)"
+      },
+      {
+        "number": 6,
+        "title": "Subqueries",
+        "language": "sql",
+        "code": "SELECT name FROM employees WHERE salary > (SELECT AVG(salary) FROM employees);"
+      },
+      {
+        "number": 7,
+        "title": "Set Operations",
+        "language": "sql",
+        "code": "UNION, UNION ALL, INTERSECT, EXCEPT"
+      },
+      {
+        "number": 8,
+        "title": "DDL (Data Definition)",
+        "language": "sql",
+        "code": "CREATE TABLE employees (id INT PRIMARY KEY, name VARCHAR(100), salary DECIMAL(10,2));\nALTER TABLE employees ADD COLUMN department VARCHAR(50);\nDROP TABLE employees;"
+      },
+      {
+        "number": 9,
+        "title": "DML (Data Manipulation)",
+        "language": "sql",
+        "code": "INSERT INTO employees (id, name, salary) VALUES (1, 'John', 50000);\nUPDATE employees SET salary = 60000 WHERE id = 1;\nDELETE FROM employees WHERE id = 1;"
+      },
+      {
+        "number": 10,
+        "title": "Window Functions",
+        "language": "sql",
+        "code": "SELECT name, ROW_NUMBER() OVER (PARTITION BY department ORDER BY salary DESC) AS rn FROM employees;\nRANK, DENSE_RANK, LAG, LEAD"
+      }
+    ]
+  }
+}

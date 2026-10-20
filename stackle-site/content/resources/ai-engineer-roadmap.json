@@ -1,0 +1,2457 @@
+{
+  "slug": "ai-engineer-roadmap",
+  "title": "AI Engineer Career Roadmap 2026",
+  "eyebrow": "Free Career Guide · Updated for 2026",
+  "summary": "From zero to job-ready in 10 weeks — master LLMs, RAG, agents, evals & production with real projects and live mentorship.",
+  "category": "Roadmaps",
+  "seo": {
+    "title": "AI Engineer Roadmap 2026 — Stackle",
+    "description": "From zero to Senior AI Engineer in 10 weeks — LLMs, RAG, agents, evals, production. Built by a Meta engineer with 7 FAANG offers."
+  },
+  "card": {
+    "title": "AI Engineer Career Roadmap 2026",
+    "badge": "New",
+    "image": "/resources/ai-engineer-roadmap/card.jpg",
+    "imageOriginalUrl": "https://stackle.io/assets/ai-engineer-roadmap-XXNpnuUz.jpg",
+    "displayedLikes": 189,
+    "displayedViews": "8.4k",
+    "note": "Card shown on the old /resources index, not on this page. Likes/views are hard-coded numbers."
+  },
+  "hero": {
+    "eyebrow": "Free Career Guide · Updated for 2026",
+    "headingLines": [
+      "The AI Engineer",
+      "Career Roadmap"
+    ],
+    "lead": "From zero to job-ready in 10 weeks — master LLMs, RAG, agents, evals & production with real projects and live mentorship.",
+    "ctas": [
+      {
+        "label": "Explore the Roadmap ↓",
+        "href": "#phases",
+        "external": false,
+        "style": "primary"
+      },
+      {
+        "label": "FREE AI Roadmap Webinar",
+        "href": "https://www.meetup.com/stackle-your-career-lab/events/",
+        "external": true,
+        "style": "secondary"
+      },
+      {
+        "label": "Book a Call",
+        "href": "https://calendar.app.google/gCDaTk9dCAgLUJAZ9",
+        "external": true,
+        "style": "secondary"
+      }
+    ]
+  },
+  "stack": {
+    "eyebrow": "// 00 — THE FIELD",
+    "heading": "What does an AI Engineer actually do?",
+    "intro": "An AI Engineer is a software engineer who ships AI features users actually use. You don't train models — you orchestrate them. Below is the stack you'll master.",
+    "items": [
+      {
+        "icon": "💬",
+        "name": "Prompt"
+      },
+      {
+        "icon": "🧠",
+        "name": "LLM API"
+      },
+      {
+        "icon": "📚",
+        "name": "RAG"
+      },
+      {
+        "icon": "🛠️",
+        "name": "Tools"
+      },
+      {
+        "icon": "📏",
+        "name": "Evals"
+      },
+      {
+        "icon": "🚀",
+        "name": "Deploy"
+      }
+    ],
+    "caption": "THE MODERN AI STACK — YOU SHIP ALL OF THIS"
+  },
+  "salaryTable": {
+    "eyebrow": "// 01 — CAREER PROGRESSION",
+    "heading": "Roles & Salary Expectations",
+    "intro": "No PhD required. No CS degree required. You need the right portfolio + interview prep.",
+    "columns": [
+      "PHASE",
+      "STAGE",
+      "TYPICAL ROLE",
+      "SALARY RANGE (USD)"
+    ],
+    "rows": [
+      {
+        "phase": "Phase 0",
+        "stage": "Beginner",
+        "stageIcon": "🧭",
+        "role": "Exploring AI Eng",
+        "salary": "—",
+        "isTarget": false
+      },
+      {
+        "phase": "Phase 1",
+        "stage": "Foundations",
+        "stageIcon": "🌱",
+        "role": "Junior AI Eng / SWE+AI",
+        "salary": "$110k – $150k",
+        "isTarget": false
+      },
+      {
+        "phase": "Phase 2",
+        "stage": "Prompt Eng",
+        "stageIcon": "✍️",
+        "role": "AI Eng (entry)",
+        "salary": "$130k – $170k",
+        "isTarget": false
+      },
+      {
+        "phase": "Phase 3",
+        "stage": "RAG",
+        "stageIcon": "📚",
+        "role": "AI Engineer",
+        "salary": "$150k – $220k",
+        "isTarget": false
+      },
+      {
+        "phase": "Phase 4",
+        "stage": "Agents",
+        "stageIcon": "🤖",
+        "role": "AI Engineer (mid)",
+        "salary": "$180k – $260k",
+        "isTarget": false
+      },
+      {
+        "phase": "Phase 5",
+        "stage": "Evals",
+        "stageIcon": "📏",
+        "role": "Senior AI Engineer",
+        "salary": "$220k – $350k",
+        "isTarget": false
+      },
+      {
+        "phase": "Phase 6",
+        "stage": "Production",
+        "stageIcon": "🚀",
+        "role": "Staff AI Engineer",
+        "salary": "$300k – $550k",
+        "isTarget": false
+      },
+      {
+        "phase": "Phase 7",
+        "stage": "Get Hired",
+        "stageIcon": "💼",
+        "role": "—",
+        "salary": "Target $200k+ offer",
+        "isTarget": true
+      }
+    ],
+    "footnote": "* Salary ranges vary by location, company size, and AI specialization."
+  },
+  "roles": {
+    "eyebrow": "// ROLES & COMPENSATION",
+    "heading": "AI Engineering Roles & Salary Expectations",
+    "intro": "Where you can land — and what you can earn — as you progress through the roadmap.",
+    "items": [
+      {
+        "title": "Junior AI Engineer",
+        "level": "Entry",
+        "salary": "$110K – $150K",
+        "skills": [
+          "LLM APIs",
+          "Python",
+          "FastAPI",
+          "Prompting"
+        ]
+      },
+      {
+        "title": "AI Engineer",
+        "level": "Mid-Level",
+        "salary": "$150K – $220K",
+        "skills": [
+          "RAG",
+          "Vector DBs",
+          "Tool Use",
+          "Evals"
+        ]
+      },
+      {
+        "title": "Senior AI Engineer",
+        "level": "Senior",
+        "salary": "$220K – $350K",
+        "skills": [
+          "Agents",
+          "Guardrails",
+          "Production",
+          "Mentorship"
+        ]
+      },
+      {
+        "title": "Staff AI Engineer",
+        "level": "Staff",
+        "salary": "$300K – $550K",
+        "skills": [
+          "AI Architecture",
+          "Cross-team Strategy",
+          "Cost Optimization",
+          "Hiring"
+        ]
+      },
+      {
+        "title": "Applied AI / Research Eng",
+        "level": "Senior+",
+        "salary": "$250K – $450K",
+        "skills": [
+          "Fine-tuning",
+          "Eval Research",
+          "Model Selection",
+          "Papers"
+        ]
+      },
+      {
+        "title": "AI Platform Engineer",
+        "level": "Senior+",
+        "salary": "$200K – $380K",
+        "skills": [
+          "Inference Infra",
+          "GPU Ops",
+          "Observability",
+          "MLOps"
+        ]
+      }
+    ],
+    "footnote": "Salaries based on US market averages (2025–2026). FAANG + frontier labs (Anthropic / OpenAI) often pay 30–50% above the upper bound."
+  },
+  "roadmap": {
+    "eyebrow": "// 02 — YOUR JOURNEY",
+    "heading": "The 7 Phases to Senior AI Engineer",
+    "introMd": "Each phase builds on the last. Click any **step row** to see its learning checklist, resources, and live demo.",
+    "runningExampleMd": "**Running example:** You'll build the *AI Career Advisor* — a production RAG + agents app — across all 7 phases.",
+    "phases": [
+      {
+        "id": "phase-0",
+        "number": "01",
+        "label": "Phase 0",
+        "icon": "🧭",
+        "stage": "Beginner",
+        "title": "Is AI Engineering right for me?",
+        "fullTitle": "Beginner — Is AI Engineering right for me?",
+        "salary": {
+          "text": "Exploring",
+          "kind": "none"
+        },
+        "description": "AI Engineer = the builder who ships AI products on top of existing models. You orchestrate, you don't train. The role didn't exist 3 years ago. Today demand is 10× supply.",
+        "skills": [
+          "Career Exploration"
+        ],
+        "topics": [
+          {
+            "id": "understand-the-role",
+            "number": "01",
+            "icon": "🌟",
+            "title": "Understand the Role",
+            "category": "Career Setup",
+            "lesson": {
+              "overview": "AI Engineers build AI products on top of existing models — they orchestrate LLMs, they don't train them. The role didn't exist three years ago. Today every company has a backlog of AI features and almost no one to ship them.",
+              "checklist": [
+                "Read 5 real AI Engineer job posts",
+                "Know the difference: AI Eng vs ML Eng vs DS vs Research",
+                "Understand 'orchestrate, don't train'",
+                "Pick 3 companies you'd love to work for",
+                "Subscribe to Latent Space podcast"
+              ],
+              "resources": [
+                {
+                  "label": "Latent Space — The AI Engineer",
+                  "url": "https://www.latent.space/p/ai-engineer",
+                  "kind": "article",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                },
+                {
+                  "label": "Anthropic Careers — AI Engineer",
+                  "url": "https://www.anthropic.com/careers",
+                  "kind": "article",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                }
+              ],
+              "videos": [
+                {
+                  "title": "Rise of the AI Engineer — swyx",
+                  "url": "https://www.youtube.com/watch?v=zjkBMFhNj_g",
+                  "youtubeId": "zjkBMFhNj_g",
+                  "linkCheck": {
+                    "status": "ok",
+                    "youtubeTitle": "[1hr Talk] Intro to Large Language Models | Andrej Karpathy",
+                    "checked": "2026-10-20",
+                    "labelMatches": false
+                  }
+                }
+              ],
+              "example": {
+                "kind": "code",
+                "title": "Your Capstone — The AI Career Advisor",
+                "language": "json",
+                "code": "// Across all 7 phases you'll build ONE production-grade product:\n// An AI Career Advisor — RAG over a resume + jobs corpus,\n// agents that take real actions, deployed live.\n\n{\n  \"product\": \"AI Career Advisor\",\n  \"user_input\": \"I'm a Data Engineer with 4 years at Stripe.\n                 Should I aim for Senior AI Eng at Anthropic?\",\n\n  \"what_it_does\": [\n    \"Parses your resume (LLM extraction)\",\n    \"Retrieves relevant job postings (RAG over 10K jobs)\",\n    \"Calls tools: salary lookup, fit-score, mock interview\",\n    \"Produces a 90-day plan, evaluated for hallucination\",\n    \"Streams the answer to a deployed web UI\"\n  ],\n\n  \"shipped_with\": [\"GPT-4o\", \"Claude 3.5\", \"pgvector\",\n                   \"FastAPI\", \"Vercel\", \"evals + guardrails\"]\n}\n\n// Phase 1: Call your first LLM\n// Phase 2: Engineer the prompts that drive it\n// Phase 3: Add RAG over the jobs/resumes corpus\n// Phase 4: Wrap it as an agent that takes actions\n// Phase 5: Build evals so it doesn't ship hallucinations\n// Phase 6: Deploy + monitor it for real users\n// Phase 7: Use it on your resume to land the offer"
+              }
+            }
+          },
+          {
+            "id": "ai-eng-vs-ml-eng-vs-ds",
+            "number": "02",
+            "icon": "🔬",
+            "title": "AI Eng vs ML Eng vs DS",
+            "category": "Skills",
+            "lesson": {
+              "overview": "AI Engineer = the builder who ships AI features. ML Engineer = trains and deploys models. Data Scientist = analyzes data and builds models. Research Scientist = invents new models. AI Eng is the fastest-growing role of the four.",
+              "checklist": [
+                "Compare daily tasks of each role",
+                "Know which tools each role uses",
+                "Understand why AI Eng exists now (LLM APIs)",
+                "Pick the role that matches your background"
+              ],
+              "resources": [
+                {
+                  "label": "AI Engineer vs ML Engineer — Latent Space",
+                  "url": "https://www.latent.space/p/ai-engineer",
+                  "kind": "article",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                },
+                {
+                  "label": "Levels.fyi — AI Engineer salaries",
+                  "url": "https://www.levels.fyi/",
+                  "kind": "salary-data",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                }
+              ],
+              "videos": [
+                {
+                  "title": "AI Engineer vs ML Engineer",
+                  "url": "https://www.youtube.com/watch?v=zjkBMFhNj_g",
+                  "youtubeId": "zjkBMFhNj_g",
+                  "linkCheck": {
+                    "status": "ok",
+                    "youtubeTitle": "[1hr Talk] Intro to Large Language Models | Andrej Karpathy",
+                    "checked": "2026-10-20",
+                    "labelMatches": false
+                  }
+                }
+              ],
+              "example": {
+                "kind": "table",
+                "title": "Role Comparison — Same AI Stack, Different Jobs",
+                "source": "role-comparison",
+                "columns": [
+                  "ROLE",
+                  "WORKS WITH",
+                  "TOOLS",
+                  "OUTPUT"
+                ],
+                "rows": [
+                  [
+                    "AI Engineer",
+                    "LLM APIs + your data",
+                    "Claude, GPT, RAG, agents",
+                    "Shipped AI products"
+                  ],
+                  [
+                    "ML Engineer",
+                    "Models + training data",
+                    "PyTorch, MLOps, K8s",
+                    "Trained + deployed models"
+                  ],
+                  [
+                    "Data Scientist",
+                    "Data + statistics",
+                    "Python, sklearn, Jupyter",
+                    "Insights + prototypes"
+                  ],
+                  [
+                    "Research Scientist",
+                    "Math + papers + GPUs",
+                    "JAX, CUDA, arXiv",
+                    "Novel architectures"
+                  ]
+                ]
+              }
+            }
+          },
+          {
+            "id": "explore-career-path",
+            "number": "03",
+            "icon": "📄",
+            "title": "Explore Career Path",
+            "category": "Theory",
+            "lesson": {
+              "overview": "AI Engineer → Senior AI Engineer → Staff AI Engineer → Principal / AI Architect. No PhD required. No CS degree required. You need the right portfolio + interview prep. Compensation reaches $500K+ at staff level.",
+              "checklist": [
+                "Research total comp at each level",
+                "Talk to 3 working AI engineers",
+                "Know the FAANG AI Eng interview loop",
+                "Set a 1-year and 3-year goal"
+              ],
+              "resources": [
+                {
+                  "label": "Levels.fyi — AI/ML compensation",
+                  "url": "https://www.levels.fyi/t/software-engineer/focus/ml-ai",
+                  "kind": "salary-data",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                },
+                {
+                  "label": "Anthropic / OpenAI job boards",
+                  "url": "https://www.anthropic.com/careers",
+                  "kind": "article",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                }
+              ],
+              "videos": [
+                {
+                  "title": "How to become an AI Engineer in 2026",
+                  "url": "https://www.youtube.com/watch?v=zjkBMFhNj_g",
+                  "youtubeId": "zjkBMFhNj_g",
+                  "linkCheck": {
+                    "status": "ok",
+                    "youtubeTitle": "[1hr Talk] Intro to Large Language Models | Andrej Karpathy",
+                    "checked": "2026-10-20",
+                    "labelMatches": false
+                  }
+                }
+              ],
+              "example": {
+                "kind": "ladder",
+                "title": "Career Progression Path",
+                "source": "career-path",
+                "steps": [
+                  {
+                    "level": "Junior AI Engineer",
+                    "salary": "$110k–$150k"
+                  },
+                  {
+                    "level": "AI Engineer (mid)",
+                    "salary": "$150k–$220k"
+                  },
+                  {
+                    "level": "Senior AI Engineer",
+                    "salary": "$220k–$350k"
+                  },
+                  {
+                    "level": "Staff AI Engineer",
+                    "salary": "$350k–$550k"
+                  },
+                  {
+                    "level": "Principal / AI Architect",
+                    "salary": "$450k–$900k+"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "id": "career-decision",
+            "number": "04",
+            "icon": "🎯",
+            "title": "Career Decision",
+            "category": "Career Setup",
+            "lesson": {
+              "overview": "Before investing 10 weeks, decide: is AI Engineering right for you? If you enjoy building products, debugging messy systems, and reading model docs at 11pm — yes.",
+              "checklist": [
+                "Call an LLM API for the first time",
+                "Ship a CLI assistant in one weekend",
+                "Read the Anthropic prompting guide",
+                "Commit to 10 weeks of focused building"
+              ],
+              "resources": [
+                {
+                  "label": "Anthropic — Build with Claude",
+                  "url": "https://docs.anthropic.com/",
+                  "kind": "docs",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                },
+                {
+                  "label": "OpenAI Quickstart",
+                  "url": "https://platform.openai.com/docs/quickstart",
+                  "kind": "docs",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                }
+              ],
+              "videos": [
+                {
+                  "title": "Should You Become an AI Engineer?",
+                  "url": "https://www.youtube.com/watch?v=zjkBMFhNj_g",
+                  "youtubeId": "zjkBMFhNj_g",
+                  "linkCheck": {
+                    "status": "ok",
+                    "youtubeTitle": "[1hr Talk] Intro to Large Language Models | Andrej Karpathy",
+                    "checked": "2026-10-20",
+                    "labelMatches": false
+                  }
+                }
+              ],
+              "example": {
+                "kind": "code",
+                "title": "Decision Framework",
+                "language": "text",
+                "code": "✅ AI Engineering is for you if:\n  • You like building products, not writing papers\n  • You're fine with non-deterministic systems\n  • You enjoy reading model docs and changelogs weekly\n  • You want $150K–$500K comp without a PhD\n  • You like shipping things real users touch\n\n❌ Consider other roles if:\n  • You want to invent new models → Research Scientist\n  • You want to train from scratch → ML Engineer\n  • You want to analyze data → Data Scientist\n  • You want stable, deterministic systems → SWE / DE\n\n📊 Your first test: ship the Phase 1 CLI assistant.\n   If you enjoy the loop, you're on the right track."
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "phase-1",
+        "number": "02",
+        "label": "Phase 1",
+        "icon": "🌱",
+        "stage": "Foundations",
+        "title": "How LLMs Actually Work",
+        "fullTitle": "Foundations — How LLMs Actually Work",
+        "salary": {
+          "text": "$110K – $150K · Junior AI Eng",
+          "kind": "range",
+          "range": "$110K – $150K",
+          "role": "Junior AI Eng"
+        },
+        "description": "Tokens, embeddings, attention, sampling — at the right level. The model landscape (Claude, GPT, Gemini, Llama). Ship your first CLI assistant calling an LLM API.",
+        "skills": [
+          "LLM Mental Model",
+          "Python",
+          "Pydantic",
+          "FastAPI",
+          "GitHub"
+        ],
+        "topics": [
+          {
+            "id": "intro-to-ai-engineering",
+            "number": "01",
+            "icon": "🟢",
+            "title": "Intro to AI Engineering",
+            "category": "Strategy",
+            "lesson": {
+              "overview": "Get the high-level mental model: what an LLM is, what 'context window' actually means, how cost and latency tradeoffs work, and why the AI Engineer's job is orchestration — not training.",
+              "checklist": [
+                "Mental model: tokens → embeddings → attention → output",
+                "Understand context windows & their cost",
+                "Know the model landscape (Claude, GPT, Gemini, Llama)",
+                "Cost vs latency vs accuracy tradeoffs",
+                "Why orchestration > training"
+              ],
+              "resources": [
+                {
+                  "label": "Anthropic — Intro to Claude",
+                  "url": "https://docs.anthropic.com/en/docs/intro-to-claude",
+                  "kind": "docs",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                },
+                {
+                  "label": "OpenAI — How models work",
+                  "url": "https://platform.openai.com/docs/guides/text-generation",
+                  "kind": "docs",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                }
+              ],
+              "videos": [
+                {
+                  "title": "Intro to LLMs — Karpathy",
+                  "url": "https://www.youtube.com/watch?v=zjkBMFhNj_g",
+                  "youtubeId": "zjkBMFhNj_g",
+                  "linkCheck": {
+                    "status": "ok",
+                    "youtubeTitle": "[1hr Talk] Intro to Large Language Models | Andrej Karpathy",
+                    "checked": "2026-10-20",
+                    "labelMatches": true
+                  }
+                }
+              ],
+              "example": {
+                "kind": "flow",
+                "title": "AI Career Advisor — Architecture Overview",
+                "source": "pipeline-overview",
+                "nodes": [
+                  {
+                    "icon": "📝",
+                    "label": "Resume",
+                    "sub": "User upload"
+                  },
+                  {
+                    "icon": "🧠",
+                    "label": "Claude",
+                    "sub": "Extract skills"
+                  },
+                  {
+                    "icon": "🔍",
+                    "label": "Vector DB",
+                    "sub": "Job retrieval"
+                  },
+                  {
+                    "icon": "🛠️",
+                    "label": "Tools",
+                    "sub": "Salary, mock"
+                  },
+                  {
+                    "icon": "🛡️",
+                    "label": "Guardrails",
+                    "sub": "Eval + safety"
+                  },
+                  {
+                    "icon": "🚀",
+                    "label": "Streamed UI",
+                    "sub": "Vercel Edge"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "id": "how-llms-actually-work",
+            "number": "02",
+            "icon": "🧠",
+            "title": "How LLMs Actually Work",
+            "category": "Theory",
+            "lesson": {
+              "overview": "You don't need to retrain GPT, but you do need to understand what's happening inside. Tokens, embeddings, attention, sampling — at the right level for an engineer.",
+              "checklist": [
+                "Tokenization & why it matters for cost",
+                "Embeddings & semantic similarity",
+                "Attention (intuition, not math)",
+                "Temperature, top-p, sampling",
+                "Why models hallucinate"
+              ],
+              "resources": [
+                {
+                  "label": "Karpathy — Let's build GPT",
+                  "url": "https://www.youtube.com/watch?v=kCc8FmEb1nY",
+                  "kind": "video",
+                  "linkCheck": {
+                    "status": "ok",
+                    "youtubeTitle": "Let's build GPT: from scratch, in code, spelled out. | Andrej Karpathy",
+                    "checked": "2026-10-20"
+                  }
+                },
+                {
+                  "label": "3Blue1Brown — Attention",
+                  "url": "https://www.youtube.com/watch?v=eMlx5fFNoYc",
+                  "kind": "video",
+                  "linkCheck": {
+                    "status": "ok",
+                    "youtubeTitle": "Attention in transformers, step-by-step | Deep Learning Chapter 6 | 3Blue1Brown",
+                    "checked": "2026-10-20"
+                  }
+                }
+              ],
+              "videos": [
+                {
+                  "title": "Intro to LLMs (1hr) — Karpathy",
+                  "url": "https://www.youtube.com/watch?v=zjkBMFhNj_g",
+                  "youtubeId": "zjkBMFhNj_g",
+                  "linkCheck": {
+                    "status": "ok",
+                    "youtubeTitle": "[1hr Talk] Intro to Large Language Models | Andrej Karpathy",
+                    "checked": "2026-10-20",
+                    "labelMatches": true
+                  }
+                },
+                {
+                  "title": "Transformers explained — 3Blue1Brown",
+                  "url": "https://www.youtube.com/watch?v=wjZofJX0v4M",
+                  "youtubeId": "wjZofJX0v4M",
+                  "linkCheck": {
+                    "status": "ok",
+                    "youtubeTitle": "Transformers, the tech behind LLMs | Deep Learning Chapter 5 | 3Blue1Brown",
+                    "checked": "2026-10-20",
+                    "labelMatches": true
+                  }
+                }
+              ],
+              "example": {
+                "kind": "code",
+                "title": "Your First LLM Call — CLI Career Advisor",
+                "language": "python",
+                "code": "# Phase 1: ship a CLI assistant in 30 lines\nimport anthropic\n\nclient = anthropic.Anthropic()\n\ndef career_advisor(question: str) -> str:\n    \"\"\"v0.1 — naive single-shot career advisor.\"\"\"\n    msg = client.messages.create(\n        model=\"claude-3-5-sonnet-latest\",\n        max_tokens=512,\n        system=\"You are a senior FAANG hiring manager. \"\n               \"Be direct, terse, and brutally honest.\",\n        messages=[{\"role\": \"user\", \"content\": question}],\n    )\n    return msg.content[0].text\n\nif __name__ == \"__main__\":\n    q = input(\"Career question: \")\n    print(career_advisor(q))\n\n# $ python advisor.py\n# > \"I'm a DE with 4 yrs. Aim for Senior AI Eng at Anthropic?\"\n#\n# > Yes — but reposition. Your DE work IS AI-adjacent.\n#   Frame: 'shipped data systems that powered ML at scale.'\n#   Build one RAG project. Apply in 6 weeks.\n\n# Cost: $0.003 per call. Latency: 1.2s. You just shipped."
+              }
+            }
+          },
+          {
+            "id": "python-for-ai",
+            "number": "03",
+            "icon": "🔷",
+            "title": "Python for AI",
+            "category": "Coding",
+            "lesson": {
+              "overview": "Python is non-negotiable. You need enough to build CLI tools, FastAPI endpoints, async streams, and orchestrate LLM calls. You do NOT need numpy/torch wizardry.",
+              "checklist": [
+                "Async / await fundamentals",
+                "Type hints + pydantic models",
+                "FastAPI basics",
+                "Streaming responses (SSE)",
+                "Error handling & retries",
+                "Virtual envs + uv/poetry",
+                "Pytest for prompt tests"
+              ],
+              "resources": [
+                {
+                  "label": "Pydantic Docs",
+                  "url": "https://docs.pydantic.dev/",
+                  "kind": "docs",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                },
+                {
+                  "label": "FastAPI Tutorial",
+                  "url": "https://fastapi.tiangolo.com/tutorial/",
+                  "kind": "course",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                }
+              ],
+              "videos": [
+                {
+                  "title": "FastAPI Crash Course — freeCodeCamp",
+                  "url": "https://www.youtube.com/watch?v=zjkBMFhNj_g",
+                  "youtubeId": "zjkBMFhNj_g",
+                  "linkCheck": {
+                    "status": "ok",
+                    "youtubeTitle": "[1hr Talk] Intro to Large Language Models | Andrej Karpathy",
+                    "checked": "2026-10-20",
+                    "labelMatches": false
+                  }
+                }
+              ],
+              "example": {
+                "kind": "code",
+                "title": "Structured LLM Output with Pydantic",
+                "language": "python",
+                "code": "from pydantic import BaseModel\nfrom typing import Literal\nimport anthropic, json\n\nclass CareerVerdict(BaseModel):\n    fit_score: int        # 0-100\n    rec: Literal[\"apply\", \"skip\", \"reposition\"]\n    reasons: list[str]\n    next_action: str\n\nclient = anthropic.Anthropic()\n\ndef assess(resume: str, job: str) -> CareerVerdict:\n    msg = client.messages.create(\n        model=\"claude-3-5-sonnet-latest\",\n        max_tokens=512,\n        system=\"Return ONLY valid JSON matching the schema.\",\n        messages=[{\n            \"role\": \"user\",\n            \"content\": f\"Resume:\\n{resume}\\n\\nJob:\\n{job}\\n\\n\"\n                       f\"Return JSON with: fit_score (0-100), \"\n                       f\"rec, reasons[], next_action.\"\n        }],\n    )\n    raw = msg.content[0].text\n    return CareerVerdict(**json.loads(raw))\n\n# verdict.fit_score → 78\n# verdict.rec       → \"apply\"\n# Type-safe AI output. This is the AI Engineer pattern."
+              }
+            }
+          },
+          {
+            "id": "github-for-ai-projects",
+            "number": "04",
+            "icon": "🐙",
+            "title": "GitHub for AI Projects",
+            "category": "Version Control",
+            "lesson": {
+              "overview": "Recruiters check your GitHub before they call. Every AI project must have a clean README with a GIF, deploy link, and architecture diagram.",
+              "checklist": [
+                "Init, commit, branch, PR",
+                "Write killer READMEs",
+                "Add a deploy link to every project",
+                "Pin your 3 best AI repos",
+                "GitHub Actions for prompt tests"
+              ],
+              "resources": [
+                {
+                  "label": "GitHub Skills",
+                  "url": "https://skills.github.com/",
+                  "kind": "course",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                },
+                {
+                  "label": "README templates",
+                  "url": "https://github.com/othneildrew/Best-README-Template",
+                  "kind": "repo",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                }
+              ],
+              "videos": [
+                {
+                  "title": "Git & GitHub Crash Course",
+                  "url": "https://www.youtube.com/watch?v=SWYqp7iY_Tc",
+                  "youtubeId": "SWYqp7iY_Tc",
+                  "linkCheck": {
+                    "status": "ok",
+                    "youtubeTitle": "Git & GitHub Crash Course For Beginners | Traversy Media",
+                    "checked": "2026-10-20",
+                    "labelMatches": true
+                  }
+                }
+              ],
+              "example": {
+                "kind": "code",
+                "title": "Ship Your Career Advisor to GitHub",
+                "language": "bash",
+                "code": "# Day 1 of Phase 1 — make it real\n$ git init ai-career-advisor\n$ cd ai-career-advisor\n\n$ touch advisor.py README.md\n$ git add . && git commit -m \"feat: v0.1 CLI career advisor (Claude)\"\n\n# Branch per phase\n$ git checkout -b phase-2-prompt-engineering\n# ...build, commit, PR, merge to main...\n\n$ git tag v1.0.0 -m \"Phase 1 complete — CLI advisor live\"\n$ git push origin main --tags"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "phase-2",
+        "number": "03",
+        "label": "Phase 2",
+        "icon": "✍️",
+        "stage": "Prompt Engineering",
+        "title": "The New Programming",
+        "fullTitle": "Prompt Engineering — The New Programming",
+        "salary": {
+          "text": "$130K – $170K · AI Eng (entry)",
+          "kind": "range",
+          "range": "$130K – $170K",
+          "role": "AI Eng (entry)"
+        },
+        "description": "Same model. 10× better output. Master zero/few-shot, chain-of-thought, structured output, tool schemas, and multi-step pipelines that produce reliable JSON.",
+        "skills": [
+          "Prompt Patterns",
+          "JSON Mode",
+          "Tool Schemas",
+          "Pipelines"
+        ],
+        "topics": [
+          {
+            "id": "prompt-engineering-basics",
+            "number": "01",
+            "icon": "✍️",
+            "title": "Prompt Engineering Basics",
+            "category": "Coding",
+            "lesson": {
+              "overview": "Prompting is the new programming. The same model can produce garbage or gold depending on how you ask. Learn the patterns that consistently produce reliable output.",
+              "checklist": [
+                "Zero-shot vs few-shot",
+                "Chain-of-thought prompting",
+                "System prompt vs user prompt",
+                "Role priming (you are a senior X)",
+                "XML / markdown for structure",
+                "Anti-patterns that cause hallucinations"
+              ],
+              "resources": [
+                {
+                  "label": "Anthropic — Prompt Engineering Guide",
+                  "url": "https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview",
+                  "kind": "docs",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                },
+                {
+                  "label": "OpenAI Prompt Engineering",
+                  "url": "https://platform.openai.com/docs/guides/prompt-engineering",
+                  "kind": "docs",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                },
+                {
+                  "label": "Prompt Engineering Guide (DAIR)",
+                  "url": "https://www.promptingguide.ai/",
+                  "kind": "course",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                }
+              ],
+              "videos": [
+                {
+                  "title": "Prompt Engineering Tutorial — DeepLearning.AI",
+                  "url": "https://www.youtube.com/watch?v=zjkBMFhNj_g",
+                  "youtubeId": "zjkBMFhNj_g",
+                  "linkCheck": {
+                    "status": "ok",
+                    "youtubeTitle": "[1hr Talk] Intro to Large Language Models | Andrej Karpathy",
+                    "checked": "2026-10-20",
+                    "labelMatches": false
+                  }
+                }
+              ],
+              "example": {
+                "kind": "code",
+                "title": "Bad Prompt vs Engineered Prompt",
+                "language": "text",
+                "code": "❌ NAIVE (hallucinates 40% of the time)\n─────────────────────────────────────\n\"Give me career advice.\"\n\n\n✅ ENGINEERED (reliable, structured)\n─────────────────────────────────────\n<role>\nYou are a Senior Engineering Manager at Anthropic.\nYou've conducted 200+ AI Engineer interviews.\n</role>\n\n<task>\nGiven the candidate's resume below, return:\n1. Fit score (0-100) for Senior AI Engineer\n2. The TOP 3 weaknesses in their profile\n3. ONE concrete project they should ship in 4 weeks\n</task>\n\n<rules>\n- Be brutally honest. No platitudes.\n- Cite specific resume lines for each weakness.\n- Project must be RAG-based (most-asked-for skill).\n- Output JSON. No prose outside the JSON.\n</rules>\n\n<resume>\n{{resume_text}}\n</resume>\n\n\nResult: hallucination rate drops 40% → 4%.\nThis single change is the difference between\na demo and a product."
+              }
+            }
+          },
+          {
+            "id": "structured-output-and-tool-schemas",
+            "number": "02",
+            "icon": "🧩",
+            "title": "Structured Output & Tool Schemas",
+            "category": "Architecture",
+            "lesson": {
+              "overview": "Production AI doesn't return prose — it returns JSON your backend can parse. Master JSON mode, function calling, and tool schemas.",
+              "checklist": [
+                "JSON mode (OpenAI, Claude)",
+                "Tool / function calling schemas",
+                "Pydantic-driven schemas",
+                "Forced output validation",
+                "Retry on malformed JSON",
+                "Schema-first design"
+              ],
+              "resources": [
+                {
+                  "label": "Anthropic — Tool use",
+                  "url": "https://docs.anthropic.com/en/docs/build-with-claude/tool-use",
+                  "kind": "docs",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                },
+                {
+                  "label": "OpenAI — Structured Outputs",
+                  "url": "https://platform.openai.com/docs/guides/structured-outputs",
+                  "kind": "docs",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                },
+                {
+                  "label": "Instructor library",
+                  "url": "https://python.useinstructor.com/",
+                  "kind": "docs",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                }
+              ],
+              "videos": [
+                {
+                  "title": "Function Calling explained",
+                  "url": "https://www.youtube.com/watch?v=zjkBMFhNj_g",
+                  "youtubeId": "zjkBMFhNj_g",
+                  "linkCheck": {
+                    "status": "ok",
+                    "youtubeTitle": "[1hr Talk] Intro to Large Language Models | Andrej Karpathy",
+                    "checked": "2026-10-20",
+                    "labelMatches": false
+                  }
+                }
+              ],
+              "example": {
+                "kind": "code",
+                "title": "Tool Schema — salary_lookup tool",
+                "language": "python",
+                "code": "tools = [{\n    \"name\": \"salary_lookup\",\n    \"description\": \"Get total comp for a role/level/location.\",\n    \"input_schema\": {\n        \"type\": \"object\",\n        \"properties\": {\n            \"role\": {\"type\": \"string\", \"enum\": [\"AI Engineer\",\n                \"ML Engineer\", \"Data Engineer\", \"SWE\"]},\n            \"level\": {\"type\": \"string\", \"enum\": [\"mid\", \"senior\",\n                \"staff\", \"principal\"]},\n            \"location\": {\"type\": \"string\"},\n        },\n        \"required\": [\"role\", \"level\", \"location\"],\n    },\n}]\n\nmsg = client.messages.create(\n    model=\"claude-3-5-sonnet-latest\",\n    max_tokens=1024,\n    tools=tools,\n    messages=[{\n        \"role\": \"user\",\n        \"content\": \"What does Senior AI Eng at Anthropic SF pay?\"\n    }],\n)\n\n# Claude returns:\n# tool_use → salary_lookup({\n#   \"role\": \"AI Engineer\",\n#   \"level\": \"senior\",\n#   \"location\": \"San Francisco\"\n# })\n# Your code runs the tool, returns the result, model continues."
+              }
+            }
+          },
+          {
+            "id": "multi-step-prompt-pipelines",
+            "number": "03",
+            "icon": "🎯",
+            "title": "Multi-Step Prompt Pipelines",
+            "category": "Architecture",
+            "lesson": {
+              "overview": "One LLM call rarely solves a real problem. Chain prompts, validate intermediate output, recover from errors. This is the difference between a toy and a product.",
+              "checklist": [
+                "Plan → execute → verify chains",
+                "Self-critique loops",
+                "Map-reduce over long docs",
+                "Routing based on intent",
+                "Caching intermediate results"
+              ],
+              "resources": [
+                {
+                  "label": "LangChain Expression Language",
+                  "url": "https://python.langchain.com/docs/concepts/lcel/",
+                  "kind": "docs",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                },
+                {
+                  "label": "Anthropic — Chain prompts",
+                  "url": "https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/chain-prompts",
+                  "kind": "docs",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                }
+              ],
+              "videos": [
+                {
+                  "title": "Building LLM apps that work",
+                  "url": "https://www.youtube.com/watch?v=zjkBMFhNj_g",
+                  "youtubeId": "zjkBMFhNj_g",
+                  "linkCheck": {
+                    "status": "ok",
+                    "youtubeTitle": "[1hr Talk] Intro to Large Language Models | Andrej Karpathy",
+                    "checked": "2026-10-20",
+                    "labelMatches": false
+                  }
+                }
+              ],
+              "example": {
+                "kind": "code",
+                "title": "3-Step Pipeline — Resume → Skills → Job Match",
+                "language": "python",
+                "code": "# Step 1: extract structured skills from resume\nskills = llm(SYSTEM_EXTRACT, user=resume_text)\n# → {\"languages\": [\"Python\",\"SQL\"], \"years\": 4, ...}\n\n# Step 2: critique the extraction (catch hallucinations)\ncritique = llm(SYSTEM_CRITIQUE,\n    user=f\"Resume:\\n{resume_text}\\n\\nExtracted:\\n{skills}\")\nif critique[\"confidence\"] < 0.8:\n    skills = llm(SYSTEM_EXTRACT_V2, user=resume_text)\n\n# Step 3: match to job requirements\nverdict = llm(SYSTEM_MATCH,\n    user=f\"Skills:\\n{skills}\\n\\nJob:\\n{job_text}\")\n\n# Each step is independently testable.\n# Each step can be evaluated. Each step can be cached.\n# This is what 'AI Engineering' actually looks like."
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "phase-3",
+        "number": "04",
+        "label": "Phase 3",
+        "icon": "📚",
+        "stage": "RAG & Knowledge",
+        "title": "Models Meet Your Data",
+        "fullTitle": "RAG & Knowledge — Models Meet Your Data",
+        "salary": {
+          "text": "$150K – $220K · AI Engineer",
+          "kind": "range",
+          "range": "$150K – $220K",
+          "role": "AI Engineer"
+        },
+        "description": "RAG is the #1 most-asked-for AI feature at every company. Embeddings, vector DBs, hybrid search, re-ranking, citations.",
+        "skills": [
+          "Embeddings",
+          "pgvector",
+          "Hybrid Search",
+          "Re-ranking"
+        ],
+        "topics": [
+          {
+            "id": "embeddings-and-vector-dbs",
+            "number": "01",
+            "icon": "📚",
+            "title": "Embeddings & Vector DBs",
+            "category": "Coding",
+            "lesson": {
+              "overview": "Embeddings turn text into vectors. Vector DBs let you search by meaning instead of keywords. This is the foundation of every RAG system.",
+              "checklist": [
+                "What an embedding actually is",
+                "Cosine similarity intuition",
+                "OpenAI / Voyage embeddings",
+                "pgvector vs Pinecone vs Weaviate",
+                "Indexes (HNSW, IVF)",
+                "Chunking strategies"
+              ],
+              "resources": [
+                {
+                  "label": "OpenAI Embeddings",
+                  "url": "https://platform.openai.com/docs/guides/embeddings",
+                  "kind": "docs",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                },
+                {
+                  "label": "pgvector",
+                  "url": "https://github.com/pgvector/pgvector",
+                  "kind": "repo",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                },
+                {
+                  "label": "Pinecone Learning Center",
+                  "url": "https://www.pinecone.io/learn/",
+                  "kind": "course",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                }
+              ],
+              "videos": [
+                {
+                  "title": "Vector DBs in 5 minutes",
+                  "url": "https://www.youtube.com/watch?v=zjkBMFhNj_g",
+                  "youtubeId": "zjkBMFhNj_g",
+                  "linkCheck": {
+                    "status": "ok",
+                    "youtubeTitle": "[1hr Talk] Intro to Large Language Models | Andrej Karpathy",
+                    "checked": "2026-10-20",
+                    "labelMatches": false
+                  }
+                }
+              ],
+              "example": {
+                "kind": "code",
+                "title": "Embed & Index 10K Job Descriptions",
+                "language": "python",
+                "code": "from openai import OpenAI\nimport psycopg2\nclient = OpenAI()\n\ndef embed(text: str) -> list[float]:\n    return client.embeddings.create(\n        model=\"text-embedding-3-small\",\n        input=text,\n    ).data[0].embedding\n\n# 1. Create pgvector table\nconn.execute(\"\"\"\n    CREATE TABLE jobs (\n        id SERIAL PRIMARY KEY,\n        title TEXT,\n        company TEXT,\n        description TEXT,\n        embedding VECTOR(1536)\n    );\n    CREATE INDEX ON jobs USING hnsw (embedding vector_cosine_ops);\n\"\"\")\n\n# 2. Embed and store 10K jobs\nfor job in jobs:\n    vec = embed(f\"{job.title} at {job.company}\\n{job.description}\")\n    conn.execute(\n        \"INSERT INTO jobs (title, company, description, embedding) \"\n        \"VALUES (%s, %s, %s, %s)\",\n        (job.title, job.company, job.description, vec),\n    )\n\n# 3. Semantic search\nquery_vec = embed(\"Senior AI Eng remote, RAG experience\")\nresults = conn.execute(\"\"\"\n    SELECT title, company, 1 - (embedding <=> %s) AS similarity\n    FROM jobs\n    ORDER BY embedding <=> %s\n    LIMIT 10\n\"\"\", (query_vec, query_vec)).fetchall()"
+              }
+            }
+          },
+          {
+            "id": "build-a-rag-system",
+            "number": "02",
+            "icon": "🔍",
+            "title": "Build a RAG System",
+            "category": "Project",
+            "lesson": {
+              "overview": "RAG = Retrieval Augmented Generation. Give the model your data without retraining it. The #1 most-asked-for AI feature at every company.",
+              "checklist": [
+                "Document loading + chunking",
+                "Embedding + vector store",
+                "Hybrid search (semantic + keyword)",
+                "Re-ranking with a cross-encoder",
+                "Prompt assembly with citations",
+                "Eval the retrieval quality"
+              ],
+              "resources": [
+                {
+                  "label": "Anthropic — Contextual RAG",
+                  "url": "https://www.anthropic.com/news/contextual-retrieval",
+                  "kind": "article",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                },
+                {
+                  "label": "LlamaIndex Docs",
+                  "url": "https://docs.llamaindex.ai/",
+                  "kind": "docs",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                }
+              ],
+              "videos": [
+                {
+                  "title": "RAG from scratch — LangChain",
+                  "url": "https://www.youtube.com/watch?v=zjkBMFhNj_g",
+                  "youtubeId": "zjkBMFhNj_g",
+                  "linkCheck": {
+                    "status": "ok",
+                    "youtubeTitle": "[1hr Talk] Intro to Large Language Models | Andrej Karpathy",
+                    "checked": "2026-10-20",
+                    "labelMatches": false
+                  }
+                }
+              ],
+              "example": {
+                "kind": "flow",
+                "title": "RAG Architecture — AI Career Advisor",
+                "source": "rag-architecture",
+                "nodes": [
+                  {
+                    "icon": "📚",
+                    "label": "10K Jobs",
+                    "sub": "Corpus"
+                  },
+                  {
+                    "icon": "🔢",
+                    "label": "Embed",
+                    "sub": "OpenAI 3-small"
+                  },
+                  {
+                    "icon": "🗄️",
+                    "label": "pgvector",
+                    "sub": "HNSW index"
+                  },
+                  {
+                    "icon": "🔍",
+                    "label": "Hybrid",
+                    "sub": "BM25 + vec"
+                  },
+                  {
+                    "icon": "🎚️",
+                    "label": "Re-rank",
+                    "sub": "Cohere"
+                  },
+                  {
+                    "icon": "🧠",
+                    "label": "Claude",
+                    "sub": "Cite + answer"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "id": "re-ranking-and-hybrid-search",
+            "number": "03",
+            "icon": "🎚️",
+            "title": "Re-ranking & Hybrid Search",
+            "category": "Performance",
+            "lesson": {
+              "overview": "Vanilla embedding search misses 30% of relevant docs. Hybrid (BM25 + embedding) plus a cross-encoder re-ranker is the production-grade pattern.",
+              "checklist": [
+                "BM25 keyword retrieval",
+                "Reciprocal rank fusion",
+                "Cohere / BGE re-rankers",
+                "Eval recall@k vs precision@k",
+                "Latency vs quality tradeoffs"
+              ],
+              "resources": [
+                {
+                  "label": "Cohere Rerank",
+                  "url": "https://docs.cohere.com/docs/rerank-2",
+                  "kind": "docs",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                },
+                {
+                  "label": "Anthropic Contextual RAG",
+                  "url": "https://www.anthropic.com/news/contextual-retrieval",
+                  "kind": "article",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                }
+              ],
+              "videos": [
+                {
+                  "title": "Advanced RAG techniques",
+                  "url": "https://www.youtube.com/watch?v=zjkBMFhNj_g",
+                  "youtubeId": "zjkBMFhNj_g",
+                  "linkCheck": {
+                    "status": "ok",
+                    "youtubeTitle": "[1hr Talk] Intro to Large Language Models | Andrej Karpathy",
+                    "checked": "2026-10-20",
+                    "labelMatches": false
+                  }
+                }
+              ],
+              "example": {
+                "kind": "code",
+                "title": "Hybrid Search + Re-rank for Jobs",
+                "language": "python",
+                "code": "import cohere\nco = cohere.Client()\n\n# 1. Get top-50 by hybrid (BM25 + embedding) — fast & broad\ncandidates = hybrid_search(query=\"Senior AI Eng RAG remote\",\n                           k=50)\n\n# 2. Re-rank top-50 → top-5 with cross-encoder — slow but precise\nreranked = co.rerank(\n    model=\"rerank-3.5\",\n    query=\"Senior AI Eng RAG remote\",\n    documents=[c.description for c in candidates],\n    top_n=5,\n)\n\nbest_jobs = [candidates[r.index] for r in reranked.results]\n\n# Recall@5 jumped from 0.62 → 0.91. Same data, better retrieval."
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "phase-4",
+        "number": "05",
+        "label": "Phase 4",
+        "icon": "🤖",
+        "stage": "Agents & Tool Use",
+        "title": "Models That Take Action",
+        "fullTitle": "Agents & Tool Use — Models That Take Action",
+        "salary": {
+          "text": "$180K – $260K · AI Eng (mid)",
+          "kind": "range",
+          "range": "$180K – $260K",
+          "role": "AI Eng (mid)"
+        },
+        "description": "Tool calling, agent loops, planning, memory. Single agent with great tools usually beats multi-agent. Build something that takes real actions.",
+        "skills": [
+          "Function Calling",
+          "Agent Loops",
+          "Multi-Agent"
+        ],
+        "topics": [
+          {
+            "id": "tool-use-and-function-calling",
+            "number": "01",
+            "icon": "🛠️",
+            "title": "Tool Use & Function Calling",
+            "category": "Coding",
+            "lesson": {
+              "overview": "Tool use = letting the model call your code. The model decides when to fetch data, run a calculation, or write to a database. This is how AI takes real action.",
+              "checklist": [
+                "Define tool schemas (JSON Schema)",
+                "Handle the tool_use → tool_result loop",
+                "Parallel tool calls",
+                "Tool error recovery",
+                "Restrict tools by user permission"
+              ],
+              "resources": [
+                {
+                  "label": "Anthropic — Tool use",
+                  "url": "https://docs.anthropic.com/en/docs/build-with-claude/tool-use",
+                  "kind": "docs",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                },
+                {
+                  "label": "OpenAI — Function calling",
+                  "url": "https://platform.openai.com/docs/guides/function-calling",
+                  "kind": "docs",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                }
+              ],
+              "videos": [
+                {
+                  "title": "Function calling deep dive",
+                  "url": "https://www.youtube.com/watch?v=zjkBMFhNj_g",
+                  "youtubeId": "zjkBMFhNj_g",
+                  "linkCheck": {
+                    "status": "ok",
+                    "youtubeTitle": "[1hr Talk] Intro to Large Language Models | Andrej Karpathy",
+                    "checked": "2026-10-20",
+                    "labelMatches": false
+                  }
+                }
+              ],
+              "example": {
+                "kind": "code",
+                "title": "Career Advisor Agent — 3 Real Tools",
+                "language": "python",
+                "code": "tools = [\n    {\"name\": \"search_jobs\",        # → vector search\n     \"description\": \"Find relevant jobs for the user.\",\n     \"input_schema\": {...}},\n    {\"name\": \"salary_lookup\",      # → levels.fyi API\n     \"description\": \"Get total comp for role/level/loc.\",\n     \"input_schema\": {...}},\n    {\"name\": \"schedule_mock\",      # → calendar API\n     \"description\": \"Book a mock interview slot.\",\n     \"input_schema\": {...}},\n]\n\ndef run_agent(user_msg: str):\n    messages = [{\"role\": \"user\", \"content\": user_msg}]\n    while True:\n        resp = client.messages.create(\n            model=\"claude-3-5-sonnet-latest\",\n            tools=tools, max_tokens=2048, messages=messages,\n        )\n        if resp.stop_reason == \"end_turn\":\n            return resp.content[0].text\n        # Otherwise: model called a tool\n        for block in resp.content:\n            if block.type == \"tool_use\":\n                result = TOOL_FN[block.name](**block.input)\n                messages.append({\"role\": \"assistant\",\n                                 \"content\": resp.content})\n                messages.append({\"role\": \"user\", \"content\": [{\n                    \"type\": \"tool_result\",\n                    \"tool_use_id\": block.id,\n                    \"content\": str(result),\n                }]})"
+              }
+            }
+          },
+          {
+            "id": "agent-loops-and-planning",
+            "number": "02",
+            "icon": "🤖",
+            "title": "Agent Loops & Planning",
+            "category": "Architecture",
+            "lesson": {
+              "overview": "Real agents loop: plan → act → observe → re-plan. Memory matters. Most multi-agent setups fail — single agent with great tools usually wins.",
+              "checklist": [
+                "ReAct pattern (reason + act)",
+                "Plan-then-execute",
+                "Memory: short-term vs long-term",
+                "When NOT to use multi-agent",
+                "Stopping conditions & max-step limits"
+              ],
+              "resources": [
+                {
+                  "label": "Anthropic — Building agents",
+                  "url": "https://www.anthropic.com/research/building-effective-agents",
+                  "kind": "article",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                },
+                {
+                  "label": "ReAct paper",
+                  "url": "https://arxiv.org/abs/2210.03629",
+                  "kind": "paper",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                }
+              ],
+              "videos": [
+                {
+                  "title": "Building effective agents",
+                  "url": "https://www.youtube.com/watch?v=zjkBMFhNj_g",
+                  "youtubeId": "zjkBMFhNj_g",
+                  "linkCheck": {
+                    "status": "ok",
+                    "youtubeTitle": "[1hr Talk] Intro to Large Language Models | Andrej Karpathy",
+                    "checked": "2026-10-20",
+                    "labelMatches": false
+                  }
+                }
+              ],
+              "example": {
+                "kind": "flow",
+                "title": "Career Advisor Agent Loop",
+                "source": "agent-loop",
+                "nodes": [
+                  {
+                    "icon": "❓",
+                    "label": "User Q",
+                    "sub": "Career goal"
+                  },
+                  {
+                    "icon": "🧭",
+                    "label": "Plan",
+                    "sub": "LLM picks tool"
+                  },
+                  {
+                    "icon": "🛠️",
+                    "label": "Tool call",
+                    "sub": "search_jobs"
+                  },
+                  {
+                    "icon": "👁️",
+                    "label": "Observe",
+                    "sub": "Tool result"
+                  },
+                  {
+                    "icon": "🔁",
+                    "label": "Re-plan",
+                    "sub": "Loop or stop"
+                  },
+                  {
+                    "icon": "✅",
+                    "label": "Final",
+                    "sub": "90-day plan"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "id": "multi-agent-orchestration",
+            "number": "03",
+            "icon": "🧬",
+            "title": "Multi-Agent Orchestration",
+            "category": "Architecture",
+            "lesson": {
+              "overview": "When one agent isn't enough: orchestrator + workers, parallel sub-agents, hierarchical teams. Use sparingly — costs and failure modes compound fast.",
+              "checklist": [
+                "Orchestrator-worker pattern",
+                "Parallel sub-agents",
+                "Shared memory / state stores",
+                "Inter-agent message protocols",
+                "When multi-agent helps vs hurts"
+              ],
+              "resources": [
+                {
+                  "label": "Anthropic — Multi-agent research system",
+                  "url": "https://www.anthropic.com/engineering/built-multi-agent-research-system",
+                  "kind": "article",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                },
+                {
+                  "label": "LangGraph",
+                  "url": "https://langchain-ai.github.io/langgraph/",
+                  "kind": "docs",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                }
+              ],
+              "videos": [
+                {
+                  "title": "Multi-agent systems explained",
+                  "url": "https://www.youtube.com/watch?v=zjkBMFhNj_g",
+                  "youtubeId": "zjkBMFhNj_g",
+                  "linkCheck": {
+                    "status": "ok",
+                    "youtubeTitle": "[1hr Talk] Intro to Large Language Models | Andrej Karpathy",
+                    "checked": "2026-10-20",
+                    "labelMatches": false
+                  }
+                }
+              ],
+              "example": {
+                "kind": "code",
+                "title": "Orchestrator + 3 Worker Agents (Career Advisor)",
+                "language": "python",
+                "code": "# ORCHESTRATOR receives the user query and dispatches.\ndef orchestrator(user_query: str):\n    plan = llm(SYSTEM_PLAN, user=user_query)\n    # plan = [\"resume_analyzer\", \"job_finder\", \"interview_coach\"]\n\n    results = parallel_map({\n        \"resume_analyzer\": lambda: agent_resume(user_query),\n        \"job_finder\":      lambda: agent_jobs(user_query),\n        \"interview_coach\": lambda: agent_interview(user_query),\n    })\n\n    return llm(SYSTEM_SYNTHESIZE,\n        user=f\"Synthesize into one career plan:\\n{results}\")\n\n# Each worker has its OWN tools, OWN system prompt, OWN model.\n# Resume analyzer → cheap fast model.\n# Interview coach → big slow model.\n# Run in parallel → 3× faster than sequential."
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "phase-5",
+        "number": "06",
+        "label": "Phase 5",
+        "icon": "📏",
+        "stage": "Evals & Guardrails",
+        "title": "The Hardest Part of AI",
+        "fullTitle": "Evals & Guardrails — The Hardest Part of AI",
+        "salary": {
+          "text": "$220K – $350K · Senior AI Eng",
+          "kind": "range",
+          "range": "$220K – $350K",
+          "role": "Senior AI Eng"
+        },
+        "description": "Without evals, every prompt change is a coin flip. Build the eval suite before you ship. Guardrails for safety, observability for everything.",
+        "skills": [
+          "Evals",
+          "Golden Datasets",
+          "Guardrails",
+          "Observability"
+        ],
+        "topics": [
+          {
+            "id": "evals-the-hardest-part",
+            "number": "01",
+            "icon": "📏",
+            "title": "Evals — The Hardest Part",
+            "category": "Theory",
+            "lesson": {
+              "overview": "Evaluation is the single hardest part of AI Engineering. Without evals, every prompt change is a coin flip in production. Build the eval suite before you ship.",
+              "checklist": [
+                "Build a golden dataset (50–200 examples)",
+                "Code-based assertions",
+                "LLM-as-judge for subjective quality",
+                "Regression suites in CI",
+                "Track metrics over time",
+                "A/B prompts in production"
+              ],
+              "resources": [
+                {
+                  "label": "Hamel — Your AI Product Needs Evals",
+                  "url": "https://hamel.dev/blog/posts/evals/",
+                  "kind": "article",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                },
+                {
+                  "label": "OpenAI Evals",
+                  "url": "https://github.com/openai/evals",
+                  "kind": "repo",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                },
+                {
+                  "label": "Braintrust / LangSmith",
+                  "url": "https://docs.braintrust.dev/",
+                  "kind": "docs",
+                  "linkCheck": {
+                    "status": "unreachable",
+                    "checked": "2026-10-20"
+                  }
+                }
+              ],
+              "videos": [
+                {
+                  "title": "Evals are all you need — Hamel",
+                  "url": "https://www.youtube.com/watch?v=zjkBMFhNj_g",
+                  "youtubeId": "zjkBMFhNj_g",
+                  "linkCheck": {
+                    "status": "ok",
+                    "youtubeTitle": "[1hr Talk] Intro to Large Language Models | Andrej Karpathy",
+                    "checked": "2026-10-20",
+                    "labelMatches": false
+                  }
+                }
+              ],
+              "example": {
+                "kind": "code",
+                "title": "Eval Suite — Catch Regressions Before Prod",
+                "language": "python",
+                "code": "# golden.jsonl — 100 hand-labeled (input, expected) pairs\nGOLDEN = [\n    {\"input\": \"DE 4yrs Stripe → Senior AI Eng Anthropic?\",\n     \"expected_rec\": \"apply\",\n     \"expected_keywords\": [\"RAG\", \"rebrand\", \"DE-to-AI\"]},\n    # ... 99 more\n]\n\ndef eval_advisor(prompt_version: str) -> dict:\n    pass_count = 0\n    for ex in GOLDEN:\n        out = career_advisor(ex[\"input\"], prompt=prompt_version)\n\n        # Code-based check\n        if out[\"rec\"] != ex[\"expected_rec\"]: continue\n\n        # LLM-as-judge for nuance\n        judge = llm(JUDGE_SYSTEM,\n            user=f\"Q: {ex['input']}\\nA: {out['text']}\\n\"\n                 f\"Must mention: {ex['expected_keywords']}\\n\"\n                 f\"Score 0-1.\")\n        if judge[\"score\"] >= 0.8: pass_count += 1\n\n    return {\"pass_rate\": pass_count / len(GOLDEN)}\n\n# v1 prompt: 0.62\n# v2 prompt: 0.81\n# v3 prompt: 0.79  ← regression caught BEFORE prod"
+              }
+            }
+          },
+          {
+            "id": "guardrails-and-safety",
+            "number": "02",
+            "icon": "🛡️",
+            "title": "Guardrails & Safety",
+            "category": "Security",
+            "lesson": {
+              "overview": "Production AI needs input validation, output filtering, PII redaction, and refusal handling. One bad output can land you in the news.",
+              "checklist": [
+                "Input validation (jailbreak detection)",
+                "Output filtering (toxicity, PII)",
+                "Refusal handling (graceful)",
+                "PII redaction before LLM call",
+                "Rate limiting per user",
+                "Audit logging"
+              ],
+              "resources": [
+                {
+                  "label": "Guardrails AI",
+                  "url": "https://www.guardrailsai.com/docs",
+                  "kind": "docs",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                },
+                {
+                  "label": "OpenAI Moderation API",
+                  "url": "https://platform.openai.com/docs/guides/moderation",
+                  "kind": "docs",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                }
+              ],
+              "videos": [
+                {
+                  "title": "LLM Guardrails explained",
+                  "url": "https://www.youtube.com/watch?v=zjkBMFhNj_g",
+                  "youtubeId": "zjkBMFhNj_g",
+                  "linkCheck": {
+                    "status": "ok",
+                    "youtubeTitle": "[1hr Talk] Intro to Large Language Models | Andrej Karpathy",
+                    "checked": "2026-10-20",
+                    "labelMatches": false
+                  }
+                }
+              ],
+              "example": {
+                "kind": "code",
+                "title": "Guardrails Layer — Career Advisor",
+                "language": "python",
+                "code": "def safe_advisor(user_input: str, user_id: str) -> str:\n    # 1. Rate limit\n    if rate_limited(user_id): raise HTTPError(429)\n\n    # 2. Jailbreak detection\n    if is_jailbreak(user_input):\n        return \"I can only help with career questions.\"\n\n    # 3. PII redaction BEFORE sending to LLM\n    sanitized = redact_pii(user_input)\n    # \"my SSN is 123-45-6789\" → \"my SSN is [REDACTED]\"\n\n    # 4. Call the model\n    raw = career_advisor(sanitized)\n\n    # 5. Output moderation\n    if openai.moderations.create(input=raw).results[0].flagged:\n        log_incident(user_id, raw)\n        return \"Let me try that again...\"\n\n    # 6. Fact-check the output (LLM-as-judge)\n    if not is_grounded(raw, sanitized):\n        return regenerate_with_guardrails(sanitized)\n\n    return raw"
+              }
+            }
+          },
+          {
+            "id": "observability-for-ai",
+            "number": "03",
+            "icon": "📊",
+            "title": "Observability for AI",
+            "category": "Performance",
+            "lesson": {
+              "overview": "You can't fix what you can't see. Trace every LLM call: cost, latency, tokens, prompt version, user feedback. This is non-negotiable for production.",
+              "checklist": [
+                "Trace every call (LangSmith / Braintrust / Helicone)",
+                "Cost per request dashboards",
+                "P50 / P95 / P99 latency",
+                "Hallucination rate monitoring",
+                "User feedback collection",
+                "Prompt version tracking"
+              ],
+              "resources": [
+                {
+                  "label": "LangSmith",
+                  "url": "https://docs.smith.langchain.com/",
+                  "kind": "docs",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                },
+                {
+                  "label": "Helicone",
+                  "url": "https://docs.helicone.ai/",
+                  "kind": "docs",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                },
+                {
+                  "label": "Braintrust",
+                  "url": "https://www.braintrust.dev/docs",
+                  "kind": "docs",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                }
+              ],
+              "videos": [
+                {
+                  "title": "Observability for LLM apps",
+                  "url": "https://www.youtube.com/watch?v=zjkBMFhNj_g",
+                  "youtubeId": "zjkBMFhNj_g",
+                  "linkCheck": {
+                    "status": "ok",
+                    "youtubeTitle": "[1hr Talk] Intro to Large Language Models | Andrej Karpathy",
+                    "checked": "2026-10-20",
+                    "labelMatches": false
+                  }
+                }
+              ],
+              "example": {
+                "kind": "table",
+                "title": "Career Advisor — Production Metrics",
+                "source": "ai-metrics",
+                "columns": [
+                  "METRIC",
+                  "TARGET",
+                  "CURRENT",
+                  "ALERT"
+                ],
+                "rows": [
+                  [
+                    "Cost / request",
+                    "< $0.01",
+                    "$0.0042",
+                    "PagerDuty"
+                  ],
+                  [
+                    "P95 latency",
+                    "< 3s",
+                    "2.1s",
+                    "Slack"
+                  ],
+                  [
+                    "Hallucination rate",
+                    "< 2%",
+                    "1.4%",
+                    "PagerDuty"
+                  ],
+                  [
+                    "Eval pass rate",
+                    "> 80%",
+                    "87%",
+                    "CI gate"
+                  ],
+                  [
+                    "User thumbs-up",
+                    "> 75%",
+                    "82%",
+                    "Weekly review"
+                  ]
+                ]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "phase-6",
+        "number": "07",
+        "label": "Phase 6",
+        "icon": "🚀",
+        "stage": "Productionization",
+        "title": "Ship It For Real",
+        "fullTitle": "Productionization — Ship It For Real",
+        "salary": {
+          "text": "$300K – $550K · Staff AI Eng",
+          "kind": "range",
+          "range": "$300K – $550K",
+          "role": "Staff AI Eng"
+        },
+        "description": "Streaming APIs, deployment, prompt caching, model routing, prompt versioning, rollbacks. The bar is 'works for 1000 users at 3am'.",
+        "skills": [
+          "FastAPI",
+          "Streaming",
+          "Caching",
+          "Versioning"
+        ],
+        "topics": [
+          {
+            "id": "deploy-ai-features",
+            "number": "01",
+            "icon": "🚀",
+            "title": "Deploy AI Features",
+            "category": "Platform",
+            "lesson": {
+              "overview": "Wrap your model in an API, stream responses to a UI, deploy to a serverless platform. The bar isn't 'works on localhost' — it's 'works for 1000 users at 3am'.",
+              "checklist": [
+                "FastAPI + streaming (SSE)",
+                "Deploy to Vercel / Render / Fly",
+                "Edge functions for low latency",
+                "Static frontend (Next.js / SvelteKit)",
+                "Domain + SSL",
+                "Health checks"
+              ],
+              "resources": [
+                {
+                  "label": "Vercel AI SDK",
+                  "url": "https://sdk.vercel.ai/docs",
+                  "kind": "docs",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                },
+                {
+                  "label": "FastAPI deployment",
+                  "url": "https://fastapi.tiangolo.com/deployment/",
+                  "kind": "docs",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                }
+              ],
+              "videos": [
+                {
+                  "title": "Deploy AI apps to Vercel",
+                  "url": "https://www.youtube.com/watch?v=zjkBMFhNj_g",
+                  "youtubeId": "zjkBMFhNj_g",
+                  "linkCheck": {
+                    "status": "ok",
+                    "youtubeTitle": "[1hr Talk] Intro to Large Language Models | Andrej Karpathy",
+                    "checked": "2026-10-20",
+                    "labelMatches": false
+                  }
+                }
+              ],
+              "example": {
+                "kind": "code",
+                "title": "Streaming Career Advisor — FastAPI",
+                "language": "python",
+                "code": "from fastapi import FastAPI\nfrom fastapi.responses import StreamingResponse\nimport anthropic\n\napp = FastAPI()\nclient = anthropic.Anthropic()\n\n@app.post(\"/advise\")\nasync def advise(req: AdviseRequest):\n    async def stream():\n        with client.messages.stream(\n            model=\"claude-3-5-sonnet-latest\",\n            max_tokens=1024,\n            system=ADVISOR_SYSTEM,\n            messages=[{\"role\": \"user\", \"content\": req.question}],\n        ) as s:\n            for text in s.text_stream:\n                yield f\"data: {text}\\n\\n\"\n            yield \"data: [DONE]\\n\\n\"\n\n    return StreamingResponse(stream(), media_type=\"text/event-stream\")\n\n# Deploy: 'vercel deploy' or 'fly launch'.\n# 100ms TTFB, streams char-by-char to your React frontend.\n# This is a real product. Recruiters can click the URL."
+              }
+            }
+          },
+          {
+            "id": "cost-and-latency-optimization",
+            "number": "02",
+            "icon": "💰",
+            "title": "Cost & Latency Optimization",
+            "category": "Performance",
+            "lesson": {
+              "overview": "Token costs add up fast. Caching, prompt compression, model routing, and batching can cut costs 10× without sacrificing quality.",
+              "checklist": [
+                "Prompt caching (Anthropic / OpenAI)",
+                "Model routing (cheap → expensive)",
+                "Response caching (Redis)",
+                "Batch API for non-urgent jobs",
+                "Streaming for perceived latency",
+                "Token budgets per user"
+              ],
+              "resources": [
+                {
+                  "label": "Anthropic — Prompt caching",
+                  "url": "https://docs.anthropic.com/en/docs/build-with-claude/prompt-caching",
+                  "kind": "docs",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                },
+                {
+                  "label": "OpenAI Batch API",
+                  "url": "https://platform.openai.com/docs/guides/batch",
+                  "kind": "docs",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                }
+              ],
+              "videos": [
+                {
+                  "title": "Reduce LLM costs by 10x",
+                  "url": "https://www.youtube.com/watch?v=zjkBMFhNj_g",
+                  "youtubeId": "zjkBMFhNj_g",
+                  "linkCheck": {
+                    "status": "ok",
+                    "youtubeTitle": "[1hr Talk] Intro to Large Language Models | Andrej Karpathy",
+                    "checked": "2026-10-20",
+                    "labelMatches": false
+                  }
+                }
+              ],
+              "example": {
+                "kind": "table",
+                "title": "Cost Optimization Results — AI Career Advisor",
+                "source": "cost-optimization",
+                "columns": [
+                  "OPTIMIZATION",
+                  "BEFORE",
+                  "AFTER",
+                  "SAVINGS"
+                ],
+                "rows": [
+                  [
+                    "Prompt caching",
+                    "$0.012/req",
+                    "$0.003/req",
+                    "75%"
+                  ],
+                  [
+                    "Model routing (Haiku→Sonnet)",
+                    "All Sonnet",
+                    "80% Haiku",
+                    "$2.1k/mo"
+                  ],
+                  [
+                    "Response cache (Redis)",
+                    "100% hit LLM",
+                    "38% cache hit",
+                    "$1.4k/mo"
+                  ]
+                ],
+                "total": {
+                  "label": "Total annual savings",
+                  "value": "$72K/yr"
+                }
+              }
+            }
+          },
+          {
+            "id": "versioning-prompts-and-models",
+            "number": "03",
+            "icon": "🔁",
+            "title": "Versioning Prompts & Models",
+            "category": "Version Control",
+            "lesson": {
+              "overview": "Prompts are code. Treat them like code. Version them, test them, roll them back. When OpenAI ships GPT-5, you should be able to A/B it in one PR.",
+              "checklist": [
+                "Prompts in version control",
+                "Prompt registry (Braintrust / LangSmith)",
+                "Model abstraction layer",
+                "A/B test in production",
+                "One-click rollback",
+                "Eval gate in CI"
+              ],
+              "resources": [
+                {
+                  "label": "Promptfoo",
+                  "url": "https://www.promptfoo.dev/docs/intro/",
+                  "kind": "docs",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                },
+                {
+                  "label": "Braintrust prompt versioning",
+                  "url": "https://www.braintrust.dev/docs",
+                  "kind": "docs",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                }
+              ],
+              "videos": [
+                {
+                  "title": "Prompt versioning patterns",
+                  "url": "https://www.youtube.com/watch?v=zjkBMFhNj_g",
+                  "youtubeId": "zjkBMFhNj_g",
+                  "linkCheck": {
+                    "status": "ok",
+                    "youtubeTitle": "[1hr Talk] Intro to Large Language Models | Andrej Karpathy",
+                    "checked": "2026-10-20",
+                    "labelMatches": false
+                  }
+                }
+              ],
+              "example": {
+                "kind": "code",
+                "title": "prompts/advisor.yaml — Versioned Prompt",
+                "language": "yaml",
+                "code": "# prompts/advisor.yaml\nname: career_advisor\nversions:\n  v1.0.0:\n    model: claude-3-haiku\n    system: \"You are a career advisor.\"\n    eval_pass_rate: 0.62\n    cost_per_call: $0.0008\n\n  v1.1.0:\n    model: claude-3-5-sonnet-latest\n    system: |\n      <role>You are a Senior EM at Anthropic.</role>\n      <task>Brutally honest, structured, JSON output.</task>\n    eval_pass_rate: 0.81\n    cost_per_call: $0.003\n\n  v1.2.0-experimental:        # rolled out to 10% of traffic\n    model: gpt-4o\n    system: <same as v1.1.0>\n    eval_pass_rate: 0.79      # ← SLIGHT REGRESSION\n    cost_per_call: $0.005     # ← AND MORE EXPENSIVE\n    decision: rollback ✗"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "phase-7",
+        "number": "08",
+        "label": "Phase 7",
+        "icon": "💼",
+        "stage": "Get Hired",
+        "title": "Land the AI Engineer Role",
+        "fullTitle": "Get Hired — Land the AI Engineer Role",
+        "salary": {
+          "text": "Target: $200K+ offer",
+          "kind": "target"
+        },
+        "description": "AI-native resume with a live capstone URL. Strategic outreach to engineers, not recruiters. AI Eng interview loop: system design, prompt engineering live, product sense.",
+        "skills": [
+          "Resume",
+          "Outreach",
+          "Interview Prep",
+          "Negotiation"
+        ],
+        "topics": [
+          {
+            "id": "get-certified",
+            "number": "01",
+            "icon": "🏅",
+            "title": "Get Certified",
+            "category": "Career Setup",
+            "lesson": {
+              "overview": "Certs aren't required, but a few signal commitment to recruiters. Focus on the cloud AI services and one model provider.",
+              "checklist": [
+                "AWS AI Practitioner",
+                "Azure AI Engineer Associate",
+                "Google Generative AI Leader",
+                "Anthropic / OpenAI workshops",
+                "deeplearning.ai short courses"
+              ],
+              "resources": [
+                {
+                  "label": "AWS AI Practitioner",
+                  "url": "https://aws.amazon.com/certification/certified-ai-practitioner/",
+                  "kind": "certification",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                },
+                {
+                  "label": "DeepLearning.AI Short Courses",
+                  "url": "https://www.deeplearning.ai/short-courses/",
+                  "kind": "course",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                }
+              ],
+              "videos": [
+                {
+                  "title": "AI certs that actually matter",
+                  "url": "https://www.youtube.com/watch?v=zjkBMFhNj_g",
+                  "youtubeId": "zjkBMFhNj_g",
+                  "linkCheck": {
+                    "status": "ok",
+                    "youtubeTitle": "[1hr Talk] Intro to Large Language Models | Andrej Karpathy",
+                    "checked": "2026-10-20",
+                    "labelMatches": false
+                  }
+                }
+              ],
+              "example": {
+                "kind": "table",
+                "title": "Recommended AI Engineer Certs",
+                "source": "ai-certs",
+                "columns": [
+                  "CERTIFICATION",
+                  "DIFFICULTY",
+                  "VALUE",
+                  "COST"
+                ],
+                "rows": [
+                  [
+                    "AWS AI Practitioner",
+                    "⭐⭐",
+                    "High",
+                    "$100"
+                  ],
+                  [
+                    "Azure AI Engineer Assoc.",
+                    "⭐⭐⭐",
+                    "High",
+                    "$165"
+                  ],
+                  [
+                    "Google Generative AI Leader",
+                    "⭐⭐",
+                    "Medium",
+                    "$99"
+                  ],
+                  [
+                    "DeepLearning.AI Short Courses",
+                    "⭐",
+                    "Very High",
+                    "Free"
+                  ]
+                ]
+              }
+            }
+          },
+          {
+            "id": "build-ai-native-resume",
+            "number": "02",
+            "icon": "📄",
+            "title": "Build AI-Native Resume",
+            "category": "Job Search",
+            "lesson": {
+              "overview": "Recruiters skim for 6 seconds. Lead with your shipped AI project (live URL), then tools, then impact metrics. Reposition prior work as 'AI-adjacent'.",
+              "checklist": [
+                "Headline = role + your shipped product",
+                "Live URL to capstone",
+                "Quantify (cost saved, latency cut, users served)",
+                "List models + tools you've shipped",
+                "Reposition past work as AI-adjacent",
+                "1 page, 11pt, no photos"
+              ],
+              "resources": [
+                {
+                  "label": "Stackle Resume Builder",
+                  "url": "/",
+                  "kind": "internal",
+                  "linkCheck": {
+                    "status": "internal"
+                  }
+                },
+                {
+                  "label": "Resume Worded",
+                  "url": "https://resumeworded.com/",
+                  "kind": "tool",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                }
+              ],
+              "videos": [
+                {
+                  "title": "AI Engineer resume tips",
+                  "url": "https://www.youtube.com/watch?v=zjkBMFhNj_g",
+                  "youtubeId": "zjkBMFhNj_g",
+                  "linkCheck": {
+                    "status": "ok",
+                    "youtubeTitle": "[1hr Talk] Intro to Large Language Models | Andrej Karpathy",
+                    "checked": "2026-10-20",
+                    "labelMatches": false
+                  }
+                }
+              ],
+              "example": {
+                "kind": "code",
+                "title": "Resume Bullets — Your AI Career Advisor",
+                "language": "text",
+                "code": "AI ENGINEER | AI Career Advisor (live URL)\n═══════════════════════════════════════════════\n\n✅ Strong bullets (using your capstone):\n\n• Shipped a production RAG system over 10K job postings\n  using Claude 3.5 + pgvector, achieving 0.91 recall@5\n  and serving 500+ weekly users — careeradvisor.app\n\n• Built an eval suite with 200 golden examples that\n  catches prompt regressions in CI; reduced production\n  hallucination rate from 8.2% → 1.4%\n\n• Cut LLM costs 73% via prompt caching + model routing\n  (Haiku for retrieval, Sonnet for synthesis), saving\n  $1.4K/month at current load\n\n• Deployed agent with 3 tools (job_search, salary_lookup,\n  schedule_mock) handling 12K tool calls/day with\n  P95 latency <2.1s on Vercel Edge\n\n❌ Weak bullets (avoid):\n• Used LangChain\n• Worked with LLMs\n• Built a chatbot"
+              }
+            }
+          },
+          {
+            "id": "apply-strategically",
+            "number": "03",
+            "icon": "🎯",
+            "title": "Apply Strategically",
+            "category": "Job Search",
+            "lesson": {
+              "overview": "Don't spray-and-pray. Target 25–40 high-fit AI Eng roles per week, customize the first line of every cold email, and go through engineers, not recruiters.",
+              "checklist": [
+                "Build a target list of 50 companies",
+                "Apply 25-40 high-fit roles/week",
+                "Cold-email 5 engineers/week",
+                "Track everything (Notion / Airtable)",
+                "Follow up after 7 days",
+                "Network at AI meetups"
+              ],
+              "resources": [
+                {
+                  "label": "AI Tinkerers",
+                  "url": "https://aitinkerers.org/",
+                  "kind": "community",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                },
+                {
+                  "label": "Latent Space Discord",
+                  "url": "https://www.latent.space/",
+                  "kind": "community",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                },
+                {
+                  "label": "Levels.fyi",
+                  "url": "https://www.levels.fyi/",
+                  "kind": "salary-data",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                }
+              ],
+              "videos": [
+                {
+                  "title": "How to land an AI Eng job",
+                  "url": "https://www.youtube.com/watch?v=zjkBMFhNj_g",
+                  "youtubeId": "zjkBMFhNj_g",
+                  "linkCheck": {
+                    "status": "ok",
+                    "youtubeTitle": "[1hr Talk] Intro to Large Language Models | Andrej Karpathy",
+                    "checked": "2026-10-20",
+                    "labelMatches": false
+                  }
+                }
+              ],
+              "example": {
+                "kind": "table",
+                "title": "Job Application Tracker",
+                "source": "job-tracker-ai",
+                "columns": [
+                  "COMPANY",
+                  "ROLE",
+                  "STATUS",
+                  "APPLIED",
+                  "FOLLOW-UP"
+                ],
+                "rows": [
+                  [
+                    "Anthropic",
+                    "AI Engineer",
+                    "Onsite ✓",
+                    "May 5",
+                    "May 14"
+                  ],
+                  [
+                    "OpenAI",
+                    "Member of Tech Staff",
+                    "Phone Screen",
+                    "May 8",
+                    "May 18"
+                  ],
+                  [
+                    "Vercel",
+                    "AI Eng, Platform",
+                    "Applied",
+                    "May 10",
+                    "May 17"
+                  ],
+                  [
+                    "Stripe",
+                    "AI Eng, Risk",
+                    "Take-home",
+                    "May 6",
+                    "—"
+                  ]
+                ]
+              }
+            }
+          },
+          {
+            "id": "ai-engineer-interview-prep",
+            "number": "04",
+            "icon": "🗣️",
+            "title": "AI Engineer Interview Prep",
+            "category": "Interview",
+            "lesson": {
+              "overview": "The AI Engineer interview loop = coding, system design for AI products, prompt engineering live, and product sense. The 'whiteboard' is now 'design a RAG system for X'.",
+              "checklist": [
+                "LLM system design (RAG, agents, evals)",
+                "Prompt engineering live coding",
+                "Live debug a hallucinating model",
+                "Product sense (which feature ships first?)",
+                "Behavioral STAR with shipped AI projects",
+                "3+ mock interviews"
+              ],
+              "resources": [
+                {
+                  "label": "Eugene Yan — LLM patterns",
+                  "url": "https://eugeneyan.com/writing/llm-patterns/",
+                  "kind": "article",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                },
+                {
+                  "label": "AI Engineer Workshops — Latent Space",
+                  "url": "https://www.latent.space/",
+                  "kind": "article",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                }
+              ],
+              "videos": [
+                {
+                  "title": "AI Eng system design — Eugene Yan",
+                  "url": "https://www.youtube.com/watch?v=zjkBMFhNj_g",
+                  "youtubeId": "zjkBMFhNj_g",
+                  "linkCheck": {
+                    "status": "ok",
+                    "youtubeTitle": "[1hr Talk] Intro to Large Language Models | Andrej Karpathy",
+                    "checked": "2026-10-20",
+                    "labelMatches": false
+                  }
+                }
+              ],
+              "example": {
+                "kind": "flow",
+                "title": "System Design — AI Product at Scale",
+                "source": "ai-system-design",
+                "nodes": [
+                  {
+                    "icon": "🌐",
+                    "label": "10K req/s",
+                    "sub": "API gateway"
+                  },
+                  {
+                    "icon": "🛡️",
+                    "label": "Guardrails",
+                    "sub": "Input filter"
+                  },
+                  {
+                    "icon": "💾",
+                    "label": "Cache",
+                    "sub": "Redis"
+                  },
+                  {
+                    "icon": "🧠",
+                    "label": "Model router",
+                    "sub": "Cheap → big"
+                  },
+                  {
+                    "icon": "📡",
+                    "label": "Stream",
+                    "sub": "SSE"
+                  },
+                  {
+                    "icon": "📊",
+                    "label": "Observability",
+                    "sub": "Helicone"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "lessonDrawer": {
+    "tabs": [
+      "Learn",
+      "Demo"
+    ],
+    "labels": {
+      "checklist": "Learning Checklist",
+      "resources": "Free Resources",
+      "videos": "Watch"
+    },
+    "videoDisplay": "embeds",
+    "exampleFootnote": "Part of the AI Career Advisor capstone — your running project across all 7 phases."
+  },
+  "cta": {
+    "offer": {
+      "badge": "Founding Cohort · June 8",
+      "headingLines": [
+        "Stop Reading AI Newsletters.",
+        "Start Shipping AI Products."
+      ],
+      "body": "10 weeks of live mentorship, real LLM projects, and career coaching — everything you need to land your first AI Engineer role.",
+      "price": "$1,297",
+      "priceNote": "One-time · Lifetime access · or 3 × $467",
+      "features": [
+        "Live mentorship 2×/week",
+        "Live capstone (RAG + agents)",
+        "Resume + LinkedIn review",
+        "Lifetime community",
+        "Slack + office hours",
+        "10 weeks intensive"
+      ],
+      "ctas": [
+        {
+          "label": "FREE AI Roadmap Webinar",
+          "href": "https://www.meetup.com/stackle-your-career-lab/events/",
+          "external": true,
+          "style": "primary"
+        },
+        {
+          "label": "Book a Call",
+          "href": "https://calendar.app.google/gCDaTk9dCAgLUJAZ9",
+          "external": true,
+          "style": "secondary"
+        }
+      ],
+      "socialProof": {
+        "icons": [
+          "🤖",
+          "🧠",
+          "✍️",
+          "🚀"
+        ],
+        "text": "15 founding seats · most-popular cohort"
+      }
+    },
+    "divider": "or",
+    "bundle": {
+      "badge": "Bundle & Save",
+      "heading": "AI + Resume Marketing Bundle",
+      "price": "$1,797 · or 3 × $599",
+      "bodyMd": "Everything in the AI Masterclass **+ 1:1 resume rebuild, LinkedIn optimization, outbound playbook, and mock interviews.**",
+      "ctas": [
+        {
+          "label": "Explore Resume Marketing →",
+          "href": "/services/resume-marketing",
+          "external": false,
+          "style": "primary"
+        },
+        {
+          "label": "Connect on LinkedIn",
+          "href": "https://www.linkedin.com/in/crispusroshan/",
+          "external": true,
+          "style": "linkedin"
+        }
+      ]
+    }
+  }
+}

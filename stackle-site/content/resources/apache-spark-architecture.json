@@ -1,0 +1,1161 @@
+{
+  "slug": "apache-spark-architecture",
+  "title": "Apache Spark Architecture — Interactive Guide",
+  "eyebrow": "Architecture & execution",
+  "summary": "Apache Spark is a distributed processing engine: it turns one data program into coordinated work across many machines.",
+  "category": "Interactive",
+  "seo": {
+    "title": "Apache Spark Architecture | Stackle Resources",
+    "description": "Apache Spark is a distributed processing engine: it turns one data program into coordinated work across many machines."
+  },
+  "listing": {
+    "cardTitle": "Apache Spark Architecture — Interactive Guide",
+    "badge": "New",
+    "category": "Interactive",
+    "image": "/resources/apache-spark-architecture/card.jpg",
+    "imageOriginalUrl": "https://stackle.io/assets/apache-spark-architecture-DeqyqMD9.jpg",
+    "imageSize": [
+      1200,
+      912
+    ],
+    "author": "Stackle",
+    "likes": 0,
+    "views": "New"
+  },
+  "reader": {
+    "layout": "course-reader",
+    "urlParam": "lesson",
+    "searchPlaceholder": "Search lessons",
+    "searchEmptyText": "No lessons match your search.",
+    "backLink": {
+      "label": "Resources",
+      "url": "/resources"
+    },
+    "lessonNav": {
+      "previousLabel": "Previous",
+      "nextLabel": "Next",
+      "complete": {
+        "eyebrow": "Complete",
+        "label": "Back to resources",
+        "url": "/resources"
+      }
+    },
+    "brand": {
+      "name": "Apache Spark",
+      "tagline": "Architecture & execution",
+      "mark": "flame",
+      "accent": "resource-accent-cyan"
+    },
+    "progressLabel": "Learning path",
+    "navAriaLabel": "Apache Spark curriculum",
+    "headerActions": [
+      {
+        "kind": "link",
+        "label": "Official docs",
+        "url": "https://spark.apache.org/docs/latest/cluster-overview.html",
+        "external": true
+      }
+    ]
+  },
+  "stats": {
+    "modules": 7,
+    "lessons": 13,
+    "totalMinutes": 138,
+    "codeSamples": 9,
+    "tables": 11
+  },
+  "modules": [
+    {
+      "id": "foundations",
+      "label": "01 · Foundations",
+      "icon": "boxes",
+      "lessons": [
+        {
+          "id": "why-spark",
+          "number": 1,
+          "title": "Why distributed computing needs Spark",
+          "duration": "8 min",
+          "blocks": [
+            {
+              "type": "lede",
+              "text": "Apache Spark is a distributed processing engine: it turns one data program into coordinated work across many machines."
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "text": "The problem Spark solves"
+            },
+            {
+              "type": "paragraph",
+              "text": "A single computer eventually runs out of memory, CPU, or time. Vertical scaling buys a larger machine; horizontal scaling divides work across a cluster. Spark handles that division, schedules it, retries failures, and combines the results behind familiar APIs."
+            },
+            {
+              "type": "cards",
+              "columns": 3,
+              "items": [
+                {
+                  "title": "Scale out",
+                  "text": "Partitions let many CPU cores process separate pieces of a dataset concurrently."
+                },
+                {
+                  "title": "Keep a plan",
+                  "text": "A directed acyclic graph preserves the dependency path between every operation."
+                },
+                {
+                  "title": "Use one engine",
+                  "text": "Batch, SQL, streaming, machine learning, and graph workloads share one runtime."
+                }
+              ]
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "text": "Spark compared with MapReduce"
+            },
+            {
+              "type": "table",
+              "head": [
+                "Concern",
+                "Classic MapReduce",
+                "Spark"
+              ],
+              "rows": [
+                [
+                  "Execution",
+                  "Fixed map then reduce phases",
+                  "Multi-stage DAG"
+                ],
+                [
+                  "Intermediate data",
+                  "Frequently written to disk",
+                  "Can remain in memory"
+                ],
+                [
+                  "Workloads",
+                  "Primarily batch",
+                  "Batch, SQL, streaming, ML"
+                ],
+                [
+                  "API",
+                  "Low-level map/reduce",
+                  "DataFrame, SQL, Dataset, RDD"
+                ]
+              ]
+            },
+            {
+              "type": "callout",
+              "title": "Mental model",
+              "text": "Spark is not a storage system. It reads from systems such as object storage, HDFS, Kafka, and databases, then coordinates computation."
+            },
+            {
+              "type": "takeaways",
+              "items": [
+                "Spark scales one logical computation across a cluster.",
+                "Its DAG execution model supports more than a rigid map/reduce pipeline.",
+                "Distributed speed depends on partitioning, movement, and scheduling—not only more machines."
+              ]
+            }
+          ],
+          "minutes": 8
+        },
+        {
+          "id": "cluster-anatomy",
+          "number": 2,
+          "title": "Driver, cluster manager & executors",
+          "duration": "10 min",
+          "blocks": [
+            {
+              "type": "lede",
+              "text": "Every Spark application is a conversation between a driver that plans, a manager that allocates, and executors that calculate."
+            },
+            {
+              "type": "diagram",
+              "diagram": "cluster-architecture",
+              "ariaLabel": "Spark cluster architecture diagram",
+              "nodes": [
+                {
+                  "id": "driver",
+                  "eyebrow": "Control plane",
+                  "title": "Driver",
+                  "subtitle": "SparkSession · DAG scheduler",
+                  "highlight": true
+                },
+                {
+                  "id": "cluster-manager",
+                  "eyebrow": "Resource broker",
+                  "title": "Cluster manager",
+                  "children": [
+                    "Worker · Executor 1",
+                    "Worker · Executor 2"
+                  ]
+                }
+              ],
+              "edges": [
+                {
+                  "from": "driver",
+                  "to": "cluster-manager",
+                  "label": "requests\nresources →"
+                }
+              ],
+              "caption": "The driver plans work; the cluster manager allocates resources; executors run tasks and store data."
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "text": "Responsibilities"
+            },
+            {
+              "type": "table",
+              "head": [
+                "Component",
+                "Owns",
+                "Failure impact"
+              ],
+              "rows": [
+                [
+                  "Driver",
+                  "Your main program, query plans, jobs, task scheduling",
+                  "The application normally stops"
+                ],
+                [
+                  "Cluster manager",
+                  "CPU and memory allocation across applications",
+                  "New resources cannot be assigned"
+                ],
+                [
+                  "Executor",
+                  "Tasks, cached partitions, shuffle data",
+                  "Tasks are retried elsewhere"
+                ],
+                [
+                  "Worker node",
+                  "The host process or machine for executors",
+                  "All executors on it disappear"
+                ]
+              ]
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "text": "SparkSession and SparkContext"
+            },
+            {
+              "type": "paragraph",
+              "text": "**SparkSession** is the modern entry point for DataFrame, SQL, and streaming work. Underneath it, **SparkContext** connects the driver to the cluster and coordinates lower-level execution."
+            },
+            {
+              "type": "callout",
+              "title": "Isolation",
+              "text": "Each Spark application receives its own executors. Separate applications do not share executor memory unless data is written to an external system."
+            },
+            {
+              "type": "takeaways",
+              "items": [
+                "The driver is the brain, not a data worker.",
+                "Executors live for the application and run many tasks over time.",
+                "Size driver and executor resources for their different responsibilities."
+              ]
+            }
+          ],
+          "minutes": 10
+        }
+      ]
+    },
+    {
+      "id": "deployment",
+      "label": "02 · Deployment",
+      "icon": "network",
+      "lessons": [
+        {
+          "id": "cluster-managers",
+          "number": 3,
+          "title": "Standalone, YARN & Kubernetes",
+          "duration": "9 min",
+          "blocks": [
+            {
+              "type": "lede",
+              "text": "Spark is cluster-manager agnostic. The manager decides where processes run; Spark decides what those processes compute."
+            },
+            {
+              "type": "table",
+              "head": [
+                "Manager",
+                "Best fit",
+                "Trade-off"
+              ],
+              "rows": [
+                [
+                  "Spark Standalone",
+                  "Simple dedicated Spark clusters",
+                  "Easy to operate, fewer ecosystem controls"
+                ],
+                [
+                  "YARN",
+                  "Organizations already running Hadoop",
+                  "Mature multi-tenancy, Hadoop operational overhead"
+                ],
+                [
+                  "Kubernetes",
+                  "Cloud-native and containerized platforms",
+                  "Flexible isolation, requires Kubernetes expertise"
+                ],
+                [
+                  "Local",
+                  "Development and tests on one machine",
+                  "Not a distributed production environment"
+                ]
+              ]
+            },
+            {
+              "type": "code",
+              "language": "bash",
+              "code": "# Standalone cluster\nspark-submit --master spark://host:7077 app.py\n\n# YARN\nspark-submit --master yarn --deploy-mode cluster app.py\n\n# Kubernetes\nspark-submit --master k8s://https://cluster:6443 app.py"
+            },
+            {
+              "type": "callout",
+              "title": "Choose for operations",
+              "text": "The same DataFrame code can run on each manager. Choose from your platform, security, monitoring, elasticity, and team skills—not from API differences."
+            },
+            {
+              "type": "takeaways",
+              "items": [
+                "The cluster manager allocates processes; it does not create Spark's execution plan.",
+                "YARN fits Hadoop estates; Kubernetes fits container platforms.",
+                "Local mode is useful for learning but hides network and scale behavior."
+              ]
+            }
+          ],
+          "minutes": 9
+        },
+        {
+          "id": "deploy-modes",
+          "number": 4,
+          "title": "Client mode vs. cluster mode",
+          "duration": "8 min",
+          "blocks": [
+            {
+              "type": "lede",
+              "text": "Deploy mode answers one precise question: where does the driver process run?"
+            },
+            {
+              "type": "feature-cards",
+              "columns": 2,
+              "items": [
+                {
+                  "label": "Client mode",
+                  "title": "Driver stays with the submitter",
+                  "text": "Useful for notebooks, shells, and interactive debugging. The client must remain connected and reachable by executors."
+                },
+                {
+                  "label": "Cluster mode",
+                  "title": "Driver runs inside the cluster",
+                  "text": "Preferred for scheduled production jobs because the submitter can disconnect after submission.",
+                  "highlight": true
+                }
+              ]
+            },
+            {
+              "type": "code",
+              "language": "bash",
+              "code": "spark-submit \\\n  --master yarn \\\n  --deploy-mode cluster \\\n  --driver-memory 4g \\\n  --executor-memory 8g \\\n  --executor-cores 4 \\\n  jobs/daily_metrics.py"
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "text": "Network rule"
+            },
+            {
+              "type": "paragraph",
+              "text": "Executors must communicate directly with the driver. In client mode, firewalls, VPNs, or a laptop sleeping can terminate an otherwise healthy job."
+            },
+            {
+              "type": "takeaways",
+              "items": [
+                "Deploy mode locates the driver; master selects the resource manager.",
+                "Use client mode for interactive work and cluster mode for production.",
+                "Driver reachability is a first-class architecture requirement."
+              ]
+            }
+          ],
+          "minutes": 8
+        }
+      ]
+    },
+    {
+      "id": "execution",
+      "label": "03 · Execution model",
+      "icon": "git-branch",
+      "lessons": [
+        {
+          "id": "code-to-dag",
+          "number": 5,
+          "title": "From code to an execution plan",
+          "duration": "11 min",
+          "blocks": [
+            {
+              "type": "lede",
+              "text": "Spark does not execute each transformation immediately. It records intent, optimizes the whole plan, and starts only when an action demands a result."
+            },
+            {
+              "type": "pipeline",
+              "items": [
+                "User code",
+                "Logical plan",
+                "Optimized plan",
+                "Physical plan",
+                "Tasks"
+              ]
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "text": "Lazy evaluation"
+            },
+            {
+              "type": "code",
+              "language": "python",
+              "code": "events = spark.read.parquet(\"s3://lake/events\")\npaid = events.filter(\"status = 'paid'\")  # plan only\nby_day = paid.groupBy(\"event_date\").count()  # plan only\nby_day.write.mode(\"overwrite\").parquet(\"s3://lake/daily\")  # action"
+            },
+            {
+              "type": "paragraph",
+              "text": "The read, filter, and aggregation become a logical plan. The write is an action, so Spark chooses physical operators, divides the plan at shuffle boundaries, and sends tasks to executors."
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "text": "Catalyst and whole-stage code generation"
+            },
+            {
+              "type": "paragraph",
+              "text": "For SQL and DataFrames, Catalyst applies rules such as predicate pushdown, column pruning, constant folding, and join reordering. The physical plan then chooses operators such as broadcast hash join or sort-merge join."
+            },
+            {
+              "type": "callout",
+              "title": "Inspect before running",
+              "text": "`df.explain(\"formatted\")` reveals the logical and physical plans. It is often the fastest way to understand why data moved."
+            },
+            {
+              "type": "takeaways",
+              "items": [
+                "Transformations build plans; actions trigger jobs.",
+                "Catalyst can optimize structured operations because it understands schema and expressions.",
+                "The physical plan reveals exchanges, joins, scans, and filters."
+              ]
+            }
+          ],
+          "minutes": 11
+        },
+        {
+          "id": "jobs-stages-tasks",
+          "number": 6,
+          "title": "Applications, jobs, stages & tasks",
+          "duration": "12 min",
+          "blocks": [
+            {
+              "type": "lede",
+              "text": "Spark turns a high-level action into a hierarchy of increasingly small units of work."
+            },
+            {
+              "type": "diagram",
+              "diagram": "execution-hierarchy",
+              "root": {
+                "label": "Application",
+                "children": [
+                  {
+                    "label": "Job",
+                    "children": [
+                      {
+                        "label": "Stage 0",
+                        "text": "Task per input partition"
+                      },
+                      {
+                        "label": "Stage 1",
+                        "text": "Task per shuffle partition"
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "type": "table",
+              "head": [
+                "Unit",
+                "Created by",
+                "Meaning"
+              ],
+              "rows": [
+                [
+                  "Application",
+                  "One SparkSession / driver lifecycle",
+                  "All work for a submitted program"
+                ],
+                [
+                  "Job",
+                  "An action",
+                  "Work required to return or save one result"
+                ],
+                [
+                  "Stage",
+                  "A shuffle boundary",
+                  "Tasks that can run without redistributing data"
+                ],
+                [
+                  "Task",
+                  "One stage × one partition",
+                  "Smallest scheduled unit, run by one executor core"
+                ]
+              ]
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "text": "Narrow and wide dependencies"
+            },
+            {
+              "type": "cards",
+              "columns": 2,
+              "items": [
+                {
+                  "title": "Narrow",
+                  "text": "Each output partition reads from a small number of input partitions. map and filter can pipeline in one stage."
+                },
+                {
+                  "title": "Wide",
+                  "text": "Output partitions need data from many inputs. joins, groupBy, distinct, and repartition usually shuffle."
+                }
+              ]
+            },
+            {
+              "type": "takeaways",
+              "items": [
+                "One action creates one or more jobs.",
+                "Wide dependencies create shuffle boundaries and new stages.",
+                "Partition count controls the number of tasks in a stage."
+              ]
+            }
+          ],
+          "minutes": 12
+        }
+      ]
+    },
+    {
+      "id": "apis",
+      "label": "04 · Data abstractions",
+      "icon": "braces",
+      "lessons": [
+        {
+          "id": "rdds",
+          "number": 7,
+          "title": "RDDs, partitions & lineage",
+          "duration": "10 min",
+          "blocks": [
+            {
+              "type": "lede",
+              "text": "An RDD is an immutable, partitioned collection whose lineage records how every partition can be rebuilt."
+            },
+            {
+              "type": "pipeline",
+              "items": [
+                "Source RDD",
+                "map",
+                "filter",
+                "reduceByKey",
+                "Result"
+              ]
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "text": "Three properties"
+            },
+            {
+              "type": "cards",
+              "columns": 3,
+              "items": [
+                {
+                  "title": "Distributed",
+                  "text": "Partitions are processed concurrently on executors."
+                },
+                {
+                  "title": "Immutable",
+                  "text": "A transformation creates a new RDD rather than changing the old one."
+                },
+                {
+                  "title": "Resilient",
+                  "text": "Lost partitions can be recomputed from their lineage."
+                }
+              ]
+            },
+            {
+              "type": "code",
+              "language": "python",
+              "code": "lines = sc.textFile(\"s3://logs/*.txt\")\nerrors = lines.filter(lambda line: \"ERROR\" in line)\ncounts = errors.map(lambda line: (line.split()[0], 1)) \\\n               .reduceByKey(lambda a, b: a + b)\nprint(counts.take(10))"
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "text": "Transformations and actions"
+            },
+            {
+              "type": "table",
+              "head": [
+                "Type",
+                "Examples",
+                "Behavior"
+              ],
+              "rows": [
+                [
+                  "Transformation",
+                  "map, filter, flatMap, reduceByKey",
+                  "Returns another RDD lazily"
+                ],
+                [
+                  "Action",
+                  "count, take, collect, saveAsTextFile",
+                  "Triggers execution and returns or writes a result"
+                ]
+              ]
+            },
+            {
+              "type": "callout",
+              "title": "Avoid collect",
+              "text": "Calling `collect()` moves the entire result to driver memory. Use `take()`, write to storage, or aggregate first."
+            },
+            {
+              "type": "takeaways",
+              "items": [
+                "RDD lineage enables fault recovery without eagerly copying every partition.",
+                "Transformations are lazy; actions trigger computation.",
+                "Prefer structured APIs unless low-level control is genuinely required."
+              ]
+            }
+          ],
+          "minutes": 10
+        },
+        {
+          "id": "structured-apis",
+          "number": 8,
+          "title": "DataFrames, Datasets & Spark SQL",
+          "duration": "10 min",
+          "blocks": [
+            {
+              "type": "lede",
+              "text": "A DataFrame adds schema and expressions to distributed data, giving Spark enough information to optimize the work."
+            },
+            {
+              "type": "table",
+              "head": [
+                "API",
+                "Strength",
+                "Use when"
+              ],
+              "rows": [
+                [
+                  "DataFrame",
+                  "Portable, optimized, expressive",
+                  "Default for Python, Scala, Java, and R"
+                ],
+                [
+                  "Dataset",
+                  "DataFrame optimization plus JVM type safety",
+                  "Typed Scala or Java pipelines"
+                ],
+                [
+                  "RDD",
+                  "Fine-grained objects and custom partition logic",
+                  "The structured APIs cannot express the computation"
+                ],
+                [
+                  "SQL",
+                  "Accessible declarative analytics",
+                  "Analysts and transformations fit relational operations"
+                ]
+              ]
+            },
+            {
+              "type": "code",
+              "language": "python",
+              "code": "from pyspark.sql import functions as F\n\nresult = (spark.read.parquet(\"s3://lake/orders\")\n  .filter(F.col(\"status\") == \"paid\")\n  .groupBy(\"country\")\n  .agg(F.sum(\"amount\").alias(\"revenue\"))\n  .orderBy(F.desc(\"revenue\")))\n\nresult.explain(\"formatted\")"
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "text": "Why DataFrames are usually faster"
+            },
+            {
+              "type": "paragraph",
+              "text": "Spark can prune unused columns, push filters toward the source, select a join strategy, generate compact JVM code, and use efficient columnar formats. A raw Python RDD hides much of that intent behind arbitrary functions."
+            },
+            {
+              "type": "takeaways",
+              "items": [
+                "DataFrame is the default abstraction for modern Spark work.",
+                "Schema allows Spark to optimize before execution.",
+                "SQL and DataFrame code share the same Catalyst planning engine."
+              ]
+            }
+          ],
+          "minutes": 10
+        }
+      ]
+    },
+    {
+      "id": "performance",
+      "label": "05 · Performance",
+      "icon": "gauge",
+      "lessons": [
+        {
+          "id": "shuffle",
+          "number": 9,
+          "title": "Shuffles & partition strategy",
+          "duration": "12 min",
+          "blocks": [
+            {
+              "type": "lede",
+              "text": "A shuffle redistributes records between executors. It is often the most expensive boundary in a Spark job."
+            },
+            {
+              "type": "diagram",
+              "diagram": "shuffle",
+              "inputs": [
+                "Partition A",
+                "Partition B",
+                "Partition C"
+              ],
+              "label": "shuffle write ↓ network fetch ↓ shuffle read",
+              "outputs": [
+                "Key group 1",
+                "Key group 2"
+              ]
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "text": "What causes one"
+            },
+            {
+              "type": "paragraph",
+              "text": "Operations including **groupBy**, **distinct**, most joins, **orderBy**, and **repartition** require records with matching keys to meet in the same output partition."
+            },
+            {
+              "type": "table",
+              "head": [
+                "Symptom",
+                "Likely cause",
+                "First response"
+              ],
+              "rows": [
+                [
+                  "One task runs much longer",
+                  "Skewed key",
+                  "Salt the key or enable AQE skew handling"
+                ],
+                [
+                  "Huge shuffle read",
+                  "Early wide operation",
+                  "Filter and project before grouping or joining"
+                ],
+                [
+                  "Many tiny tasks",
+                  "Too many partitions",
+                  "Coalesce or let AQE combine partitions"
+                ],
+                [
+                  "Large sort-merge join",
+                  "Small side not broadcast",
+                  "Validate size and consider broadcast"
+                ]
+              ]
+            },
+            {
+              "type": "code",
+              "language": "python",
+              "code": "# Make a small dimension local to each executor\nfrom pyspark.sql.functions import broadcast\nresult = facts.join(broadcast(dim_customer), \"customer_id\")\n\n# Inspect current parallelism\nprint(result.rdd.getNumPartitions())"
+            },
+            {
+              "type": "takeaways",
+              "items": [
+                "A shuffle uses network, disk, serialization, and often sorting.",
+                "Filter early and avoid moving columns you do not need.",
+                "Partition count and data distribution matter more than a single magic number."
+              ]
+            }
+          ],
+          "minutes": 12
+        },
+        {
+          "id": "cache",
+          "number": 10,
+          "title": "Caching, persistence & memory",
+          "duration": "10 min",
+          "blocks": [
+            {
+              "type": "lede",
+              "text": "Caching trades executor memory for avoided recomputation. It helps only when the same expensive result is reused."
+            },
+            {
+              "type": "table",
+              "head": [
+                "Storage level",
+                "Behavior",
+                "Typical use"
+              ],
+              "rows": [
+                [
+                  "MEMORY_ONLY",
+                  "Keep deserialized partitions; recompute evicted data",
+                  "Fast iterative reuse when memory is ample"
+                ],
+                [
+                  "MEMORY_AND_DISK",
+                  "Spill partitions that do not fit",
+                  "Safer default for large reused datasets"
+                ],
+                [
+                  "DISK_ONLY",
+                  "Store partitions on local disk",
+                  "Expensive lineage with constrained memory"
+                ],
+                [
+                  "OFF_HEAP",
+                  "Use configured off-heap memory",
+                  "Specialized, carefully tuned deployments"
+                ]
+              ]
+            },
+            {
+              "type": "code",
+              "language": "python",
+              "code": "base = spark.read.parquet(\"s3://lake/events\").filter(\"event_date >= '2026-01-01'\")\nbase.persist()\nbase.groupBy(\"country\").count().write.mode(\"overwrite\").saveAsTable(\"country_counts\")\nbase.groupBy(\"device\").count().write.mode(\"overwrite\").saveAsTable(\"device_counts\")\nbase.unpersist()"
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "text": "Unified memory"
+            },
+            {
+              "type": "paragraph",
+              "text": "Executor memory is shared between execution work—joins, sorts, aggregation—and storage for cached blocks. Execution can evict cached data. When either cannot fit, Spark spills to disk or fails if overhead exceeds the container limit."
+            },
+            {
+              "type": "callout",
+              "title": "Cache deliberately",
+              "text": "Caching data used once adds work: materialization, memory pressure, and possible spill. Check the Storage tab and unpersist when reuse ends."
+            },
+            {
+              "type": "takeaways",
+              "items": [
+                "Cache reused, expensive results—not every DataFrame.",
+                "MEMORY_AND_DISK avoids repeated recomputation when data exceeds memory.",
+                "Unpersist finished datasets to free executor storage."
+              ]
+            }
+          ],
+          "minutes": 10
+        }
+      ]
+    },
+    {
+      "id": "reliability",
+      "label": "06 · Reliability & operations",
+      "icon": "activity",
+      "lessons": [
+        {
+          "id": "fault-tolerance",
+          "number": 11,
+          "title": "Fault tolerance & scheduling",
+          "duration": "10 min",
+          "blocks": [
+            {
+              "type": "lede",
+              "text": "Spark expects machines and tasks to fail. The scheduler retries work and uses lineage to reconstruct lost data."
+            },
+            {
+              "type": "pipeline",
+              "items": [
+                "Task fails",
+                "Executor lost",
+                "Scheduler retries",
+                "Lineage rebuilds",
+                "Stage completes"
+              ]
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "text": "Recovery at each layer"
+            },
+            {
+              "type": "table",
+              "head": [
+                "Failure",
+                "What Spark can do",
+                "What you control"
+              ],
+              "rows": [
+                [
+                  "Task exception",
+                  "Retry the task",
+                  "Make code deterministic and fix bad records"
+                ],
+                [
+                  "Executor loss",
+                  "Run tasks elsewhere; rebuild cached partitions",
+                  "Set realistic memory and overhead"
+                ],
+                [
+                  "Slow task",
+                  "Speculative duplicate may finish first",
+                  "Fix skew before relying on speculation"
+                ],
+                [
+                  "Driver loss",
+                  "Application usually terminates",
+                  "Use cluster mode and platform restart policies"
+                ]
+              ]
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "text": "FIFO and FAIR scheduling"
+            },
+            {
+              "type": "paragraph",
+              "text": "Within one SparkContext, FIFO runs jobs in submission order by default. FAIR scheduling divides resources among pools so shorter or interactive work can progress alongside long jobs."
+            },
+            {
+              "type": "callout",
+              "title": "Exactly once is broader than Spark",
+              "text": "A retried task may execute user code more than once. Avoid side effects inside transformations, and use idempotent or transactional output patterns."
+            },
+            {
+              "type": "takeaways",
+              "items": [
+                "Lineage repairs data partitions; task retry repairs computation.",
+                "Driver failure is different from executor failure.",
+                "Retries make side effects dangerous unless writes are idempotent."
+              ]
+            }
+          ],
+          "minutes": 10
+        },
+        {
+          "id": "spark-ui",
+          "number": 12,
+          "title": "Read the Spark UI & diagnose jobs",
+          "duration": "13 min",
+          "blocks": [
+            {
+              "type": "lede",
+              "text": "The Spark UI turns an abstract DAG into evidence: where time went, where bytes moved, and which executor struggled."
+            },
+            {
+              "type": "diagram",
+              "diagram": "spark-ui-mock",
+              "tabs": [
+                "Jobs",
+                "Stages",
+                "Storage",
+                "SQL",
+                "Executors"
+              ],
+              "activeTab": "Stages",
+              "metrics": [
+                {
+                  "value": "14.2 GB",
+                  "label": "Shuffle read"
+                },
+                {
+                  "value": "31 s",
+                  "label": "Median task"
+                },
+                {
+                  "value": "8 min",
+                  "label": "Maximum task · skew",
+                  "highlight": true
+                }
+              ]
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "text": "A repeatable diagnostic sequence"
+            },
+            {
+              "type": "list",
+              "ordered": true,
+              "items": [
+                "Open the SQL or Jobs tab and locate the slow action.",
+                "Find the longest stage in the DAG.",
+                "Compare median and maximum task duration to detect skew.",
+                "Check shuffle read/write, input size, spill, and garbage-collection time.",
+                "Open Executors to identify one unhealthy host or uneven task distribution.",
+                "Map the physical operator back to the relevant source transformation."
+              ]
+            },
+            {
+              "type": "table",
+              "head": [
+                "Signal",
+                "Interpretation",
+                "Likely fix"
+              ],
+              "rows": [
+                [
+                  "High disk spill",
+                  "Execution memory was insufficient",
+                  "Reduce partition size or tune resources"
+                ],
+                [
+                  "High GC time",
+                  "Object pressure or oversized heap",
+                  "Use DataFrames, reduce caching, right-size heap"
+                ],
+                [
+                  "Very uneven task time",
+                  "Data skew",
+                  "AQE, salting, or different partition key"
+                ],
+                [
+                  "Thousands of tiny input tasks",
+                  "Small-file problem",
+                  "Compact files and tune file partition sizing"
+                ],
+                [
+                  "Driver OOM",
+                  "Too much data returned to driver",
+                  "Remove collect/toPandas or aggregate first"
+                ]
+              ]
+            },
+            {
+              "type": "takeaways",
+              "items": [
+                "Start with the longest stage, then inspect task distribution.",
+                "Shuffle, spill, GC, and skew each leave distinct evidence.",
+                "Use the plan and UI together: one explains structure, the other shows runtime cost."
+              ]
+            }
+          ],
+          "minutes": 13
+        }
+      ]
+    },
+    {
+      "id": "capstone",
+      "label": "07 · Practical workflow",
+      "icon": "layers-3",
+      "lessons": [
+        {
+          "id": "optimize-job",
+          "number": 13,
+          "title": "Capstone: optimize a slow Spark job",
+          "duration": "15 min",
+          "blocks": [
+            {
+              "type": "lede",
+              "text": "Bring the architecture together by diagnosing a slow customer-revenue pipeline before changing any configuration."
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "text": "The scenario"
+            },
+            {
+              "type": "paragraph",
+              "text": "A daily pipeline joins 1.2 billion transaction rows to a 40 MB customer table, groups by country, and writes 2,000 tiny files. One stage lasts 28 minutes while most tasks finish in 40 seconds."
+            },
+            {
+              "type": "code",
+              "language": "python",
+              "code": "transactions = spark.read.parquet(\"s3://lake/transactions/day=2026-09-20\")\ncustomers = spark.read.parquet(\"s3://lake/customers\")\n\nresult = (transactions\n  .join(customers, \"customer_id\")\n  .groupBy(\"country\")\n  .sum(\"amount\"))\n\nresult.write.mode(\"overwrite\").parquet(\"s3://curated/revenue\")"
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "text": "Evidence before tuning"
+            },
+            {
+              "type": "table",
+              "head": [
+                "Observation",
+                "Inference"
+              ],
+              "rows": [
+                [
+                  "SortMergeJoin in physical plan",
+                  "Spark did not broadcast the small dimension"
+                ],
+                [
+                  "One task is 40× the median",
+                  "One key or partition is heavily skewed"
+                ],
+                [
+                  "Shuffle read is 900 GB",
+                  "Too much data crossed the network"
+                ],
+                [
+                  "2,000 output files averaging 30 KB",
+                  "Output has excessive partition count"
+                ]
+              ]
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "text": "A reasoned revision"
+            },
+            {
+              "type": "code",
+              "language": "python",
+              "code": "from pyspark.sql import functions as F\nfrom pyspark.sql.functions import broadcast\n\nresult = (transactions\n  .select(\"customer_id\", \"amount\")\n  .join(broadcast(customers.select(\"customer_id\", \"country\")), \"customer_id\")\n  .groupBy(\"country\")\n  .agg(F.sum(\"amount\").alias(\"revenue\"))\n  .coalesce(8))\n\nresult.write.mode(\"overwrite\").parquet(\"s3://curated/revenue\")"
+            },
+            {
+              "type": "callout",
+              "title": "Measure again",
+              "text": "A code change is a hypothesis. Compare total duration, shuffle bytes, spill, task distribution, and file sizes after every revision."
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "text": "Production checklist"
+            },
+            {
+              "type": "list",
+              "ordered": false,
+              "items": [
+                "Filter and select columns before joins and aggregations.",
+                "Confirm join choice with `explain(\"formatted\")`.",
+                "Use AQE, but understand what it changed.",
+                "Watch maximum task time, not only the average.",
+                "Control output files without collapsing a large workload to one partition.",
+                "Capture Spark UI event logs for later comparison."
+              ]
+            },
+            {
+              "type": "link-card",
+              "label": "Continue learning",
+              "text": "Use the official Apache Spark documentation as the source of truth for behavior and configuration in your installed version.",
+              "link": {
+                "label": "Open the Cluster Mode Overview →",
+                "url": "https://spark.apache.org/docs/latest/cluster-overview.html",
+                "external": true
+              }
+            },
+            {
+              "type": "takeaways",
+              "items": [
+                "Diagnose from evidence before adding resources or configuration.",
+                "Reduce data early, broadcast genuinely small inputs, and control output partitions.",
+                "Optimization is a measured loop: plan, observe, change, compare."
+              ]
+            }
+          ],
+          "minutes": 15
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1732 @@
+{
+  "slug": "data-analyst-roadmap",
+  "title": "Data Analyst Roadmap 2026 — Power BI & Tableau",
+  "eyebrow": "Free Career Guide · Updated for 2026",
+  "summary": "From zero to job-ready in 8 weeks — master Excel, SQL, Python, Power BI and Tableau with one running dataset and a portfolio that gets callbacks.",
+  "category": "Roadmaps",
+  "seo": {
+    "title": "Data Analyst Roadmap 2026 — Power BI, Tableau, SQL · Stackle",
+    "description": "From zero to Senior Data Analyst in 8 weeks — Excel, SQL, Python, Power BI, Tableau, and storytelling. Free roadmap with live demos and salary expectations."
+  },
+  "card": {
+    "title": "Data Analyst Roadmap 2026 — Power BI & Tableau",
+    "badge": "New",
+    "image": "/resources/data-analyst-roadmap/card.jpg",
+    "imageOriginalUrl": "https://stackle.io/assets/data-analyst-roadmap-CbcX-nCv.jpg",
+    "displayedLikes": 142,
+    "displayedViews": "5.8k",
+    "note": "Card shown on the old /resources index, not on this page. Likes/views are hard-coded numbers."
+  },
+  "hero": {
+    "eyebrow": "Free Career Guide · Updated for 2026",
+    "headingLines": [
+      "The Data Analyst",
+      "Career Roadmap"
+    ],
+    "lead": "From zero to job-ready in 8 weeks — master Excel, SQL, Python, Power BI and Tableau with one running dataset and a portfolio that gets callbacks.",
+    "leadMd": "From zero to job-ready in 8 weeks — master Excel, SQL, Python, **Power BI** and **Tableau** with one running dataset and a portfolio that gets callbacks.",
+    "ctas": [
+      {
+        "label": "Explore the Roadmap ↓",
+        "href": "#phases",
+        "external": false,
+        "style": "primary"
+      },
+      {
+        "label": "FREE Analyst Masterclass",
+        "href": "https://www.meetup.com/stackle-your-career-lab/events/",
+        "external": true,
+        "style": "secondary"
+      },
+      {
+        "label": "Book a Call",
+        "href": "https://calendar.app.google/gCDaTk9dCAgLUJAZ9",
+        "external": true,
+        "style": "secondary"
+      }
+    ]
+  },
+  "stack": {
+    "eyebrow": "// 00 — THE FIELD",
+    "heading": "What does a Data Analyst actually do?",
+    "intro": "A Data Analyst turns raw business data into dashboards and answers executives act on. You don't build models — you build clarity. Below is the modern analyst stack you'll master.",
+    "items": [
+      {
+        "icon": "📗",
+        "name": "Excel"
+      },
+      {
+        "icon": "🐘",
+        "name": "SQL"
+      },
+      {
+        "icon": "🐍",
+        "name": "Python"
+      },
+      {
+        "icon": "📊",
+        "name": "Power BI"
+      },
+      {
+        "icon": "📈",
+        "name": "Tableau"
+      },
+      {
+        "icon": "🎨",
+        "name": "Storytelling"
+      }
+    ],
+    "caption": "THE MODERN ANALYST STACK — YOU'LL SHIP ALL OF THIS"
+  },
+  "salaryTable": {
+    "eyebrow": "// 01 — CAREER PROGRESSION",
+    "heading": "Roles & Salary Expectations",
+    "intro": "No CS degree, no PhD. You need the right portfolio, the right tools (Power BI + Tableau), and interview prep.",
+    "columns": [
+      "PHASE",
+      "STAGE",
+      "TYPICAL ROLE",
+      "SALARY RANGE (USD)"
+    ],
+    "rows": [
+      {
+        "phase": "Phase 0",
+        "stage": "Beginner",
+        "stageIcon": "🧭",
+        "role": "Exploring Analytics",
+        "salary": "—",
+        "isTarget": false
+      },
+      {
+        "phase": "Phase 1",
+        "stage": "Excel + SQL",
+        "stageIcon": "📗🐘",
+        "role": "Junior Data Analyst",
+        "salary": "$65k – $90k",
+        "isTarget": false
+      },
+      {
+        "phase": "Phase 2",
+        "stage": "Python + Power BI + Tableau",
+        "stageIcon": "🐍📊📈",
+        "role": "Data Analyst / BI Analyst",
+        "salary": "$90k – $135k",
+        "isTarget": false
+      },
+      {
+        "phase": "Phase 3",
+        "stage": "Stats + Story",
+        "stageIcon": "🎨",
+        "role": "Senior Analyst / Analytics Lead",
+        "salary": "$140k – $190k",
+        "isTarget": false
+      },
+      {
+        "phase": "Phase 4",
+        "stage": "Get Hired",
+        "stageIcon": "💼",
+        "role": "—",
+        "salary": "Target $120k+ offer",
+        "isTarget": true
+      }
+    ],
+    "footnote": "* Salary ranges vary by location, industry, and tool specialization (Power BI vs Tableau vs Looker)."
+  },
+  "roles": {
+    "eyebrow": "// ROLES & COMPENSATION",
+    "heading": "Where Data Analysts Land",
+    "intro": "Six paths that hire from this roadmap — and what they pay in the US market (2026).",
+    "items": [
+      {
+        "title": "Junior Data Analyst",
+        "level": "Entry",
+        "salary": "$60K – $85K",
+        "skills": [
+          "Excel",
+          "SQL",
+          "Power BI"
+        ]
+      },
+      {
+        "title": "Data Analyst",
+        "level": "Mid",
+        "salary": "$80K – $115K",
+        "skills": [
+          "SQL",
+          "Python",
+          "Tableau"
+        ]
+      },
+      {
+        "title": "BI Analyst / Developer",
+        "level": "Mid+",
+        "salary": "$95K – $135K",
+        "skills": [
+          "Power BI",
+          "DAX",
+          "Data Modeling"
+        ]
+      },
+      {
+        "title": "Senior Data Analyst",
+        "level": "Senior",
+        "salary": "$110K – $150K",
+        "skills": [
+          "SQL",
+          "Stats",
+          "Storytelling"
+        ]
+      },
+      {
+        "title": "Product Analyst",
+        "level": "Senior",
+        "salary": "$120K – $170K",
+        "skills": [
+          "A/B Tests",
+          "Amplitude",
+          "SQL"
+        ]
+      },
+      {
+        "title": "Analytics Lead / Manager",
+        "level": "Lead",
+        "salary": "$140K – $200K",
+        "skills": [
+          "Strategy",
+          "Mentorship",
+          "Exec Comms"
+        ]
+      }
+    ],
+    "footnote": "US averages (2025–2026). FAANG + top fintech pay 30–60% above the upper bound for senior+ roles."
+  },
+  "roadmap": {
+    "eyebrow": "// 02 — YOUR JOURNEY",
+    "heading": "The 7 Phases to Senior Data Analyst",
+    "introMd": "Each phase builds on the last. Click any **step row** to see its learning checklist, free resources, and a live code/data demo.",
+    "runningExampleMd": "**Running example:** You'll build the *Retail Sales Performance* dashboard end-to-end — first in Power BI, then again in Tableau — across all 7 phases.",
+    "phases": [
+      {
+        "id": "phase-0",
+        "number": "01",
+        "label": "Phase 0",
+        "icon": "🧭",
+        "stage": "Beginner",
+        "title": "Is Data Analytics right for me?",
+        "fullTitle": "Beginner — Is Data Analytics right for me?",
+        "salary": {
+          "text": "Exploring",
+          "kind": "none"
+        },
+        "description": "Data Analysts turn messy company data into clear answers and dashboards. No CS degree required. If you love asking 'why?' and live in spreadsheets, you'll thrive — and there are 10× more open jobs than qualified analysts in 2026.",
+        "skills": [
+          "Career Exploration"
+        ],
+        "topics": [
+          {
+            "id": "understand-the-role",
+            "number": "01",
+            "icon": "🌟",
+            "title": "Understand the Role",
+            "category": "Career Setup",
+            "lesson": {
+              "overview": "Data Analysts turn messy company data into clear answers and dashboards that executives actually act on. You'll live in SQL, Excel, Power BI and Tableau — and your output is decisions, not models.",
+              "checklist": [
+                "Read 5 real Data Analyst job posts (LinkedIn, Wellfound)",
+                "Understand the difference: Analyst vs BI vs Analytics Eng",
+                "Pick 2 industries that excite you (retail, fintech, SaaS, health)",
+                "Follow 3 BI creators on YouTube",
+                "Join r/dataanalysis and the Power BI / Tableau communities"
+              ],
+              "resources": [
+                {
+                  "label": "What does a Data Analyst do? — Coursera",
+                  "url": "https://www.coursera.org/articles/what-does-a-data-analyst-do-a-career-guide",
+                  "kind": "course",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                },
+                {
+                  "label": "r/dataanalysis",
+                  "url": "https://www.reddit.com/r/dataanalysis/",
+                  "kind": "community",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                }
+              ],
+              "videos": [
+                {
+                  "title": "Day in the life of a Data Analyst — Stefanovic",
+                  "url": "https://www.youtube.com/watch?v=rgKAcLLg7Cs",
+                  "youtubeId": "rgKAcLLg7Cs",
+                  "linkCheck": {
+                    "status": "unavailable",
+                    "note": "YouTube says \"This video is unavailable\"",
+                    "checked": "2026-10-20"
+                  }
+                }
+              ],
+              "example": {
+                "kind": "code",
+                "title": "Your Running Dataset — Retail Sales Analytics",
+                "language": "json",
+                "code": "// You'll use this same dataset across all 7 phases:\n//   Excel → SQL → Python → Power BI → Tableau → Portfolio\n\n{\n  \"order_id\": \"ORD-20260118-7741\",\n  \"customer_id\": \"CUS-9182\",\n  \"store\": \"Berlin Mitte\",\n  \"region\": \"DACH\",\n  \"product\": \"Wireless Headphones X3\",\n  \"category\": \"Electronics\",\n  \"quantity\": 2,\n  \"unit_price\": 149.00,\n  \"discount_pct\": 10,\n  \"channel\": \"online\",\n  \"order_date\": \"2026-01-18T14:32:00Z\"\n}\n\n// Phase 1: Clean & pivot it in Excel\n// Phase 2: Query it with SQL (top products, cohorts)\n// Phase 3: Reshape it with Pandas\n// Phase 4: Build the Sales Performance dashboard in Power BI\n// Phase 5: Build the same dashboard in Tableau\n// Phase 6: Tell the story with stats + executive summary\n// Phase 7: Put the live dashboards on your portfolio + resume"
+              }
+            }
+          },
+          {
+            "id": "analyst-vs-bi-vs-analytics-eng",
+            "number": "02",
+            "icon": "🔬",
+            "title": "Analyst vs BI vs Analytics Eng",
+            "category": "Skills",
+            "lesson": {
+              "overview": "Three roles work with the same data warehouse but ship different things. Knowing the difference lets you target the right job posts and grow into the right next role.",
+              "checklist": [
+                "Compare daily tasks of each role",
+                "Map tools each role uses",
+                "Compare salary ranges in your market",
+                "Pick which role you want in 12 months"
+              ],
+              "resources": [
+                {
+                  "label": "Analyst vs BI vs Analytics Engineer — dbt",
+                  "url": "https://www.getdbt.com/what-is-analytics-engineering",
+                  "kind": "article",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                }
+              ],
+              "videos": [
+                {
+                  "title": "Data Analyst vs BI vs Analytics Engineer",
+                  "url": "https://www.youtube.com/watch?v=mWWVrPmlNbA",
+                  "youtubeId": "mWWVrPmlNbA",
+                  "linkCheck": {
+                    "status": "unavailable",
+                    "note": "YouTube says \"This video is unavailable\"",
+                    "checked": "2026-10-20"
+                  }
+                }
+              ],
+              "example": {
+                "kind": "table",
+                "title": "Role Comparison — Same warehouse, different output",
+                "source": "role-comparison",
+                "columns": [
+                  "ROLE",
+                  "WORKS WITH",
+                  "TOOLS",
+                  "OUTPUT"
+                ],
+                "rows": [
+                  [
+                    "Data Analyst",
+                    "Business questions",
+                    "SQL, Excel, Power BI, Tableau",
+                    "Dashboards + insights"
+                  ],
+                  [
+                    "BI Developer",
+                    "Reporting stack",
+                    "Power BI / Tableau Server, SSIS",
+                    "Production dashboards"
+                  ],
+                  [
+                    "Analytics Engineer",
+                    "Warehouse models",
+                    "dbt, SQL, BigQuery/Snowflake",
+                    "Clean, tested data marts"
+                  ],
+                  [
+                    "Product Analyst",
+                    "Funnels & experiments",
+                    "Amplitude, SQL, A/B tools",
+                    "Product decisions"
+                  ]
+                ]
+              }
+            }
+          },
+          {
+            "id": "explore-career-path",
+            "number": "03",
+            "icon": "📄",
+            "title": "Explore Career Path",
+            "category": "Theory",
+            "lesson": {
+              "overview": "Data Analyst → Senior Analyst → Analytics Lead / BI Manager → Head of Analytics. Or pivot sideways into Analytics Engineer or Data Scientist. Each level pays more for less reporting and more strategy.",
+              "checklist": [
+                "Research salary ranges at each level (Levels.fyi, Glassdoor)",
+                "Find one Senior Analyst on LinkedIn and read their path",
+                "Set a 12-month income target",
+                "Pick your specialty: Marketing, Product, Finance, Ops"
+              ],
+              "resources": [
+                {
+                  "label": "Levels.fyi — Data Analyst",
+                  "url": "https://www.levels.fyi/t/data-analyst",
+                  "kind": "salary-data",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                },
+                {
+                  "label": "Glassdoor — Data Analyst Salary",
+                  "url": "https://www.glassdoor.com/Salaries/data-analyst-salary-SRCH_KO0,12.htm",
+                  "kind": "salary-data",
+                  "linkCheck": {
+                    "status": "unverified",
+                    "httpStatus": 403,
+                    "note": "bot protection blocked the check",
+                    "checked": "2026-10-20"
+                  }
+                }
+              ],
+              "videos": [
+                {
+                  "title": "Data Analyst career progression — Luke Barousse",
+                  "url": "https://www.youtube.com/watch?v=2WiQyXKZ8jE",
+                  "youtubeId": "2WiQyXKZ8jE",
+                  "linkCheck": {
+                    "status": "unavailable",
+                    "note": "YouTube says \"This video is unavailable\"",
+                    "checked": "2026-10-20"
+                  }
+                }
+              ],
+              "example": {
+                "kind": "ladder",
+                "title": "Career Progression Path",
+                "source": "career-path",
+                "steps": [
+                  {
+                    "level": "Junior Data Analyst",
+                    "salary": "$60k – $85k"
+                  },
+                  {
+                    "level": "Data Analyst",
+                    "salary": "$80k – $115k"
+                  },
+                  {
+                    "level": "Senior Data Analyst",
+                    "salary": "$110k – $150k"
+                  },
+                  {
+                    "level": "Analytics Lead / BI Manager",
+                    "salary": "$140k – $190k"
+                  },
+                  {
+                    "level": "Head of Analytics",
+                    "salary": "$180k – $280k+"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "id": "career-decision",
+            "number": "04",
+            "icon": "🎯",
+            "title": "Career Decision",
+            "category": "Career Setup",
+            "lesson": {
+              "overview": "Before investing 3 months, make sure analytics is for you. If you enjoy asking 'why?', live in spreadsheets, and like turning numbers into stories — you'll thrive.",
+              "checklist": [
+                "Finish a free Excel pivot table tutorial",
+                "Write one SQL query on a public dataset",
+                "Open Power BI Desktop (free) and load a CSV",
+                "Commit to 8–10 weeks of focused learning"
+              ],
+              "resources": [
+                {
+                  "label": "Power BI Desktop (free download)",
+                  "url": "https://www.microsoft.com/en-us/download/details.aspx?id=58494",
+                  "kind": "tool",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                },
+                {
+                  "label": "Tableau Public (free)",
+                  "url": "https://public.tableau.com/",
+                  "kind": "practice",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                }
+              ],
+              "videos": [
+                {
+                  "title": "Should you become a Data Analyst?",
+                  "url": "https://www.youtube.com/watch?v=ua-CiDNNj30",
+                  "youtubeId": "ua-CiDNNj30",
+                  "linkCheck": {
+                    "status": "ok",
+                    "youtubeTitle": "Learn Data Science Tutorial - Full Course for Beginners | freeCodeCamp.org",
+                    "checked": "2026-10-20",
+                    "labelMatches": false
+                  }
+                }
+              ],
+              "example": {
+                "kind": "code",
+                "title": "Decision Framework",
+                "language": "text",
+                "code": "✅ Data Analytics is for you if:\n  • You love asking \"why is this number moving?\"\n  • You enjoy Excel, dashboards, and clean tables\n  • You're comfortable with SQL (or want to be)\n  • You want $70k–$180k+ without a CS degree\n  • You like translating data into business stories\n\n❌ Consider other roles if:\n  • You want to build software systems → Data Engineer\n  • You want to ship ML models → Data Scientist\n  • You want to design experiments → Product Analyst / DS\n\n📊 Your first test: complete Phase 1 (Excel + 1 dashboard).\n   If it feels fun, you're on the right track."
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "phase-1",
+        "number": "02",
+        "label": "Phase 1",
+        "icon": "📗",
+        "stage": "Excel & SQL",
+        "title": "The Analyst Foundations",
+        "fullTitle": "Excel & SQL — The Analyst Foundations",
+        "salary": {
+          "text": "$55K – $90K · Reporting → Junior Data Analyst",
+          "kind": "range",
+          "range": "$55K – $90K",
+          "role": "Reporting → Junior Data Analyst"
+        },
+        "description": "Excel is still the #1 BI tool in the world, and SQL powers 100% of dashboards. Master pivots, lookups, Power Query, JOINs, CTEs, and window functions on the same Retail Sales dataset — this combo alone gets you junior analyst interviews.",
+        "skills": [
+          "Pivot Tables",
+          "XLOOKUP",
+          "Power Query",
+          "JOINs",
+          "CTEs",
+          "Window Funcs"
+        ],
+        "topics": [
+          {
+            "id": "excel-foundations",
+            "number": "01",
+            "icon": "📗",
+            "title": "Excel Foundations",
+            "category": "Coding",
+            "lesson": {
+              "overview": "Excel is still the #1 tool in business. Master pivot tables, lookups, and Power Query and you can already do 60% of a junior analyst job.",
+              "checklist": [
+                "Cell references (absolute vs relative)",
+                "VLOOKUP, XLOOKUP, INDEX/MATCH",
+                "SUMIFS, COUNTIFS, AVERAGEIFS",
+                "Pivot tables & slicers",
+                "Power Query — load & transform CSV",
+                "Charts: bar, line, combo, sparkline",
+                "Conditional formatting"
+              ],
+              "resources": [
+                {
+                  "label": "ExcelJet — Functions Reference",
+                  "url": "https://exceljet.net/",
+                  "kind": "tool",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                },
+                {
+                  "label": "Chandoo — Pivot Tables",
+                  "url": "https://chandoo.org/wp/pivot-tables-from-data-on-different-sheets/",
+                  "kind": "article",
+                  "linkCheck": {
+                    "status": "broken",
+                    "httpStatus": 404,
+                    "checked": "2026-10-20"
+                  }
+                }
+              ],
+              "videos": [
+                {
+                  "title": "Excel Crash Course — Leila Gharani",
+                  "url": "https://www.youtube.com/watch?v=Vl0H-qTclOg",
+                  "youtubeId": "Vl0H-qTclOg",
+                  "linkCheck": {
+                    "status": "ok",
+                    "youtubeTitle": "Microsoft Excel Tutorial for Beginners - Full Course | freeCodeCamp.org",
+                    "checked": "2026-10-20",
+                    "labelMatches": false
+                  }
+                },
+                {
+                  "title": "Pivot Tables Tutorial — MyOnlineTrainingHub",
+                  "url": "https://www.youtube.com/watch?v=9NUjHBNWe9M",
+                  "youtubeId": "9NUjHBNWe9M",
+                  "linkCheck": {
+                    "status": "ok",
+                    "youtubeTitle": "Introduction to Pivot Tables, Charts, and Dashboards in Excel (Part 1) | Excel Campus - Jon",
+                    "checked": "2026-10-20",
+                    "labelMatches": false
+                  }
+                }
+              ],
+              "example": {
+                "kind": "code",
+                "title": "Pivot Table — Sales by Region × Category",
+                "language": "text",
+                "code": "Source: retail_orders.csv (12,480 rows)\n\nRows: region          Columns: category\nValues: SUM(revenue)  Filter: order_date >= 2026-01-01\n\n┌────────┬─────────────┬────────┬────────┬──────────┐\n│ Region │ Electronics │ Apparel│ Home   │ Grand    │\n├────────┼─────────────┼────────┼────────┼──────────┤\n│ DACH   │   148,920   │ 62,310 │ 41,705 │ 252,935  │\n│ Nordics│    91,440   │ 38,220 │ 28,110 │ 157,770  │\n│ UK&I   │   210,560   │ 84,990 │ 55,820 │ 351,370  │\n│ Iberia │    72,180   │ 29,440 │ 19,330 │ 120,950  │\n├────────┼─────────────┼────────┼────────┼──────────┤\n│ TOTAL  │   523,100   │214,960 │144,965 │ 883,025  │\n└────────┴─────────────┴────────┴────────┴──────────┘\n\n💡 In 30 seconds a CMO sees: UK&I is 40% of revenue,\n   Electronics is 59%. That's a pivot table at work."
+              }
+            }
+          },
+          {
+            "id": "sql-for-analysts",
+            "number": "02",
+            "icon": "🐘",
+            "title": "SQL for Analysts",
+            "category": "Coding",
+            "lesson": {
+              "overview": "SQL is the analyst's superpower. 90% of interview questions and 100% of dashboards start here. Aim for fluent JOINs, window functions, and CTEs.",
+              "checklist": [
+                "SELECT / WHERE / ORDER BY",
+                "JOINs — INNER, LEFT, FULL",
+                "GROUP BY + HAVING",
+                "CTEs (WITH) and subqueries",
+                "Window functions: ROW_NUMBER, RANK, LAG, LEAD",
+                "Date functions: DATE_TRUNC, INTERVAL, EXTRACT",
+                "CASE WHEN for cohorts & bucketing"
+              ],
+              "resources": [
+                {
+                  "label": "SQLBolt — Interactive",
+                  "url": "https://sqlbolt.com/",
+                  "kind": "course",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                },
+                {
+                  "label": "Mode — SQL Tutorial",
+                  "url": "https://mode.com/sql-tutorial",
+                  "kind": "course",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                },
+                {
+                  "label": "StrataScratch — SQL practice",
+                  "url": "https://www.stratascratch.com/",
+                  "kind": "practice",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                }
+              ],
+              "videos": [
+                {
+                  "title": "SQL Full Course — freeCodeCamp",
+                  "url": "https://www.youtube.com/watch?v=HXV3zeQKqGY",
+                  "youtubeId": "HXV3zeQKqGY",
+                  "linkCheck": {
+                    "status": "ok",
+                    "youtubeTitle": "SQL Tutorial - Full Database Course for Beginners | freeCodeCamp.org",
+                    "checked": "2026-10-20",
+                    "labelMatches": true
+                  }
+                },
+                {
+                  "title": "SQL for Data Analysts — Alex The Analyst",
+                  "url": "https://www.youtube.com/watch?v=7mz73uXD9DA",
+                  "youtubeId": "7mz73uXD9DA",
+                  "linkCheck": {
+                    "status": "ok",
+                    "youtubeTitle": "SQL for Data Analytics - Learn SQL in 4 Hours | Luke Barousse",
+                    "checked": "2026-10-20",
+                    "labelMatches": false
+                  }
+                }
+              ],
+              "example": {
+                "kind": "code",
+                "title": "Top 5 Products by Revenue + MoM Growth",
+                "language": "sql",
+                "code": "WITH monthly AS (\n  SELECT\n    product,\n    DATE_TRUNC('month', order_date) AS month,\n    SUM(quantity * unit_price * (1 - discount_pct/100.0)) AS revenue\n  FROM retail_orders\n  WHERE order_date >= DATE '2025-10-01'\n  GROUP BY product, DATE_TRUNC('month', order_date)\n)\nSELECT\n  product,\n  month,\n  revenue,\n  LAG(revenue) OVER (PARTITION BY product ORDER BY month) AS prev_rev,\n  ROUND(\n    100.0 * (revenue - LAG(revenue) OVER (PARTITION BY product ORDER BY month))\n         / NULLIF(LAG(revenue) OVER (PARTITION BY product ORDER BY month), 0),\n  1) AS mom_growth_pct\nFROM monthly\nORDER BY month DESC, revenue DESC\nLIMIT 5;\n\n-- | product               | month       | revenue | prev_rev | mom % |\n-- |-----------------------|-------------|---------|----------|-------|\n-- | Wireless Headphones X3| 2026-01-01  |  84,210 |  61,400  | +37.1 |\n-- | Smart Watch S2        | 2026-01-01  |  52,980 |  49,100  |  +7.9 |\n-- | Bluetooth Speaker     | 2026-01-01  |  41,330 |  44,800  |  -7.7 |"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "phase-2",
+        "number": "03",
+        "label": "Phase 2",
+        "icon": "🐍",
+        "stage": "Python, Power BI & Tableau",
+        "title": "The BI Toolkit",
+        "fullTitle": "Python, Power BI & Tableau — The BI Toolkit",
+        "salary": {
+          "text": "$80K – $150K · Data Analyst → Senior Analyst",
+          "kind": "range",
+          "range": "$80K – $150K",
+          "role": "Data Analyst → Senior Analyst"
+        },
+        "description": "Everything Excel does, on 10M rows, in seconds — plus the two BI tools that 90% of job postings ask for. Pandas for analysis at scale, Power BI for Microsoft shops, Tableau for US tech & product teams. All built on the same Retail Sales dataset, end-to-end.",
+        "skills": [
+          "Pandas",
+          "Jupyter",
+          "Power Query",
+          "DAX",
+          "Star Schema",
+          "LOD Expressions",
+          "Dashboards"
+        ],
+        "topics": [
+          {
+            "id": "python-for-analytics",
+            "number": "01",
+            "icon": "🐍",
+            "title": "Python for Analytics",
+            "category": "Coding",
+            "lesson": {
+              "overview": "Python + Pandas lets you do everything Excel does, but on 10M rows in seconds. Most senior analyst jobs now require it.",
+              "checklist": [
+                "Variables, lists, dicts, control flow",
+                "Pandas: DataFrame, read_csv, filter, groupby",
+                "Merging & joining DataFrames",
+                "Date handling with pd.to_datetime",
+                "Matplotlib / Plotly basics",
+                "Jupyter notebooks workflow"
+              ],
+              "resources": [
+                {
+                  "label": "Pandas — Getting Started",
+                  "url": "https://pandas.pydata.org/docs/getting_started/index.html",
+                  "kind": "docs",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                },
+                {
+                  "label": "Kaggle — Pandas course (free)",
+                  "url": "https://www.kaggle.com/learn/pandas",
+                  "kind": "course",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                }
+              ],
+              "videos": [
+                {
+                  "title": "Pandas Tutorial — Corey Schafer",
+                  "url": "https://www.youtube.com/watch?v=ZyhVh-qRZPA",
+                  "youtubeId": "ZyhVh-qRZPA",
+                  "linkCheck": {
+                    "status": "ok",
+                    "youtubeTitle": "Python Pandas Tutorial (Part 1): Getting Started with Data Analysis - Installation and Loading Data | Corey Schafer",
+                    "checked": "2026-10-20",
+                    "labelMatches": true
+                  }
+                }
+              ],
+              "example": {
+                "kind": "code",
+                "title": "Pandas — Same Top-Products Question",
+                "language": "python",
+                "code": "import pandas as pd\n\ndf = pd.read_csv(\"retail_orders.csv\", parse_dates=[\"order_date\"])\ndf[\"revenue\"] = df[\"quantity\"] * df[\"unit_price\"] * (1 - df[\"discount_pct\"]/100)\n\nmonthly = (\n    df[df.order_date >= \"2025-10-01\"]\n      .assign(month=lambda d: d.order_date.dt.to_period(\"M\"))\n      .groupby([\"product\", \"month\"], as_index=False)[\"revenue\"].sum()\n      .sort_values([\"product\", \"month\"])\n)\n\nmonthly[\"mom_growth_pct\"] = (\n    monthly.groupby(\"product\")[\"revenue\"]\n           .pct_change()\n           .mul(100).round(1)\n)\n\ntop = (monthly[monthly.month == monthly.month.max()]\n         .nlargest(5, \"revenue\"))\nprint(top)\n\n#                   product     month   revenue  mom_growth_pct\n# 0  Wireless Headphones X3  2026-01   84210.0           37.1\n# 1          Smart Watch S2  2026-01   52980.0            7.9\n# 2       Bluetooth Speaker  2026-01   41330.0           -7.7"
+              }
+            }
+          },
+          {
+            "id": "data-modeling-for-bi",
+            "number": "02",
+            "icon": "📐",
+            "title": "Data Modeling for BI",
+            "category": "Architecture",
+            "lesson": {
+              "overview": "Bad models are why dashboards are slow and wrong. A clean star schema (1 fact table, many dimension tables) makes Power BI and Tableau both 10× faster and 10× easier to extend.",
+              "checklist": [
+                "Fact vs dimension tables",
+                "Star schema (preferred) vs snowflake",
+                "Grain of the fact table",
+                "Surrogate keys",
+                "Conformed dimensions across fact tables",
+                "Slowly Changing Dimensions (Type 1 / 2)"
+              ],
+              "resources": [
+                {
+                  "label": "Kimball — Dimensional Modeling",
+                  "url": "https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/dimensional-modeling-techniques/",
+                  "kind": "article",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                },
+                {
+                  "label": "SQLBI — Star Schema for BI",
+                  "url": "https://www.sqlbi.com/articles/data-modeling-essentials-and-best-practices-with-power-bi-and-tableau/",
+                  "kind": "article",
+                  "linkCheck": {
+                    "status": "broken",
+                    "httpStatus": 404,
+                    "checked": "2026-10-20"
+                  }
+                }
+              ],
+              "videos": [
+                {
+                  "title": "Star Schema — SQLBI",
+                  "url": "https://www.youtube.com/watch?v=78dkXWWyTAY",
+                  "youtubeId": "78dkXWWyTAY",
+                  "linkCheck": {
+                    "status": "unavailable",
+                    "note": "YouTube says \"This video is unavailable\"",
+                    "checked": "2026-10-20"
+                  }
+                }
+              ],
+              "example": {
+                "kind": "flow",
+                "title": "Star Schema — Retail Sales",
+                "source": "star-schema",
+                "nodes": [
+                  {
+                    "icon": "📅",
+                    "label": "dim_date",
+                    "sub": "day, month, qtr"
+                  },
+                  {
+                    "icon": "👤",
+                    "label": "dim_customer",
+                    "sub": "id, region, tier"
+                  },
+                  {
+                    "icon": "⭐",
+                    "label": "fact_orders",
+                    "sub": "grain: line item"
+                  },
+                  {
+                    "icon": "🛍️",
+                    "label": "dim_product",
+                    "sub": "category, brand"
+                  },
+                  {
+                    "icon": "🏪",
+                    "label": "dim_store",
+                    "sub": "region, channel"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "id": "power-bi-mastery",
+            "number": "03",
+            "icon": "📊",
+            "title": "Power BI Mastery",
+            "category": "Coding",
+            "lesson": {
+              "overview": "Power BI is the #1 BI tool in Europe and most enterprises. Master Power Query (clean data), the data model (star schema), DAX (measures), and visuals.",
+              "checklist": [
+                "Power Query — connect, clean, merge sources",
+                "Star schema modeling (fact + dimensions)",
+                "Relationships & cardinality",
+                "DAX basics: SUM, CALCULATE, FILTER",
+                "Time intelligence: SAMEPERIODLASTYEAR, YTD",
+                "Visuals: cards, bar, line, matrix, slicers",
+                "Bookmarks, drill-through, tooltips",
+                "Publish to Power BI Service + row-level security"
+              ],
+              "resources": [
+                {
+                  "label": "Microsoft Learn — Power BI",
+                  "url": "https://learn.microsoft.com/en-us/training/powerplatform/power-bi",
+                  "kind": "course",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                },
+                {
+                  "label": "DAX Guide",
+                  "url": "https://dax.guide/",
+                  "kind": "tool",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                },
+                {
+                  "label": "SQLBI — Free articles",
+                  "url": "https://www.sqlbi.com/articles/",
+                  "kind": "article",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                }
+              ],
+              "videos": [
+                {
+                  "title": "Power BI Full Course — Microsoft",
+                  "url": "https://www.youtube.com/watch?v=AGrl-H87pRU",
+                  "youtubeId": "AGrl-H87pRU",
+                  "linkCheck": {
+                    "status": "ok",
+                    "youtubeTitle": "Power BI Tutorial From Beginner to Pro ⚡ Desktop to Dashboard in 60 Minutes ⏰ | Avi Singh - PowerBIPro",
+                    "checked": "2026-10-20",
+                    "labelMatches": false
+                  }
+                },
+                {
+                  "title": "DAX Fundamentals — Guy in a Cube",
+                  "url": "https://www.youtube.com/watch?v=1xGu7DwVZpQ",
+                  "youtubeId": "1xGu7DwVZpQ",
+                  "linkCheck": {
+                    "status": "unavailable",
+                    "note": "YouTube says \"This video is unavailable\"",
+                    "checked": "2026-10-20"
+                  }
+                }
+              ],
+              "example": {
+                "kind": "code",
+                "title": "DAX — Sales KPIs for the Dashboard",
+                "language": "dax",
+                "code": "Total Revenue =\nSUMX( fact_orders, fact_orders[quantity]\n      * fact_orders[unit_price]\n      * ( 1 - fact_orders[discount_pct] / 100 ) )\n\nRevenue LY =\nCALCULATE( [Total Revenue],\n           SAMEPERIODLASTYEAR( dim_date[date] ) )\n\nYoY % =\nDIVIDE( [Total Revenue] - [Revenue LY], [Revenue LY] )\n\nYTD Revenue =\nTOTALYTD( [Total Revenue], dim_date[date] )\n\nAvg Order Value =\nDIVIDE( [Total Revenue], DISTINCTCOUNT( fact_orders[order_id] ) )\n\nTop Region =\nCALCULATE( SELECTEDVALUE( dim_store[region] ),\n           TOPN( 1, VALUES( dim_store[region] ), [Total Revenue] ) )\n\n/* ─ Dashboard wires these into:\n     • KPI cards: Revenue, YoY %, AOV, Top Region\n     • Line chart: Revenue vs LY by month\n     • Matrix: Region × Category with conditional formatting\n     • Slicers: Channel, Date range, Store */"
+              }
+            }
+          },
+          {
+            "id": "tableau-mastery",
+            "number": "04",
+            "icon": "📈",
+            "title": "Tableau Mastery",
+            "category": "Coding",
+            "lesson": {
+              "overview": "Tableau is the #1 BI tool in the US for product, marketing, and exec dashboards. Master connections, calculated fields, LOD expressions, and storytelling.",
+              "checklist": [
+                "Connect to CSV, SQL, Google Sheets",
+                "Dimensions vs measures",
+                "Calculated fields & parameters",
+                "LOD expressions: FIXED, INCLUDE, EXCLUDE",
+                "Table calculations (running totals, % of total)",
+                "Dashboards: filters, actions, containers",
+                "Stories — guided narrative",
+                "Publish to Tableau Public for your portfolio"
+              ],
+              "resources": [
+                {
+                  "label": "Tableau — Free Training",
+                  "url": "https://www.tableau.com/learn/training/elearning",
+                  "kind": "course",
+                  "linkCheck": {
+                    "status": "unverified",
+                    "httpStatus": 403,
+                    "note": "bot protection blocked the check",
+                    "checked": "2026-10-20"
+                  }
+                },
+                {
+                  "label": "Tableau Public — Gallery",
+                  "url": "https://public.tableau.com/app/discover",
+                  "kind": "practice",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                },
+                {
+                  "label": "Makeover Monday",
+                  "url": "https://www.makeovermonday.co.uk/",
+                  "kind": "practice",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                }
+              ],
+              "videos": [
+                {
+                  "title": "Tableau Full Course — Edureka",
+                  "url": "https://www.youtube.com/watch?v=aHaOIvR00So",
+                  "youtubeId": "aHaOIvR00So",
+                  "linkCheck": {
+                    "status": "ok",
+                    "youtubeTitle": "Tableau Full Course - Learn Tableau in 6 Hours | Tableau Training for Beginners | Edureka | edureka!",
+                    "checked": "2026-10-20",
+                    "labelMatches": true
+                  }
+                },
+                {
+                  "title": "LOD Expressions Explained",
+                  "url": "https://www.youtube.com/watch?v=42NkjQiJ5dY",
+                  "youtubeId": "42NkjQiJ5dY",
+                  "linkCheck": {
+                    "status": "unavailable",
+                    "note": "YouTube says \"This video is unavailable\"",
+                    "checked": "2026-10-20"
+                  }
+                }
+              ],
+              "example": {
+                "kind": "code",
+                "title": "Tableau Calculated Fields — Same Retail Dataset",
+                "language": "text",
+                "code": "// Revenue (calculated field)\n[Quantity] * [Unit Price] * (1 - [Discount Pct] / 100)\n\n// YoY % (table calculation)\n( SUM([Revenue])\n- LOOKUP(SUM([Revenue]), -12) )\n/ LOOKUP(SUM([Revenue]), -12)\n\n// LOD — Customer lifetime revenue (regardless of filters)\n{ FIXED [Customer ID] : SUM([Revenue]) }\n\n// LOD — % of store revenue by category\nSUM([Revenue]) /\n{ FIXED [Store] : SUM([Revenue]) }\n\n// Cohort label\n\"Cohort \" + STR(YEAR({ FIXED [Customer ID] : MIN([Order Date]) }))\n\n/* Dashboard wired to:\n   ✓ KPI tiles: Revenue, YoY %, AOV\n   ✓ Map: Revenue by Store (filled map)\n   ✓ Bar: Top 10 products\n   ✓ Line: Daily revenue with 7-day moving average\n   ✓ Cohort retention heatmap (LOD-powered) */"
+              }
+            }
+          },
+          {
+            "id": "power-bi-vs-tableau",
+            "number": "05",
+            "icon": "⚔️",
+            "title": "Power BI vs Tableau",
+            "category": "Strategy",
+            "lesson": {
+              "overview": "Both tools answer the same questions. Power BI dominates Microsoft shops and Europe; Tableau dominates US product/marketing teams. Knowing both doubles your job market.",
+              "checklist": [
+                "Build the SAME dashboard in both tools",
+                "Compare DAX vs LOD mental models",
+                "Compare licensing & deployment",
+                "Pick a primary, stay fluent in both"
+              ],
+              "resources": [
+                {
+                  "label": "Power BI vs Tableau — Gartner MQ",
+                  "url": "https://www.gartner.com/reviews/market/analytics-business-intelligence-platforms",
+                  "kind": "article",
+                  "linkCheck": {
+                    "status": "unverified",
+                    "httpStatus": 403,
+                    "note": "bot protection blocked the check",
+                    "checked": "2026-10-20"
+                  }
+                }
+              ],
+              "videos": [
+                {
+                  "title": "Power BI vs Tableau — Honest review",
+                  "url": "https://www.youtube.com/watch?v=TF3WP9WjQOA",
+                  "youtubeId": "TF3WP9WjQOA",
+                  "linkCheck": {
+                    "status": "unavailable",
+                    "note": "YouTube says \"This video is unavailable\"",
+                    "checked": "2026-10-20"
+                  }
+                }
+              ],
+              "example": {
+                "kind": "table",
+                "title": "Side-by-side — Power BI vs Tableau",
+                "source": "powerbi-vs-tableau",
+                "columns": [
+                  "DIMENSION",
+                  "POWER BI",
+                  "TABLEAU"
+                ],
+                "rows": [
+                  [
+                    "Strongest in",
+                    "Enterprise + Microsoft shops",
+                    "Product, marketing, US"
+                  ],
+                  [
+                    "Calc language",
+                    "DAX",
+                    "Calculated fields + LOD"
+                  ],
+                  [
+                    "Data prep",
+                    "Power Query (best in class)",
+                    "Tableau Prep (good)"
+                  ],
+                  [
+                    "Visual flexibility",
+                    "Solid, growing",
+                    "Industry leading"
+                  ],
+                  [
+                    "Price",
+                    "$10/user/mo",
+                    "$75/user/mo (Creator)"
+                  ],
+                  [
+                    "Job density (LinkedIn)",
+                    "Higher in EMEA",
+                    "Higher in US tech"
+                  ]
+                ]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "phase-3",
+        "number": "04",
+        "label": "Phase 3",
+        "icon": "🎨",
+        "stage": "Stats + Storytelling",
+        "title": "From Numbers to Decisions",
+        "fullTitle": "Stats + Storytelling — From Numbers to Decisions",
+        "salary": {
+          "text": "$140K – $190K · Analytics Lead",
+          "kind": "range",
+          "range": "$140K – $190K",
+          "role": "Analytics Lead"
+        },
+        "description": "A dashboard nobody reads is worthless. Learn enough stats to not mislead the business, and enough design to make execs act. This is what unlocks senior pay.",
+        "skills": [
+          "Statistics",
+          "A/B Tests",
+          "Dashboard Design",
+          "Exec Comms"
+        ],
+        "topics": [
+          {
+            "id": "statistics-for-analysts",
+            "number": "01",
+            "icon": "📊",
+            "title": "Statistics for Analysts",
+            "category": "Theory",
+            "lesson": {
+              "overview": "You don't need to be a statistician — but you must know mean vs median vs mode, distributions, confidence intervals, and A/B test reading. Otherwise you'll mislead the business.",
+              "checklist": [
+                "Mean, median, mode, percentiles",
+                "Standard deviation & variance",
+                "Distributions (normal, long-tail)",
+                "Correlation vs causation",
+                "Confidence intervals at a glance",
+                "Read an A/B test result"
+              ],
+              "resources": [
+                {
+                  "label": "Khan Academy — Statistics",
+                  "url": "https://www.khanacademy.org/math/statistics-probability",
+                  "kind": "course",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                },
+                {
+                  "label": "StatQuest YouTube",
+                  "url": "https://www.youtube.com/user/joshstarmer",
+                  "kind": "video",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                }
+              ],
+              "videos": [
+                {
+                  "title": "StatQuest — Statistics Fundamentals",
+                  "url": "https://www.youtube.com/watch?v=qBigTkBLU6g",
+                  "youtubeId": "qBigTkBLU6g",
+                  "linkCheck": {
+                    "status": "ok",
+                    "youtubeTitle": "StatQuest: Histograms, Clearly Explained | StatQuest with Josh Starmer",
+                    "checked": "2026-10-20",
+                    "labelMatches": true
+                  }
+                }
+              ],
+              "example": {
+                "kind": "code",
+                "title": "AOV — Don't report just the mean",
+                "language": "text",
+                "code": "Region: UK&I — 1,842 orders in Jan 2026\n\n  Mean Order Value :  £124.30\n  Median Order Value: £ 68.50   ← typical customer\n  P90 Order Value   : £312.00\n  Max Order Value   : £4,980.00 (1 big B2B order)\n\n⚠️  Reporting only the mean hides that the typical\n    customer spends £68. The mean is dragged up by\n    a few huge orders.\n\n✅  Always report median + P90 for skewed metrics\n    (revenue, latency, session length, etc.)"
+              }
+            }
+          },
+          {
+            "id": "dashboard-design-and-storytelling",
+            "number": "02",
+            "icon": "🎨",
+            "title": "Dashboard Design & Storytelling",
+            "category": "Strategy",
+            "lesson": {
+              "overview": "A dashboard nobody reads is worthless. Learn what to put above the fold, how to use color with meaning, and how to write a 1-sentence insight under every chart.",
+              "checklist": [
+                "1 question per dashboard",
+                "Top-left = KPI cards (most important)",
+                "Color: 1 brand + 1 accent + grey",
+                "Never use pie charts >3 slices",
+                "Always add a 1-line insight + date stamp",
+                "Tooltip = answer the next question"
+              ],
+              "resources": [
+                {
+                  "label": "Storytelling with Data (book)",
+                  "url": "https://www.storytellingwithdata.com/",
+                  "kind": "book",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                },
+                {
+                  "label": "Tableau — Dashboard best practices",
+                  "url": "https://help.tableau.com/current/pro/desktop/en-us/dashboards_best_practices.htm",
+                  "kind": "docs",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                }
+              ],
+              "videos": [
+                {
+                  "title": "Storytelling with Data — Cole Knaflic",
+                  "url": "https://www.youtube.com/watch?v=8EMW7io4rSI",
+                  "youtubeId": "8EMW7io4rSI",
+                  "linkCheck": {
+                    "status": "ok",
+                    "youtubeTitle": "Storytelling with Data | Cole Nussbaumer Knaflic | Talks at Google | Talks at Google",
+                    "checked": "2026-10-20",
+                    "labelMatches": true
+                  }
+                }
+              ],
+              "example": {
+                "kind": "flow",
+                "title": "Dashboard Layout Anatomy",
+                "source": "dashboard-anatomy",
+                "nodes": [
+                  {
+                    "icon": "🎯",
+                    "label": "1 Question",
+                    "sub": "Title bar"
+                  },
+                  {
+                    "icon": "📊",
+                    "label": "KPI Cards",
+                    "sub": "Top-left"
+                  },
+                  {
+                    "icon": "📈",
+                    "label": "Trend",
+                    "sub": "Above fold"
+                  },
+                  {
+                    "icon": "🗂️",
+                    "label": "Breakdown",
+                    "sub": "By dimension"
+                  },
+                  {
+                    "icon": "🔎",
+                    "label": "Filters",
+                    "sub": "Right side"
+                  },
+                  {
+                    "icon": "💬",
+                    "label": "Insight",
+                    "sub": "1-line takeaway"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "phase-4",
+        "number": "05",
+        "label": "Phase 4",
+        "icon": "💼",
+        "stage": "Get Hired",
+        "title": "Land the Data Analyst Role",
+        "fullTitle": "Get Hired — Land the Data Analyst Role",
+        "salary": {
+          "text": "Target: $120K+ offer",
+          "kind": "target"
+        },
+        "description": "3 polished public dashboards + the right cert + 30 tailored applications = offers. Don't spray and pray.",
+        "skills": [
+          "Certifications",
+          "Portfolio",
+          "Outreach",
+          "Interview Prep"
+        ],
+        "topics": [
+          {
+            "id": "get-certified",
+            "number": "01",
+            "icon": "🏅",
+            "title": "Get Certified",
+            "category": "Career Setup",
+            "lesson": {
+              "overview": "Certifications aren't required, but the right one shortcuts past 'can they actually use the tool?' for recruiters. Two certs cover 90% of analyst jobs.",
+              "checklist": [
+                "Microsoft PL-300 (Power BI) — ~$165",
+                "Tableau Desktop Specialist — ~$100",
+                "Google Data Analytics (Coursera) — beginner-friendly",
+                "Add badge to LinkedIn header + resume"
+              ],
+              "resources": [
+                {
+                  "label": "PL-300 — Microsoft",
+                  "url": "https://learn.microsoft.com/en-us/certifications/power-bi-data-analyst-associate/",
+                  "kind": "certification",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                },
+                {
+                  "label": "Tableau Desktop Specialist",
+                  "url": "https://www.tableau.com/learn/certification/desktop-specialist",
+                  "kind": "certification",
+                  "linkCheck": {
+                    "status": "unverified",
+                    "httpStatus": 403,
+                    "note": "bot protection blocked the check",
+                    "checked": "2026-10-20"
+                  }
+                },
+                {
+                  "label": "Google Data Analytics — Coursera",
+                  "url": "https://www.coursera.org/professional-certificates/google-data-analytics",
+                  "kind": "certification",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                }
+              ],
+              "videos": [
+                {
+                  "title": "How I passed PL-300 in 30 days",
+                  "url": "https://www.youtube.com/watch?v=YdWQGmHc_d4",
+                  "youtubeId": "YdWQGmHc_d4",
+                  "linkCheck": {
+                    "status": "unavailable",
+                    "note": "YouTube says \"This video is unavailable\"",
+                    "checked": "2026-10-20"
+                  }
+                }
+              ],
+              "example": {
+                "kind": "table",
+                "title": "Analyst Certifications Worth Your Time",
+                "source": "analyst-certs",
+                "columns": [
+                  "CERTIFICATION",
+                  "DIFFICULTY",
+                  "VALUE",
+                  "COST"
+                ],
+                "rows": [
+                  [
+                    "Microsoft PL-300 (Power BI)",
+                    "⭐⭐⭐",
+                    "Very High",
+                    "$165"
+                  ],
+                  [
+                    "Tableau Desktop Specialist",
+                    "⭐⭐",
+                    "High",
+                    "$100"
+                  ],
+                  [
+                    "Google Data Analytics",
+                    "⭐",
+                    "Medium",
+                    "$49/mo"
+                  ],
+                  [
+                    "IBM Data Analyst (Coursera)",
+                    "⭐⭐",
+                    "Medium",
+                    "$49/mo"
+                  ]
+                ]
+              }
+            }
+          },
+          {
+            "id": "build-analyst-portfolio",
+            "number": "02",
+            "icon": "📄",
+            "title": "Build Analyst Portfolio",
+            "category": "Project",
+            "lesson": {
+              "overview": "Your portfolio is 3 polished, public dashboards (Tableau Public + Power BI Service link) on real datasets, with a written 1-page case study for each. No portfolio = no callback.",
+              "checklist": [
+                "Pick 3 datasets in different industries",
+                "Build 1 dashboard in Power BI + publish",
+                "Build 1 dashboard in Tableau Public",
+                "Write a 1-page case study per project: question → process → insight",
+                "Add live links to resume + LinkedIn featured"
+              ],
+              "resources": [
+                {
+                  "label": "Tableau Public",
+                  "url": "https://public.tableau.com/",
+                  "kind": "practice",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                },
+                {
+                  "label": "Maven Analytics — free datasets",
+                  "url": "https://www.mavenanalytics.io/data-playground",
+                  "kind": "dataset",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                },
+                {
+                  "label": "data.world — datasets",
+                  "url": "https://data.world/",
+                  "kind": "dataset",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                }
+              ],
+              "videos": [
+                {
+                  "title": "Building an Analyst Portfolio",
+                  "url": "https://www.youtube.com/watch?v=q3eC2EmL3UE",
+                  "youtubeId": "q3eC2EmL3UE",
+                  "linkCheck": {
+                    "status": "unavailable",
+                    "note": "YouTube says \"This video is unavailable\"",
+                    "checked": "2026-10-20"
+                  }
+                }
+              ],
+              "example": {
+                "kind": "table",
+                "title": "Portfolio Project Tracker",
+                "source": "portfolio-tracker",
+                "columns": [
+                  "PROJECT",
+                  "TOOL",
+                  "DATASET",
+                  "STATUS"
+                ],
+                "rows": [
+                  [
+                    "Retail Sales Performance",
+                    "Power BI",
+                    "Maven Retail",
+                    "Published ✓"
+                  ],
+                  [
+                    "Airbnb Listings Berlin",
+                    "Tableau",
+                    "Inside Airbnb",
+                    "In progress"
+                  ],
+                  [
+                    "HR Attrition Analysis",
+                    "Power BI",
+                    "IBM HR (Kaggle)",
+                    "Wireframed"
+                  ]
+                ]
+              }
+            }
+          },
+          {
+            "id": "apply-strategically",
+            "number": "03",
+            "icon": "🎯",
+            "title": "Apply Strategically",
+            "category": "Job Search",
+            "lesson": {
+              "overview": "Stop spraying 200 applications. Pick 30 great companies, get warm intros, and tailor each application around 1 dashboard you've built that matches their stack.",
+              "checklist": [
+                "Build a tracker of 30 target companies",
+                "Identify the hiring manager on LinkedIn",
+                "Send a tailored connection note + dashboard link",
+                "Customize resume keywords to each JD",
+                "Follow up after 5 business days"
+              ],
+              "resources": [
+                {
+                  "label": "LinkedIn Job Filters guide",
+                  "url": "https://www.linkedin.com/help/linkedin/answer/a507592",
+                  "kind": "jobs",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                },
+                {
+                  "label": "Wellfound (startup jobs)",
+                  "url": "https://wellfound.com/jobs",
+                  "kind": "jobs",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                }
+              ],
+              "videos": [
+                {
+                  "title": "How to land a Data Analyst job in 2026",
+                  "url": "https://www.youtube.com/watch?v=ua-CiDNNj30",
+                  "youtubeId": "ua-CiDNNj30",
+                  "linkCheck": {
+                    "status": "ok",
+                    "youtubeTitle": "Learn Data Science Tutorial - Full Course for Beginners | freeCodeCamp.org",
+                    "checked": "2026-10-20",
+                    "labelMatches": false
+                  }
+                }
+              ],
+              "example": {
+                "kind": "table",
+                "title": "Application Tracker",
+                "source": "job-tracker",
+                "columns": [
+                  "COMPANY",
+                  "ROLE",
+                  "STACK",
+                  "STATUS"
+                ],
+                "rows": [
+                  [
+                    "Zalando",
+                    "Data Analyst, Pricing",
+                    "SQL + Tableau",
+                    "Onsite ✓"
+                  ],
+                  [
+                    "Booking.com",
+                    "BI Analyst",
+                    "SQL + Looker",
+                    "SQL screen"
+                  ],
+                  [
+                    "N26",
+                    "Data Analyst, Risk",
+                    "SQL + Power BI",
+                    "Applied"
+                  ],
+                  [
+                    "HelloFresh",
+                    "Senior Analyst, Marketing",
+                    "SQL + Tableau",
+                    "Case study"
+                  ]
+                ]
+              }
+            }
+          },
+          {
+            "id": "analyst-interview-prep",
+            "number": "04",
+            "icon": "🗣️",
+            "title": "Analyst Interview Prep",
+            "category": "Interview",
+            "lesson": {
+              "overview": "The analyst loop = SQL live coding, case study (here's a dataset, what would you analyze?), dashboard critique, and behavioral. Practice all four — most candidates only prep SQL.",
+              "checklist": [
+                "30 SQL questions on StrataScratch / LeetCode",
+                "5 mock case studies out loud",
+                "Critique 3 dashboards from Tableau Public",
+                "Prepare 5 STAR stories from your projects",
+                "Do 3 mock interviews"
+              ],
+              "resources": [
+                {
+                  "label": "StrataScratch — Data Analyst questions",
+                  "url": "https://www.stratascratch.com/",
+                  "kind": "practice",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                },
+                {
+                  "label": "DataLemur — SQL interview",
+                  "url": "https://datalemur.com/",
+                  "kind": "practice",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                }
+              ],
+              "videos": [
+                {
+                  "title": "Data Analyst SQL Interview Questions",
+                  "url": "https://www.youtube.com/watch?v=u-eAajLuf6c",
+                  "youtubeId": "u-eAajLuf6c",
+                  "linkCheck": {
+                    "status": "unavailable",
+                    "note": "YouTube says \"This video is unavailable\"",
+                    "checked": "2026-10-20"
+                  }
+                }
+              ],
+              "example": {
+                "kind": "flow",
+                "title": "Typical Analyst Interview Loop",
+                "source": "interview-loop",
+                "nodes": [
+                  {
+                    "icon": "📞",
+                    "label": "Recruiter",
+                    "sub": "30 min"
+                  },
+                  {
+                    "icon": "🐘",
+                    "label": "SQL Live",
+                    "sub": "60 min"
+                  },
+                  {
+                    "icon": "📊",
+                    "label": "Case Study",
+                    "sub": "Take-home"
+                  },
+                  {
+                    "icon": "🎨",
+                    "label": "Dashboard Crit.",
+                    "sub": "On-site"
+                  },
+                  {
+                    "icon": "🤝",
+                    "label": "Behavioral",
+                    "sub": "STAR"
+                  },
+                  {
+                    "icon": "💼",
+                    "label": "Offer",
+                    "sub": "Negotiate"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "lessonDrawer": {
+    "tabs": [
+      "Learn",
+      "Demo"
+    ],
+    "labels": {
+      "checklist": "Learning Checklist",
+      "resources": "Free Resources",
+      "videos": "Watch"
+    },
+    "videoDisplay": "embeds",
+    "exampleFootnote": "Part of the Retail Sales Performance capstone — your running project across all 7 phases."
+  },
+  "cta": {
+    "offer": {
+      "badge": "Live Cohort · Next Start",
+      "headingLines": [
+        "Stop Watching Tutorials.",
+        "Start Shipping Dashboards."
+      ],
+      "body": "8 weeks of live mentorship, real Power BI + Tableau projects, and career coaching — everything you need to land your first (or next) Data Analyst role.",
+      "price": "$997",
+      "priceNote": "One-time · Lifetime access · or 3 × $367",
+      "features": [
+        "Live mentorship 2×/week",
+        "Power BI + Tableau capstones",
+        "Resume + LinkedIn review",
+        "Lifetime community",
+        "Slack + office hours",
+        "8 weeks intensive"
+      ],
+      "ctas": [
+        {
+          "label": "FREE Analyst Masterclass",
+          "href": "https://www.meetup.com/stackle-your-career-lab/events/",
+          "external": true,
+          "style": "primary"
+        },
+        {
+          "label": "Book a Call",
+          "href": "https://calendar.app.google/gCDaTk9dCAgLUJAZ9",
+          "external": true,
+          "style": "secondary"
+        }
+      ],
+      "socialProof": {
+        "icons": [
+          "📊",
+          "📈",
+          "🐘",
+          "🐍"
+        ],
+        "text": "15 founding seats · most-popular cohort"
+      }
+    },
+    "divider": "or",
+    "bundle": {
+      "badge": "Bundle & Save",
+      "heading": "Analyst + Resume Marketing Bundle",
+      "price": "$1,497 · or 3 × $499",
+      "bodyMd": "Everything in the Analyst Masterclass **+ 1:1 resume rebuild, LinkedIn optimization, outbound playbook, and mock interviews.**",
+      "ctas": [
+        {
+          "label": "Explore Resume Marketing →",
+          "href": "/services/resume-marketing",
+          "external": false,
+          "style": "primary"
+        },
+        {
+          "label": "Connect on LinkedIn",
+          "href": "https://www.linkedin.com/in/crispusroshan/",
+          "external": true,
+          "style": "linkedin"
+        }
+      ]
+    }
+  }
+}

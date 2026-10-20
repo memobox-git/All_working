@@ -1,0 +1,1451 @@
+{
+  "slug": "linkedin-bible",
+  "title": "The LinkedIn Bible",
+  "eyebrow": "Stackle Career Resources",
+  "summary": "Your complete guide to mastering every corner of LinkedIn — from profile to pipeline.",
+  "category": "Interview Prep",
+  "seo": {
+    "title": "The LinkedIn Bible",
+    "description": "Your complete guide to mastering every corner of LinkedIn — from profile to pipeline."
+  },
+  "thumbnail": {
+    "src": "/resources/_thumbs/linkedin-bible.jpg",
+    "originalUrl": "https://stackle.io/assets/linkedin-bible-Cx_HBHDy.jpg",
+    "alt": "The LinkedIn Bible"
+  },
+  "source": {
+    "url": "https://stackle.io/resources/linkedin-bible",
+    "bundleChunk": "https://stackle.io/assets/LinkedInBiblePage-CM4G-HWq.js"
+  },
+  "layout": {
+    "type": "tabbed-chapters",
+    "defaultChapter": "01",
+    "sectionRenderOrder": [
+      "title",
+      "body",
+      "subsections",
+      "tips",
+      "table",
+      "templates"
+    ]
+  },
+  "chapters": [
+    {
+      "number": "01",
+      "tabLabel": "Profile",
+      "title": "LinkedIn Profile",
+      "subtitle": "Build a Profile That Gets You Found",
+      "intro": "Your LinkedIn profile is your digital storefront. Most people set it up once and forget it. The best people treat it like a landing page they're always optimizing.",
+      "sections": [
+        {
+          "number": 1,
+          "title": "The Profile Photo",
+          "body": [
+            "Your photo is the first thing anyone sees. It drives click-through rates on connection requests, messages, and search results."
+          ],
+          "bodyStyle": "paragraph",
+          "subsections": [
+            {
+              "title": "What makes a great LinkedIn photo",
+              "items": [
+                "Professional but approachable — smile, good lighting, clean background",
+                "Face takes up 60–70% of the frame",
+                "High resolution (400x400px minimum)",
+                "Recent (within 3 years)",
+                "Match the vibe of your industry — a startup founder ≠ a law partner"
+              ]
+            },
+            {
+              "title": "What to avoid",
+              "items": [
+                "Cropped group photos",
+                "Sunglasses or heavy filters",
+                "Selfies with distracting backgrounds",
+                "Overly formal if you're in a creative field"
+              ]
+            }
+          ],
+          "tips": [
+            "Use tools like PhotoAI or a professional headshot session. LinkedIn says profiles with photos get 21x more views."
+          ]
+        },
+        {
+          "number": 2,
+          "title": "The Banner Image",
+          "body": [
+            "The banner is prime real estate most people waste. Use it to communicate your value proposition at a glance."
+          ],
+          "bodyStyle": "paragraph",
+          "subsections": [
+            {
+              "title": "Great banner ideas by role",
+              "items": [
+                "Job seekers: \"Open to [Role] Opportunities | [Your Key Skill]\" with a clean graphic",
+                "Founders/entrepreneurs: Company tagline + logo",
+                "Consultants: Niche + result (e.g., \"Helping SaaS companies close more deals\")",
+                "Creators: Your content niche + CTA"
+              ]
+            }
+          ],
+          "tips": [
+            "Tools to design: Canva (free templates — 1584x396px), Adobe Express"
+          ]
+        },
+        {
+          "number": 3,
+          "title": "The Headline — Your Most Important Field",
+          "body": [
+            "LinkedIn's algorithm indexes your headline heavily. It also appears in search results, connection requests, and comments — make it count."
+          ],
+          "bodyStyle": "paragraph",
+          "subsections": [
+            {
+              "title": "The formula",
+              "items": [
+                "[What you do] + [Who you help] + [Result/Outcome]"
+              ]
+            },
+            {
+              "title": "Examples",
+              "items": [
+                {
+                  "kind": "bad",
+                  "label": "Bad",
+                  "text": "\"Marketing Manager at Acme Corp\""
+                },
+                {
+                  "kind": "good",
+                  "label": "Good",
+                  "text": "\"Helping B2B SaaS companies grow organic pipeline | Content & SEO Lead\""
+                },
+                {
+                  "kind": "good",
+                  "label": "Good",
+                  "text": "\"Product Designer → Building fintech products people actually enjoy using\""
+                },
+                {
+                  "kind": "good",
+                  "label": "Good",
+                  "text": "\"Recruiting top engineers for Series A–C startups | 500+ placements\""
+                }
+              ]
+            }
+          ],
+          "tips": [
+            "Use pipe characters | or · to break up clauses for readability",
+            "Include keywords your target audience searches for",
+            "Don't just list your title — show value",
+            "220 character limit — use all of it"
+          ]
+        },
+        {
+          "number": 4,
+          "title": "The About Section (Summary)",
+          "body": [
+            "Most people write a resume summary here. Don't. Write a story."
+          ],
+          "bodyStyle": "paragraph",
+          "subsections": [
+            {
+              "title": "Structure that works",
+              "items": [
+                "Hook — First 2 lines (these show before \"see more\") — make them count",
+                "The problem you solve — Who do you help and with what?",
+                "Your credibility — Notable achievements, numbers, companies",
+                "Your approach/philosophy — What makes you different?",
+                "CTA — What should they do next? (Connect, message, visit website)"
+              ]
+            }
+          ],
+          "tips": [
+            "Use line breaks generously — dense paragraphs kill readability",
+            "Emojis at the start of bullets are fine and boost engagement",
+            "Aim for 200–300 words",
+            "Write in first person"
+          ],
+          "templates": [
+            {
+              "label": "About Section Template",
+              "text": "I help [audience] do [thing] without [pain point].\n\nOver the past X years, I've [key achievement 1], [key achievement 2], and [key achievement 3].\n\nMy approach: [brief philosophy]\n\nIf you're looking to [outcome], let's connect. DM me or reach me at [email]."
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "title": "Experience Section",
+          "body": [
+            "Don't just paste your resume. Each role should tell a story of impact."
+          ],
+          "bodyStyle": "paragraph",
+          "tips": [
+            "Use numbers wherever possible (revenue, %, headcount, time saved)",
+            "Lead with outcomes, not responsibilities",
+            "Keep bullet points to 3–5 per role",
+            "Add rich media: decks, case studies, videos, articles"
+          ],
+          "templates": [
+            {
+              "label": "Experience Format",
+              "text": "[Company one-liner] — what the company does in plain language\n\n• Achieved [specific result] by [doing what]\n• Led [team/project] that resulted in [measurable outcome]\n• Built [thing] used by [X users / generating $Y revenue]"
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "title": "Skills & Endorsements",
+          "body": [
+            "Skills influence LinkedIn's search algorithm."
+          ],
+          "bodyStyle": "paragraph",
+          "tips": [
+            "Add your top 3 skills first — these show prominently and get the most endorsements",
+            "Include both hard skills (e.g., \"Python\", \"Financial Modeling\") and soft skills (e.g., \"Executive Communication\")",
+            "Aim for 50 skills total to maximize searchability",
+            "Ask colleagues to endorse your top 5 — they'll often return the favor"
+          ]
+        },
+        {
+          "number": 7,
+          "title": "Recommendations",
+          "body": [
+            "Recommendations are social proof on steroids. Even 2–3 strong ones can significantly boost credibility."
+          ],
+          "bodyStyle": "paragraph",
+          "subsections": [
+            {
+              "title": "How to get great recommendations",
+              "items": [
+                "Ask right after a win",
+                "Give context: \"You could mention the campaign we ran together and the results\"",
+                "Offer to write a draft for them to edit",
+                "Give first — write recommendations for colleagues you genuinely admire"
+              ]
+            },
+            {
+              "title": "Who to ask",
+              "items": [
+                "Direct managers",
+                "Satisfied clients or customers",
+                "Cross-functional collaborators",
+                "Mentors or professors (early career)"
+              ]
+            }
+          ]
+        },
+        {
+          "number": 8,
+          "title": "Featured Section",
+          "body": [
+            "This section lets you pin content to the top of your profile. Use it wisely."
+          ],
+          "bodyStyle": "paragraph",
+          "tips": [
+            "Your top-performing post (one that got great engagement)",
+            "A case study or portfolio piece",
+            "A media feature or press mention",
+            "A newsletter or website link",
+            "A lead magnet or CTA page"
+          ]
+        },
+        {
+          "number": 9,
+          "title": "Open to Work — To Badge or Not to Badge?",
+          "body": [
+            "Pros: Signals availability clearly, increases recruiter inbound",
+            "Cons: Can signal desperation in some industries; visible to current employer unless you restrict it",
+            "The smarter move: Use the \"recruiters only\" setting to stay visible to headhunters without broadcasting it publicly."
+          ],
+          "bodyStyle": "bullets"
+        },
+        {
+          "number": 10,
+          "title": "Profile Optimization Checklist",
+          "body": [
+            "Professional photo (smiling, clean background)",
+            "Custom banner with your value prop",
+            "Keyword-rich headline (not just job title)",
+            "Compelling About section with a CTA",
+            "Experience with measurable outcomes, not just duties",
+            "Top 3 skills pinned, 50 total",
+            "3+ recommendations",
+            "Featured section with your best work",
+            "Custom LinkedIn URL (linkedin.com/in/yourname)",
+            "Contact info filled in (email, website)",
+            "Creator mode ON (if you post content)"
+          ],
+          "bodyStyle": "bullets"
+        },
+        {
+          "number": null,
+          "title": "Common Mistakes to Avoid",
+          "table": {
+            "headers": [
+              "Mistake",
+              "Fix"
+            ],
+            "rows": [
+              [
+                "Generic headline (just job title)",
+                "Rewrite with value + outcome formula"
+              ],
+              [
+                "Empty About section",
+                "Tell your story in 200–300 words"
+              ],
+              [
+                "No profile photo",
+                "Get a professional headshot"
+              ],
+              [
+                "No activity/posts",
+                "Post or engage at least 2x per week"
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "number": "02",
+      "tabLabel": "DMs",
+      "title": "LinkedIn DMs",
+      "subtitle": "The Art of Cold & Warm Outreach",
+      "intro": "Most LinkedIn DMs are ignored because they're self-serving, generic, and arrive with no context. The ones that get replies are short, relevant, and lead with value.",
+      "sections": [
+        {
+          "number": 1,
+          "title": "The Psychology of a LinkedIn DM",
+          "body": [
+            "Before writing a single message, understand what you're asking someone to do: stop what they're doing, read your message, decide if it's worth their time, and reply.",
+            "Three questions your DM must answer:",
+            "Why are you reaching out to me specifically?",
+            "What's in it for me?",
+            "What do you want me to do?"
+          ],
+          "bodyStyle": "bullets"
+        },
+        {
+          "number": 2,
+          "title": "The Golden Rules of LinkedIn DMs",
+          "body": [
+            "Be short. If it takes more than 30 seconds to read, it won't be read.",
+            "Personalize. Generic = ignored. Find one real thing about them.",
+            "One ask per message. Don't ask to connect, hop on a call, AND get feedback in the same DM.",
+            "Lead with them, not you. \"I saw your post about X...\" not \"I'm a [job title] at [company]...\"",
+            "No pitch on the first message. Build rapport first."
+          ],
+          "bodyStyle": "bullets"
+        },
+        {
+          "number": 3,
+          "title": "Connection Request Note Templates",
+          "body": [
+            "You have 300 characters. Use them to start a conversation, not close a deal."
+          ],
+          "bodyStyle": "paragraph",
+          "templates": [
+            {
+              "label": "Common interest/background",
+              "text": "Hey [Name] — noticed we both [went to X / worked in Y / follow Z person].\nWould love to connect and swap notes sometime."
+            },
+            {
+              "label": "Their content",
+              "text": "Hey [Name], loved your post on [topic] — especially the point about [specific thing].\nConnecting to stay in your orbit!"
+            },
+            {
+              "label": "Warm intro",
+              "text": "[Mutual connection] suggested I reach out — we're both [working on / interested in X].\nHappy to connect!"
+            },
+            {
+              "label": "Job seeker → hiring manager",
+              "text": "Hi [Name] — I applied for the [Role] at [Company] and admire what the team is building.\nWould love to connect!"
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "title": "Follow-Up DM Sequences",
+          "body": [
+            "After a connection is accepted, use structured follow-up sequences."
+          ],
+          "bodyStyle": "paragraph",
+          "subsections": [
+            {
+              "title": "Sequence 1: Networking / Relationship Building",
+              "items": [
+                "Day 1 — Thank + specific compliment on their work",
+                "Day 5–7 — Share a relevant article/tool/resource",
+                "Day 14 — Soft ask for a 15-min call"
+              ]
+            },
+            {
+              "title": "Sequence 2: Sales / B2B Outreach",
+              "items": [
+                "Message 1 — Trigger-based opener (congrats on funding/launch/hire)",
+                "Message 2 (5 days later) — Value drop with a guide/case study",
+                "Message 3 (7 days later) — Graceful breakup message"
+              ]
+            },
+            {
+              "title": "Sequence 3: Job Seeker Outreach",
+              "items": [
+                "Message 1 — After applying: reach out directly to hiring manager",
+                "Message 2 — For employees: ask for a 10-min chat about team culture"
+              ]
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "title": "What NOT to Do",
+          "table": {
+            "headers": [
+              "Don't",
+              "Why"
+            ],
+            "rows": [
+              [
+                "Open with \"I hope this message finds you well\"",
+                "Filler that signals a template"
+              ],
+              [
+                "Attach a pitch deck in message 1",
+                "Way too much, way too soon"
+              ],
+              [
+                "Send voice notes without asking",
+                "Polarizing — many find them presumptuous"
+              ],
+              [
+                "Follow up more than 3 times",
+                "Becomes harassment, damages your brand"
+              ],
+              [
+                "Write a wall of text",
+                "Nobody reads it"
+              ],
+              [
+                "Use \"per my last message\"",
+                "Passive aggressive"
+              ]
+            ]
+          }
+        },
+        {
+          "number": 6,
+          "title": "LinkedIn InMail vs. DM",
+          "tips": [
+            "Subject line matters — treat it like an email subject",
+            "Even shorter than regular DMs — get to the point in 3–4 sentences",
+            "Tuesday–Thursday perform best for response rates"
+          ],
+          "table": {
+            "headers": [
+              "Feature",
+              "DM (Connection)",
+              "InMail"
+            ],
+            "rows": [
+              [
+                "Requires connection?",
+                "Yes",
+                "No"
+              ],
+              [
+                "Cost",
+                "Free",
+                "Credits (Premium)"
+              ],
+              [
+                "Open rate",
+                "~20–35%",
+                "~15–25%"
+              ],
+              [
+                "Best for",
+                "Warm outreach",
+                "Cold outreach to premium targets"
+              ]
+            ]
+          }
+        },
+        {
+          "number": 7,
+          "title": "The DM Audit — Is Your Message Ready?",
+          "body": [
+            "Before hitting send, ask:",
+            "Is it under 150 words?",
+            "Does it mention something specific about them?",
+            "Does it have ONE clear ask?",
+            "Does it lead with their interests, not mine?"
+          ],
+          "bodyStyle": "bullets"
+        }
+      ]
+    },
+    {
+      "number": "03",
+      "tabLabel": "Job Seeking",
+      "title": "LinkedIn Jobs (Job Seeker)",
+      "subtitle": "Find & Land Your Next Role",
+      "intro": "LinkedIn is the #1 platform for professional hiring. But most job seekers use it passively. The people who land great roles treat it like an active search engine — and optimize accordingly.",
+      "sections": [
+        {
+          "number": 1,
+          "title": "Set Up Your Job Search Correctly",
+          "subsections": [
+            {
+              "title": "Open to Work Settings",
+              "items": [
+                "Go to your profile → \"Open to\" → \"Finding a new job\"",
+                "Add your target roles, locations, job types, and start date",
+                "Recruiters only = hidden from current employer but visible to headhunters",
+                "All LinkedIn members = shows the green banner; more visibility, less discretion"
+              ]
+            },
+            {
+              "title": "Job Alerts",
+              "items": [
+                "Set up alerts for your top 5–10 target roles/companies",
+                "Use Boolean search: \"Product Manager\" AND (\"SaaS\" OR \"B2B\") NOT \"entry level\"",
+                "Apply within the first 24–48 hours for maximum visibility"
+              ]
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "title": "Master the Job Search Filters",
+          "body": [
+            "Date posted: Always filter to \"Past 24 hours\" or \"Past week\"",
+            "Easy Apply vs. External Apply: Easy Apply is faster; external often has less competition",
+            "Experience level: Match honestly",
+            "Company size: Filter for the environment you thrive in",
+            "Remote/Hybrid/On-site: Set this early to avoid wasted applications"
+          ],
+          "bodyStyle": "bullets"
+        },
+        {
+          "number": 3,
+          "title": "How the Algorithm Ranks Applicants",
+          "body": [
+            "Profile completeness (All-Star status matters)",
+            "Keyword match between your profile and the job description",
+            "Your engagement on the platform",
+            "Mutual connections at the hiring company",
+            "Whether you've applied quickly after posting"
+          ],
+          "bodyStyle": "bullets",
+          "tips": [
+            "Before applying, read the job description and naturally incorporate its exact keywords into your headline, About section, and top experience bullet."
+          ]
+        },
+        {
+          "number": 4,
+          "title": "Easy Apply — Do's and Don'ts",
+          "subsections": [
+            {
+              "title": "Do",
+              "items": [
+                "Customize your headline and summary to match the role before applying",
+                "Answer screening questions thoughtfully — these filter 80% of applicants",
+                "Upload a tailored resume even when your LinkedIn is up to date",
+                "Follow up with a DM to the hiring manager after applying"
+              ]
+            },
+            {
+              "title": "Don't",
+              "items": [
+                "Apply to 100+ jobs with zero customization (spray-and-pray rarely works)",
+                "Submit with an incomplete profile",
+                "Skip the screening questions or rush through them"
+              ]
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "title": "The Hidden Job Market",
+          "body": [
+            "Up to 70% of jobs are never publicly posted. LinkedIn is your best tool to tap into this."
+          ],
+          "bodyStyle": "paragraph",
+          "tips": [
+            "Target 20–30 companies you'd love to work at",
+            "Follow each company page and set notifications to ON",
+            "Connect with employees at those companies",
+            "Reach out to hiring managers directly with a value-first DM",
+            "Attend virtual events hosted by target companies"
+          ]
+        },
+        {
+          "number": 6,
+          "title": "Networking Your Way to a Referral",
+          "body": [
+            "Referrals increase your chance of getting hired by 3–4x."
+          ],
+          "bodyStyle": "paragraph",
+          "tips": [
+            "Identify a connection at the company (1st or 2nd degree)",
+            "Send a warm DM — not \"Can you refer me?\" but \"I'd love to learn more about your experience\"",
+            "After a call, ask: \"If you think I'd be a good fit, I'd really appreciate a referral\"",
+            "Make it easy — send resume, job link, and 3-bullet summary"
+          ]
+        },
+        {
+          "number": 7,
+          "title": "Researching Before Interviews",
+          "body": [
+            "Company page → Recent posts (what are they proud of?)",
+            "\"People\" tab → See who you'd work with, team size, backgrounds",
+            "Employee growth trends",
+            "Recent hires and departures in the relevant department",
+            "The interviewer's profile — shared interests, career path, recent posts"
+          ],
+          "bodyStyle": "bullets"
+        },
+        {
+          "number": 8,
+          "title": "Common Mistakes",
+          "table": {
+            "headers": [
+              "Mistake",
+              "Fix"
+            ],
+            "rows": [
+              [
+                "Applying to everything",
+                "Focus on 20–30 target companies"
+              ],
+              [
+                "Never following up",
+                "DM hiring managers post-application"
+              ],
+              [
+                "Generic headline",
+                "Show your specialty and value"
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "number": "04",
+      "tabLabel": "Employer Sourcing",
+      "title": "LinkedIn Jobs (Employer)",
+      "subtitle": "Post Jobs & Attract Top Talent",
+      "intro": "Posting a job on LinkedIn is easy. Attracting the right candidates — efficiently and at scale — takes strategy. Here's how to do it right.",
+      "sections": [
+        {
+          "number": 1,
+          "title": "LinkedIn Recruiter vs. Job Posts",
+          "subsections": [
+            {
+              "title": "Free Job Posts",
+              "items": [
+                "Post up to 1 job for free at a time",
+                "Limited applicant filters",
+                "Good for small teams / occasional hiring"
+              ]
+            },
+            {
+              "title": "Promoted Job Posts (Paid)",
+              "items": [
+                "Pay per click or set a budget",
+                "Appear higher in search results",
+                "More applicant data and filters",
+                "Best for roles where you need volume fast"
+              ]
+            },
+            {
+              "title": "LinkedIn Recruiter (Premium)",
+              "items": [
+                "Full Boolean search across all LinkedIn members",
+                "InMail credits to contact passive candidates",
+                "Pipeline management tools",
+                "Best for teams hiring 5+ roles at a time"
+              ]
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "title": "Writing a Job Post That Attracts Great Candidates",
+          "body": [
+            "Most job posts repel top candidates. They're full of jargon, endless requirements, and zero personality."
+          ],
+          "bodyStyle": "paragraph",
+          "subsections": [
+            {
+              "title": "Title",
+              "items": [
+                "Be specific and searchable: \"Senior Backend Engineer (Python, AWS)\" not \"Software Ninja\"",
+                "Avoid creative titles (they don't match how candidates search)",
+                "Include seniority level"
+              ]
+            },
+            {
+              "title": "About the Role",
+              "items": [
+                "Open with WHY this role exists — what problem does this person solve?",
+                "Paint a picture of what success looks like in 6–12 months",
+                "Keep it to 3–5 sentences"
+              ]
+            },
+            {
+              "title": "What You'll Do (Responsibilities)",
+              "items": [
+                "Lead with the most exciting/strategic parts of the role",
+                "Bullet points — 5–7 max",
+                "Use action verbs: \"Lead\", \"Build\", \"Own\", \"Drive\"",
+                "Avoid \"assist with\" and \"help\""
+              ]
+            },
+            {
+              "title": "Requirements",
+              "items": [
+                "Separate must-haves from nice-to-haves",
+                "Keep must-haves to 4–5 items",
+                "Focus on capabilities, not years of experience",
+                "Include: \"We encourage you to apply even if you don't meet every requirement\""
+              ]
+            },
+            {
+              "title": "Compensation & Benefits",
+              "items": [
+                "Always include a salary range — posts with salary get 40% more applicants",
+                "List the genuinely compelling benefits"
+              ]
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "title": "Targeting the Right Candidates",
+          "body": [
+            "LinkedIn lets you target job posts by location, skills, industries, education level, and job function."
+          ],
+          "bodyStyle": "paragraph",
+          "tips": [
+            "For senior roles: Don't just post. Source proactively.",
+            "For niche technical roles: Use skills-based targeting, not just keywords",
+            "For high-volume roles: Use Promoted Posts + screening questions"
+          ]
+        },
+        {
+          "number": 4,
+          "title": "Screening Applicants Efficiently",
+          "subsections": [
+            {
+              "title": "Screening Questions",
+              "items": [
+                "Ask 1–3 knockout questions",
+                "Mark questions as \"deal breakers\" to automatically filter"
+              ]
+            },
+            {
+              "title": "Reviewing Applications",
+              "items": [
+                "Use LinkedIn's \"Top Applicant\" filter",
+                "Sort by \"Most Recent\" first",
+                "Review profiles, not just resumes"
+              ]
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "title": "Proactive Sourcing — Finding Passive Candidates",
+          "body": [
+            "The best candidates aren't applying to your job post — they're employed and doing great work. Go find them."
+          ],
+          "bodyStyle": "paragraph",
+          "templates": [
+            {
+              "label": "Sourcing Outreach",
+              "text": "Hi [Name] — I came across your profile while sourcing for a [Role] at [Company].\n\nYour background in [specific skill/experience] is exactly what we're looking for.\nWe're building [brief, exciting description].\n\nWould you be open to a quick 15-min call to see if there's a fit?"
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "title": "Building an Employer Brand on LinkedIn",
+          "body": [
+            "Top candidates choose companies, not just jobs. Your LinkedIn Company Page is your recruiting brand."
+          ],
+          "bodyStyle": "paragraph",
+          "tips": [
+            "Employee spotlights and behind-the-scenes content",
+            "Team milestones and wins",
+            "Company culture posts (team offsites, product launches)",
+            "Thought leadership from your leadership team",
+            "Job posts (but not ONLY job posts — that's a red flag)"
+          ]
+        },
+        {
+          "number": 7,
+          "title": "Measuring Hiring Performance",
+          "table": {
+            "headers": [
+              "Metric",
+              "What It Tells You"
+            ],
+            "rows": [
+              [
+                "Applicants per post",
+                "Is your job post compelling?"
+              ],
+              [
+                "Applicant quality score",
+                "Are you targeting the right people?"
+              ],
+              [
+                "Time-to-hire",
+                "Is your process efficient?"
+              ],
+              [
+                "InMail response rate",
+                "Is your sourcing message working?"
+              ],
+              [
+                "Offer acceptance rate",
+                "Is your compensation competitive?"
+              ]
+            ]
+          }
+        },
+        {
+          "number": 8,
+          "title": "Common Mistakes",
+          "table": {
+            "headers": [
+              "Mistake",
+              "Fix"
+            ],
+            "rows": [
+              [
+                "No salary range",
+                "Always include it — 40% more applicants"
+              ],
+              [
+                "20+ requirements",
+                "Cut to 4–5 must-haves"
+              ],
+              [
+                "Generic company description",
+                "Tell your story with personality"
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "number": "05",
+      "tabLabel": "Networking",
+      "title": "LinkedIn for Networking",
+      "subtitle": "Build Relationships That Matter",
+      "intro": "Networking on LinkedIn isn't about collecting connections. It's about cultivating relationships with people who can open doors — and whose doors you can open too.",
+      "sections": [
+        {
+          "number": 1,
+          "title": "The Mindset Shift",
+          "body": [
+            "Most people network transactionally: they reach out when they need something. The best networkers operate on a give-first philosophy.",
+            "Your networking mantra: Be the person who connects people, shares opportunities, and celebrates others — and watch your network compound over time."
+          ],
+          "bodyStyle": "bullets"
+        },
+        {
+          "number": 2,
+          "title": "Who to Connect With (And Why)",
+          "body": [
+            "Build a diverse network across 5 categories:"
+          ],
+          "bodyStyle": "paragraph",
+          "tips": [
+            "After every event: connect within 24 hours",
+            "After every conversation at work: connect with clients, vendors, collaborators",
+            "When you engage with someone's content and have a genuine reaction"
+          ],
+          "table": {
+            "headers": [
+              "Category",
+              "Why"
+            ],
+            "rows": [
+              [
+                "Peers in your field",
+                "Collaboration, referrals, job leads"
+              ],
+              [
+                "People 1–2 levels above you",
+                "Mentorship, sponsorship, career acceleration"
+              ],
+              [
+                "Adjacent industries",
+                "Cross-pollination of ideas, unexpected opportunities"
+              ],
+              [
+                "Recruiters & headhunters",
+                "Even if you're not looking — be visible"
+              ],
+              [
+                "Content creators in your niche",
+                "Amplification, community, partnerships"
+              ]
+            ]
+          }
+        },
+        {
+          "number": 3,
+          "title": "The Connection Request Strategy",
+          "body": [
+            "Always personalize your request. Generic requests have a ~30% lower acceptance rate."
+          ],
+          "bodyStyle": "paragraph",
+          "tips": [
+            "Import your email contacts to LinkedIn",
+            "Connect with ALL past colleagues, classmates, and clients",
+            "Target 5–10 new connection requests per day in your niche",
+            "Engage with someone's content before requesting — warmer outreach = higher acceptance"
+          ]
+        },
+        {
+          "number": 4,
+          "title": "The Weekly Networking Routine (30 Min/Day)",
+          "body": [
+            "Monday: Review suggested connections. Send 5 personalized requests.",
+            "Tuesday–Thursday: Spend 15 min engaging (comments, reactions) on posts from people you want to stay close to.",
+            "Friday: Send one value-add message to someone in your network.",
+            "Monthly: Do a \"coffee chat\" outreach to 4–6 people."
+          ],
+          "bodyStyle": "bullets"
+        },
+        {
+          "number": 5,
+          "title": "LinkedIn Events — Underrated Networking Gold",
+          "body": [
+            "Search for virtual events in your niche",
+            "RSVP and review the attendee list BEFORE the event",
+            "Connect with 10–15 attendees beforehand",
+            "During the event: engage in the chat with thoughtful questions",
+            "After: follow up within 24 hours with a DM referencing a specific conversation"
+          ],
+          "bodyStyle": "bullets"
+        },
+        {
+          "number": 6,
+          "title": "The Art of the Virtual Coffee Chat",
+          "body": [
+            "Virtual coffee chats are the highest ROI activity for career growth."
+          ],
+          "bodyStyle": "paragraph",
+          "tips": [
+            "\"What's the most interesting thing you're working on right now?\"",
+            "\"What do you wish you'd known earlier in your career?\"",
+            "\"Is there anyone you think I should talk to?\"",
+            "\"Is there anything I can help you with?\""
+          ],
+          "templates": [
+            {
+              "label": "Coffee Chat Ask",
+              "text": "Hey [Name] — I've really admired your work on [topic/company/project].\nI'm [brief context about you] and would love to pick your brain for 15 minutes.\n\nWould you be open to a quick virtual coffee chat sometime this month?"
+            }
+          ]
+        },
+        {
+          "number": 7,
+          "title": "Giving Before You Get — The Networking Bank Account",
+          "body": [
+            "Think of your network like a bank account. Every time you give, you make a deposit. Every time you ask, you make a withdrawal."
+          ],
+          "bodyStyle": "paragraph",
+          "tips": [
+            "Share someone's post with a thoughtful comment",
+            "Make an introduction between two people who should know each other",
+            "Share a relevant job posting with someone who might fit",
+            "Congratulate people on milestones",
+            "Write a LinkedIn recommendation unprompted",
+            "Share useful resources, articles, or tools in DMs"
+          ]
+        },
+        {
+          "number": 8,
+          "title": "Maintaining Your Network (The CRM Approach)",
+          "body": [
+            "Your network decays if you don't tend to it."
+          ],
+          "bodyStyle": "paragraph",
+          "tips": [
+            "They got promoted → Congratulate them",
+            "You read something they'd love → Share it",
+            "You met someone they should know → Make the intro",
+            "It's been too long → Quick check-in"
+          ],
+          "table": {
+            "headers": [
+              "Tier",
+              "Who",
+              "How Often"
+            ],
+            "rows": [
+              [
+                "Tier 1 (Top 20)",
+                "Mentors, key sponsors, closest allies",
+                "Monthly"
+              ],
+              [
+                "Tier 2 (Next 50)",
+                "Strong professional relationships",
+                "Quarterly"
+              ],
+              [
+                "Tier 3 (Broader)",
+                "Acquaintances, loose ties",
+                "Annually"
+              ]
+            ]
+          }
+        },
+        {
+          "number": 9,
+          "title": "Networking Mistakes to Avoid",
+          "table": {
+            "headers": [
+              "Mistake",
+              "Fix"
+            ],
+            "rows": [
+              [
+                "Only networking when you need something",
+                "Build relationships before you need them"
+              ],
+              [
+                "Treating networking as a numbers game",
+                "Quality > quantity — 50 real relationships beat 5,000 connections"
+              ],
+              [
+                "Never following up",
+                "Set calendar reminders for top-tier contacts"
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "number": "06",
+      "tabLabel": "Comments",
+      "title": "LinkedIn Comments",
+      "subtitle": "Grow Your Presence Through Engagement",
+      "intro": "Commenting on LinkedIn is one of the highest-leverage, lowest-effort ways to grow your presence. The right comment on the right post can get you more visibility than a post of your own.",
+      "sections": [
+        {
+          "number": 1,
+          "title": "Why Comments Are Your Secret Weapon",
+          "body": [
+            "LinkedIn's algorithm shows comments to the commenter's network, not just the original post's audience",
+            "A great comment positions you as a thought leader without writing a full post",
+            "Comments build relationships with the post's author",
+            "Early comments (within the first 30–60 min) get disproportionate algorithmic weight"
+          ],
+          "bodyStyle": "bullets"
+        },
+        {
+          "number": 2,
+          "title": "The Anatomy of a Great LinkedIn Comment",
+          "body": [
+            "Add a new perspective or data point",
+            "Share a relevant personal story or experience",
+            "Ask a thoughtful follow-up question",
+            "Challenge respectfully (with substance)",
+            "Validate with specifics (not just \"great post!\")"
+          ],
+          "bodyStyle": "bullets",
+          "subsections": [
+            {
+              "title": "The Formula",
+              "items": [
+                "[Validate the idea] + [Add your own perspective/experience] + [Optional: Ask a question]"
+              ]
+            },
+            {
+              "title": "Example",
+              "items": [
+                {
+                  "kind": "bad",
+                  "label": "Bad",
+                  "text": "\"Great post! Totally agree!\""
+                },
+                {
+                  "kind": "good",
+                  "label": "Good",
+                  "text": "\"The productivity gains are real — when we moved to async at my last company, we cut meeting time by 40% and deep work blocks nearly doubled. The hardest part wasn't the tools — it was getting managers to trust the process. Has your team run into that cultural resistance?\""
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "title": "Comment Strategies by Goal",
+          "subsections": [
+            {
+              "title": "Build relationships with influencers",
+              "items": [
+                "Comment within the first hour",
+                "Reference a specific point",
+                "Add genuine value, don't just agree",
+                "Be consistent — weekly on the same person builds recognition"
+              ]
+            },
+            {
+              "title": "Get noticed by employers/clients",
+              "items": [
+                "Comment on posts by people at target companies",
+                "Demonstrate your expertise in every comment",
+                "Use comments as a soft pitch: show, don't tell"
+              ]
+            },
+            {
+              "title": "Grow your own following",
+              "items": [
+                "Comment on high-reach posts (10k+ likes) in your niche",
+                "Your comment becomes a mini-post with its own reach",
+                "Add enough value that people click your profile"
+              ]
+            },
+            {
+              "title": "Start conversations that lead to DMs",
+              "items": [
+                "Ask genuine questions in comments",
+                "Reply to everyone who comments on your posts",
+                "Tag people who would genuinely find the post interesting"
+              ]
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "title": "The 30-Minute Daily Engagement Routine",
+          "body": [
+            "Step 1 (5 min): Like and comment on 3–5 posts from your network",
+            "Step 2 (10 min): Search for trending posts in your niche. Leave 2–3 high-quality comments.",
+            "Step 3 (5 min): Reply to comments on your own posts",
+            "Step 4 (5 min): Send 1–2 DMs to people whose content you engaged with",
+            "Step 5 (5 min): Check notifications — thank people who engaged with your content"
+          ],
+          "bodyStyle": "bullets",
+          "tips": [
+            "Done consistently, this routine compounds dramatically over 90 days."
+          ]
+        },
+        {
+          "number": 5,
+          "title": "Finding the Right Posts to Comment On",
+          "body": [
+            "Posts by thought leaders in your industry",
+            "Posts by people at companies you want to work at or sell to",
+            "Trending posts under your target hashtags",
+            "Posts that ask a direct question",
+            "Controversial or debate-worthy posts"
+          ],
+          "bodyStyle": "bullets",
+          "tips": [
+            "Follow 10–20 LinkedIn creators in your niche",
+            "Set post notifications on for your top 5",
+            "Search hashtags relevant to your field daily"
+          ]
+        },
+        {
+          "number": 6,
+          "title": "Comment Templates",
+          "templates": [
+            {
+              "label": "Adding a data point",
+              "text": "[Agree/interesting take] — data backs this up. [Relevant stat or study].\nWhat's your take on [related question]?"
+            },
+            {
+              "label": "Sharing a story",
+              "text": "This resonates. At [company/situation], we [relevant experience].\nThe outcome was [result]. The lesson: [key insight]."
+            },
+            {
+              "label": "Respectful pushback",
+              "text": "Really interesting perspective. I'd push back slightly on [specific point] —\nin my experience, [nuance/counterpoint]. Curious if you've seen it differently?"
+            },
+            {
+              "label": "Expanding the idea",
+              "text": "Great point. I'd add [additional layer] to this. Especially when [context].\nHave you seen [related phenomenon]?"
+            }
+          ]
+        },
+        {
+          "number": 7,
+          "title": "Commenting Mistakes to Avoid",
+          "table": {
+            "headers": [
+              "Mistake",
+              "Why It Hurts"
+            ],
+            "rows": [
+              [
+                "\"Great post!\" with nothing else",
+                "Provides no value; looks like engagement-baiting"
+              ],
+              [
+                "Self-promoting in comments",
+                "Comes across as spammy; often gets hidden"
+              ],
+              [
+                "Being contrarian for visibility",
+                "Damages your reputation if not substantive"
+              ],
+              [
+                "Tagging 5+ people in a comment",
+                "Looks desperate for reach"
+              ],
+              [
+                "Commenting without reading the post",
+                "People notice — it's embarrassing"
+              ],
+              [
+                "Generic agreement: \"100% this\"",
+                "Adds nothing; wastes your visibility opportunity"
+              ]
+            ]
+          }
+        },
+        {
+          "number": 8,
+          "title": "Tracking Your Comment Impact",
+          "body": [
+            "Check profile views (should increase)",
+            "Note new connection requests from strangers",
+            "Track DMs that start with \"I saw your comment on...\"",
+            "Monitor follower growth"
+          ],
+          "bodyStyle": "bullets"
+        }
+      ]
+    },
+    {
+      "number": "07",
+      "tabLabel": "Sales Navigator",
+      "title": "LinkedIn Sales Navigator",
+      "subtitle": "The Power User's Guide",
+      "intro": "Sales Navigator is the most powerful prospecting tool in B2B sales. Most users only scratch the surface. This chapter shows you how to use it like a pro.",
+      "sections": [
+        {
+          "number": 1,
+          "title": "Is Sales Navigator Worth It?",
+          "body": [
+            "Sales Navigator Core costs ~$99/month. It's worth it if you're in B2B sales, recruiting, or business development, you prospect 10+ new contacts per week, or you want to bypass LinkedIn's connection limits."
+          ],
+          "bodyStyle": "paragraph",
+          "table": {
+            "headers": [
+              "Plan",
+              "Best For",
+              "Key Features"
+            ],
+            "rows": [
+              [
+                "Core (~$99/mo)",
+                "Individual sellers",
+                "Advanced search, 50 InMails, Lead/Account lists"
+              ],
+              [
+                "Advanced (~$149/mo)",
+                "Sales teams",
+                "CRM integration, TeamLink, Smart Links"
+              ],
+              [
+                "Advanced Plus",
+                "Enterprise",
+                "Full CRM sync, data validation, admin tools"
+              ]
+            ]
+          }
+        },
+        {
+          "number": 2,
+          "title": "Advanced Lead Search — Finding Your Exact ICP",
+          "body": [
+            "Sales Nav's search is dramatically more powerful than LinkedIn's regular search."
+          ],
+          "bodyStyle": "paragraph",
+          "table": {
+            "headers": [
+              "Filter",
+              "Use Case"
+            ],
+            "rows": [
+              [
+                "Title",
+                "Find exact decision-makers: \"VP of Sales\", \"Head of Growth\""
+              ],
+              [
+                "Seniority Level",
+                "Target director+ without scrolling through ICs"
+              ],
+              [
+                "Company Headcount",
+                "Filter to companies in your ideal size range"
+              ],
+              [
+                "Industry",
+                "Narrow to verticals where you have case studies"
+              ],
+              [
+                "Geography",
+                "Specific cities, states, or countries"
+              ],
+              [
+                "Years in Current Role",
+                "New in role (0–1 year) = actively evaluating vendors"
+              ],
+              [
+                "Changed Jobs in Past 90 Days",
+                "New job = new budget, new priorities"
+              ],
+              [
+                "Posted on LinkedIn in 30 Days",
+                "Active = more likely to respond"
+              ],
+              [
+                "Following Your Company",
+                "Already aware of you = warm prospect"
+              ]
+            ]
+          }
+        },
+        {
+          "number": 3,
+          "title": "Account Search — Finding Target Companies",
+          "body": [
+            "Annual Revenue: Find companies in your target deal size range",
+            "Headcount Growth: Companies growing fast = budget available",
+            "Technology Used: Target companies using specific tools",
+            "Recent News: Companies that just raised funding or hired a new CXO",
+            "Your Connections: See where you have warm paths in"
+          ],
+          "bodyStyle": "bullets",
+          "tips": [
+            "Save accounts as an Account List, then use \"Account alerts\" to get notified when key contacts change jobs, the company posts, or there's news about the account."
+          ]
+        },
+        {
+          "number": 4,
+          "title": "Lead Lists & Account Lists",
+          "body": [
+            "Tier 1 Accounts — Your top 20–30 dream accounts; work these hardest",
+            "Active Prospects — Leads currently in a conversation",
+            "Nurture — Not ready now, but follow for triggers",
+            "Re-engage — Previous contacts gone cold"
+          ],
+          "bodyStyle": "bullets",
+          "tips": [
+            "Use alerts as reasons to reach out: \"Hey [Name] — congrats on the new role as [Title] at [Company]! Would love to catch up.\""
+          ]
+        },
+        {
+          "number": 5,
+          "title": "InMail Strategy — Getting Replies at Scale",
+          "body": [
+            "Sales Nav Core gives you 50 InMail credits/month. Use them wisely."
+          ],
+          "bodyStyle": "paragraph",
+          "tips": [
+            "Subject line is critical — treat it like a cold email subject",
+            "Keep body to 3–4 sentences max",
+            "One clear CTA at the end",
+            "Don't pitch in message 1",
+            "Personalize with a trigger event whenever possible"
+          ],
+          "templates": [
+            {
+              "label": "High-Converting InMail",
+              "text": "Subject: [Company] + [Your Company]\n\nHi [Name] — noticed [Company] just [trigger: raised a round / launched X / hired Y]. Congrats!\n\nWe help [similar company type] [solve specific problem].\nWould it make sense to connect for 15 min to see if there's a fit?"
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "title": "TeamLink — Leveraging Your Network",
+          "body": [
+            "(Available on Advanced plans)",
+            "TeamLink shows which of your colleagues are connected to your prospects — unlocking warm introductions.",
+            "Conversion rates on warm intros are 5–10x higher than cold outreach."
+          ],
+          "bodyStyle": "bullets"
+        },
+        {
+          "number": 7,
+          "title": "Smart Links — Track Engagement",
+          "body": [
+            "(Available on Advanced plans)",
+            "Wrap any document (deck, case study, one-pager) with a Smart Link — then see exactly who viewed it, for how long, and on which pages."
+          ],
+          "bodyStyle": "bullets",
+          "templates": [
+            {
+              "label": "Smart Link Follow-Up",
+              "text": "Hey [Name] — saw you spent some time on the pricing page of the deck I shared. Happy to walk through the numbers in more detail — any questions?"
+            }
+          ]
+        },
+        {
+          "number": 8,
+          "title": "CRM Integration (Advanced+)",
+          "body": [
+            "Sync leads and accounts directly to Salesforce or HubSpot",
+            "Log InMail activity as CRM activities",
+            "See CRM data inside Sales Nav",
+            "Flag CRM-imported contacts for enrichment"
+          ],
+          "bodyStyle": "bullets"
+        },
+        {
+          "number": 9,
+          "title": "The Weekly Sales Nav Workflow",
+          "body": [
+            "Monday (30 min): Review alerts, note trigger events, draft outreach for top 5 leads",
+            "Tuesday–Thursday (20 min/day): Work Tier 1 accounts, send 5–10 personalized messages, engage with prospects' posts",
+            "Friday (20 min): Update lists, add new target accounts, review reply rates"
+          ],
+          "bodyStyle": "bullets"
+        },
+        {
+          "number": 10,
+          "title": "Sales Navigator Mistakes to Avoid",
+          "table": {
+            "headers": [
+              "Mistake",
+              "Fix"
+            ],
+            "rows": [
+              [
+                "Using it like a phone book",
+                "Use trigger events, not just job titles"
+              ],
+              [
+                "Sending the same InMail to everyone",
+                "Personalize every message"
+              ],
+              [
+                "Ignoring account alerts",
+                "These are your conversation starters"
+              ],
+              [
+                "Never saving leads/accounts",
+                "Build your lists on day 1"
+              ]
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2685 @@
+{
+  "slug": "data-engineering-roadmap",
+  "title": "Data Engineering Roadmap 2026",
+  "eyebrow": "Stackle Field Guide / 2026 Edition",
+  "summary": "A practical sequence from SQL and Python to production pipelines, cloud platforms, and senior-level system design.",
+  "category": "Roadmaps",
+  "seo": {
+    "title": "Data Engineering Job Ready 2026 — Stackle",
+    "description": "From zero to Senior Data Engineer — real code, real pipelines, real salaries. Built by someone who actually did it."
+  },
+  "card": {
+    "title": "Data Engineering Roadmap 2026",
+    "badge": "Popular",
+    "image": "/resources/data-engineering-roadmap/card.png",
+    "imageOriginalUrl": "https://stackle.io/assets/de-roadmap-D5hju_X2.png",
+    "displayedLikes": 248,
+    "displayedViews": "12k",
+    "note": "Card shown on the old /resources index, not on this page. Likes/views are hard-coded numbers."
+  },
+  "hero": {
+    "eyebrow": "Stackle Field Guide / 2026 Edition",
+    "headingLines": [
+      "Data Engineering,",
+      "mapped clearly."
+    ],
+    "lead": "A practical sequence from SQL and Python to production pipelines, cloud platforms, and senior-level system design.",
+    "ctas": [
+      {
+        "label": "View Data Engineering Masterclass",
+        "href": "/courses",
+        "external": false,
+        "style": "primary"
+      },
+      {
+        "label": "Book a Call",
+        "href": "https://calendar.app.google/gCDaTk9dCAgLUJAZ9",
+        "external": true,
+        "style": "secondary"
+      }
+    ],
+    "stats": [
+      {
+        "value": "05",
+        "label": "learning phases"
+      },
+      {
+        "value": "20",
+        "label": "guided topics"
+      },
+      {
+        "value": "01",
+        "label": "portfolio pipeline"
+      }
+    ]
+  },
+  "capabilityMap": {
+    "eyebrow": "01 / Capability map",
+    "heading": "The skills architecture of a data engineer.",
+    "intro": "Build the foundation first, add production pipeline skills, then choose a cloud and managed platform. Core skills strengthen every layer.",
+    "technical": {
+      "title": "Technical skills",
+      "subtitle": "Build from left to right",
+      "bands": [
+        {
+          "label": "Foundation / required",
+          "numbered": true,
+          "skills": [
+            {
+              "name": "Python",
+              "detail": "Automation and pipeline logic",
+              "icon": "lucide:Braces"
+            },
+            {
+              "name": "SQL",
+              "detail": "Querying and transformation",
+              "icon": "lucide:Database"
+            },
+            {
+              "name": "Git & GitHub",
+              "detail": "Version control and review",
+              "icon": "lucide:GitBranch"
+            },
+            {
+              "name": "Data modeling",
+              "detail": "Warehouses and reliable metrics",
+              "icon": "lucide:Layers3"
+            },
+            {
+              "name": "Spark",
+              "detail": "Distributed processing at scale",
+              "icon": "lucide:Sparkles"
+            }
+          ]
+        },
+        {
+          "label": "Production pipelines / required",
+          "numbered": false,
+          "skills": [
+            {
+              "name": "Airflow",
+              "detail": "Schedule and monitor workflows",
+              "icon": "lucide:Workflow"
+            },
+            {
+              "name": "dbt",
+              "detail": "Tested analytics transformations",
+              "icon": "lucide:CodeXml"
+            },
+            {
+              "name": "Docker & CI/CD",
+              "detail": "Repeatable production delivery",
+              "icon": "lucide:Container"
+            },
+            {
+              "name": "Kafka",
+              "detail": "Real-time event streaming",
+              "icon": "lucide:Route"
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "label": "Choose one cloud",
+          "icon": "lucide:Cloud",
+          "options": [
+            "AWS",
+            "Azure",
+            "Google Cloud"
+          ]
+        },
+        {
+          "label": "Choose one managed platform",
+          "icon": "lucide:Boxes",
+          "options": [
+            "Databricks",
+            "Microsoft Fabric",
+            "Snowflake"
+          ]
+        }
+      ]
+    },
+    "core": {
+      "title": "Core skills",
+      "subtitle": "Apply at every stage",
+      "numbered": true,
+      "skills": [
+        {
+          "name": "Communication",
+          "detail": "Explain trade-offs and outcomes",
+          "icon": "lucide:MessageSquareText"
+        },
+        {
+          "name": "Data governance",
+          "detail": "Protect quality, access, and lineage",
+          "icon": "lucide:ShieldCheck"
+        },
+        {
+          "name": "Project management",
+          "detail": "Scope and deliver dependable work",
+          "icon": "lucide:Target"
+        },
+        {
+          "name": "Business understanding",
+          "detail": "Connect systems to real decisions",
+          "icon": "lucide:UsersRound"
+        },
+        {
+          "name": "Ownership & reliability",
+          "detail": "Operate what you build",
+          "icon": "lucide:Orbit"
+        },
+        {
+          "name": "System design thinking",
+          "detail": "Design for scale and failure",
+          "icon": "lucide:Network"
+        }
+      ]
+    },
+    "note": "You do not need every tool. Master the concepts, then become excellent in one cloud and one managed platform."
+  },
+  "pipelineDemo": {
+    "eyebrow": "// LIVE PIPELINE DEMO",
+    "heading": "Watch Data Flow in Real-Time",
+    "intro": "Click below to fetch live data, then step through each layer at your own pace.",
+    "source": {
+      "method": "GET",
+      "url": "https://dummyjson.com/products",
+      "query": {
+        "limit": 6,
+        "skip": "random integer 0–79 (Math.floor(Math.random()*80))"
+      },
+      "displayedRequest": "GET https://dummyjson.com/products?limit=6",
+      "responseField": "products"
+    },
+    "buttons": {
+      "start": "Start Pipeline",
+      "loading": "Fetching...",
+      "rerun": "Run Again"
+    },
+    "stageChips": [
+      {
+        "key": "fetching",
+        "label": "API",
+        "icon": "🌐"
+      },
+      {
+        "key": "bronze",
+        "label": "Bronze",
+        "icon": "🥉"
+      },
+      {
+        "key": "silver",
+        "label": "Silver",
+        "icon": "🥈"
+      },
+      {
+        "key": "gold",
+        "label": "Gold",
+        "icon": "🥇"
+      },
+      {
+        "key": "consumers",
+        "label": "Consumers",
+        "icon": "👥"
+      }
+    ],
+    "idle": {
+      "text": "Click \"Start Pipeline\" to fetch live data and watch it flow",
+      "note": "Data source: dummyjson.com — fresh data every run"
+    },
+    "stages": [
+      {
+        "key": "fetching",
+        "icon": "🌐",
+        "title": "Fetching from DummyJSON API",
+        "subtitle": "GET https://dummyjson.com/products?limit=6",
+        "body": "Awaiting API response..."
+      },
+      {
+        "key": "bronze",
+        "icon": "🥉",
+        "title": "Bronze Layer — Raw Ingestion",
+        "subtitle": "Data lands as-is with ingestion metadata. No cleaning yet.",
+        "table": "bronze.raw_products",
+        "countLabel": "{n} records ingested",
+        "display": "Pretty-printed JSON of the first 3 records, then \"// ... {n-3} more records\"",
+        "recordShape": {
+          "_ingested_at": "ISO timestamp of the run (new Date().toISOString())",
+          "_source": "dummyjson.com/products",
+          "raw": "the product object exactly as returned by the API"
+        },
+        "nextButton": "Next: Silver Layer →"
+      },
+      {
+        "key": "silver",
+        "icon": "🥈",
+        "title": "Silver Layer — Cleaned & Validated",
+        "subtitle": "Normalized keys, validated types, trimmed strings, defaults applied.",
+        "table": "silver.products",
+        "countLabel": "{n} clean records",
+        "columns": [
+          "product_id",
+          "product_name",
+          "price_usd",
+          "category",
+          "brand",
+          "stock",
+          "rating"
+        ],
+        "transforms": [
+          {
+            "field": "product_id",
+            "rule": "\"prod_\" + raw.id left-padded with zeros to 4 digits (e.g. prod_0007)"
+          },
+          {
+            "field": "product_name",
+            "rule": "raw.title trimmed; \"UNKNOWN\" if missing"
+          },
+          {
+            "field": "price_usd",
+            "rule": "raw.price rounded to 2 decimals (0 if missing); shown as $0.00"
+          },
+          {
+            "field": "category",
+            "rule": "raw.category lowercased, hyphens replaced by spaces; \"uncategorized\" if missing"
+          },
+          {
+            "field": "brand",
+            "rule": "raw.brand; \"UNKNOWN\" if missing"
+          },
+          {
+            "field": "stock_qty",
+            "rule": "max(0, round(raw.stock)); column header \"stock\""
+          },
+          {
+            "field": "rating",
+            "rule": "raw.rating rounded to 1 decimal"
+          },
+          {
+            "field": "discount_pct",
+            "rule": "raw.discountPercentage rounded to 2 decimals (not shown in the table)"
+          },
+          {
+            "field": "ingested_at",
+            "rule": "copied from bronze _ingested_at (not shown in the table)"
+          }
+        ],
+        "footnote": "Keys snake_cased • IDs padded • Nulls defaulted • Prices validated • Categories lowercased",
+        "nextButton": "Next: Gold Layer →"
+      },
+      {
+        "key": "gold",
+        "icon": "🥇",
+        "title": "Gold Layer — Business-Enriched",
+        "subtitle": "Derived columns added: revenue_potential, stock_status, price_tier.",
+        "table": "gold.products",
+        "countLabel": "{n} enriched records",
+        "columns": [
+          "product_id",
+          "name",
+          "price",
+          "category",
+          "revenue_pot",
+          "stock_status",
+          "price_tier"
+        ],
+        "derived": [
+          {
+            "field": "revenue_potential",
+            "rule": "price_usd × stock_qty, rounded to 2 decimals; shown as whole dollars"
+          },
+          {
+            "field": "stock_status",
+            "rule": "\"healthy\" if stock_qty > 50, \"low\" if > 10, otherwise \"critical\"",
+            "badges": {
+              "healthy": "good",
+              "low": "warning",
+              "critical": "bad"
+            }
+          },
+          {
+            "field": "price_tier",
+            "rule": "\"premium\" if price_usd > 100, \"mid\" if > 30, otherwise \"budget\"",
+            "badges": {
+              "premium": "purple",
+              "mid": "blue",
+              "budget": "neutral"
+            }
+          }
+        ],
+        "footnote": "Enriched: revenue_potential = price × stock • stock_status derived from thresholds • price_tier bucketed",
+        "nextButton": "Next: Consumer Views →"
+      },
+      {
+        "key": "consumers",
+        "icon": "👥",
+        "title": "Consumer Views — Same Gold Data, 3 Different Uses",
+        "subtitle": "Each role queries the same gold.products table but reshapes it for their needs.",
+        "views": [
+          {
+            "role": "Data Analyst",
+            "icon": "lucide:ChartColumn",
+            "subtitle": "Category performance report",
+            "badge": "SQL",
+            "language": "sql",
+            "code": "SELECT category, COUNT(*) AS products,\n  ROUND(AVG(price_usd),2) AS avg_price,\n  SUM(revenue_potential) AS total_potential\nFROM gold.products\nGROUP BY category;",
+            "resultColumns": [
+              "category",
+              "#",
+              "avg $",
+              "potential"
+            ],
+            "resultRule": "One row per category: product count, average price ($, 2 decimals), summed revenue_potential ($, 0 decimals). Computed in the browser."
+          },
+          {
+            "role": "Data Scientist",
+            "icon": "lucide:Brain",
+            "subtitle": "Feature engineering for ML model",
+            "badge": "Python",
+            "language": "python",
+            "code": "features = pd.DataFrame(gold_products)\nfeatures[\"high_value\"] = (\n  features.revenue_potential > features\n    .revenue_potential.median()\n).astype(int)\nfeatures[\"discount_flag\"] = (\n  features.discount_pct > 10\n).astype(int)",
+            "resultColumns": [
+              "id",
+              "price",
+              "rating",
+              "hi_val",
+              "disc"
+            ],
+            "resultRule": "First 4 gold rows. hi_val = 1 when revenue_potential is above the MEAN of all rows (the code shown says median); disc = 1 when discount_pct > 10. hi_val 1 is green, 0 red; disc 1 is amber."
+          },
+          {
+            "role": "Business Executive Dashboard",
+            "icon": "lucide:Briefcase",
+            "subtitle": "Real-time product analytics • Powered by Gold Layer",
+            "liveBadge": "LIVE",
+            "kpis": [
+              {
+                "label": "Total Revenue Potential",
+                "value": "sum of revenue_potential, $ with thousands separators, 0 decimals",
+                "trend": "+12.5%",
+                "trendDirection": "up",
+                "trendNote": "hard-coded"
+              },
+              {
+                "label": "Products in Catalog",
+                "value": "number of products",
+                "trend": "same number again",
+                "trendDirection": "up"
+              },
+              {
+                "label": "Avg Price Point",
+                "value": "average price_usd, $ 2 decimals",
+                "trend": "stable",
+                "trendDirection": "up"
+              },
+              {
+                "label": "Critical Stock Alerts",
+                "value": "count of stock_status = critical",
+                "trend": "\"Action needed\" (red, down) if > 0, else \"All clear\" (green, up)"
+              }
+            ],
+            "charts": [
+              {
+                "title": "Revenue by Category",
+                "type": "BAR",
+                "data": "sum of revenue_potential per category",
+                "color": "#10b981"
+              },
+              {
+                "title": "Inventory Health",
+                "type": "PIE",
+                "data": "count of Healthy / Low / Critical (zero slices hidden), donut with legend",
+                "colors": {
+                  "Healthy": "#10b981",
+                  "Low": "#f59e0b",
+                  "Critical": "#ef4444"
+                }
+              },
+              {
+                "title": "Price vs Revenue",
+                "type": "AREA",
+                "data": "one point per product: x = first 15 characters of product name, y = revenue_potential",
+                "color": "#8b5cf6"
+              }
+            ],
+            "footer": [
+              "Avg Rating: {avg rating, 1 decimal}★",
+              "Healthy Stock: {healthy}/{total}",
+              "Last refresh: {local time}"
+            ]
+          }
+        ],
+        "closingNote": {
+          "strong": "This is what Data Engineers build.",
+          "text": "The pipeline you just saw — API → Bronze → Silver → Gold → Consumer — is the core job. Every company needs this."
+        }
+      }
+    ],
+    "error": "On a failed request a red box shows \"API returned {status}\" (or the browser error message, falling back to \"Failed to fetch data\") and the demo returns to idle."
+  },
+  "roadmap": {
+    "eyebrow": "03 / Guided roadmap",
+    "heading": "Five phases. One coherent path.",
+    "intro": "Move in order. Each topic opens a focused lesson with a checklist, trusted resources, videos, and a practical e-commerce pipeline example.",
+    "phases": [
+      {
+        "id": "phase-0",
+        "number": "01",
+        "label": "Phase 0",
+        "icon": "🧭",
+        "stage": "Beginner",
+        "title": "Is DE right for me?",
+        "fullTitle": "Beginner — Is DE right for me?",
+        "salary": {
+          "text": "Exploring",
+          "kind": "none"
+        },
+        "description": "Understand what data engineering really is. If you like building systems that move and transform data at scale — this is your career.",
+        "skills": [
+          "Career Exploration"
+        ],
+        "topics": [
+          {
+            "id": "understand-the-role",
+            "number": "01",
+            "icon": "🌟",
+            "title": "Understand the Role",
+            "category": "Career Setup",
+            "lesson": {
+              "overview": "Data engineers build and maintain the systems that collect, store, and transform data. They're the backbone of every data-driven company — without them, no dashboard loads, no model trains.",
+              "checklist": [
+                "Understand what a data pipeline is",
+                "Learn the difference between batch and streaming",
+                "Know what a data warehouse vs data lake is",
+                "Explore real job postings for DE roles",
+                "Read about a day in the life of a DE"
+              ],
+              "resources": [
+                {
+                  "label": "What is Data Engineering? — AWS",
+                  "url": "https://aws.amazon.com/what-is/data-engineering/",
+                  "kind": "article",
+                  "linkCheck": {
+                    "status": "broken",
+                    "httpStatus": 404,
+                    "checked": "2026-10-20"
+                  }
+                },
+                {
+                  "label": "Data Engineering Subreddit",
+                  "url": "https://www.reddit.com/r/dataengineering/",
+                  "kind": "community",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                }
+              ],
+              "videos": [
+                {
+                  "title": "What is Data Engineering? — Fireship",
+                  "url": "https://www.youtube.com/watch?v=qWru-b6m030",
+                  "youtubeId": "qWru-b6m030",
+                  "linkCheck": {
+                    "status": "ok",
+                    "youtubeTitle": "How Data Engineering Works | AltexSoft",
+                    "checked": "2026-10-20",
+                    "labelMatches": false
+                  }
+                },
+                {
+                  "title": "Day in the Life of a Data Engineer",
+                  "url": "https://www.youtube.com/watch?v=j4_9TnhFp4g",
+                  "youtubeId": "j4_9TnhFp4g",
+                  "linkCheck": {
+                    "status": "unavailable",
+                    "note": "YouTube says \"This video is unavailable\"",
+                    "checked": "2026-10-20"
+                  }
+                }
+              ],
+              "example": {
+                "kind": "code",
+                "title": "The E-Commerce Orders Dataset — Your Running Example",
+                "language": "json",
+                "code": "// Throughout this roadmap, you'll build a complete\n// pipeline for this e-commerce orders data:\n\n{\n  \"order_id\": \"ord_20240115_9182\",\n  \"user_id\": \"usr_9182\",\n  \"product_id\": \"prod_442\",\n  \"event\": \"purchase\",\n  \"amount\": \"$129.99\",\n  \"timestamp\": \"2024-01-15T14:32:11.294Z\",\n  \"device\": \"iPhone 15 Pro Max\",\n  \"payment_method\": \"credit_card\",\n  \"shipping_address\": {\n    \"city\": \"San Francisco\",\n    \"state\": \"CA\"\n  }\n}\n\n// Phase 1: You'll query this data with SQL\n// Phase 2: You'll build ETL pipelines for it\n// Phase 3: You'll stream it in real-time with Kafka\n// Phase 4: You'll put it on your resume\n// Phase 5: You'll design the system at scale"
+              }
+            }
+          },
+          {
+            "id": "de-vs-analyst-vs-scientist",
+            "number": "02",
+            "icon": "🔬",
+            "title": "DE vs Analyst vs Scientist",
+            "category": "Skills",
+            "lesson": {
+              "overview": "Data Engineers build pipelines, Data Analysts explore data for insights, and Data Scientists build ML models. Understanding the differences helps you pick the right career path.",
+              "checklist": [
+                "Compare daily tasks of each role",
+                "Understand which tools each role uses",
+                "Know salary differences between roles",
+                "Decide which work style suits you"
+              ],
+              "resources": [
+                {
+                  "label": "DE vs DA vs DS — Towards Data Science",
+                  "url": "https://towardsdatascience.com/",
+                  "kind": "article",
+                  "linkCheck": {
+                    "status": "unverified",
+                    "httpStatus": 403,
+                    "note": "bot protection blocked the check",
+                    "checked": "2026-10-20"
+                  }
+                },
+                {
+                  "label": "Career Comparison Guide",
+                  "url": "https://www.datacamp.com/blog/data-scientist-vs-data-engineer",
+                  "kind": "article",
+                  "linkCheck": {
+                    "status": "unverified",
+                    "httpStatus": 403,
+                    "note": "bot protection blocked the check",
+                    "checked": "2026-10-20"
+                  }
+                }
+              ],
+              "videos": [
+                {
+                  "title": "Data Engineer vs Data Scientist vs Data Analyst",
+                  "url": "https://www.youtube.com/watch?v=93rKZs0MkgY",
+                  "youtubeId": "93rKZs0MkgY",
+                  "linkCheck": {
+                    "status": "unavailable",
+                    "note": "YouTube says \"This video is unavailable\"",
+                    "checked": "2026-10-20"
+                  }
+                }
+              ],
+              "example": {
+                "kind": "table",
+                "title": "Role Comparison — Same Orders Data, Different Jobs",
+                "source": "role-comparison",
+                "columns": [
+                  "ROLE",
+                  "WORKS WITH",
+                  "TOOLS",
+                  "OUTPUT"
+                ],
+                "rows": [
+                  [
+                    "Data Engineer",
+                    "Raw order events → Clean pipeline",
+                    "Spark, Kafka, Airflow",
+                    "Reliable data systems"
+                  ],
+                  [
+                    "Data Analyst",
+                    "Clean orders → Dashboards",
+                    "SQL, Tableau, Excel",
+                    "Business insights"
+                  ],
+                  [
+                    "Data Scientist",
+                    "Orders data → Predict churn",
+                    "Python, TensorFlow, Jupyter",
+                    "ML models"
+                  ]
+                ]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "phase-1",
+        "number": "02",
+        "label": "Phase 1",
+        "icon": "🌱",
+        "stage": "Foundations",
+        "title": "SQL, Python & Data Basics",
+        "fullTitle": "Foundations — SQL, Python & Data Basics",
+        "salary": {
+          "text": "$65K – $85K · SQL Developer",
+          "kind": "range",
+          "range": "$65K – $85K",
+          "role": "SQL Developer"
+        },
+        "description": "The two languages every data engineer uses every single day. SQL to query. Python to automate and build.",
+        "skills": [
+          "SQL",
+          "Python",
+          "Pandas",
+          "Git",
+          "Linux CLI"
+        ],
+        "topics": [
+          {
+            "id": "intro-to-data-engineering",
+            "number": "01",
+            "icon": "🟢",
+            "title": "Intro to Data Engineering",
+            "category": "Strategy",
+            "lesson": {
+              "overview": "Get a high-level understanding of data engineering concepts: data pipelines, batch vs streaming, data warehouses vs lakes, and the tools of the trade.",
+              "checklist": [
+                "Understand ETL/ELT concepts",
+                "Learn batch vs streaming processing",
+                "Know what a data warehouse is",
+                "Understand data lakes and lakehouses",
+                "Learn about common DE tools"
+              ],
+              "resources": [
+                {
+                  "label": "Fundamentals of Data Engineering (book)",
+                  "url": "https://www.oreilly.com/library/view/fundamentals-of-data/9781098108298/",
+                  "kind": "book",
+                  "linkCheck": {
+                    "status": "unverified",
+                    "httpStatus": 403,
+                    "note": "bot protection blocked the check",
+                    "checked": "2026-10-20"
+                  }
+                },
+                {
+                  "label": "Data Engineering Wiki",
+                  "url": "https://dataengineering.wiki/",
+                  "kind": "article",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                }
+              ],
+              "videos": [
+                {
+                  "title": "Data Engineering in 100 Seconds — Fireship",
+                  "url": "https://www.youtube.com/watch?v=qWru-b6m030",
+                  "youtubeId": "qWru-b6m030",
+                  "linkCheck": {
+                    "status": "ok",
+                    "youtubeTitle": "How Data Engineering Works | AltexSoft",
+                    "checked": "2026-10-20",
+                    "labelMatches": false
+                  }
+                },
+                {
+                  "title": "Data Engineering Full Course — freeCodeCamp",
+                  "url": "https://www.youtube.com/watch?v=PHsC_t0j1dU",
+                  "youtubeId": "PHsC_t0j1dU",
+                  "linkCheck": {
+                    "status": "ok",
+                    "youtubeTitle": "Data Engineering Course for Beginners | freeCodeCamp.org",
+                    "checked": "2026-10-20",
+                    "labelMatches": true
+                  }
+                }
+              ],
+              "example": {
+                "kind": "flow",
+                "title": "E-Commerce Orders Pipeline Overview",
+                "source": "pipeline-overview",
+                "nodes": [
+                  {
+                    "icon": "🛒",
+                    "label": "Orders API",
+                    "sub": "JSON events"
+                  },
+                  {
+                    "icon": "📨",
+                    "label": "Kafka",
+                    "sub": "Streaming"
+                  },
+                  {
+                    "icon": "🐍",
+                    "label": "Python ETL",
+                    "sub": "Clean & validate"
+                  },
+                  {
+                    "icon": "🔥",
+                    "label": "Spark",
+                    "sub": "Transform"
+                  },
+                  {
+                    "icon": "🏛️",
+                    "label": "Delta Lake",
+                    "sub": "Store"
+                  },
+                  {
+                    "icon": "📊",
+                    "label": "Dashboard",
+                    "sub": "Visualize"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "id": "sql-foundations",
+            "number": "02",
+            "icon": "🐍",
+            "title": "SQL Foundations",
+            "category": "Coding",
+            "lesson": {
+              "overview": "SQL is the #1 skill for data engineers. You'll use it every single day to query databases, transform data, and build analytics. Master it first.",
+              "checklist": [
+                "SELECT, FROM, WHERE basics",
+                "JOIN types (INNER, LEFT, RIGHT, FULL)",
+                "GROUP BY & aggregate functions",
+                "Subqueries & CTEs",
+                "Window functions (ROW_NUMBER, RANK, LAG/LEAD)",
+                "INSERT, UPDATE, DELETE",
+                "Indexes & query optimization"
+              ],
+              "resources": [
+                {
+                  "label": "W3Schools SQL Tutorial",
+                  "url": "https://www.w3schools.com/sql/",
+                  "kind": "course",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                },
+                {
+                  "label": "SQLBolt — Interactive Lessons",
+                  "url": "https://sqlbolt.com/",
+                  "kind": "course",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                },
+                {
+                  "label": "Mode Analytics SQL Tutorial",
+                  "url": "https://mode.com/sql-tutorial",
+                  "kind": "course",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                },
+                {
+                  "label": "LeetCode SQL Problems",
+                  "url": "https://leetcode.com/problemset/database/",
+                  "kind": "practice",
+                  "linkCheck": {
+                    "status": "unverified",
+                    "httpStatus": 403,
+                    "note": "bot protection blocked the check",
+                    "checked": "2026-10-20"
+                  }
+                }
+              ],
+              "videos": [
+                {
+                  "title": "SQL Full Course — freeCodeCamp",
+                  "url": "https://www.youtube.com/watch?v=HXV3zeQKqGY",
+                  "youtubeId": "HXV3zeQKqGY",
+                  "linkCheck": {
+                    "status": "ok",
+                    "youtubeTitle": "SQL Tutorial - Full Database Course for Beginners | freeCodeCamp.org",
+                    "checked": "2026-10-20",
+                    "labelMatches": true
+                  }
+                },
+                {
+                  "title": "SQL for Data Engineers — TechTFQ",
+                  "url": "https://www.youtube.com/watch?v=7S_tz1z_5bA",
+                  "youtubeId": "7S_tz1z_5bA",
+                  "linkCheck": {
+                    "status": "ok",
+                    "youtubeTitle": "SQL Course for Beginners [Full Course] | Programming with Mosh",
+                    "checked": "2026-10-20",
+                    "labelMatches": false
+                  }
+                }
+              ],
+              "example": {
+                "kind": "code",
+                "title": "SQL Query on Orders Data",
+                "language": "sql",
+                "code": "-- Find top customers by total spending\n-- Using the e-commerce orders table\n\nSELECT \n    u.user_id,\n    u.name,\n    COUNT(o.order_id) AS total_orders,\n    SUM(o.amount_usd) AS total_spent,\n    AVG(o.amount_usd) AS avg_order_value,\n    MAX(o.order_date) AS last_order\nFROM orders o\nJOIN users u ON o.user_id = u.user_id\nWHERE o.order_date >= '2024-01-01'\nGROUP BY u.user_id, u.name\nHAVING SUM(o.amount_usd) > 100\nORDER BY total_spent DESC\nLIMIT 10;\n\n-- Result:\n-- | user_id  | name          | orders | total_spent | avg  |\n-- |----------|---------------|--------|-------------|------|\n-- | usr_9182 | Sarah Chen    | 12     | 1,549.88    | 129  |\n-- | usr_4471 | James Wilson  | 8      | 892.00      | 112  |\n-- | usr_8823 | Maria Garcia  | 15     | 2,199.85    | 147  |"
+              }
+            }
+          },
+          {
+            "id": "python-foundations",
+            "number": "03",
+            "icon": "🔷",
+            "title": "Python Foundations",
+            "category": "Coding",
+            "lesson": {
+              "overview": "Python is the go-to programming language for data engineering. Used for building ETL pipelines, data transformation, API integrations, and automation scripts.",
+              "checklist": [
+                "Variables, data types, control flow",
+                "Functions & modules",
+                "List comprehensions & generators",
+                "File I/O & JSON handling",
+                "Error handling & logging",
+                "Virtual environments & pip",
+                "Pandas basics for data manipulation"
+              ],
+              "resources": [
+                {
+                  "label": "Python.org Official Tutorial",
+                  "url": "https://docs.python.org/3/tutorial/",
+                  "kind": "docs",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                },
+                {
+                  "label": "W3Schools Python",
+                  "url": "https://www.w3schools.com/python/",
+                  "kind": "course",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                },
+                {
+                  "label": "Real Python",
+                  "url": "https://realpython.com/",
+                  "kind": "course",
+                  "linkCheck": {
+                    "status": "unverified",
+                    "httpStatus": 403,
+                    "note": "bot protection blocked the check",
+                    "checked": "2026-10-20"
+                  }
+                },
+                {
+                  "label": "Automate the Boring Stuff",
+                  "url": "https://automatetheboringstuff.com/",
+                  "kind": "book",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                }
+              ],
+              "videos": [
+                {
+                  "title": "Python Full Course — freeCodeCamp",
+                  "url": "https://www.youtube.com/watch?v=rfscVS0vtbw",
+                  "youtubeId": "rfscVS0vtbw",
+                  "linkCheck": {
+                    "status": "ok",
+                    "youtubeTitle": "Learn Python - Full Course for Beginners [Tutorial] | freeCodeCamp.org",
+                    "checked": "2026-10-20",
+                    "labelMatches": true
+                  }
+                },
+                {
+                  "title": "Python for Data Engineering",
+                  "url": "https://www.youtube.com/watch?v=cQNfWDW3UMI",
+                  "youtubeId": "cQNfWDW3UMI",
+                  "linkCheck": {
+                    "status": "unavailable",
+                    "note": "YouTube says \"This video is unavailable\"",
+                    "checked": "2026-10-20"
+                  }
+                }
+              ],
+              "example": {
+                "kind": "code",
+                "title": "Python — Clean Raw Order Data",
+                "language": "python",
+                "code": "import json\nfrom datetime import datetime\n\ndef clean_order(raw: dict) -> dict:\n    \"\"\"Clean a raw e-commerce order event.\"\"\"\n    \n    # Parse amount: \"$129.99\" → 129.99\n    amount_str = raw.get(\"amount\", \"$0\")\n    amount = float(amount_str.replace(\"$\", \"\").replace(\",\", \"\"))\n    \n    # Parse timestamp\n    ts = datetime.fromisoformat(\n        raw[\"timestamp\"].replace(\"Z\", \"+00:00\")\n    )\n    \n    # Normalize device type\n    device = raw.get(\"device\", \"unknown\").lower()\n    if \"iphone\" in device or \"android\" in device:\n        device_type = \"mobile\"\n    elif \"ipad\" in device or \"tablet\" in device:\n        device_type = \"tablet\"\n    else:\n        device_type = \"desktop\"\n    \n    return {\n        \"order_id\": raw[\"order_id\"],\n        \"user_id\": raw[\"user_id\"],\n        \"product_id\": raw.get(\"product_id\"),  # handle null\n        \"amount_usd\": amount,\n        \"order_date\": ts.strftime(\"%Y-%m-%d\"),\n        \"device_type\": device_type,\n        \"city\": raw.get(\"shipping_address\", {}).get(\"city\"),\n    }\n\n# Usage:\nraw_order = json.loads(api_response)\nclean = clean_order(raw_order)\nprint(clean)\n# {'order_id': 'ord_20240115_9182', 'user_id': 'usr_9182', \n#  'amount_usd': 129.99, 'device_type': 'mobile', ...}"
+              }
+            }
+          },
+          {
+            "id": "data-modeling",
+            "number": "04",
+            "icon": "📊",
+            "title": "Data Modeling",
+            "category": "Architecture",
+            "lesson": {
+              "overview": "Data modeling is the process of designing how data is structured, stored, and accessed. It starts with conceptual models (what entities exist), then logical models (how they relate), then physical models (how they're stored). Good data models make analytics fast, reliable, and cost-effective.",
+              "checklist": [
+                "Conceptual modeling (entities & relationships)",
+                "Logical modeling (attributes & keys)",
+                "Physical modeling (tables & indexes)",
+                "Entity-Relationship diagrams",
+                "Star schema & snowflake schema",
+                "Fact vs dimension tables",
+                "Normalization (1NF, 2NF, 3NF)",
+                "Denormalization for analytics",
+                "Slowly changing dimensions (SCD)"
+              ],
+              "resources": [
+                {
+                  "label": "Kimball Group — Dimensional Modeling",
+                  "url": "https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/dimensional-modeling-techniques/",
+                  "kind": "article",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                },
+                {
+                  "label": "W3Schools SQL Data Modeling",
+                  "url": "https://www.w3schools.com/sql/sql_create_db.asp",
+                  "kind": "course",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                },
+                {
+                  "label": "Conceptual vs Logical vs Physical Data Models",
+                  "url": "https://www.guru99.com/data-modelling-conceptual-logical.html",
+                  "kind": "article",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                }
+              ],
+              "videos": [
+                {
+                  "title": "Data Modeling Explained — Seattle Data Guy",
+                  "url": "https://www.youtube.com/watch?v=QWJthTqSVUM",
+                  "youtubeId": "QWJthTqSVUM",
+                  "linkCheck": {
+                    "status": "unavailable",
+                    "note": "YouTube says \"This video is unavailable\"",
+                    "checked": "2026-10-20"
+                  }
+                },
+                {
+                  "title": "Star Schema vs Snowflake",
+                  "url": "https://www.youtube.com/watch?v=hQvCOBv_-LE",
+                  "youtubeId": "hQvCOBv_-LE",
+                  "linkCheck": {
+                    "status": "ok",
+                    "youtubeTitle": "What is STAR schema | Star vs Snowflake Schema | Fact vs Dimension Table | codebasics",
+                    "checked": "2026-10-20",
+                    "labelMatches": true
+                  }
+                },
+                {
+                  "title": "Conceptual Data Modeling Tutorial",
+                  "url": "https://www.youtube.com/watch?v=QpdhBUYk7Kk",
+                  "youtubeId": "QpdhBUYk7Kk",
+                  "linkCheck": {
+                    "status": "ok",
+                    "youtubeTitle": "Entity Relationship Diagram (ERD) Tutorial - Part 1 | Lucid Software",
+                    "checked": "2026-10-20",
+                    "labelMatches": true
+                  }
+                }
+              ],
+              "example": {
+                "kind": "code",
+                "title": "Conceptual Model → Star Schema — E-Commerce",
+                "language": "text",
+                "code": "═══════════════════════════════════════════════\n CONCEPTUAL DATA MODEL — E-Commerce Platform\n═══════════════════════════════════════════════\n\n Business Entities (What exists in our domain?)\n ──────────────────────────────────────────────\n\n 📦 CUSTOMER         🛒 ORDER           📋 PRODUCT\n ├─ Name             ├─ Order Date       ├─ Product Name\n ├─ Email            ├─ Total Amount     ├─ Category\n ├─ City             ├─ Payment Method   ├─ Price\n └─ Segment          └─ Shipping Status  └─ Brand\n\n 📅 TIME             🏪 STORE\n ├─ Date             ├─ Store Name\n ├─ Month            ├─ Region\n ├─ Quarter          └─ Store Type\n └─ Year\n\n\n Relationships (How do they connect?)\n ──────────────────────────────────────────────\n\n CUSTOMER ──┐\n            ├──< ORDER >──┬── PRODUCT\n TIME ──────┘             │\n                          └── STORE\n\n • A Customer places many Orders        (1:M)\n • An Order contains many Products       (M:M → bridge table)\n • An Order happens at one Time          (M:1)\n • An Order is placed at one Store       (M:1)\n\n\n Business Questions This Model Answers:\n ──────────────────────────────────────────────\n\n ✅ \"What is total revenue by product category per quarter?\"\n ✅ \"Who are our top 10 customers by lifetime value?\"\n ✅ \"Which stores have the highest average order value?\"\n ✅ \"What is the month-over-month revenue growth?\"\n ✅ \"Which customer segment buys the most premium products?\"\n\n\n═══════════════════════════════════════════════\n FROM CONCEPTUAL → PHYSICAL (Star Schema)\n═══════════════════════════════════════════════\n\n The conceptual model above translates into:\n\n ⭐ fact_orders (grain: one row per order line item)\n    ├─ order_key (PK)\n    ├─ customer_key (FK → dim_customers)\n    ├─ product_key  (FK → dim_products)\n    ├─ date_key     (FK → dim_date)\n    ├─ store_key    (FK → dim_stores)\n    ├─ amount_usd   (measure)\n    ├─ quantity      (measure)\n    └─ discount_pct  (measure)\n\n 💎 dim_customers         💎 dim_products\n    ├─ customer_key (PK)     ├─ product_key (PK)\n    ├─ name                  ├─ product_name\n    ├─ email                 ├─ category\n    ├─ city                  ├─ brand\n    └─ segment               └─ price\n\n 💎 dim_date              💎 dim_stores\n    ├─ date_key (PK)         ├─ store_key (PK)\n    ├─ full_date             ├─ store_name\n    ├─ month                 ├─ region\n    ├─ quarter               └─ store_type\n    └─ year"
+              }
+            }
+          },
+          {
+            "id": "dimensional-modeling",
+            "number": "05",
+            "icon": "📐",
+            "title": "Dimensional Modeling",
+            "category": "Data Modeling",
+            "lesson": {
+              "overview": "Dimensional modeling is a data warehouse design technique that structures data into fact tables (measurable events) and dimension tables (descriptive context). The star schema is the most common pattern.",
+              "checklist": [
+                "Identify business processes (facts)",
+                "Define grain of fact tables",
+                "Identify dimensions",
+                "Design surrogate keys",
+                "Handle slowly changing dimensions",
+                "Build conformed dimensions"
+              ],
+              "resources": [
+                {
+                  "label": "Kimball Dimensional Modeling",
+                  "url": "https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/dimensional-modeling-techniques/",
+                  "kind": "article",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                },
+                {
+                  "label": "The Data Warehouse Toolkit (book)",
+                  "url": "https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/books/data-warehouse-dw-toolkit/",
+                  "kind": "book",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                }
+              ],
+              "videos": [
+                {
+                  "title": "Dimensional Modeling Tutorial",
+                  "url": "https://www.youtube.com/watch?v=QWJthTqSVUM",
+                  "youtubeId": "QWJthTqSVUM",
+                  "linkCheck": {
+                    "status": "unavailable",
+                    "note": "YouTube says \"This video is unavailable\"",
+                    "checked": "2026-10-20"
+                  }
+                }
+              ],
+              "example": {
+                "kind": "code",
+                "title": "Create Star Schema Tables",
+                "language": "sql",
+                "code": "-- FACT TABLE: Each row = one order event\nCREATE TABLE fact_orders (\n    order_key       BIGINT PRIMARY KEY,\n    user_key        BIGINT REFERENCES dim_users(user_key),\n    product_key     BIGINT REFERENCES dim_products(product_key),\n    date_key        INT    REFERENCES dim_date(date_key),\n    amount_usd      DECIMAL(10,2),\n    quantity        INT,\n    discount_pct    DECIMAL(5,2),\n    shipping_cost   DECIMAL(10,2)\n);\n\n-- DIMENSION: Users\nCREATE TABLE dim_users (\n    user_key    BIGINT PRIMARY KEY,\n    user_id     VARCHAR(50),\n    name        VARCHAR(100),\n    email       VARCHAR(100),\n    city        VARCHAR(50),\n    state       VARCHAR(2),\n    segment     VARCHAR(20),  -- 'premium', 'standard'\n    valid_from  DATE,\n    valid_to    DATE,          -- SCD Type 2\n    is_current  BOOLEAN\n);\n\n-- DIMENSION: Products  \nCREATE TABLE dim_products (\n    product_key   BIGINT PRIMARY KEY,\n    product_id    VARCHAR(50),\n    name          VARCHAR(200),\n    category      VARCHAR(50),\n    brand         VARCHAR(50),\n    price_tier    VARCHAR(20)   -- 'budget', 'mid', 'premium'\n);"
+              }
+            }
+          },
+          {
+            "id": "github",
+            "number": "06",
+            "icon": "🐙",
+            "title": "GitHub",
+            "category": "Version Control",
+            "lesson": {
+              "overview": "Git is a version control system that tracks changes in code. GitHub hosts your repositories and enables collaboration. Essential for managing pipeline code professionally.",
+              "checklist": [
+                "Init, clone, add, commit",
+                "Branching & merging",
+                "Pull requests & code reviews",
+                "Resolving merge conflicts",
+                "Git log, diff, stash",
+                ".gitignore best practices",
+                "GitHub Actions basics"
+              ],
+              "resources": [
+                {
+                  "label": "Git Official Docs",
+                  "url": "https://git-scm.com/doc",
+                  "kind": "docs",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                },
+                {
+                  "label": "GitHub Skills",
+                  "url": "https://skills.github.com/",
+                  "kind": "course",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                },
+                {
+                  "label": "Atlassian Git Tutorials",
+                  "url": "https://www.atlassian.com/git/tutorials",
+                  "kind": "course",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                }
+              ],
+              "videos": [
+                {
+                  "title": "Git & GitHub Crash Course — Traversy",
+                  "url": "https://www.youtube.com/watch?v=SWYqp7iY_Tc",
+                  "youtubeId": "SWYqp7iY_Tc",
+                  "linkCheck": {
+                    "status": "ok",
+                    "youtubeTitle": "Git & GitHub Crash Course For Beginners | Traversy Media",
+                    "checked": "2026-10-20",
+                    "labelMatches": true
+                  }
+                },
+                {
+                  "title": "Git for Professionals — freeCodeCamp",
+                  "url": "https://www.youtube.com/watch?v=Uszj_k0DGsg",
+                  "youtubeId": "Uszj_k0DGsg",
+                  "linkCheck": {
+                    "status": "ok",
+                    "youtubeTitle": "Git for Professionals Tutorial - Tools & Concepts for Mastering Version Control with Git | freeCodeCamp.org",
+                    "checked": "2026-10-20",
+                    "labelMatches": true
+                  }
+                }
+              ],
+              "example": {
+                "kind": "code",
+                "title": "Git Workflow for Your Orders Pipeline",
+                "language": "bash",
+                "code": "# Initialize your orders pipeline project\n$ git init orders-pipeline\n$ cd orders-pipeline\n\n# Create your first pipeline script\n$ touch etl_orders.py\n$ git add etl_orders.py\n$ git commit -m \"feat: add initial orders ETL script\"\n\n# Create a feature branch for adding transformations\n$ git checkout -b feature/add-data-cleaning\n# ... make changes to etl_orders.py ...\n$ git add -A\n$ git commit -m \"feat: add amount parsing and device normalization\"\n\n# Push and create a pull request\n$ git push origin feature/add-data-cleaning\n# → Open PR on GitHub, get code review, merge to main\n\n# Tag a release\n$ git tag -a v1.0.0 -m \"First production pipeline release\"\n$ git push origin v1.0.0"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "phase-2",
+        "number": "03",
+        "label": "Phase 2",
+        "icon": "⚙️",
+        "stage": "DE Core",
+        "title": "ETL, Cloud & Modeling",
+        "fullTitle": "DE Core — ETL, Cloud & Modeling",
+        "salary": {
+          "text": "$85K – $120K · Data Analyst / ETL Developer",
+          "kind": "range",
+          "range": "$85K – $120K",
+          "role": "Data Analyst / ETL Developer"
+        },
+        "description": "Design data models, build ETL pipelines, deploy to the cloud. Most tutorials stop here — we're just getting started.",
+        "skills": [
+          "ETL Pipelines",
+          "Data Modeling",
+          "AWS / GCP",
+          "dbt",
+          "Data Warehouses"
+        ],
+        "topics": [
+          {
+            "id": "cloud-azure-and-aws",
+            "number": "01",
+            "icon": "☁️",
+            "title": "Cloud Azure & AWS",
+            "category": "Platform",
+            "lesson": {
+              "overview": "Cloud platforms provide the infrastructure for modern data engineering — storage, compute, networking, and managed services for building scalable data pipelines.",
+              "checklist": [
+                "S3 / GCS / ADLS for object storage",
+                "EC2 / Compute Engine basics",
+                "IAM & security policies",
+                "VPC & networking",
+                "Lambda / Cloud Functions",
+                "Terraform / CloudFormation",
+                "Cost management & monitoring"
+              ],
+              "resources": [
+                {
+                  "label": "AWS Free Tier",
+                  "url": "https://aws.amazon.com/free/",
+                  "kind": "tool",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                },
+                {
+                  "label": "Google Cloud Skills Boost",
+                  "url": "https://www.cloudskillsboost.google/",
+                  "kind": "course",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                },
+                {
+                  "label": "Azure Free Account",
+                  "url": "https://azure.microsoft.com/en-us/free/",
+                  "kind": "tool",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                }
+              ],
+              "videos": [
+                {
+                  "title": "AWS Full Course — freeCodeCamp",
+                  "url": "https://www.youtube.com/watch?v=3hLmDS179YE",
+                  "youtubeId": "3hLmDS179YE",
+                  "linkCheck": {
+                    "status": "ok",
+                    "youtubeTitle": "AWS Certified Cloud Practitioner Training 2020 - Full Course | freeCodeCamp.org",
+                    "checked": "2026-10-20",
+                    "labelMatches": true
+                  }
+                },
+                {
+                  "title": "Azure Data Engineering — Adam Marczak",
+                  "url": "https://www.youtube.com/watch?v=EFg3u_E6eHU",
+                  "youtubeId": "EFg3u_E6eHU",
+                  "linkCheck": {
+                    "status": "ok",
+                    "youtubeTitle": "How Dijkstra's Algorithm Works | Spanning Tree",
+                    "checked": "2026-10-20",
+                    "labelMatches": false
+                  }
+                }
+              ],
+              "example": {
+                "kind": "flow",
+                "title": "AWS Architecture — Orders Pipeline",
+                "source": "aws-architecture",
+                "nodes": [
+                  {
+                    "icon": "📡",
+                    "label": "API Gateway",
+                    "sub": "Ingest"
+                  },
+                  {
+                    "icon": "📨",
+                    "label": "Kinesis",
+                    "sub": "Stream"
+                  },
+                  {
+                    "icon": "🔥",
+                    "label": "Glue/EMR",
+                    "sub": "Process"
+                  },
+                  {
+                    "icon": "🪣",
+                    "label": "S3 + Delta",
+                    "sub": "Store"
+                  },
+                  {
+                    "icon": "❄️",
+                    "label": "Redshift",
+                    "sub": "Warehouse"
+                  },
+                  {
+                    "icon": "📊",
+                    "label": "QuickSight",
+                    "sub": "Visualize"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "id": "spark-and-pyspark",
+            "number": "02",
+            "icon": "🔥",
+            "title": "Spark & PySpark",
+            "category": "Coding",
+            "lesson": {
+              "overview": "Apache Spark is a distributed computing engine for processing massive datasets. PySpark is its Python API. It's the industry standard for big data transformations.",
+              "checklist": [
+                "RDDs, DataFrames, Datasets",
+                "Spark SQL queries",
+                "Transformations vs actions",
+                "Partitioning & shuffles",
+                "Spark UI & debugging",
+                "PySpark fundamentals",
+                "Performance tuning & caching"
+              ],
+              "resources": [
+                {
+                  "label": "Spark Official Docs",
+                  "url": "https://spark.apache.org/docs/latest/",
+                  "kind": "docs",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                },
+                {
+                  "label": "Databricks Spark Guide",
+                  "url": "https://docs.databricks.com/en/getting-started/index.html",
+                  "kind": "docs",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                },
+                {
+                  "label": "PySpark Tutorial",
+                  "url": "https://spark.apache.org/docs/latest/api/python/getting_started/index.html",
+                  "kind": "docs",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                }
+              ],
+              "videos": [
+                {
+                  "title": "PySpark Full Course — freeCodeCamp",
+                  "url": "https://www.youtube.com/watch?v=_C8kWso4ne4",
+                  "youtubeId": "_C8kWso4ne4",
+                  "linkCheck": {
+                    "status": "ok",
+                    "youtubeTitle": "PySpark Tutorial | freeCodeCamp.org",
+                    "checked": "2026-10-20",
+                    "labelMatches": true
+                  }
+                },
+                {
+                  "title": "Spark Tutorial — Simplilearn",
+                  "url": "https://www.youtube.com/watch?v=GFC2gOL1p9k",
+                  "youtubeId": "GFC2gOL1p9k",
+                  "linkCheck": {
+                    "status": "ok",
+                    "youtubeTitle": "Apache Spark Tutorial | Spark Tutorial for Beginners | Spark Big Data | Intellipaat | Intellipaat",
+                    "checked": "2026-10-20",
+                    "labelMatches": false
+                  }
+                }
+              ],
+              "example": {
+                "kind": "code",
+                "title": "PySpark — Aggregate Orders at Scale",
+                "language": "python",
+                "code": "from pyspark.sql import SparkSession\nfrom pyspark.sql import functions as F\nfrom pyspark.sql.window import Window\n\nspark = SparkSession.builder \\\n    .appName(\"OrdersAggregation\") \\\n    .getOrCreate()\n\n# Read orders from Delta Lake\norders = spark.read.format(\"delta\").load(\"s3://data-lake/orders/\")\n\n# Daily revenue by product category\ndaily_revenue = (\n    orders\n    .join(products, \"product_id\")\n    .groupBy(\n        F.col(\"order_date\"),\n        F.col(\"category\")\n    )\n    .agg(\n        F.sum(\"amount_usd\").alias(\"revenue\"),\n        F.count(\"order_id\").alias(\"order_count\"),\n        F.avg(\"amount_usd\").alias(\"avg_order_value\"),\n        F.countDistinct(\"user_id\").alias(\"unique_customers\")\n    )\n    .orderBy(\"order_date\", \"category\")\n)\n\n# Add 7-day rolling average\nwindow_7d = Window \\\n    .partitionBy(\"category\") \\\n    .orderBy(\"order_date\") \\\n    .rowsBetween(-6, 0)\n\nresult = daily_revenue.withColumn(\n    \"rolling_7d_avg\",\n    F.avg(\"revenue\").over(window_7d)\n)\n\n# Write back to Delta Lake\nresult.write \\\n    .format(\"delta\") \\\n    .mode(\"overwrite\") \\\n    .save(\"s3://data-lake/analytics/daily_revenue/\")"
+              }
+            }
+          },
+          {
+            "id": "databricks",
+            "number": "03",
+            "icon": "🧱",
+            "title": "Databricks",
+            "category": "Platform",
+            "lesson": {
+              "overview": "Databricks is a unified analytics platform built on Apache Spark. It combines data engineering, data science, and analytics in one collaborative environment with notebooks.",
+              "checklist": [
+                "Workspace & notebooks",
+                "Clusters & compute management",
+                "Delta Lake integration",
+                "Unity Catalog for governance",
+                "Jobs & workflows scheduling",
+                "SQL warehouses for BI",
+                "MLflow basics"
+              ],
+              "resources": [
+                {
+                  "label": "Databricks Academy",
+                  "url": "https://www.databricks.com/learn",
+                  "kind": "course",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                },
+                {
+                  "label": "Databricks Documentation",
+                  "url": "https://docs.databricks.com/",
+                  "kind": "docs",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                },
+                {
+                  "label": "Databricks Community Edition (free)",
+                  "url": "https://community.cloud.databricks.com/",
+                  "kind": "tool",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                }
+              ],
+              "videos": [
+                {
+                  "title": "Databricks Full Course — freeCodeCamp",
+                  "url": "https://www.youtube.com/watch?v=iMqMhdJP9tI",
+                  "youtubeId": "iMqMhdJP9tI",
+                  "linkCheck": {
+                    "status": "unavailable",
+                    "note": "YouTube says \"This video is unavailable\"",
+                    "checked": "2026-10-20"
+                  }
+                },
+                {
+                  "title": "Databricks for Beginners",
+                  "url": "https://www.youtube.com/watch?v=dMFHcAx0BEU",
+                  "youtubeId": "dMFHcAx0BEU",
+                  "linkCheck": {
+                    "status": "unavailable",
+                    "note": "YouTube says \"This video is unavailable\"",
+                    "checked": "2026-10-20"
+                  }
+                }
+              ],
+              "example": {
+                "kind": "code",
+                "title": "Databricks Notebook — Orders ETL",
+                "variant": "notebook",
+                "language": "python",
+                "languageShownOnPage": false,
+                "code": "# Cmd 1 — Read raw orders from S3\nraw_orders = spark.read \\\n    .format(\"json\") \\\n    .load(\"s3://raw-data/orders/2024/01/\")\n\ndisplay(raw_orders.limit(5))\n# +------------------+---------+--------+-------------------------+\n# | order_id         | user_id | amount | timestamp               |\n# +------------------+---------+--------+-------------------------+\n# | ord_20240115_9182| usr_9182| $129.99| 2024-01-15T14:32:11.294Z|\n# | ord_20240115_4471| usr_4471| $49.00 | 2024-01-15T15:01:22.100Z|\n# +------------------+---------+--------+-------------------------+\n\n# Cmd 2 — Clean and transform\nfrom pyspark.sql.functions import *\n\nclean_orders = raw_orders \\\n    .withColumn(\"amount_usd\", \n        regexp_replace(col(\"amount\"), \"[$,]\", \"\").cast(\"double\")) \\\n    .withColumn(\"order_date\", \n        to_date(col(\"timestamp\"))) \\\n    .withColumn(\"device_type\",\n        when(col(\"device\").contains(\"iPhone\"), \"mobile\")\n        .when(col(\"device\").contains(\"iPad\"), \"tablet\")\n        .otherwise(\"desktop\")) \\\n    .drop(\"amount\", \"timestamp\", \"device\")\n\n# Cmd 3 — Write to Delta Lake\nclean_orders.write \\\n    .format(\"delta\") \\\n    .mode(\"append\") \\\n    .partitionBy(\"order_date\") \\\n    .saveAsTable(\"prod.ecommerce.orders\")\n\nprint(f\"✅ Loaded {clean_orders.count()} orders\")"
+              }
+            }
+          },
+          {
+            "id": "data-engineering-project",
+            "number": "04",
+            "icon": "🔨",
+            "title": "Data Engineering Project",
+            "category": "Project",
+            "lesson": {
+              "overview": "Build a complete end-to-end data engineering project. This is the most important step — it proves your skills to employers with real, working code.",
+              "checklist": [
+                "Choose a real dataset (e-commerce orders)",
+                "Design the data model (star schema)",
+                "Build ingestion from API/files",
+                "Transform with Python/SQL",
+                "Load into a data warehouse",
+                "Add data quality checks",
+                "Document and deploy to GitHub"
+              ],
+              "resources": [
+                {
+                  "label": "Kaggle Datasets",
+                  "url": "https://www.kaggle.com/datasets",
+                  "kind": "dataset",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                },
+                {
+                  "label": "GitHub — DE Project Ideas",
+                  "url": "https://github.com/topics/data-engineering",
+                  "kind": "repo",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                }
+              ],
+              "videos": [
+                {
+                  "title": "End-to-End DE Project — Darshil Parmar",
+                  "url": "https://www.youtube.com/watch?v=WpQECq5Hx9g",
+                  "youtubeId": "WpQECq5Hx9g",
+                  "linkCheck": {
+                    "status": "ok",
+                    "youtubeTitle": "🚖 Uber Data Analytics | End-To-End Data Engineering Project | Darshil Parmar",
+                    "checked": "2026-10-20",
+                    "labelMatches": true
+                  }
+                }
+              ],
+              "example": {
+                "kind": "flow",
+                "title": "Your Portfolio Project — Orders Pipeline",
+                "source": "portfolio-project",
+                "nodes": [
+                  {
+                    "icon": "📁",
+                    "label": "CSV/API",
+                    "sub": "Raw Data"
+                  },
+                  {
+                    "icon": "🐍",
+                    "label": "Python",
+                    "sub": "Ingest"
+                  },
+                  {
+                    "icon": "🔥",
+                    "label": "Spark",
+                    "sub": "Transform"
+                  },
+                  {
+                    "icon": "🧱",
+                    "label": "dbt",
+                    "sub": "Model"
+                  },
+                  {
+                    "icon": "🏛️",
+                    "label": "Warehouse",
+                    "sub": "Store"
+                  },
+                  {
+                    "icon": "📊",
+                    "label": "Dashboard",
+                    "sub": "Present"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "phase-3",
+        "number": "04",
+        "label": "Phase 3",
+        "icon": "🧑‍💻",
+        "stage": "Data Engineer",
+        "title": "Mid Level",
+        "fullTitle": "Data Engineer — Mid Level",
+        "salary": {
+          "text": "$120K – $200K · Data Engineer",
+          "kind": "range",
+          "range": "$120K – $200K",
+          "role": "Data Engineer"
+        },
+        "description": "Spark for scale, Kafka for real-time, Airflow for orchestration, Delta Lake for storage. Most growth happens here.",
+        "skills": [
+          "Apache Spark",
+          "Kafka",
+          "Airflow",
+          "Delta Lake",
+          "CI/CD",
+          "Databricks"
+        ],
+        "topics": [
+          {
+            "id": "ai-engineering",
+            "number": "01",
+            "icon": "🤖",
+            "title": "AI Engineering",
+            "category": "Coding",
+            "lesson": {
+              "overview": "Connect data pipelines with ML and AI systems. Modern data engineers need to support AI-driven products by building feature stores, training pipelines, and model serving infrastructure.",
+              "checklist": [
+                "Understand ML pipeline basics",
+                "Feature engineering at scale",
+                "Vector databases fundamentals",
+                "LLM integration patterns",
+                "RAG pipeline architecture",
+                "MLflow for experiment tracking"
+              ],
+              "resources": [
+                {
+                  "label": "MLflow Documentation",
+                  "url": "https://mlflow.org/docs/latest/index.html",
+                  "kind": "docs",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                },
+                {
+                  "label": "Feature Store Guide",
+                  "url": "https://www.featurestore.org/",
+                  "kind": "article",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                }
+              ],
+              "videos": [
+                {
+                  "title": "ML Engineering for Data Engineers",
+                  "url": "https://www.youtube.com/watch?v=pCq7c9MnBZY",
+                  "youtubeId": "pCq7c9MnBZY",
+                  "linkCheck": {
+                    "status": "unavailable",
+                    "note": "YouTube says \"This video is unavailable\"",
+                    "checked": "2026-10-20"
+                  }
+                }
+              ],
+              "example": {
+                "kind": "code",
+                "title": "AI Feature Pipeline — Order Predictions",
+                "language": "python",
+                "code": "# Build features for ML from orders data\nfrom pyspark.sql import functions as F\nfrom pyspark.sql.window import Window\n\ndef build_user_features(orders_df):\n    \"\"\"Generate ML features from order history.\"\"\"\n    \n    w30 = Window.partitionBy(\"user_id\") \\\n        .orderBy(\"order_date\") \\\n        .rangeBetween(-30, 0)\n    \n    features = orders_df.groupBy(\"user_id\").agg(\n        # Recency\n        F.datediff(F.current_date(), F.max(\"order_date\"))\n            .alias(\"days_since_last_order\"),\n        # Frequency\n        F.count(\"order_id\").alias(\"total_orders\"),\n        F.countDistinct(F.month(\"order_date\"))\n            .alias(\"active_months\"),\n        # Monetary\n        F.sum(\"amount_usd\").alias(\"lifetime_value\"),\n        F.avg(\"amount_usd\").alias(\"avg_order_value\"),\n        F.stddev(\"amount_usd\").alias(\"order_value_std\"),\n        # Behavioral\n        F.countDistinct(\"product_id\")\n            .alias(\"unique_products\"),\n        F.countDistinct(\"category\")\n            .alias(\"unique_categories\"),\n    )\n    \n    return features\n\n# Write features to Feature Store\nuser_features = build_user_features(orders)\nuser_features.write \\\n    .format(\"delta\") \\\n    .mode(\"overwrite\") \\\n    .saveAsTable(\"ml.features.user_rfm\")"
+              }
+            }
+          },
+          {
+            "id": "bi-engineering",
+            "number": "02",
+            "icon": "📊",
+            "title": "BI Engineering",
+            "category": "Theory",
+            "lesson": {
+              "overview": "BI (Business Intelligence) Engineering bridges data engineering and analytics. You build semantic layers, optimize queries for dashboards, and ensure stakeholders get accurate, fast metrics using tools like Power BI, Tableau, and Looker.",
+              "checklist": [
+                "Understand BI tools (Tableau, Looker, Power BI)",
+                "Build semantic/metrics layers",
+                "Optimize queries for dashboards",
+                "Create materialized views",
+                "Design user-friendly data marts",
+                "Build Power BI DAX measures",
+                "Create Tableau calculated fields"
+              ],
+              "resources": [
+                {
+                  "label": "dbt Metrics Layer",
+                  "url": "https://docs.getdbt.com/docs/build/metrics",
+                  "kind": "docs",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                },
+                {
+                  "label": "Looker Documentation",
+                  "url": "https://cloud.google.com/looker/docs",
+                  "kind": "docs",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                },
+                {
+                  "label": "Power BI Documentation",
+                  "url": "https://learn.microsoft.com/en-us/power-bi/",
+                  "kind": "docs",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                },
+                {
+                  "label": "Power BI DAX Guide",
+                  "url": "https://dax.guide/",
+                  "kind": "tool",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                },
+                {
+                  "label": "Tableau Public — Free Practice",
+                  "url": "https://public.tableau.com/",
+                  "kind": "practice",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                },
+                {
+                  "label": "Tableau Learning Resources",
+                  "url": "https://www.tableau.com/learn",
+                  "kind": "course",
+                  "linkCheck": {
+                    "status": "unverified",
+                    "httpStatus": 403,
+                    "note": "bot protection blocked the check",
+                    "checked": "2026-10-20"
+                  }
+                }
+              ],
+              "videos": [
+                {
+                  "title": "BI Engineering Explained",
+                  "url": "https://www.youtube.com/watch?v=AHR_7jFCMeY",
+                  "youtubeId": "AHR_7jFCMeY",
+                  "linkCheck": {
+                    "status": "ok",
+                    "youtubeTitle": "What Is a Data Warehouse? | 365 Data Science",
+                    "checked": "2026-10-20",
+                    "labelMatches": false
+                  }
+                },
+                {
+                  "title": "Power BI Full Course — freeCodeCamp",
+                  "url": "https://www.youtube.com/watch?v=3u7MQz1EyPY",
+                  "youtubeId": "3u7MQz1EyPY",
+                  "linkCheck": {
+                    "status": "ok",
+                    "youtubeTitle": "Power BI Full Course - Learn Power BI in 4 Hours | Power BI Tutorial for Beginners | Edureka | edureka!",
+                    "checked": "2026-10-20",
+                    "labelMatches": false
+                  }
+                },
+                {
+                  "title": "Tableau for Beginners — Simplilearn",
+                  "url": "https://www.youtube.com/watch?v=aHaOIvR00So",
+                  "youtubeId": "aHaOIvR00So",
+                  "linkCheck": {
+                    "status": "ok",
+                    "youtubeTitle": "Tableau Full Course - Learn Tableau in 6 Hours | Tableau Training for Beginners | Edureka | edureka!",
+                    "checked": "2026-10-20",
+                    "labelMatches": false
+                  }
+                }
+              ],
+              "example": {
+                "kind": "code",
+                "title": "BI Data Mart + Power BI & Tableau Examples",
+                "language": "sql",
+                "code": "-- ═══════════════════════════════════════════\n-- 1. MATERIALIZED VIEW — Executive Dashboard\n-- ═══════════════════════════════════════════\nCREATE MATERIALIZED VIEW mv_daily_dashboard AS\nSELECT \n    order_date,\n    COUNT(DISTINCT user_id) AS daily_active_buyers,\n    COUNT(order_id) AS total_orders,\n    SUM(amount_usd) AS daily_revenue,\n    AVG(amount_usd) AS avg_order_value,\n    \n    -- Year-over-year comparison\n    LAG(SUM(amount_usd), 365) OVER (ORDER BY order_date) \n        AS revenue_1y_ago,\n    \n    -- Device breakdown\n    SUM(CASE WHEN device_type = 'mobile' THEN 1 END) AS mobile_orders,\n    SUM(CASE WHEN device_type = 'desktop' THEN 1 END) AS desktop_orders,\n    \n    -- Top category\n    MODE() WITHIN GROUP (ORDER BY category) AS top_category\n    \nFROM fact_orders f\nJOIN dim_products p ON f.product_key = p.product_key\nJOIN dim_date d ON f.date_key = d.date_key\nGROUP BY order_date\nORDER BY order_date DESC;\n\n\n-- ═══════════════════════════════════════════\n-- 2. POWER BI — DAX Measures for Dashboard\n-- ═══════════════════════════════════════════\n-- (Paste these in Power BI Desktop → Modeling → New Measure)\n\n-- Total Revenue\n-- Total Revenue = SUM(fact_orders[amount_usd])\n\n-- Monthly Growth %\n-- Monthly Growth = \n--   VAR CurrentMonth = [Total Revenue]\n--   VAR PrevMonth = CALCULATE(\n--       [Total Revenue],\n--       DATEADD(dim_date[full_date], -1, MONTH)\n--   )\n--   RETURN DIVIDE(CurrentMonth - PrevMonth, PrevMonth, 0)\n\n-- Rolling 7-Day Average\n-- Rolling 7D Avg = \n--   AVERAGEX(\n--       DATESINPERIOD(dim_date[full_date], MAX(dim_date[full_date]), -7, DAY),\n--       [Total Revenue]\n--   )\n\n-- Customer Retention Rate\n-- Retention Rate = \n--   VAR ReturningCustomers = CALCULATE(\n--       DISTINCTCOUNT(fact_orders[user_key]),\n--       FILTER(fact_orders, fact_orders[is_repeat] = TRUE())\n--   )\n--   VAR TotalCustomers = DISTINCTCOUNT(fact_orders[user_key])\n--   RETURN DIVIDE(ReturningCustomers, TotalCustomers, 0)\n\n\n-- ═══════════════════════════════════════════\n-- 3. TABLEAU — Calculated Fields\n-- ═══════════════════════════════════════════\n-- (Create these in Tableau → Analysis → Create Calculated Field)\n\n-- Profit Margin:\n--   [Profit] / [Revenue]\n\n-- YoY Revenue Growth:\n--   (SUM([amount_usd]) - LOOKUP(SUM([amount_usd]), -1)) \n--   / ABS(LOOKUP(SUM([amount_usd]), -1))\n\n-- Customer Segment (LOD Expression):\n--   IF { FIXED [user_key] : SUM([amount_usd]) } > 500 \n--   THEN \"High Value\"\n--   ELSEIF { FIXED [user_key] : SUM([amount_usd]) } > 100 \n--   THEN \"Medium Value\"\n--   ELSE \"Low Value\"\n--   END\n\n-- Cohort Month (for retention analysis):\n--   { FIXED [user_key] : MIN(DATETRUNC('month', [order_date])) }\n\n-- Running Total (Table Calc):\n--   RUNNING_SUM(SUM([amount_usd]))"
+              }
+            }
+          },
+          {
+            "id": "security-basics",
+            "number": "03",
+            "icon": "🔐",
+            "title": "Security Basics",
+            "category": "Security",
+            "lesson": {
+              "overview": "Data security is critical. Learn access control, encryption, PII handling, and compliance basics. One security mistake can cost millions in fines and reputation damage.",
+              "checklist": [
+                "IAM & role-based access control",
+                "Data encryption at rest and in transit",
+                "PII identification and masking",
+                "GDPR / CCPA basics",
+                "Audit logging",
+                "Secrets management"
+              ],
+              "resources": [
+                {
+                  "label": "AWS Security Best Practices",
+                  "url": "https://aws.amazon.com/architecture/security-identity-compliance/",
+                  "kind": "article",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                },
+                {
+                  "label": "OWASP Data Security",
+                  "url": "https://owasp.org/www-project-data-security/",
+                  "kind": "article",
+                  "linkCheck": {
+                    "status": "broken",
+                    "httpStatus": 404,
+                    "checked": "2026-10-20"
+                  }
+                }
+              ],
+              "videos": [
+                {
+                  "title": "Data Security for Engineers",
+                  "url": "https://www.youtube.com/watch?v=iRaai1IBlB0",
+                  "youtubeId": "iRaai1IBlB0",
+                  "linkCheck": {
+                    "status": "ok",
+                    "youtubeTitle": "Learn Terraform (and AWS) by Building a Dev Environment – Full Course for Beginners | freeCodeCamp.org",
+                    "checked": "2026-10-20",
+                    "labelMatches": false
+                  }
+                }
+              ],
+              "example": {
+                "kind": "code",
+                "title": "PII Masking — Protect Customer Data",
+                "language": "python",
+                "code": "import hashlib\nfrom pyspark.sql import functions as F\n\ndef mask_pii(orders_df):\n    \"\"\"Mask personally identifiable information \n    before loading to analytics warehouse.\"\"\"\n    \n    return orders_df \\\n        .withColumn(\n            \"email_hash\",\n            F.sha2(F.col(\"email\"), 256)\n        ) \\\n        .withColumn(\n            \"masked_name\",\n            F.concat(\n                F.substring(\"name\", 1, 1),\n                F.lit(\"***\")\n            )\n        ) \\\n        .withColumn(\n            \"masked_city\",\n            F.when(\n                F.col(\"city\").isNotNull(),\n                F.concat(F.substring(\"city\", 1, 3), F.lit(\"***\"))\n            )\n        ) \\\n        .drop(\"email\", \"name\", \"phone\", \n              \"shipping_address\")\n\n# Before: {email: \"sarah@example.com\", name: \"Sarah Chen\"}\n# After:  {email_hash: \"a3f2...\", masked_name: \"S***\"}"
+              }
+            }
+          },
+          {
+            "id": "cost-and-performance-optimization",
+            "number": "04",
+            "icon": "⚡",
+            "title": "Cost & Performance Optimization",
+            "category": "Performance",
+            "lesson": {
+              "overview": "Optimizing cloud costs and query performance is a key senior skill. Small improvements in partitioning, caching, or query design can save millions at scale.",
+              "checklist": [
+                "Cloud cost monitoring & alerts",
+                "Right-sizing compute resources",
+                "Query optimization techniques",
+                "Partitioning & clustering strategies",
+                "Caching & materialization",
+                "Reserved vs spot instances",
+                "Storage tiering (hot/warm/cold)"
+              ],
+              "resources": [
+                {
+                  "label": "AWS Cost Optimization",
+                  "url": "https://aws.amazon.com/architecture/cost-optimization/",
+                  "kind": "article",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                },
+                {
+                  "label": "FinOps Foundation",
+                  "url": "https://www.finops.org/",
+                  "kind": "article",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                }
+              ],
+              "videos": [
+                {
+                  "title": "Cloud Cost Optimization",
+                  "url": "https://www.youtube.com/watch?v=N6lYcXjd4pg",
+                  "youtubeId": "N6lYcXjd4pg",
+                  "linkCheck": {
+                    "status": "ok",
+                    "youtubeTitle": "How to Burn Money in the Cloud // Avoid AWS, GCP, Azure Cost Disasters | Fireship",
+                    "checked": "2026-10-20",
+                    "labelMatches": true
+                  }
+                }
+              ],
+              "example": {
+                "kind": "code",
+                "title": "Query Optimization — Orders Table",
+                "language": "sql",
+                "code": "-- ❌ BAD: Full table scan ($$$)\nSELECT * FROM orders \nWHERE order_date = '2024-01-15';\n-- Scans: 500GB | Cost: $2.50 | Time: 45s\n\n-- ✅ GOOD: Partitioned table\n-- Table partitioned by order_date, clustered by user_id\nSELECT user_id, amount_usd, device_type\nFROM orders \nWHERE order_date = '2024-01-15'\n  AND amount_usd > 50;\n-- Scans: 1.2GB | Cost: $0.006 | Time: 2s\n-- 💰 Savings: 99.8%\n\n-- ✅ BETTER: Use materialized view for repeated queries\nCREATE MATERIALIZED VIEW mv_daily_orders\nPARTITION BY (order_date)\nCLUSTER BY (user_id)\nAS SELECT \n    order_date, user_id, \n    SUM(amount_usd) as daily_total,\n    COUNT(*) as order_count\nFROM orders \nGROUP BY order_date, user_id;\n-- Now dashboards query the MV: 0.1GB, <1s"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "phase-4",
+        "number": "05",
+        "label": "Phase 4",
+        "icon": "💼",
+        "stage": "Get Hired",
+        "title": "Resume Marketing System",
+        "fullTitle": "Get Hired — Resume Marketing System",
+        "salary": {
+          "text": "Target: $150K+ offer",
+          "kind": "target"
+        },
+        "description": "You need 70% of DE skills and a great resume. Apply 25–45 jobs per day, ace 500+ interview questions, negotiate salary.",
+        "skills": [
+          "Resume Building",
+          "Interview Prep",
+          "Job Search",
+          "Negotiation"
+        ],
+        "topics": [
+          {
+            "id": "get-certified",
+            "number": "01",
+            "icon": "🏅",
+            "title": "Get Certified",
+            "category": "Career Setup",
+            "lesson": {
+              "overview": "Certifications validate your skills and increase visibility. Focus on cloud certifications (AWS, Azure, GCP) and Databricks — they carry the most weight with employers.",
+              "checklist": [
+                "AWS Data Engineer Associate",
+                "Databricks Data Engineer Associate",
+                "Google Professional Data Engineer",
+                "Azure Data Engineer Associate",
+                "Snowflake SnowPro Core"
+              ],
+              "resources": [
+                {
+                  "label": "AWS Certification",
+                  "url": "https://aws.amazon.com/certification/",
+                  "kind": "certification",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                },
+                {
+                  "label": "Databricks Certification",
+                  "url": "https://www.databricks.com/learn/certification",
+                  "kind": "certification",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                }
+              ],
+              "videos": [
+                {
+                  "title": "AWS Data Engineer Cert Prep",
+                  "url": "https://www.youtube.com/watch?v=3hLmDS179YE",
+                  "youtubeId": "3hLmDS179YE",
+                  "linkCheck": {
+                    "status": "ok",
+                    "youtubeTitle": "AWS Certified Cloud Practitioner Training 2020 - Full Course | freeCodeCamp.org",
+                    "checked": "2026-10-20",
+                    "labelMatches": false
+                  }
+                }
+              ],
+              "example": {
+                "kind": "table",
+                "title": "Recommended Certifications",
+                "source": "certifications",
+                "columns": [
+                  "CERTIFICATION",
+                  "DIFFICULTY",
+                  "VALUE",
+                  "COST"
+                ],
+                "rows": [
+                  [
+                    "AWS DE Associate",
+                    "⭐⭐⭐",
+                    "Very High",
+                    "$150"
+                  ],
+                  [
+                    "Databricks DE Associate",
+                    "⭐⭐",
+                    "Very High",
+                    "$200"
+                  ],
+                  [
+                    "Google Pro DE",
+                    "⭐⭐⭐⭐",
+                    "High",
+                    "$200"
+                  ],
+                  [
+                    "Snowflake SnowPro",
+                    "⭐⭐",
+                    "High",
+                    "$175"
+                  ]
+                ]
+              }
+            }
+          },
+          {
+            "id": "build-clean-resume",
+            "number": "02",
+            "icon": "📄",
+            "title": "Build Clean Resume",
+            "category": "Job Search",
+            "lesson": {
+              "overview": "Your resume gets 6 seconds of attention. Lead with impact metrics, list relevant tools, and showcase your orders pipeline project prominently.",
+              "checklist": [
+                "Quantify impact (processed X TB/day)",
+                "List tools & technologies",
+                "Highlight pipeline projects",
+                "Include certifications",
+                "Keep to 1 page",
+                "Use action verbs",
+                "Tailor for each role"
+              ],
+              "resources": [
+                {
+                  "label": "Resume Worded",
+                  "url": "https://resumeworded.com/",
+                  "kind": "tool",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                },
+                {
+                  "label": "Levels.fyi Resume Tips",
+                  "url": "https://www.levels.fyi/",
+                  "kind": "salary-data",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                }
+              ],
+              "videos": [
+                {
+                  "title": "Data Engineer Resume Tips",
+                  "url": "https://www.youtube.com/watch?v=uG2aEh5xBJE",
+                  "youtubeId": "uG2aEh5xBJE",
+                  "linkCheck": {
+                    "status": "ok",
+                    "youtubeTitle": "How to write a powerful CV | Utrecht University",
+                    "checked": "2026-10-20",
+                    "labelMatches": false
+                  }
+                }
+              ],
+              "example": {
+                "kind": "code",
+                "title": "Resume Bullet Points — Your Orders Pipeline",
+                "language": "text",
+                "code": "DATA ENGINEER | E-Commerce Platform\n═══════════════════════════════════════\n\n✅ Strong bullet points (using your portfolio project):\n\n• Designed and built real-time order processing pipeline\n  using Kafka + Spark Streaming, handling 50K events/sec\n  with <2s end-to-end latency\n\n• Implemented star schema data model (fact_orders + 5 dims)\n  reducing dashboard query times by 85% and saving $12K/mo\n  in compute costs\n\n• Built automated data quality framework catching 99.7%\n  of data anomalies before they reached production dashboards\n\n• Orchestrated 15+ Airflow DAGs processing 2TB daily with\n  99.9% uptime and automated alerting via PagerDuty\n\n❌ Weak bullet points (avoid these):\n\n• Worked with data pipelines\n• Used SQL and Python\n• Helped with data quality"
+              }
+            }
+          },
+          {
+            "id": "apply-to-jobs",
+            "number": "03",
+            "icon": "🎯",
+            "title": "Apply to Jobs",
+            "category": "Job Search",
+            "lesson": {
+              "overview": "Strategic job searching means targeting the right companies, using multiple channels, and applying consistently. Aim for 25–45 applications per day.",
+              "checklist": [
+                "Optimize LinkedIn profile",
+                "Set up job alerts on 5+ platforms",
+                "Apply 25-45 jobs per day",
+                "Track applications in a spreadsheet",
+                "Follow up after 1 week",
+                "Network with data engineers",
+                "Prepare portfolio/GitHub"
+              ],
+              "resources": [
+                {
+                  "label": "LinkedIn Jobs",
+                  "url": "https://www.linkedin.com/jobs/",
+                  "kind": "jobs",
+                  "linkCheck": {
+                    "status": "unverified",
+                    "httpStatus": 429,
+                    "note": "bot protection blocked the check",
+                    "checked": "2026-10-20"
+                  }
+                },
+                {
+                  "label": "Levels.fyi",
+                  "url": "https://www.levels.fyi/",
+                  "kind": "salary-data",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                }
+              ],
+              "videos": [
+                {
+                  "title": "How to Get a Data Engineer Job",
+                  "url": "https://www.youtube.com/watch?v=5HZfOdMJPIk",
+                  "youtubeId": "5HZfOdMJPIk",
+                  "linkCheck": {
+                    "status": "unavailable",
+                    "note": "YouTube says \"This video is unavailable\"",
+                    "checked": "2026-10-20"
+                  }
+                }
+              ],
+              "example": {
+                "kind": "table",
+                "title": "Job Application Tracker Template",
+                "source": "job-tracker",
+                "columns": [
+                  "COMPANY",
+                  "ROLE",
+                  "STATUS",
+                  "APPLIED",
+                  "FOLLOW-UP"
+                ],
+                "rows": [
+                  [
+                    "Netflix",
+                    "Data Engineer II",
+                    "Phone Screen ✓",
+                    "Jan 5",
+                    "Jan 12"
+                  ],
+                  [
+                    "Stripe",
+                    "DE, Payments",
+                    "Applied",
+                    "Jan 8",
+                    "Jan 15"
+                  ],
+                  [
+                    "Airbnb",
+                    "Senior DE",
+                    "Onsite Scheduled",
+                    "Jan 2",
+                    "—"
+                  ]
+                ]
+              }
+            }
+          },
+          {
+            "id": "interview-prep",
+            "number": "04",
+            "icon": "🗣️",
+            "title": "Interview Prep",
+            "category": "Interview",
+            "lesson": {
+              "overview": "Data engineering interviews cover SQL, Python, system design, and behavioral questions. Practice 500+ questions to be fully prepared.",
+              "checklist": [
+                "SQL coding challenges (50+ problems)",
+                "Python data problems",
+                "System design for data pipelines",
+                "Behavioral STAR method stories",
+                "Take-home project practice",
+                "Mock interviews (3+)"
+              ],
+              "resources": [
+                {
+                  "label": "DataLemur SQL Questions",
+                  "url": "https://datalemur.com/",
+                  "kind": "practice",
+                  "linkCheck": {
+                    "status": "ok",
+                    "httpStatus": 200,
+                    "checked": "2026-10-20"
+                  }
+                },
+                {
+                  "label": "LeetCode Database",
+                  "url": "https://leetcode.com/problemset/database/",
+                  "kind": "practice",
+                  "linkCheck": {
+                    "status": "unverified",
+                    "httpStatus": 403,
+                    "note": "bot protection blocked the check",
+                    "checked": "2026-10-20"
+                  }
+                },
+                {
+                  "label": "InterviewQuery",
+                  "url": "https://www.interviewquery.com/",
+                  "kind": "practice",
+                  "linkCheck": {
+                    "status": "unverified",
+                    "httpStatus": 429,
+                    "note": "bot protection blocked the check",
+                    "checked": "2026-10-20"
+                  }
+                }
+              ],
+              "videos": [
+                {
+                  "title": "Data Engineer Interview Questions",
+                  "url": "https://www.youtube.com/watch?v=qDIkGmr6XRo",
+                  "youtubeId": "qDIkGmr6XRo",
+                  "linkCheck": {
+                    "status": "unavailable",
+                    "note": "YouTube says \"This video is unavailable\"",
+                    "checked": "2026-10-20"
+                  }
+                }
+              ],
+              "example": {
+                "kind": "code",
+                "title": "Interview Question — Orders Analysis",
+                "language": "sql",
+                "code": "-- INTERVIEW QUESTION: \n-- \"Find users whose spending increased month-over-month\n--  for 3+ consecutive months.\"\n\nWITH monthly_spend AS (\n    SELECT \n        user_id,\n        DATE_TRUNC('month', order_date) AS month,\n        SUM(amount_usd) AS total\n    FROM orders\n    GROUP BY user_id, DATE_TRUNC('month', order_date)\n),\nwith_prev AS (\n    SELECT *,\n        LAG(total) OVER (\n            PARTITION BY user_id ORDER BY month\n        ) AS prev_total,\n        CASE WHEN total > LAG(total) OVER (\n            PARTITION BY user_id ORDER BY month\n        ) THEN 1 ELSE 0 END AS increased\n    FROM monthly_spend\n),\nstreaks AS (\n    SELECT *,\n        SUM(CASE WHEN increased = 0 THEN 1 ELSE 0 END) \n            OVER (PARTITION BY user_id ORDER BY month) \n            AS streak_group\n    FROM with_prev\n)\nSELECT DISTINCT user_id\nFROM streaks\nGROUP BY user_id, streak_group\nHAVING SUM(increased) >= 3;"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "lessonDrawer": {
+    "tabs": [
+      "Learn",
+      "Demo"
+    ],
+    "labels": {
+      "checklist": "Learning Checklist",
+      "resources": "Free Resources",
+      "videos": "YouTube Videos"
+    },
+    "videoDisplay": "links",
+    "exampleFootnote": "Part of the e-commerce orders pipeline — your running example across all phases."
+  },
+  "cta": {
+    "eyebrow": "Build with guidance",
+    "heading": "Turn the roadmap into a working portfolio.",
+    "body": "Join the live Data Engineering Masterclass for mentorship, a production-ready project, and career coaching.",
+    "price": "$1,497",
+    "ctas": [
+      {
+        "label": "View the masterclass",
+        "href": "/courses",
+        "external": false,
+        "style": "primary"
+      },
+      {
+        "label": "Book a call",
+        "href": "https://calendar.app.google/gCDaTk9dCAgLUJAZ9",
+        "external": true,
+        "style": "text"
+      }
+    ]
+  },
+  "unlinkedLessons": {
+    "note": "Lessons present in the old bundle but not linked from any phase, so visitors could never open them. Kept for completeness; decide whether to publish.",
+    "lessons": [
+      {
+        "id": "explore-career-path",
+        "icon": "📄",
+        "title": "Explore Career Path",
+        "lesson": {
+          "overview": "The data engineering career path goes from Junior DE → Mid DE → Senior DE → Staff/Principal → Data Architect. Each level brings new responsibilities and significantly higher pay.",
+          "checklist": [
+            "Research salary ranges at each level",
+            "Understand what skills unlock each level",
+            "Talk to working data engineers",
+            "Set a 1-year and 3-year career goal"
+          ],
+          "resources": [
+            {
+              "label": "Levels.fyi — DE Salaries",
+              "url": "https://www.levels.fyi/t/data-engineer",
+              "kind": "salary-data",
+              "linkCheck": {
+                "status": "broken",
+                "httpStatus": 404,
+                "checked": "2026-10-20"
+              }
+            },
+            {
+              "label": "Glassdoor — Data Engineer",
+              "url": "https://www.glassdoor.com/Salaries/data-engineer-salary-SRCH_KO0,13.htm",
+              "kind": "salary-data",
+              "linkCheck": {
+                "status": "unverified",
+                "httpStatus": 403,
+                "note": "bot protection blocked the check",
+                "checked": "2026-10-20"
+              }
+            }
+          ],
+          "videos": [
+            {
+              "title": "Data Engineering Career Roadmap 2026",
+              "url": "https://www.youtube.com/watch?v=5HZfOdMJPIk",
+              "youtubeId": "5HZfOdMJPIk",
+              "linkCheck": {
+                "status": "unavailable",
+                "note": "YouTube says \"This video is unavailable\"",
+                "checked": "2026-10-20"
+              }
+            }
+          ],
+          "example": {
+            "kind": "ladder",
+            "title": "Career Progression Path",
+            "source": "career-path",
+            "steps": [
+              {
+                "level": "Junior DE",
+                "salary": "$65k–$85k"
+              },
+              {
+                "level": "Mid Data Engineer",
+                "salary": "$120k–$200k"
+              },
+              {
+                "level": "Senior DE",
+                "salary": "$180k–$300k"
+              },
+              {
+                "level": "Staff / Principal",
+                "salary": "$300k–$700k"
+              },
+              {
+                "level": "Data Architect",
+                "salary": "$250k–$800k"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "career-decision",
+        "icon": "🎯",
+        "title": "Career Decision",
+        "lesson": {
+          "overview": "Before investing months of learning, make a clear decision: Is data engineering right for you? If you enjoy building systems, automating workflows, and working with data at scale — yes.",
+          "checklist": [
+            "Complete a free SQL tutorial",
+            "Try writing a Python script",
+            "Build something with data (even a spreadsheet)",
+            "Commit to 3 months of focused learning"
+          ],
+          "resources": [
+            {
+              "label": "SQLBolt — Free Interactive SQL",
+              "url": "https://sqlbolt.com/",
+              "kind": "course",
+              "linkCheck": {
+                "status": "ok",
+                "httpStatus": 200,
+                "checked": "2026-10-20"
+              }
+            },
+            {
+              "label": "Python.org — Getting Started",
+              "url": "https://www.python.org/about/gettingstarted/",
+              "kind": "docs",
+              "linkCheck": {
+                "status": "ok",
+                "httpStatus": 200,
+                "checked": "2026-10-20"
+              }
+            }
+          ],
+          "videos": [
+            {
+              "title": "Should You Become a Data Engineer?",
+              "url": "https://www.youtube.com/watch?v=qWru-b6m030",
+              "youtubeId": "qWru-b6m030",
+              "linkCheck": {
+                "status": "ok",
+                "youtubeTitle": "How Data Engineering Works | AltexSoft",
+                "checked": "2026-10-20",
+                "labelMatches": false
+              }
+            }
+          ],
+          "example": {
+            "kind": "code",
+            "title": "Decision Framework",
+            "language": "text",
+            "code": "✅ Data Engineering is for you if:\n  • You like building systems, not just analyzing data\n  • You enjoy automation and scripting\n  • You're comfortable with code (or want to be)\n  • You want high salary potential ($120k–$700k+)\n  • You like solving infrastructure problems\n\n❌ Consider other roles if:\n  • You prefer making charts and presentations → Data Analyst\n  • You want to build ML models → Data Scientist\n  • You want to build user-facing apps → Software Engineer\n\n📊 Your first test: Try the SQL demo in Phase 1.\n   If you enjoy it, you're on the right track!"
+          }
+        }
+      },
+      {
+        "id": "system-design",
+        "icon": "🏗️",
+        "title": "System Design",
+        "lesson": {
+          "overview": "At the senior level, you design entire data platforms. System design interviews test your ability to architect scalable, fault-tolerant data systems.",
+          "checklist": [
+            "Batch vs streaming architecture",
+            "Lambda & Kappa architectures",
+            "Data mesh principles",
+            "Scalability & fault tolerance",
+            "Cost optimization at scale",
+            "Data quality frameworks"
+          ],
+          "resources": [
+            {
+              "label": "System Design Primer (GitHub)",
+              "url": "https://github.com/donnemartin/system-design-primer",
+              "kind": "repo",
+              "linkCheck": {
+                "status": "ok",
+                "httpStatus": 200,
+                "checked": "2026-10-20"
+              }
+            },
+            {
+              "label": "Designing Data-Intensive Applications",
+              "url": "https://dataintensive.net/",
+              "kind": "book",
+              "linkCheck": {
+                "status": "ok",
+                "httpStatus": 200,
+                "checked": "2026-10-20"
+              }
+            }
+          ],
+          "videos": [
+            {
+              "title": "Data Engineering System Design",
+              "url": "https://www.youtube.com/watch?v=a44E-GG_yI4",
+              "youtubeId": "a44E-GG_yI4",
+              "linkCheck": {
+                "status": "unavailable",
+                "note": "YouTube says \"This video is unavailable\"",
+                "checked": "2026-10-20"
+              }
+            }
+          ],
+          "example": {
+            "kind": "flow",
+            "title": "System Design — Orders Platform at Scale",
+            "source": "system-design",
+            "nodes": [
+              {
+                "icon": "📱",
+                "label": "50K req/s",
+                "sub": "Orders API"
+              },
+              {
+                "icon": "📨",
+                "label": "Kafka",
+                "sub": "3 brokers"
+              },
+              {
+                "icon": "🔥",
+                "label": "Spark",
+                "sub": "100 nodes"
+              },
+              {
+                "icon": "🏛️",
+                "label": "Delta Lake",
+                "sub": "500TB"
+              },
+              {
+                "icon": "❄️",
+                "label": "Warehouse",
+                "sub": "Redshift"
+              },
+              {
+                "icon": "📊",
+                "label": "BI + ML",
+                "sub": "Consumers"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "data-governance",
+        "icon": "📋",
+        "title": "Data Governance",
+        "lesson": {
+          "overview": "Data governance establishes policies for data quality, security, privacy, and compliance. Critical for organizations handling sensitive or regulated data.",
+          "checklist": [
+            "Data cataloging & discovery",
+            "Access control & RBAC",
+            "Data lineage tracking",
+            "PII handling & masking",
+            "GDPR / CCPA compliance",
+            "Data quality metrics",
+            "Retention policies"
+          ],
+          "resources": [
+            {
+              "label": "Atlan Data Governance Guide",
+              "url": "https://atlan.com/data-governance/",
+              "kind": "article",
+              "linkCheck": {
+                "status": "ok",
+                "httpStatus": 200,
+                "checked": "2026-10-20"
+              }
+            },
+            {
+              "label": "Monte Carlo Data Observability",
+              "url": "https://www.montecarlodata.com/",
+              "kind": "article",
+              "linkCheck": {
+                "status": "ok",
+                "httpStatus": 200,
+                "checked": "2026-10-20"
+              }
+            }
+          ],
+          "videos": [
+            {
+              "title": "Data Governance Explained",
+              "url": "https://www.youtube.com/watch?v=iRaai1IBlB0",
+              "youtubeId": "iRaai1IBlB0",
+              "linkCheck": {
+                "status": "ok",
+                "youtubeTitle": "Learn Terraform (and AWS) by Building a Dev Environment – Full Course for Beginners | freeCodeCamp.org",
+                "checked": "2026-10-20",
+                "labelMatches": false
+              }
+            }
+          ],
+          "example": {
+            "kind": "code",
+            "title": "Data Catalog Entry — Orders Table",
+            "language": "yaml",
+            "code": "# Unity Catalog / OpenMetadata definition\ntable:\n  name: fact_orders\n  database: prod.ecommerce\n  owner: data-engineering-team\n  \n  classification: CONFIDENTIAL\n  pii_columns:\n    - user_id      # pseudonymized\n    - shipping_city # masked after 3 chars\n  \n  data_quality:\n    freshness: \n      max_delay: 2h\n      alert: pagerduty\n    completeness:\n      required_columns: [order_id, user_id, amount_usd]\n      null_threshold: 0.01  # max 1% nulls\n    uniqueness:\n      primary_key: order_id\n      \n  lineage:\n    sources:\n      - raw.orders_api     # Kafka topic\n      - raw.product_catalog # PostgreSQL CDC\n    downstream:\n      - analytics.mv_daily_dashboard\n      - ml.features.user_rfm\n      \n  retention:\n    raw_data: 90_days\n    aggregated: 7_years\n    pii: 30_days_after_deletion_request"
+          }
+        }
+      },
+      {
+        "id": "team-leadership",
+        "icon": "👥",
+        "title": "Team Leadership",
+        "lesson": {
+          "overview": "Senior+ data engineers lead teams, mentor juniors, drive architecture decisions, and influence technical strategy across the organization.",
+          "checklist": [
+            "Mentoring junior engineers",
+            "Code review best practices",
+            "Technical documentation",
+            "Stakeholder communication",
+            "Project planning & estimation",
+            "Incident management",
+            "Hiring & interviewing"
+          ],
+          "resources": [
+            {
+              "label": "Staff Engineer by Will Larson",
+              "url": "https://staffeng.com/",
+              "kind": "article",
+              "linkCheck": {
+                "status": "ok",
+                "httpStatus": 200,
+                "checked": "2026-10-20"
+              }
+            },
+            {
+              "label": "The Manager's Path",
+              "url": "https://www.oreilly.com/library/view/the-managers-path/9781491973882/",
+              "kind": "book",
+              "linkCheck": {
+                "status": "unverified",
+                "httpStatus": 403,
+                "note": "bot protection blocked the check",
+                "checked": "2026-10-20"
+              }
+            }
+          ],
+          "videos": [
+            {
+              "title": "How to Become a Staff Engineer",
+              "url": "https://www.youtube.com/watch?v=UB8g8LKTA6k",
+              "youtubeId": "UB8g8LKTA6k",
+              "linkCheck": {
+                "status": "unavailable",
+                "note": "YouTube says \"This video is unavailable\"",
+                "checked": "2026-10-20"
+              }
+            }
+          ],
+          "example": {
+            "kind": "code",
+            "title": "Architecture Decision Record (ADR)",
+            "language": "text",
+            "code": "ADR-007: Migrate Orders Pipeline to Delta Lake\n══════════════════════════════════════════════════\n\nStatus: ACCEPTED\nDate: 2024-06-15\nAuthor: You (Staff Data Engineer)\nReviewers: VP Engineering, Data Platform Team\n\nContext:\n  Current Parquet-based orders pipeline has:\n  - No ACID transactions → data corruption on failures\n  - No schema evolution → breaking changes need downtime\n  - No time travel → can't debug data issues\n\nDecision:\n  Migrate to Delta Lake on Databricks with:\n  ✅ ACID transactions for reliable writes\n  ✅ Schema evolution for backward compatibility\n  ✅ Time travel for auditing & debugging\n  ✅ Z-ordering on user_id for 10x faster queries\n\nImpact:\n  - Migration: 2 sprints (4 weeks)\n  - Cost: +$2K/mo compute, -$8K/mo from query savings\n  - Net savings: $6K/month = $72K/year\n  - Risk: Low (Delta Lake is backward compatible)\n\nThis is the kind of document that gets you promoted. ↑"
+          }
+        }
+      },
+      {
+        "id": "cost-optimization",
+        "icon": "💰",
+        "title": "Cost Optimization",
+        "lesson": {
+          "overview": "At senior level, you own cloud spend. Small improvements in query efficiency or storage strategy can save millions. This skill directly impacts company P&L.",
+          "checklist": [
+            "Cloud cost monitoring dashboards",
+            "Right-sizing compute resources",
+            "Storage tiering (hot/warm/cold)",
+            "Query optimization for cost",
+            "Reserved vs spot instances",
+            "Data lifecycle management",
+            "FinOps practices"
+          ],
+          "resources": [
+            {
+              "label": "AWS Cost Optimization",
+              "url": "https://aws.amazon.com/architecture/cost-optimization/",
+              "kind": "article",
+              "linkCheck": {
+                "status": "ok",
+                "httpStatus": 200,
+                "checked": "2026-10-20"
+              }
+            },
+            {
+              "label": "FinOps Foundation",
+              "url": "https://www.finops.org/",
+              "kind": "article",
+              "linkCheck": {
+                "status": "ok",
+                "httpStatus": 200,
+                "checked": "2026-10-20"
+              }
+            }
+          ],
+          "videos": [
+            {
+              "title": "Cloud Cost Optimization Tips",
+              "url": "https://www.youtube.com/watch?v=N6lYcXjd4pg",
+              "youtubeId": "N6lYcXjd4pg",
+              "linkCheck": {
+                "status": "ok",
+                "youtubeTitle": "How to Burn Money in the Cloud // Avoid AWS, GCP, Azure Cost Disasters | Fireship",
+                "checked": "2026-10-20",
+                "labelMatches": true
+              }
+            }
+          ],
+          "example": {
+            "kind": "table",
+            "title": "Cost Optimization Results — Orders Pipeline",
+            "source": "cost-optimization",
+            "columns": [
+              "OPTIMIZATION",
+              "BEFORE",
+              "AFTER",
+              "SAVINGS"
+            ],
+            "rows": [
+              [
+                "Partition by date",
+                "500GB scans",
+                "1.2GB scans",
+                "$14K/mo"
+              ],
+              [
+                "Spot instances",
+                "On-demand",
+                "70% spot",
+                "$8K/mo"
+              ],
+              [
+                "Cold storage tier",
+                "All S3 Standard",
+                "Glacier after 90d",
+                "$5K/mo"
+              ]
+            ],
+            "total": {
+              "label": "Total Annual Savings",
+              "value": "$324K/yr"
+            }
+          }
+        }
+      }
+    ]
+  }
+}

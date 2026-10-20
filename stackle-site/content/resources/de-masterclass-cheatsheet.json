@@ -1,0 +1,1567 @@
+{
+  "slug": "de-masterclass-cheatsheet",
+  "title": "Stackle DE Masterclass — Complete Cheat Sheet",
+  "eyebrow": "Masterclass Cheat Sheet",
+  "summary": null,
+  "category": null,
+  "seo": {
+    "title": "Stackle DE Masterclass — Complete Cheat Sheet",
+    "description": null
+  },
+  "source": {
+    "url": "https://stackle.io/resources/de-masterclass-cheatsheet",
+    "staticHtml": "https://stackle.io/resources/de-masterclass-cheatsheet.html",
+    "iframeTitle": "DE Masterclass Cheatsheet — Stackle"
+  },
+  "listedInLibrary": false,
+  "brand": {
+    "name": "Stackle DE",
+    "subtitle": "Masterclass Cheat Sheet"
+  },
+  "layout": {
+    "type": "sidebar-topics",
+    "defaultTopic": "sql-basics"
+  },
+  "levels": [
+    "Basic",
+    "Intermediate",
+    "Advanced",
+    "Concept",
+    "Snowflake"
+  ],
+  "groups": [
+    {
+      "title": "Core SQL",
+      "topics": [
+        {
+          "id": "sql-basics",
+          "navLabel": "SQL basics",
+          "title": "SQL basics",
+          "subtitle": "Foundational SQL every DE must know cold",
+          "filters": [
+            {
+              "label": "All",
+              "level": null
+            },
+            {
+              "label": "Basic",
+              "level": "Basic"
+            },
+            {
+              "label": "Intermediate",
+              "level": "Intermediate"
+            }
+          ],
+          "sections": [
+            {
+              "title": "SELECT, filter, aggregate",
+              "questions": [
+                {
+                  "question": "What is the order SQL clauses execute?",
+                  "hint": "Not the order you write them",
+                  "level": "Basic",
+                  "answer": [
+                    {
+                      "type": "text",
+                      "html": "SQL processes in this order: <strong>FROM → JOIN → WHERE → GROUP BY → HAVING → SELECT → ORDER BY → LIMIT</strong>.<br><br>This is why you cannot use a SELECT alias inside WHERE — WHERE runs before SELECT."
+                    }
+                  ]
+                },
+                {
+                  "question": "WHERE vs HAVING — what is the difference?",
+                  "hint": "Most common interview question",
+                  "level": "Basic",
+                  "answer": [
+                    {
+                      "type": "text",
+                      "html": "<strong>WHERE</strong> filters rows before grouping. Cannot use aggregates.<br><strong>HAVING</strong> filters after grouping. Must use aggregates."
+                    },
+                    {
+                      "type": "code",
+                      "language": "sql",
+                      "code": "-- WHERE: filter raw rows\nWHERE customer_state = 'SP'\n\n-- HAVING: filter aggregated groups\nGROUP BY customer_state\nHAVING COUNT(*) > 1000"
+                    }
+                  ]
+                },
+                {
+                  "question": "What is GROUP BY and when do you use it?",
+                  "level": "Basic",
+                  "answer": [
+                    {
+                      "type": "text",
+                      "html": "GROUP BY collapses multiple rows into one row per unique value. Use it when you want totals, counts, or averages by a category."
+                    },
+                    {
+                      "type": "code",
+                      "language": "sql",
+                      "code": "SELECT order_status, COUNT(*) AS total\nFROM olist_orders\nGROUP BY order_status\nORDER BY total DESC;"
+                    }
+                  ]
+                },
+                {
+                  "question": "What is DISTINCT and when should you avoid it?",
+                  "level": "Basic",
+                  "answer": [
+                    {
+                      "type": "text",
+                      "html": "DISTINCT removes duplicate rows. Avoid it when duplicates come from a bad JOIN — fix the join instead. It is also expensive on large tables."
+                    },
+                    {
+                      "type": "code",
+                      "language": "sql",
+                      "code": "SELECT DISTINCT payment_type FROM olist_order_payments;\nSELECT COUNT(DISTINCT customer_unique_id) FROM olist_customers;"
+                    }
+                  ]
+                },
+                {
+                  "question": "How do you handle NULLs in SQL?",
+                  "level": "Basic",
+                  "answer": [
+                    {
+                      "type": "text",
+                      "html": "NULL means unknown. Never use = NULL — always use IS NULL or IS NOT NULL. Use COALESCE to replace nulls. Use NULLIF to prevent divide-by-zero."
+                    },
+                    {
+                      "type": "code",
+                      "language": "sql",
+                      "code": "WHERE order_approved_at IS NULL\nCOALESCE(comment, 'No comment')\nNULLIF(total_orders, 0)"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "JOINs",
+              "questions": [
+                {
+                  "question": "What are the JOIN types and when to use each?",
+                  "level": "Basic",
+                  "answer": [
+                    {
+                      "type": "table",
+                      "headers": [
+                        "Type",
+                        "Returns",
+                        "Use when"
+                      ],
+                      "rows": [
+                        [
+                          "INNER JOIN",
+                          "Matching rows only",
+                          "You only want rows matched in both tables"
+                        ],
+                        [
+                          "LEFT JOIN",
+                          "All left + matched right",
+                          "All left rows even if no match"
+                        ],
+                        [
+                          "FULL OUTER JOIN",
+                          "All rows from both",
+                          "You want everything regardless of match"
+                        ],
+                        [
+                          "CROSS JOIN",
+                          "Every combination",
+                          "Generating all pairs — cartesian product"
+                        ]
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "question": "What is an anti join?",
+                  "level": "Intermediate",
+                  "answer": [
+                    {
+                      "type": "text",
+                      "html": "Find rows in left table with NO match in right. Write it as LEFT JOIN + WHERE right.key IS NULL."
+                    },
+                    {
+                      "type": "code",
+                      "language": "sql",
+                      "code": "-- Orders with no review\nSELECT o.order_id\nFROM olist_orders o\nLEFT JOIN olist_order_reviews r ON o.order_id = r.order_id\nWHERE r.order_id IS NULL;"
+                    }
+                  ]
+                },
+                {
+                  "question": "What is a self join?",
+                  "level": "Intermediate",
+                  "answer": [
+                    {
+                      "type": "text",
+                      "html": "A self join joins a table to itself. Use when you want to compare rows within the same table."
+                    },
+                    {
+                      "type": "code",
+                      "language": "sql",
+                      "code": "SELECT s1.seller_id, s2.seller_id, s1.seller_city\nFROM olist_sellers s1\nJOIN olist_sellers s2\n  ON s1.seller_city = s2.seller_city\n  AND s1.seller_id < s2.seller_id;"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sql-compare",
+          "navLabel": "SQL comparisons",
+          "title": "SQL comparisons",
+          "subtitle": "The X vs Y questions that come up in every interview",
+          "sections": [
+            {
+              "title": "DELETE vs TRUNCATE vs DROP",
+              "questions": [
+                {
+                  "question": "DELETE vs TRUNCATE vs DROP",
+                  "hint": "Most asked DDL question",
+                  "level": "Basic",
+                  "answer": [
+                    {
+                      "type": "table",
+                      "headers": [
+                        "",
+                        "DELETE",
+                        "TRUNCATE",
+                        "DROP"
+                      ],
+                      "rows": [
+                        [
+                          "Removes",
+                          "Specific rows",
+                          "All rows",
+                          "Table + all rows"
+                        ],
+                        [
+                          "WHERE clause",
+                          "YES",
+                          "NO",
+                          "NO"
+                        ],
+                        [
+                          "Keeps schema",
+                          "YES",
+                          "YES",
+                          "NO"
+                        ],
+                        [
+                          "Row logging",
+                          "YES",
+                          "NO",
+                          "NO"
+                        ],
+                        [
+                          "Speed",
+                          "Slow",
+                          "Fast",
+                          "Fast"
+                        ],
+                        [
+                          "Rollback",
+                          "YES",
+                          "NO*",
+                          "NO*"
+                        ]
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "html": "*Snowflake time travel can recover within retention period"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "UNION vs UNION ALL",
+              "questions": [
+                {
+                  "question": "UNION vs UNION ALL",
+                  "hint": "When do duplicates matter?",
+                  "level": "Basic",
+                  "answer": [
+                    {
+                      "type": "text",
+                      "html": "<strong>UNION</strong> removes duplicates — slower. <strong>UNION ALL</strong> keeps all rows — faster. Use UNION ALL by default unless you specifically need deduplication."
+                    },
+                    {
+                      "type": "code",
+                      "language": "sql",
+                      "code": "-- UNION: removes duplicates (slower)\nSELECT order_id FROM orders_2017\nUNION\nSELECT order_id FROM orders_2018;\n\n-- UNION ALL: keeps all rows (faster)\nSELECT order_id FROM orders_2017\nUNION ALL\nSELECT order_id FROM orders_2018;"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "More comparisons",
+              "questions": [
+                {
+                  "question": "CTE vs Subquery vs Temp Table vs View",
+                  "level": "Intermediate",
+                  "answer": [
+                    {
+                      "type": "table",
+                      "headers": [
+                        "",
+                        "CTE",
+                        "Subquery",
+                        "Temp Table",
+                        "View"
+                      ],
+                      "rows": [
+                        [
+                          "Reusable in query",
+                          "YES",
+                          "NO",
+                          "YES",
+                          "YES"
+                        ],
+                        [
+                          "Persists after query",
+                          "NO",
+                          "NO",
+                          "Session",
+                          "YES"
+                        ],
+                        [
+                          "Best for",
+                          "Multi-step readable logic",
+                          "Simple one-off filter",
+                          "Large intermediates",
+                          "Reusable across queries"
+                        ]
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "question": "ROW_NUMBER vs RANK vs DENSE_RANK",
+                  "level": "Intermediate",
+                  "answer": [
+                    {
+                      "type": "table",
+                      "headers": [
+                        "Function",
+                        "Ties allowed",
+                        "Skips numbers",
+                        "Output example"
+                      ],
+                      "rows": [
+                        [
+                          "ROW_NUMBER",
+                          "NO",
+                          "N/A",
+                          "1, 2, 3, 4"
+                        ],
+                        [
+                          "RANK",
+                          "YES",
+                          "YES",
+                          "1, 1, 3, 4"
+                        ],
+                        [
+                          "DENSE_RANK",
+                          "YES",
+                          "NO",
+                          "1, 1, 2, 3"
+                        ]
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "html": "Use <strong>ROW_NUMBER</strong> for deduplication. <strong>RANK</strong> for Olympic-style. <strong>DENSE_RANK</strong> for leaderboards."
+                    }
+                  ]
+                },
+                {
+                  "question": "ETL vs ELT",
+                  "level": "Concept",
+                  "answer": [
+                    {
+                      "type": "table",
+                      "headers": [
+                        "",
+                        "ETL",
+                        "ELT"
+                      ],
+                      "rows": [
+                        [
+                          "Order",
+                          "Extract → Transform → Load",
+                          "Extract → Load → Transform"
+                        ],
+                        [
+                          "Transform where",
+                          "Before loading",
+                          "Inside the warehouse"
+                        ],
+                        [
+                          "Tools",
+                          "SSIS, Informatica",
+                          "dbt, Snowflake, BigQuery"
+                        ],
+                        [
+                          "Raw data kept",
+                          "NO",
+                          "YES"
+                        ]
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "question": "Batch vs Streaming",
+                  "level": "Concept",
+                  "answer": [
+                    {
+                      "type": "table",
+                      "headers": [
+                        "",
+                        "Batch",
+                        "Streaming"
+                      ],
+                      "rows": [
+                        [
+                          "When it runs",
+                          "On a schedule",
+                          "Continuously as events arrive"
+                        ],
+                        [
+                          "Latency",
+                          "Minutes to hours",
+                          "Milliseconds to seconds"
+                        ],
+                        [
+                          "Tools",
+                          "Airflow, ADF, Spark",
+                          "Kafka, Flink, Spark Streaming"
+                        ],
+                        [
+                          "Cost",
+                          "Lower",
+                          "Higher"
+                        ]
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sql-window",
+          "navLabel": "Window functions",
+          "title": "Window functions",
+          "subtitle": "The hardest SQL topic in every senior DE interview",
+          "sections": [
+            {
+              "title": "OVER, PARTITION BY, ORDER BY explained",
+              "questions": [
+                {
+                  "question": "What is a window function?",
+                  "level": "Intermediate",
+                  "answer": [
+                    {
+                      "type": "text",
+                      "html": "A window function performs a calculation across rows related to the current row — without collapsing rows like GROUP BY does. You keep all rows AND get the calculated value on each row."
+                    },
+                    {
+                      "type": "code",
+                      "language": "sql",
+                      "code": "-- GROUP BY collapses rows\nSELECT state, COUNT(*) FROM customers GROUP BY state;\n\n-- Window fn keeps all rows + adds calculation\nSELECT customer_id, state,\n  COUNT(*) OVER (PARTITION BY state) AS state_total\nFROM customers;"
+                    }
+                  ]
+                },
+                {
+                  "question": "What does PARTITION BY do?",
+                  "level": "Intermediate",
+                  "answer": [
+                    {
+                      "type": "text",
+                      "html": "PARTITION BY divides rows into groups and restarts the window calculation for each group. Think of it as \"do this calculation separately per group\"."
+                    },
+                    {
+                      "type": "code",
+                      "language": "sql",
+                      "code": "-- Ranks across ALL sellers\nRANK() OVER (ORDER BY revenue DESC)\n\n-- Ranks within each state separately\nRANK() OVER (PARTITION BY seller_state ORDER BY revenue DESC)"
+                    }
+                  ]
+                },
+                {
+                  "question": "What does ORDER BY do inside OVER?",
+                  "level": "Intermediate",
+                  "answer": [
+                    {
+                      "type": "text",
+                      "html": "ORDER BY inside OVER defines the sequence within the window. Required for RANK, ROW_NUMBER, LAG, LEAD, and running totals. Completely separate from the ORDER BY at the end that sorts final results."
+                    }
+                  ]
+                },
+                {
+                  "question": "How do you remove duplicates using ROW_NUMBER?",
+                  "level": "Intermediate",
+                  "answer": [
+                    {
+                      "type": "code",
+                      "language": "sql",
+                      "code": "WITH deduped AS (\n  SELECT *,\n    ROW_NUMBER() OVER (\n      PARTITION BY customer_unique_id\n      ORDER BY order_purchase_timestamp DESC\n    ) AS rn\n  FROM olist_customers\n)\nSELECT * FROM deduped WHERE rn = 1;"
+                    }
+                  ]
+                },
+                {
+                  "question": "LAG vs LEAD",
+                  "level": "Intermediate",
+                  "answer": [
+                    {
+                      "type": "text",
+                      "html": "<strong>LAG</strong> looks at the previous row. <strong>LEAD</strong> looks at the next row."
+                    },
+                    {
+                      "type": "code",
+                      "language": "sql",
+                      "code": "-- MoM change\ntotal - LAG(total) OVER (ORDER BY month) AS change\n\n-- Next order date per customer\nLEAD(order_date) OVER (\n  PARTITION BY customer_id ORDER BY order_date\n) AS next_order"
+                    }
+                  ]
+                },
+                {
+                  "question": "Running total and 7-day moving average",
+                  "level": "Intermediate",
+                  "answer": [
+                    {
+                      "type": "code",
+                      "language": "sql",
+                      "code": "-- Running total\nSUM(payment_value) OVER (\n  PARTITION BY payment_type ORDER BY order_id\n) AS running_total\n\n-- 7-day moving average\nAVG(total_orders) OVER (\n  ORDER BY order_date\n  ROWS BETWEEN 6 PRECEDING AND CURRENT ROW\n) AS avg_7d"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sql-patterns",
+          "navLabel": "DE SQL patterns",
+          "title": "DE SQL patterns",
+          "subtitle": "Patterns that separate mid-level from senior",
+          "sections": [
+            {
+              "title": "Duplicates, incremental, pivot, quality",
+              "questions": [
+                {
+                  "question": "How do you find duplicate rows?",
+                  "level": "Intermediate",
+                  "answer": [
+                    {
+                      "type": "code",
+                      "language": "sql",
+                      "code": "SELECT customer_unique_id, COUNT(*) AS cnt\nFROM olist_customers\nGROUP BY customer_unique_id\nHAVING COUNT(*) > 1\nORDER BY cnt DESC;"
+                    }
+                  ]
+                },
+                {
+                  "question": "How do you remove duplicates and keep the latest?",
+                  "level": "Intermediate",
+                  "answer": [
+                    {
+                      "type": "code",
+                      "language": "sql",
+                      "code": "WITH ranked AS (\n  SELECT *,\n    ROW_NUMBER() OVER (\n      PARTITION BY customer_unique_id\n      ORDER BY customer_id DESC\n    ) AS rn\n  FROM olist_customers\n)\nSELECT * FROM ranked WHERE rn = 1;"
+                    }
+                  ]
+                },
+                {
+                  "question": "Incremental load pattern",
+                  "level": "Advanced",
+                  "answer": [
+                    {
+                      "type": "text",
+                      "html": "Only pull records newer than the last successful run watermark."
+                    },
+                    {
+                      "type": "code",
+                      "language": "sql",
+                      "code": "SELECT * FROM olist_orders\nWHERE order_purchase_timestamp > '2018-01-01'\nORDER BY order_purchase_timestamp;\n-- In dbt: {{ var('last_updated') }}\n-- In Airflow: {{ ds }}"
+                    }
+                  ]
+                },
+                {
+                  "question": "Pivot rows into columns with CASE WHEN",
+                  "level": "Intermediate",
+                  "answer": [
+                    {
+                      "type": "code",
+                      "language": "sql",
+                      "code": "SELECT customer_state,\n  COUNT(CASE WHEN order_status='delivered' THEN 1 END) delivered,\n  COUNT(CASE WHEN order_status='canceled'  THEN 1 END) canceled,\n  COUNT(CASE WHEN order_status='shipped'   THEN 1 END) shipped\nFROM olist_orders o\nJOIN olist_customers c ON o.customer_id = c.customer_id\nGROUP BY customer_state;"
+                    }
+                  ]
+                },
+                {
+                  "question": "NULL handling — COALESCE and NULLIF",
+                  "level": "Basic",
+                  "answer": [
+                    {
+                      "type": "code",
+                      "language": "sql",
+                      "code": "-- Replace NULL with default\nCOALESCE(review_comment_message, 'No comment')\n\n-- Prevent divide by zero\nrevenue / NULLIF(total_orders, 0)\n\n-- Multiple fallbacks\nCOALESCE(preferred_name, first_name, 'Unknown')"
+                    }
+                  ]
+                },
+                {
+                  "question": "Detect outliers using standard deviation",
+                  "level": "Advanced",
+                  "answer": [
+                    {
+                      "type": "code",
+                      "language": "sql",
+                      "code": "WITH stats AS (\n  SELECT\n    AVG(DATEDIFF(day, order_purchase_timestamp,\n      order_delivered_customer_date)) AS avg_days,\n    STDDEV(DATEDIFF(day, order_purchase_timestamp,\n      order_delivered_customer_date)) AS sd\n  FROM olist_orders\n  WHERE order_delivered_customer_date IS NOT NULL\n)\nSELECT o.order_id,\n  DATEDIFF(day, order_purchase_timestamp,\n    order_delivered_customer_date) AS delivery_days\nFROM olist_orders o, stats s\nWHERE DATEDIFF(day, order_purchase_timestamp,\n  order_delivered_customer_date) > s.avg_days + 2*s.sd;"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sql-query",
+          "navLabel": "How to read a query",
+          "title": "How to read and write a SQL query",
+          "subtitle": "The 5-step framework to go from question to answer",
+          "sections": [
+            {
+              "title": "The framework",
+              "questions": [
+                {
+                  "question": "Step 1 — Read the question in plain English",
+                  "level": "Basic",
+                  "answer": [
+                    {
+                      "type": "text",
+                      "html": "Before writing SQL, ask: <strong>What do I want to see in the result?</strong><br><br>Example: \"Find top 10 states by number of customers\"<br>→ I want a list of states with a count, sorted highest to lowest, top 10 only."
+                    }
+                  ]
+                },
+                {
+                  "question": "Step 2 — Identify the table",
+                  "level": "Basic",
+                  "answer": [
+                    {
+                      "type": "code",
+                      "language": "text",
+                      "code": "customers   → olist_customers\norders      → olist_orders\npayments    → olist_order_payments\nreviews     → olist_order_reviews\nproducts    → olist_products\nsellers     → olist_sellers"
+                    }
+                  ]
+                },
+                {
+                  "question": "Step 3 — Build SELECT",
+                  "level": "Basic",
+                  "answer": [
+                    {
+                      "type": "text",
+                      "html": "Ask: <strong>What columns do I want back?</strong><br><br>For \"top 10 states by customers\" → customer_state and COUNT(*)"
+                    }
+                  ]
+                },
+                {
+                  "question": "Step 4 — Add clauses in execution order",
+                  "level": "Basic",
+                  "answer": [
+                    {
+                      "type": "code",
+                      "language": "sql",
+                      "code": "SELECT    -- what columns?\nFROM      -- which table?\nJOIN      -- need another table?\nWHERE     -- row-level filters?\nGROUP BY  -- aggregating?\nHAVING    -- filter after grouping?\nORDER BY  -- how to sort?\nLIMIT     -- top N only?"
+                    }
+                  ]
+                },
+                {
+                  "question": "Step 5 — Read it back in plain English",
+                  "level": "Basic",
+                  "answer": [
+                    {
+                      "type": "text",
+                      "html": "<em>\"Give me customer_state and count, from olist_customers, grouped by state, ordered descending, top 10 only\"</em>"
+                    },
+                    {
+                      "type": "code",
+                      "language": "sql",
+                      "code": "SELECT customer_state, COUNT(*) AS total\nFROM RAW.PUBLIC.olist_customers\nGROUP BY customer_state\nORDER BY total DESC\nLIMIT 10;"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Data Engineering",
+      "topics": [
+        {
+          "id": "de-concepts",
+          "navLabel": "DE concepts",
+          "title": "DE concepts",
+          "subtitle": "Core concepts every data engineer must explain in an interview",
+          "sections": [
+            {
+              "title": "Fundamentals",
+              "questions": [
+                {
+                  "question": "What is a data pipeline?",
+                  "level": "Basic",
+                  "answer": [
+                    {
+                      "type": "text",
+                      "html": "A series of automated steps that move and transform data from a source to a destination. Typically includes ingestion, validation, transformation, and loading into a warehouse."
+                    }
+                  ]
+                },
+                {
+                  "question": "What is idempotency and why does it matter?",
+                  "level": "Advanced",
+                  "answer": [
+                    {
+                      "type": "text",
+                      "html": "An idempotent pipeline produces the same result no matter how many times you run it with the same input. Critical because pipelines fail and get rerun. Use MERGE/upsert or deduplicate after load to ensure idempotency."
+                    }
+                  ]
+                },
+                {
+                  "question": "What is the medallion architecture?",
+                  "level": "Intermediate",
+                  "answer": [
+                    {
+                      "type": "table",
+                      "headers": [
+                        "Layer",
+                        "Contains",
+                        "Who uses it"
+                      ],
+                      "rows": [
+                        [
+                          "Bronze",
+                          "Raw ingested data, no changes",
+                          "Engineers only"
+                        ],
+                        [
+                          "Silver",
+                          "Cleaned, deduplicated, validated",
+                          "Engineers + analysts"
+                        ],
+                        [
+                          "Gold",
+                          "Business-ready aggregated models",
+                          "Analysts, dashboards, ML"
+                        ]
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "question": "What is CDC — Change Data Capture?",
+                  "level": "Advanced",
+                  "answer": [
+                    {
+                      "type": "text",
+                      "html": "CDC tracks changes (inserts, updates, deletes) in a source database and replicates them to your warehouse in near real-time. Tools: Debezium, AWS DMS, Fivetran. Most common method: log-based CDC using the database transaction log."
+                    }
+                  ]
+                },
+                {
+                  "question": "What is a slowly changing dimension (SCD)?",
+                  "level": "Advanced",
+                  "answer": [
+                    {
+                      "type": "table",
+                      "headers": [
+                        "Type",
+                        "How it handles changes"
+                      ],
+                      "rows": [
+                        [
+                          "SCD Type 1",
+                          "Overwrite — no history kept"
+                        ],
+                        [
+                          "SCD Type 2",
+                          "New row per change — full history with effective dates"
+                        ],
+                        [
+                          "SCD Type 3",
+                          "Extra column for previous value — one historical version"
+                        ]
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "python",
+          "navLabel": "Python for DE",
+          "title": "Python for DE",
+          "subtitle": "Python patterns used in real data engineering jobs",
+          "sections": [
+            {
+              "title": "Core patterns",
+              "questions": [
+                {
+                  "question": "Connect Python to Snowflake",
+                  "level": "Basic",
+                  "answer": [
+                    {
+                      "type": "code",
+                      "language": "python",
+                      "code": "import snowflake.connector\nconn = snowflake.connector.connect(\n    user='your_user', password='your_password',\n    account='ORGNAME-ACCOUNTNAME',\n    warehouse='COMPUTE_WH', database='RAW', schema='PUBLIC'\n)\ncur = conn.cursor()\ncur.execute(\"SELECT COUNT(*) FROM olist_orders\")\nprint(cur.fetchone())"
+                    }
+                  ]
+                },
+                {
+                  "question": "Read CSV and explore a DataFrame",
+                  "level": "Basic",
+                  "answer": [
+                    {
+                      "type": "code",
+                      "language": "python",
+                      "code": "import pandas as pd\ndf = pd.read_csv('olist_orders.csv')\nprint(df.shape)           # rows, columns\nprint(df.dtypes)          # column types\nprint(df.isnull().sum())  # null counts per column\nprint(df.describe())      # stats summary"
+                    }
+                  ]
+                },
+                {
+                  "question": "Pipeline function with error handling",
+                  "level": "Intermediate",
+                  "answer": [
+                    {
+                      "type": "code",
+                      "language": "python",
+                      "code": "import logging\nlogger = logging.getLogger(__name__)\n\ndef extract_orders(file_path: str):\n    try:\n        df = pd.read_csv(file_path)\n        logger.info(f\"Loaded {len(df)} rows\")\n        return df\n    except FileNotFoundError:\n        logger.error(f\"File not found: {file_path}\")\n        raise"
+                    }
+                  ]
+                },
+                {
+                  "question": "Call an API and load the response",
+                  "level": "Intermediate",
+                  "answer": [
+                    {
+                      "type": "code",
+                      "language": "python",
+                      "code": "import requests\nresponse = requests.get(\n    'https://api.example.com/orders',\n    headers={'Authorization': 'Bearer TOKEN'},\n    params={'start_date': '2024-01-01'}\n)\nresponse.raise_for_status()\ndf = pd.DataFrame(response.json()['results'])"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "modeling",
+          "navLabel": "Data modeling",
+          "title": "Data modeling",
+          "subtitle": "How to design data structures that work in production",
+          "sections": [
+            {
+              "title": "Core concepts",
+              "questions": [
+                {
+                  "question": "What is dimensional modeling?",
+                  "level": "Intermediate",
+                  "answer": [
+                    {
+                      "type": "text",
+                      "html": "A design technique for data warehouses that organizes data into <strong>fact tables</strong> (measurable events) and <strong>dimension tables</strong> (context/descriptors). Optimized for query performance and analyst readability. Developed by Ralph Kimball."
+                    }
+                  ]
+                },
+                {
+                  "question": "Fact table vs Dimension table",
+                  "level": "Intermediate",
+                  "answer": [
+                    {
+                      "type": "table",
+                      "headers": [
+                        "",
+                        "Fact table",
+                        "Dimension table"
+                      ],
+                      "rows": [
+                        [
+                          "Contains",
+                          "Measurable events / transactions",
+                          "Descriptive attributes"
+                        ],
+                        [
+                          "Examples",
+                          "orders, payments, clicks",
+                          "customers, products, sellers"
+                        ],
+                        [
+                          "Row count",
+                          "Very large (millions+)",
+                          "Smaller (thousands)"
+                        ],
+                        [
+                          "Changes",
+                          "Append-only (immutable events)",
+                          "Can change over time (SCD)"
+                        ]
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "question": "Star schema vs Snowflake schema",
+                  "level": "Intermediate",
+                  "answer": [
+                    {
+                      "type": "table",
+                      "headers": [
+                        "",
+                        "Star schema",
+                        "Snowflake schema"
+                      ],
+                      "rows": [
+                        [
+                          "Dimensions",
+                          "Flat, denormalized",
+                          "Normalized into sub-dims"
+                        ],
+                        [
+                          "Joins needed",
+                          "Few",
+                          "More"
+                        ],
+                        [
+                          "Query speed",
+                          "Faster",
+                          "Slower"
+                        ],
+                        [
+                          "Modern preference",
+                          "Preferred",
+                          "Less common"
+                        ]
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "question": "What is grain in data modeling?",
+                  "level": "Intermediate",
+                  "answer": [
+                    {
+                      "type": "text",
+                      "html": "Grain defines what a single row in a fact table represents. You must define grain before adding any columns. Example: \"one row per order item\" vs \"one row per order\" vs \"one row per customer per day\". Getting grain wrong means all your aggregations will be wrong."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "quality",
+          "navLabel": "Data quality",
+          "title": "Data quality",
+          "subtitle": "The most underrated skill in data engineering",
+          "sections": [
+            {
+              "title": "Quality dimensions and checks",
+              "questions": [
+                {
+                  "question": "What are the 6 dimensions of data quality?",
+                  "level": "Intermediate",
+                  "answer": [
+                    {
+                      "type": "table",
+                      "headers": [
+                        "Dimension",
+                        "Meaning",
+                        "SQL check"
+                      ],
+                      "rows": [
+                        [
+                          "Completeness",
+                          "No missing values",
+                          "COUNT(col) = COUNT(*)"
+                        ],
+                        [
+                          "Uniqueness",
+                          "No duplicate keys",
+                          "COUNT(DISTINCT id) = COUNT(*)"
+                        ],
+                        [
+                          "Validity",
+                          "Values in expected range",
+                          "review_score BETWEEN 1 AND 5"
+                        ],
+                        [
+                          "Consistency",
+                          "Same across systems",
+                          "Source vs warehouse row counts"
+                        ],
+                        [
+                          "Timeliness",
+                          "Data arrives on schedule",
+                          "MAX(updated_at) within 24h"
+                        ],
+                        [
+                          "Accuracy",
+                          "Reflects reality",
+                          "Business rule cross-checks"
+                        ]
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "question": "Data quality checks in SQL",
+                  "level": "Intermediate",
+                  "answer": [
+                    {
+                      "type": "code",
+                      "language": "sql",
+                      "code": "-- Null check\nSELECT COUNT(*) FROM olist_orders WHERE order_id IS NULL;\n\n-- Uniqueness check\nSELECT order_id, COUNT(*) FROM olist_orders\nGROUP BY order_id HAVING COUNT(*) > 1;\n\n-- Range check\nSELECT * FROM olist_order_reviews\nWHERE review_score NOT BETWEEN 1 AND 5;\n\n-- Freshness check\nSELECT MAX(order_purchase_timestamp) FROM olist_orders;"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Modern Stack",
+      "topics": [
+        {
+          "id": "spark",
+          "navLabel": "Spark + Databricks",
+          "title": "Spark + Databricks",
+          "subtitle": "Distributed compute for large-scale data engineering",
+          "sections": [
+            {
+              "title": "Core concepts",
+              "questions": [
+                {
+                  "question": "What is Apache Spark and why use it?",
+                  "level": "Intermediate",
+                  "answer": [
+                    {
+                      "type": "text",
+                      "html": "Spark is a distributed computing framework that processes large datasets across a cluster. Use it when data is too large for a single machine (typically &gt;10GB). Processes data in-memory making it 100x faster than Hadoop MapReduce for most workloads."
+                    }
+                  ]
+                },
+                {
+                  "question": "Spark vs Pandas",
+                  "level": "Intermediate",
+                  "answer": [
+                    {
+                      "type": "table",
+                      "headers": [
+                        "",
+                        "Pandas",
+                        "Spark"
+                      ],
+                      "rows": [
+                        [
+                          "Data size",
+                          "Up to ~10GB",
+                          "TBs to PBs"
+                        ],
+                        [
+                          "Execution",
+                          "Eager (immediate)",
+                          "Lazy (builds plan first)"
+                        ],
+                        [
+                          "Small data speed",
+                          "Faster",
+                          "Overhead"
+                        ],
+                        [
+                          "Large data speed",
+                          "Too slow",
+                          "Scales horizontally"
+                        ]
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "question": "Transformations vs Actions in Spark",
+                  "level": "Intermediate",
+                  "answer": [
+                    {
+                      "type": "table",
+                      "headers": [
+                        "Transformations (lazy)",
+                        "Actions (trigger execution)"
+                      ],
+                      "rows": [
+                        [
+                          "select, filter, groupBy, join",
+                          "count, show, collect, write"
+                        ],
+                        [
+                          "withColumn, orderBy, distinct",
+                          "take, first, save"
+                        ]
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "question": "Basic PySpark operations",
+                  "level": "Intermediate",
+                  "answer": [
+                    {
+                      "type": "code",
+                      "language": "python",
+                      "code": "from pyspark.sql import SparkSession, functions as F\n\nspark = SparkSession.builder.appName(\"Stackle\").getOrCreate()\ndf = spark.read.csv(\"olist_orders.csv\", header=True, inferSchema=True)\n\ndf.filter(F.col(\"order_status\") == \"delivered\") \\\n  .groupBy(\"customer_state\") \\\n  .agg(F.count(\"*\").alias(\"total\")) \\\n  .orderBy(\"total\", ascending=False) \\\n  .show(10)"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "snowflake",
+          "navLabel": "Snowflake",
+          "title": "Snowflake",
+          "subtitle": "Cloud data warehouse architecture and key features",
+          "sections": [
+            {
+              "title": "Architecture + Snowflake-specific SQL",
+              "questions": [
+                {
+                  "question": "What makes Snowflake different?",
+                  "level": "Intermediate",
+                  "answer": [
+                    {
+                      "type": "text",
+                      "html": "Snowflake separates storage and compute. Storage lives in cloud object storage (S3/Azure Blob). Compute runs on virtual warehouses that scale instantly and pause when idle. Multiple warehouses can query the same data simultaneously without contention."
+                    }
+                  ]
+                },
+                {
+                  "question": "Time travel in Snowflake",
+                  "level": "Snowflake",
+                  "answer": [
+                    {
+                      "type": "code",
+                      "language": "sql",
+                      "code": "-- 1 hour ago\nSELECT * FROM olist_orders AT (OFFSET => -3600);\n-- Specific timestamp\nSELECT * FROM olist_orders\n  AT (TIMESTAMP => '2024-01-01 12:00:00'::TIMESTAMP);"
+                    }
+                  ]
+                },
+                {
+                  "question": "QUALIFY — filter on window fn result",
+                  "level": "Snowflake",
+                  "answer": [
+                    {
+                      "type": "code",
+                      "language": "sql",
+                      "code": "SELECT seller_id, seller_state, SUM(price) revenue,\n  RANK() OVER (PARTITION BY seller_state ORDER BY SUM(price) DESC) rnk\nFROM olist_order_items oi\nJOIN olist_sellers s USING (seller_id)\nGROUP BY 1,2\nQUALIFY rnk = 1;"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "dbt",
+          "navLabel": "dbt",
+          "title": "dbt",
+          "subtitle": "The transformation layer of the modern data stack",
+          "sections": [
+            {
+              "title": "Core dbt concepts",
+              "questions": [
+                {
+                  "question": "What is dbt and what problem does it solve?",
+                  "level": "Intermediate",
+                  "answer": [
+                    {
+                      "type": "text",
+                      "html": "dbt lets you write SELECT statements and handles creating tables/views, running them in order, testing them, and documenting them. It brings software engineering practices (version control, testing, CI/CD) to SQL transformation."
+                    }
+                  ]
+                },
+                {
+                  "question": "What is a dbt model?",
+                  "level": "Intermediate",
+                  "answer": [
+                    {
+                      "type": "text",
+                      "html": "A .sql file containing a SELECT statement. dbt compiles it and creates a table or view in your warehouse. Use ref() to reference other models — dbt builds the dependency graph automatically."
+                    },
+                    {
+                      "type": "code",
+                      "language": "sql",
+                      "code": "-- models/silver/olist_orders_clean.sql\nSELECT order_id, customer_id, order_status\nFROM {{ ref('olist_orders_raw') }}\nWHERE order_id IS NOT NULL;"
+                    }
+                  ]
+                },
+                {
+                  "question": "Materialization types in dbt",
+                  "level": "Intermediate",
+                  "answer": [
+                    {
+                      "type": "table",
+                      "headers": [
+                        "Type",
+                        "Creates",
+                        "Use when"
+                      ],
+                      "rows": [
+                        [
+                          "view",
+                          "SQL view (no data stored)",
+                          "Lightweight transformations"
+                        ],
+                        [
+                          "table",
+                          "Full table rebuild each run",
+                          "Smaller datasets"
+                        ],
+                        [
+                          "incremental",
+                          "Appends/updates new rows only",
+                          "Large tables, event data"
+                        ],
+                        [
+                          "ephemeral",
+                          "CTE inline — no warehouse object",
+                          "Intermediate step only"
+                        ]
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "kafka",
+          "navLabel": "Kafka + Streaming",
+          "title": "Kafka + Streaming",
+          "subtitle": "Real-time data pipelines",
+          "sections": [
+            {
+              "title": "Core Kafka concepts",
+              "questions": [
+                {
+                  "question": "What is Kafka?",
+                  "level": "Intermediate",
+                  "answer": [
+                    {
+                      "type": "text",
+                      "html": "Kafka is a distributed event streaming platform. Producers write events to topics. Consumers read from topics at their own pace. Kafka retains events for a configurable period so consumers can replay data."
+                    }
+                  ]
+                },
+                {
+                  "question": "Kafka key terms",
+                  "level": "Intermediate",
+                  "answer": [
+                    {
+                      "type": "table",
+                      "headers": [
+                        "Term",
+                        "What it is"
+                      ],
+                      "rows": [
+                        [
+                          "Topic",
+                          "Named channel for a category of events"
+                        ],
+                        [
+                          "Partition",
+                          "Topic split for parallelism"
+                        ],
+                        [
+                          "Producer",
+                          "App that writes events"
+                        ],
+                        [
+                          "Consumer",
+                          "App that reads events"
+                        ],
+                        [
+                          "Offset",
+                          "Position of a message in a partition"
+                        ],
+                        [
+                          "Broker",
+                          "Kafka server that stores data"
+                        ]
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "question": "Kafka vs traditional message queues",
+                  "level": "Advanced",
+                  "answer": [
+                    {
+                      "type": "table",
+                      "headers": [
+                        "",
+                        "Kafka",
+                        "RabbitMQ / SQS"
+                      ],
+                      "rows": [
+                        [
+                          "Retention",
+                          "Days/weeks (replay possible)",
+                          "Deleted after consumed"
+                        ],
+                        [
+                          "Consumers",
+                          "Many consumers, same message",
+                          "One consumer per message"
+                        ],
+                        [
+                          "Throughput",
+                          "Millions msg/sec",
+                          "Thousands/sec"
+                        ]
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "orchestration",
+          "navLabel": "Orchestration",
+          "title": "Orchestration — Airflow + ADF",
+          "subtitle": "Scheduling and managing pipeline workflows",
+          "sections": [
+            {
+              "title": "Core concepts",
+              "questions": [
+                {
+                  "question": "What is a DAG in Airflow?",
+                  "level": "Intermediate",
+                  "answer": [
+                    {
+                      "type": "text",
+                      "html": "A DAG (Directed Acyclic Graph) is a collection of tasks with defined dependencies. \"Directed\" = tasks flow one direction. \"Acyclic\" = no circular dependencies. Each DAG has a schedule and a start date."
+                    },
+                    {
+                      "type": "code",
+                      "language": "python",
+                      "code": "with DAG('olist_pipeline',\n         start_date=datetime(2024,1,1),\n         schedule_interval='@daily') as dag:\n    extract >> transform >> load"
+                    }
+                  ]
+                },
+                {
+                  "question": "Airflow vs ADF",
+                  "level": "Intermediate",
+                  "answer": [
+                    {
+                      "type": "table",
+                      "headers": [
+                        "",
+                        "Airflow",
+                        "Azure Data Factory"
+                      ],
+                      "rows": [
+                        [
+                          "Type",
+                          "Open source, code-based",
+                          "Managed Azure service, GUI"
+                        ],
+                        [
+                          "Defined as",
+                          "Python DAGs",
+                          "JSON + drag-and-drop"
+                        ],
+                        [
+                          "Best for",
+                          "Complex Python-heavy pipelines",
+                          "Azure-native data movement"
+                        ]
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "cloud",
+          "navLabel": "Cloud (Azure + AWS)",
+          "title": "Cloud — Azure + AWS",
+          "subtitle": "Infrastructure layer of modern data engineering",
+          "sections": [
+            {
+              "title": "Azure vs AWS DE services",
+              "questions": [
+                {
+                  "question": "Key DE services mapped side by side",
+                  "level": "Intermediate",
+                  "answer": [
+                    {
+                      "type": "table",
+                      "headers": [
+                        "Purpose",
+                        "Azure",
+                        "AWS"
+                      ],
+                      "rows": [
+                        [
+                          "Object storage",
+                          "Azure Blob / ADLS Gen2",
+                          "S3"
+                        ],
+                        [
+                          "Data warehouse",
+                          "Azure Synapse",
+                          "Redshift"
+                        ],
+                        [
+                          "ETL / pipelines",
+                          "Azure Data Factory",
+                          "AWS Glue"
+                        ],
+                        [
+                          "Streaming",
+                          "Azure Event Hubs",
+                          "Kinesis"
+                        ],
+                        [
+                          "Spark",
+                          "Azure Databricks",
+                          "EMR / Databricks"
+                        ],
+                        [
+                          "Serverless compute",
+                          "Azure Functions",
+                          "Lambda"
+                        ]
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "AI + Jobs",
+      "topics": [
+        {
+          "id": "ai",
+          "navLabel": "AI-native DE",
+          "title": "AI-native data engineering",
+          "subtitle": "How AI is changing the DE role in 2026",
+          "sections": [
+            {
+              "title": "AI in DE pipelines",
+              "questions": [
+                {
+                  "question": "How is AI changing data engineering?",
+                  "level": "Concept",
+                  "answer": [
+                    {
+                      "type": "text",
+                      "html": "DEs now embed LLMs directly into pipelines to:<br><br>1. Generate and optimize SQL<br>2. Classify and tag data automatically<br>3. Extract entities from unstructured text<br>4. Generate data quality rules<br>5. Monitor pipelines with natural language alerts<br>6. Build RAG pipelines on structured data"
+                    }
+                  ]
+                },
+                {
+                  "question": "Call the Claude API inside a Python pipeline",
+                  "level": "Advanced",
+                  "answer": [
+                    {
+                      "type": "code",
+                      "language": "python",
+                      "code": "import anthropic, pandas as pd\n\nclient = anthropic.Anthropic(api_key=\"YOUR_KEY\")\n\ndef classify_review(text: str) -> str:\n    msg = client.messages.create(\n        model=\"claude-sonnet-4-20250514\",\n        max_tokens=100,\n        messages=[{\"role\":\"user\",\n          \"content\":f\"Classify as positive/negative/neutral: {text}\"}]\n    )\n    return msg.content[0].text\n\ndf['sentiment'] = df['review_comment_message'].apply(classify_review)"
+                    }
+                  ]
+                },
+                {
+                  "question": "What is RAG and how does it apply to DE?",
+                  "level": "Advanced",
+                  "answer": [
+                    {
+                      "type": "text",
+                      "html": "RAG (Retrieval Augmented Generation) combines vector search with an LLM. You retrieve relevant records from a vector store and pass them as context to the model.<br><br>DE use cases: natural language queries on your warehouse, intelligent data catalog search, automated data documentation."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "behavioral",
+          "navLabel": "Behavioral + interview",
+          "title": "Behavioral + interview prep",
+          "subtitle": "How to answer the questions that decide the offer",
+          "sections": [
+            {
+              "title": "Common questions",
+              "questions": [
+                {
+                  "question": "Tell me about yourself",
+                  "level": "Basic",
+                  "answer": [
+                    {
+                      "type": "text",
+                      "html": "Structure: <strong>Past → Present → Future</strong><br><br>\"I have X years in data engineering working with [technologies]. Most recently I have been building [specific work]. I want to join [type of company] where I can [specific goal].\"<br><br>Keep it under 90 seconds. End with why you want THIS role."
+                    }
+                  ]
+                },
+                {
+                  "question": "Tell me about a pipeline you built end to end",
+                  "level": "Intermediate",
+                  "answer": [
+                    {
+                      "type": "text",
+                      "html": "Use <strong>STAR: Situation → Task → Action → Result</strong><br><br>Cover: source, destination, tools, challenges, business impact. Always end with a number — \"reduced report latency from 4 hours to 15 minutes\"."
+                    }
+                  ]
+                },
+                {
+                  "question": "How do you handle a pipeline that keeps failing?",
+                  "level": "Intermediate",
+                  "answer": [
+                    {
+                      "type": "text",
+                      "html": "1. Check logs — find the exact failing line<br>2. Reproduce locally<br>3. Determine: data issue or code issue<br>4. Add monitoring if missing<br>5. Fix root cause, not the symptom<br>6. Add a test to prevent recurrence<br>7. Document what happened"
+                    }
+                  ]
+                },
+                {
+                  "question": "Where is DE going in the next 3 years?",
+                  "level": "Concept",
+                  "answer": [
+                    {
+                      "type": "text",
+                      "html": "Three things: <strong>AI integration</strong> (LLMs in pipelines, natural language interfaces), <strong>real-time everywhere</strong> (streaming replacing batch as tooling matures), and <strong>less plumbing more value</strong> (managed services handle infra, DEs focus on modeling, quality, and enabling the business)."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

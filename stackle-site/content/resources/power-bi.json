@@ -1,0 +1,2334 @@
+{
+  "slug": "power-bi",
+  "title": "Power BI — From Data to HR Analytics",
+  "eyebrow": "Practical learning path",
+  "summary": "Power BI turns disconnected operational data into a shared view of what happened, why it happened, and what should happen next.",
+  "category": "Interactive",
+  "seo": {
+    "title": "Learn Power BI | Stackle Resources",
+    "description": "Power BI turns disconnected operational data into a shared view of what happened, why it happened, and what should happen next."
+  },
+  "listing": {
+    "cardTitle": "Power BI — From Data to HR Analytics",
+    "badge": "Interactive",
+    "category": "Interactive",
+    "image": "/resources/power-bi/card.jpg",
+    "imageOriginalUrl": "https://stackle.io/assets/power-bi-learning-Bh2_uFwZ.jpg",
+    "imageSize": [
+      1200,
+      912
+    ],
+    "author": "Stackle",
+    "likes": 0,
+    "views": "New"
+  },
+  "reader": {
+    "layout": "course-reader",
+    "urlParam": "lesson",
+    "searchPlaceholder": "Search lessons",
+    "searchEmptyText": "No lessons match your search.",
+    "backLink": {
+      "label": "Resources",
+      "url": "/resources"
+    },
+    "lessonNav": {
+      "previousLabel": "Previous",
+      "nextLabel": "Next",
+      "complete": {
+        "eyebrow": "Complete",
+        "label": "Back to resources",
+        "url": "/resources"
+      }
+    },
+    "brand": {
+      "name": "Power BI",
+      "tagline": "Practical learning path",
+      "mark": "power-bi-bars",
+      "accent": "powerbi-yellow"
+    },
+    "progressLabel": "Course progress",
+    "navAriaLabel": "Power BI curriculum",
+    "headerActions": [
+      {
+        "kind": "copy",
+        "label": "Copy DAX",
+        "mobileLabel": "Copy all DAX",
+        "copiedLabel": "Copied",
+        "copiedMs": 1800,
+        "source": "/resources/power-bi/hr-analytics-measures.dax"
+      },
+      {
+        "kind": "download",
+        "label": "Download .dax",
+        "mobileLabel": "Download measures",
+        "file": "/resources/power-bi/hr-analytics-measures.dax"
+      }
+    ]
+  },
+  "downloads": [
+    {
+      "id": "hr-analytics-measures",
+      "label": "Download .dax",
+      "file": "/resources/power-bi/hr-analytics-measures.dax",
+      "originalUrl": "https://stackle.io/resources/hr-analytics-measures.dax",
+      "language": "dax",
+      "content": "// HR Analytics — All Measures table\n// Reconstructed from the measure names and visual bindings in HR_Analytics.pbix.\n// The original DAX is inside the compressed model and could not be read, so\n// these are the standard definitions for this dataset. Column names follow the\n// public HR Analytics sample (Employee, PerformanceRating, *Level lookup tables).\n// Adjust names if your columns differ.\n\n// ---------- Headline KPIs (six cards on every page) ----------\n\nTotal_Employee =\nDISTINCTCOUNT ( Employee[EmployeeID] )\n\nAttrition =\nCALCULATE ( [Total_Employee], Employee[Attrition] = \"Yes\" )\n\nAttrition% =\nDIVIDE ( [Attrition], [Total_Employee], 0 )\n\nRetrenched% =\nDIVIDE (\n    CALCULATE ( [Total_Employee], Employee[Retrenched] = \"Yes\" ),\n    [Total_Employee],\n    0\n)\n\nDue for Promotion % =\nDIVIDE (\n    CALCULATE ( [Total_Employee], Employee[YearsSinceLastPromotion] >= 4 ),\n    [Total_Employee],\n    0\n)\n\nAvg_Salary =\nAVERAGE ( Employee[Salary] )\n\nAvg_Age =\nAVERAGE ( Employee[Age] )\n\n// ---------- Satisfaction and rating averages (Ratings page) ----------\n\nAvg_Env_Sat =\nAVERAGE ( PerformanceRating[EnvironmentSatisfaction] )\n\nAvg_Job_Sat =\nAVERAGE ( PerformanceRating[JobSatisfaction] )\n\nAvg_Relation_Sat =\nAVERAGE ( PerformanceRating[RelationshipSatisfaction] )\n\nAvg_Work_Bal =\nAVERAGE ( PerformanceRating[WorkLifeBalance] )\n\nAvg_Manager_Rat =\nAVERAGE ( PerformanceRating[ManagerRating] )\n\nAvg_Self_Rat =\nAVERAGE ( PerformanceRating[SelfRating] )\n\n// ---------- Calculated columns used by the slicers and charts ----------\n\n// Employee[Age Group]\nAge Group =\nSWITCH (\n    TRUE (),\n    Employee[Age] < 20, \"<20\",\n    Employee[Age] < 30, \"20-29\",\n    Employee[Age] < 40, \"30-39\",\n    Employee[Age] < 50, \"40-49\",\n    \"50+\"\n)\n\n// Employee[Dist_from_Home]\nDist_from_Home =\nSWITCH (\n    TRUE (),\n    Employee[DistanceFromHome (KM)] <= 10, \"0-10 km\",\n    Employee[DistanceFromHome (KM)] <= 20, \"11-20 km\",\n    Employee[DistanceFromHome (KM)] <= 30, \"21-30 km\",\n    \"30+ km\"\n)\n\n// ---------- Calendar table (data generation in Power Query or DAX) ----------\n\nCalendar =\nADDCOLUMNS (\n    CALENDAR ( MIN ( Employee[HireDate] ), MAX ( PerformanceRating[ReviewDate] ) ),\n    \"Year\", YEAR ( [Date] ),\n    \"Month\", FORMAT ( [Date], \"MMM\" ),\n    \"MonthNo\", MONTH ( [Date] )\n)\n"
+    }
+  ],
+  "stats": {
+    "modules": 9,
+    "lessons": 26,
+    "totalMinutes": 252,
+    "codeSamples": 12,
+    "tables": 21
+  },
+  "modules": [
+    {
+      "id": "foundations",
+      "label": "01 · Foundations",
+      "icon": "gauge",
+      "lessons": [
+        {
+          "id": "data-and-bi",
+          "number": 1,
+          "title": "Data & business intelligence",
+          "duration": "8 min",
+          "blocks": [
+            {
+              "type": "lede",
+              "text": "Power BI turns disconnected operational data into a shared view of what happened, why it happened, and what should happen next."
+            },
+            {
+              "type": "tiles",
+              "variant": "headline",
+              "columns": 3,
+              "items": [
+                {
+                  "title": "Descriptive",
+                  "text": "What happened?"
+                },
+                {
+                  "title": "Diagnostic",
+                  "text": "Why did it happen?"
+                },
+                {
+                  "title": "Predictive",
+                  "text": "What may happen next?"
+                }
+              ]
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "text": "Why data matters"
+            },
+            {
+              "type": "paragraph",
+              "text": "Raw data is a record of events. Business intelligence adds structure, context, and a visual language so teams can act. A useful report makes the important signal obvious without hiding the underlying detail, and it uses definitions everyone in the business agrees on."
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "text": "The four analytics questions"
+            },
+            {
+              "type": "table",
+              "head": [
+                "Layer",
+                "Question",
+                "Typical Power BI output"
+              ],
+              "rows": [
+                [
+                  "Descriptive",
+                  "What happened last month?",
+                  "KPI cards, trend lines, monthly matrix"
+                ],
+                [
+                  "Diagnostic",
+                  "Why did attrition rise?",
+                  "Decomposition tree, drill-through, small multiples"
+                ],
+                [
+                  "Predictive",
+                  "What is likely next quarter?",
+                  "Forecast line, what-if parameter, ML score column"
+                ],
+                [
+                  "Prescriptive",
+                  "What should we do?",
+                  "Scenario page, target vs actual, action-oriented tooltips"
+                ]
+              ]
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "text": "Where an analyst actually spends time"
+            },
+            {
+              "type": "paragraph",
+              "text": "In real projects roughly 60% of effort goes into understanding the question and cleaning data, 25% into the model and calculations, and only 15% into visual design. Reports fail far more often because of unclear definitions than because of chart colours."
+            },
+            {
+              "type": "callout",
+              "title": "Working principle",
+              "text": "Begin with a decision, not a chart. Ask what the reader needs to know or do after seeing the report, then work backwards to the data required."
+            },
+            {
+              "type": "practice",
+              "items": [
+                "1. Write down three decisions your report should support, in one sentence each.",
+                "2. For each decision, name the single metric that would change the decision.",
+                "3. List the source systems where that metric lives today."
+              ]
+            },
+            {
+              "type": "takeaways",
+              "items": [
+                "BI is a definition problem before it is a tooling problem.",
+                "Each report page should map to one question a stakeholder actually asks.",
+                "Descriptive reporting must be trustworthy before predictive work is worth attempting."
+              ]
+            }
+          ],
+          "minutes": 8
+        },
+        {
+          "id": "power-bi-overview",
+          "number": 2,
+          "title": "What Power BI is",
+          "duration": "9 min",
+          "blocks": [
+            {
+              "type": "lede",
+              "text": "Power BI is Microsoft’s business analytics platform for connecting, preparing, modeling, visualizing, and sharing data."
+            },
+            {
+              "type": "steps",
+              "items": [
+                "Connect",
+                "Transform",
+                "Model",
+                "Visualize",
+                "Share"
+              ]
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "text": "The product family"
+            },
+            {
+              "type": "list",
+              "ordered": false,
+              "items": [
+                "**Power BI Desktop** — free Windows authoring tool where models and reports are built.",
+                "**Power BI Service** — the cloud workspace that publishes, shares, refreshes, and governs content.",
+                "**Power BI Mobile** — phone and tablet consumption, including optimized phone layouts.",
+                "**Power BI Report Server** — on-premises hosting for organizations that cannot publish to the cloud.",
+                "**On-premises data gateway** — the secure bridge between local sources and the cloud service."
+              ]
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "text": "The engines underneath"
+            },
+            {
+              "type": "table",
+              "head": [
+                "Engine",
+                "Language",
+                "Job"
+              ],
+              "rows": [
+                [
+                  "Power Query",
+                  "M",
+                  "Connect and reshape data before it lands in the model"
+                ],
+                [
+                  "VertiPaq / Analysis Services",
+                  "DAX",
+                  "Compress, store, and calculate over the model"
+                ],
+                [
+                  "Report canvas",
+                  "—",
+                  "Visuals, interactions, formatting, and navigation"
+                ]
+              ]
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "text": "Licensing in one table"
+            },
+            {
+              "type": "table",
+              "head": [
+                "License",
+                "What it allows",
+                "When to choose it"
+              ],
+              "rows": [
+                [
+                  "Free",
+                  "Build in Desktop, publish to My Workspace only",
+                  "Learning and personal projects"
+                ],
+                [
+                  "Pro",
+                  "Share workspaces and apps with other Pro users",
+                  "Most teams and job-ready portfolio work"
+                ],
+                [
+                  "Premium Per User",
+                  "Larger models, more refreshes, advanced features",
+                  "Heavier analytics without full capacity"
+                ],
+                [
+                  "Fabric / Premium capacity",
+                  "Org-wide distribution to free viewers",
+                  "Enterprise deployments"
+                ]
+              ]
+            },
+            {
+              "type": "takeaways",
+              "items": [
+                "Desktop authors, Service distributes; keep the two roles clear in your head.",
+                "M shapes data, DAX calculates over the finished model.",
+                "Sharing beyond My Workspace requires at least Pro on both sides."
+              ]
+            }
+          ],
+          "minutes": 9
+        },
+        {
+          "id": "sources-workflow",
+          "number": 3,
+          "title": "Sources & the end-to-end workflow",
+          "duration": "9 min",
+          "blocks": [
+            {
+              "type": "lede",
+              "text": "One model can combine spreadsheets, databases, cloud warehouses, web APIs, and business applications."
+            },
+            {
+              "type": "icon-grid",
+              "icon": "database",
+              "columns": 2,
+              "items": [
+                "Excel & CSV files",
+                "SQL Server, Postgres, MySQL",
+                "Azure Synapse, Snowflake, BigQuery",
+                "SharePoint, Dataverse, SaaS APIs"
+              ]
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "text": "Import, DirectQuery, or Live connection"
+            },
+            {
+              "type": "table",
+              "head": [
+                "Mode",
+                "How it works",
+                "Trade-off"
+              ],
+              "rows": [
+                [
+                  "Import",
+                  "Data is compressed into the model file",
+                  "Fastest visuals, needs scheduled refresh"
+                ],
+                [
+                  "DirectQuery",
+                  "Queries are sent to the source per visual",
+                  "Near real-time, slower and limited DAX"
+                ],
+                [
+                  "Live connection",
+                  "Connects to an existing semantic model",
+                  "One shared definition, no local modeling"
+                ],
+                [
+                  "Composite",
+                  "Mix import tables with DirectQuery tables",
+                  "Flexible, but requires careful storage design"
+                ]
+              ]
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "text": "A repeatable workflow"
+            },
+            {
+              "type": "list",
+              "ordered": true,
+              "items": [
+                "Clarify the questions and agree metric definitions in writing.",
+                "Connect to the smallest useful set of source data.",
+                "Clean and shape it in Power Query with named steps.",
+                "Build a star schema, a date table, and reusable DAX measures.",
+                "Design report pages around questions, not around available fields.",
+                "Publish, secure with row-level security, schedule refresh, and iterate."
+              ]
+            },
+            {
+              "type": "callout",
+              "title": "Naming discipline",
+              "text": "Rename queries, columns, and measures in business language on day one. Renaming after ten visuals reference a field is far more painful than doing it up front."
+            },
+            {
+              "type": "takeaways",
+              "items": [
+                "Choose the storage mode from the freshness requirement, not from habit.",
+                "Reduce columns and rows at the source before importing.",
+                "Every project follows the same five stages: connect, transform, model, visualize, share."
+              ]
+            }
+          ],
+          "minutes": 9
+        }
+      ]
+    },
+    {
+      "id": "setup",
+      "label": "02 · Setup",
+      "icon": "circle-play",
+      "lessons": [
+        {
+          "id": "install-desktop",
+          "number": 4,
+          "title": "Install Power BI Desktop",
+          "duration": "6 min",
+          "blocks": [
+            {
+              "type": "lede",
+              "text": "Power BI Desktop is a free Windows application. The Microsoft Store version updates automatically and is the easiest option for most learners."
+            },
+            {
+              "type": "feature-cards",
+              "columns": 2,
+              "items": [
+                {
+                  "badge": "Recommended",
+                  "title": "Microsoft Store",
+                  "text": "Automatic monthly updates and a straightforward installation path.",
+                  "highlight": true
+                },
+                {
+                  "badge": "Managed devices",
+                  "title": "Direct download",
+                  "text": "Choose the 64-bit installer unless your organization requires another version."
+                }
+              ]
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "text": "Not on Windows?"
+            },
+            {
+              "type": "list",
+              "ordered": false,
+              "items": [
+                "**macOS** — run Windows in Parallels, UTM, or a cloud Windows 365 / Azure VM.",
+                "**Any OS** — author simple reports directly in the Power BI Service in a browser.",
+                "Keep the .pbix file on a synced folder so you can move between machines safely."
+              ]
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "text": "First launch checklist"
+            },
+            {
+              "type": "list",
+              "ordered": false,
+              "items": [
+                "Sign in only if you need to publish to a workspace.",
+                "Open **File → Options and settings → Options** and review Data Load defaults.",
+                "Turn off *Auto date/time* — you will build a proper date table instead.",
+                "Confirm regional settings so dates and decimals parse correctly.",
+                "Review preview features, but avoid enabling them for production work."
+              ]
+            },
+            {
+              "type": "takeaways",
+              "items": [
+                "Desktop is Windows-only; everything else is a workaround.",
+                "Disable auto date/time immediately to avoid hidden date tables.",
+                "Locale settings cause more parsing bugs than any other setting."
+              ]
+            }
+          ],
+          "minutes": 6
+        },
+        {
+          "id": "desktop-layout",
+          "number": 5,
+          "title": "Navigate the workspace",
+          "duration": "8 min",
+          "blocks": [
+            {
+              "type": "lede",
+              "text": "The Desktop workspace has three core views. Switching between them separates presentation, data inspection, and model design."
+            },
+            {
+              "type": "feature-cards",
+              "columns": 3,
+              "items": [
+                {
+                  "label": "View",
+                  "title": "Report",
+                  "text": "Build pages and visuals"
+                },
+                {
+                  "label": "View",
+                  "title": "Table",
+                  "text": "Inspect rows, columns, and measures"
+                },
+                {
+                  "label": "View",
+                  "title": "Model",
+                  "text": "Create and inspect relationships"
+                }
+              ]
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "text": "Panes you will use constantly"
+            },
+            {
+              "type": "cards",
+              "columns": 2,
+              "items": [
+                {
+                  "title": "Data pane",
+                  "text": "Every table, column, hierarchy, and measure in the model."
+                },
+                {
+                  "title": "Visualizations pane",
+                  "text": "Chart types plus the fields and format sub-panes."
+                },
+                {
+                  "title": "Filters pane",
+                  "text": "Visual, page, and report level filters, in that order of scope."
+                },
+                {
+                  "title": "Selection & bookmarks",
+                  "text": "Layer order, visibility, and saved report states."
+                }
+              ]
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "text": "Shortcuts worth memorizing"
+            },
+            {
+              "type": "table",
+              "head": [
+                "Shortcut",
+                "Action"
+              ],
+              "rows": [
+                [
+                  "Ctrl + S",
+                  "Save the .pbix"
+                ],
+                [
+                  "Ctrl + Z / Ctrl + Y",
+                  "Undo / redo canvas changes"
+                ],
+                [
+                  "Ctrl + C / Ctrl + V",
+                  "Copy a visual with all its formatting"
+                ],
+                [
+                  "Ctrl + Click",
+                  "Follow a report link or multi-select in slicers"
+                ],
+                [
+                  "Alt + Shift + arrows",
+                  "Nudge and align selected visuals"
+                ]
+              ]
+            },
+            {
+              "type": "callout",
+              "title": "Shortcut",
+              "text": "Spend time in Model view before polishing charts. A clear model makes every later calculation and visual easier to trust."
+            },
+            {
+              "type": "takeaways",
+              "items": [
+                "Report, Table, and Model views map to the three stages of authoring.",
+                "Filter scope runs visual → page → report; know which one you edited.",
+                "Copying a finished visual is the fastest way to keep formatting consistent."
+              ]
+            }
+          ],
+          "minutes": 8
+        }
+      ]
+    },
+    {
+      "id": "power-query",
+      "label": "03 · Power Query",
+      "icon": "blocks",
+      "lessons": [
+        {
+          "id": "power-query-basics",
+          "number": 6,
+          "title": "Transform data",
+          "duration": "10 min",
+          "blocks": [
+            {
+              "type": "lede",
+              "text": "Power Query is the data preparation engine inside Power BI. Every transformation is recorded as a repeatable step rather than a one-time manual edit."
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "text": "Common transformations"
+            },
+            {
+              "type": "checklist-grid",
+              "columns": 2,
+              "items": [
+                "Set correct data types",
+                "Remove errors and duplicates",
+                "Split or merge columns",
+                "Pivot and unpivot values",
+                "Merge and append queries",
+                "Create conditional columns",
+                "Group and summarize rows",
+                "Extract text, date, and number parts"
+              ]
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "text": "Merge vs append"
+            },
+            {
+              "type": "table",
+              "head": [
+                "Operation",
+                "What it does",
+                "Use case"
+              ],
+              "rows": [
+                [
+                  "Merge",
+                  "Joins columns from another query on a key",
+                  "Add department name to the employee table"
+                ],
+                [
+                  "Append",
+                  "Stacks rows from queries with the same shape",
+                  "Combine 12 monthly files into one table"
+                ]
+              ]
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "text": "Unpivot: the single most useful trick"
+            },
+            {
+              "type": "paragraph",
+              "text": "Source spreadsheets often have one column per month. Models need one row per month. Select the identifier columns, right-click, and choose **Unpivot other columns** to turn a wide report into a tall table that a star schema can consume."
+            },
+            {
+              "type": "callout",
+              "title": "Rule of thumb",
+              "text": "Shape data as early as practical. Use Power Query for structural cleaning and DAX for analytical calculations that respond to report filters."
+            },
+            {
+              "type": "practice",
+              "items": [
+                "1. Import a messy Excel export with merged headers and blank rows.",
+                "2. Promote headers, remove blanks, set types, and unpivot the month columns.",
+                "3. Rename every column in business language and Close & Apply."
+              ]
+            },
+            {
+              "type": "takeaways",
+              "items": [
+                "Transformations are steps, so cleaning is repeatable on every refresh.",
+                "Merge adds columns; append adds rows.",
+                "Unpivot converts spreadsheet layouts into model-friendly tables."
+              ]
+            }
+          ],
+          "minutes": 10
+        },
+        {
+          "id": "query-editor",
+          "number": 7,
+          "title": "Use the Query Editor",
+          "duration": "9 min",
+          "blocks": [
+            {
+              "type": "lede",
+              "text": "Open the editor from **Home → Transform data**. The query list, data preview, formula bar, and Applied Steps work together."
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "text": "A safe cleaning sequence"
+            },
+            {
+              "type": "list",
+              "ordered": true,
+              "items": [
+                "Rename the query and confirm the source path or connection.",
+                "Promote headers and remove empty rows.",
+                "Set explicit data types with locale where needed.",
+                "Remove columns the model will not use.",
+                "Standardize labels, trim whitespace, handle errors.",
+                "Review every Applied Step, then Close & Apply."
+              ]
+            },
+            {
+              "type": "code",
+              "language": "powerquery-m",
+              "code": "// Power Query M example\nlet\n  Source = Excel.Workbook(File.Contents(\"C:\\\\data\\\\hr.xlsx\"), null, true),\n  Employee = Source{[Item=\"Employee\",Kind=\"Sheet\"]}[Data],\n  Headers = Table.PromoteHeaders(Employee, [PromoteAllScalars=true]),\n  Typed = Table.TransformColumnTypes(\n    Headers,\n    {{\"EmployeeID\", Int64.Type}, {\"HireDate\", type date}, {\"Salary\", Currency.Type}}\n  ),\n  Cleaned = Table.SelectRows(Typed, each [EmployeeID] <> null)\nin\n  Cleaned"
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "text": "Query folding matters"
+            },
+            {
+              "type": "paragraph",
+              "text": "When a source is a database, Power Query tries to translate your steps into a single SQL statement — this is *query folding*, and it keeps refresh fast. Right-click a step and check **View Native Query**. Steps that break folding (custom M functions, added index columns) should sit as late in the chain as possible."
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "text": "Parameters and reference queries"
+            },
+            {
+              "type": "list",
+              "ordered": false,
+              "items": [
+                "Create a **parameter** for the file or folder path so the report moves between machines.",
+                "Use a **staging query** with *Enable load* turned off, then reference it for each final table.",
+                "Group queries into folders: Sources, Staging, Model."
+              ]
+            },
+            {
+              "type": "takeaways",
+              "items": [
+                "Applied Steps are your audit trail — name them meaningfully.",
+                "Keep folding alive as long as possible for database sources.",
+                "Parameters and staging queries make a project maintainable."
+              ]
+            }
+          ],
+          "minutes": 9
+        },
+        {
+          "id": "data-quality",
+          "number": 8,
+          "title": "Data quality & error handling",
+          "duration": "8 min",
+          "blocks": [
+            {
+              "type": "lede",
+              "text": "A refresh that silently drops rows is worse than one that fails loudly. Build checks into the query layer."
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "text": "Profile before you clean"
+            },
+            {
+              "type": "paragraph",
+              "text": "In the View ribbon enable **Column quality**, **Column distribution**, and **Column profile**, and switch profiling to the entire dataset instead of the first 1,000 rows. You are looking for unexpected blanks, outlier values, and columns where distinct count should equal row count."
+            },
+            {
+              "type": "table",
+              "head": [
+                "Symptom",
+                "Likely cause",
+                "Fix"
+              ],
+              "rows": [
+                [
+                  "Error values in a column",
+                  "Type conversion or locale mismatch",
+                  "Change type with locale, or replace errors"
+                ],
+                [
+                  "Duplicate keys in a dimension",
+                  "Source has history rows",
+                  "Group by key, or filter to current records"
+                ],
+                [
+                  "Blank dates",
+                  "Optional field, or text like 'N/A'",
+                  "Replace values before setting the date type"
+                ],
+                [
+                  "Row count drops after refresh",
+                  "Source filter or upstream schema change",
+                  "Add a row-count check query"
+                ]
+              ]
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "text": "Defensive patterns"
+            },
+            {
+              "type": "code",
+              "language": "powerquery-m",
+              "code": "// Replace errors with a safe default\nTable.ReplaceErrorValues(Typed, {{\"Salary\", 0}})\n\n// Trim and clean text keys before joining\nTable.TransformColumns(Source, {{\"Department\", each Text.Trim(Text.Clean(_)), type text}})"
+            },
+            {
+              "type": "practice",
+              "items": [
+                "1. Add a query that returns the row count of each source table.",
+                "2. Load it into the model and place it on a hidden audit page.",
+                "3. Compare counts before and after your cleaning steps."
+              ]
+            },
+            {
+              "type": "takeaways",
+              "items": [
+                "Profile the whole dataset, not the preview sample.",
+                "Handle errors explicitly instead of letting rows disappear.",
+                "An audit page turns silent data loss into a visible number."
+              ]
+            }
+          ],
+          "minutes": 8
+        }
+      ]
+    },
+    {
+      "id": "modeling",
+      "label": "04 · Data modeling",
+      "icon": "layers-3",
+      "lessons": [
+        {
+          "id": "model-foundations",
+          "number": 9,
+          "title": "Facts, dimensions & schemas",
+          "duration": "11 min",
+          "blocks": [
+            {
+              "type": "lede",
+              "text": "A data model describes how tables relate. Good models reduce ambiguity, make calculations predictable, and keep reports fast."
+            },
+            {
+              "type": "feature-cards",
+              "columns": 2,
+              "items": [
+                {
+                  "badge": "Dimensions",
+                  "title": "Describe the business",
+                  "text": "Employee, department, date, geography — entities used to filter or group results."
+                },
+                {
+                  "badge": "Facts",
+                  "title": "Record events",
+                  "text": "Transactions, reviews, attendance, sales — measurable activity at a consistent grain."
+                }
+              ]
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "text": "Prefer a star schema"
+            },
+            {
+              "type": "paragraph",
+              "text": "Dimension tables surround a central fact table, each joined on a single key. This is easier to explain, produces simpler DAX, and usually performs better than one giant flat table or an over-normalized snowflake."
+            },
+            {
+              "type": "table",
+              "head": [
+                "Design",
+                "Description",
+                "Verdict"
+              ],
+              "rows": [
+                [
+                  "Star",
+                  "Facts in the middle, dimensions one hop away",
+                  "Default choice"
+                ],
+                [
+                  "Snowflake",
+                  "Dimensions split into further lookup tables",
+                  "Acceptable, flatten where you can"
+                ],
+                [
+                  "Flat table",
+                  "Everything in one wide table",
+                  "Fine for a single quick view, bad at scale"
+                ]
+              ]
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "text": "Grain is the first decision"
+            },
+            {
+              "type": "paragraph",
+              "text": "Write the grain of every fact table as a sentence: “one row per employee per performance review.” If you cannot say it in one sentence, the table mixes grains and your measures will double count."
+            },
+            {
+              "type": "takeaways",
+              "items": [
+                "Facts measure, dimensions describe.",
+                "State the grain of each fact table in writing before modeling.",
+                "Star schema is the default; deviate only with a reason."
+              ]
+            }
+          ],
+          "minutes": 11
+        },
+        {
+          "id": "relationships",
+          "number": 10,
+          "title": "Keys & relationships",
+          "duration": "10 min",
+          "blocks": [
+            {
+              "type": "lede",
+              "text": "Relationships carry filters between tables. Cardinality and direction determine how visuals aggregate data."
+            },
+            {
+              "type": "diagram",
+              "diagram": "relationship",
+              "from": "Department",
+              "fromCardinality": "1",
+              "to": "Employee",
+              "toCardinality": "*",
+              "label": "one to many"
+            },
+            {
+              "type": "list",
+              "ordered": false,
+              "items": [
+                "A primary key uniquely identifies a dimension row.",
+                "A foreign key connects fact rows to that dimension.",
+                "Filters flow from the one side to the many side by default.",
+                "Use single-direction filtering unless the business case clearly needs both.",
+                "Only one relationship between two tables can be active at a time."
+              ]
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "text": "Cardinality cheat sheet"
+            },
+            {
+              "type": "table",
+              "head": [
+                "Type",
+                "Meaning",
+                "Notes"
+              ],
+              "rows": [
+                [
+                  "One to many",
+                  "Standard dimension to fact",
+                  "Use this almost always"
+                ],
+                [
+                  "One to one",
+                  "Two tables share the same key",
+                  "Consider merging the tables"
+                ],
+                [
+                  "Many to many",
+                  "Neither side is unique",
+                  "Prefer a bridge table for clarity"
+                ]
+              ]
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "text": "Inactive relationships and role-playing dates"
+            },
+            {
+              "type": "paragraph",
+              "text": "A fact table may have HireDate and ExitDate. Keep one active relationship to the date table and activate the other inside a measure with **USERELATIONSHIP**."
+            },
+            {
+              "type": "code",
+              "language": "dax",
+              "code": "Exits =\nCALCULATE (\n  [Total_Employee],\n  USERELATIONSHIP ( 'Date'[Date], Employee[ExitDate] )\n)"
+            },
+            {
+              "type": "callout",
+              "title": "Ambiguity warning",
+              "text": "If two paths connect the same tables, Power BI cannot decide which to use and will block the relationship. Redesign rather than forcing bi-directional filters."
+            },
+            {
+              "type": "takeaways",
+              "items": [
+                "Cardinality plus direction defines how filters travel.",
+                "Bi-directional filtering is a last resort, not a default.",
+                "USERELATIONSHIP handles multiple date roles cleanly."
+              ]
+            }
+          ],
+          "minutes": 10
+        },
+        {
+          "id": "date-table",
+          "number": 11,
+          "title": "Build a proper date table",
+          "duration": "9 min",
+          "blocks": [
+            {
+              "type": "lede",
+              "text": "Almost every time-intelligence bug traces back to a missing or badly marked date table."
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "text": "Requirements"
+            },
+            {
+              "type": "list",
+              "ordered": false,
+              "items": [
+                "One row per day, no gaps, covering every date in every fact table.",
+                "Whole years — 1 January to 31 December — so year-over-year works.",
+                "Marked with **Table tools → Mark as date table**.",
+                "Sort columns set so month names order correctly."
+              ]
+            },
+            {
+              "type": "code",
+              "language": "dax",
+              "code": "Date =\nVAR MinDate = MIN ( Employee[HireDate] )\nVAR MaxDate = MAX ( Employee[HireDate] )\nRETURN\nADDCOLUMNS (\n  CALENDAR ( DATE ( YEAR ( MinDate ), 1, 1 ), DATE ( YEAR ( MaxDate ), 12, 31 ) ),\n  \"Year\", YEAR ( [Date] ),\n  \"Quarter\", \"Q\" & QUARTER ( [Date] ),\n  \"MonthNo\", MONTH ( [Date] ),\n  \"Month\", FORMAT ( [Date], \"MMM\" ),\n  \"YearMonth\", FORMAT ( [Date], \"YYYY-MM\" ),\n  \"Weekday\", FORMAT ( [Date], \"ddd\" ),\n  \"IsWorkday\", IF ( WEEKDAY ( [Date], 2 ) <= 5, TRUE (), FALSE () )\n)"
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "text": "Sort by column"
+            },
+            {
+              "type": "paragraph",
+              "text": "Select the *Month* column, choose **Sort by column → MonthNo**. Without this, charts show April before January."
+            },
+            {
+              "type": "takeaways",
+              "items": [
+                "Continuous full-year date table, marked as a date table — non-negotiable.",
+                "Add MonthNo and set sort-by-column for readable axes.",
+                "Turn off auto date/time so hidden tables do not compete."
+              ]
+            }
+          ],
+          "minutes": 9
+        },
+        {
+          "id": "model-hygiene",
+          "number": 12,
+          "title": "Model hygiene & documentation",
+          "duration": "8 min",
+          "blocks": [
+            {
+              "type": "lede",
+              "text": "A tidy model is the difference between a report someone inherits happily and one they rebuild from scratch."
+            },
+            {
+              "type": "cards",
+              "columns": 2,
+              "items": [
+                {
+                  "title": "Hide technical fields",
+                  "text": "Hide keys and helper columns from report view so the field list only shows business terms."
+                },
+                {
+                  "title": "Measure table",
+                  "text": "Create a blank table named _Measures and store every measure there."
+                },
+                {
+                  "title": "Display folders",
+                  "text": "Group measures into folders such as Headcount, Attrition, Salary."
+                },
+                {
+                  "title": "Formatting in the model",
+                  "text": "Set currency, percentage, and decimal places once on the measure."
+                }
+              ]
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "text": "Naming conventions"
+            },
+            {
+              "type": "table",
+              "head": [
+                "Object",
+                "Convention",
+                "Example"
+              ],
+              "rows": [
+                [
+                  "Table",
+                  "Singular business noun",
+                  "Employee, Department, Date"
+                ],
+                [
+                  "Column",
+                  "Title case, no prefixes",
+                  "Hire Date, Monthly Income"
+                ],
+                [
+                  "Measure",
+                  "Business term, % suffix for rates",
+                  "Attrition %, Average Salary"
+                ],
+                [
+                  "Hidden helper",
+                  "Leading underscore",
+                  "_Measures, _AuditRowCount"
+                ]
+              ]
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "text": "Descriptions are documentation"
+            },
+            {
+              "type": "paragraph",
+              "text": "Add a description to every measure explaining the definition and any exclusions. It appears as a tooltip in the field list and in the Service, and it prevents the “which attrition number is right?” conversation."
+            },
+            {
+              "type": "takeaways",
+              "items": [
+                "Hide everything a report author should not touch.",
+                "One measures table with display folders scales to hundreds of measures.",
+                "Measure descriptions are the cheapest documentation you will ever write."
+              ]
+            }
+          ],
+          "minutes": 8
+        }
+      ]
+    },
+    {
+      "id": "dax",
+      "label": "05 · DAX",
+      "icon": "braces",
+      "lessons": [
+        {
+          "id": "dax-basics",
+          "number": 13,
+          "title": "DAX fundamentals",
+          "duration": "10 min",
+          "blocks": [
+            {
+              "type": "lede",
+              "text": "DAX is the calculation language of the model. Learn three concepts — measures, calculated columns, and filter context — and most of the language follows."
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "text": "Measure or calculated column?"
+            },
+            {
+              "type": "table",
+              "head": [
+                "",
+                "Calculated column",
+                "Measure"
+              ],
+              "rows": [
+                [
+                  "Evaluated",
+                  "Row by row at refresh",
+                  "At query time, per visual"
+                ],
+                [
+                  "Stored",
+                  "Yes, uses memory",
+                  "No, computed on demand"
+                ],
+                [
+                  "Context",
+                  "Row context",
+                  "Filter context"
+                ],
+                [
+                  "Use for",
+                  "Grouping, slicing, sorting",
+                  "Aggregations and KPIs"
+                ]
+              ]
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "text": "Your first measures"
+            },
+            {
+              "type": "code",
+              "language": "dax",
+              "code": "Total_Employee = DISTINCTCOUNT ( Employee[EmployeeID] )\n\nAverage Salary = AVERAGE ( Employee[MonthlyIncome] )\n\nAttrition = CALCULATE ( [Total_Employee], Employee[Attrition] = \"Yes\" )\n\nAttrition % = DIVIDE ( [Attrition], [Total_Employee], 0 )"
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "text": "Variables make DAX readable"
+            },
+            {
+              "type": "code",
+              "language": "dax",
+              "code": "Attrition % =\nVAR Leavers = CALCULATE ( [Total_Employee], Employee[Attrition] = \"Yes\" )\nVAR Headcount = [Total_Employee]\nRETURN\nDIVIDE ( Leavers, Headcount, 0 )"
+            },
+            {
+              "type": "callout",
+              "title": "Style rules",
+              "text": "Use DIVIDE instead of /. Use variables instead of repeating expressions. Reference measures by \\[Name\\] and columns by Table\\[Name\\] — always."
+            },
+            {
+              "type": "takeaways",
+              "items": [
+                "Measures respond to filters; calculated columns are fixed at refresh.",
+                "DIVIDE prevents divide-by-zero errors.",
+                "Variables improve both readability and performance."
+              ]
+            }
+          ],
+          "minutes": 10
+        },
+        {
+          "id": "dax-context",
+          "number": 14,
+          "title": "Filter context & CALCULATE",
+          "duration": "12 min",
+          "blocks": [
+            {
+              "type": "lede",
+              "text": "CALCULATE is the only function that can change filter context. Understanding it is the real turning point in learning DAX."
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "text": "Two contexts"
+            },
+            {
+              "type": "cards",
+              "columns": 2,
+              "items": [
+                {
+                  "title": "Filter context",
+                  "text": "The set of filters applied by slicers, rows, columns, and CALCULATE when a measure evaluates."
+                },
+                {
+                  "title": "Row context",
+                  "text": "The current row, present in calculated columns and inside iterators like SUMX."
+                }
+              ]
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "text": "CALCULATE patterns"
+            },
+            {
+              "type": "code",
+              "language": "dax",
+              "code": "// Add a filter\nHigh Earners = CALCULATE ( [Total_Employee], Employee[MonthlyIncome] > 10000 )\n\n// Ignore a filter\nAll Departments = CALCULATE ( [Total_Employee], REMOVEFILTERS ( Department ) )\n\n// Keep only one filter, clear the rest\nSales Only = CALCULATE ( [Total_Employee], ALLEXCEPT ( Employee, Employee[Department] ) )\n\n// Percent of total\n% of Workforce =\nDIVIDE ( [Total_Employee], CALCULATE ( [Total_Employee], REMOVEFILTERS ( ) ) )"
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "text": "Iterators"
+            },
+            {
+              "type": "paragraph",
+              "text": "SUMX, AVERAGEX, MAXX, and RANKX walk a table row by row, evaluating an expression in row context and then aggregating. Use them when the calculation must happen per row before aggregation."
+            },
+            {
+              "type": "code",
+              "language": "dax",
+              "code": "Total Comp = SUMX ( Employee, Employee[MonthlyIncome] * 12 )\n\nDept Rank =\nRANKX ( ALL ( Department[Department] ), [Attrition %],, DESC )"
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "text": "Common mistakes"
+            },
+            {
+              "type": "list",
+              "ordered": false,
+              "items": [
+                "Wrapping a column in a measure without an aggregation.",
+                "Using ALL when REMOVEFILTERS or ALLSELECTED is what you meant.",
+                "Building calculated columns that should have been measures.",
+                "Nesting CALCULATE three levels deep instead of using variables."
+              ]
+            },
+            {
+              "type": "practice",
+              "items": [
+                "1. Build Attrition % and check that it stays correct when you slice by department.",
+                "2. Add % of Workforce and confirm the total sums to 100%.",
+                "3. Rank departments by attrition and show the top three in a card."
+              ]
+            },
+            {
+              "type": "takeaways",
+              "items": [
+                "CALCULATE modifies filter context; everything else reacts to it.",
+                "REMOVEFILTERS and ALLEXCEPT control what a percentage compares against.",
+                "Iterators add row context when per-row math is required."
+              ]
+            }
+          ],
+          "minutes": 12
+        },
+        {
+          "id": "time-intelligence",
+          "number": 15,
+          "title": "Time intelligence",
+          "duration": "11 min",
+          "blocks": [
+            {
+              "type": "lede",
+              "text": "With a marked date table, time comparisons become one-line measures."
+            },
+            {
+              "type": "code",
+              "language": "dax",
+              "code": "Headcount YTD =\nTOTALYTD ( [Total_Employee], 'Date'[Date] )\n\nHeadcount LY =\nCALCULATE ( [Total_Employee], SAMEPERIODLASTYEAR ( 'Date'[Date] ) )\n\nYoY % =\nDIVIDE ( [Total_Employee] - [Headcount LY], [Headcount LY] )\n\nRolling 3 Months =\nCALCULATE (\n  [Total_Employee],\n  DATESINPERIOD ( 'Date'[Date], MAX ( 'Date'[Date] ), -3, MONTH )\n)"
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "text": "Function map"
+            },
+            {
+              "type": "table",
+              "head": [
+                "Need",
+                "Function"
+              ],
+              "rows": [
+                [
+                  "Year to date",
+                  "TOTALYTD or DATESYTD"
+                ],
+                [
+                  "Same period last year",
+                  "SAMEPERIODLASTYEAR"
+                ],
+                [
+                  "Previous month or quarter",
+                  "DATEADD or PREVIOUSMONTH"
+                ],
+                [
+                  "Rolling window",
+                  "DATESINPERIOD"
+                ],
+                [
+                  "Custom fiscal calendar",
+                  "Custom columns plus CALCULATE, not built-ins"
+                ]
+              ]
+            },
+            {
+              "type": "callout",
+              "title": "Why it broke",
+              "text": "If a time-intelligence measure returns blank, check three things in order: is the date table marked, does it cover full years, and are you filtering by the date table rather than the fact table's date column?"
+            },
+            {
+              "type": "takeaways",
+              "items": [
+                "Time intelligence requires a marked, contiguous date table.",
+                "Always slice by the date dimension, never the fact date column.",
+                "Fiscal calendars usually need custom columns instead of built-in functions."
+              ]
+            }
+          ],
+          "minutes": 11
+        }
+      ]
+    },
+    {
+      "id": "visualization",
+      "label": "06 · Visualization",
+      "icon": "chart-column",
+      "lessons": [
+        {
+          "id": "choose-visuals",
+          "number": 16,
+          "title": "Choosing the right visual",
+          "duration": "9 min",
+          "blocks": [
+            {
+              "type": "lede",
+              "text": "Match the chart to the comparison. Most confusing reports use the wrong encoding, not the wrong colours."
+            },
+            {
+              "type": "table",
+              "head": [
+                "Question",
+                "Visual",
+                "Avoid"
+              ],
+              "rows": [
+                [
+                  "Compare categories",
+                  "Bar or column chart",
+                  "Pie with many slices"
+                ],
+                [
+                  "Trend over time",
+                  "Line chart",
+                  "Rotated bar chart"
+                ],
+                [
+                  "Part of a whole",
+                  "Stacked bar or treemap",
+                  "3D or exploded pie"
+                ],
+                [
+                  "Distribution",
+                  "Histogram or box plot",
+                  "Average alone"
+                ],
+                [
+                  "Relationship",
+                  "Scatter chart",
+                  "Dual-axis line"
+                ],
+                [
+                  "Single number",
+                  "Card or KPI",
+                  "One-row table"
+                ],
+                [
+                  "Detail on demand",
+                  "Table or matrix with drill-through",
+                  "20 columns on the main page"
+                ]
+              ]
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "text": "Design rules that always apply"
+            },
+            {
+              "type": "list",
+              "ordered": false,
+              "items": [
+                "Sort bars by value unless the category has a natural order.",
+                "Start numeric axes at zero for bar charts.",
+                "Use one accent colour for the metric that matters; grey everything else.",
+                "Write titles as findings — “Attrition highest in Sales (24%)” beats “Attrition by department”.",
+                "Label directly on the chart instead of forcing legend lookups."
+              ]
+            },
+            {
+              "type": "takeaways",
+              "items": [
+                "Pick the visual from the question, not from the visuals pane.",
+                "Colour is for meaning, not decoration.",
+                "Titles should state the conclusion."
+              ]
+            }
+          ],
+          "minutes": 9
+        },
+        {
+          "id": "report-design",
+          "number": 17,
+          "title": "Layout, formatting & accessibility",
+          "duration": "10 min",
+          "blocks": [
+            {
+              "type": "lede",
+              "text": "A consistent page reads faster. Build a grid once, then reuse it on every page."
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "text": "Page anatomy"
+            },
+            {
+              "type": "cards",
+              "columns": 2,
+              "items": [
+                {
+                  "title": "Header strip",
+                  "text": "Report name, page name, and the global slicers."
+                },
+                {
+                  "title": "KPI row",
+                  "text": "Four to six cards with the headline numbers."
+                },
+                {
+                  "title": "Main analysis",
+                  "text": "Two to three charts answering the page's question."
+                },
+                {
+                  "title": "Detail",
+                  "text": "Table or matrix, or a drill-through target page."
+                }
+              ]
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "text": "Consistency tools"
+            },
+            {
+              "type": "list",
+              "ordered": false,
+              "items": [
+                "**Theme JSON** — set fonts, colours, and default visual formatting once.",
+                "**Format painter** — copy formatting between visuals.",
+                "**Align and distribute** — snap visuals to a grid; turn on gridlines and snap-to-grid.",
+                "**Page size** — 16:9 for screens, or a custom canvas for dense operational views."
+              ]
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "text": "Accessibility checklist"
+            },
+            {
+              "type": "list",
+              "ordered": false,
+              "items": [
+                "Contrast of at least 4.5:1 for text and 3:1 for chart elements.",
+                "Do not rely on colour alone — add labels, shapes, or icons.",
+                "Set tab order in the Selection pane so keyboard users move logically.",
+                "Add alt text to every visual describing what it shows."
+              ]
+            },
+            {
+              "type": "takeaways",
+              "items": [
+                "A reusable grid and theme make every page feel deliberate.",
+                "Alt text and tab order are part of finishing a report, not extras.",
+                "Consistency beats novelty for reports people use weekly."
+              ]
+            }
+          ],
+          "minutes": 10
+        },
+        {
+          "id": "interactivity",
+          "number": 18,
+          "title": "Slicers, bookmarks, drill-through & tooltips",
+          "duration": "11 min",
+          "blocks": [
+            {
+              "type": "lede",
+              "text": "Interactivity replaces twenty near-identical pages with one page that answers many questions."
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "text": "Slicers"
+            },
+            {
+              "type": "list",
+              "ordered": false,
+              "items": [
+                "Use dropdowns for long lists, buttons for two or three options, a relative-date slicer for time.",
+                "**Sync slicers** across pages from the View menu so filters persist.",
+                "Use **Edit interactions** to stop a visual from being cross-filtered."
+              ]
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "text": "Bookmarks and buttons"
+            },
+            {
+              "type": "paragraph",
+              "text": "Bookmarks capture filters, visibility, and selection. Combine with the Selection pane to build a filter pane that slides in, or to toggle between a chart and its underlying table using two buttons and two bookmarks."
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "text": "Drill-through"
+            },
+            {
+              "type": "list",
+              "ordered": true,
+              "items": [
+                "Create a detail page and add the field you drill on to the Drill through well.",
+                "Right-click any visual on the summary page and choose the detail page.",
+                "Keep the automatic back button and show the filter context in the page title."
+              ]
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "text": "Report page tooltips"
+            },
+            {
+              "type": "paragraph",
+              "text": "Create a small page, set its size to *Tooltip*, mark it as a tooltip page, then assign it in the tooltip section of any visual. Hovering shows a mini report instead of a raw number."
+            },
+            {
+              "type": "practice",
+              "items": [
+                "1. Add synced department and year slicers across all pages.",
+                "2. Build a drill-through page showing individual employees.",
+                "3. Add a tooltip page with a small trend line for the hovered department."
+              ]
+            },
+            {
+              "type": "takeaways",
+              "items": [
+                "Sync slicers so users do not re-filter on every page.",
+                "Bookmarks plus the Selection pane create app-like navigation.",
+                "Drill-through and tooltip pages keep detail off the summary page."
+              ]
+            }
+          ],
+          "minutes": 11
+        }
+      ]
+    },
+    {
+      "id": "project",
+      "label": "07 · HR project",
+      "icon": "rocket",
+      "lessons": [
+        {
+          "id": "hr-overview",
+          "number": 19,
+          "title": "Plan the HR report",
+          "duration": "9 min",
+          "blocks": [
+            {
+              "type": "lede",
+              "text": "The capstone turns employee and performance data into a three-page HR analytics report."
+            },
+            {
+              "type": "feature-cards",
+              "columns": 3,
+              "items": [
+                {
+                  "number": "01",
+                  "title": "Overview",
+                  "text": "Workforce, attrition, salary"
+                },
+                {
+                  "number": "02",
+                  "title": "Demography",
+                  "text": "Age, distance, department"
+                },
+                {
+                  "number": "03",
+                  "title": "Ratings",
+                  "text": "Satisfaction and performance"
+                }
+              ]
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "text": "The dataset"
+            },
+            {
+              "type": "table",
+              "head": [
+                "Table",
+                "Grain",
+                "Key fields"
+              ],
+              "rows": [
+                [
+                  "Employee",
+                  "One row per employee",
+                  "EmployeeID, Department, JobRole, Attrition, MonthlyIncome, HireDate"
+                ],
+                [
+                  "Performance",
+                  "One row per employee per review",
+                  "EmployeeID, ReviewDate, JobSatisfaction, ManagerRating"
+                ],
+                [
+                  "Date",
+                  "One row per day",
+                  "Date, Year, MonthNo, Month"
+                ],
+                [
+                  "Department",
+                  "One row per department",
+                  "DepartmentID, Department, Division"
+                ]
+              ]
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "text": "Headline measures"
+            },
+            {
+              "type": "paragraph",
+              "text": "Start with a stable KPI row: total employees, attrition, attrition rate, retrenchment rate, promotion due, and average salary. Keep definitions identical across every page — a metric that means two things on two pages destroys trust."
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "text": "Definition sheet"
+            },
+            {
+              "type": "table",
+              "head": [
+                "Metric",
+                "Definition"
+              ],
+              "rows": [
+                [
+                  "Total employees",
+                  "Distinct count of EmployeeID"
+                ],
+                [
+                  "Attrition",
+                  "Employees where Attrition = Yes"
+                ],
+                [
+                  "Attrition %",
+                  "Attrition ÷ total employees"
+                ],
+                [
+                  "Promotion due",
+                  "Employees with years since last promotion ≥ 3"
+                ],
+                [
+                  "Average salary",
+                  "Average of MonthlyIncome"
+                ]
+              ]
+            },
+            {
+              "type": "takeaways",
+              "items": [
+                "Agree metric definitions before building a single visual.",
+                "Three pages, three questions — no page without a purpose.",
+                "Write the grain of each table down; it prevents double counting."
+              ]
+            }
+          ],
+          "minutes": 9
+        },
+        {
+          "id": "dax-measures",
+          "number": 20,
+          "title": "Build the DAX measures",
+          "duration": "13 min",
+          "blocks": [
+            {
+              "type": "lede",
+              "text": "Measures calculate in the current filter context. Create reusable measures instead of embedding business logic separately in each visual."
+            },
+            {
+              "type": "code",
+              "language": "dax",
+              "code": "Total_Employee = DISTINCTCOUNT ( Employee[EmployeeID] )\n\nAttrition = CALCULATE ( [Total_Employee], Employee[Attrition] = \"Yes\" )\n\nAttrition% = DIVIDE ( [Attrition], [Total_Employee], 0 )\n\nActive_Employee = [Total_Employee] - [Attrition]\n\nPromotion_Due =\nCALCULATE ( [Total_Employee], Employee[YearsSinceLastPromotion] >= 3 )\n\nAverage_Salary = AVERAGE ( Employee[MonthlyIncome] )\n\nAvg_Tenure = AVERAGE ( Employee[YearsAtCompany] )\n\nAttrition% LY =\nCALCULATE ( [Attrition%], SAMEPERIODLASTYEAR ( 'Date'[Date] ) )\n\nAttrition% Delta = [Attrition%] - [Attrition% LY]\n\nHighest_Attrition_Dept =\nVAR Ranked =\n  TOPN ( 1, ALL ( Department[Department] ), [Attrition%], DESC )\nRETURN\n  MAXX ( Ranked, Department[Department] )"
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "text": "Build robust measures"
+            },
+            {
+              "type": "list",
+              "ordered": false,
+              "items": [
+                "Use **DIVIDE** instead of the slash operator when the denominator may be zero.",
+                "Create explicit measures for every important business definition.",
+                "Format rates as percentages and money as currency in the model, not in each visual.",
+                "Keep all measures in a dedicated *\\_Measures* table with display folders.",
+                "Add a description to each measure so the tooltip explains the definition."
+              ]
+            },
+            {
+              "type": "callout",
+              "title": "Sanity checks",
+              "text": "Drop every measure into a table visual with no filters and confirm the totals against a spreadsheet count. Then slice by department and confirm the parts sum to the whole."
+            },
+            {
+              "type": "takeaways",
+              "items": [
+                "One measure per business definition, reused everywhere.",
+                "Format and document measures in the model.",
+                "Validate totals unfiltered, then sliced, before designing pages."
+              ]
+            }
+          ],
+          "minutes": 13
+        },
+        {
+          "id": "report-pages",
+          "number": 21,
+          "title": "Design the three pages",
+          "duration": "12 min",
+          "blocks": [
+            {
+              "type": "lede",
+              "text": "Every page should answer a distinct question while sharing filters, KPI definitions, spacing, and visual hierarchy."
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "text": "Page 1 · Overview"
+            },
+            {
+              "type": "paragraph",
+              "text": "Lead with the KPI row, then attrition and promotion patterns by department, job role, and tenure band. Add a line chart of attrition rate by month with last-year comparison."
+            },
+            {
+              "type": "list",
+              "ordered": false,
+              "items": [
+                "Cards: total employees, attrition, attrition %, average salary, average tenure.",
+                "Bar: attrition % by department, sorted descending.",
+                "Line: attrition % by month vs last year.",
+                "Matrix: job role by tenure band with attrition % as the value."
+              ]
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "text": "Page 2 · Demography"
+            },
+            {
+              "type": "paragraph",
+              "text": "Explore age bands, gender, marital status, education field, and distance from home. Use a histogram for age and a scatter for distance versus attrition rate. Avoid decorative charts that make comparisons harder."
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "text": "Page 3 · Ratings"
+            },
+            {
+              "type": "paragraph",
+              "text": "Compare environment, job, relationship, work-life, manager, and self ratings. Show distribution alongside average so a single mean does not hide a polarized team."
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "text": "Finish and polish"
+            },
+            {
+              "type": "list",
+              "ordered": true,
+              "items": [
+                "Sync the department and year slicers across all three pages.",
+                "Add a drill-through employee detail page.",
+                "Write finding-based titles on every visual.",
+                "Set alt text and tab order.",
+                "Add a hidden info page listing metric definitions and refresh time."
+              ]
+            },
+            {
+              "type": "callout",
+              "title": "Final quality check",
+              "text": "Test every slicer, title, tooltip, and cross-filter. Ask a colleague to explain one conclusion from each page without your help."
+            },
+            {
+              "type": "takeaways",
+              "items": [
+                "One question per page, shared filters across pages.",
+                "Show distribution next to averages for rating data.",
+                "A definitions page makes the report self-explanatory."
+              ]
+            }
+          ],
+          "minutes": 12
+        }
+      ]
+    },
+    {
+      "id": "service",
+      "label": "08 · Publish & govern",
+      "icon": "cloud",
+      "lessons": [
+        {
+          "id": "publish-share",
+          "number": 22,
+          "title": "Publish, workspaces & apps",
+          "duration": "9 min",
+          "blocks": [
+            {
+              "type": "lede",
+              "text": "Publishing moves your model and report into the Service where other people can use it."
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "text": "The distribution ladder"
+            },
+            {
+              "type": "table",
+              "head": [
+                "Step",
+                "Object",
+                "Audience"
+              ],
+              "rows": [
+                [
+                  "1",
+                  "My Workspace",
+                  "You only"
+                ],
+                [
+                  "2",
+                  "Shared workspace",
+                  "Team members with a role"
+                ],
+                [
+                  "3",
+                  "App",
+                  "Broad, read-only business audience"
+                ],
+                [
+                  "4",
+                  "Embed / Teams tab",
+                  "Consumers inside existing tools"
+                ]
+              ]
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "text": "Workspace roles"
+            },
+            {
+              "type": "table",
+              "head": [
+                "Role",
+                "Can do"
+              ],
+              "rows": [
+                [
+                  "Admin",
+                  "Everything, including deleting the workspace"
+                ],
+                [
+                  "Member",
+                  "Publish, edit, share, add others"
+                ],
+                [
+                  "Contributor",
+                  "Publish and edit content, not share"
+                ],
+                [
+                  "Viewer",
+                  "Read content only"
+                ]
+              ]
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "text": "Deployment pipelines"
+            },
+            {
+              "type": "paragraph",
+              "text": "For serious projects keep three workspaces — Development, Test, Production — and promote content between them. Parameters swap the data source per stage so a test refresh never hits production."
+            },
+            {
+              "type": "takeaways",
+              "items": [
+                "Never share from My Workspace; use a shared workspace.",
+                "Apps give a clean, read-only experience for business users.",
+                "Dev/Test/Prod workspaces prevent accidental edits to live reports."
+              ]
+            }
+          ],
+          "minutes": 9
+        },
+        {
+          "id": "refresh-gateway",
+          "number": 23,
+          "title": "Scheduled refresh & gateways",
+          "duration": "9 min",
+          "blocks": [
+            {
+              "type": "lede",
+              "text": "An import model is only as current as its last refresh. Configure it deliberately."
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "text": "Setup steps"
+            },
+            {
+              "type": "list",
+              "ordered": true,
+              "items": [
+                "Publish the report to a shared workspace.",
+                "Open the semantic model settings and enter data source credentials.",
+                "Install and register the **on-premises data gateway** for local or on-prem sources.",
+                "Set the schedule, time zone, and failure notification recipients.",
+                "Add a “Last refreshed” measure to the report so users can see data currency."
+              ]
+            },
+            {
+              "type": "code",
+              "language": "dax",
+              "code": "Last Refreshed =\n\"Data as of \" & FORMAT ( MAX ( 'Refresh Log'[RefreshTime] ), \"dd MMM yyyy HH:mm\" )"
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "text": "Refresh limits and troubleshooting"
+            },
+            {
+              "type": "list",
+              "ordered": false,
+              "items": [
+                "Pro allows 8 scheduled refreshes per day; PPU and capacity allow 48.",
+                "Credential errors are the most common failure — re-enter them after a password change.",
+                "Local file paths break in the Service unless a gateway can reach them; prefer OneDrive, SharePoint, or a database.",
+                "Use incremental refresh for large fact tables instead of reloading history daily."
+              ]
+            },
+            {
+              "type": "takeaways",
+              "items": [
+                "Gateways are required for anything not already in the cloud.",
+                "Show a refresh timestamp in the report itself.",
+                "Incremental refresh is the answer to slow full loads."
+              ]
+            }
+          ],
+          "minutes": 9
+        },
+        {
+          "id": "security-performance",
+          "number": 24,
+          "title": "Row-level security & performance",
+          "duration": "11 min",
+          "blocks": [
+            {
+              "type": "lede",
+              "text": "Two final production concerns: who can see which rows, and how fast the report responds."
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "text": "Row-level security"
+            },
+            {
+              "type": "list",
+              "ordered": true,
+              "items": [
+                "In Desktop, **Modeling → Manage roles**, create a role and add a DAX filter.",
+                "Test with **View as role**.",
+                "Publish, then assign users or security groups to the role in the Service."
+              ]
+            },
+            {
+              "type": "code",
+              "language": "dax",
+              "code": "// Static role: Sales only\n[Department] = \"Sales\"\n\n// Dynamic role: user sees their own department\n[Department] =\nLOOKUPVALUE (\n  UserSecurity[Department],\n  UserSecurity[Email], USERPRINCIPALNAME ()\n)"
+            },
+            {
+              "type": "callout",
+              "title": "Important",
+              "text": "RLS does not apply to workspace Admins, Members, or Contributors. Test with a Viewer account, and remember RLS filters rows — it does not hide columns or pages."
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "text": "Performance checklist"
+            },
+            {
+              "type": "table",
+              "head": [
+                "Lever",
+                "Action",
+                "Impact"
+              ],
+              "rows": [
+                [
+                  "Model size",
+                  "Remove unused columns and high-cardinality keys",
+                  "High"
+                ],
+                [
+                  "Star schema",
+                  "Replace flat or snowflake designs",
+                  "High"
+                ],
+                [
+                  "Calculated columns",
+                  "Move logic to Power Query or measures",
+                  "Medium"
+                ],
+                [
+                  "Visuals per page",
+                  "Keep under roughly 15",
+                  "Medium"
+                ],
+                [
+                  "Bi-directional filters",
+                  "Remove where not required",
+                  "Medium"
+                ],
+                [
+                  "Aggregations",
+                  "Pre-summarize very large fact tables",
+                  "High at scale"
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "text": "Use **Performance Analyzer** in Desktop to record a page refresh and see DAX query, visual render, and other durations per visual. Anything over roughly 2 seconds of DAX time deserves attention. DAX Studio and Tabular Editor go deeper when you need them."
+            },
+            {
+              "type": "takeaways",
+              "items": [
+                "Test RLS with a Viewer, not an Admin account.",
+                "Model design beats query tuning for performance.",
+                "Performance Analyzer tells you which visual is actually slow."
+              ]
+            }
+          ],
+          "minutes": 11
+        }
+      ]
+    },
+    {
+      "id": "career",
+      "label": "09 · Career",
+      "icon": "graduation-cap",
+      "lessons": [
+        {
+          "id": "portfolio",
+          "number": 25,
+          "title": "Build a portfolio that gets interviews",
+          "duration": "9 min",
+          "blocks": [
+            {
+              "type": "lede",
+              "text": "Recruiters skim. Two well-documented reports beat ten unfinished ones."
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "text": "What a strong project shows"
+            },
+            {
+              "type": "cards",
+              "columns": 2,
+              "items": [
+                {
+                  "title": "A real question",
+                  "text": "State the business question and who would use the report."
+                },
+                {
+                  "title": "Visible modeling",
+                  "text": "Include a screenshot of your star schema and date table."
+                },
+                {
+                  "title": "Documented measures",
+                  "text": "Publish the key DAX with a one-line explanation each."
+                },
+                {
+                  "title": "An outcome",
+                  "text": "Say what decision the report supports or what it revealed."
+                }
+              ]
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "text": "Three portfolio projects"
+            },
+            {
+              "type": "table",
+              "head": [
+                "Project",
+                "Skills demonstrated"
+              ],
+              "rows": [
+                [
+                  "HR analytics (this course)",
+                  "Star schema, attrition metrics, drill-through, RLS"
+                ],
+                [
+                  "Sales & profitability",
+                  "Time intelligence, target vs actual, what-if parameters"
+                ],
+                [
+                  "Operations / SLA dashboard",
+                  "DirectQuery or incremental refresh, alerts, performance tuning"
+                ]
+              ]
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "text": "Publishing checklist"
+            },
+            {
+              "type": "list",
+              "ordered": false,
+              "items": [
+                "Publish to the Power BI Service and share a public link where allowed.",
+                "Write a short README: question, data, model, measures, findings.",
+                "Record a two-minute walkthrough video.",
+                "Post the walkthrough on LinkedIn with the single most interesting finding."
+              ]
+            },
+            {
+              "type": "takeaways",
+              "items": [
+                "Document the thinking, not just the screenshots.",
+                "Three complete projects cover most interview conversations.",
+                "A two-minute walkthrough is the highest-leverage artefact you can make."
+              ]
+            }
+          ],
+          "minutes": 9
+        },
+        {
+          "id": "interview-prep",
+          "number": 26,
+          "title": "Interview questions & answers",
+          "duration": "12 min",
+          "blocks": [
+            {
+              "type": "lede",
+              "text": "Power BI interviews cluster around six themes. Prepare a crisp answer and one example for each."
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "text": "Modeling"
+            },
+            {
+              "type": "table",
+              "head": [
+                "Question",
+                "Answer shape"
+              ],
+              "rows": [
+                [
+                  "Star vs snowflake?",
+                  "Star: dimensions one hop from facts, simpler DAX, faster. Snowflake normalizes dimensions further; flatten where possible."
+                ],
+                [
+                  "Calculated column vs measure?",
+                  "Column evaluates per row at refresh and is stored; measure evaluates at query time in filter context."
+                ],
+                [
+                  "Why a separate date table?",
+                  "Contiguous dates enable time intelligence; mark as date table and turn off auto date/time."
+                ],
+                [
+                  "Handling many-to-many?",
+                  "Bridge table with single-direction relationships, or a many-to-many relationship where justified."
+                ]
+              ]
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "text": "DAX"
+            },
+            {
+              "type": "table",
+              "head": [
+                "Question",
+                "Answer shape"
+              ],
+              "rows": [
+                [
+                  "What does CALCULATE do?",
+                  "Modifies filter context by adding, removing, or replacing filters before evaluating an expression."
+                ],
+                [
+                  "ALL vs ALLSELECTED vs REMOVEFILTERS?",
+                  "ALL/REMOVEFILTERS clear all filters; ALLSELECTED respects outer slicer selections."
+                ],
+                [
+                  "SUM vs SUMX?",
+                  "SUM aggregates a column; SUMX iterates a table evaluating an expression per row."
+                ],
+                [
+                  "Why use variables?",
+                  "Readability plus a single evaluation, avoiding repeated computation."
+                ]
+              ]
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "text": "Power Query, Service, and performance"
+            },
+            {
+              "type": "list",
+              "ordered": false,
+              "items": [
+                "**Query folding** — steps pushed to the source as SQL; keep folding-breaking steps last.",
+                "**Import vs DirectQuery** — speed and full DAX vs freshness and source load.",
+                "**Incremental refresh** — partitions by date so only recent data reloads.",
+                "**RLS** — static and dynamic roles with USERPRINCIPALNAME; does not apply to workspace editors.",
+                "**Slow report** — Performance Analyzer, reduce visuals, fix the model, remove bi-directional filters."
+              ]
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "text": "Behavioural"
+            },
+            {
+              "type": "paragraph",
+              "text": "Prepare one story about a stakeholder disagreeing with a number, and how you traced the definition back to the source. Interviewers weigh that more heavily than any function you can recite."
+            },
+            {
+              "type": "practice",
+              "items": [
+                "1. Write your answers to the twelve questions above in your own words.",
+                "2. Record yourself answering four of them in under 90 seconds each.",
+                "3. Prepare one HR-project story for each theme: modeling, DAX, performance, stakeholders."
+              ]
+            },
+            {
+              "type": "takeaways",
+              "items": [
+                "Answer with the definition, then a concrete example from your project.",
+                "Filter context questions separate juniors from mid-level candidates.",
+                "A stakeholder-conflict story is asked in almost every interview."
+              ]
+            }
+          ],
+          "minutes": 12
+        }
+      ]
+    }
+  ]
+}

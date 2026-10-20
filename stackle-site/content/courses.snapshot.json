@@ -1,0 +1,417 @@
+{
+  "savedAt": "2026-10-20T16:06:26.022Z",
+  "courses": [
+    {
+      "id": "0eef7ca8-74e0-41f4-901d-1f4d1b4e697d",
+      "slug": "master-data-analysis-in-8-weeks",
+      "title": "Data Analyst Masterclass - Get Job Ready in 10 Weeks",
+      "description": "Go from data novice to job-ready analyst in 8 weeks. Master SQL, Excel, and Python to solve real business problems and land your dream role in tech.",
+      "category": "data-analytics",
+      "price": 1497,
+      "duration_weeks": 10,
+      "course_level": "beginner",
+      "course_format": "cohort",
+      "prerequisites": "• No prior data experience is required\n• Basic computer literacy and internet access\n• Access to a computer with Microsoft Excel\n• A passion for solving real-world problems",
+      "benefits": [
+        "Live sessions on Excel, SQL, Python, Power BI and Tableau",
+        "Real dashboards and analytics case studies for your portfolio",
+        "Standard track $1,497 — Career track $1,997 includes 1:1 job assistance (resume, referrals, mock interviews)",
+        "Lifetime access to recordings and resources"
+      ],
+      "target_personas": [
+        {
+          "id": 1,
+          "description": "Career switchers looking to break into the tech industry with no prior technical background."
+        },
+        {
+          "id": 2,
+          "description": "Recent graduates wanting to add high-demand analytical skills to their resumes."
+        },
+        {
+          "id": 3,
+          "description": "Small business owners aiming to use data to drive growth and operational efficiency."
+        },
+        {
+          "id": 4,
+          "description": "Hobbyists and curious learners who enjoy uncovering patterns and solving puzzles."
+        }
+      ],
+      "thumbnail_url": "https://wvdwisoaotkuyvcyybps.supabase.co/storage/v1/object/public/course-media/course-covers/b4616e11-2c27-43ad-bc79-ed52e478069f-1771262482640-cover.jpg",
+      "social_share_image_url": "https://wvdwisoaotkuyvcyybps.supabase.co/storage/v1/object/public/course-media/course-covers/b4616e11-2c27-43ad-bc79-ed52e478069f-1771262482640-social.jpg",
+      "is_hidden": false,
+      "status": "published",
+      "course_weeks": [
+        {
+          "title": "Introduction to Data Analytics",
+          "description": "• Define the core lifecycle of data analytics\n• Identify different types of data analysis techniques\n• Explore common tools used by data professionals\n• Explain the role of data in decision-making\n• Understand ethical considerations in data handling",
+          "week_number": 1
+        },
+        {
+          "title": "SQL Foundations & Data Modeling",
+          "description": "• Master core SELECT statements and basic data filtering\n• Understand primary and foreign key relationships\n• Create relational schemas using Entity Relationship Diagrams\n• Apply normalization techniques to eliminate data redundancy\n• Build structured tables using Data Definition Language commands",
+          "week_number": 2
+        },
+        {
+          "title": "Data Dimensional & Warehousing",
+          "description": "",
+          "week_number": 3
+        },
+        {
+          "title": "Intro to Cloud Azure",
+          "description": "• Explore core Azure architectural components and services\n• Deploy virtual machines using the Azure portal\n• Configure Azure virtual networks and subnetting basics\n• Implement Azure storage solutions for data management\n• Understand cloud security and compliance best practices",
+          "week_number": 4
+        },
+        {
+          "title": "Intro to Power BI",
+          "description": "• Navigate the Power BI Desktop interface and tools\n• Connect and import data from various external sources\n• Create interactive data visualizations and dynamic reports\n• Apply basic filters and slicers to refine insights\n• Share and publish reports to the Power BI Service",
+          "week_number": 5
+        },
+        {
+          "title": "Intro to Tableau",
+          "description": "• Navigate the Tableau interface and workspace efficiently\n• Connect and prepare various data source types\n• Create basic bar charts and line graphs\n• Build interactive dashboards using multiple worksheets\n• Apply filters to refine data visualizations",
+          "week_number": 6
+        },
+        {
+          "title": "Business Metrics & Data Decisions",
+          "description": "• Define key performance indicators for business growth\n• Analyze financial datasets to guide strategic decisions\n• Calculate customer lifetime value and acquisition costs\n• Interpret data trends to improve operational efficiency\n• Build data-driven reports for executive stakeholders",
+          "week_number": 7
+        },
+        {
+          "title": "Demo Day",
+          "description": "",
+          "week_number": 8
+        }
+      ],
+      "course_cohorts": [
+        {
+          "id": "5986c43f-a495-446a-ae04-5b56ec09f289",
+          "status": "upcoming",
+          "end_date": "2026-11-30T00:00:00+00:00",
+          "start_date": "2026-09-21T00:00:00+00:00",
+          "cohort_name": "Sep 21, 2026 Cohort",
+          "teaching_days": [
+            "monday",
+            "wednesday",
+            "friday"
+          ],
+          "enrolled_count": 0,
+          "enrollment_cap": 25
+        },
+        {
+          "id": "ad223bda-d53f-40dc-b933-eb7520df8383",
+          "status": "upcoming",
+          "end_date": "2026-12-07T00:00:00+00:00",
+          "start_date": "2026-09-28T00:00:00+00:00",
+          "cohort_name": "Sep 28, 2026 Cohort",
+          "teaching_days": [
+            "monday",
+            "wednesday",
+            "friday"
+          ],
+          "enrolled_count": 0,
+          "enrollment_cap": 25
+        },
+        {
+          "id": "b6407d7e-8804-4ffe-8378-a53ab7010d34",
+          "status": "upcoming",
+          "end_date": "2026-12-14T00:00:00+00:00",
+          "start_date": "2026-10-05T00:00:00+00:00",
+          "cohort_name": "Oct 5, 2026 Cohort",
+          "teaching_days": [
+            "monday",
+            "wednesday",
+            "friday"
+          ],
+          "enrolled_count": 0,
+          "enrollment_cap": 25
+        }
+      ]
+    },
+    {
+      "id": "9b14d91e-b4a0-4a77-a378-d373089ffd63",
+      "slug": "master-ai-engineering-in-10-weeks-get-hired",
+      "title": "AI Engineering Masterclass - Get Job Ready in 8 Weeks",
+      "description": "Master AI engineering in 10 weeks. Build real-world products and land your dream role. Go from code zero to AI pro with hands-on labs and expert mentorship.",
+      "category": "ai-engineering",
+      "price": 1497,
+      "duration_weeks": 8,
+      "course_level": "beginner",
+      "course_format": "cohort",
+      "prerequisites": "• Basic Python\n• Strong motivation to learn and follow a structured 10-week roadmap.\n• Fundamental understanding of high school level mathematics and logic.\n• No prior coding experience required; a curious mindset is essential.",
+      "benefits": [
+        "Live build-along sessions on LLMs, RAG, agents and evals",
+        "Ship production AI applications for your portfolio",
+        "Standard track $1,497 — Career track $1,997 includes 1:1 job assistance (resume, referrals, mock interviews)",
+        "Lifetime access to recordings and resources"
+      ],
+      "target_personas": [
+        {
+          "id": 1,
+          "description": "Career switchers looking to break into the high-paying AI job market with no tech background."
+        },
+        {
+          "id": 2,
+          "description": "Students wanting to supplement their education with high-demand, practical AI engineering skills."
+        },
+        {
+          "id": 3,
+          "description": "Hobbyists and tech enthusiasts eager to build their own intelligent software and automation tools."
+        },
+        {
+          "id": 4,
+          "description": "Complete beginners who want a structured, 10-week roadmap to becoming a hirable AI developer."
+        }
+      ],
+      "thumbnail_url": "https://wvdwisoaotkuyvcyybps.supabase.co/storage/v1/object/public/course-media/course-covers/b4616e11-2c27-43ad-bc79-ed52e478069f-1777828512760-cover.jpg",
+      "social_share_image_url": "https://wvdwisoaotkuyvcyybps.supabase.co/storage/v1/object/public/course-media/course-covers/b4616e11-2c27-43ad-bc79-ed52e478069f-1777828512760-social.jpg",
+      "is_hidden": false,
+      "status": "published",
+      "course_weeks": [
+        {
+          "title": "How AI Works + Your First Live App",
+          "description": "• Understand core machine learning and neural network concepts\n• Master the basics of Large Language Model architecture\n• Build a functional AI application using Streamlit\n• Deploy your first live app to the cloud\n• Apply prompt engineering techniques to improve model outputs",
+          "week_number": 1
+        },
+        {
+          "title": "Prompt vs Context Engineering ",
+          "description": "• Distinguish between core prompts and external context windows\n• Master RAG techniques for accurate knowledge retrieval\n• Optimize token usage through strategic context management\n• Apply few-shot learning to improve model performance\n• Develop dynamic templates for scalable AI interactions",
+          "week_number": 2
+        },
+        {
+          "title": "Working With Multiple LLM APIs",
+          "description": "• Integrate OpenAI, Anthropic, and Google Gemini APIs\n• Compare model performance across different provider endpoints\n• Implement standardized input and output handling logic\n• Manage multiple API keys and authentication headers\n• Build a universal wrapper for cross-provider requests",
+          "week_number": 3
+        },
+        {
+          "title": "RAG: Make AI Talk To Your Own Data",
+          "description": "• Understand core Retrieval-Augmented Generation (RAG) architecture and workflows\n• Build vector databases to store and retrieve private data\n• Create custom document loaders for diverse data formats\n• Master prompt engineering techniques for context-aware AI responses\n• Implement semantic search to improve retrieval accuracy",
+          "week_number": 4
+        },
+        {
+          "title": "AI Agents: Take Actions",
+          "description": "• Define core capabilities of autonomous AI agents\n• Integrate external tools using function calling\n• Design multi-step reasoning loops for complex tasks\n• Build autonomous agents to automate manual workflows\n• Implement error handling for agentic tool use",
+          "week_number": 5
+        },
+        {
+          "title": "Multi-Agent Systems",
+          "description": "• Define core principles of multi-agent system architectures\n• Design coordination protocols for autonomous agent interactions\n• Implement communication strategies between multiple AI agents\n• Solve complex tasks through collaborative agent workflows\n• Evaluate performance metrics in distributed agent environments",
+          "week_number": 6
+        },
+        {
+          "title": "Shipping Production-Grade AI",
+          "description": "• Deploy scalable AI models using containerization tools\n• Implement robust monitoring for model performance tracking\n• Configure automated CI/CD pipelines for seamless updates\n• Apply security best practices for production API endpoints\n• Optimize inference latency for high-traffic environments",
+          "week_number": 7
+        },
+        {
+          "title": "Evals and Continuous Improvement",
+          "description": "• Implement automated evaluation frameworks for LLM outputs\n• Design custom scoring rubrics for quality assurance\n• Analyze performance metrics to identify model weaknesses\n• Establish continuous integration pipelines for model improvement\n• Apply iterative testing strategies to refine system prompts",
+          "week_number": 8
+        }
+      ],
+      "course_cohorts": [
+        {
+          "id": "1d224178-779f-45c7-aa0c-c7a5754599e1",
+          "status": "upcoming",
+          "end_date": "2026-08-31T07:00:00+00:00",
+          "start_date": "2026-06-22T07:00:00+00:00",
+          "cohort_name": "Cohort 3 - Jun 2026",
+          "teaching_days": [
+            "monday",
+            "wednesday",
+            "friday"
+          ],
+          "enrolled_count": 0,
+          "enrollment_cap": 25
+        },
+        {
+          "id": "3aa3f871-acff-421b-88be-5f6872ec7a5a",
+          "status": "upcoming",
+          "end_date": "2026-12-17T00:00:00+00:00",
+          "start_date": "2026-10-22T00:00:00+00:00",
+          "cohort_name": "Oct 22, 2026 Cohort",
+          "teaching_days": [
+            "monday",
+            "wednesday",
+            "friday"
+          ],
+          "enrolled_count": 0,
+          "enrollment_cap": 25
+        },
+        {
+          "id": "9bbb1dfd-deb0-4ca2-8275-158429c5db85",
+          "status": "upcoming",
+          "end_date": "2026-12-24T00:00:00+00:00",
+          "start_date": "2026-10-29T00:00:00+00:00",
+          "cohort_name": "Oct 29, 2026 Cohort",
+          "teaching_days": [
+            "monday",
+            "wednesday",
+            "friday"
+          ],
+          "enrolled_count": 0,
+          "enrollment_cap": 25
+        },
+        {
+          "id": "57c58735-5b2b-4edf-9fc1-80b5c0dc447c",
+          "status": "cancelled",
+          "end_date": "2026-12-14T00:00:00+00:00",
+          "start_date": "2026-10-19T00:00:00+00:00",
+          "cohort_name": "Oct 19, 2026 Cohort",
+          "teaching_days": [
+            "monday",
+            "wednesday",
+            "friday"
+          ],
+          "enrolled_count": 0,
+          "enrollment_cap": 25
+        }
+      ]
+    },
+    {
+      "id": "5637adb0-4503-45f3-9c57-5eb084050fc4",
+      "slug": "data-engineering-masterclass-get-job-ready-in-10-weeks",
+      "title": "Data Engineering Masterclass - Get Job Ready in 10 Weeks",
+      "description": "Master data pipelines, SQL, and cloud engineering. Build real-world projects and get job-ready in 10 weeks. Start your data engineering career today.",
+      "category": "data-engineering",
+      "price": 1497,
+      "duration_weeks": 10,
+      "course_level": "intermediate",
+      "course_format": "cohort",
+      "prerequisites": "• 6-12 months of experience with Python or Java programming.\n• Foundational knowledge of SQL and relational database concepts.\n• Basic knowledge of cloud computing concepts (AWS, GCP, or Azure)\n• Familiarity with data structures and basic ETL logic.",
+      "benefits": [
+        "Live instructor-led sessions every week",
+        "End-to-end portfolio projects on a modern cloud data stack",
+        "Standard track $1,497 — Career track $1,997 includes 1:1 job assistance (resume, referrals, mock interviews)",
+        "Lifetime access to recordings and resources"
+      ],
+      "target_personas": [
+        {
+          "id": 1,
+          "description": "Data Analysts with 1 year experience seeking to transition into technical engineering roles."
+        },
+        {
+          "id": 2,
+          "description": "Software Engineers looking to specialize in high-scale data infrastructure and distributed systems."
+        },
+        {
+          "id": 3,
+          "description": "Junior Data Engineers wanting to master production-grade tools and industry best practices."
+        }
+      ],
+      "thumbnail_url": "https://wvdwisoaotkuyvcyybps.supabase.co/storage/v1/object/public/course-media/course-covers/b4616e11-2c27-43ad-bc79-ed52e478069f-1771260732154-cover.jpg",
+      "social_share_image_url": null,
+      "is_hidden": false,
+      "status": "published",
+      "course_weeks": [
+        {
+          "title": "Cloud Azure & AWS",
+          "description": "• Understand distributed computing principles and cluster architectures\n• Master Spark RDDs and DataFrames for data processing\n• Build scalable data pipelines using Spark SQL\n• Manage cluster resources and optimize job performance\n• Apply transformations and actions to large datasets",
+          "week_number": 4
+        },
+        {
+          "title": "DS,Spark & Databricks",
+          "description": "• Understand distributed computing and Spark architecture basics\n• Master Spark SQL and DataFrame operations\n• Build scalable data pipelines using Databricks notebooks\n• Optimize job performance across distributed clusters\n• Implement real-time data processing with Spark Streaming",
+          "week_number": 5
+        },
+        {
+          "title": "Streaming Data & Intro to Kafka",
+          "description": "• Define core streaming data concepts and architectures\n• Master Kafka topics, partitions, and replication strategies\n• Build real-time data producers and consumers\n• Configure local Kafka clusters for message processing\n• Understand the role of brokers and Zookeeper",
+          "week_number": 6
+        },
+        {
+          "title": "Job Orchestration Intro to Airflow",
+          "description": "• Understand core Airflow components and architecture\n• Create functional Directed Acyclic Graphs (DAGs)\n• Master scheduling and dependency management\n• Apply essential Airflow operators and sensors\n• Monitor and troubleshoot pipeline execution workflows",
+          "week_number": 7
+        },
+        {
+          "title": "AI Engineering with Data",
+          "description": "• Integrate vector databases for efficient data retrieval\n• Build automated pipelines for data preprocessing and ingestion\n• Master semantic search techniques using text embeddings\n• Apply advanced RAG patterns to improve model accuracy\n• Develop scalable architectures for AI-driven data applications",
+          "week_number": 8
+        },
+        {
+          "title": "Data Analytics & Governance",
+          "description": "• Master data quality management and cleaning techniques\n• Understand enterprise data governance frameworks and policies\n• Apply ethical standards to data privacy and security\n• Implement metadata management for improved data discoverability\n• Develop strategies for long-term data lifecycle governance",
+          "week_number": 9
+        },
+        {
+          "title": "Intro to Data Engineering & SQL",
+          "description": "• Define core data engineering roles and responsibilities\n• Understand the modern data infrastructure lifecycle\n• Write basic SQL queries to retrieve data\n• Apply filtering techniques using WHERE clauses\n• Master fundamental table joins and data relationships",
+          "week_number": 1
+        },
+        {
+          "title": "Python Foundations",
+          "description": "• Master Python syntax and basic data types\n• Apply conditional logic using if-else statements\n• Build efficient loops with for and while\n• Create reusable code using custom functions\n• Develop data structures using lists and dictionaries",
+          "week_number": 2
+        },
+        {
+          "title": "Data Modeling & Dimension Modeling",
+          "description": "• Design efficient star and snowflake schema structures\n• Master fact and dimension table relationship principles\n• Apply normalization and denormalization techniques appropriately\n• Develop slowly changing dimension strategies for history\n• Implement grain definitions for accurate data aggregation",
+          "week_number": 3
+        },
+        {
+          "title": "Demo Day",
+          "description": "• Present final projects to a professional audience\n• Master public speaking and technical storytelling techniques\n• Demonstrate core functionality through live software demos\n• Respond effectively to technical Q&A sessions\n• Network with industry leaders and potential employers",
+          "week_number": 10
+        }
+      ],
+      "course_cohorts": [
+        {
+          "id": "21055647-b53f-45f8-830d-d5bf8f3dd07d",
+          "status": "upcoming",
+          "end_date": "2026-12-24T00:00:00+00:00",
+          "start_date": "2026-10-15T00:00:00+00:00",
+          "cohort_name": "Oct 15, 2026 Cohort",
+          "teaching_days": [
+            "monday",
+            "wednesday",
+            "friday"
+          ],
+          "enrolled_count": 0,
+          "enrollment_cap": 25
+        },
+        {
+          "id": "30da8ad5-c7a2-4ce0-adae-3d58844dbbb8",
+          "status": "upcoming",
+          "end_date": "2026-12-31T00:00:00+00:00",
+          "start_date": "2026-10-22T00:00:00+00:00",
+          "cohort_name": "Oct 22, 2026 Cohort",
+          "teaching_days": [
+            "monday",
+            "wednesday",
+            "friday"
+          ],
+          "enrolled_count": 0,
+          "enrollment_cap": 25
+        },
+        {
+          "id": "8adc9a0c-35fe-42ad-aa17-6d3fb28a7736",
+          "status": "upcoming",
+          "end_date": "2027-01-07T00:00:00+00:00",
+          "start_date": "2026-10-29T00:00:00+00:00",
+          "cohort_name": "Oct 29, 2026 Cohort",
+          "teaching_days": [
+            "monday",
+            "wednesday",
+            "friday"
+          ],
+          "enrolled_count": 0,
+          "enrollment_cap": 25
+        },
+        {
+          "id": "9d06de15-e88e-4b6b-872c-f2860037905d",
+          "status": "cancelled",
+          "end_date": "2026-09-28T07:00:00+00:00",
+          "start_date": "2026-07-20T07:00:00+00:00",
+          "cohort_name": "Cohort 1 - Jul 2026",
+          "teaching_days": [
+            "monday",
+            "wednesday",
+            "friday"
+          ],
+          "enrolled_count": 0,
+          "enrollment_cap": 25
+        }
+      ]
+    }
+  ]
+}

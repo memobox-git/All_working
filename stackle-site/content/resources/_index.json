@@ -1,0 +1,289 @@
+{
+  "slug": "_index",
+  "path": "/resources",
+  "title": "Practical guides for your next career move.",
+  "eyebrow": "Stackle / Resource library",
+  "summary": "Roadmaps, interview preparation, and hands-on references built for modern data and AI roles.",
+  "category": null,
+  "seo": {
+    "title": null,
+    "description": null
+  },
+  "header": {
+    "eyebrow": "Stackle / Resource library",
+    "title": "Practical guides for your next career move.",
+    "intro": "Roadmaps, interview preparation, and hands-on references built for modern data and AI roles.",
+    "search": {
+      "srLabel": "Search resources",
+      "placeholder": "Search the library",
+      "queryParam": "q",
+      "matches": [
+        "title",
+        "category"
+      ],
+      "caseInsensitive": true
+    }
+  },
+  "tabs": [
+    {
+      "label": "Discover",
+      "category": null,
+      "default": true
+    },
+    {
+      "label": "Roadmaps",
+      "category": "Roadmaps"
+    },
+    {
+      "label": "Interview Prep",
+      "category": "Interview Prep"
+    },
+    {
+      "label": "Interactive",
+      "category": "Interactive"
+    },
+    {
+      "label": "AI Tools",
+      "category": "AI Tools"
+    },
+    {
+      "label": "Cheat Sheets",
+      "category": "Cheat Sheets"
+    }
+  ],
+  "collection": {
+    "eyebrow": "Curated collection",
+    "titleWhenDiscover": "All resources",
+    "titleOtherwise": "<tab label>",
+    "countLabel": {
+      "one": "{n} resource",
+      "other": "{n} resources"
+    },
+    "emptyState": "No resources in this category yet."
+  },
+  "cards": [
+    {
+      "order": 1,
+      "id": "de-roadmap",
+      "slug": "data-engineering-roadmap",
+      "href": "/resources/data-engineering-roadmap",
+      "title": "Data Engineering Roadmap 2026",
+      "category": "Roadmaps",
+      "badge": "POPULAR",
+      "thumbnail": {
+        "src": "/resources/_thumbs/data-engineering-roadmap.png",
+        "originalUrl": "https://stackle.io/assets/de-roadmap-D5hju_X2.png",
+        "width": 853,
+        "height": 377,
+        "alt": "Data Engineering Roadmap 2026"
+      },
+      "action": "link",
+      "icon": "arrow-up-right"
+    },
+    {
+      "order": 2,
+      "id": "ai-engineer-roadmap",
+      "slug": "ai-engineer-roadmap",
+      "href": "/resources/ai-engineer-roadmap",
+      "title": "AI Engineer Career Roadmap 2026",
+      "category": "Roadmaps",
+      "badge": "NEW",
+      "thumbnail": {
+        "src": "/resources/_thumbs/ai-engineer-roadmap.jpg",
+        "originalUrl": "https://stackle.io/assets/ai-engineer-roadmap-XXNpnuUz.jpg",
+        "width": 1024,
+        "height": 1024,
+        "alt": "AI Engineer Career Roadmap 2026"
+      },
+      "action": "link",
+      "icon": "arrow-up-right"
+    },
+    {
+      "order": 3,
+      "id": "da-roadmap",
+      "slug": "data-analyst-roadmap",
+      "href": "/resources/data-analyst-roadmap",
+      "title": "Data Analyst Roadmap 2026 — Power BI & Tableau",
+      "category": "Roadmaps",
+      "badge": "NEW",
+      "thumbnail": {
+        "src": "/resources/_thumbs/data-analyst-roadmap.jpg",
+        "originalUrl": "https://stackle.io/assets/data-analyst-roadmap-CbcX-nCv.jpg",
+        "width": 1024,
+        "height": 768,
+        "alt": "Data Analyst Roadmap 2026 — Power BI & Tableau"
+      },
+      "action": "link",
+      "icon": "arrow-up-right"
+    },
+    {
+      "order": 4,
+      "id": "sql-interview",
+      "slug": "sql-interview-questions",
+      "href": "/resources/sql-interview-questions",
+      "title": "SQL Interview Questions — FAANG",
+      "category": "Interview Prep",
+      "badge": "FAANG",
+      "thumbnail": {
+        "src": "/resources/_thumbs/sql-interview-questions.jpg",
+        "originalUrl": "https://stackle.io/assets/sql-interview-DkQnNUQu.jpg",
+        "width": 1024,
+        "height": 1024,
+        "alt": "SQL Interview Questions — FAANG"
+      },
+      "action": "link",
+      "icon": "arrow-up-right"
+    },
+    {
+      "order": 5,
+      "id": "tableau-interview",
+      "slug": "tableau-interview-questions",
+      "href": "/resources/tableau-interview-questions",
+      "title": "Tableau Interview Questions",
+      "category": "Interview Prep",
+      "badge": null,
+      "thumbnail": {
+        "src": "/resources/_thumbs/tableau-interview-questions.jpg",
+        "originalUrl": "https://stackle.io/assets/tableau-interview-DMB-sWJw.jpg",
+        "width": 1024,
+        "height": 1024,
+        "alt": "Tableau Interview Questions"
+      },
+      "action": "link",
+      "icon": "arrow-up-right"
+    },
+    {
+      "order": 6,
+      "id": "linkedin-bible",
+      "slug": "linkedin-bible",
+      "href": "/resources/linkedin-bible",
+      "title": "The LinkedIn Bible",
+      "category": "Interview Prep",
+      "badge": "NEW",
+      "thumbnail": {
+        "src": "/resources/_thumbs/linkedin-bible.jpg",
+        "originalUrl": "https://stackle.io/assets/linkedin-bible-Cx_HBHDy.jpg",
+        "width": 1024,
+        "height": 1024,
+        "alt": "The LinkedIn Bible"
+      },
+      "action": "link",
+      "icon": "arrow-up-right"
+    },
+    {
+      "order": 7,
+      "id": "power-bi",
+      "slug": "power-bi",
+      "href": "/resources/power-bi",
+      "title": "Power BI — From Data to HR Analytics",
+      "category": "Interactive",
+      "badge": "INTERACTIVE",
+      "thumbnail": {
+        "src": "/resources/_thumbs/power-bi.jpg",
+        "originalUrl": "https://stackle.io/assets/power-bi-learning-Bh2_uFwZ.jpg",
+        "width": 1200,
+        "height": 912,
+        "alt": "Power BI — From Data to HR Analytics"
+      },
+      "action": "link",
+      "icon": "arrow-up-right"
+    },
+    {
+      "order": 8,
+      "id": "apache-spark-architecture",
+      "slug": "apache-spark-architecture",
+      "href": "/resources/apache-spark-architecture",
+      "title": "Apache Spark Architecture — Interactive Guide",
+      "category": "Interactive",
+      "badge": "NEW",
+      "thumbnail": {
+        "src": "/resources/_thumbs/apache-spark-architecture.jpg",
+        "originalUrl": "https://stackle.io/assets/apache-spark-architecture-DeqyqMD9.jpg",
+        "width": 1200,
+        "height": 912,
+        "alt": "Apache Spark Architecture — Interactive Guide"
+      },
+      "action": "link",
+      "icon": "arrow-up-right"
+    },
+    {
+      "order": 9,
+      "id": "sql-cheat-sheet",
+      "slug": "sql-cheat-sheet",
+      "href": null,
+      "title": "SQL Essentials Cheat Sheet",
+      "category": "Cheat Sheets",
+      "badge": "FREE PDF",
+      "thumbnail": {
+        "src": "/resources/_thumbs/sql-cheat-sheet.png",
+        "originalUrl": "https://stackle.io/assets/sql-cheat-sheet-cover-EQ3l32KQ.png",
+        "width": 1080,
+        "height": 1080,
+        "alt": "SQL Essentials Cheat Sheet"
+      },
+      "action": "download-dialog",
+      "icon": "download",
+      "dataHref": "#download"
+    }
+  ],
+  "unlistedResourceRoutes": [
+    "/resources/de-masterclass-cheatsheet",
+    "/resources/python-for-de-deck"
+  ],
+  "unverifiedStats": [
+    {
+      "slug": "data-engineering-roadmap",
+      "views": "12k",
+      "likes": 248,
+      "author": "Stackle"
+    },
+    {
+      "slug": "ai-engineer-roadmap",
+      "views": "8.4k",
+      "likes": 189,
+      "author": "Stackle"
+    },
+    {
+      "slug": "data-analyst-roadmap",
+      "views": "5.8k",
+      "likes": 142,
+      "author": "Stackle"
+    },
+    {
+      "slug": "sql-interview-questions",
+      "views": "22.7k",
+      "likes": 421,
+      "author": "Stackle"
+    },
+    {
+      "slug": "tableau-interview-questions",
+      "views": "6.1k",
+      "likes": 167,
+      "author": "Stackle"
+    },
+    {
+      "slug": "linkedin-bible",
+      "views": "3.2k",
+      "likes": 98,
+      "author": "Stackle"
+    },
+    {
+      "slug": "power-bi",
+      "views": "New",
+      "likes": 0,
+      "author": "Stackle"
+    },
+    {
+      "slug": "apache-spark-architecture",
+      "views": "New",
+      "likes": 0,
+      "author": "Stackle"
+    },
+    {
+      "slug": "sql-cheat-sheet",
+      "views": "34.1k",
+      "likes": 612,
+      "author": "Stackle"
+    }
+  ]
+}

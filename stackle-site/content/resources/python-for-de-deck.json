@@ -1,0 +1,1387 @@
+{
+  "slug": "python-for-de-deck",
+  "title": "Python for Data Engineering",
+  "eyebrow": "Stackle DE Masterclass · Python Course",
+  "summary": "Three parts. From zero to end-to-end pipelines. Every example runs on real Olist Brazil data on Snowflake.",
+  "category": null,
+  "seo": {
+    "title": "Python for Data Engineering — Stackle",
+    "description": "Three parts. From zero to end-to-end pipelines. Every example runs on real Olist Brazil data on Snowflake."
+  },
+  "source": {
+    "url": "https://stackle.io/resources/python-for-de-deck",
+    "staticHtml": "https://stackle.io/resources/python-for-de-deck.html"
+  },
+  "listedInLibrary": false,
+  "layout": {
+    "type": "slide-deck",
+    "brand": "Stackle · Python for DE",
+    "defaultPart": "p1",
+    "counter": "current / total (per part)",
+    "speakerNotes": null
+  },
+  "parts": [
+    {
+      "id": "p1",
+      "title": "Part 1 — Python Basics",
+      "sidebar": [
+        {
+          "label": "Welcome",
+          "slide": 1
+        },
+        {
+          "label": "Python Basics",
+          "number": "01",
+          "items": [
+            {
+              "label": "# Comments",
+              "slide": 3
+            },
+            {
+              "label": "print()",
+              "slide": 3,
+              "codeTab": "s01-b"
+            },
+            {
+              "label": "Variables",
+              "slide": 3,
+              "codeTab": "s01-c"
+            },
+            {
+              "label": "Data Types",
+              "slide": 3,
+              "codeTab": "s01-d"
+            },
+            {
+              "label": "Escape Sequences",
+              "slide": 3,
+              "codeTab": "s01-e"
+            }
+          ]
+        },
+        {
+          "label": "Strings",
+          "number": "02",
+          "items": [
+            {
+              "label": "String Basics",
+              "slide": 4
+            },
+            {
+              "label": "replace()",
+              "slide": 4,
+              "codeTab": "s02-b"
+            },
+            {
+              "label": "Indexing & Slicing",
+              "slide": 4,
+              "codeTab": "s02-c"
+            },
+            {
+              "label": "f-strings",
+              "slide": 4,
+              "codeTab": "s02-d"
+            }
+          ]
+        },
+        {
+          "label": "Numbers",
+          "number": "03",
+          "items": [
+            {
+              "label": "Arithmetic",
+              "slide": 5
+            },
+            {
+              "label": "Rounding & abs()",
+              "slide": 5,
+              "codeTab": "s03-b"
+            },
+            {
+              "label": "Number Types",
+              "slide": 5,
+              "codeTab": "s03-c"
+            }
+          ]
+        },
+        {
+          "label": "Conditionals",
+          "number": "04",
+          "items": [
+            {
+              "label": "if / elif / else",
+              "slide": 6
+            },
+            {
+              "label": "match-case",
+              "slide": 6,
+              "codeTab": "s04-b"
+            },
+            {
+              "label": "Ternary",
+              "slide": 6,
+              "codeTab": "s04-c"
+            }
+          ]
+        },
+        {
+          "label": "Logic Operators",
+          "number": "05",
+          "items": [
+            {
+              "label": "Boolean & Truthiness",
+              "slide": 7
+            },
+            {
+              "label": "and / or / not",
+              "slide": 7,
+              "codeTab": "s05-b"
+            },
+            {
+              "label": "Comparison Operators",
+              "slide": 7,
+              "codeTab": "s05-c"
+            }
+          ]
+        },
+        {
+          "label": "Loops",
+          "number": "06",
+          "items": [
+            {
+              "label": "for loop",
+              "slide": 8
+            },
+            {
+              "label": "while loop",
+              "slide": 8,
+              "codeTab": "s06-b"
+            },
+            {
+              "label": "break · continue · pass",
+              "slide": 8,
+              "codeTab": "s06-c"
+            },
+            {
+              "label": "Nested Loops",
+              "slide": 8,
+              "codeTab": "s06-d"
+            }
+          ]
+        },
+        {
+          "label": "Data Structures",
+          "number": "07",
+          "items": [
+            {
+              "label": "Lists",
+              "slide": 9
+            },
+            {
+              "label": "Tuples & Sets",
+              "slide": 9
+            },
+            {
+              "label": "Dictionaries",
+              "slide": 9
+            },
+            {
+              "label": "Comprehensions",
+              "slide": 9
+            }
+          ]
+        },
+        {
+          "label": "Functions",
+          "number": "08",
+          "items": [
+            {
+              "label": "def · return",
+              "slide": 10
+            },
+            {
+              "label": "Parameters & Scope",
+              "slide": 10,
+              "codeTab": "s08-b"
+            },
+            {
+              "label": "*args and **kwargs",
+              "slide": 10,
+              "codeTab": "s08-c"
+            },
+            {
+              "label": "Lambda",
+              "slide": 10,
+              "codeTab": "s08-d"
+            }
+          ]
+        },
+        {
+          "label": "Projects",
+          "number": "09",
+          "items": [
+            {
+              "label": "Order Validator",
+              "slide": 11
+            },
+            {
+              "label": "Revenue Tracker",
+              "slide": 11
+            },
+            {
+              "label": "Mini ETL Pipeline",
+              "slide": 11
+            }
+          ]
+        }
+      ],
+      "slides": [
+        {
+          "number": 1,
+          "type": "cover",
+          "eyebrow": "Stackle DE Masterclass · Python Course",
+          "title": "Python for Data Engineering",
+          "titleHtml": "Python for<br><em>Data Engineering</em>",
+          "subtitle": "Three parts. From zero to end-to-end pipelines. Every example runs on real Olist Brazil data on Snowflake.",
+          "chips": [
+            {
+              "label": "Part 1 — Basics",
+              "tone": "amber"
+            },
+            {
+              "label": "Part 2 — Python for DE",
+              "tone": "blue"
+            },
+            {
+              "label": "Part 3 — Pipelines",
+              "tone": "green"
+            },
+            {
+              "label": "Olist Dataset",
+              "tone": null
+            },
+            {
+              "label": "Snowflake RAW.PUBLIC",
+              "tone": null
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "type": "section",
+          "eyebrow": "Section 01",
+          "title": "Python Basics",
+          "description": "Comments, print(), variables, data types, escape sequences. How Python stores information and executes line by line.",
+          "sectionNumber": "01"
+        },
+        {
+          "number": 3,
+          "type": "code",
+          "sidebarTitle": "Section 01",
+          "file": "part1_python_basics.py",
+          "heading": "Section 01 — Python Basics",
+          "tabs": [
+            {
+              "id": "s01-a",
+              "label": "# Comments",
+              "language": "python",
+              "code": "# Comments — always explain WHY, not what\n# BAD:  x = x + 1    # add 1 to x\n# GOOD: x = x + 1    # offset for zero-based index\n\ndef clean_order(order):\n    \"\"\"\n    Clean and validate a raw order dict.\n    Strips whitespace, converts types, drops invalid rows.\n    \"\"\"\n    pass\n\n# Comments save your future self in pipelines\ndelivered = [\n    o for o in orders\n    if o[\"status\"] == \"delivered\"\n    # excludes cancelled — per business rule #12\n]"
+            },
+            {
+              "id": "s01-b",
+              "label": "print()",
+              "language": "python",
+              "code": "# print() — output to the terminal\nprint(\"Welcome to Stackle Python for Data Engineering\")\n\n# Print multiple values\nprint(\"City:\", \"Sao Paulo\", \"| Payment:\", 137.09)\n\n# f-string — the DE standard for formatted output\ncity    = \"Sao Paulo\"\npayment = 137.09\nprint(f\"City: {city} | Payment: R${payment:.2f}\")\n\n# Separator line\nprint(\"─\" * 40)\n\n# end= overrides the newline\nprint(\"Loading...\", end=\"\")\nprint(\" done\")  # continues on same line"
+            },
+            {
+              "id": "s01-c",
+              "label": "Variables",
+              "language": "python",
+              "code": "# Variables — store data in memory\norder_id      = \"e481f51cbdc54678b7cc49136f2d6af7\"\ncustomer_city = \"Sao Paulo\"\npayment_value = 137.09   # float\nis_delivered  = True     # bool\ninstallments  = 3        # int\n\nprint(order_id)        # e481f51cbdc54678b7cc49136f2d6af7\nprint(customer_city)   # Sao Paulo\nprint(payment_value)   # 137.09\n\n# Variables can be reassigned\npayment_value = 150.00\n\n# Multiple assignment in one line\ndb, schema, wh = \"RAW\", \"PUBLIC\", \"COMPUTE_WH\""
+            },
+            {
+              "id": "s01-d",
+              "label": "Data Types",
+              "language": "python",
+              "code": "# Python's 4 core data types\norder_id      = \"e481f51c\"   # str   — text\npayment_value = 137.09     # float — decimal\ninstallments  = 3          # int   — whole number\nis_delivered  = True       # bool  — True or False\n\n# Check the type\nprint(type(order_id))       # <class 'str'>\nprint(type(payment_value))  # <class 'float'>\nprint(type(installments))   # <class 'int'>\nprint(type(is_delivered))   # <class 'bool'>\n\n# Type conversion\nfloat(\"137.09\")  # \"137.09\" → 137.09\nint(137.09)      # 137.09  → 137\nstr(137)         # 137     → \"137\"\nbool(0)           # 0       → False"
+            },
+            {
+              "id": "s01-e",
+              "label": "Escape Sequences",
+              "language": "python",
+              "code": "# Escape sequences inside strings\nprint(\"Order:\\t e481f51c\")    # \\t = tab\nprint(\"City:\\t Sao Paulo\")\nprint(\"Status:\\n delivered\")  # \\n = new line\n\nprint(\"She said \\\"hello\\\"\")    # \\\" = quote\nprint(\"C:\\\\Users\\\\olist\")      # \\\\ = backslash\n\n# Raw string — ignores escapes\nprint(r\"C:\\Users\\olist\\data\")\n\n# Multi-line string (perfect for SQL)\nsql = \"\"\"\n    SELECT order_id, payment_value\n    FROM olist_orders\n    WHERE status = 'delivered'\n\"\"\""
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "type": "code",
+          "sidebarTitle": "Section 02",
+          "file": "part1_python_basics.py",
+          "heading": "Section 02 — Strings",
+          "tabs": [
+            {
+              "id": "s02-a",
+              "label": "String Basics",
+              "language": "python",
+              "code": "# String basics\norder_id = \"e481f51cbdc54678\"\ncity     = \"Sao Paulo\"\nstatus   = \"delivered\"\n\n# Case methods\nprint(status.upper())       # DELIVERED\nprint(status.lower())       # delivered\nprint(city.title())         # Sao Paulo\n\n# Length and strip whitespace\nprint(len(order_id))        # 16\nraw = \"  Sao Paulo  \"\nprint(raw.strip())          # \"Sao Paulo\"\n\n# Check if string contains something\nprint(\"Paulo\" in city)       # True\nprint(status.startswith(\"del\")) # True\nprint(status.endswith(\"ed\"))   # True"
+            },
+            {
+              "id": "s02-b",
+              "label": "replace()",
+              "language": "python",
+              "code": "# replace() -- clean messy data\nraw_city = \"sao-paulo\"\nclean    = raw_city.replace(\"-\", \" \").title()\nprint(clean)   # Sao Paulo\n\n# split() and join()\ncsv_line = \"order_id,customer_id,status,value\"\ncolumns  = csv_line.split(\",\")\nprint(columns)\n# ['order_id', 'customer_id', 'status', 'value']\n\nprint(\" | \".join(columns))\n# order_id | customer_id | status | value\n\n# Clean a whole list in one line\nraw_cities   = [\"  sao paulo  \", \"RIO\", \"curitiba\"]\nclean_cities = [c.strip().title() for c in raw_cities]\nprint(clean_cities)\n# ['Sao Paulo', 'Rio', 'Curitiba']"
+            },
+            {
+              "id": "s02-c",
+              "label": "Indexing & Slicing",
+              "language": "python",
+              "code": "# Indexing -- access one character\norder_id = \"e481f51cbdc54678\"\nprint(order_id[0])   # e   (first)\nprint(order_id[-1])  # 8   (last)\n\n# Slicing -- [start:end]\nprint(order_id[0:8])  # e481f51c\nprint(order_id[:4])   # e481\nprint(order_id[8:])   # bdc54678\nprint(order_id[::-1]) # reversed\n\n# Practical: short ID for display\nshort_id = order_id[:8]\nprint(f\"Short ID: {short_id}\")"
+            },
+            {
+              "id": "s02-d",
+              "label": "f-strings",
+              "language": "python",
+              "code": "# f-strings -- the DE standard for output\norder_id = \"e481f51c\"\ncity     = \"Sao Paulo\"\npayment  = 137.09\n\n# Basic f-string\nprint(f\"Order {order_id} from {city}\")\n\n# Number formatting\nprint(f\"Payment: R${payment:.2f}\")   # R$137.09\nprint(f\"Payment: R${payment:,.2f}\")  # with comma\n\n# Expressions inside {}\nitems = 3\nprint(f\"Total: R${payment * items:.2f}\")\n# Total: R$411.27\n\n# Pipeline log\nrows = 99441\nprint(f\"[LOAD] {rows:,} rows loaded\")\n# [LOAD] 99,441 rows loaded"
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "type": "code",
+          "sidebarTitle": "Section 03",
+          "file": "part1_python_basics.py",
+          "heading": "Section 03 — Numbers",
+          "tabs": [
+            {
+              "id": "s03-a",
+              "label": "Arithmetic",
+              "language": "python",
+              "code": "# Arithmetic operators\nprice    = 189.99\ndiscount = 20.00\nqty      = 3\n\nsubtotal = price * qty          # 569.97\ntotal    = subtotal - discount  # 549.97\ntax      = total * 0.1           # 54.997\nfinal    = total + tax           # 604.967\n\nprint(f\"Subtotal: R${subtotal:.2f}\")\nprint(f\"Final:    R${final:.2f}\")\n\n# Integer division and modulo\ntotal_orders = 99441\nper_page     = 100\npages        = total_orders // per_page   # 994\nremainder    = total_orders % per_page    # 41\nprint(f\"Pages: {pages}, Remaining: {remainder}\")"
+            },
+            {
+              "id": "s03-b",
+              "label": "Rounding & abs()",
+              "language": "python",
+              "code": "# round() -- essential for financial data\navg = 154.1085\nprint(round(avg, 2))    # 154.11\nprint(round(avg))       # 154\n\n# abs() -- absolute value\nprint(abs(-45.7))       # 45.7\n\n# Aggregation functions on a list\npayments = [137.09, 54.90, 289.00, 19.99, 75.50]\nprint(f\"Max:   R${max(payments):.2f}\")   # 289.00\nprint(f\"Min:   R${min(payments):.2f}\")   # 19.99\nprint(f\"Sum:   R${sum(payments):.2f}\")   # 576.48\nprint(f\"Count: {len(payments)}\")         # 5\nprint(f\"Avg:   R${sum(payments)/len(payments):.2f}\")\n# Avg:   R$115.30"
+            },
+            {
+              "id": "s03-c",
+              "label": "Number Types",
+              "language": "python",
+              "code": "# int -- whole numbers\norder_count  = 99441\ninstallments = 3\n\n# float -- decimal numbers\npayment_value = 137.09\ntax_rate      = 0.1\n\n# Type conversion -- critical in pipelines\nraw_value = \"137.09\"     # came from CSV as string\nval       = float(raw_value)\nprint(round(val, 2))    # 137.09\n\n# Always validate before converting\ntest_values = [\"137.09\", \"abc\", \"99\", \"\"]\nfor v in test_values:\n    try:\n        n = float(v)\n        print(f\"OK: {n}\")\n    except ValueError:\n        print(f\"INVALID: {v}\")"
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "type": "code",
+          "sidebarTitle": "Section 04",
+          "file": "part1_python_basics.py",
+          "heading": "Section 04 — Conditionals",
+          "tabs": [
+            {
+              "id": "s04-a",
+              "label": "if / elif / else",
+              "language": "python",
+              "code": "# if / elif / else\npayment = 350.00\n\nif payment >= 500:\n    tier = \"Premium\"\nelif payment >= 200:\n    tier = \"Standard\"\nelif payment >= 100:\n    tier = \"Basic\"\nelse:\n    tier = \"Low\"\n\nprint(f\"Tier: {tier}\")  # Standard\n\n# Nested if\norder_status = \"delivered\"\nreview_score = 5\n\nif order_status == \"delivered\":\n    if review_score >= 4:\n        tag = \"Happy Customer\"\n    else:\n        tag = \"Delivered but Unsatisfied\"\nelse:\n    tag = \"Not Delivered\"\n\nprint(tag)  # Happy Customer"
+            },
+            {
+              "id": "s04-b",
+              "label": "match-case",
+              "language": "python",
+              "code": "# match-case (Python 3.10+)\npayment_type = \"credit_card\"\n\nmatch payment_type:\n    case \"credit_card\":\n        print(\"Check installments\")\n    case \"boleto\":\n        print(\"Check payment confirmation\")\n    case \"voucher\":\n        print(\"Check voucher validity\")\n    case \"debit_card\":\n        print(\"Check available balance\")\n    case _:\n        print(\"Unknown payment type\")\n# Check installments\n\n# match with guard conditions\nscore = 4\nmatch score:\n    case s if s >= 4:\n        print(\"Good review\")\n    case s if s >= 2:\n        print(\"Average review\")\n    case _:\n        print(\"Poor review\")"
+            },
+            {
+              "id": "s04-c",
+              "label": "Ternary",
+              "language": "python",
+              "code": "# Ternary -- one-line conditional\n# value_if_true if condition else value_if_false\n\nstatus = \"delivered\"\nlabel  = \"Complete\" if status == \"delivered\" else \"Pending\"\nprint(label)  # Complete\n\n# Clean a value or use default\nraw_city = None\ncity     = raw_city if raw_city else \"Unknown\"\nprint(city)  # Unknown\n\n# In a list comprehension\npayments = [137.09, 0, 289.00, -5, 75.50]\ncleaned  = [p if p > 0 else 0 for p in payments]\nprint(cleaned)\n# [137.09, 0, 289.0, 0, 75.5]"
+            }
+          ]
+        },
+        {
+          "number": 7,
+          "type": "code",
+          "sidebarTitle": "Section 05",
+          "file": "part1_python_basics.py",
+          "heading": "Section 05 — Logic Operators",
+          "tabs": [
+            {
+              "id": "s05-a",
+              "label": "Boolean & Truthiness",
+              "language": "python",
+              "code": "# Boolean values\nis_delivered = True\nhas_review   = False\n\n# Truthiness -- what evaluates to False\nprint(bool(0))       # False\nprint(bool(\"\"))      # False\nprint(bool(None))    # False\nprint(bool([]))      # False\nprint(bool({}))      # False\n\n# Everything else is True\nprint(bool(1))       # True\nprint(bool(\"text\")) # True\nprint(bool([1]))    # True\n\n# Validate before processing\norder_id = \"\"\nif not order_id:\n    print(\"Missing order_id -- skip\")"
+            },
+            {
+              "id": "s05-b",
+              "label": "and / or / not",
+              "language": "python",
+              "code": "# and -- both must be True\ncity  = \"Sao Paulo\"\nvalue = 250\n\nif city == \"Sao Paulo\" and value > 200:\n    print(\"High-value SP order\")\n\n# or -- at least one must be True\nstatus = \"shipped\"\nif status == \"delivered\" or status == \"shipped\":\n    print(\"Order is on its way\")\n\n# not -- flip the boolean\nis_cancelled = False\nif not is_cancelled:\n    print(\"Process the order\")\n\n# Combine all three in a pipeline validator\ndef is_valid_order(order):\n    return (\n        bool(order.get(\"order_id\"))\n        and order.get(\"payment_value\", 0) > 0\n        and order.get(\"status\") not in (None, \"\")\n    )"
+            },
+            {
+              "id": "s05-c",
+              "label": "Comparison Operators",
+              "language": "python",
+              "code": "# Comparison operators\nscore = 4\nprint(score == 5)    # False -- equal\nprint(score != 5)    # True  -- not equal\nprint(score > 3)     # True  -- greater than\nprint(score < 3)     # False -- less than\nprint(score >= 4)    # True  -- greater or equal\nprint(score <= 5)    # True  -- less or equal\n\n# in / not in -- membership\nvalid = [\"delivered\", \"shipped\", \"processing\"]\nprint(\"delivered\" in valid)       # True\nprint(\"cancelled\" not in valid)   # True\n\n# Chained comparison\nprint(1 <= score <= 5)    # True\n\n# None check -- always use 'is'\ncity = None\nprint(city is None)       # True\nprint(city is not None)   # False"
+            }
+          ]
+        },
+        {
+          "number": 8,
+          "type": "code",
+          "sidebarTitle": "Section 06",
+          "file": "part1_python_basics.py",
+          "heading": "Section 06 — Loops",
+          "tabs": [
+            {
+              "id": "s06-a",
+              "label": "for loop",
+              "language": "python",
+              "code": "# for loop -- iterate over a sequence\nstatuses = [\"delivered\", \"shipped\", \"cancelled\"]\nfor status in statuses:\n    print(f\"Processing: {status}\")\n\n# range()\nfor i in range(1, 6):\n    print(f\"Page {i} of 5\")\n\n# enumerate() -- index + value\ncities = [\"Sao Paulo\", \"Rio\", \"Curitiba\"]\nfor idx, city in enumerate(cities, 1):\n    print(f\"{idx}. {city}\")\n\n# Loop through a dict\norder = {\"order_id\": \"e481\", \"status\": \"delivered\", \"payment\": 137.09}\nfor key, val in order.items():\n    print(f\"  {key}: {val}\")"
+            },
+            {
+              "id": "s06-b",
+              "label": "while loop",
+              "language": "python",
+              "code": "# while loop -- keep going until condition is False\npage     = 1\nmax_page = 5\n\nwhile page <= max_page:\n    print(f\"Fetching page {page}...\")\n    page += 1\nprint(\"All pages fetched\")\n\n# while True with break -- retry loop\nattempt = 0\nwhile True:\n    attempt += 1\n    print(f\"Attempt {attempt}\")\n    if attempt >= 3:\n        print(\"Max retries reached\")\n        break\n\n# Pagination loop (real DE pattern)\npage, has_more = 1, True\nwhile has_more:\n    data     = fetch_page(page)\n    has_more = len(data) == 100\n    page    += 1"
+            },
+            {
+              "id": "s06-c",
+              "label": "break · continue · pass",
+              "language": "python",
+              "code": "# break -- exit the loop immediately\norders = [143, 201, 0, 178, 256]\nfor count in orders:\n    if count == 0:\n        print(\"Zero -- stopping\")\n        break\n    print(f\"Orders: {count}\")\n\n# continue -- skip this row, keep going\nvalues = [137.09, 0, 289.00, -5, 75.50]\nclean  = []\nfor v in values:\n    if v <= 0:\n        print(f\"Skipping: {v}\")\n        continue\n    clean.append(v)\nprint(clean)  # [137.09, 289.0, 75.5]\n\n# pass -- placeholder, does nothing\ndef load_to_snowflake():\n    pass   # TODO: implement"
+            },
+            {
+              "id": "s06-d",
+              "label": "Nested Loops",
+              "language": "python",
+              "code": "# Nested loops\nmonths  = [\"Jan\", \"Feb\", \"Mar\"]\nregions = [\"SP\", \"RJ\"]\n\nfor month in months:\n    for region in regions:\n        print(f\"{month} - {region}\")\n# Jan-SP, Jan-RJ, Feb-SP, Feb-RJ ...\n\n# Loop over multiple Olist CSV files\ntables = {\n    \"orders\":   \"olist_orders.csv\",\n    \"payments\": \"olist_order_payments.csv\",\n    \"reviews\":  \"olist_order_reviews.csv\",\n}\nfor table, filename in tables.items():\n    print(f\"Loading {table} from {filename}...\")\n    # df = pd.read_csv(filename)\n    # load_to_snowflake(df, table)"
+            }
+          ]
+        },
+        {
+          "number": 9,
+          "type": "content",
+          "eyebrow": "Section 07 · Data Structures",
+          "title": "List · Tuple · Set · Dictionary",
+          "blocks": [
+            {
+              "type": "grid",
+              "columns": 4,
+              "items": [
+                {
+                  "type": "card",
+                  "tone": "violet",
+                  "label": "List",
+                  "title": "[ ]",
+                  "html": "Ordered, mutable, allows duplicates. Loop through and modify.<br><br><code>orders.append(new)</code><br><code>orders.sort()</code>"
+                },
+                {
+                  "type": "card",
+                  "tone": "blue",
+                  "label": "Tuple",
+                  "title": "( )",
+                  "html": "Ordered, immutable. Use for fixed config — credentials, column names.<br><br><code>config = (host, port, db)</code>"
+                },
+                {
+                  "type": "card",
+                  "tone": "green",
+                  "label": "Set",
+                  "title": "{ }",
+                  "html": "Unordered, no duplicates. Best DE use: deduplication.<br><br><code>unique = set(all_ids)</code>"
+                },
+                {
+                  "type": "card",
+                  "tone": "amber",
+                  "label": "Dictionary",
+                  "title": "{ k: v }",
+                  "html": "Key-value pairs. Use to represent one record.<br><br><code>order[\"status\"]</code><br><code>order.get(\"city\",\"?\")</code>"
+                }
+              ]
+            },
+            {
+              "type": "callout",
+              "tone": "amber",
+              "html": "<strong>DE rule:</strong> <strong>list</strong> for rows, <strong>dict</strong> for one row, <strong>set</strong> to dedup, <strong>tuple</strong> for config that never changes."
+            }
+          ]
+        },
+        {
+          "number": 10,
+          "type": "code",
+          "sidebarTitle": "Section 08",
+          "file": "part1_python_basics.py",
+          "heading": "Section 08 — Functions",
+          "tabs": [
+            {
+              "id": "s08-a",
+              "label": "def · return",
+              "language": "python",
+              "code": "# def -- define a reusable block of code\ndef get_payment_tier(amount):\n    if amount >= 500:   return \"Premium\"\n    if amount >= 200:   return \"Standard\"\n    if amount >= 50:    return \"Basic\"\n    return \"Low\"\n\nprint(get_payment_tier(350))   # Standard\nprint(get_payment_tier(600))   # Premium\n\n# Multiple return values\ndef validate_order(order):\n    if not order.get(\"order_id\"):\n        return False, \"Missing order_id\"\n    if order.get(\"payment_value\", 0) <= 0:\n        return False, \"Invalid payment\"\n    return True, \"OK\"\n\nok, msg = validate_order({\n    \"order_id\": \"abc\",\n    \"payment_value\": 137.09\n})\nprint(ok, msg)  # True OK"
+            },
+            {
+              "id": "s08-b",
+              "label": "Parameters & Scope",
+              "language": "python",
+              "code": "# Default parameters\ndef format_order(order_id, status=\"unknown\", currency=\"BRL\"):\n    return f\"[{currency}] {order_id[:8]} -- {status}\"\n\nprint(format_order(\"e481f51cbdc54678\"))\n# [BRL] e481f51c -- unknown\n\nprint(format_order(\"e481f51cbdc54678\", \"delivered\"))\n# [BRL] e481f51c -- delivered\n\n# Scope -- local vs global\ntotal = 0   # global\n\ndef add_payment(amount):\n    global total\n    total += amount\n\nadd_payment(137.09)\nadd_payment(289.00)\nprint(total)  # 426.09\n\n# Better pattern: avoid global, use return\ndef running_total(payments):\n    return sum(payments)"
+            },
+            {
+              "id": "s08-c",
+              "label": "*args and **kwargs",
+              "language": "python",
+              "code": "# *args -- any number of positional args\ndef total_revenue(*payments):\n    return sum(payments)\n\nprint(total_revenue(137.09, 54.90, 289.00))\n# 480.99\n\n# **kwargs -- any number of keyword args\ndef log_event(event_type, **details):\n    print(f\"EVENT: {event_type}\")\n    for key, val in details.items():\n        print(f\"  {key}: {val}\")\n\nlog_event(\n    \"LOAD_COMPLETE\",\n    rows=99441,\n    table=\"olist_orders\",\n    duration_sec=12.4\n)\n# EVENT: LOAD_COMPLETE\n#   rows: 99441\n#   table: olist_orders\n#   duration_sec: 12.4"
+            },
+            {
+              "id": "s08-d",
+              "label": "Lambda",
+              "language": "python",
+              "code": "# Lambda -- anonymous one-line function\nclean_id = lambda x: x.strip().lower().replace(\" \", \"_\")\nprint(clean_id(\"  Order ID  \"))  # order_id\n\nget_tier = lambda p: \"High\" if p > 200 else \"Low\"\nprint(get_tier(350))  # High\n\n# Most common use: sort() key\norders = [\n    {\"id\": \"a\", \"payment\": 289.00},\n    {\"id\": \"b\", \"payment\": 54.90},\n    {\"id\": \"c\", \"payment\": 137.09},\n]\norders.sort(key=lambda o: o[\"payment\"], reverse=True)\nfor o in orders:\n    print(f\"{o['id']}: R${o['payment']:.2f}\")\n# a: 289.00  c: 137.09  b: 54.90"
+            }
+          ]
+        },
+        {
+          "number": 11,
+          "type": "content",
+          "eyebrow": "Section 09 · Projects",
+          "title": "Mini ETL Pipeline — Extract · Transform · Load",
+          "blocks": [
+            {
+              "type": "grid",
+              "columns": 3,
+              "items": [
+                {
+                  "type": "card",
+                  "tone": "amber",
+                  "label": "Extract",
+                  "title": "extract(raw_orders)",
+                  "html": "Receive raw data. Log how many records arrived. Return as-is — no changes at this stage.<br><br><code>print(f\"{len(raw)} orders received\")</code>"
+                },
+                {
+                  "type": "card",
+                  "tone": "violet",
+                  "label": "Transform",
+                  "title": "transform(orders)",
+                  "html": "Validate, clean, enrich. Strip whitespace. Convert types. Classify into tiers. Drop invalid records.<br><br><code>round(float(value), 2)</code>"
+                },
+                {
+                  "type": "card",
+                  "tone": "green",
+                  "label": "Load",
+                  "title": "load(clean_orders)",
+                  "html": "Write clean records to destination. Log each row. In Part 3 this becomes real Snowflake loading."
+                }
+              ]
+            },
+            {
+              "type": "callout",
+              "tone": "blue",
+              "html": "<strong>This is your first pipeline.</strong> Every DE job you'll ever build is a variation of Extract → Transform → Load."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "title": "Part 2 — Python for DE",
+      "sidebar": [
+        {
+          "label": "Overview",
+          "slide": 1
+        },
+        {
+          "label": "File I/O",
+          "number": "15",
+          "items": [
+            {
+              "label": "read_csv_pandas()",
+              "slide": 2,
+              "codeTab": "m15-a"
+            },
+            {
+              "label": "write_json_file()",
+              "slide": 2,
+              "codeTab": "m15-b"
+            },
+            {
+              "label": "process_directory()",
+              "slide": 2,
+              "codeTab": "m15-c"
+            }
+          ]
+        },
+        {
+          "label": "DE Data Structures",
+          "number": "16",
+          "items": [
+            {
+              "label": "defaultdict",
+              "slide": 3
+            },
+            {
+              "label": "Sets for Dedup",
+              "slide": 3,
+              "codeTab": "m16-b"
+            },
+            {
+              "label": "Lookup Tables",
+              "slide": 3,
+              "codeTab": "m16-c"
+            }
+          ]
+        },
+        {
+          "label": "Working with APIs",
+          "number": "17",
+          "items": [
+            {
+              "label": "GET requests",
+              "slide": 4
+            },
+            {
+              "label": "POST + Auth",
+              "slide": 4,
+              "codeTab": "m17-b"
+            },
+            {
+              "label": "Pagination",
+              "slide": 4,
+              "codeTab": "m17-c"
+            },
+            {
+              "label": "Retry Logic",
+              "slide": 4,
+              "codeTab": "m17-d"
+            }
+          ]
+        },
+        {
+          "label": "Error Handling",
+          "number": "18",
+          "items": [
+            {
+              "label": "try / except",
+              "slide": 5
+            },
+            {
+              "label": "Logging Setup",
+              "slide": 5
+            },
+            {
+              "label": "Error Thresholds",
+              "slide": 5
+            }
+          ]
+        },
+        {
+          "label": "Credentials & Config",
+          "number": "19",
+          "items": [
+            {
+              "label": ".env setup",
+              "slide": 6
+            },
+            {
+              "label": "os.getenv()",
+              "slide": 6,
+              "codeTab": "m19-b"
+            },
+            {
+              "label": "Never hardcode",
+              "slide": 6,
+              "codeTab": "m19-c"
+            }
+          ]
+        },
+        {
+          "label": "Snowflake Connection",
+          "number": "20",
+          "items": [
+            {
+              "label": "connect()",
+              "slide": 8,
+              "codeTab": "m20-a",
+              "originalNavSlide": 7
+            },
+            {
+              "label": "execute()",
+              "slide": 8,
+              "codeTab": "m20-b",
+              "originalNavSlide": 7
+            },
+            {
+              "label": "write_pandas()",
+              "slide": 8,
+              "codeTab": "m20-c",
+              "originalNavSlide": 7
+            },
+            {
+              "label": ".env config",
+              "slide": 8,
+              "codeTab": "m20-d",
+              "originalNavSlide": 7
+            }
+          ]
+        },
+        {
+          "label": "pandas for DE",
+          "number": "21",
+          "items": [
+            {
+              "label": "DataFrames",
+              "slide": 7,
+              "originalNavSlide": 8
+            },
+            {
+              "label": "Cleaning",
+              "slide": 7,
+              "codeTab": "m21-b",
+              "originalNavSlide": 8
+            },
+            {
+              "label": "groupby & merge",
+              "slide": 7,
+              "codeTab": "m21-c",
+              "originalNavSlide": 8
+            }
+          ]
+        }
+      ],
+      "slides": [
+        {
+          "number": 1,
+          "type": "cover",
+          "eyebrow": "Part 2 · Python for Data Engineering",
+          "title": "DE Tools & Snowflake",
+          "titleHtml": "DE Tools &amp;<br><em>Snowflake</em>",
+          "subtitle": "The Python you actually use at work. Files, APIs, error handling, credentials, and connecting to Snowflake.",
+          "chips": [
+            {
+              "label": "File I/O",
+              "tone": "amber"
+            },
+            {
+              "label": "requests",
+              "tone": "blue"
+            },
+            {
+              "label": "Error Handling",
+              "tone": "green"
+            },
+            {
+              "label": "Context Managers",
+              "tone": null
+            },
+            {
+              "label": "Snowflake Connector",
+              "tone": null
+            },
+            {
+              "label": "pandas",
+              "tone": null
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "type": "code",
+          "sidebarTitle": "Module 15",
+          "file": "part2_python_for_de.py",
+          "heading": "Module 15 — DE File I/O",
+          "tabs": [
+            {
+              "id": "m15-a",
+              "label": "read_csv_pandas()",
+              "language": "python",
+              "code": "import pandas as pd\n\n# Read CSV with pandas — the DE standard\ndef read_csv_pandas(filepath):\n    df = pd.read_csv(filepath, encoding=\"utf-8\")\n    print(f\"{df.shape[0]} rows x {df.shape[1]} cols\")\n    return df\n\n# Read with types and date parsing\ndf = pd.read_csv(\n    \"olist_orders_dataset.csv\",\n    dtype={\"order_id\": str, \"customer_id\": str},\n    parse_dates=[\"order_purchase_timestamp\"],\n    encoding=\"utf-8\"\n)\nprint(df.head())\nprint(df.dtypes)"
+            },
+            {
+              "id": "m15-b",
+              "label": "write_json_file()",
+              "language": "python",
+              "code": "import json\n\n# Read JSON file\ndef read_json_file(filepath):\n    with open(filepath, \"r\", encoding=\"utf-8\") as f:\n        data = json.load(f)\n    return data\n\n# Write JSON — pretty printed, handles datetime\ndef write_json_file(data, output_path):\n    with open(output_path, \"w\", encoding=\"utf-8\") as f:\n        json.dump(data, f, indent=2, ensure_ascii=False, default=str)\n    print(f\"Saved to {output_path}\")\n\n# Save DataFrame sample as JSON\nrecords = df.head(5).to_dict(\"records\")\nwrite_json_file(records, \"sample_orders.json\")"
+            },
+            {
+              "id": "m15-c",
+              "label": "process_directory()",
+              "language": "python",
+              "code": "from pathlib import Path\nimport pandas as pd\n\n# Loop through all CSVs in a folder and combine\ndef process_directory(folder_path):\n    folder  = Path(folder_path)\n    files   = list(folder.glob(\"*.csv\"))\n    print(f\"Found {len(files)} CSV files\")\n\n    all_dfs = []\n    for file in files:\n        try:\n            df = pd.read_csv(file)\n            all_dfs.append(df)\n            print(f\"  + {file.name}: {len(df)} rows\")\n        except Exception as e:\n            print(f\"  x {file.name}: {e}\")\n\n    return pd.concat(all_dfs, ignore_index=True)\n\ndf = process_directory(\"./olist_data\")"
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "type": "code",
+          "sidebarTitle": "Module 16",
+          "file": "part2_python_for_de.py",
+          "heading": "Module 16 — DE Data Structures",
+          "tabs": [
+            {
+              "id": "m16-a",
+              "label": "defaultdict",
+              "language": "python",
+              "code": "from collections import defaultdict\n\n# defaultdict -- like a dict but auto-creates missing keys\n# Perfect for grouping records by a field\norders = [\n    {\"city\": \"Sao Paulo\",  \"payment\": 137.09},\n    {\"city\": \"Rio\",        \"payment\": 289.00},\n    {\"city\": \"Sao Paulo\",  \"payment\": 54.90},\n    {\"city\": \"Curitiba\",   \"payment\": 75.50},\n    {\"city\": \"Rio\",        \"payment\": 210.00},\n]\n\n# Group orders by city\nby_city = defaultdict(list)\nfor order in orders:\n    by_city[order[\"city\"]].append(order[\"payment\"])\n\nfor city, payments in by_city.items():\n    print(f\"{city}: total R${sum(payments):.2f}\")\n# Sao Paulo: total R$191.99\n# Rio:       total R$499.00\n# Curitiba:  total R$75.50"
+            },
+            {
+              "id": "m16-b",
+              "label": "Sets for Dedup",
+              "language": "python",
+              "code": "# Sets for deduplication -- O(1) lookup\nraw_order_ids = [\n    \"e481f51c\", \"a1b2c3d4\",\n    \"e481f51c\",  # duplicate!\n    \"f9c3e456\", \"a1b2c3d4\",  # duplicate!\n]\n\nseen   = set()\nunique = []\ndupes  = 0\n\nfor oid in raw_order_ids:\n    if oid in seen:\n        dupes += 1\n        continue\n    seen.add(oid)\n    unique.append(oid)\n\nprint(f\"Unique: {len(unique)}, Dupes removed: {dupes}\")\n# Unique: 3, Dupes removed: 2\n\n# Set operations\nset_a = {\"SP\", \"RJ\", \"MG\"}\nset_b = {\"RJ\", \"RS\", \"PR\"}\nprint(set_a & set_b)   # Intersection: {'RJ'}\nprint(set_a | set_b)   # Union: all states\nprint(set_a - set_b)   # Difference: {'SP', 'MG'}"
+            },
+            {
+              "id": "m16-c",
+              "label": "Lookup Tables",
+              "language": "python",
+              "code": "# Lookup table -- dict for O(1) lookup\n# Faster and cleaner than long if/elif chains\n\nSTATUS_LABELS = {\n    \"delivered\":   \"Delivered\",\n    \"shipped\":     \"Shipped\",\n    \"processing\":  \"Processing\",\n    \"cancelled\":   \"Cancelled\",\n    \"invoiced\":    \"Invoiced\",\n}\n\ndef get_status_label(code):\n    return STATUS_LABELS.get(code.lower(), \"Unknown\")\n\nprint(get_status_label(\"delivered\"))   # Delivered\nprint(get_status_label(\"CANCELLED\"))   # Cancelled\nprint(get_status_label(\"unknown_x\"))   # Unknown\n\n# Apply to a list of orders\nstatuses = [\"delivered\", \"shipped\", \"bad_value\"]\nlabels   = [get_status_label(s) for s in statuses]\nprint(labels)\n# ['Delivered', 'Shipped', 'Unknown']"
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "type": "code",
+          "sidebarTitle": "Module 17",
+          "file": "part2_python_for_de.py",
+          "heading": "Module 17 — Working with APIs",
+          "tabs": [
+            {
+              "id": "m17-a",
+              "label": "GET requests",
+              "language": "python",
+              "code": "import requests\n\n# GET request -- the most common API call\nurl     = \"https://api.github.com/search/repositories\"\nheaders = {\"Authorization\": f\"Bearer {token}\"}\nparams  = {\"q\": \"language:python+stars:>1000\", \"per_page\": 30}\n\nresponse = requests.get(url, headers=headers, params=params, timeout=10)\n\n# Always check the status\nresponse.raise_for_status()   # raises if 4xx or 5xx\n\n# Parse the JSON response\ndata  = response.json()\nrepos = data[\"items\"]\n\nprint(f\"Found {len(repos)} repos\")\nfor repo in repos[:3]:\n    print(f\"  {repo['full_name']}: {repo['stargazers_count']} stars\")"
+            },
+            {
+              "id": "m17-b",
+              "label": "POST + Auth",
+              "language": "python",
+              "code": "import requests, base64\n\n# POST to get a token (OAuth2 client credentials)\n# Used by: Spotify, Salesforce, LinkedIn\nclient_id     = \"your_client_id\"\nclient_secret = \"your_client_secret\"\n\ncreds   = f\"{client_id}:{client_secret}\"\nencoded = base64.b64encode(creds.encode()).decode()\n\nresp = requests.post(\n    \"https://accounts.spotify.com/api/token\",\n    headers={\n        \"Authorization\": f\"Basic {encoded}\",\n        \"Content-Type\":  \"application/x-www-form-urlencoded\",\n    },\n    data={\"grant_type\": \"client_credentials\"},\n    timeout=10,\n)\nresp.raise_for_status()\n\ntoken = resp.json()[\"access_token\"]\nprint(f\"Token: {token[:20]}...\")\n\n# Now use token for subsequent GET requests\nheaders = {\"Authorization\": f\"Bearer {token}\"}"
+            },
+            {
+              "id": "m17-c",
+              "label": "Pagination",
+              "language": "python",
+              "code": "# Pagination -- handle multiple pages of results\nimport requests, time\n\ndef fetch_all_pages(url, headers, max_pages=5):\n    all_items = []\n\n    for page in range(1, max_pages + 1):\n        params   = {\"page\": page, \"per_page\": 30}\n        response = requests.get(url, headers=headers, params=params)\n        response.raise_for_status()\n\n        items = response.json().get(\"items\", [])\n\n        if not items:\n            print(f\"No more items at page {page}\")\n            break\n\n        all_items.extend(items)\n        print(f\"Page {page}: {len(items)} items (total: {len(all_items)})\")\n        time.sleep(0.5)   # polite rate limiting\n\n    return all_items"
+            },
+            {
+              "id": "m17-d",
+              "label": "Retry Logic",
+              "language": "python",
+              "code": "# Retry logic -- handle rate limits and timeouts\nimport requests, time\n\ndef safe_get(url, headers=None, retries=3):\n    for attempt in range(1, retries + 1):\n        try:\n            resp = requests.get(url, headers=headers, timeout=10)\n            resp.raise_for_status()\n            return resp.json()\n\n        except requests.exceptions.Timeout:\n            print(f\"Timeout on attempt {attempt}\")\n\n        except requests.exceptions.HTTPError as e:\n            if e.response.status_code == 429:\n                wait = int(e.response.headers.get(\"Retry-After\", 5))\n                print(f\"Rate limited -- waiting {wait}s\")\n                time.sleep(wait)\n            elif e.response.status_code in (400, 401, 403, 404):\n                raise   # don't retry client errors\n\n        if attempt < retries:\n            time.sleep(2 ** attempt)  # 2s, 4s, 8s\n\n    return None"
+            }
+          ]
+        },
+        {
+          "number": 5,
+          "type": "content",
+          "eyebrow": "Module 18 · Error Handling",
+          "title": "Pipeline-grade Error Handling & Logging",
+          "blocks": [
+            {
+              "type": "grid",
+              "columns": 2,
+              "items": [
+                {
+                  "type": "stack",
+                  "items": [
+                    {
+                      "type": "card",
+                      "tone": "red",
+                      "label": "Beginner Python",
+                      "title": "try / except",
+                      "html": "Catches errors so the script doesn't crash. But silently swallowing every error means your pipeline loads bad data and nobody knows."
+                    },
+                    {
+                      "type": "card",
+                      "tone": "green",
+                      "label": "DE Python",
+                      "title": "Error Rate Threshold",
+                      "html": "Count errors. If <strong>more than 5% of records fail</strong> validation, halt the pipeline. Don't load partial garbage. This is what production does."
+                    }
+                  ]
+                },
+                {
+                  "type": "code",
+                  "language": "python",
+                  "code": "import logging\n\nlogger = logging.getLogger(\"pipeline\")\n\ndef process_with_threshold(records, max_rate=0.05):\n    valid, errors = [], []\n\n    for rec in records:\n        try:\n            if not rec.get(\"order_id\"):\n                raise ValueError(\"Missing order_id\")\n            valid.append(rec)\n        except Exception as e:\n            errors.append(rec)\n            logger.warning(f\"Error: {e}\")\n\n    rate = len(errors) / len(records)\n    if rate > max_rate:\n        logger.error(f\"Error rate {rate:.1%} — HALT\")\n        raise RuntimeError(\"Too many errors\")\n    return valid, errors"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "type": "code",
+          "sidebarTitle": "Module 19",
+          "file": "part2_python_for_de.py",
+          "heading": "Module 19 — Credentials & Config",
+          "tabs": [
+            {
+              "id": "m19-a",
+              "label": ".env setup",
+              "language": "python",
+              "code": "# .env file -- store credentials safely\n# Create a file called .env in your project root\n\n# .env contents:\n# SNOWFLAKE_ACCOUNT=ORGNAME-ACCOUNTNAME\n# SNOWFLAKE_USER=your_username\n# SNOWFLAKE_PASSWORD=your_password\n# SNOWFLAKE_WAREHOUSE=COMPUTE_WH\n# SNOWFLAKE_DATABASE=RAW\n# SNOWFLAKE_SCHEMA=PUBLIC\n# SPOTIFY_CLIENT_ID=your_client_id\n# SPOTIFY_CLIENT_SECRET=your_client_secret\n# GITHUB_TOKEN=ghp_your_token_here\n\n# .gitignore -- add these lines\n# .env\n# *.log\n# __pycache__/\n\n# Install dotenv\n# pip install python-dotenv"
+            },
+            {
+              "id": "m19-b",
+              "label": "os.getenv()",
+              "language": "python",
+              "code": "from dotenv import load_dotenv\nimport os\n\n# Load .env file into os.environ\nload_dotenv()\n\n# Read individual values\naccount   = os.getenv(\"SNOWFLAKE_ACCOUNT\")\nuser      = os.getenv(\"SNOWFLAKE_USER\")\npassword  = os.getenv(\"SNOWFLAKE_PASSWORD\")\n\n# getenv with a default value\nwarehouse = os.getenv(\"SNOWFLAKE_WAREHOUSE\", \"COMPUTE_WH\")\ndatabase  = os.getenv(\"SNOWFLAKE_DATABASE\",  \"RAW\")\nschema    = os.getenv(\"SNOWFLAKE_SCHEMA\",    \"PUBLIC\")\n\nprint(f\"Account:   {account}\")\nprint(f\"Database:  {database}.{schema}\")\nprint(f\"Warehouse: {warehouse}\")\n\n# Validate required credentials are present\nrequired = [\"SNOWFLAKE_ACCOUNT\", \"SNOWFLAKE_USER\", \"SNOWFLAKE_PASSWORD\"]\nfor key in required:\n    if not os.getenv(key):\n        raise ValueError(f\"Missing required env var: {key}\")"
+            },
+            {
+              "id": "m19-c",
+              "label": "Never hardcode",
+              "language": "python",
+              "code": "# NEVER DO THIS -- hardcoded credentials\nconn = snowflake.connector.connect(\n    account  = \"ORGNAME-ACCOUNTNAME\",   # exposed in git!\n    user     = \"chris\",             # exposed in git!\n    password = \"MyPassword123\",     # you will be fired\n)\n\n# ALWAYS DO THIS -- env vars\nfrom dotenv import load_dotenv\nimport os, snowflake.connector\nload_dotenv()\n\nconn = snowflake.connector.connect(\n    account   = os.getenv(\"SNOWFLAKE_ACCOUNT\"),\n    user      = os.getenv(\"SNOWFLAKE_USER\"),\n    password  = os.getenv(\"SNOWFLAKE_PASSWORD\"),\n    warehouse = os.getenv(\"SNOWFLAKE_WAREHOUSE\"),\n    database  = os.getenv(\"SNOWFLAKE_DATABASE\"),\n    schema    = os.getenv(\"SNOWFLAKE_SCHEMA\"),\n)\nprint(\"Connected safely\")"
+            }
+          ]
+        },
+        {
+          "number": 7,
+          "type": "code",
+          "sidebarTitle": "Module 21",
+          "file": "part2_python_for_de.py",
+          "heading": "Module 21 — pandas for DE",
+          "tabs": [
+            {
+              "id": "m21-a",
+              "label": "DataFrames",
+              "language": "python",
+              "code": "import pandas as pd\n\n# Read CSV into a DataFrame\ndf = pd.read_csv(\"olist_orders_dataset.csv\")\n\n# Explore the data\nprint(df.shape)         # (99441, 8) -- rows x cols\nprint(df.dtypes)        # column types\nprint(df.head())        # first 5 rows\nprint(df.describe())   # numeric summary\n\n# Access columns\nprint(df[\"order_status\"])             # Series\nprint(df[[\"order_id\", \"order_status\"]]) # DataFrame\n\n# Filter rows\ndelivered = df[df[\"order_status\"] == \"delivered\"]\nprint(f\"Delivered orders: {len(delivered)}\")\n\n# Value counts\nprint(df[\"order_status\"].value_counts())"
+            },
+            {
+              "id": "m21-b",
+              "label": "Cleaning",
+              "language": "python",
+              "code": "import pandas as pd\nfrom datetime import datetime\n\ndf = pd.read_csv(\"olist_orders_dataset.csv\")\n\n# Drop duplicates\ndf = df.drop_duplicates(subset=[\"order_id\"])\n\n# Drop rows with missing critical fields\ndf = df.dropna(subset=[\"order_id\", \"customer_id\"])\n\n# Standardise strings\ndf[\"order_status\"] = df[\"order_status\"].str.strip().str.lower()\n\n# Parse timestamps\ndf[\"order_purchase_timestamp\"] = pd.to_datetime(\n    df[\"order_purchase_timestamp\"], errors=\"coerce\"\n)\n\n# Add metadata\ndf[\"extracted_at\"] = datetime.utcnow()\n\nprint(f\"Clean rows: {len(df)}\")"
+            },
+            {
+              "id": "m21-c",
+              "label": "groupby & merge",
+              "language": "python",
+              "code": "import pandas as pd\n\n# groupby -- aggregate by a column\norders   = pd.read_csv(\"olist_orders_dataset.csv\")\npayments = pd.read_csv(\"olist_order_payments_dataset.csv\")\n\n# Revenue by status\nsummary = (\n    payments\n    .groupby(\"payment_type\")\n    .agg(\n        order_count   = (\"order_id\",      \"count\"),\n        total_revenue = (\"payment_value\",  \"sum\"),\n        avg_payment   = (\"payment_value\",  \"mean\"),\n    )\n    .round(2)\n    .reset_index()\n    .sort_values(\"total_revenue\", ascending=False)\n)\nprint(summary)\n\n# merge -- join two DataFrames (like SQL JOIN)\nmerged = orders.merge(\n    payments,\n    on=\"order_id\",\n    how=\"left\"\n)\nprint(f\"Merged: {merged.shape}\")"
+            }
+          ]
+        },
+        {
+          "number": 8,
+          "type": "code",
+          "sidebarTitle": "Module 20",
+          "file": "part2_python_for_de.py",
+          "heading": "Module 20 — Snowflake Connection",
+          "tabs": [
+            {
+              "id": "m20-a",
+              "label": "connect()",
+              "language": "python",
+              "code": "import snowflake.connector, os\nfrom dotenv import load_dotenv\n\nload_dotenv()  # loads .env into os.environ\n\ndef get_connection():\n    return snowflake.connector.connect(\n        account   = os.getenv(\"SNOWFLAKE_ACCOUNT\"),   # ORGNAME-ACCOUNTNAME\n        user      = os.getenv(\"SNOWFLAKE_USER\"),\n        password  = os.getenv(\"SNOWFLAKE_PASSWORD\"),\n        warehouse = os.getenv(\"SNOWFLAKE_WAREHOUSE\"),  # COMPUTE_WH\n        database  = os.getenv(\"SNOWFLAKE_DATABASE\"),   # RAW\n        schema    = os.getenv(\"SNOWFLAKE_SCHEMA\"),     # PUBLIC\n    )\n\n# Always use context manager — auto-closes on error\nwith get_connection() as conn:\n    print(\"Connected to Snowflake!\")"
+            },
+            {
+              "id": "m20-b",
+              "label": "execute()",
+              "language": "python",
+              "code": "# Execute SQL and return as list of dicts\ndef run_query(sql):\n    with get_connection() as conn:\n        with conn.cursor() as cur:\n            cur.execute(sql)\n            cols    = [d[0] for d in cur.description]\n            results = cur.fetchall()\n            return [dict(zip(cols, row)) for row in results]\n\nrows = run_query(\"\"\"\n    SELECT order_status, COUNT(*) AS cnt\n    FROM RAW.PUBLIC.OLIST_ORDERS\n    GROUP BY order_status ORDER BY cnt DESC\n\"\"\")\nfor row in rows:\n    print(f\"{row['ORDER_STATUS']}: {row['CNT']}\")"
+            },
+            {
+              "id": "m20-c",
+              "label": "write_pandas()",
+              "language": "python",
+              "code": "from snowflake.connector.pandas_tools import write_pandas\nimport pandas as pd\n\ndef load_to_snowflake(df, table_name, overwrite=True):\n    # Uppercase columns for Snowflake convention\n    df.columns = [c.upper() for c in df.columns]\n\n    with get_connection() as conn:\n        success, nchunks, nrows, _ = write_pandas(\n            conn=conn, df=df,\n            table_name=table_name,\n            overwrite=overwrite,\n            auto_create_table=True,\n        )\n        print(f\"Loaded {nrows} rows into {table_name}\")\n\n# Table is auto-created from DataFrame schema\n# Result: RAW.PUBLIC.YOUR_TABLE_NAME"
+            },
+            {
+              "id": "m20-d",
+              "label": ".env config",
+              "language": "python",
+              "code": "# .env file — NEVER commit this to Git\n# ─────────────────────────────────────\n# SNOWFLAKE_ACCOUNT=ORGNAME-ACCOUNTNAME\n# SNOWFLAKE_USER=your_username\n# SNOWFLAKE_PASSWORD=your_password\n# SNOWFLAKE_WAREHOUSE=COMPUTE_WH\n# SNOWFLAKE_DATABASE=RAW\n# SNOWFLAKE_SCHEMA=PUBLIC\n# SPOTIFY_CLIENT_ID=your_spotify_id\n# GITHUB_TOKEN=your_github_token\n# ─────────────────────────────────────\n\n# .gitignore — always include\n# .env\n# *.log\n# __pycache__/\n\n# Load in Python\nfrom dotenv import load_dotenv\nimport os\nload_dotenv()\nprint(os.getenv(\"SNOWFLAKE_ACCOUNT\"))\n\n# NEVER: password = \"my_password\"  # gets you fired"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "p3",
+      "title": "Part 3 — Pipelines",
+      "sidebar": [
+        {
+          "label": "Overview",
+          "slide": 1
+        },
+        {
+          "label": "Architecture",
+          "slide": 2
+        },
+        {
+          "label": "Spotify Pipeline",
+          "items": [
+            {
+              "label": "Setup & Postman",
+              "slide": 3
+            },
+            {
+              "label": "Token Flow",
+              "slide": 4
+            },
+            {
+              "label": "get_token()",
+              "slide": 5,
+              "codeTab": "sp-a"
+            },
+            {
+              "label": "get_top_tracks()",
+              "slide": 5,
+              "codeTab": "sp-b"
+            },
+            {
+              "label": "parse_tracks()",
+              "slide": 5,
+              "codeTab": "sp-c"
+            },
+            {
+              "label": "load_to_snowflake()",
+              "slide": 5,
+              "codeTab": "sp-d"
+            },
+            {
+              "label": "run_pipeline()",
+              "slide": 5,
+              "codeTab": "sp-e"
+            }
+          ]
+        },
+        {
+          "label": "GitHub Pipeline",
+          "items": [
+            {
+              "label": "Pagination Section",
+              "slide": 6
+            },
+            {
+              "label": "search_repos()",
+              "slide": 7,
+              "codeTab": "gh-a"
+            },
+            {
+              "label": "parse_repos()",
+              "slide": 7,
+              "codeTab": "gh-b"
+            },
+            {
+              "label": "clean_dataframe()",
+              "slide": 7,
+              "codeTab": "gh-c"
+            },
+            {
+              "label": "load_to_snowflake()",
+              "slide": 7,
+              "codeTab": "gh-d"
+            },
+            {
+              "label": "run_pipeline()",
+              "slide": 7,
+              "codeTab": "gh-e"
+            }
+          ]
+        },
+        {
+          "label": "SQL in Snowflake",
+          "slide": 8
+        }
+      ],
+      "slides": [
+        {
+          "number": 1,
+          "type": "cover",
+          "eyebrow": "Part 3 · End-to-End Pipelines",
+          "title": "Real APIs → Snowflake",
+          "titleHtml": "Real APIs →<br><em>Snowflake</em>",
+          "subtitle": "Two complete production pipelines. Spotify artist data and GitHub trending repos — from API to queryable Snowflake table.",
+          "chips": [
+            {
+              "label": "Spotify API",
+              "tone": "amber"
+            },
+            {
+              "label": "GitHub API",
+              "tone": "green"
+            },
+            {
+              "label": "OAuth Token Flow",
+              "tone": "blue"
+            },
+            {
+              "label": "Postman",
+              "tone": null
+            },
+            {
+              "label": "pandas",
+              "tone": null
+            },
+            {
+              "label": "Snowflake",
+              "tone": null
+            }
+          ]
+        },
+        {
+          "number": 2,
+          "type": "pipeline",
+          "eyebrow": "Part 3 · Architecture",
+          "title": "Both Pipelines — Full Stack",
+          "pipelines": [
+            {
+              "label": "Pipeline 1 — Spotify",
+              "steps": [
+                {
+                  "label": "Developer App",
+                  "sub": "Client ID + Secret",
+                  "tone": "amber"
+                },
+                {
+                  "label": "Postman",
+                  "sub": "POST token · GET tracks",
+                  "tone": null
+                },
+                {
+                  "label": "Python",
+                  "sub": "requests · pandas",
+                  "tone": "blue"
+                },
+                {
+                  "label": "Snowflake",
+                  "sub": "SPOTIFY_TOP_TRACKS",
+                  "tone": "green"
+                },
+                {
+                  "label": "SQL",
+                  "sub": "Popularity analysis",
+                  "tone": "violet"
+                }
+              ]
+            },
+            {
+              "label": "Pipeline 2 — GitHub",
+              "steps": [
+                {
+                  "label": "Personal Token",
+                  "sub": "2 minutes to set up",
+                  "tone": "amber"
+                },
+                {
+                  "label": "Postman",
+                  "sub": "GET repos · pages",
+                  "tone": null
+                },
+                {
+                  "label": "Python",
+                  "sub": "paginate · clean JSON",
+                  "tone": "blue"
+                },
+                {
+                  "label": "Snowflake",
+                  "sub": "GITHUB_TRENDING_REPOS",
+                  "tone": "green"
+                },
+                {
+                  "label": "SQL",
+                  "sub": "Stars · forks · rank",
+                  "tone": "violet"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "number": 3,
+          "type": "content",
+          "eyebrow": "Pipeline 1 · Spotify · Setup",
+          "title": "Postman First — Then Python",
+          "blocks": [
+            {
+              "type": "grid",
+              "columns": 2,
+              "items": [
+                {
+                  "type": "stack",
+                  "items": [
+                    {
+                      "type": "card",
+                      "tone": "amber",
+                      "label": "Setup",
+                      "title": "developer.spotify.com",
+                      "html": "Log in → Create App → Copy <strong>Client ID</strong> and <strong>Client Secret</strong>. Add both to your <code>.env</code> file."
+                    },
+                    {
+                      "type": "card",
+                      "tone": "blue",
+                      "label": "Postman Step 1 — POST",
+                      "title": "Get the token",
+                      "html": "<strong>URL:</strong> <code>accounts.spotify.com/api/token</code><br><strong>Header:</strong> <code>Basic base64(id:secret)</code><br><strong>Body:</strong> <code>grant_type=client_credentials</code><br><strong>Returns:</strong> <code>access_token</code>"
+                    }
+                  ]
+                },
+                {
+                  "type": "card",
+                  "tone": "green",
+                  "label": "Postman Step 2 — GET",
+                  "title": "Get top tracks",
+                  "html": "<strong>URL:</strong> <code>api.spotify.com/v1/artists/{id}/top-tracks</code><br><br><strong>Header:</strong> <code>Authorization: Bearer {token}</code><br><br><strong>Param:</strong> <code>market=US</code><br><br><strong>Test with Drake:</strong><br><code>3TVXtAsR1Inumwj472S9r4</code><br><br>You'll see nested JSON — track name, popularity, album. This is what we flatten in Python."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "number": 4,
+          "type": "section",
+          "eyebrow": "Pipeline 1 · Spotify",
+          "title": "OAuth Token Flow",
+          "description": "POST first to get a token. Then GET with that token. This two-step pattern is used by Spotify, Salesforce, LinkedIn, and most enterprise APIs.",
+          "sectionNumber": "01"
+        },
+        {
+          "number": 5,
+          "type": "code",
+          "sidebarTitle": "Pipeline 1",
+          "file": "part3_pipelines.py",
+          "heading": "Pipeline 1 — Spotify to Snowflake",
+          "tabs": [
+            {
+              "id": "sp-a",
+              "label": "get_token()",
+              "language": "python",
+              "code": "import base64, requests, os\n\ndef spotify_get_token():\n    creds   = os.getenv(\"SPOTIFY_CLIENT_ID\") + \":\" + os.getenv(\"SPOTIFY_CLIENT_SECRET\")\n    encoded = base64.b64encode(creds.encode()).decode()\n\n    resp = requests.post(\n        \"https://accounts.spotify.com/api/token\",\n        headers={\n            \"Authorization\": f\"Basic {encoded}\",\n            \"Content-Type\":  \"application/x-www-form-urlencoded\",\n        },\n        data={\"grant_type\": \"client_credentials\"},\n        timeout=10,\n    )\n    resp.raise_for_status()\n    print(\"Token obtained\")\n    return resp.json()[\"access_token\"]"
+            },
+            {
+              "id": "sp-b",
+              "label": "get_top_tracks()",
+              "language": "python",
+              "code": "def spotify_get_top_tracks(artist_id, artist_name, token):\n    url  = f\"https://api.spotify.com/v1/artists/{artist_id}/top-tracks\"\n    resp = requests.get(\n        url,\n        headers={\"Authorization\": f\"Bearer {token}\"},\n        params={\"market\": \"US\"},\n        timeout=10,\n    )\n    resp.raise_for_status()\n    tracks = resp.json().get(\"tracks\", [])\n    print(f\"{artist_name}: {len(tracks)} tracks\")\n    return tracks\n\n# Artist IDs from open.spotify.com/artist/{ID}\n# Drake:        3TVXtAsR1Inumwj472S9r4\n# Taylor Swift: 06HL4z0CvFAxyc27GXpf02\n# The Weeknd:   1Xyo4u8uXC1ZmMpatF05PJ"
+            },
+            {
+              "id": "sp-c",
+              "label": "parse_tracks()",
+              "language": "python",
+              "code": "def spotify_parse_tracks(raw_tracks, artist_name):\n    # Spotify JSON is nested — we flatten it\n    parsed = []\n    for t in raw_tracks:\n        parsed.append({\n            \"track_id\":     t[\"id\"],\n            \"track_name\":   t[\"name\"],\n            \"artist_name\":  artist_name,\n            \"album_name\":   t[\"album\"][\"name\"],      # NESTED\n            \"release_date\": t[\"album\"][\"release_date\"], # NESTED\n            \"popularity\":   t[\"popularity\"],          # 0–100\n            \"duration_min\": round(t[\"duration_ms\"] / 60000, 2),\n            \"explicit\":     t[\"explicit\"],\n            \"preview_url\":  t.get(\"preview_url\"),\n        })\n    return parsed"
+            },
+            {
+              "id": "sp-d",
+              "label": "load_to_snowflake()",
+              "language": "python",
+              "code": "from snowflake.connector.pandas_tools import write_pandas\nimport pandas as pd\n\ndef load_to_snowflake(df, table_name):\n    df.columns = [c.upper() for c in df.columns]\n    with get_connection() as conn:\n        success, nchunks, nrows, _ = write_pandas(\n            conn=conn, df=df,\n            table_name=table_name,\n            overwrite=True, auto_create_table=True,\n        )\n        print(f\"Loaded {nrows} rows to {table_name}\")"
+            },
+            {
+              "id": "sp-e",
+              "label": "run_pipeline()",
+              "language": "python",
+              "code": "ARTIST_IDS = {\n    \"Drake\":        \"3TVXtAsR1Inumwj472S9r4\",\n    \"Taylor Swift\": \"06HL4z0CvFAxyc27GXpf02\",\n    \"The Weeknd\":   \"1Xyo4u8uXC1ZmMpatF05PJ\",\n}\n\ndef run_spotify_pipeline():\n    # 1. POST → get token\n    token = spotify_get_token()\n    records = []\n\n    # 2. GET → top tracks per artist\n    for name, aid in ARTIST_IDS.items():\n        raw    = spotify_get_top_tracks(aid, name, token)\n        parsed = spotify_parse_tracks(raw, name)\n        records.extend(parsed)\n\n    # 3. pandas → Snowflake\n    df = pd.DataFrame(records)\n    df[\"release_date\"] = pd.to_datetime(df[\"release_date\"], errors=\"coerce\")\n    load_to_snowflake(df, \"SPOTIFY_TOP_TRACKS\")\n    print(\"Pipeline complete\")"
+            }
+          ]
+        },
+        {
+          "number": 6,
+          "type": "section",
+          "eyebrow": "Pipeline 2 · GitHub",
+          "title": "Pagination & Rate Limiting",
+          "titleHtml": "Pagination &amp;<br>Rate Limiting",
+          "description": "What happens when the data is bigger than one response. Real-world API patterns that appear in every production pipeline.",
+          "sectionNumber": "02"
+        },
+        {
+          "number": 7,
+          "type": "code",
+          "sidebarTitle": "Pipeline 2",
+          "file": "part3_pipelines.py",
+          "heading": "Pipeline 2 — GitHub to Snowflake",
+          "tabs": [
+            {
+              "id": "gh-a",
+              "label": "search_repos()",
+              "language": "python",
+              "code": "import requests, os, time\n\ndef github_search_repos(language=\"python\", pages=3):\n    url     = \"https://api.github.com/search/repositories\"\n    headers = {\"Authorization\": f\"Bearer {os.getenv('GITHUB_TOKEN')}\"}\n    repos   = []\n\n    for page in range(1, pages + 1):\n        params = {\"q\": f\"language:{language}+stars:>1000\",\n                   \"sort\": \"stars\", \"per_page\": 30, \"page\": page}\n        resp = requests.get(url, headers=headers, params=params)\n\n        if resp.status_code == 403:  # rate limited\n            time.sleep(60)\n            resp = requests.get(url, headers=headers, params=params)\n\n        resp.raise_for_status()\n        repos.extend(resp.json().get(\"items\", []))\n        print(f\"Page {page}: {len(repos)} total\")\n\n    return repos"
+            },
+            {
+              "id": "gh-b",
+              "label": "parse_repos()",
+              "language": "python",
+              "code": "def github_parse_repos(raw):\n    # GitHub JSON has nested 'owner' dict\n    parsed = []\n    for r in raw:\n        parsed.append({\n            \"repo_id\":          r[\"id\"],\n            \"name\":             r[\"name\"],\n            \"full_name\":        r[\"full_name\"],\n            \"description\":      (r.get(\"description\") or \"\")[:500],\n            \"owner_login\":      r[\"owner\"][\"login\"],   # NESTED\n            \"owner_type\":       r[\"owner\"][\"type\"],    # User or Org\n            \"stargazers_count\": r[\"stargazers_count\"],\n            \"forks_count\":      r[\"forks_count\"],\n            \"language\":         r.get(\"language\", \"Unknown\"),\n            \"created_at\":       r[\"created_at\"],\n            \"topics\":           \",\".join(r.get(\"topics\", [])),\n        })\n    return parsed"
+            },
+            {
+              "id": "gh-c",
+              "label": "clean_dataframe()",
+              "language": "python",
+              "code": "import pandas as pd\n\ndef github_clean_dataframe(records):\n    df = pd.DataFrame(records)\n\n    df[\"created_at\"] = pd.to_datetime(df[\"created_at\"], utc=True)\n    df[\"description\"] = df[\"description\"].fillna(\"\")\n    df[\"topics\"]      = df[\"topics\"].fillna(\"\")\n\n    # Quality signal: stars per fork\n    df[\"star_fork_ratio\"] = (\n        df[\"stargazers_count\"]\n        / df[\"forks_count\"].replace(0, 1)\n    ).round(2)\n\n    df = df.drop_duplicates(subset=[\"repo_id\"])\n    df.columns = [c.upper() for c in df.columns]\n    return df"
+            },
+            {
+              "id": "gh-d",
+              "label": "load_to_snowflake()",
+              "language": "python",
+              "code": "def load_to_snowflake(df, table_name):\n    with get_connection() as conn:\n        success, nchunks, nrows, _ = write_pandas(\n            conn=conn, df=df,\n            table_name=table_name,\n            overwrite=True, auto_create_table=True,\n        )\n        print(f\"Loaded {nrows} rows to {table_name}\")\n\n# Query in Snowflake:\n# SELECT NAME, STARGAZERS_COUNT, STAR_FORK_RATIO\n# FROM RAW.PUBLIC.GITHUB_TRENDING_REPOS\n# ORDER BY STARGAZERS_COUNT DESC LIMIT 10;"
+            },
+            {
+              "id": "gh-e",
+              "label": "run_pipeline()",
+              "language": "python",
+              "code": "def run_github_pipeline():\n    print(\"PIPELINE: GitHub → Snowflake\")\n\n    # 1. Extract (paginated + rate limit handling)\n    raw    = github_search_repos(language=\"python\", pages=3)\n\n    # 2. Parse (flatten nested JSON)\n    parsed = github_parse_repos(raw)\n\n    # 3. Clean (pandas)\n    df     = github_clean_dataframe(parsed)\n\n    # 4. Load (Snowflake)\n    load_to_snowflake(df, \"GITHUB_TRENDING_REPOS\")\n    print(\"Pipeline complete\")\n\n# Run: python part3_pipelines.py --pipeline github\n# Run: python part3_pipelines.py --pipeline all"
+            }
+          ]
+        },
+        {
+          "number": 8,
+          "type": "content",
+          "eyebrow": "Part 3 · SQL · After Loading",
+          "title": "What You Can Query in Snowflake",
+          "blocks": [
+            {
+              "type": "grid",
+              "columns": 2,
+              "items": [
+                {
+                  "type": "stack",
+                  "items": [
+                    {
+                      "type": "label",
+                      "text": "Spotify Queries"
+                    },
+                    {
+                      "type": "card",
+                      "tone": "amber",
+                      "html": "<code>AVG(POPULARITY)</code> per artist — who has the hottest catalogue?<br><br><code>RANK() OVER (PARTITION BY ARTIST_NAME ORDER BY POPULARITY DESC)</code> — top track per artist<br><br>Explicit vs clean breakdown per artist"
+                    },
+                    {
+                      "type": "label",
+                      "text": "GitHub Queries"
+                    },
+                    {
+                      "type": "card",
+                      "tone": "green",
+                      "html": "<code>ORDER BY STARGAZERS_COUNT DESC</code> — top 10 repos<br><br><code>STARGAZERS_COUNT / FORKS_COUNT</code> — quality signal<br><br><code>RANK() OVER (ORDER BY STARGAZERS_COUNT DESC)</code>"
+                    }
+                  ]
+                },
+                {
+                  "type": "stack",
+                  "items": [
+                    {
+                      "type": "callout",
+                      "tone": "green",
+                      "html": "<strong>This is a real portfolio project.</strong> You have built a complete pipeline: API → Python → Snowflake → SQL. Every part of a DE interview is covered."
+                    },
+                    {
+                      "type": "callout",
+                      "tone": "amber",
+                      "html": "<strong>Run command:</strong><br><code>python part3_pipelines.py --pipeline all</code>"
+                    },
+                    {
+                      "type": "callout",
+                      "tone": "blue",
+                      "html": "<strong>GitHub portfolio:</strong> Upload the pipeline code, a README, and a screenshot of your Snowflake results table."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
