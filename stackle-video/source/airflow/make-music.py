@@ -1,41 +1,35 @@
-"""Writes the background music for the Airflow explainer: a calm, original
-score (warm pad, soft electric piano, sub bass, room reverb) in D major at
-70 BPM. No drums and no samples, so there is nothing to license.
-The home chord takes the last bar and rings out to the very end.
-Usage: python3 make-music.py <seconds> <out.wav>
+"""Writes the background music for the Airflow explainer: an upbeat, original
+house-pop track at 120 BPM in D major (four-on-the-floor kick, claps, hats,
+off-beat bass, plucked chords, a 16th-note arp for the architecture part).
+It is synthesised from scratch, so there is nothing to license.
+
+The bars follow the voiceover: the full beat drops on the title ("Apache
+Airflow"), a crash marks each new chapter, the drums drop out for "That's
+Apache Airflow", and the last chord hits as the voice ends.
+Usage: python3 make-music.py <seconds> <out.wav> <vo.transcript.json> <voice offset>
 """
+import json
+import re
 import sys
 import wave
 
 import numpy as np
 
 SR = 48000
-BPM = 70
+BPM = 120
 BEAT = 60 / BPM
 BAR = 4 * BEAT
-rng = np.random.default_rng(7)
+rng = np.random.default_rng(11)
 
-# two bars per chord: Dmaj9, Bm9, Gmaj9, A6sus
+# one bar per chord, D – A – Bm – G: (bass root, pluck voicing)
 PROG = [
-    (38, [57, 61, 64, 66, 69]),
-    (35, [54, 57, 61, 62, 66]),
-    (31, [55, 59, 62, 66, 69]),
-    (33, [57, 59, 62, 64, 66]),
+    (38, [62, 66, 69, 73]),
+    (33, [61, 64, 69, 71]),
+    (35, [62, 66, 69, 71]),
+    (31, [62, 66, 67, 71]),
 ]
-# notes the piano picks from over each chord (upper register)
-LEAD = [
-    [69, 73, 76, 78, 81],
-    [66, 69, 73, 74, 78],
-    [67, 71, 74, 78, 79],
-    [69, 71, 74, 76, 78],
-]
-# piano rhythm per bar, in eighth notes: (position, index into LEAD, velocity)
-PATTERNS = [
-    [(0, 0, .55), (3, 2, .38), (4, 3, .45), (6, 1, .36)],
-    [(0, 1, .5), (2, 3, .34), (5, 4, .4), (7, 2, .3)],
-    [(0, 2, .52), (3, 4, .36), (6, 3, .4)],
-    [(0, 0, .5), (2, 2, .32), (4, 1, .42), (5, 3, .3), (7, 4, .28)],
-]
+# chord stabs, in 16th notes within the bar (a 3-3-2 push)
+STABS = [0, 3, 6, 8, 11, 14]
 
 
 def hz(m):
@@ -66,56 +60,105 @@ def lowpass(x, cutoff):
     return y
 
 
+def highpass(x, cutoff):
+    return x - lowpass(x, cutoff)
+
+
 def pan(sig, p):
     """Equal-power pan, p from -1 (left) to 1 (right)."""
     th = (p + 1) * np.pi / 4
     return np.stack([sig * np.cos(th), sig * np.sin(th)], axis=1)
 
 
-def pad_note(f, dur, attack=2.2, release=2.8):
-    n = int((dur + release) * SR)
-    t = np.arange(n) / SR
-    sig = np.zeros(n)
-    for det in (-6, 0, 6):                       # three voices, a few cents apart
+def env_t(seconds):
+    return np.arange(int(seconds * SR)) / SR
+
+
+# ---------------------------------------------------------------- drums
+
+def kick():
+    t = env_t(.4)
+    f = 55 + 140 * np.exp(-t / .025)
+    body = np.sin(2 * np.pi * np.cumsum(f) / SR) * np.exp(-t / .22)
+    knock = np.sin(2 * np.pi * 130 * t) * np.exp(-t / .04) * .35      # what phone speakers actually play
+    click = highpass(rng.standard_normal(len(t)), 2500) * np.exp(-t / .004) * .35
+    return np.tanh(2.2 * (body + knock + click)) / np.tanh(2.2)
+
+
+def clap():
+    t = env_t(.4)
+    noise = lowpass(highpass(rng.standard_normal(len(t)), 900), 5000)
+    env = sum(np.where(t >= d, np.exp(-(t - d) / .006), 0) for d in (0, .011, .022))
+    env += .7 * np.where(t >= .03, np.exp(-(t - .03) / .12), 0)
+    body = np.sin(2 * np.pi * 210 * t) * np.exp(-t / .03) * .2
+    return noise * env * 2.2 + body
+
+
+def hat(open_=False):
+    t = env_t(.4 if open_ else .09)
+    noise = highpass(highpass(rng.standard_normal(len(t)), 7000), 7000)
+    return noise * np.exp(-t / (.13 if open_ else .022)) * np.minimum(1, t / .001)
+
+
+def crash():
+    t = env_t(2.4)
+    noise = highpass(rng.standard_normal(len(t)), 4500)
+    shimmer = sum(np.sin(2 * np.pi * f * t + rng.uniform(0, 6)) for f in (3210, 4470, 5930, 7340)) * .08
+    return (noise + shimmer) * np.exp(-t / .9) * np.minimum(1, t / .002)
+
+
+def riser(seconds):
+    """Filtered noise that opens up and gets louder toward the next downbeat."""
+    t = env_t(seconds)
+    x = rng.standard_normal(len(t))
+    y = np.empty_like(x)
+    state, block = 0.0, 256
+    for s in range(0, len(x), block):
+        k = s / len(x)
+        a = np.exp(-2 * np.pi * (300 + 9000 * k ** 2) / SR)
+        for i in range(s, min(len(x), s + block)):
+            state = a * state + (1 - a) * x[i]
+            y[i] = state
+    return y * (t / seconds) ** 2.2
+
+
+# ---------------------------------------------------------------- tonal
+
+def pluck(f, dur=.5):
+    """Bright attack that mellows fast: each harmonic decays faster than the last."""
+    t = env_t(dur)
+    sig = np.zeros(len(t))
+    for det in (-7, 7):
         fd = f * 2 ** (det / 1200)
-        ph = rng.uniform(0, 2 * np.pi)
-        for h in range(1, 7):                    # soft, saw-like spectrum
-            sig += np.sin(2 * np.pi * fd * h * t + ph * h) / h ** 1.7
-    env = np.minimum(1, t / attack) ** 2
-    env *= np.where(t > dur, np.exp(-(t - dur) / (release / 4)), 1)
-    lfo = 1 + .08 * np.sin(2 * np.pi * rng.uniform(.07, .13) * t + rng.uniform(0, 6))
-    return sig * env * lfo / 3
+        for h in range(1, 13):
+            sig += np.sin(2 * np.pi * fd * h * t) / h ** 1.1 * np.exp(-t * (5 + 2.4 * h))
+    return sig * np.minimum(1, t / .003) * np.minimum(1, (dur - t) / .03) / 2
 
 
-def piano_note(f, vel, dur=4.5):
-    """FM electric piano: bright on the attack, mellow as it decays."""
-    n = int(dur * SR)
-    t = np.arange(n) / SR
-    index = (1.1 + 1.6 * vel) * np.exp(-t / .55)
-    mod = np.sin(2 * np.pi * f * t) * index
-    body = np.sin(2 * np.pi * f * t + mod)
-    tine = np.sin(2 * np.pi * f * 7.02 * t) * np.exp(-t / .03) * .06
-    env = np.minimum(1, t / .004) * np.exp(-t / 1.7)
-    env *= np.minimum(1, (dur - t) / .3)
-    trem = 1 + .05 * np.sin(2 * np.pi * 4.6 * t)
-    return (body + tine) * env * trem * vel
+def bass_note(f, dur):
+    t = env_t(dur)
+    sig = sum(np.sin(2 * np.pi * f * h * t) / h * np.exp(-t * (1.5 + 4 * h)) for h in range(1, 7))
+    sig += .8 * np.sin(2 * np.pi * f * t) + .4 * np.sin(4 * np.pi * f * t)
+    sig = np.tanh(2.8 * sig)                                           # harmonics so it carries on small speakers
+    return sig * np.minimum(1, t / .004) * np.minimum(1, (dur - t) / .02)
 
 
-def bass_note(f, dur, release=1.5):
-    n = int((dur + release) * SR)
-    t = np.arange(n) / SR
-    sig = np.sin(2 * np.pi * f * t) + .18 * np.sin(4 * np.pi * f * t)
-    env = np.minimum(1, t / .35) * np.where(t > dur, np.exp(-(t - dur) / (release / 4)), 1)
-    return sig * env
+def pad_chord(notes, dur):
+    t = env_t(dur + .4)
+    sig = np.zeros(len(t))
+    for m in notes:
+        for det in (-9, 0, 9):
+            fd = hz(m - 12) * 2 ** (det / 1200)
+            for h in range(1, 5):
+                sig += np.sin(2 * np.pi * fd * h * t + rng.uniform(0, 6)) / h ** 1.6
+    env = np.minimum(1, t / .25) * np.where(t > dur, np.exp(-(t - dur) / .12), 1)
+    return sig * env / (3 * len(notes))
 
 
-def reverb_ir(seconds=3.2, rt60=2.6, predelay=.022):
+def reverb_ir(seconds=2.2, rt60=1.6, predelay=.015):
     n = int(seconds * SR)
     t = np.arange(n) / SR
-    noise = rng.standard_normal((n, 2))
-    decay = np.exp(-6.91 * t / rt60)[:, None]
-    ir = lowpass(noise, 5200) * decay
-    ir = lowpass(ir, 2600) * .6 + ir * .4           # high end dies away faster
+    ir = lowpass(rng.standard_normal((n, 2)), 6000) * np.exp(-6.91 * t / rt60)[:, None]
     ir = np.concatenate([np.zeros((int(predelay * SR), 2)), ir])
     return ir / np.sqrt(np.sum(ir ** 2) / 2)
 
@@ -125,71 +168,134 @@ def convolve(x, ir):
     size = 1 << (n - 1).bit_length()
     out = np.empty((len(x), 2))
     for ch in range(2):
-        X = np.fft.rfft(x[:, ch], size)
-        H = np.fft.rfft(ir[:, ch], size)
-        out[:, ch] = np.fft.irfft(X * H, size)[:len(x)]
+        out[:, ch] = np.fft.irfft(np.fft.rfft(x[:, ch], size) * np.fft.rfft(ir[:, ch], size), size)[:len(x)]
     return out
 
 
-def add(buf, sig, start):
+def add(buf, sig, start, gain=1.0, p=0.0):
+    sig = pan(sig, p) if sig.ndim == 1 else sig.copy()
+    n = min(len(sig), int(.005 * SR))
+    sig[-n:] *= np.linspace(1, 0, n)[:, None]          # no sound ever stops on a click
     s = int(round(start * SR))
-    if s < 0:                                    # notes that began before the video did
+    if s < 0:
         sig, s = sig[-s:], 0
     e = min(len(buf), s + len(sig))
     if e > s:
-        buf[s:e] += sig[:e - s]
+        buf[s:e] += sig[:e - s] * gain
 
 
-def main(seconds, out):
+# ---------------------------------------------------------------- arrangement
+
+def cue_times(transcript, offset):
+    norm = lambda s: re.sub(r"[^a-z0-9']", '', s.lower())
+    words = [w for w in json.load(open(transcript))['words'] if w['type'] == 'word' and not w['text'].startswith('[')]
+
+    def at(word, n=0):
+        hits = [w['start'] + offset for w in words if norm(w['text']) == word]
+        return hits[n]
+    return {'title': at('apache'), 'dags': at('you'), 'arch': at('now'), 'short': at('team'),
+            'last_line': at("that's"), 'voice_end': words[-1]['end'] + offset}
+
+
+def main(seconds, out, transcript, offset):
     total = int(seconds * SR)
-    pad = np.zeros((total, 2))
-    keys = np.zeros((total, 2))
-    bass = np.zeros((total, 2))
+    drums, bass, keys, pads, sends, fx = (np.zeros((total, 2)) for _ in range(6))
+    c = cue_times(transcript, offset)
 
-    # Chords are laid out backwards from the end: the home chord gets the
-    # last bar, so it lands on the closing title, the A chord comes before
-    # it, and so on back past the start of the video (two bars per chord).
-    final = seconds - .4 - BAR
-    chords = [(final, seconds - final, 0)]       # (start, length, chord)
-    s, ci = final, 0
-    while s > 0:
-        s -= 2 * BAR
-        ci = (ci - 1) % len(PROG)
-        chords.append((s, 2 * BAR, ci))
-    chords.reverse()
+    # downbeats sit on the title, every bar is two seconds
+    t0 = c['title'] % BAR
+    bar_at = lambda t: int(round((t - t0) / BAR))
+    start = lambda b: t0 + b * BAR
+    b_title, b_dags, b_arch, b_short = (bar_at(c[k]) for k in ('title', 'dags', 'arch', 'short'))
+    b_break = int(np.floor((c['last_line'] - t0) / BAR + 1e-6))     # drums out for "That's Apache Airflow"
+    b_end = max(b_break + 1, bar_at(c['voice_end']))                 # the last chord, as the voice ends
+    nbars = int(np.ceil((seconds - t0) / BAR))
 
-    for start, length, ci in chords:
-        root, voicing = PROG[ci]
-        for k, m in enumerate(voicing):
-            add(pad, pan(pad_note(hz(m), length + .25), (k / (len(voicing) - 1) - .5) * .7), start - .2)
-        add(bass, pan(bass_note(hz(root), length), 0), start)
+    K, C = kick(), clap()
+    HATS = [hat() for _ in range(4)]
+    OPEN = hat(True)
+    CRASH = crash()
+    pluck_cache = {}
 
-    bar = 0
-    for start, length, ci in chords[:-1]:
-        for b0 in (start, start + BAR):
-            bar += 1
-            if b0 < 2.5:                         # pad alone for the opening
-                continue
-            pat = PATTERNS[(bar + bar // 8) % len(PATTERNS)]
-            for pos, idx, vel in pat:
-                tt = b0 + pos * BEAT / 2 + rng.normal(0, .008)
-                v = vel * rng.uniform(.85, 1.05)
-                add(keys, pan(piano_note(hz(LEAD[ci][idx]), v), rng.uniform(-.45, .45)), tt)
-    # a single resolving dyad on the home chord, then let it ring
-    for m, v in ((LEAD[0][0] - 12, .42), (LEAD[0][0], .36)):
-        add(keys, pan(piano_note(hz(m), v, 7), -.1), final + .02)
-    bars = 2 * len(chords) - 1
+    def pl(m, dur=.42):
+        if (m, dur) not in pluck_cache:
+            pluck_cache[(m, dur)] = pluck(hz(m), dur)
+        return pluck_cache[(m, dur)]
 
-    pad = lowpass(pad, 1900)
+    kicks = []
+    for b in range(nbars):
+        s = start(b)
+        root, voicing = PROG[b % 4]
+        if b == b_end:
+            root, voicing = PROG[0]
+        intro, full = b < b_title, b_title <= b < b_break
+
+        # drums
+        if b < b_break:
+            beats = 2 if b == b_title - 1 else 4        # kick drops out before the title hits
+            for k in range(beats):
+                add(drums, K, s + k * BEAT, .9)
+                kicks.append(s + k * BEAT)
+            for k in range(4):                           # off-beat hats, 16th ghosts once it is full
+                add(drums, HATS[(b + k) % 4], s + (k + .5) * BEAT, .32, (-1) ** k * .25)
+                if full:
+                    add(drums, HATS[(b + k + 1) % 4], s + (k + .25) * BEAT, .1, .3)
+                    add(drums, HATS[(b + k + 2) % 4], s + (k + .75) * BEAT, .12, -.3)
+            if full:
+                add(drums, C, s + BEAT, .55)
+                add(drums, C, s + 3 * BEAT, .55)
+                add(sends, pan(C, 0) * .55, s + BEAT, .25)
+                add(sends, pan(C, 0) * .55, s + 3 * BEAT, .25)
+                if b >= b_dags:
+                    add(drums, OPEN, s + 3.5 * BEAT, .16, .2)
+                if b + 1 in (b_dags, b_arch, b_short, b_break):     # a clap roll into the next chapter
+                    for k in range(4):
+                        add(drums, C, s + (3 + k / 4) * BEAT, .25 + .1 * k)
+        if b in (b_title, b_dags, b_arch, b_short, b_end):
+            add(fx, pan(CRASH, 0), s, .3)
+        if b == b_end:
+            add(drums, K, s, 1.0)
+        if b == b_title - 1 or b == b_break:
+            add(fx, pan(riser(BAR), .0), s, .22)
+
+        # bass: off-beat 8ths from four bars before the title, one long root to finish
+        if b_title - 4 <= b < b_break:
+            for k in range(4):
+                add(bass, bass_note(hz(root), BEAT * .42), s + (k + .5) * BEAT, .38)
+        elif b == b_end:
+            add(bass, bass_note(hz(root), BAR * .9), s, .5)
+
+        # plucked chord stabs, the pad underneath, the arp for the architecture
+        if b < b_break:
+            for pos in STABS:
+                for j, m in enumerate(voicing):
+                    add(keys, pl(m), s + pos * BEAT / 4, .24, (j / 3 - .5) * .6)
+        else:
+            for j, m in enumerate(voicing):
+                add(keys, pluck(hz(m), 2.6 if b == b_end else 1.9), s, .2, (j / 3 - .5) * .6)
+        add(pads, pad_chord(voicing, BAR), s, .42 if b >= b_break else .3)
+        if b_arch <= b < b_short:
+            arp = [voicing[i % 4] + 12 for i in (0, 1, 2, 3, 2, 1)]
+            for k in range(16):
+                add(keys, pl(arp[k % 6], .22), s + k * BEAT / 4, .09 + .03 * (k % 4 == 0), np.sin(k * .8) * .5)
+
+    # pump everything tonal from the kick, the classic house sidechain
+    pump = np.ones(total)
+    for k in kicks:
+        i = int(k * SR)
+        n = min(total - i, int(BEAT * SR))
+        if n > 0:
+            pump[i:i + n] = np.minimum(pump[i:i + n], 1 - .55 * np.exp(-np.arange(n) / SR / .1))
+    tonal = (bass + keys + pads) * pump[:, None]
+
     ir = reverb_ir()
-    mix = (pad * .5 + convolve(pad, ir) * .32
-           + keys * .32 + convolve(keys, ir) * .2
-           + lowpass(bass, 220) * .24)
+    mix = drums + tonal + fx + convolve(keys * .5 + pads * .6 + sends, ir) * .22
+    mix = highpass(highpass(mix, 32), 32)                              # nothing useful lives below here
 
     t = np.arange(total) / SR
-    mix *= np.minimum(1, t / 1.2)[:, None]                      # fade in
-    mix *= np.clip((seconds - t) / 3.5, 0, 1)[:, None] ** 1.5    # fade out
-    mix = np.tanh(mix / np.max(np.abs(mix)) * 1.1) / np.tanh(1.1) * .89
+    mix *= np.minimum(1, t / .05)[:, None]
+    mix *= np.clip((seconds - t) / 1.8, 0, 1)[:, None] ** 1.3      # fade the last chord out with the picture
+    mix = np.tanh(mix / np.max(np.abs(mix)) * 1.4) / np.tanh(1.4) * .89
 
     pcm = (mix * 32767).astype('<i2')
     with wave.open(out, 'wb') as w:
@@ -197,8 +303,10 @@ def main(seconds, out):
         w.setsampwidth(2)
         w.setframerate(SR)
         w.writeframes(pcm.tobytes())
-    print(f'wrote {out}: {seconds:.2f}s, {bars} bars at {BPM} BPM')
+    print(f'wrote {out}: {seconds:.2f}s at {BPM} BPM; drop {start(b_title):.2f}s, '
+          f'crashes at {", ".join(f"{start(b):.2f}" for b in (b_dags, b_arch, b_short))}s, '
+          f'break {start(b_break):.2f}s, last chord {start(b_end):.2f}s')
 
 
 if __name__ == '__main__':
-    main(float(sys.argv[1]), sys.argv[2])
+    main(float(sys.argv[1]), sys.argv[2], sys.argv[3], float(sys.argv[4]))

@@ -1,6 +1,6 @@
 # Apache Airflow, explained
 
-A 95-second explainer on a white canvas, voiced by the ElevenLabs "Crispus Roshan" voice, with soft original music underneath and motion graphics synced to every word. It comes in two cuts that share the voice, music and timing:
+A 95-second explainer on a white canvas, voiced by the ElevenLabs "Crispus Roshan" voice, over an upbeat original beat, with motion graphics synced to every word. It comes in two cuts that share the voice, music and timing:
 
 | Cut | File | For |
 |---|---|---|
@@ -31,8 +31,8 @@ Rendering is split into chunks, so a stopped build picks up where it left off wh
 | `index.html`, `style.css`, `scene.js` | The landscape cut: five scenes, the HUD, task grids, flow dots and camera |
 | `vertical.html`, `vertical.css`, `vertical.js` | The vertical cut: the same story laid out for a phone, plus the captions |
 | `../render-pro.js` | Renders frames in parallel with motion blur (`--width`/`--height` set the frame size) |
-| `make-music.py` | Writes the music: a calm D major piece (pad, soft electric piano, bass, reverb) at 70 BPM. It is synthesised from scratch, so there is nothing to license, and the last chord lands on the closing title |
-| `mix.js` | Voice over the music, which dips gently under speech, normalised to -14 LUFS |
+| `make-music.py` | Writes the music: an upbeat house-pop beat at 120 BPM in D major (kick, claps, hats, off-beat bass, plucked chords, an arp in the architecture part). It is synthesised from scratch, so there is nothing to license. It reads the voice timings so the beat drops on the title, a crash marks each chapter, the drums cut for "That's Apache Airflow" and the last chord hits as the voice ends |
+| `mix.js` | Voice over the beat, which dips under speech (about 10 dB below the voice), normalised to -14 LUFS |
 | `make-srt.js` | Writes the `.srt` captions for the landscape cut from the word timings |
 
 ## The five scenes
@@ -52,5 +52,5 @@ Rendering is split into chunks, so a stopped build picks up where it left off wh
 ## Changing things
 
 - **New voiceover take or new script:** replace `audio/vo.mp3` and `audio/vo.transcript.json` (an ElevenLabs transcript with word timings), then rebuild both cuts. Cues and captions follow the words, so most timing adjusts itself. If you change the words, update the `at('word')` calls in `scene.js` and `vertical.js` that point at them.
-- **Music level:** `MUSIC` in `mix.js`. **Music itself:** the chords, piano patterns and tempo are at the top of `make-music.py`.
+- **Music level:** `MUSIC` in `mix.js`, or per build: `MUSIC=0 ./build.sh` makes a voice-only version, `MUSIC=.3 ./build.sh` a louder beat. **Music itself:** tempo, chords and the stab rhythm are at the top of `make-music.py`.
 - **Code on screen:** `CODE` in `scene.js` and `vertical.js`. Keep the highlighted line numbers (`band(...)`) in step with it.

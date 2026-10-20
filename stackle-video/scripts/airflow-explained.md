@@ -6,7 +6,7 @@
 
 **Spoken words:** 245 · **Length:** 1:35 (voice 1:31, plus the closing title)
 
-**Format:** White-background motion graphics, voiced by the ElevenLabs "Crispus Roshan" voice (`eleven_v4`, calm delivery), with soft original music underneath and no sound effects. Source and build steps are in `stackle-video/source/airflow/`.
+**Format:** White-background motion graphics, voiced by the ElevenLabs "Crispus Roshan" voice (`eleven_v4`, calm delivery), over an upbeat original beat (120 BPM, synced to the chapters) and no sound effects. Source and build steps are in `stackle-video/source/airflow/`.
 
 **Cuts:** landscape for YouTube (`stackle-video/graphics/airflow-explained.mp4`, upload `airflow-explained.srt` as its captions), and vertical for TikTok, Reels and Shorts (`airflow-explained-vertical.mp4`, captions burned in word by word).
 

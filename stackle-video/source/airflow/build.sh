@@ -15,7 +15,7 @@ export NODE_PATH=${NODE_PATH:-$(npm root -g)}
 node make-cues.js audio/vo.transcript.json 1.0
 node ../render-pro.js "$PAGE" "$BASE.picture.mp4" ${SIZE[@]+"${SIZE[@]}"} "$@"
 DUR=$(node -e "process.stdout.write(String(JSON.parse(require('fs').readFileSync(process.argv[1])).duration))" "$BASE.picture.cues.json")
-python3 make-music.py "$DUR" "$BASE.music.wav"
+python3 make-music.py "$DUR" "$BASE.music.wav" audio/vo.transcript.json 1.0
 node mix.js "$BASE.picture.cues.json" "$BASE.music.wav" "$BASE.wav"
 ffmpeg -hide_banner -loglevel error -y -i "$BASE.picture.mp4" -i "$BASE.wav" -map 0:v -map 1:a -c:v copy -c:a aac -b:a 320k -movflags +faststart "$OUT"
 rm -f "$BASE.picture.mp4" "$BASE.picture.cues.json" "$BASE.music.wav" "$BASE.wav"

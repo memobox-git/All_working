@@ -1,7 +1,7 @@
-// Builds the soundtrack: the voiceover over the soft music bed from
-// make-music.py, which dips gently under the voice, normalised to YouTube
-// loudness (-14 LUFS). No sound effects.
+// Builds the soundtrack: the voiceover over the beat from make-music.py,
+// which dips under the voice, normalised to YouTube loudness (-14 LUFS).
 // Usage: node mix.js <video.cues.json> <music.wav> <out.wav>
+// MUSIC=0 node mix.js ... gives a voice-only soundtrack.
 const { spawnSync } = require('child_process');
 const fs = require('fs');
 const path = require('path');
@@ -9,8 +9,8 @@ const path = require('path');
 const [cuesFile, music, out] = process.argv.slice(2);
 const { duration, offset } = JSON.parse(fs.readFileSync(cuesFile, 'utf8'));
 
-// music level: sits about 12 dB under the voice once the mix is normalised
-const MUSIC = .13;
+// music level: the beat sits about 10 dB under the voice once the mix is normalised
+const MUSIC = Number(process.env.MUSIC ?? .21);
 const ff = args => {
   const r = spawnSync('ffmpeg', ['-hide_banner', '-loglevel', 'error', '-y', ...args], { encoding: 'utf8' });
   if (r.status) throw new Error('ffmpeg failed:\n' + r.stderr.split('\n').slice(-8).join('\n'));
