@@ -35,11 +35,11 @@ Rendering is split into chunks, so a stopped build picks up where it left off wh
 | `mix.js` | Voice over the beat, which dips under speech (about 10 dB below the voice), normalised to -14 LUFS |
 | `make-srt.js` | Writes the `.srt` captions for the landscape cut from the word timings |
 | `make-thumb.js` | Saves a cut's first frame (the opening card) as its thumbnail |
-| `img/thumbnail.png` | The thumbnail design (16:9). The landscape cut opens on it full frame. The vertical cut splits it in two along the gaps in the artwork and stacks the halves (cut lines in `vertical.css`) |
+| `img/thumbnail.png`, `img/thumbnail-vertical.png` | The thumbnail designs (16:9 for YouTube, 9:16 for TikTok). Each cut opens on its own one, full frame |
 
 ## The scenes
 
-0. **Opening card** (0:00): the thumbnail (`img/thumbnail.png`), with the beat already playing. It clears as the voice starts.
+0. **Opening card** (0:00): the thumbnail (`img/thumbnail.png`, or `img/thumbnail-vertical.png` in the vertical cut), with the beat already playing. It clears as the voice starts.
 1. **The problem** (0:02): the 6 AM grid of pipeline runs, and the three questions: when, in what order, what if one fails.
 2. **What it is** (0:17): the title, what Airflow is, "the right task, time and order", and 2014 → 2016 → 2019.
 3. **DAGs** (0:32): a TaskFlow DAG in Python next to the graph it makes. Tasks run in order once the ones before them succeed.
@@ -56,6 +56,6 @@ Rendering is split into chunks, so a stopped build picks up where it left off wh
 
 - **New voiceover take or new script:** replace `audio/vo.mp3` and `audio/vo.transcript.json` (an ElevenLabs transcript with word timings), then rebuild both cuts. Cues and captions follow the words, so most timing adjusts itself. If you change the words, update the `at('word')` calls in `scene.js` and `vertical.js` that point at them.
 - **Music level:** `MUSIC` in `mix.js`, or per build: `MUSIC=0 ./build.sh` makes a voice-only version, `MUSIC=.3 ./build.sh` a louder beat. **Music itself:** tempo, chords and the stab rhythm are at the top of `make-music.py`.
-- **New thumbnail:** replace `img/thumbnail.png`, then rebuild. If the layout changes, move the vertical cut lines (`#th-text` and `#th-person` in `vertical.css`) so no text or hand is split.
+- **New thumbnail:** replace `img/thumbnail.png` (16:9) and `img/thumbnail-vertical.png` (9:16), then rebuild. Both should have a #FEFEFE or white background, which fills any gap left by rounding.
 - **Next episode:** the series name and episode number are in the thumbnail, and in the top bar and closing credit of `index.html` and `vertical.html`.
 - **Code on screen:** `CODE` in `scene.js` and `vertical.js`. Keep the highlighted line numbers (`band(...)`) in step with it.

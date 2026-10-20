@@ -37,15 +37,9 @@ body{font-family:PJS,sans-serif;color:var(--ink);position:relative;-webkit-font-
 .tile.sm{width:38px;height:38px;border-radius:11px}
 .tile.sm svg{width:21px;height:21px}
 
-/* S0 · the opening card: the 16:9 thumbnail (1672x941) split in two and stacked for 9:16.
-   The cut follows the gaps in the artwork: "MINUTES" ends at x 1071 and the hair starts at 1134;
-   lower down, "Airflow" ends at 921 and the pointing finger starts at 948, and below the
-   baseline (y 800) the shirt's shading starts at x 828. Clip paths are in the image's own
-   pixels; each part is then scaled and placed. */
+/* S0 · the opening card: the vertical thumbnail, full frame (its background is #FEFEFE) */
 #s0{visibility:visible;opacity:1;background:#FEFEFE}
-.th-part{position:absolute;left:0;top:0;width:1672px;height:941px;transform-origin:0 0}
-#th-text{clip-path:polygon(20px 75px,1102px 75px,1102px 545px,924px 545px,924px 800px,400px 800px,400px 941px,20px 941px);transform:translate(21.52px,110.69px) scale(.9242)}
-#th-person{clip-path:polygon(1102px 0,1672px 0,1672px 941px,820px 941px,820px 800px,934px 800px,934px 545px,1102px 545px);transform:translate(-725.72px,904px) scale(1.08)}
+.th-full{position:absolute;left:0;top:0;width:1080px;height:1920px}
 
 /* S1 · the morning run */
 .s1-head{position:absolute;top:330px;left:0;right:0;display:flex;flex-direction:column;align-items:center}
