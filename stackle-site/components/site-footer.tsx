@@ -1,85 +1,96 @@
 import Link from "next/link";
 import { site } from "@/content/site";
-import { ArrowUpRight, Pixel } from "./icons";
+import { Logo } from "./site-header";
+import { ArrowRight } from "./icons";
 
-const links = [
-  { href: "/courses", label: "Academy" },
-  { href: "/career", label: "Career" },
-  { href: "/resources", label: "Resources" },
-  { href: site.coachUrl, label: "AI resume coach" },
-  { href: site.socials.linkedin, label: "LinkedIn" },
-  { href: site.socials.meetup, label: "Meetup" },
-  { href: site.socials.substack, label: "Newsletter" },
-  { href: `${site.appUrl}/auth`, label: "Student login" },
+const cols = [
+  {
+    title: "Learn",
+    links: [
+      { href: "/courses", label: "Academy" },
+      { href: "/courses/master-ai-engineering-in-10-weeks-get-hired", label: "AI Engineering" },
+      { href: "/courses/data-engineering-masterclass-get-job-ready-in-10-weeks", label: "Data Engineering" },
+      { href: "/resources", label: "Free resources" },
+    ],
+  },
+  {
+    title: "Get hired",
+    links: [
+      { href: "/career", label: "Career service" },
+      { href: site.coachUrl, label: "AI resume coach" },
+      { href: site.bookCall, label: "Book a free call" },
+      { href: `${site.appUrl}/auth`, label: "Student login" },
+    ],
+  },
+  {
+    title: "Follow",
+    links: [
+      { href: site.socials.linkedin, label: "LinkedIn" },
+      { href: site.socials.meetup, label: "Meetup" },
+      { href: site.socials.substack, label: "Newsletter" },
+      { href: `mailto:${site.email}`, label: site.email },
+    ],
+  },
 ];
 
 export function SiteFooter() {
   return (
-    <footer className="row row-night on-night border-t border-night-line">
-      <div className="row-grid">
-        <div className="row-gutter">
-          <span className="row-num">FIN</span>
-        </div>
-        <div className="row-col">
-          <div className="grid border-b border-night-line md:grid-cols-[1fr_2.2fr]">
-            <a
-              href={site.bookCall}
-              target="_blank"
-              rel="noreferrer"
-              className="group flex min-h-[180px] flex-col justify-between border-b border-night-line p-6 transition-colors hover:bg-night-2 md:min-h-[240px] md:border-b-0 md:border-r md:p-8"
-            >
-              <span className="t-mono-sm text-night-muted">01</span>
-              <span className="flex items-end justify-between gap-6">
-                <span className="text-[32px] leading-[1.05] tracking-[-0.035em] md:text-[44px]">Book a free call</span>
-                <ArrowUpRight size={26} className="mb-2 text-night-muted transition-transform group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-paper" />
-              </span>
+    <footer className="on-night bg-night text-paper">
+      <div className="mx-auto max-w-[1200px] px-5 md:px-10">
+        <div className="grid gap-10 border-b border-night-line py-16 md:grid-cols-[1.2fr_1fr] md:items-end md:py-24">
+          <div>
+            <span className="label">Next step</span>
+            <h2 className="t-h2 mt-6 max-w-[560px]">
+              Not sure where to start? <span className="t-second">Talk it through with Chris.</span>
+            </h2>
+          </div>
+          <div className="flex flex-col gap-3 sm:flex-row md:justify-end">
+            <a href={site.bookCall} target="_blank" rel="noreferrer" className="btn btn-paper">
+              Book a free call <ArrowRight />
             </a>
-            <ul className="grid grid-cols-2 gap-px bg-night-line sm:grid-cols-4">
-              {links.map((l, i) => {
-                const external = l.href.startsWith("http");
-                return (
-                  <li key={l.label} className="bg-night">
-                    <a
-                      href={l.href}
-                      {...(external ? { target: "_blank", rel: "noreferrer" } : {})}
-                      className="group flex h-full min-h-[110px] flex-col justify-between p-5 transition-colors hover:bg-night-2 md:min-h-[120px] md:p-6"
-                    >
-                      <span className="t-mono-sm text-night-muted">{String(i + 2).padStart(2, "0")}</span>
-                      <span className="flex items-end justify-between gap-3">
-                        <span className="text-[17px] leading-tight tracking-[-0.02em] md:text-[18px]">{l.label}</span>
-                        <ArrowUpRight size={14} className="mb-1 shrink-0 text-night-muted group-hover:text-paper" />
-                      </span>
-                    </a>
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-
-          <div className="flex flex-wrap items-center justify-between gap-4 border-b border-night-line px-6 py-7 md:px-8">
-            <Link href="/" className="inline-flex items-center gap-2.5" aria-label="Stackle home">
-              <Pixel name="logo" size={20} />
-              <span className="text-[20px] font-medium tracking-[-0.03em]">Stackle</span>
+            <Link href="/courses" className="btn btn-line">
+              See the cohorts
             </Link>
-            <p className="t-mono-sm text-night-muted">Built by engineers, for engineers</p>
-          </div>
-
-          <div aria-hidden="true" className="select-none overflow-hidden px-4 pt-10 md:px-8 md:pt-14">
-            <div className="t-pixel bg-gradient-to-b from-[#2a2a27] to-night bg-clip-text text-center text-[23vw] leading-[0.8] tracking-[-0.04em] text-transparent xl:text-[268px]">
-              STACKLE
-            </div>
-          </div>
-
-          <div className="flex flex-col gap-3 border-t border-night-line px-6 py-5 sm:flex-row sm:items-center sm:justify-between md:px-8">
-            <p className="t-mono-sm text-night-muted">© {new Date().getFullYear()} Stackle</p>
-            <nav aria-label="Legal" className="t-mono-sm flex gap-5 text-night-muted">
-              <Link href="/privacy-policy" className="hover:text-paper">Privacy</Link>
-              <Link href="/terms" className="hover:text-paper">Terms</Link>
-              <a href={`mailto:${site.email}`} className="hover:text-paper">{site.email}</a>
-            </nav>
           </div>
         </div>
-        <div />
+
+        <div className="grid gap-10 py-14 md:grid-cols-[1.2fr_repeat(3,1fr)]">
+          <div>
+            <Logo dark />
+            <p className="mt-5 max-w-[280px] text-[15px] leading-relaxed text-night-muted">Live cohorts in data and AI engineering, taught by an engineer who hires.</p>
+          </div>
+          {cols.map((c) => (
+            <div key={c.title}>
+              <p className="t-mono-sm text-night-muted">{c.title}</p>
+              <ul className="mt-4 grid gap-2.5">
+                {c.links.map((l) => {
+                  const external = /^(https?:|mailto:)/.test(l.href);
+                  return (
+                    <li key={l.label}>
+                      <a href={l.href} {...(external && !l.href.startsWith("mailto:") ? { target: "_blank", rel: "noreferrer" } : {})} className="text-[15px] text-paper/85 transition-colors hover:text-paper">
+                        {l.label}
+                      </a>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          ))}
+        </div>
+
+        <div aria-hidden="true" className="select-none overflow-hidden border-t border-night-line pt-6">
+          <div className="t-serif bg-gradient-to-b from-[#3a3733] to-night bg-clip-text text-center text-[27vw] leading-[0.82] tracking-[-0.045em] text-transparent xl:text-[300px]">
+            Stackle<span className="italic">.</span>
+          </div>
+        </div>
+
+        <div className="flex flex-col gap-3 border-t border-night-line py-6 text-[13.5px] text-night-muted sm:flex-row sm:items-center sm:justify-between">
+          <p>© {new Date().getFullYear()} Stackle. Built by engineers, for engineers.</p>
+          <nav aria-label="Legal" className="flex gap-6">
+            <Link href="/privacy-policy" className="hover:text-paper">Privacy</Link>
+            <Link href="/terms" className="hover:text-paper">Terms</Link>
+          </nav>
+        </div>
       </div>
     </footer>
   );

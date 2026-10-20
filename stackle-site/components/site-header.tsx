@@ -4,19 +4,25 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { nav, site } from "@/content/site";
-import { Menu, Pixel, ArrowUpRight } from "./icons";
+import { ArrowRight, Menu, Pixel } from "./icons";
 
-export function Logo({ className = "" }: { className?: string }) {
+export function Logo({ className = "", sub = true, dark = false }: { className?: string; sub?: boolean; dark?: boolean }) {
   return (
-    <Link href="/" className={`inline-flex items-center gap-2.5 ${className}`} aria-label="Stackle home">
-      <Pixel name="logo" size={20} />
-      <span className="text-[20px] font-medium tracking-[-0.03em]">Stackle</span>
+    <Link href="/" className={`inline-flex items-center gap-3 ${className}`} aria-label="Stackle home">
+      <span className={`grid h-9 w-9 place-items-center rounded-[10px] ${dark ? "bg-paper text-ink" : "bg-ink text-paper"}`}>
+        <Pixel name="logo" size={17} />
+      </span>
+      <span className="flex flex-col leading-none">
+        <span className="t-serif text-[23px] tracking-[-0.02em]">Stackle</span>
+        {sub && <span className={`mt-1 text-[9.5px] font-semibold uppercase tracking-[0.14em] ${dark ? "text-night-muted" : "text-muted"}`}>Data &amp; AI careers</span>}
+      </span>
     </Link>
   );
 }
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
   useEffect(() => setOpen(false), [pathname]);
   useEffect(() => {
@@ -25,71 +31,68 @@ export function SiteHeader() {
       document.body.style.overflow = "";
     };
   }, [open]);
+  useEffect(() => {
+    const on = () => setScrolled(window.scrollY > 8);
+    on();
+    window.addEventListener("scroll", on, { passive: true });
+    return () => window.removeEventListener("scroll", on);
+  }, []);
 
   const isActive = (href: string) => !href.includes("#") && (pathname === href || pathname.startsWith(href + "/"));
 
   return (
-    <header className="sticky top-0 z-50 border-b border-line bg-paper/90 backdrop-blur-md">
-      <div className="row-grid">
-        <div />
-        <div className="flex h-[68px] items-center justify-between gap-4 px-5 md:h-[72px] md:px-6 xl:px-4">
-          <Logo />
-          <nav aria-label="Main" className="hidden border border-line lg:flex">
-            {nav.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                aria-current={isActive(item.href) ? "page" : undefined}
-                className={`t-mono px-4 py-[13px] transition-colors hover:bg-white hover:text-ink ${isActive(item.href) ? "bg-ink text-paper hover:!bg-ink hover:!text-paper" : "text-muted"}`}
-              >
-                {item.label}
-              </Link>
-            ))}
-          </nav>
-          <div className="flex items-center gap-2">
-            <a href={`${site.appUrl}/auth`} className="t-mono hidden px-3 py-3 text-muted hover:text-ink sm:inline-flex">
-              Sign in
-            </a>
-            <Link href="/courses" className="btn btn-line btn-chrome">
-              Enroll
-            </Link>
-            <button
-              type="button"
-              className="grid h-10 w-10 place-items-center border border-ink lg:hidden"
-              aria-expanded={open}
-              aria-controls="mobile-menu"
-              aria-label={open ? "Close menu" : "Open menu"}
-              onClick={() => setOpen((v) => !v)}
+    <header className={`sticky top-0 z-50 transition-[background-color,box-shadow,border-color] duration-200 ${scrolled || open ? "border-b border-line bg-paper/90 shadow-[0_10px_30px_-24px_rgba(21,21,19,0.35)] backdrop-blur-md" : "border-b border-transparent bg-paper"}`}>
+      <div className="mx-auto flex h-[72px] max-w-[1200px] items-center justify-between gap-4 px-5 md:h-[80px] md:px-10">
+        <Logo />
+        <nav aria-label="Main" className="hidden items-center gap-1 lg:flex">
+          {nav.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              aria-current={isActive(item.href) ? "page" : undefined}
+              className={`rounded-[8px] px-3.5 py-2 text-[15.5px] transition-colors hover:text-ink ${isActive(item.href) ? "text-ink underline decoration-1 underline-offset-[10px]" : "text-ink-2"}`}
             >
-              <Menu open={open} />
-            </button>
-          </div>
+              {item.label}
+            </Link>
+          ))}
+        </nav>
+        <div className="flex items-center gap-2">
+          <a href={site.bookCall} target="_blank" rel="noreferrer" className="btn btn-line btn-chrome hidden sm:inline-flex">
+            Book a call
+          </a>
+          <Link href="/courses" className="btn btn-ink btn-chrome">
+            Enroll
+          </Link>
+          <button
+            type="button"
+            className="grid h-11 w-11 place-items-center rounded-[10px] border border-line-strong bg-white lg:hidden"
+            aria-expanded={open}
+            aria-controls="mobile-menu"
+            aria-label={open ? "Close menu" : "Open menu"}
+            onClick={() => setOpen((v) => !v)}
+          >
+            <Menu open={open} />
+          </button>
         </div>
-        <div />
       </div>
 
       {open && (
-        <div id="mobile-menu" className="on-night fixed inset-x-0 bottom-0 top-[68px] overflow-y-auto bg-night text-paper lg:hidden">
-          <nav aria-label="Mobile" className="flex flex-col">
-            {[...nav, { href: `${site.appUrl}/auth`, label: "Sign in" }].map((item, i) => (
-              <a
-                key={item.href}
-                href={item.href}
-                className="flex items-end justify-between border-b border-night-line px-5 pb-5 pt-6"
-                onClick={() => setOpen(false)}
-              >
-                <span>
-                  <span className="t-mono-sm block text-night-muted">{String(i + 1).padStart(2, "0")}</span>
-                  <span className="mt-3 block text-[28px] tracking-[-0.03em]">{item.label}</span>
-                </span>
-                <ArrowUpRight size={18} className="mb-2 text-night-muted" />
+        <div id="mobile-menu" className="fixed inset-x-0 bottom-0 top-[72px] overflow-y-auto bg-paper lg:hidden">
+          <nav aria-label="Mobile" className="flex flex-col px-5 pt-4">
+            {[...nav, { href: `${site.appUrl}/auth`, label: "Student login" }].map((item) => (
+              <a key={item.href} href={item.href} className="flex items-center justify-between border-b border-line py-5" onClick={() => setOpen(false)}>
+                <span className="t-serif text-[30px] tracking-[-0.02em]">{item.label}</span>
+                <ArrowRight size={16} className="text-muted" />
               </a>
             ))}
           </nav>
-          <div className="p-5">
-            <Link href="/courses" className="btn btn-paper btn-block" onClick={() => setOpen(false)}>
-              <Pixel name="spark" size={14} /> See the next cohorts
+          <div className="grid gap-3 p-5">
+            <Link href="/courses" className="btn btn-ink btn-block" onClick={() => setOpen(false)}>
+              See the next cohorts <ArrowRight />
             </Link>
+            <a href={site.bookCall} target="_blank" rel="noreferrer" className="btn btn-line btn-block">
+              Book a free call
+            </a>
           </div>
         </div>
       )}

@@ -7,7 +7,7 @@ export type CourseCopy = {
   title: string;
   subtitle: string;
   category: string;
-  glyph: "flow" | "db" | "grid";
+  glyph: "flow" | "db" | "grid" | "spark";
   liveHours?: number;
   outcomes: string[]; // what you leave with
   forWho?: string[]; // overrides target_personas from the database when set
@@ -22,7 +22,7 @@ export const courseCopy: Record<string, CourseCopy> = {
     title: "AI Engineering Masterclass",
     subtitle: "Eight weeks of live build-alongs on LLMs, RAG, agents and evals. Every week you ship something real, and you finish with a production AI app in your portfolio.",
     category: "AI engineering",
-    glyph: "flow",
+    glyph: "spark",
     liveHours: 16,
     outcomes: [
       "A deployed AI app you built live, week by week",

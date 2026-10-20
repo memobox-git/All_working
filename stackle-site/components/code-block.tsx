@@ -64,8 +64,8 @@ export function CodeBlock({
   return (
     <figure className={`code-win on-night not-prose ${className}`}>
       <figcaption className="flex items-center justify-between gap-3 border-b border-night-line pl-4 pr-1.5">
-        <span className="t-mono-sm flex items-center gap-2 py-2.5 text-paper">
-          <span className="h-1.5 w-1.5 bg-paper" aria-hidden="true" />
+        <span className="flex items-center gap-2 py-2.5 font-mono text-[12px] text-paper/90">
+          <span className="h-1.5 w-1.5 rounded-full bg-paper/70" aria-hidden="true" />
           {filename ?? language}
         </span>
         <CopyButton text={code} />

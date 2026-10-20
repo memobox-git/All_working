@@ -1,16 +1,13 @@
 import Link from "next/link";
 import { Row, SectionHead } from "@/components/row";
-import { HeroGrid } from "@/components/home/hero-grid";
-import { HowItWorks } from "@/components/home/how-it-works";
-import { Concentric } from "@/components/home/concentric";
+import { HeroCards } from "@/components/home/hero-cards";
 import { CourseCard } from "@/components/course/course-card";
 import { ResourceCard } from "@/components/resource-card";
 import { CareerPlans } from "@/components/career/plans";
 import { CodeBlock } from "@/components/code-block";
 import { Accordion } from "@/components/accordion";
-import { ArrowUpRight, Pixel } from "@/components/icons";
-import { IsoPipeline, IsoRounds, IsoSchedule, IsoStack } from "@/components/illustrations";
-import { getCourses, fmtDate, fmtDays } from "@/lib/courses";
+import { ArrowRight, Pixel, type PixelName } from "@/components/icons";
+import { getCourses, fmtDate } from "@/lib/courses";
 import { instructor, proof, site } from "@/content/site";
 import { resources } from "@/content/resources";
 
@@ -44,9 +41,23 @@ def orders_daily():
 orders_daily()`;
 
 const rejections = [
-  { n: "#1", title: "You can't explain your own project", body: "Your resume says you built a real-time pipeline with Kafka and Spark. The first follow-up is “Why Kafka?”, and a tutorial project has no answer." },
-  { n: "#2", title: "Fifteen tools, nothing deep", body: "The interviewer picks one tool and asks how it works inside. Three tools you know deeply are worth more than fifteen you've only touched." },
-  { n: "#3", title: "Your story starts in the wrong place", body: "“Walk me through a pipeline you've built” should start with the business problem, not the tech stack." },
+  { title: "You can't explain your own project", body: "Your resume says you built a real-time pipeline with Kafka and Spark. The first follow-up is “Why Kafka?”, and a tutorial project has no answer." },
+  { title: "Fifteen tools, nothing deep", body: "The interviewer picks one tool and asks how it works inside. Three tools you know deeply are worth more than fifteen you've only touched." },
+  { title: "Your story starts in the wrong place", body: "“Walk me through a pipeline you've built” should start with the business problem, not the tech stack." },
+];
+
+const features: { icon: PixelName; title: string; body: string }[] = [
+  { icon: "play", title: "Live, not pre-recorded", body: "Three live sessions a week with Chris. Ask questions as you build, and keep every recording and file for life." },
+  { icon: "code", title: "Real projects, every week", body: "End-to-end pipelines on a modern cloud stack, or a deployed AI app: work you can show, and explain, in an interview." },
+  { icon: "user", title: "Taught by someone who hires", body: "Chris has interviewed 200+ engineers. You learn what interviewers actually probe, and what gets people rejected." },
+  { icon: "target", title: "A Career track when you need it", body: "Add 1:1 help with your resume, referrals and mock interviews, so the skills turn into offers." },
+];
+
+const steps = [
+  { n: "01", title: "Pick your cohort", body: "Choose AI or Data Engineering and a start date. Not sure? Book a free call and Chris will tell you straight." },
+  { n: "02", title: "Learn live", body: "Monday, Wednesday and Friday sessions. Build along in class, then keep going on your own between them." },
+  { n: "03", title: "Ship your projects", body: "Every week ends in working code that goes into your portfolio: models, pipelines, streams, DAGs, AI apps." },
+  { n: "04", title: "Present at Demo Day", body: "Show your project and practise explaining every choice in it, the part most interviews actually test." },
 ];
 
 const faqs = [
@@ -54,84 +65,57 @@ const faqs = [
   { q: "Are the sessions live?", a: "Yes. Cohorts meet live three times a week (Monday, Wednesday and Friday). Every session is recorded, and you keep lifetime access to the recordings and resources." },
   { q: "Which course should I take?", a: "If you already write some Python or SQL and want to build data platforms, take Data Engineering. If you want to build AI products (LLM apps, RAG, agents), take AI Engineering; it only needs basic Python. Not sure? Book a free call and Chris will tell you straight." },
   { q: "How much does it cost?", a: "Each masterclass is $1,497 on the Standard track. The Career track ($1,997) adds 1:1 job help: a resume rewrite, referral support and mock interviews." },
-  { q: "I only need help with my resume and LinkedIn.", a: "That's the Career service: an ATS-friendly resume rewrite, LinkedIn optimisation, positioning and a 1:1 review call, from $250. See the Career page." },
-  { q: "Do I need an account to enroll?", a: "Yes. When you enroll you create a Stackle account, pay securely with Stripe, and get access to your learner dashboard with the sessions, recordings and materials." },
+  { q: "I only need help with my resume and LinkedIn.", a: "That's the Career service: an ATS-friendly resume rewrite, LinkedIn optimisation, positioning and a 1:1 review call, from $250. Or start with the free AI resume coach." },
+  { q: "Do I need an account to enroll?", a: "Yes. When you enroll you create a Stackle account, pay securely with Stripe, and get your learner dashboard with the sessions, recordings and materials." },
 ];
 
 export default async function Home() {
   const courses = await getCourses();
   const open = courses.filter((c) => c.cohorts.length);
-  const starts = open.flatMap((c) => c.cohorts.map((k) => k.start)).sort();
-  const next = starts[0];
-  const nextShort = next ? fmtDate(next, { month: "short", day: "numeric" }).toUpperCase() : "TBA";
-  const days = open[0]?.cohorts[0]?.days ?? [];
+  const next = open.flatMap((c) => c.cohorts.map((k) => k.start)).sort()[0];
+  const heroCourse = courses.find((c) => c.slug === "data-engineering-masterclass-get-job-ready-in-10-weeks") ?? open[0] ?? courses[0];
   const featured = resources.filter((r) => r.featured).concat(resources.filter((r) => !r.featured)).slice(0, 6);
 
   return (
     <>
-      {/* 01 announcement */}
-      <Row n="01" tone="white" showInlineNum={false}>
-        <Link href="/courses" className="t-mono pad flex items-center justify-center gap-3 py-[18px] text-center hover:underline">
-          <span className="animate-blink inline-block h-2 w-2 bg-ink" aria-hidden="true" />
-          {next ? (
-            <span>
-              Next cohorts start {fmtDate(next, { month: "short", day: "numeric" })}
-              <span className="hidden sm:inline"> · {open.map((c) => c.copy.short).join(" + ")}</span>
-            </span>
-          ) : (
-            <span>New cohorts announced soon</span>
-          )}
-        </Link>
-      </Row>
-
-      {/* 02 hero */}
-      <Row n="02">
-        <div className="pad pb-14 pt-8 md:pb-24 md:pt-24">
-          <h1 className="t-display reveal">
-            <span className="flex items-start gap-3 md:gap-5">
-              <Pixel name="spark" size={44} className="mt-[0.12em] hidden h-[0.6em] w-[0.6em] text-faint sm:block" />
-              <span>
-                Learn the skills
-                <br />
-                that get you <span className="t-pixel">hired</span>.
-              </span>
-            </span>
-          </h1>
-          <div className="mt-10 grid gap-10 md:mt-16 md:grid-cols-[1.25fr_1fr] md:items-start md:gap-16">
-            <p className="t-lede reveal max-w-[560px] text-ink-2" style={{ ["--d" as string]: ".1s" }}>
-              Live cohorts in data and AI engineering, taught by Chris: 10+ years in data engineering and 200+ engineers interviewed. You learn live, build real
-              projects and practise explaining them, the way interviews actually test you.
+      {/* hero */}
+      <section className="fill-ruled relative overflow-hidden">
+        <div className="mx-auto grid max-w-[1200px] gap-12 px-5 pb-20 pt-10 md:px-10 md:pb-28 md:pt-20 lg:grid-cols-[1.25fr_1fr] lg:items-center lg:gap-10">
+          <div>
+            <span className="label reveal">Live cohorts · Data &amp; AI engineering</span>
+            <h1 className="t-display reveal mt-7" style={{ ["--d" as string]: ".05s" }}>
+              Learn the skills that <span className="t-accent">get you hired.</span>
+            </h1>
+            <p className="t-lede reveal mt-7 max-w-[560px]" style={{ ["--d" as string]: ".1s" }}>
+              Small live cohorts in data and AI engineering, taught by Chris: 10+ years in data engineering and 200+ engineers interviewed. You build real projects
+              and learn to explain them the way interviews test you.
             </p>
-            <div className="reveal" style={{ ["--d" as string]: ".2s" }}>
-              <div className="flex flex-wrap items-center gap-x-8 gap-y-5">
-                <Link href="/courses" className="btn btn-ink">
-                  <Pixel name="spark" size={14} /> See the next cohorts
-                </Link>
-                <Link href="/resources" className="dlink">
-                  Free roadmaps <ArrowUpRight />
-                </Link>
-              </div>
-              <p className="t-mono-sm mt-6 text-muted">
-                $ next_cohort --start {next ? fmtDate(next, { year: "numeric", month: "2-digit", day: "2-digit" }) : "tba"} --days {fmtDays(days).toLowerCase().replace(/ \/ /g, ",")}
-              </p>
+            <div className="reveal mt-9 flex flex-wrap gap-3" style={{ ["--d" as string]: ".15s" }}>
+              <Link href="/courses" className="btn btn-ink">
+                See the next cohorts <ArrowRight />
+              </Link>
+              <Link href="/resources" className="btn btn-line">
+                Free resources
+              </Link>
             </div>
+            <ul className="dot-list reveal mt-8 grid gap-x-8 gap-y-2.5 text-[14.5px] text-ink-2 sm:grid-cols-2" style={{ ["--d" as string]: ".2s" }}>
+              <li>Taught live, three sessions a week</li>
+              <li>Recordings and materials for life</li>
+              <li>{next ? `Next cohort starts ${fmtDate(next, { month: "long", day: "numeric" })}` : "New cohorts announced soon"}</li>
+              <li>Career track with 1:1 job help</li>
+            </ul>
           </div>
+          {heroCourse && <HeroCards course={heroCourse} />}
         </div>
-      </Row>
+      </section>
 
-      {/* 03 pipeline board */}
-      <Row n="03" showInlineNum={false}>
-        <HeroGrid nextCohort={nextShort} />
-      </Row>
-
-      {/* 04 industries */}
-      <Row n="04">
-        <div className="pad grid gap-6 py-10 md:grid-cols-[240px_1fr] md:items-center md:py-12">
+      {/* industries */}
+      <Row tone="white">
+        <div className="pad grid gap-6 py-10 md:grid-cols-[230px_1fr] md:items-center md:py-12">
           <p className="t-mono-sm text-muted">Chris has hired engineers for teams in</p>
-          <ul className="grid grid-cols-2 gap-y-6 md:grid-cols-4">
-            {instructor.industries.map((x, i) => (
-              <li key={x} className="flex items-center gap-3 text-[18px] tracking-[-0.02em] text-ink-2 md:text-[20px]">
-                <Pixel name={(["target", "lock", "flow", "bolt"] as const)[i]} size={18} className="text-muted" />
+          <ul className="grid grid-cols-2 gap-x-6 gap-y-4 md:grid-cols-4">
+            {instructor.industries.map((x) => (
+              <li key={x} className="t-serif text-[22px] tracking-[-0.01em] text-ink-2 md:text-[24px]">
                 {x}
               </li>
             ))}
@@ -139,71 +123,36 @@ export default async function Home() {
         </div>
       </Row>
 
-      {/* 05 the problem */}
-      <Row n="05" tone="night">
+      {/* the problem */}
+      <Row>
         <div className="pad sec">
-          <SectionHead label="Across the table" title="Why good engineers" second="still get rejected." lede="From more than 200 interviews Chris has run, the same few reasons come up again and again. None of them is a missing course certificate." />
-          <div className="mt-12 grid border hairline md:mt-16 md:grid-cols-3">
+          <SectionHead label="Sound familiar?" title="Good engineers still get rejected" second="for the same few reasons." lede="From more than 200 interviews Chris has run, these come up again and again. None of them is a missing certificate." />
+          <div className="mt-12 grid gap-5 md:mt-16 md:grid-cols-3">
             {rejections.map((r, i) => (
-              <div key={r.n} className={`reveal flex flex-col gap-6 p-6 md:p-8 ${i ? "border-t hairline md:border-l md:border-t-0" : ""}`} style={{ ["--d" as string]: `${i * 0.08}s` }}>
-                <span className="t-pixel grid h-14 w-16 place-items-center border hairline text-[30px]">{r.n}</span>
-                <div>
-                  <h3 className="t-h4">{r.title}</h3>
-                  <p className="t-small mt-3 !text-night-muted">{r.body}</p>
-                </div>
+              <div key={r.title} className="panel reveal relative overflow-hidden p-6 md:p-7" style={{ ["--d" as string]: `${i * 0.06}s` }}>
+                <span className="absolute inset-y-0 left-0 w-[3px] bg-ink" aria-hidden="true" />
+                <p className="t-serif text-[15px] text-muted">Reason {String(i + 1).padStart(2, "0")}</p>
+                <h3 className="t-h4 mt-3">{r.title}</h3>
+                <p className="t-small mt-3">{r.body}</p>
               </div>
             ))}
-            <div className="grid border-t hairline md:col-span-3 md:grid-cols-2">
-              <div className="flex flex-col justify-between gap-10 p-6 md:p-10">
-                <div>
-                  <p className="t-mono-sm text-night-muted">With Stackle</p>
-                  <h3 className="t-h2 mt-5">
-                    Learn it, build it,
-                    <br />
-                    <span className="t-pixel">explain it.</span>
-                  </h3>
-                </div>
-                <div>
-                  <Link href="/courses" className="btn btn-paper">
-                    <Pixel name="spark" size={14} /> Find your cohort
-                  </Link>
-                </div>
-              </div>
-              <div className="fill-iso grid min-h-[260px] place-items-center border-t hairline p-8 md:border-l md:border-t-0">
-                <IsoRounds className="w-full max-w-[360px] [&_polygon]:[stroke:#f4f4f1]" />
-              </div>
-            </div>
           </div>
+          <Link href="/courses" className="dlink reveal mt-8">
+            How the cohorts fix this <ArrowRight />
+          </Link>
         </div>
       </Row>
 
-      {/* 06 how it works */}
-      <Row n="06">
-        <div className="pad pt-16 md:pt-28">
-          <SectionHead label="How it works" title="From first class to final round" second="in four steps." />
-        </div>
-        <div className="mt-12 md:mt-16">
-          <HowItWorks
-            steps={[
-              { key: "01", title: "Learn", second: "live", tag: "Mon · Wed · Fri", body: "Three live sessions a week with Chris. Every session is recorded, and you keep the recordings and materials for life.", art: <IsoSchedule className="w-full" /> },
-              { key: "02", title: "Build", second: "real projects", tag: "Portfolio", body: "Build along in class and ship your own work: end-to-end pipelines on a modern cloud stack, or a deployed AI app.", art: <IsoPipeline className="w-full" /> },
-              { key: "03", title: "Show", second: "your work", tag: "Demo Day", body: "Present your project and practise explaining every choice in it, the part most interviews actually test.", art: <IsoRounds className="w-full" /> },
-              { key: "04", title: "Get", second: "hired", tag: "Career track", body: "On the Career track, Chris works with you 1:1 on your resume, referrals and mock interviews.", art: <IsoStack className="w-full" /> },
-            ]}
-          />
-        </div>
-      </Row>
-
-      {/* 07 programs */}
-      <Row n="07" id="programs">
+      {/* programs */}
+      <Row tone="white" id="programs">
         <div className="pad sec">
           <div className="flex flex-wrap items-end justify-between gap-6">
-            <SectionHead label="Academy" title="Live cohorts." second="Small groups, real projects." />
-            <Link href="/courses" className="dlink reveal">
-              All programs <ArrowUpRight />
+            <SectionHead label="Academy" title="Two live cohorts." second="One standard: job-ready." lede="Start with the track you need. Both run live, both end in a portfolio project you can defend." />
+            <Link href="/courses" className="btn btn-line btn-chrome reveal">
+              All programs <ArrowRight />
             </Link>
           </div>
-          <div className="mt-12 grid gap-6 md:mt-16 md:grid-cols-2">
+          <div className="mt-12 grid gap-5 md:mt-16 md:grid-cols-2">
             {open.map((c, i) => (
               <CourseCard key={c.slug} course={c} n={i + 1} />
             ))}
@@ -211,163 +160,165 @@ export default async function Home() {
         </div>
       </Row>
 
-      {/* 08 instructor */}
-      <Row n="08">
-        <div className="grid md:grid-cols-2">
-          <div className="fill-iso relative grid place-items-center border-b hairline p-8 md:border-b-0 md:border-r md:p-14">
-            <figure className="corners relative w-full max-w-[380px] bg-white p-3">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={instructor.photo} alt="Chris (Crispus Roshan), founder of Stackle" width={640} height={800} className="block aspect-[4/5] w-full object-cover grayscale" loading="lazy" />
-              <figcaption className="t-mono-sm flex justify-between px-1 pb-1 pt-3 text-muted">
-                <span>{instructor.fullName}</span>
-                <span>{instructor.role}</span>
-              </figcaption>
-            </figure>
-          </div>
-          <div className="pad flex flex-col justify-center py-14 md:py-20">
-            <SectionHead label="Your instructor" title="Taught by someone" second="who hires." />
-            <p className="t-body reveal mt-6 max-w-[480px]">{instructor.bio}</p>
-            <ul className="reveal mt-8 border-t hairline">
-              {instructor.facts.map((f) => (
-                <li key={f} className="flex items-center gap-3 border-b hairline py-4 text-[15px]">
-                  <Pixel name="check" size={13} /> {f}
-                </li>
-              ))}
-            </ul>
-            <div className="reveal mt-8">
-              <a href={site.socials.linkedin} target="_blank" rel="noreferrer" className="dlink">
-                Chris on LinkedIn <ArrowUpRight />
-              </a>
-            </div>
+      {/* why */}
+      <Row>
+        <div className="pad sec grid gap-12 lg:grid-cols-[1fr_1.6fr] lg:gap-16">
+          <SectionHead label="Why Stackle" title="Built like a bootcamp." second="Taught like a mentor." />
+          <div className="grid gap-x-10 gap-y-10 sm:grid-cols-2">
+            {features.map((f, i) => (
+              <div key={f.title} className="reveal flex gap-4" style={{ ["--d" as string]: `${i * 0.05}s` }}>
+                <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-line-strong bg-white">
+                  <Pixel name={f.icon} size={18} />
+                </span>
+                <div>
+                  <h3 className="text-[17px] font-semibold leading-snug">{f.title}</h3>
+                  <p className="t-small mt-2">{f.body}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </Row>
 
-      {/* 09 code */}
-      <Row n="09" tone="night">
+      {/* numbers */}
+      <Row tone="night">
+        <div className="pad sec">
+          <SectionHead label="By the numbers" title="A decade of hiring," second="brought into one room." />
+          <dl className="mt-14 grid grid-cols-2 gap-x-8 gap-y-12 md:grid-cols-4">
+            {proof.slice(0, 4).map((p) => (
+              <div key={p.label} className="reveal flex flex-col border-t border-night-line pt-6">
+                <dt className="order-2 mt-3 text-[14.5px] text-night-muted">{p.label}</dt>
+                <dd className="t-serif order-1 text-[52px] leading-none tracking-[-0.03em] md:text-[64px]">{p.value}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      </Row>
+
+      {/* how it works */}
+      <Row>
+        <div className="pad sec">
+          <SectionHead label="How it works" title="From first class to" second="final round, in one cohort." />
+          <ol className="mt-14 grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
+            {steps.map((s, i) => (
+              <li key={s.n} className="reveal border-t hairline pt-6" style={{ ["--d" as string]: `${i * 0.05}s` }}>
+                <p className="t-serif text-[17px] text-muted">{s.n}</p>
+                <h3 className="mt-3 text-[18px] font-semibold">{s.title}</h3>
+                <p className="t-small mt-2">{s.body}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </Row>
+
+      {/* instructor */}
+      <Row tone="white">
+        <div className="pad sec grid gap-12 md:grid-cols-[0.9fr_1.1fr] md:items-center md:gap-16">
+          <figure className="reveal relative mx-auto w-full max-w-[420px]">
+            <div className="card-float overflow-hidden p-2.5">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={instructor.photo} alt="Chris (Crispus Roshan), founder of Stackle" width={640} height={800} loading="lazy" className="block aspect-[4/5] w-full rounded-[10px] object-cover grayscale" />
+            </div>
+            <figcaption className="chip-dark absolute -bottom-5 right-4 px-4 py-3 sm:-right-6">
+              <p className="text-[12.5px] text-night-muted">{instructor.role}</p>
+              <p className="t-serif mt-1 text-[21px] leading-none">{instructor.fullName}</p>
+            </figcaption>
+          </figure>
+          <div>
+            <SectionHead label="Your instructor" title="Taught by someone" second="who hires." />
+            <p className="t-body reveal mt-6 max-w-[520px]">{instructor.bio}</p>
+            <ul className="reveal mt-8 grid gap-3 sm:grid-cols-2">
+              {instructor.facts.map((f) => (
+                <li key={f} className="flex items-start gap-3 text-[15px] text-ink-2">
+                  <Pixel name="check" size={17} className="mt-0.5 text-ink" /> {f}
+                </li>
+              ))}
+            </ul>
+            <a href={site.socials.linkedin} target="_blank" rel="noreferrer" className="dlink reveal mt-8">
+              Chris on LinkedIn <ArrowRight />
+            </a>
+          </div>
+        </div>
+      </Row>
+
+      {/* code */}
+      <Row>
         <div className="pad sec grid gap-12 md:grid-cols-[1fr_1.25fr] md:items-center md:gap-16">
-          <div className="reveal">
-            <h2 className="t-h2">
-              Learn it by
-              <br />
-              <span className="t-pixel">shipping it.</span>
-            </h2>
-            <p className="t-lede mt-6 max-w-[420px]">
-              Every week ends in working code: a data model, a Spark job, a Kafka stream, an Airflow DAG, a RAG app. It goes in your portfolio, and you learn to defend it.
-            </p>
-            <Link href="/courses/data-engineering-masterclass-get-job-ready-in-10-weeks" className="dlink mt-8">
-              See the curriculum <ArrowUpRight />
+          <div>
+            <SectionHead label="Learn by doing" title="Learn it by" second="shipping it." lede="Every week ends in working code: a data model, a Spark job, a Kafka stream, an Airflow DAG, a RAG app. It goes in your portfolio, and you learn to defend it." />
+            <Link href="/courses/data-engineering-masterclass-get-job-ready-in-10-weeks#curriculum" className="dlink reveal mt-8">
+              See the full curriculum <ArrowRight />
             </Link>
           </div>
           <div className="reveal" style={{ ["--d" as string]: ".1s" }}>
             <CodeBlock code={DAG} language="python" filename="dags/orders_daily.py" lineNumbers />
-            <p className="t-mono-sm flex items-center gap-2 border border-t-0 border-night-line bg-night-2 px-4 py-3 text-night-muted">
-              <span className="h-1.5 w-1.5 bg-paper" aria-hidden="true" /> Week 07 · Job orchestration with Airflow
-            </p>
+            <p className="mt-3 text-[13.5px] text-muted">Week 07 · Job orchestration with Airflow</p>
           </div>
         </div>
       </Row>
 
-      {/* 10 proof */}
-      <Row n="10">
-        <dl className="grid grid-cols-2 md:grid-cols-4">
-          {proof.slice(0, 4).map((p, i) => (
-            <div key={p.label} className={`corners flex flex-col px-6 py-8 md:px-8 md:py-10 ${i % 2 ? "border-l hairline" : ""} ${i > 1 ? "border-t hairline md:border-t-0" : ""} ${i === 2 ? "md:border-l" : ""}`}>
-              <dt className="t-mono-sm order-2 mt-4 text-muted">{p.label}</dt>
-              <dd className="t-pixel order-1 text-[44px] leading-none md:text-[56px]">{p.value}</dd>
-            </div>
-          ))}
-        </dl>
-      </Row>
-
-      {/* 11 resources */}
-      <Row n="11">
-        <div className="pad sec pb-0 md:pb-0">
+      {/* resources */}
+      <Row tone="white">
+        <div className="pad sec">
           <div className="flex flex-wrap items-end justify-between gap-6">
-            <SectionHead label="Free resources" title="Free, and actually" second="useful." lede="Roadmaps with a lesson for every topic, hundreds of interview questions with worked answers, and guides you can work through tonight." />
-            <Link href="/resources" className="dlink reveal">
-              The full library <ArrowUpRight />
+            <SectionHead label="Free resources" title="Free, and" second="actually useful." lede="Roadmaps with a lesson for every topic, 580 interview questions with worked answers, and guides you can work through tonight." />
+            <Link href="/resources" className="btn btn-line btn-chrome reveal">
+              The full library <ArrowRight />
             </Link>
           </div>
-        </div>
-        <div className="mt-12 grid gap-px border-t hairline bg-line md:mt-16 md:grid-cols-3">
-          {featured.map((r, i) => (
-            <ResourceCard key={r.slug} r={r} n={i + 1} />
-          ))}
+          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 md:mt-16">
+            {featured.map((r) => (
+              <ResourceCard key={r.slug} r={r} />
+            ))}
+          </div>
         </div>
       </Row>
 
-      {/* 12 free AI coach */}
-      <Row n="12" tone="white">
-        <a href={site.coachUrl} className="group pad grid gap-6 py-10 md:grid-cols-[auto_1fr_auto] md:items-center md:gap-10 md:py-12">
-          <span className="grid h-14 w-14 place-items-center border border-ink transition-colors group-hover:bg-ink group-hover:text-paper">
-            <Pixel name="doc" size={20} />
-          </span>
-          <span>
-            <span className="t-mono-sm text-muted">Free · AI resume coach</span>
-            <span className="mt-2 block text-[22px] font-medium leading-tight tracking-[-0.02em] md:text-[26px]">
-              Drop your resume. Get an honest score, the bullets that work and the gaps that don&apos;t.
+      {/* free AI coach */}
+      <Row>
+        <div className="pad py-14 md:py-16">
+          <a href={site.coachUrl} className="panel group grid gap-6 p-6 md:grid-cols-[auto_1fr_auto] md:items-center md:gap-10 md:p-8">
+            <span className="icon-tile !h-14 !w-14">
+              <Pixel name="doc" size={24} />
             </span>
-          </span>
-          <span className="dlink justify-self-start md:justify-self-end">
-            Try it free <ArrowUpRight />
-          </span>
-        </a>
+            <span>
+              <span className="t-mono-sm text-muted">Free · AI resume coach</span>
+              <span className="t-serif mt-2 block text-[24px] leading-tight tracking-[-0.01em] md:text-[28px]">
+                Drop your resume. Get an honest score, the bullets that work <span className="italic">and the gaps that don&apos;t.</span>
+              </span>
+            </span>
+            <span className="btn btn-ink btn-chrome justify-self-start md:justify-self-end">
+              Try it free <ArrowRight />
+            </span>
+          </a>
+        </div>
       </Row>
 
-      {/* 13 career service */}
-      <Row n="13" id="career">
-        <div className="pad sec pb-12 md:pb-16">
+      {/* career service */}
+      <Row tone="white" id="career">
+        <div className="pad sec">
           <div className="flex flex-wrap items-end justify-between gap-6">
-            <SectionHead
-              label="Career service"
-              title="Get the interviews first."
-              second="Resume, LinkedIn, strategy."
-              lede="Not ready for a cohort? Chris rewrites your resume and LinkedIn for the roles you want, and gives you a plan for where and how to apply."
-            />
-            <Link href="/career" className="dlink reveal">
-              How it works <ArrowUpRight />
+            <SectionHead label="Career service" title="Get the interviews" second="before the cohort ends." lede="Chris rewrites your resume and LinkedIn for the roles you want, and gives you a plan for where and how to apply." />
+            <Link href="/career" className="btn btn-line btn-chrome reveal">
+              How it works <ArrowRight />
             </Link>
           </div>
-        </div>
-        <div className="border-t hairline">
-          <CareerPlans />
+          <div className="mt-12 md:mt-16">
+            <CareerPlans />
+          </div>
         </div>
       </Row>
 
-      {/* 14 FAQ */}
-      <Row n="14" id="faq">
-        <div className="pad sec grid gap-10 md:grid-cols-[1fr_1.6fr]">
+      {/* FAQ */}
+      <Row id="faq">
+        <div className="pad sec grid gap-10 md:grid-cols-[1fr_1.6fr] md:gap-16">
           <div>
-            <SectionHead title="Questions" />
+            <SectionHead label="FAQ" title="Questions," second="answered." />
             <a href={site.bookCall} target="_blank" rel="noreferrer" className="dlink reveal mt-6">
-              Ask Chris on a call <ArrowUpRight />
+              Ask Chris on a call <ArrowRight />
             </a>
           </div>
           <Accordion items={faqs} />
-        </div>
-      </Row>
-
-      {/* 15 closing */}
-      <Row n="15" tone="night">
-        <div className="pad sec grid gap-14 md:grid-cols-[1.5fr_1fr] md:items-center">
-          <div className="reveal">
-            <h2 className="text-[clamp(2.5rem,1.3rem+3.6vw,4.25rem)] font-medium leading-[0.98] tracking-[-0.045em]">
-              Your next role
-              <br />
-              starts with a <span className="t-pixel">plan.</span>
-            </h2>
-            <p className="t-lede mt-8 max-w-[420px]">Pick a cohort, or talk it through with Chris first. The call is free.</p>
-            <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-5">
-              <Link href="/courses" className="btn btn-paper">
-                <Pixel name="spark" size={14} /> See the next cohorts
-              </Link>
-              <a href={site.bookCall} target="_blank" rel="noreferrer" className="dlink">
-                Book a free call <ArrowUpRight />
-              </a>
-            </div>
-          </div>
-          <Concentric />
         </div>
       </Row>
     </>

@@ -1,13 +1,30 @@
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
-import { GeistSans } from "geist/font/sans";
+import localFont from "next/font/local";
 import { GeistMono } from "geist/font/mono";
-import { GeistPixelSquare } from "geist/font/pixel";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { Reveal } from "@/components/reveal";
 import { site } from "@/content/site";
 import "./globals.css";
+
+const fraunces = localFont({
+  src: [
+    { path: "./fonts/fraunces-latin-standard-normal.woff2", style: "normal", weight: "100 900" },
+    { path: "./fonts/fraunces-latin-standard-italic.woff2", style: "italic", weight: "100 900" },
+  ],
+  variable: "--font-fraunces",
+  display: "swap",
+});
+
+const dmSans = localFont({
+  src: [
+    { path: "./fonts/dm-sans-latin-standard-normal.woff2", style: "normal", weight: "100 1000" },
+    { path: "./fonts/dm-sans-latin-standard-italic.woff2", style: "italic", weight: "100 1000" },
+  ],
+  variable: "--font-dm-sans",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -35,14 +52,14 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#f4f4f1",
+  themeColor: "#f6f4ef",
   width: "device-width",
   initialScale: 1,
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable} ${GeistPixelSquare.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`${dmSans.variable} ${fraunces.variable} ${GeistMono.variable}`} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
       </head>

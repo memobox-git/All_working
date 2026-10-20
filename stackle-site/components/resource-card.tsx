@@ -1,28 +1,27 @@
 import Link from "next/link";
 import type { ResourceItem } from "@/content/resources";
-import { ArrowUpRight, Pixel } from "./icons";
+import { ArrowRight, Pixel } from "./icons";
 
-export function ResourceCard({ r, n, className = "" }: { r: ResourceItem; n?: number; className?: string }) {
+export function ResourceCard({ r, className = "" }: { r: ResourceItem; n?: number; className?: string }) {
   return (
-    <Link href={`/resources/${r.slug}`} className={`group relative flex min-h-[300px] flex-col bg-white p-6 transition-colors hover:bg-paper md:p-7 ${className}`}>
-      <div className="flex items-start justify-between">
-        <span className="grid h-12 w-12 place-items-center border border-line bg-paper transition-colors group-hover:border-ink group-hover:bg-ink group-hover:text-paper">
-          <Pixel name={r.glyph} size={18} />
+    <Link href={`/resources/${r.slug}`} className={`panel group relative flex min-h-[290px] flex-col p-6 transition-shadow hover:shadow-[0_30px_60px_-30px_rgba(21,21,19,0.35)] md:p-7 ${className}`}>
+      <div className="flex items-start justify-between gap-3">
+        <span className="icon-tile">
+          <Pixel name={r.glyph} size={19} />
         </span>
-        <span className="flex items-center gap-2">
-          {r.badge && <span className="t-mono-sm border border-ink px-1.5 py-1">{r.badge}</span>}
-          {n !== undefined && <span className="t-mono-sm text-muted">{String(n).padStart(2, "0")}</span>}
-        </span>
+        {r.badge && <span className="rounded-full border border-line-strong px-2.5 py-1 text-[12px] font-semibold text-ink-2">{r.badge}</span>}
       </div>
-      <p className="t-mono-sm mt-8 text-muted">{r.group}</p>
+      <p className="t-mono-sm mt-7 text-muted">{r.group}</p>
       <h3 className="t-h4 mt-2">{r.title}</h3>
       <p className="t-small mt-3">{r.summary}</p>
       <div className="mt-auto flex items-end justify-between pt-6">
         <span className="flex items-baseline gap-2">
-          <span className="t-pixel text-[28px] leading-none">{r.stat.value}</span>
-          <span className="t-mono-sm text-muted">{r.stat.label}</span>
+          <span className="t-pixel text-[30px] leading-none">{r.stat.value}</span>
+          <span className="text-[13px] text-muted">{r.stat.label}</span>
         </span>
-        <ArrowUpRight size={16} className="text-muted transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-ink" />
+        <span className="inline-flex items-center gap-1.5 text-[14.5px] font-semibold">
+          Open <ArrowRight className="transition-transform group-hover:translate-x-0.5" />
+        </span>
       </div>
     </Link>
   );

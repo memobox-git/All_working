@@ -75,7 +75,7 @@ function shape(r: Row): Course | null {
     benefits: (r.benefits ?? []) as string[],
     curriculum: [...(r.course_weeks ?? [])]
       .sort((a, b) => a.week_number - b.week_number)
-      .map((w) => ({ n: w.week_number, title: w.title.trim(), points: bullets(w.description) })),
+      .map((w) => ({ n: w.week_number, title: w.title.trim().replace(/,(?=\S)/g, ", "), points: bullets(w.description) })),
     cohorts: toCohorts(r.course_cohorts ?? []),
     image: r.thumbnail_url ?? null,
     copy,
