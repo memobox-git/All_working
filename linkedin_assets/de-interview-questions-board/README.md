@@ -6,6 +6,7 @@ This is a chalkboard-style LinkedIn image with 12 data engineering interview que
 - `de-interview-questions.jpg`: the same image, smaller file.
 - `de-interview-questions.gif`: animated slides with large text that stays readable on a phone. An intro, then 4 slides of 3 questions that fill in one question at a time, then a closing line (about 38 seconds, loops).
 - `de-interview-questions.mp4`: the same animation as a video.
+- `jpegs/`: the six slides as separate JPEGs, 2160 × 2700, for a multi-image post. They are the intro, questions 1–3, 4–6, 7–9 and 10–12, then the closing line.
 
 To edit the text, change `source/board.html` (still image) or `source/slides.html` (animation), then run the scripts from `source/` (they need Chromium):
 
