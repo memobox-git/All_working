@@ -1,4 +1,3 @@
-import { Fragment } from "react";
 import { Row, SectionHead } from "@/components/row";
 import { ArrowRight } from "@/components/icons";
 import type { SalaryRow } from "./data";
@@ -68,14 +67,14 @@ export function CapabilityMap({ n, data }: { n: string; data: CapabilityMapData 
                   <p className="t-mono-sm text-muted">{c.label}</p>
                   <ul className="mt-4 flex flex-wrap items-center gap-x-2 gap-y-2">
                     {c.options.map((o, i) => (
-                      <Fragment key={o}>
+                      <li key={o} className="flex items-center gap-2">
                         {i > 0 && (
-                          <li aria-hidden="true" className="t-serif text-[15px] italic text-muted">
+                          <span aria-hidden="true" className="t-serif text-[15px] italic text-muted">
                             or
-                          </li>
+                          </span>
                         )}
-                        <li className="rounded-full border border-line-strong bg-white px-3.5 py-2 text-[14.5px] font-medium leading-none">{o}</li>
-                      </Fragment>
+                        <span className="rounded-full border border-line-strong bg-white px-3.5 py-2 text-[14.5px] font-medium leading-none">{o}</span>
+                      </li>
                     ))}
                   </ul>
                 </div>
@@ -204,7 +203,7 @@ export function Roles({ n, data, note }: { n: string; data: RolesData; note: str
             <li key={r.title} className="panel flex h-full flex-col p-6 md:p-7">
               <span className="self-start rounded-full border border-line-strong px-2.5 py-1 text-[12.5px] font-semibold leading-none text-ink-2">{r.level}</span>
               <h3 className="t-h4 mt-6">{r.title}</h3>
-              <p className="t-serif mt-2 text-[28px] leading-tight tracking-[-0.02em]">{r.salary}</p>
+              <p className="t-serif mt-3 text-[26px] leading-tight tracking-[-0.02em] text-ink-2">{r.salary}</p>
               <div className="mt-auto pt-6">
                 <ul className="flex flex-wrap gap-1.5 border-t hairline pt-5" aria-label="Key skills">
                   {r.skills.map((s) => (

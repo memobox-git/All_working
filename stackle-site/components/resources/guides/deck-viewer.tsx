@@ -139,7 +139,7 @@ export function DeckViewer({
               role="region"
               aria-roledescription="slide deck"
               aria-label={label}
-              className="lg:[.js_&]:mx-auto lg:[.js_&]:max-w-[max(640px,calc((100svh-280px)*16/9))]"
+              className="lg:[.js_&]:mx-auto lg:[.js_&]:max-w-[max(640px,calc((100svh-300px)*16/9))]"
             >
               <div className="flex items-end justify-between gap-4 pb-4 md:pb-5">
                 <div className="min-w-0">

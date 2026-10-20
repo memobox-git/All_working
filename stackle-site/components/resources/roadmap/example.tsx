@@ -92,7 +92,7 @@ export function ExampleView({ example }: { example: Example }) {
               .map((s, i) => ({ ...s, i }))
               .reverse()
               .map((s) => (
-                <li key={s.i} className="grid grid-cols-[36px_1fr] items-center gap-x-3 border-b hairline py-3.5 last:border-b-0 sm:grid-cols-[40px_1fr_auto] sm:gap-x-4">
+                <li key={s.i} className="grid grid-cols-[36px_1fr] items-center gap-x-3 border-b hairline py-3.5 last:border-b-0 sm:grid-cols-[40px_1fr_150px] sm:gap-x-4">
                   <span className="t-serif row-span-2 self-start text-[15px] text-muted sm:row-span-1 sm:self-center">{String(s.i + 1).padStart(2, "0")}</span>
                   <span>
                     <span className="block font-semibold">{s.level}</span>
