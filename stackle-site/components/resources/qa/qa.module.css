@@ -36,28 +36,30 @@
 .clear:hover { background: var(--color-fill); color: var(--color-ink); }
 
 .meta { grid-area: meta; display: flex; align-items: center; gap: 6px; min-width: 0; }
-.count { flex: 1; font-size: 14px; color: var(--color-muted); white-space: nowrap; }
+.count { flex: 1; font-size: 14px; color: var(--color-muted); white-space: nowrap; font-variant-numeric: tabular-nums; }
 .count b { color: var(--color-ink); font-weight: 600; }
-.tool { display: inline-flex; align-items: center; height: 34px; padding-inline: 13px; border: 1px solid var(--color-line-strong); border-radius: var(--radius-ctl); background: var(--color-white); font-size: 14px; font-weight: 600; color: var(--color-ink); white-space: nowrap; transition: border-color .15s; }
+.tool { display: inline-flex; align-items: center; gap: 0.26em; height: 34px; padding-inline: 13px; border: 1px solid var(--color-line-strong); border-radius: var(--radius-ctl); background: var(--color-white); font-size: 14px; font-weight: 600; color: var(--color-ink); white-space: nowrap; transition: border-color .15s; }
 .tool:hover { border-color: var(--color-ink); }
 .tool:active { transform: translateY(1px); }
 .toolAll { display: none; }
 @media (min-width: 420px) { .toolAll { display: inline; } }
 @media (min-width: 768px) {
   .meta { gap: 8px; }
-  .count { flex: none; margin-right: 8px; }
+  .count { flex: none; min-width: 9.6em; margin-right: 8px; text-align: right; } /* fixed width: the search field never shifts as the count changes */
   .tool { height: 38px; padding-inline: 15px; }
 }
 
-.chips { grid-area: chips; display: flex; align-items: center; gap: 6px; overflow-x: auto; margin-inline: calc(-1 * var(--qa-x)); padding: 2px var(--qa-x); scrollbar-width: none; }
+/* scrolling pill rows get 5px of padding (offset by a negative margin) so focus rings are not clipped */
+.chips { grid-area: chips; display: flex; align-items: center; gap: 6px; overflow-x: auto; margin: -5px calc(-1 * var(--qa-x)); padding: 5px var(--qa-x); scrollbar-width: none; }
 .chips::-webkit-scrollbar { display: none; }
 .chipLabel { display: none; margin-right: 8px; font-size: 14px; color: var(--color-muted); }
 .chip { flex: none; height: 34px; padding-inline: 14px; border: 1px solid var(--color-line-strong); border-radius: 999px; background: var(--color-white); font-size: 14px; font-weight: 500; color: var(--color-ink-2); white-space: nowrap; transition: background-color .15s, color .15s, border-color .15s; }
 .chip:hover { border-color: var(--color-ink); color: var(--color-ink); }
 .chip[aria-pressed="true"] { background: var(--color-ink); border-color: var(--color-ink); color: var(--color-paper); }
+.chip:focus-visible, .catChip:focus-visible { outline-offset: 2px; border-radius: 999px; }
 @media (min-width: 768px) {
   .chipLabel { display: block; }
-  .chips { margin-inline: 0; padding-inline: 0; }
+  .chips { margin-inline: -5px; padding-inline: 5px; }
 }
 
 /* ---- list layout: category index (sticky side list from 1200px, pill row below that) + questions ---- */
@@ -71,17 +73,20 @@
   .layout { grid-template-columns: 252px minmax(0, 1fr); column-gap: 56px; }
   .aside { display: block; }
 }
-.side { position: sticky; top: calc(var(--qa-head) + var(--qa-bar)); max-height: calc(100vh - var(--qa-head) - var(--qa-bar)); overflow-y: auto; overscroll-behavior: contain; padding: 52px 0 32px; scrollbar-width: thin; scrollbar-color: var(--color-line-strong) transparent; }
-.sideTitle { padding: 0 0 14px; }
-.side ol { display: grid; gap: 2px; margin-inline: -12px; }
+/* the scroll box bleeds 12px left so the rounded links line up with the column while their text aligns with the title */
+.side { position: sticky; top: calc(var(--qa-head) + var(--qa-bar)); max-height: calc(100vh - var(--qa-head) - var(--qa-bar)); overflow-y: auto; overscroll-behavior: contain; margin-inline: -12px; padding: 52px 0 32px; scrollbar-width: thin; scrollbar-color: var(--color-line-strong) transparent; }
+.sideTitle { padding: 0 12px 14px; }
+.side:not(:has(li:not([hidden]))) .sideTitle { visibility: hidden; } /* nothing matches: no orphaned title */
+.side ol { display: grid; gap: 2px; }
 .sideLink { display: grid; grid-template-columns: 26px minmax(0, 1fr) auto; gap: 8px; align-items: baseline; padding: 8px 12px; border-radius: var(--radius-ctl); font-size: 14.5px; line-height: 1.35; color: var(--color-ink-2); transition: background-color .15s, color .15s; }
 .sideLink:hover { background: var(--color-white); color: var(--color-ink); }
 .sideLink[aria-current] { background: var(--color-ink); color: var(--color-paper); }
+.sideLink:focus-visible { outline-offset: -2px; border-radius: var(--radius-ctl); }
 .num { font-family: var(--font-serif); font-weight: 400; font-size: 14.5px; color: var(--color-muted); font-variant-numeric: lining-nums tabular-nums; }
 .cnt { font-size: 13px; color: var(--color-muted); font-variant-numeric: tabular-nums; }
 .sideLink[aria-current] .num, .sideLink[aria-current] .cnt { color: var(--color-night-muted); }
 
-.catChips { display: flex; gap: 8px; overflow-x: auto; margin: 24px calc(-1 * var(--qa-x)) 0; padding: 2px var(--qa-x); scrollbar-width: none; }
+.catChips { display: flex; gap: 8px; overflow-x: auto; margin: 19px calc(-1 * var(--qa-x)) -5px; padding: 5px var(--qa-x); scrollbar-width: none; }
 .catChips::-webkit-scrollbar { display: none; }
 .catChip { flex: none; display: flex; align-items: baseline; gap: 8px; padding: 8px 15px; border: 1px solid var(--color-line-strong); border-radius: 999px; background: var(--color-white); font-size: 14px; color: var(--color-ink-2); white-space: nowrap; transition: border-color .15s, color .15s; }
 .catChip:hover { border-color: var(--color-ink); color: var(--color-ink); }
@@ -110,7 +115,7 @@
 .cat article[data-diff="easy"] { --m1: var(--color-ink-2); }
 .cat article[data-diff="medium"] { --m1: var(--color-ink-2); --m2: var(--color-ink-2); }
 .cat article[data-diff="hard"] { --m1: var(--color-ink-2); --m2: var(--color-ink-2); --m3: var(--color-ink-2); }
-.cat summary { display: grid; grid-template-columns: 34px minmax(0, 1fr) 30px; column-gap: 12px; align-items: start; padding: 20px 0 22px; border-radius: var(--radius-ctl); }
+.cat summary { display: grid; grid-template-columns: 38px minmax(0, 1fr) 30px; column-gap: 10px; align-items: start; padding: 20px 0 22px; border-radius: var(--radius-ctl); }
 .cat summary:focus-visible { outline-offset: 2px; }
 .cat summary > span:first-child { font-family: var(--font-serif); font-size: 15px; line-height: 24px; color: var(--color-muted); font-variant-numeric: lining-nums; }
 .cat summary h3 { font-size: 16.5px; font-weight: 600; line-height: 24px; letter-spacing: -0.005em; color: var(--color-ink); text-wrap: pretty; }
