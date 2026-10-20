@@ -1,0 +1,120 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Gen AI, style frame</title>
+<style>
+@font-face{font-family:Kalam;font-weight:400;src:url(../node_modules/@fontsource/kalam/files/kalam-latin-400-normal.woff2)}
+@font-face{font-family:Kalam;font-weight:700;src:url(../node_modules/@fontsource/kalam/files/kalam-latin-700-normal.woff2)}
+@font-face{font-family:Caveat;font-weight:600;src:url(../node_modules/@fontsource/caveat/files/caveat-latin-600-normal.woff2)}
+:root{--paper:#FBF8F1;--ink:#1D1D1F;--blue:#1E3A8A;--blue2:#2B59C3;--purple:#6D5BD0;--hl:#FFE76A;
+  --c1:#CFE6FF;--c2:#FFF0A3;--c3:#FFD3DA;--c4:#CDEFD3}
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1920px;height:1080px;overflow:hidden;background:var(--paper);font-family:Kalam,cursive;color:var(--ink);position:relative}
+body.v{width:1080px;height:1920px}
+#grain{position:absolute;inset:0;opacity:.05;mix-blend-mode:multiply}
+svg{position:absolute;overflow:visible}
+.ink path,.ink rect,.ink circle,.ink line{fill:none;stroke:var(--ink);stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round}
+.abs{position:absolute}
+.page-no{font:700 34px Kalam;letter-spacing:.04em}
+.num{display:grid;place-items:center;border-radius:50%;border:4px solid var(--ink);font:700 64px/1 Kalam}
+.title{font:700 132px/1 Kalam;color:var(--blue);letter-spacing:-.01em;white-space:nowrap}
+.def{font:400 50px/1.32 Kalam}
+.def u{text-decoration:none;background:linear-gradient(transparent 62%,var(--hl) 62%,var(--hl) 92%,transparent 92%)}
+.kp-h{display:inline-block;padding:2px 14px;font:700 36px Kalam;letter-spacing:.06em;background:var(--hl);transform:rotate(-1.5deg)}
+.kp{display:flex;align-items:flex-start;gap:18px;font:400 40px/1.25 Kalam}
+.kp i{flex:none;width:44px;height:44px;margin-top:4px;border:3.5px solid var(--blue2);border-radius:50%;display:grid;place-items:center;color:var(--blue2);font:700 28px Kalam;font-style:normal}
+.box{display:grid;place-items:center;border:4px solid var(--ink);border-radius:22px;font:700 60px/1 Kalam}
+.idx{display:grid;place-items:center;border:3px solid var(--ink);border-radius:10px;background:#fff;font:700 34px/1 Kalam;color:var(--blue)}
+.take{display:flex;align-items:center;gap:22px;border:4px solid var(--purple);border-radius:26px;background:rgba(255,255,255,.55)}
+.take b{font:700 40px Kalam;color:var(--blue);letter-spacing:.04em;white-space:nowrap}
+.take span{font:400 42px/1.25 Kalam}
+.take span u{text-decoration:none;border-bottom:3px solid var(--blue2)}
+.dot{position:absolute;display:grid;place-items:center;border-radius:50%;border:3px solid var(--ink);font:700 22px/1 Kalam}
+.dot.on{border-width:4.5px;box-shadow:0 0 0 7px rgba(43,89,195,.18)}
+.dot.done{opacity:.45}
+</style></head>
+<body>
+<canvas id="grain" width="512" height="512"></canvas>
+<div id="root"></div>
+<script>
+const V = location.hash.includes('v');
+if (V) document.body.classList.add('v');
+const W = V ? 1080 : 1920, H = V ? 1920 : 1080;
+const C = ['--c1', '--c2', '--c3', '--c4'];
+const root = document.getElementById('root');
+const el = (html) => { root.insertAdjacentHTML('beforeend', html); return root.lastElementChild; };
+// paper grain
+(() => { const c = document.getElementById('grain'), g = c.getContext('2d'), d = g.createImageData(512, 512);
+  let s = 5; const r = () => (s = (s * 16807) % 2147483647) / 2147483647;
+  for (let i = 0; i < d.data.length; i += 4) { const v = 150 + r() * 105; d.data[i] = d.data[i + 1] = d.data[i + 2] = v; d.data[i + 3] = 255; }
+  g.putImageData(d, 0, 0); document.getElementById('grain').style.cssText = `width:${W}px;height:${H}px;background:url(${c.toDataURL()});`; })();
+// a hand-drawn line: a few wobbly points smoothed
+function hand(pts, seed = 1, amp = 2.2) {
+  let s = seed * 9301 + 49297; const r = () => ((s = (s * 16807) % 2147483647) / 2147483647 - .5) * 2 * amp;
+  const p = pts.map(([x, y], i) => [x + (i ? r() : 0), y + (i ? r() : 0)]);
+  let d = `M${p[0][0]} ${p[0][1]}`;
+  for (let i = 1; i < p.length; i++) { const [x0, y0] = p[i - 1], [x1, y1] = p[i]; d += ` Q${x0 + (x1 - x0) / 2 + r()} ${y0 + (y1 - y0) / 2 + r()} ${x1} ${y1}`; }
+  return d;
+}
+const svg = (inner, cls = 'ink') => el(`<svg class="${cls}" width="${W}" height="${H}" style="left:0;top:0">${inner}</svg>`);
+
+// the spiral binding down the left edge
+let rings = '';
+const n = V ? 30 : 17, gap = (H - 80) / n;
+for (let k = 0; k < n; k++) {
+  const y = 40 + k * gap + gap / 2;
+  rings += `<circle cx="58" cy="${y}" r="7" style="fill:#2A2A2E;stroke:none"/>` +
+    `<path d="M4 ${y - 11} C 30 ${y - 22}, 62 ${y - 14}, 60 ${y}" style="stroke:#26262A;stroke-width:8;fill:none;stroke-linecap:round"/>` +
+    `<path d="M8 ${y - 13} C 30 ${y - 21}, 54 ${y - 15}, 55 ${y - 6}" style="stroke:#8A8A90;stroke-width:2;fill:none;stroke-linecap:round"/>`;
+}
+svg(rings, '');
+
+// the 1–20 progress column (landscape) or row (vertical)
+const cur = 1;
+for (let k = 1; k <= 20; k++) {
+  const size = k === cur ? 46 : 36;
+  const [x, y] = V ? [128 + (k - 1) * 43.5, 214] : [128, 58 + (k - 1) * 49.5];
+  el(`<div class="dot ${k === cur ? 'on' : k < cur ? 'done' : ''}" style="left:${x - size / 2}px;top:${y - size / 2}px;width:${size}px;height:${size}px;background:var(${C[(k - 1) % 4]});font-size:${k === cur ? 26 : 20}px">${k}</div>`);
+}
+
+if (!V) {
+  el(`<div class="abs page-no" style="right:110px;top:48px">PAGE 2 / 21</div>`);
+  svg(`<path d="${hand([[1600, 104], [1700, 102], [1800, 100]], 3, 1.5)}" style="stroke:var(--blue2);stroke-width:4"/>`);
+  el(`<div class="abs num" style="left:250px;top:120px;width:120px;height:120px;background:var(--c1)">1</div>`);
+  const t = el(`<div class="abs title" style="left:420px;top:112px">Tokens</div>`);
+  // little marker rays around the title
+  svg([[[392, 150], [372, 136]], [[392, 180], [366, 180]], [[392, 210], [372, 224]], [[868, 150], [890, 136]], [[868, 180], [896, 180]], [[868, 210], [890, 224]]]
+    .map(([a, b], i) => `<path d="${hand([a, b], i + 4, .8)}" style="stroke:var(--blue);stroke-width:5"/>`).join(''));
+  el(`<div class="abs def" style="left:250px;top:300px;width:860px">Models read text as small pieces called <b>tokens</b>, and <u>you pay per token</u>.</div>`);
+  el(`<div class="abs" style="left:250px;top:520px"><span class="kp-h">KEY POINTS:</span></div>`);
+  el(`<div class="abs" style="left:250px;top:600px;width:820px;display:flex;flex-direction:column;gap:22px">
+    <div class="kp"><i>✓</i><span>1 token ≈ 4 characters of English</span></div>
+    <div class="kp"><i>✓</i><span>Context limits and prices are counted in tokens</span></div></div>`);
+  // the sketch: one word, three tokens, three numbers
+  el(`<div class="abs box" style="left:1260px;top:300px;width:470px;height:120px;background:#E9E3FF">unbelievable</div>`);
+  [['un', 1190, '--c1', '582'], ['believ', 1395, '--c2', '21903'], ['able', 1625, '--c3', '417']].forEach(([w, x, c, id], i) => {
+    el(`<div class="abs box" style="left:${x}px;top:520px;width:${i === 1 ? 200 : 170}px;height:104px;background:var(${c})">${w}</div>`);
+    el(`<div class="abs idx" style="left:${x + (i === 1 ? 30 : 20)}px;top:680px;width:${i === 1 ? 140 : 130}px;height:64px">${id}</div>`);
+  });
+  svg(`<path d="${hand([[1400, 430], [1300, 500]], 7)}"/><path d="${hand([[1495, 430], [1495, 500]], 8)}"/><path d="${hand([[1590, 430], [1700, 500]], 9)}"/>` +
+    `<path d="${hand([[1275, 630], [1275, 676]], 10, 1)}"/><path d="${hand([[1495, 630], [1495, 676]], 11, 1)}"/><path d="${hand([[1710, 630], [1710, 676]], 12, 1)}"/>`);
+  el(`<div class="abs" style="left:1210px;top:772px;font:400 32px Caveat;color:var(--blue2)">the model only ever sees the numbers</div>`);
+  el(`<div class="abs take" style="left:250px;top:872px;width:1540px;height:128px;padding:0 40px"><b>★ TAKEAWAY:</b><span>Tokens, not words, are what you <u>pay for</u> and what fits in <u>memory</u>.</span></div>`);
+} else {
+  el(`<div class="abs page-no" style="right:70px;top:120px;font-size:30px">PAGE 2 / 21</div>`);
+  el(`<div class="abs num" style="left:120px;top:300px;width:120px;height:120px;background:var(--c1)">1</div>`);
+  el(`<div class="abs title" style="left:270px;top:292px;font-size:140px">Tokens</div>`);
+  svg([[[860, 320], [886, 300]], [[862, 360], [896, 360]], [[860, 400], [886, 420]]].map(([a, b], i) => `<path d="${hand([a, b], i + 4, .8)}" style="stroke:var(--blue);stroke-width:5"/>`).join(''));
+  el(`<div class="abs box" style="left:215px;top:500px;width:650px;height:130px;background:#E9E3FF;font-size:72px">unbelievable</div>`);
+  [['un', 140, '--c1', '582'], ['believ', 405, '--c2', '21903'], ['able', 700, '--c3', '417']].forEach(([w, x, c, id], i) => {
+    el(`<div class="abs box" style="left:${x}px;top:720px;width:${i === 1 ? 250 : 220}px;height:120px;background:var(${c});font-size:66px">${w}</div>`);
+    el(`<div class="abs idx" style="left:${x + 35}px;top:900px;width:${i === 1 ? 180 : 150}px;height:72px;font-size:38px">${id}</div>`);
+  });
+  svg(`<path d="${hand([[440, 640], [290, 712]], 7)}"/><path d="${hand([[540, 640], [530, 712]], 8)}"/><path d="${hand([[640, 640], [800, 712]], 9)}"/>` +
+    `<path d="${hand([[250, 846], [250, 894]], 10, 1)}"/><path d="${hand([[530, 846], [530, 894]], 11, 1)}"/><path d="${hand([[810, 846], [810, 894]], 12, 1)}"/>`);
+  el(`<div class="abs" style="left:0;right:0;top:996px;text-align:center;font:400 40px Caveat;color:var(--blue2)">the model only ever sees the numbers</div>`);
+  el(`<div class="abs take" style="left:100px;top:1068px;width:880px;padding:22px 30px;flex-direction:column;align-items:flex-start;gap:4px"><b>★ TAKEAWAY:</b><span>Tokens, not words, are what you <u>pay for</u>.</span></div>`);
+  // where the burned-in captions go
+  el(`<div class="abs" style="left:110px;right:110px;top:1290px;text-align:center;font:800 70px/1.24 'Plus Jakarta Sans',sans-serif;color:#1D1D1F">and you <span style="background:#2B59C3;color:#fff;border-radius:16px;padding:0 12px">pay</span> <span style="color:#C3C9D4">per token</span></div>`);
+}
+document.fonts.ready.then(() => { window.READY = true; });
+</script>
+</body></html>
