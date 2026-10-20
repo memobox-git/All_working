@@ -112,7 +112,7 @@ export default async function Home() {
       {/* industries */}
       <Row tone="white">
         <div className="pad grid gap-6 py-10 md:grid-cols-[230px_1fr] md:items-center md:py-12">
-          <p className="t-mono-sm text-muted">Chris has hired engineers for teams in</p>
+          <p className="t-mono-sm text-muted">Chris has interviewed engineers for companies in</p>
           <ul className="grid grid-cols-2 gap-x-6 gap-y-4 md:grid-cols-4">
             {instructor.industries.map((x) => (
               <li key={x} className="t-serif text-[22px] tracking-[-0.01em] text-ink-2 md:text-[24px]">
