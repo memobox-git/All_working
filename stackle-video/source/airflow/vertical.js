@@ -23,7 +23,7 @@ function drawHud(t) {
     lastChap = k;
   }
 }
-tl.fromTo('#hud', { autoAlpha: 0 }, { autoAlpha: 1, duration: .6, ease: 'power1.out' }, .1);
+tl.fromTo('#hud', { autoAlpha: 0 }, { autoAlpha: 1, duration: .6, ease: 'power1.out' }, OFF - .2);  // after the opening card
 tl.to('#hud', { autoAlpha: 0, duration: .6, ease: 'power1.in' }, at("that's") - .3);
 
 // ---------------------------------------------------------------- captions

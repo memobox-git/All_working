@@ -5,7 +5,8 @@ It is synthesised from scratch, so there is nothing to license.
 
 The bars follow the voiceover: the full beat drops on the title ("Apache
 Airflow"), a crash marks each new chapter, the drums drop out for "That's
-Apache Airflow", and the last chord hits as the voice ends.
+Apache Airflow", and the last chord hits as the voice ends. The beat is
+already going on the very first frame, under the opening card.
 Usage: python3 make-music.py <seconds> <out.wav> <vo.transcript.json> <voice offset>
 """
 import json
@@ -223,7 +224,7 @@ def main(seconds, out, transcript, offset):
         return pluck_cache[(m, dur)]
 
     kicks = []
-    for b in range(nbars):
+    for b in range(-int(np.ceil(t0 / BAR)), nbars):    # from the bar already under way at 0:00
         s = start(b)
         root, voicing = PROG[b % 4]
         if b == b_end:
@@ -282,10 +283,9 @@ def main(seconds, out, transcript, offset):
     # pump everything tonal from the kick, the classic house sidechain
     pump = np.ones(total)
     for k in kicks:
-        i = int(k * SR)
-        n = min(total - i, int(BEAT * SR))
-        if n > 0:
-            pump[i:i + n] = np.minimum(pump[i:i + n], 1 - .55 * np.exp(-np.arange(n) / SR / .1))
+        i0 = int(round(k * SR))
+        idx = np.arange(max(0, i0), min(total, i0 + int(BEAT * SR)))
+        pump[idx] = np.minimum(pump[idx], 1 - .55 * np.exp(-(idx - i0) / SR / .1))
     tonal = (bass + keys + pads) * pump[:, None]
 
     ir = reverb_ir()

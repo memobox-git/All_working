@@ -104,6 +104,13 @@ function drawBg(t, fields) {
   bg.globalAlpha = 1;
 }
 
+// ---------------------------------------------------------------- the opening card
+// Both cuts open on their own thumbnail (so the first frame is the YouTube
+// thumbnail and the TikTok cover), then clear it away just before the voice.
+tl.set('#s0', { autoAlpha: 0 }, OFF);      // visible from the very first frame (see the stylesheets)
+tl.to(['.th-ep', '.th-pill', '.th-apache', '.th-name', '.th-dag'], { autoAlpha: 0, y: -26, duration: .45, ease: 'power2.in', stagger: .04 }, OFF - .7);
+tl.to('.th-portrait', { autoAlpha: 0, y: 50, duration: .5, ease: 'power2.in' }, OFF - .7);
+
 // ---------------------------------------------------------------- connectors
 // straight edges with a chevron head: [x1, y1, x2, y2]
 function edgeSvg(id, [x1, y1, x2, y2]) {
