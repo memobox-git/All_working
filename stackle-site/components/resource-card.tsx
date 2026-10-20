@@ -4,7 +4,7 @@ import { ArrowRight, Pixel } from "./icons";
 
 export function ResourceCard({ r, className = "" }: { r: ResourceItem; n?: number; className?: string }) {
   return (
-    <Link href={`/resources/${r.slug}`} className={`panel group relative flex min-h-[290px] flex-col p-6 transition-shadow hover:shadow-[0_30px_60px_-30px_rgba(21,21,19,0.35)] md:p-7 ${className}`}>
+    <Link href={`/resources/${r.slug}`} prefetch={false} className={`panel group relative flex min-h-[290px] flex-col p-6 transition-shadow hover:shadow-[0_30px_60px_-30px_rgba(21,21,19,0.35)] md:p-7 ${className}`}>
       <div className="flex items-start justify-between gap-3">
         <span className="icon-tile">
           <Pixel name={r.glyph} size={19} />

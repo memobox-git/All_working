@@ -79,12 +79,12 @@ export function ResourceCta({
     <Row n={n}>
       <div className="pad py-16 md:py-24">
         <div className="panel grid gap-8 p-7 md:grid-cols-[1.4fr_1fr] md:items-end md:p-12">
-          <div className="reveal">
+          <div className="reveal min-w-0">
             <span className="label">Go further</span>
             <h2 className="t-h2 mt-5 max-w-[620px]">{title}</h2>
             <p className="t-body mt-4 max-w-[560px]">{body}</p>
           </div>
-          <div className="reveal flex flex-col gap-3 sm:flex-row md:flex-col md:items-stretch">
+          <div className="reveal flex min-w-0 flex-col gap-3 sm:flex-row md:flex-col md:items-stretch">
             {external ? (
               <a href={courseHref} className="btn btn-ink whitespace-normal py-3 text-center leading-snug">
                 {courseLabel} <ArrowRight />

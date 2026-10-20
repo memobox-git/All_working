@@ -41,9 +41,8 @@ export default function Page() {
       ]}
       cta={{
         title: raw.cta.offer.headingLines.join(" "),
-        href: "/courses/data-engineering-masterclass-get-job-ready-in-10-weeks",
-        // Short enough for the CTA button to fit at 390px.
-        label: "Data Engineering course",
+        href: "/courses/master-data-analysis-in-8-weeks",
+        label: "See the Data Analyst course",
       }}
     />
   );
