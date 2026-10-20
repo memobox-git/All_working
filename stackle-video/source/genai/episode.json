@@ -1,0 +1,20 @@
+{
+  "title": "20 Gen AI Concepts You Actually Need",
+  "episode": 3,
+  "slug": "genai-20-concepts",
+  "card": 1.8,
+  "offset": 1.8,
+  "intro": {
+    "landscape": "../../graphics/stackle-intro.mp4",
+    "vertical": "../../graphics/stackle-intro-vertical.mp4",
+    "transcript": "../intro-pro/audio/vo.transcript.json",
+    "voiceOffset": 0.6,
+    "after": ["need", 0]
+  },
+  "cta": true,
+  "music": {
+    "drop": ["one", 0],
+    "chapters": [["seven", 0], ["now", 0], ["tokens", 3]],
+    "break": ["save", 0]
+  }
+}

@@ -2,7 +2,7 @@
 
 **Series:** Explained in 2 Minutes, episode 03 (Gen AI takes this slot, so Spark and the rest move down one)
 
-**Spoken words:** about 305. **Estimated length:** about 1:45 of voice, so about 2:05 in all, counting the opening card, your intro and the comment ask.
+**Spoken words:** 332. **Length:** 2:04 of voice, so 2:29 in all, counting the opening card, your intro and the comment ask.
 
 **Format:** each concept is a notebook page in the style of your reference. The page has:
 - the number in a coloured circle;
@@ -13,7 +13,7 @@
 
 A 1→20 tracker runs down the side (along the top in the vertical cut) and ticks off each concept. The voice says each number, so viewers always know where they are. The order is the same as every episode: the hook, then your intro, then the rest.
 
-**Status:** waiting for your review. Nothing has been recorded yet.
+**Status:** approved and made. The voice is take 2 of 4 (`source/genai/audio/vo.mp3`, 2:04 of voice), and the video runs 2:29 in all: about 25 seconds longer than estimated, because twenty concepts take longer to say than the word count suggested. Both cuts are in `stackle-video/graphics/` (`genai-20-concepts.mp4` with `.srt`, and `genai-20-concepts-vertical.mp4`). The post copy is in `genai-20-concepts-posts.md`. The opening cards are temporary until your thumbnails arrive.
 
 ---
 
@@ -71,7 +71,7 @@ A 1→20 tracker runs down the side (along the top in the vertical cut) and tick
 
 ## What is on screen
 
-Each page builds as its line is spoken: the number and title on the concept's name, the sketch during the sentence, and the takeaway as it ends.
+Each page builds as its line is spoken: the number and title on the concept's name, the sketch during the sentence, and the takeaway as it ends. The takeaways below are as they appear on screen.
 
 | # | Concept | Sketch | Takeaway |
 |---|---|---|---|
@@ -81,23 +81,23 @@ Each page builds as its line is spoken: the number and title on the concept's na
 | 1 | Tokens | "unbelievable" splits into un · believ · able, each with a number | Tokens, not words, are what you pay for |
 | 2 | Embeddings | A 2D map: king, queen and prince close together, car, truck and bus in another cluster | Meaning becomes distance |
 | 3 | Attention | "She sat by the bank of the river": lines from "bank" to every word, the thickest to "river" | Context decides meaning |
-| 4 | Large language models | "The cat sat on the ___" with bars for the likely next tokens: mat, sofa, floor | It's next-token prediction, at scale |
-| 5 | Context window | A long scroll of text with a window frame over it: what's inside is seen, what's outside isn't | If it's not in the window, the model can't use it |
+| 4 | Large language models | "The cat sat on the ___" with bars for the likely next tokens: mat, sofa, floor | Next-token prediction, at huge scale |
+| 5 | Context window | A long scroll of text with a window frame over it: what's inside is seen, what's outside isn't | Not in the window? The model can't use it |
 | 6 | Temperature | A dial: at low, the same answer three times; at high, three different ones | Low for facts, high for ideas |
 | 7 | Prompting | A sticky note with four slots: role, task, examples, format | Be specific, show an example |
 | 8 | Few-shot | "great → positive", "awful → negative", "it's fine → ?", and the model fills in "neutral" | Examples beat explanations |
 | 9 | Hallucinations | A speech bubble: "The Eiffel Tower opened in 1925", with a red "made up" stamp (it opened in 1889) | Fluent isn't the same as true |
-| 10 | Fine-tuning | A base model plus your examples gives a tuned model with your badge on it | Changes behavior, not knowledge |
+| 10 | Fine-tuning | A base model plus your examples gives a tuned model with your badge on it | It changes behavior more than knowledge |
 | 11 | RLHF | Two answers, A and B. A person picks B, and an arrow loops back into the model | Trained on what people prefer |
 | 12 | Multimodal | Text, image and sound icons, all going into one model | One model, many inputs |
 | | "Now the last eight …" | A banner: "The last 8: where the jobs are", with circles 13–20 lit | |
 | 13 | Vector databases | A query point, with its nearest neighbours circled among many dots | Search by meaning, not keywords |
-| 14 | Chunking | A long document cut into numbered pieces with scissors | Small pieces, better search |
+| 14 | Chunking | A long document cut into numbered pieces with scissors | Smaller pieces, better search |
 | 15 | RAG | Question → search → the top 3 chunks → model → an answer with [1] [2] sources | Answers from your data, with sources |
 | 16 | Tool calling | Model → `{"tool": "get_orders"}` → your code → the result back to the model | The model asks, your code acts |
 | 17 | Agents | A loop: plan → act → check, and back to plan, around a goal flag | Tools plus a loop |
 | 18 | MCP | An AI app in the middle, with one standard plug to a database, GitHub and Slack | One plug for every tool |
-| 19 | Evals | A test sheet: 72% before a change, 91% after | If you can't measure it, you can't ship it |
+| 19 | Evals | A test sheet: 72% before a change, 91% after | Measure it before you ship it |
 | 20 | Guardrails | Input check → model → output check, blocking a leaked email address | Safe in, safe out |
 | Close | "Tokens to agents …" | All 20 circles ticked, "Tokens → Agents. The full stack." | |
 | Ask | "What should I explain next? …" | The shared comment box | |
@@ -116,5 +116,5 @@ Each page builds as its line is spoken: the number and title on the concept's na
 
 **Kept simple on purpose:**
 - Attention is shown without layers or heads.
-- "Fine-tuning changes behavior, not knowledge" is a rule of thumb. Fine-tuning can add some knowledge, but RAG is the usual way to give a model your facts.
+- "It changes behavior more than knowledge" (fine-tuning) is a rule of thumb. Fine-tuning can add some knowledge, but RAG is the usual way to give a model your facts.
 - The token numbers, probabilities and eval scores on screen are illustrations, not real measurements.

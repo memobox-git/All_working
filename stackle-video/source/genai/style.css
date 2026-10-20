@@ -1,0 +1,30 @@
+/* Landscape layout (1920×1080). The look is in notebook.css. */
+body{width:1920px;height:1080px}
+#rings{width:80px;height:1080px}
+.pageno{right:110px;top:46px}
+
+/* a concept page: number and title on top, the line on the left, the sketch on the right, the takeaway along the bottom */
+.page .num{left:250px;top:108px;width:124px;height:124px}
+.page .title{left:410px;top:104px}
+.page .sub{left:414px;top:236px}
+.page .def{left:250px;top:330px;width:780px}
+.page .sk{left:1080px;top:276px}
+.page .take{left:250px;top:880px;width:1540px;height:128px;padding:0 40px}
+
+/* the hook's cover */
+#cover .c20{left:240px;top:118px}
+#cover .cgen{left:620px;top:120px}
+#cover .ccon{left:620px;top:282px}
+#cover .cneed{left:250px;top:478px}
+#cover .tape{left:250px;top:650px;width:820px;height:112px}
+#cover .cbox2{left:1130px;top:620px;width:660px;padding:30px 40px}
+#cover .cbox2 .l2{margin-top:14px}
+
+/* "The last 8 …" and the close */
+#mid .m8{left:250px;top:250px}
+#mid .mjobs{left:256px;top:520px}
+#mid .mdots{left:256px;top:720px}
+#s5 .tape{left:250px;top:230px;width:640px;height:112px}
+#s5 .e1{left:250px;top:390px}
+#s5 .e2{left:256px;top:600px}
+#s5 .edots{left:256px;top:760px}

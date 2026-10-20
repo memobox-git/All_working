@@ -36,7 +36,7 @@ Chapters
 1:41 What should I explain next?
 
 Explained in 2 Minutes is a Stackle series: one data tool, two minutes.
-Previous episode: Apache Airflow. Next episode: Apache Spark.
+Previous episode: Apache Airflow. Next episode: 20 Gen AI Concepts You Actually Need.
 
 What should I explain next? Tell me in the comments.
 [Your links: Stackle website · LinkedIn · newsletter]
@@ -53,7 +53,7 @@ apache kafka, kafka explained, what is kafka, kafka tutorial, kafka architecture
 **Pinned comment**
 
 ```
-Next up is Apache Spark. Which tool should I explain after that: dbt, Snowflake or Iceberg? 👇
+Next up: 20 Gen AI concepts you actually need. Which tool should I explain after that: dbt, Snowflake or Iceberg? 👇
 ```
 
 ---
@@ -84,7 +84,7 @@ Apache Kafka, explained in 2 minutes ⏱️
 
 The problem → what Kafka is → topics and offsets → brokers, partitions and consumer groups.
 
-Episode 02 of Explained in 2 Minutes. Episode 03 is Apache Spark, so follow so you don't miss it.
+Episode 02 of Explained in 2 Minutes. Episode 03 is 20 Gen AI concepts you actually need, so follow so you don't miss it.
 What should I explain next? Comment below 👇
 
 #dataengineering #apachekafka #streaming #dataengineer #techcareers
@@ -124,7 +124,7 @@ I explained it in 2 minutes:
 
 If you're preparing for a data engineering interview, this is one of the tools you'll be asked about.
 
-Episode 02 of "Explained in 2 Minutes". Next up: Apache Spark.
+Episode 02 of "Explained in 2 Minutes". Next up: 20 Gen AI concepts you actually need.
 
 What should I explain after that? 👇
 

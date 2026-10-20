@@ -1,0 +1,41 @@
+/* Vertical layout (1080×1920) for TikTok, Reels and Shorts: the tracker runs
+   along the top, the page fills the middle and the burned-in captions sit
+   below it, inside the platforms' safe zone. The look is in notebook.css. */
+@font-face{font-family:PJS;font-weight:800;src:url(../node_modules/@fontsource/plus-jakarta-sans/files/plus-jakarta-sans-latin-800-normal.woff2)}
+body{width:1080px;height:1920px}
+#rings{width:80px;height:1920px}
+.pageno{right:76px;top:118px;font-size:30px}
+
+/* a concept page: number and title, the sketch, then the takeaway (the line itself is in the captions) */
+.page .num{left:120px;top:300px;width:120px;height:120px}
+.page .title{left:268px;top:292px;font-size:140px}
+.page .sub{left:272px;top:440px;font-size:40px}
+.page .sk{left:122px;top:488px;transform:scale(1.1)}
+.page .take{left:100px;top:1084px;width:880px;padding:20px 30px;flex-direction:column;align-items:flex-start;gap:2px}
+.page .take b{font-size:34px}
+.page .take span{font-size:42px}
+
+/* the hook's cover */
+#cover .c20{left:104px;top:262px}
+#cover .cgen{left:450px;top:300px}
+#cover .ccon{left:110px;top:574px}
+#cover .cneed{left:116px;top:760px}
+#cover .tape{left:110px;top:886px;width:860px;height:100px;font-size:48px}
+#cover .cbox2{left:100px;top:1024px;width:880px;padding:20px 32px;font-size:38px}
+#cover .cbox2 .l2{margin-top:6px}
+
+/* "The last 8 …" and the close */
+#mid .m8{left:110px;top:430px;font-size:176px}
+#mid .mjobs{left:116px;top:660px;font-size:76px}
+#mid .mdots{left:116px;top:830px}
+#s5 .tape{left:110px;top:380px;width:600px;height:104px}
+#s5 .e1{left:110px;top:530px;font-size:128px;white-space:normal;width:880px;line-height:1.08}
+#s5 .e2{left:116px;top:840px;font-size:70px;white-space:normal;width:860px;line-height:1.2}
+#s5 .edots{left:122px;top:1040px}
+
+/* the burned-in captions */
+#caps{position:absolute;left:110px;right:110px;top:1250px;height:236px}
+.cp{position:absolute;left:0;right:0;top:50%;text-align:center;text-wrap:balance;font-family:PJS,sans-serif;font-weight:800;font-size:70px;line-height:1.24;letter-spacing:-.025em;visibility:hidden;transform-origin:50% 50%}
+.cw{display:inline-block;padding:0 12px;margin:0 -7px;border-radius:16px;color:#C3C9D4}
+.cw.past{color:var(--ink)}
+.cw.now{color:#fff;background:var(--blue2);box-shadow:0 10px 24px -8px rgba(43,89,195,.55)}

@@ -1,0 +1,104 @@
+/* The notebook look for "20 Gen AI Concepts": cream paper, a spiral binding,
+   marker handwriting (Kalam, Caveat for notes), a coloured circle per
+   concept and hand-drawn sketches. Shared by both cuts; style.css and
+   vertical.css place things for each frame size. */
+@font-face{font-family:Kalam;font-weight:400;src:url(../node_modules/@fontsource/kalam/files/kalam-latin-400-normal.woff2)}
+@font-face{font-family:Kalam;font-weight:700;src:url(../node_modules/@fontsource/kalam/files/kalam-latin-700-normal.woff2)}
+@font-face{font-family:Caveat;font-weight:600;src:url(../node_modules/@fontsource/caveat/files/caveat-latin-600-normal.woff2)}
+@font-face{font-family:JBM;font-weight:500;src:url(../node_modules/@fontsource/jetbrains-mono/files/jetbrains-mono-latin-500-normal.woff2)}
+
+:root{
+  --paper:#FBF8F1;--ink:#1D1D1F;--blue:#1E3A8A;--blue2:#2B59C3;--purple:#6D5BD0;--hl:#FFE76A;
+  --c1:#CFE6FF;--c2:#FFF0A3;--c3:#FFD3DA;--c4:#CDEFD3;--c5:#E9E3FF;
+  /* for the shared comment ask (cta.css) */
+  --line:#D9D2C3;--faint:#9A9488;--muted:#6B665C;--soft:#F1ECE1;--shadow:0 2px 0 rgba(29,29,31,.08);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{overflow:hidden;background:var(--paper);font-family:Kalam,cursive;color:var(--ink);position:relative;-webkit-font-smoothing:antialiased}
+#bg{position:absolute;inset:0;opacity:0}
+#grain{position:absolute;inset:0;opacity:.05;mix-blend-mode:multiply;pointer-events:none}
+#stage{position:absolute;inset:0}
+.scene{position:absolute;inset:0;visibility:hidden;opacity:0}
+svg{overflow:visible}
+.abs{position:absolute}
+.wm{display:inline-block;overflow:hidden;vertical-align:top;padding:0 .03em .14em;margin-bottom:-.14em}
+.wi{display:inline-block}
+#track{position:absolute;inset:0;pointer-events:none}
+.pageno{position:absolute}
+
+/* S0 · the opening card */
+#s0{visibility:visible;opacity:1;background:#FEFEFE;z-index:5}
+.th-full{position:absolute;left:0;top:0;width:100%;height:100%}
+
+/* the binding and the tracker */
+#rings,#ink{position:absolute;left:0;top:0;pointer-events:none}
+.dot{position:absolute;display:grid;place-items:center;border-radius:50%;border:3px solid var(--ink);font:700 20px/1 Kalam;opacity:0}
+.dot.on{border-width:4.5px;box-shadow:0 0 0 7px rgba(43,89,195,.18)}
+.dot.done::after{content:'✓';position:absolute;right:-7px;top:-10px;font:700 20px/1 Kalam;color:#2F9E44}
+.pageno{font:700 32px Kalam;letter-spacing:.04em;opacity:0}
+.pageno i{position:absolute;left:0;right:0;bottom:-6px;height:4px;border-radius:2px;background:var(--blue2)}
+
+/* a concept page */
+.page .num{position:absolute;display:grid;place-items:center;border-radius:50%;border:4px solid var(--ink);font:700 60px/1 Kalam}
+.page .title{position:absolute;font:700 128px/1 Kalam;color:var(--blue);letter-spacing:-.01em;white-space:nowrap;transform-origin:0 50%}
+.page .sub{position:absolute;font:600 36px/1 Caveat;color:var(--blue2)}
+.page .def{position:absolute;font:400 50px/1.34 Kalam}
+.page .def .w{display:inline-block;padding:0 .07em}
+.page .def .w.hl{background-image:linear-gradient(transparent 60%,var(--hl) 60%,var(--hl) 92%,transparent 92%);background-repeat:no-repeat;background-size:0% 100%}
+.page .take{position:absolute;display:flex;align-items:center;gap:20px;border:4px solid var(--purple);border-radius:26px;background:rgba(255,255,255,.6)}
+.page .take b{font:700 38px Kalam;color:var(--blue);letter-spacing:.04em;white-space:nowrap}
+.page .take span{font:400 42px/1.25 Kalam}
+.sk{position:absolute;width:760px;height:520px;transform-origin:0 0}
+
+/* sketch marks */
+.mb{position:absolute;display:grid;place-items:center;text-align:center;border:4px solid var(--ink);border-radius:18px;font-family:Kalam;font-weight:700;line-height:1.05;padding:0 8px}
+.mt{position:absolute;white-space:nowrap;line-height:1}
+.mt.note{font-family:Caveat;font-weight:600}
+.mx{position:absolute}
+.bar{border:3px solid var(--ink);border-radius:10px;background:#fff;overflow:hidden}
+.bar i{display:block;height:100%;transform-origin:0 50%}
+.shade{background:rgba(251,248,241,.78)}
+.sticky{background:#FFF2A0;border-radius:6px;box-shadow:0 10px 0 -4px rgba(29,29,31,.08);transform:rotate(-2deg)}
+.sticky::before{content:'';position:absolute;left:50%;top:-18px;width:150px;height:40px;margin-left:-75px;background:rgba(207,230,255,.85);transform:rotate(3deg)}
+.bubble{border:4px solid var(--ink);border-radius:40px;background:#fff}
+.bubble::after{content:'';position:absolute;left:30px;bottom:-34px;width:44px;height:44px;background:#fff;border-right:4px solid var(--ink);border-bottom:4px solid var(--ink);transform:skewX(30deg) rotate(25deg)}
+.stamp{display:grid;place-items:center;border:6px solid #D6336C;border-radius:14px;color:#D6336C;font:700 58px/1 Kalam;letter-spacing:.08em;transform:rotate(-12deg);background:rgba(255,255,255,.4)}
+.stamp.small{font-size:54px;border-radius:50%}
+.cards i{position:absolute;width:150px;height:190px;border:3.5px solid var(--ink);border-radius:14px;background:#fff}
+.cards i::before,.cards i::after{content:'';position:absolute;left:20px;right:20px;height:5px;border-radius:3px;background:#C9C2B5}
+.cards i::before{top:40px}.cards i::after{top:70px}
+.badge{display:grid;place-items:center;border-radius:50%;background:var(--hl);border:3.5px solid var(--ink);font:700 34px/1 Kalam}
+.star{display:grid;place-items:center;border-radius:50%;background:var(--blue2);color:#fff;font:700 30px/1 Kalam}
+.code{border:3.5px solid var(--ink);border-radius:16px;background:#1F2433;color:#F1ECE1;font:500 26px/1.5 JBM,monospace;padding:30px 28px}
+.flag{display:grid;place-items:center;border-radius:50%;border:4px dashed var(--blue2);font:700 30px/1 Kalam;color:var(--blue2)}
+
+/* the hook's cover page */
+#cover .c20{position:absolute;font:700 300px/1 Kalam;color:var(--blue)}
+#cover .cgen{position:absolute;font:700 160px/1 Kalam;white-space:nowrap}
+#cover .cgen em{font-style:normal;display:inline-block;line-height:.8;padding:0 .06em;background-image:linear-gradient(transparent 52%,var(--hl) 52%,var(--hl) 88%,transparent 88%);background-repeat:no-repeat;background-size:0% 100%}
+#cover .ccon{position:absolute;font:700 168px/1 Kalam;color:var(--blue);white-space:nowrap}
+#cover .cneed{position:absolute;font:700 92px/1 Kalam;white-space:nowrap}
+#cover .tape{position:absolute;display:grid;place-items:center;text-align:center;background:#FFE98A;font:400 52px/1.15 Kalam;clip-path:polygon(2% 0,98% 3%,100% 50%,97% 100%,3% 97%,0 50%);transform:rotate(-1.5deg)}
+#cover .cbox2{position:absolute;border:4px solid var(--purple);border-radius:28px;font:400 42px/1.35 Kalam;background:rgba(255,255,255,.6)}
+#cover .cbox2 u{text-decoration:none;border-bottom:4px solid var(--blue2)}
+
+/* the "last 8" page and the closing page */
+#mid .m8{position:absolute;font:700 220px/1 Kalam;color:var(--blue);white-space:nowrap}
+#mid .mjobs{position:absolute;font:700 96px/1 Kalam;white-space:nowrap}
+#mid .mjobs em{font-style:normal;display:inline-block;line-height:.8;padding:0 .06em;background-image:linear-gradient(transparent 52%,var(--hl) 52%,var(--hl) 88%,transparent 88%);background-repeat:no-repeat;background-size:0% 100%}
+#s5 .e1{position:absolute;font:700 150px/1 Kalam;color:var(--blue);white-space:nowrap}
+#s5 .e2{position:absolute;font:700 90px/1 Kalam;white-space:nowrap}
+#mid .mdots,#s5 .edots{position:absolute}
+.bigdot{position:absolute;display:grid;place-items:center;border-radius:50%;border:4px solid var(--ink);font:700 42px/1 Kalam}
+.bigdot i{position:absolute;right:-12px;top:-16px;font:700 40px/1 Kalam;font-style:normal;color:#2F9E44}
+#s5 .tape{position:absolute;display:grid;place-items:center;background:#FFE98A;font:700 48px/1 Kalam;clip-path:polygon(2% 0,98% 3%,100% 50%,97% 100%,3% 97%,0 50%);transform:rotate(-1.5deg)}
+
+/* the shared comment ask, in notebook ink */
+.kicker{position:absolute;left:0;right:0;text-align:center;font:700 32px Kalam;letter-spacing:.14em;text-transform:uppercase;color:var(--blue2)}
+#cta .cta-q{font-family:Kalam;font-weight:700;letter-spacing:-.01em;color:var(--blue)}
+.cbox{border:4px solid var(--ink)!important;border-radius:26px!important;background:#fff;font-family:Kalam}
+.c-in{font-family:Kalam!important;border-bottom:3px solid var(--ink)!important}
+.c-btn{font-family:Kalam!important}
+.c-hint{font-family:Caveat!important;font-weight:600!important}
+.cta-credit{font-family:Kalam!important}
+#fade{position:absolute;inset:0;background:#fff;opacity:0}
