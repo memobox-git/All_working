@@ -156,7 +156,7 @@ function S1() {
   tl.set('#lock1', { autoAlpha: 1 }, tTitle + .3);
   tl.fromTo('#lock1 .kmark', { autoAlpha: 0, scale: .4, rotation: -90 }, { autoAlpha: 1, scale: 1, rotation: 0, duration: 1.4, ease: 'expo.out' }, tTitle + .3);
   tl.fromTo('#lock1 .word', { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 1, ease: 'expo.out' }, at('rag') - .15);
-  leave('#lock1', at('stands') - .1, { y: '-=60', d: .6 });
+  leave('#lock1', at('stands') - .4, { y: '-=50', d: .35 });
 
   const typed = $('#typed'), caret = $('#ch-caret'), mh = $('#model-h');
   let lastN = -1, lastM = '';
@@ -175,7 +175,7 @@ function S1() {
 function S2() {
   show('#s2', at('stands') - .3, at("here's") - .1);
   // R · A · G, then what each letter stands for
-  tl.fromTo('.lt b', { autoAlpha: 0, y: 60 }, { autoAlpha: 1, y: 0, duration: .9, ease: 'expo.out', stagger: .12 }, at('stands') - .1);
+  tl.fromTo('.lt b', { autoAlpha: 0, y: 60 }, { autoAlpha: 1, y: 0, duration: .9, ease: 'expo.out', stagger: .12 }, at('stands'));
   const tRA = at('retrievalaugmented');
   [['#lt1 span', tRA - .1], ['#lt2 span', tRA + .4], ['#lt3 span', at('generation') - .1]].forEach(([sel, t]) => rise(sel, t, { y: 18, d: .6 }));
   // retrieve, augment, generate
