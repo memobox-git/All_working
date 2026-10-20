@@ -2,6 +2,35 @@
 
 Newest first. One entry a day: the top 3, what got done, what moved to tomorrow.
 
+## Tue 20 Oct 2026
+
+**Top 3 (Draft, waiting for Chris)**
+1. **Prep tomorrow's Skip the Line recording with Mark Freeman II** (Wed 6 pm, episode 4: "Data Contracts: The Skill Most Data Engineers Are Missing"). I found no outline or question list in the repo. Free slot: 9–11:50.
+2. **Publish what's already finished**, if it isn't live yet: the "Explained in 2 Minutes" series intro (00), the Airflow and Kafka episodes, and AI Agents Explained (5:39). Four finished videos move the channel goal more than starting a fifth. Free slot: 1–4 pm.
+3. **OBIE prompt 11: test it as Stackle.** That's the last step of version 1.
+
+**Fixed today**
+- 12–1 pm: 4 sales calls (Bharadwaj Janak, Sohail Md, Mohan Babu (new), Vamsi Krishna).
+- 4–5 pm and 5–6 pm: the DE Roadmap and Get Hired webinars.
+
+**What actually got done since Sunday (from the commits)**
+- OBIE: prompts 4–10, all merged. Also email sign-in with an allow-list, Netlify hosting, a LinkedIn DM inbox and the Stackle marketing agent team.
+- YouTube: a new "Explained in 2 Minutes" series (intro, Airflow and Kafka episodes, a 100-episode roadmap); AI Agents Explained rendered; the Personal AI Agents, Senior to Staff, Build an AI Agent and 5 AI Infrastructure Projects scripts.
+- LinkedIn: the September top-posts report (126 posts, 25 hooks), the SQL interview questions post with slides and a GIF, a staff-interview newsletter, and a 95-question interview bank.
+- The Stackle Content Engine.
+
+**Flags**
+- The drafted week goals (#18, #12, #27) don't match the real work. The real work is Explained in 2 Minutes and the AI agents videos. The goals need a re-draft (below).
+- OBIE's draft Q4 goal (prompts 4–11) is almost done in 2 days.
+- The 8:00 check-in still clashes with "Ollie".
+- No reply to the last 2 drafts. If tomorrow's goes unanswered too, the drafts drop to one line and the phone pings stop.
+
+**Re-drafted week goals (Mon 19 – Sun 25 Oct)**
+1. Skip the Line episode 4 recorded with Mark (Wed).
+2. Explained in 2 Minutes launched: the intro, Airflow and Kafka episodes published.
+3. OBIE version 1 done: prompt 11 passes.
+4. AI Agents Explained published.
+
 ## Mon 19 Oct 2026
 
 **Top 3 (Draft, waiting for Chris)**
