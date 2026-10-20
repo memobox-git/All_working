@@ -38,7 +38,7 @@ body{font-family:PJS,sans-serif;color:var(--ink);background:#FFFFFF;position:rel
 .browser .bar{height:46px;display:flex;align-items:center;gap:10px;padding:0 18px;background:#F4F5F8;border-bottom:1.5px solid #E3E5EA}
 .browser .bar i{width:13px;height:13px;border-radius:50%;display:inline-block}
 .browser .bar i:nth-child(1){background:#FF6159}.browser .bar i:nth-child(2){background:#FFBD2E}.browser .bar i:nth-child(3){background:#28C941}
-.browser .url{margin-left:18px;flex:1;height:30px;border-radius:15px;background:#fff;border:1.5px solid #E3E5EA;display:flex;align-items:center;gap:8px;padding:0 14px;font-size:17px;font-weight:600;color:#4B5563}
+.browser .url{white-space:nowrap;overflow:hidden;margin-left:18px;flex:1;height:30px;border-radius:15px;background:#fff;border:1.5px solid #E3E5EA;display:flex;align-items:center;gap:8px;padding:0 14px;font-size:17px;font-weight:600;color:#4B5563}
 .browser .url svg{width:14px;height:14px}
 .browser .view{position:relative;overflow:hidden;background:#fff}
 .browser .cam{position:absolute;left:0;top:0;transform-origin:0 0}

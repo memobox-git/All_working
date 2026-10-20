@@ -107,14 +107,20 @@ scene('02', {
   chapter: CH.intro,
   text: `So here's the plan. First, I'll give one task to three kinds of AI. Then I'll show you how a DIY agent works inside, because personal agents work the same way. Then, how personal agents message you first. And at the end, which one I'd pick.`,
   build(at) {
-    const cols = columns({ top: 150, height: 330, apps: false });
-    cols.forEach((c, i) => IN(c.card, 0.2 + i * 0.15));
-    const steps = [['Same task, three kinds of AI', 'first'], ['How a DIY agent works', 'then'], ['How a personal agent messages you first', 'then', 1], ['Which one to pick', 'end']];
-    steps.forEach(([t, c, n], i) => {
-      const r = add(`<div class="abs" style="left:160px;top:${545 + i * 100}px;display:flex;align-items:center;gap:30px">
-        <div class="chip solid" style="width:72px;justify-content:center;padding:0">${i + 1}</div><div class="h3">${t}</div></div>`);
-      IN(r, at(c, n || 0), { x: -40, y: 0 });
-    });
+    IN(add('<div class="abs h2" style="left:160px;top:100px">The plan</div>'), at('plan') - 0.2, { x: -30, y: 0 });
+    const step = (i, title, ic) => add(`<div class="abs glass" style="left:160px;top:${220 + i * 190}px;width:1600px;height:160px;display:flex;align-items:center;gap:36px;padding:0 44px;border-radius:28px">
+      <div class="chip solid" style="width:80px;height:80px;justify-content:center;padding:0;font-size:40px;flex:none">${i + 1}</div>
+      <div class="h3" style="font-size:46px;flex:none">${title}</div>
+      <div class="extra" style="margin-left:auto;display:flex;gap:16px;align-items:center"></div>
+      <div class="badge" style="width:84px;height:84px;margin-left:${ic ? '0' : 'auto'}">${icon(ic || 'check')}</div></div>`);
+    const s1 = step(0, 'One task, three kinds of AI', 'chat');
+    IN(s1, at('first'), { x: -40, y: 0 });
+    ['Chatbot', 'DIY agent', 'Personal agent'].forEach((k, j) => POP(add(`<div class="chip ghost" style="height:60px;font-size:28px">${k}</div>`, s1.querySelector('.extra')), at('three kinds') + j * 0.15));
+    const s2 = step(1, 'How a DIY agent works inside', 'folder');
+    IN(s2, at('then'), { x: -40, y: 0 });
+    POP(add('<div class="chip" style="height:60px;font-size:28px">Personal agents work the same way</div>', s2.querySelector('.extra')), at('because'));
+    IN(step(2, 'How personal agents message you first', 'bell'), at('then', 1), { x: -40, y: 0 });
+    IN(step(3, 'Which one I’d pick', 'check'), at('and at the end'), { x: -40, y: 0 });
   },
 });
 
