@@ -1,6 +1,6 @@
 // Word-by-word captions for the vertical cuts, from the voiceover timings:
 // short pages of a few words (up to four, 24 characters, a new page at
-// punctuation or a pause), the word being spoken on a blue pill, the words
+// punctuation or a pause; a page can set window.CAP_PAGE = { words, chars }), the word being spoken on a blue pill, the words
 // still to come in grey. The page goes in #caps; call drawCaptions(t) from
 // render(t). Load after common.js.
 const RAW = VO.words.filter(w => !w.w.startsWith('['));
@@ -14,11 +14,12 @@ RAW.forEach((w, i) => {
     s: w.s + OFF, e: w.e + OFF,
   });
 });
+const CAP = window.CAP_PAGE || { words: 4, chars: 24 };
 const PAGES = [];
 for (let i = 0, page = null; i < CAPW.length; i++) {
   const w = CAPW[i], prev = page && page.words[page.words.length - 1];
   const chars = page ? page.words.reduce((n, x) => n + x.text.length + 1, 0) + w.text.length : 0;
-  if (!page || page.words.length >= 4 || chars > 24 || w.s - prev.e > .45) PAGES.push(page = { words: [] });
+  if (!page || page.words.length >= CAP.words || chars > CAP.chars || w.s - prev.e > .45) PAGES.push(page = { words: [] });
   page.words.push(w);
   if (w.brk) page = null;
 }

@@ -5,7 +5,7 @@
 // (VO.cta, set by "cta": true in episode.json), right after the closing title;
 // the series intro calls ctaScene() itself on its own words.
 // Load after common.js; it adds its own scene to the page (styles in cta.css).
-const CTA_IDEAS = ['dbt', 'Apache Iceberg', 'Apache Flink', 'DuckDB'];
+const CTA_IDEAS = window.CTA_IDEAS || ['dbt', 'Apache Iceberg', 'Apache Flink', 'DuckDB'];   // an episode can set its own
 
 function ctaScene(i0, { tEnd = END } = {}) {
   // the line's words, in order: So, what should I explain next? Tell me in the comments below, …

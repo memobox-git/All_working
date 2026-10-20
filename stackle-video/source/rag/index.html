@@ -1,0 +1,207 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>RAG, explained</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="../explained/cta.css"></head>
+<body>
+<canvas id="bg" width="1920" height="1080"></canvas>
+
+<div id="stage">
+
+  <!-- S0 · the opening card: the thumbnail (img/thumbnail.png), cleared away just before the first word -->
+  <section class="scene" id="s0">
+    <img class="th-full" src="img/thumbnail.png" alt="RAG, explained in 2 minutes">
+  </section>
+
+  <!-- S1 · "Ask a chatbot about your company's refund policy … That's what RAG does." -->
+  <section class="scene" id="s1">
+    <svg class="links" id="s1-links" viewBox="0 0 1920 1080"></svg>
+    <div class="chat" id="chat">
+      <div class="ch-head"><span class="tile sm" data-icon="bot"></span><div><h3>Assistant</h3><p><i></i>online</p></div></div>
+      <div class="ch-body">
+        <div class="msg me" id="m-q">What's our refund policy?</div>
+        <div class="msg bot typing" id="m-dots"><i></i><i></i><i></i></div>
+        <div class="msg bot dim" id="m-no">Sorry, I don't have access to that.</div>
+        <div class="msg bot" id="m-fake">Refunds are available within <b>60 days</b> of purchase.<span class="stamp" id="stamp">made up</span></div>
+        <div class="msg bot good" id="m-real">Refunds are available within <b>30 days</b> of purchase. <span class="cite">1</span>
+          <span class="src"><span data-icon="file"></span>refund-policy.pdf</span></div>
+      </div>
+      <div class="ch-input"><span id="typed"></span><i class="ch-caret" id="ch-caret"></i><span class="send" data-icon="up"></span></div>
+    </div>
+    <div class="model" id="model"><span class="tile" data-icon="cpu"></span><div><h3 id="model-h">Model</h3><p>knows the public web</p></div><span class="xb" data-icon="x"></span></div>
+    <div class="nolink" id="nolink"><span data-icon="x"></span></div>
+    <div class="doc" id="doc">
+      <div class="doc-h"><span class="tile sm" data-icon="file"></span><div><h3>refund-policy.pdf</h3><p>Acme · internal</p></div></div>
+      <div class="doc-b">
+        <i style="width:92%"></i><i style="width:78%"></i>
+        <p>Refunds are available within <mark id="doc-mark">30 days</mark> of purchase.</p>
+        <i style="width:86%"></i><i style="width:64%"></i>
+      </div>
+      <span class="lockt" id="lockt"><span data-icon="lock"></span>never in its training data</span>
+    </div>
+    <div class="fly-page" id="fly-page"><i></i><i></i><i class="hi"></i><i></i></div>
+    <div class="lock" id="lock1"><svg class="kmark" viewBox="-100 -100 200 200"></svg><div class="word">RAG</div></div>
+  </section>
+
+  <!-- S2 · what it is: R·A·G spelled out, the three steps, where it came from -->
+  <section class="scene" id="s2">
+    <div class="letters">
+      <div class="lt" id="lt1" style="--c:#017CEE"><b>R</b><span>Retrieval</span></div>
+      <div class="lt" id="lt2" style="--c:#7A5AF8"><b>A</b><span>Augmented</span></div>
+      <div class="lt" id="lt3" style="--c:#12B76A"><b>G</b><span>Generation</span></div>
+    </div>
+    <div class="step" id="st1" style="--c:#017CEE;--tint:#EFF8FF"><span class="tile" data-icon="search"></span><div><h3>Retrieve</h3><p>find the right text</p></div><i class="ring"></i></div>
+    <div class="step" id="st2" style="--c:#7A5AF8;--tint:#F4F3FF"><span class="tile" data-icon="plus"></span><div><h3>Augment</h3><p>add it to the prompt</p></div><i class="ring"></i></div>
+    <div class="step" id="st3" style="--c:#12B76A;--tint:#ECFDF3"><span class="tile" data-icon="sparkle"></span><div><h3>Generate</h3><p>write the answer</p></div><i class="ring"></i></div>
+    <span class="chev" id="chev1" data-icon="chev"></span><span class="chev" id="chev2" data-icon="chev"></span>
+
+    <div class="kicker" id="s2-tag2">Where it came from</div>
+    <div class="tline" id="tline">
+      <div class="tl-track"><i id="tl-fill"></i></div>
+      <div class="tl-node" id="tn1"><b>2020</b><i class="dot"></i><span>The RAG paper<br><small>Facebook AI Research</small></span></div>
+      <div class="tl-node now" id="tn2"><b>Today</b><i class="dot"></i><span>One of the first systems<br>AI engineers build</span></div>
+    </div>
+  </section>
+
+  <!-- S3 · the core idea: the training cutoff, no retraining, look it up and put it in the prompt -->
+  <section class="scene" id="s3">
+    <div class="kicker" id="s3-tag">The core idea</div>
+    <div class="train" id="train">
+      <div class="tr-h"><span class="tile sm" data-icon="cpu"></span>What the model saw in training</div>
+      <div class="tr-bar"><i id="tr-fill"></i></div>
+      <div class="tr-flag" id="tr-flag"><i></i><b>cutoff date</b></div>
+      <div class="tr-src" id="tr-src"><span>public web</span><span>books</span><span>code</span></div>
+    </div>
+    <div class="outside" id="outside">
+      <em>Not in it</em>
+      <span class="oc"><span data-icon="lock"></span>refund-policy.pdf</span>
+      <span class="oc"><span data-icon="lock"></span>your team's wiki</span>
+      <span class="oc"><span data-icon="clock"></span>this week's prices</span>
+    </div>
+    <div class="retrain" id="retrain"><span data-icon="refresh"></span>Retrain the model<i class="strike" id="strike"></i></div>
+    <div class="prompt" id="prompt">
+      <div class="pr-h"><span class="tile sm" data-icon="msg"></span>Prompt</div>
+      <div class="pr-row" id="pr-q"><em>Question</em>What's our refund policy?</div>
+      <div class="pr-look" id="pr-look"><span data-icon="search"></span>looking it up in your documents</div>
+      <div class="pr-row ctx" id="pr-c"><em>From refund-policy.pdf</em>“Refunds are available within 30 days of purchase.”</div>
+    </div>
+    <div class="exam" id="ex1" style="--c:#12B76A;--tint:#ECFDF3"><span class="tile" data-icon="book"></span><div><h3>Open book</h3><p>look it up, then answer</p></div><span class="mk ok" data-icon="check"></span></div>
+    <div class="exam dim" id="ex2" style="--c:#667085;--tint:#F2F4F7"><span class="tile" data-icon="bookc"></span><div><h3>Closed book</h3><p>answer from memory</p></div><span class="mk no" data-icon="x"></span></div>
+  </section>
+
+  <!-- S4 · the architecture: the indexing pipeline and the retrieval pipeline -->
+  <section class="scene" id="s4">
+    <div class="s4-title" id="s4-title">
+      <div class="kicker">The architecture</div>
+      <div class="s4-h">Inside a RAG system</div>
+    </div>
+    <div class="viewport"><div id="world">
+      <div class="frame" id="ln-a"><span class="tab"><b>1</b>Indexing · ahead of time</span></div>
+      <div class="frame" id="ln-b"><span class="tab"><b>2</b>Retrieval · every question</span></div>
+      <svg class="links under" id="s4-under" viewBox="0 0 1920 1080"></svg>
+
+      <div class="nd" id="n-docs" style="--c:#F79009;--tint:#FFFAEB">
+        <div class="nd-h"><span class="tile sm" data-icon="file"></span><div><h3>Documents</h3><p>your files</p></div></div>
+        <div class="files">
+          <div class="fl" id="f1"><span data-icon="file"></span>refund-policy.pdf<em class="upd" id="upd">updated</em></div>
+          <div class="fl" id="f2"><span data-icon="file"></span>handbook.docx</div>
+          <div class="fl" id="f3"><span data-icon="file"></span>faq.md</div>
+        </div>
+      </div>
+      <div class="nd" id="n-chunks" style="--c:#7A5AF8;--tint:#F4F3FF">
+        <div class="nd-h"><span class="tile sm" data-icon="scissors"></span><div><h3>Chunks</h3><p>small pieces</p></div></div>
+        <div class="chunks" id="chunks">
+          <div class="ck" id="ck1"><b>1</b><i></i></div><div class="ck" id="ck2"><b>2</b><i></i></div>
+          <div class="ck" id="ck3"><b>3</b><i></i></div><div class="ck" id="ck4"><b>4</b><i></i></div>
+        </div>
+      </div>
+      <div class="nd" id="n-emb" style="--c:#017CEE;--tint:#EFF8FF">
+        <div class="nd-h"><span class="tile sm" data-icon="hash"></span><div><h3>Embeddings</h3><p>meaning as numbers</p></div></div>
+        <div class="vecs" id="vecs">
+          <div class="vr" id="vr1"><b>1</b><span>[ 0.12, −0.83, 0.44, … ]</span></div>
+          <div class="vr" id="vr2"><b>2</b><span id="vr2-n">[ 0.31, 0.07, −0.52, … ]</span></div>
+          <div class="vr" id="vr3"><b>3</b><span>[ −0.65, 0.29, 0.18, … ]</span></div>
+          <div class="vr" id="vr4"><b>4</b><span>[ 0.48, −0.11, 0.73, … ]</span></div>
+        </div>
+      </div>
+
+      <div class="nd" id="n-q" style="--c:#0E9384;--tint:#F0FDF9">
+        <div class="nd-h"><span class="tile sm" data-icon="msg"></span><div><h3>Question</h3><p>from a user</p></div></div>
+        <div class="qb">What's our refund policy?</div>
+      </div>
+      <div class="nd" id="n-qe" style="--c:#017CEE;--tint:#EFF8FF">
+        <div class="nd-h"><span class="tile sm" data-icon="hash"></span><div><h3>Embedding</h3><p>the same kind</p></div></div>
+        <div class="vecs one"><div class="vr q"><b>Q</b><span>[ 0.29, 0.05, −0.49, … ]</span></div></div>
+      </div>
+
+      <div class="nd db" id="n-db" style="--c:#0B1220;--tint:#F2F4F7">
+        <div class="nd-h"><span class="tile sm" data-icon="db"></span><div><h3>Vector database</h3><p>a map of meaning</p></div></div>
+        <div class="map" id="map"><svg class="map-l" id="map-l"></svg></div>
+        <div class="legend"><span style="--k:#F79009">refunds</span><span style="--k:#7A5AF8">HR</span><span style="--k:#0E9384">FAQ</span></div>
+      </div>
+
+      <div class="nd" id="n-prompt" style="--c:#7A5AF8;--tint:#F4F3FF">
+        <div class="nd-h"><span class="tile sm" data-icon="plus"></span><div><h3>Prompt</h3><p>question + chunks</p></div></div>
+        <div class="pq">What's our refund policy?</div>
+        <div class="slots3"><div class="s3" id="sl1"></div><div class="s3" id="sl2"></div><div class="s3" id="sl3"></div></div>
+      </div>
+      <div class="nd row" id="n-llm" style="--c:#0B1220;--tint:#F2F4F7">
+        <span class="tile sm" data-icon="cpu"></span><div><h3>Model</h3><p>answers from them</p></div><i class="ring"></i>
+      </div>
+      <div class="nd" id="n-ans" style="--c:#12B76A;--tint:#ECFDF3">
+        <div class="nd-h"><span class="tile sm" data-icon="sparkle"></span><div><h3>Answer</h3><p>with sources</p></div></div>
+        <div class="ab" id="ab">Refunds within <b id="ab-days">30 days</b> of purchase. <span class="cite">1</span></div>
+        <div class="srcs"><span class="src"><span data-icon="file"></span>[1] refund-policy.pdf</span></div>
+        <em class="stale" id="stale">out of date</em>
+      </div>
+
+      <svg class="links over" id="s4-over" viewBox="0 0 1920 1080"></svg>
+      <div class="flyers" id="flyers"></div>
+    </div></div>
+  </section>
+
+  <!-- S5 · "So when a job post asks for RAG …" + closing title -->
+  <section class="scene" id="s5">
+    <div class="kicker" id="s5-tag">When a job post asks for</div>
+    <div class="job" id="job">
+      <div class="job-h"><span class="tile" data-icon="brief"></span><div><h3>AI Engineer</h3><p>Requirements</p></div></div>
+      <div class="req"><span class="tick" data-icon="check"></span>Python</div>
+      <div class="req"><span class="tick" data-icon="check"></span><span class="hl" id="hl"><b>RAG</b> pipelines</span></div>
+      <div class="req"><span class="tick" data-icon="check"></span>LLM evals</div>
+    </div>
+    <div class="kicker" id="s5-tag2">It means you can build both pipelines</div>
+    <div class="takeaways">
+      <div class="ta" id="ta1"><span class="tick" data-icon="check"></span><span>Get your documents in.</span></div>
+      <div class="ta" id="ta2"><span class="tick" data-icon="check"></span><span>Get the right chunks out.</span></div>
+      <div class="ta" id="ta3"><span class="tick" data-icon="check"></span><span>Every answer comes with its source.</span></div>
+    </div>
+    <div class="lock" id="lock5">
+      <svg class="kmark" id="mark5" viewBox="-100 -100 200 200"></svg>
+      <div class="word"><span class="wm-m"><span class="wm-b" id="wm5b">RAG</span></span></div>
+    </div>
+    <div class="kicker" id="lock5-sub">Explained in 2 minutes</div>
+    <div class="credit" id="credit">Stackle · AI Engineering · Episode 01</div>
+  </section>
+
+</div>
+
+<div id="hud">
+  <div class="hud-fade" id="hud-fade"></div>
+  <div class="hud-tl"><svg class="kmark mini-mark" viewBox="-100 -100 200 200"></svg>RAG<span class="sep"></span><span class="series">Explained in 2 minutes</span></div>
+  <div class="hud-tr"><span id="hud-num">01</span><span class="sep"></span><span id="hud-chap">The problem</span></div>
+  <div class="hud-bar"><i id="hud-prog"></i></div>
+</div>
+<!-- preview only, until the voice is recorded: the words on screen, and a badge -->
+<div id="caps"></div>
+<div class="pv-badge" id="pv-badge">Preview · no voice yet · estimated timings</div>
+<div id="fade"></div>
+
+<script src="cues.js"></script>
+<script src="../node_modules/gsap/dist/gsap.min.js"></script>
+<script src="../node_modules/gsap/dist/DrawSVGPlugin.min.js"></script>
+<script src="setup.js"></script>
+<script src="../explained/common.js"></script>
+<script src="../explained/captions.js"></script>
+<script src="../explained/cta.js"></script>
+<script src="brand.js"></script>
+<script src="story.js"></script>
+</body></html>
