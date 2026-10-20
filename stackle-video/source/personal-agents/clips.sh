@@ -36,6 +36,7 @@ cut muse-allow       meta-muse-fieldtrip  19.5  7.5   960
 cut muse-japan       meta-muse-japan      0     24.5  960
 cut muse-shopping    meta-muse-shopping   0     25.7  960
 cut daily-brief      google-daily-brief   0     17.6  1600
+cut muse-rel         meta-muse-relationships 0  18.4  960
 
 # frame counts for core.js
 {

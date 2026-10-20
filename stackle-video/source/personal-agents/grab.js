@@ -19,6 +19,9 @@ const SPECS = [
   { name: 'openai-dots-top', url: 'https://openai.com/index/introducing-dots/', domain: 'openai.com', top: true, quote: 'always-on agents' },
   { name: 'openclaw-github', url: 'https://github.com/openclaw/openclaw', domain: 'github.com', top: true, quote: 'The AI that really does things.' },
   { name: 'openclaw-heartbeat', url: 'https://docs.openclaw.ai/gateway/heartbeat', domain: 'docs.openclaw.ai', top: true, quote: 'surface anything that needs attention without spamming you' },
+  { name: 'claude-memory', url: 'https://code.claude.com/docs/en/memory', domain: 'code.claude.com', quote: 'You write these files in plain text; Claude reads them at the start of every session.' },
+  { name: 'agents-md', url: 'https://agents.md/', domain: 'agents.md', top: true, quote: 'used by over 60k open-source projects.' },
+  { name: 'meta-muse-memory', url: 'https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/', domain: 'about.fb.com', quote: 'Muse remembers what matters to a person' },
   { name: 'gemini-task-rename', url: 'https://9to5google.com/2026/10/12/gemini-spark-task-redesign/', domain: '9to5google.com', top: true, quote: 'Gemini ‘Task’ redesign integrates Spark into the main chat app' },
 ];
 

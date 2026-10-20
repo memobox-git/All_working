@@ -1,0 +1,35 @@
+/* The motion graphics in the light look (video.html): the classes from pa.css
+   redrawn for a white canvas, so the graphics and the real-source scenes read
+   as one video. Code windows and phones stay dark, as they are on screen. */
+body.light{--text:#0F1115;--accent:#2563EB;--accent2:#0891B2;--accent-deep:#1D4ED8;--muted:#6B7280;--dim:#9CA3AF;--red:#E11D48;--green:#16A34A;color:var(--text)}
+.light .glass{background:#fff;border:1.5px solid #E7E8EE;box-shadow:0 24px 60px rgba(17,24,39,.08),0 2px 6px rgba(17,24,39,.05)}
+.light .lit{border-color:var(--accent)!important;box-shadow:0 0 0 6px rgba(37,99,235,.12),0 24px 60px rgba(37,99,235,.16)!important}
+.light .tag{color:var(--accent)}
+.light .tag::before{background:var(--accent);box-shadow:none;border-radius:3px}
+.light .tag.warn{color:var(--red)}.light .tag.warn::before{background:var(--red);box-shadow:none}
+.light .grad{background:linear-gradient(90deg,#2563EB,#0EA5E9);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.light .chip{background:#EFF5FF;border-color:#CFE0FF;color:#1D4ED8}
+.light .chip.solid{background:linear-gradient(150deg,#3B82F6,#1D4ED8);border-color:transparent;color:#fff;box-shadow:0 10px 30px rgba(37,99,235,.28)}
+.light .chip.ghost{background:#F3F4F8;border-color:#E5E7EB;color:#374151}
+.light .chip.red{background:#FFF1F3;border-color:#FECDD6;color:#BE123C}
+.light .chip.green{background:#ECFDF3;border-color:#BBF7D0;color:#15803D}
+.light .badge{box-shadow:0 10px 30px rgba(37,99,235,.28)}
+.light .wire{stroke:var(--accent);filter:none}
+.light .wire.dash{stroke:rgba(37,99,235,.3)}
+.light .wire.red{stroke:var(--red);filter:none}
+.light .letsay{background:#FFE45C;color:#0F1115}
+.light .win{background:#0F172A;border-color:#1E293B;box-shadow:0 40px 90px rgba(17,24,39,.2),0 4px 12px rgba(17,24,39,.08)}
+.light .win .bar{background:#1E293B;border-color:#273449;color:#94A3B8}
+.light .win .bar i{background:#334155}
+.light .win pre{color:#E2E8F0}
+.light .win pre .k{color:#7DD3FC}
+.sk1{background:rgba(241,245,255,.35)}.sk2{background:rgba(241,245,255,.14)}
+.light .sk1{background:#CBD5E1}.light .sk2{background:#E5E7EB}
+.light .dk{--text:#F1F5FF;--muted:#8B97B0;color:#F1F5FF}
+.agentball{background:radial-gradient(circle,rgba(79,139,255,.35),rgba(29,78,216,.15) 60%,rgba(11,16,32,.9));border:3px solid var(--accent);box-shadow:0 0 90px rgba(79,139,255,.45)}
+.agentball .ico-w{color:#fff}
+.light .agentball{background:radial-gradient(circle,#EFF5FF 0%,#fff 75%);box-shadow:0 0 0 12px rgba(37,99,235,.07),0 24px 60px rgba(37,99,235,.2)}
+.light .agentball .ico-w{color:var(--accent)}
+.moon{color:#C7D1E3}.light .moon{color:#94A3B8}
+.mailcard{box-shadow:0 40px 100px rgba(0,0,0,.55)}
+.light .mailcard{border:1.5px solid #E5E7EB;box-shadow:0 30px 80px rgba(17,24,39,.12)}

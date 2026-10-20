@@ -168,7 +168,7 @@ scene('08', {
   build(at) {
     const tag = add('<div class="tag abs" style="left:160px;top:200px">The evening before your interview</div>');
     FADE(tag, 0.2);
-    const phone = add(`<div class="abs" style="left:1130px;top:140px;width:470px;height:860px;border-radius:64px;background:linear-gradient(170deg,#1A2440,#0C1224);border:3px solid rgba(241,245,255,.18);box-shadow:0 40px 120px rgba(0,0,0,.6),0 0 90px rgba(79,139,255,.18)">
+    const phone = add(`<div class="abs dk" style="left:1130px;top:140px;width:470px;height:860px;border-radius:64px;background:linear-gradient(170deg,#1A2440,#0C1224);border:3px solid rgba(241,245,255,.18);box-shadow:0 40px 120px rgba(0,0,0,.6),0 0 90px rgba(79,139,255,.18)">
       <div class="abs" style="left:175px;top:22px;width:120px;height:30px;border-radius:20px;background:#05080F"></div>
       <div class="abs center" style="left:0;right:0;top:110px;font-size:120px;font-weight:700;letter-spacing:-.03em">8:30</div>
       <div class="abs center muted" style="left:0;right:0;top:255px;font-size:28px;font-weight:600">Tonight</div>
@@ -213,8 +213,8 @@ scene('12', {
     const jobs = [];
     for (let i = 0; i < 20; i++) {
       const c = add(`<div class="abs glass" style="left:${980 + (i % 5) * 160}px;top:${200 + Math.floor(i / 5) * 128}px;width:140px;height:108px;border-radius:18px;padding:18px">
-        <div style="height:12px;width:80px;border-radius:6px;background:rgba(241,245,255,.35)"></div>
-        <div style="height:9px;width:100px;border-radius:5px;background:rgba(241,245,255,.14);margin-top:12px"></div>
+        <div class="sk1" style="height:12px;width:80px;border-radius:6px"></div>
+        <div class="sk2" style="height:9px;width:100px;border-radius:5px;margin-top:12px"></div>
         ${DBT.includes(i) ? '<div class="dbt chip solid" style="position:absolute;right:10px;bottom:10px;height:36px;font-size:20px;padding:0 12px">dbt</div>' : ''}</div>`);
       jobs.push(c);
       FADE(c, at('twenty') + i * 0.04, { y: 10 });
@@ -228,22 +228,29 @@ scene('12', {
   },
 });
 
-// ---------- Graphic 13: connectors (paragraph 25) ----------
+// ---------- Graphic 13: connectors (paragraphs 24 and 25) ----------
 scene('13', {
   chapter: CH.p2,
-  text: `First, it searches Gmail for the applications you sent in the last three weeks that got no reply. Second, it writes a short follow-up to each recruiter, by name, but it doesn't send them. Third, it updates your job tracker in Google Sheets. And fourth, it puts a reminder in your calendar to check again next Friday. That's three different apps, all for one job, and you didn't have to explain any of it.`,
+  text: `Now a bigger example. You type one sentence, "Follow up on my job applications." And because the agent has connectors, it can pull everything together. A connector just means a safe link between the AI and an app, like Gmail or your calendar. First, it searches Gmail for the applications you sent in the last three weeks that got no reply. Second, it writes a short follow-up to each recruiter, by name, but it doesn't send them. Third, it updates your job tracker in Google Sheets. And fourth, it puts a reminder in your calendar to check again next Friday. That's three different apps, all for one job, and you didn't have to explain any of it.`,
   build(at) {
-    const ask = add(`<div class="abs glass h3 center" style="left:460px;top:140px;width:1000px;padding:26px 30px;border-radius:30px">“Follow up on my job applications.”</div>`);
-    IN(ask, 0.1, { y: -30 });
-    const agent = add(`<div class="abs" style="left:850px;top:430px;width:220px;height:220px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;
-      background:radial-gradient(circle,rgba(79,139,255,.35),rgba(29,78,216,.15) 60%,rgba(11,16,32,.9));border:3px solid var(--accent);box-shadow:0 0 90px rgba(79,139,255,.45)">
-      <div style="width:70px;color:#fff">${icon('agent')}</div><div style="font-size:28px;font-weight:800">Your agent</div></div>`);
-    POP(agent, 0.3);
+    FADE(add('<div class="tag abs" style="left:160px;top:60px">A bigger example</div>'), 0.1);
+    const ask = add(`<div class="abs glass h3 center" style="left:460px;top:140px;width:1000px;height:96px;padding:26px 30px;border-radius:30px"><span class="q"></span></div>`);
+    IN(ask, at('you type') - 0.2, { y: -30 });
+    TYPE(ask.querySelector('.q'), at('you type') + 0.2, '“Follow up on my job applications.”', 30);
+    const agent = add(`<div class="abs agentball" style="left:850px;top:430px;width:220px;height:220px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px">
+      <div class="ico-w" style="width:70px">${icon('agent')}</div><div style="font-size:28px;font-weight:800">Your agent</div></div>`);
+    POP(agent, at('connectors'));
+    const def = add(`<div class="abs glass" style="left:410px;top:760px;width:1100px;padding:30px 40px;display:flex;align-items:center;gap:28px">
+      <div class="badge" style="width:80px;height:80px">${icon('lock')}</div><div style="flex:1"><div class="h3">Connector</div><div class="body muted">A safe link between the AI and an app</div></div>
+      <div class="c1 chip ghost">Gmail</div><div class="c2 chip ghost">Calendar</div></div>`);
+    IN(def, at('a connector just'), { y: 30 });
+    POP(def.querySelector('.c1'), at('like gmail')); POP(def.querySelector('.c2'), at('your calendar'));
+    OUT(def, at('first') - 0.3, { y: 30 });
     const app = (l, t, ic, name) => add(`<div class="abs" style="left:${l}px;top:${t}px;display:flex;align-items:center;gap:22px"><div class="badge">${icon(ic)}</div><div class="h3">${name}</div></div>`);
     const gm = app(160, 300, 'mail', 'Gmail'), sh = app(1300, 290, 'sheet', 'Google Sheets'), ca = app(1300, 640, 'cal', 'Google Calendar');
     const svg = add(`<svg class="wires"><path class="wire" d="M850 540C720 540 640 348 440 348"/><path class="wire" d="M1070 520C1180 520 1200 338 1290 338"/><path class="wire" d="M1070 560C1180 560 1200 688 1290 688"/></svg>`);
     const [w1, w2, w3] = svg.querySelectorAll('path');
-    DRAW(w1, at('gmail') - 0.2, 0.6); POP(gm, at('gmail'));
+    DRAW(w1, at('gmail', 1) - 0.2, 0.6); POP(gm, at('gmail', 1));
     const drafts = [];
     for (let i = 0; i < 3; i++) drafts.push(add(`<div class="abs glass" style="left:160px;top:${430 + i * 96}px;width:470px;height:80px;display:flex;align-items:center;gap:18px;padding:0 24px;border-radius:18px">
       <span class="muted" style="width:36px">${icon('mail')}</span><span style="font-size:28px;font-weight:700;white-space:nowrap">Recruiter ${i + 1}</span>
@@ -253,7 +260,7 @@ scene('13', {
     const tbl = add(`<div class="abs glass" style="left:1300px;top:400px;width:460px;padding:18px 24px;border-radius:18px;font-size:24px;font-weight:600">
       ${[1, 2, 3].map(i => `<div style="display:flex;justify-content:space-between;padding:6px 0">Application ${i}<span class="cyan">Followed up</span></div>`).join('')}</div>`);
     IN(tbl, at('updates'));
-    DRAW(w3, at('calendar') - 0.4, 0.6); POP(ca, at('calendar') - 0.2);
+    DRAW(w3, at('calendar', 1) - 0.4, 0.6); POP(ca, at('calendar', 1) - 0.2);
     const ev = add(`<div class="abs chip" style="left:1300px;top:760px;height:64px;font-size:28px">Next Friday: check again</div>`);
     IN(ev, at('reminder'));
     const sum = add(`<div class="abs center h2" style="left:0;right:0;top:900px"><span class="grad">3 apps</span> · 1 job</div>`);
@@ -266,14 +273,28 @@ scene('17', {
   chapter: CH.p3,
   text: `Most personal agents use a timer, and many also use triggers. OpenClaw, a free open-source agent, calls its timer a heartbeat. A heartbeat just means the agent wakes up every so often, every thirty minutes by default. Each time, it reads a short checklist, looks at your email and calendar, and asks one question: is anything worth telling this person right now? If yes, it messages you. If not, it goes back to sleep. And a trigger just means something that wakes it right away, like a new email.`,
   build(at) {
+    if (typeof browser === 'function') {           // the real docs page, in video.html
+      const P = add('<div class="abs" style="inset:0"></div>');
+      const kinds = add(`<div class="abs" style="left:0;right:0;top:400px;display:flex;justify-content:center;gap:60px">
+        <div class="k1 chip" style="height:110px;font-size:52px;padding:0 50px;gap:24px"><span style="width:56px">${icon('cal')}</span>A timer</div>
+        <div class="k2 chip" style="height:110px;font-size:52px;padding:0 50px;gap:24px"><span style="width:56px">${icon('bolt')}</span>Triggers</div></div>`, P);
+      POP(kinds.querySelector('.k1'), at('timer')); POP(kinds.querySelector('.k2'), at('triggers'));
+      OUT(kinds, at('openclaw') - 0.3, { y: -40 });
+      const doc = browser('openclaw-heartbeat', { left: 240, top: 110, width: 1440, crop: [60, 760], parent: P });
+      chip('OpenClaw docs', 210, 80, 'dark', P);
+      tl.from(doc.el, { autoAlpha: 0, y: 80, duration: 0.6 }, at('openclaw'));
+      doc.zoom(at('calls its timer'), 1.5, 1);
+      doc.sweep(at('heartbeat') + 0.2, 0.5);
+      OUT(P, at('a heartbeat just') - 0.3, { y: -40 });
+    }
     const tag = add('<div class="tag abs" style="left:160px;top:150px">OpenClaw calls its timer a heartbeat</div>');
-    IN(tag, at('openclaw'), { x: -30, y: 0 });
+    IN(tag, at('a heartbeat just'), { x: -30, y: 0 });
     const xs = [220, 480, 740, 1000, 1260, 1520];
     let d = 'M160 300';
     xs.forEach(x => (d += `H${x - 30}l12 -10l14 -70l14 130l12 -60l8 10`));
     d += 'H1760';
     const svg = add(`<svg class="wires"><path class="wire" d="${d}"/></svg>`);
-    DRAW(svg.firstChild, at('heartbeat'), 2.2);
+    DRAW(svg.firstChild, at('a heartbeat just'), 2.2);
     ['8:00', '8:30', '9:00', '9:30', '10:00', '10:30'].forEach((tm, i) => {
       const l = add(`<div class="abs mono muted" style="left:${xs[i] - 40}px;top:390px;width:80px;text-align:center;font-size:24px">${tm}</div>`);
       FADE(l, at('every thirty') + i * 0.12);
@@ -300,6 +321,7 @@ scene('18', {
   text: `But checking often costs money, so let's do the math. Every thirty minutes is forty-eight checks a day, and about one thousand four hundred and forty a month. Let's say each check costs one cent. That's about fourteen dollars a month, even on days when nothing happens. And that's why a good agent keeps its checklist short.`,
   build(at) {
     FADE(add(`<div class="letsay">LET'S SAY</div>`), at("let's say"));
+    IN(add('<div class="abs h2" style="left:160px;top:90px">Checking often <span class="grad">costs money</span></div>'), 0.15, { x: -30, y: 0 });
     const row = (top, left, num, right) => add(`<div class="abs" style="left:160px;top:${top}px;display:flex;align-items:baseline;gap:34px;white-space:nowrap">
       <span class="h2 muted" style="width:560px">${left}</span><span class="h2 muted">=</span><span class="num grad" style="font-size:140px;font-weight:800;letter-spacing:-.03em">${num}</span><span class="h2">${right}</span></div>`);
     const r1 = row(210, 'Every 30 minutes', '0', 'checks a day');
@@ -326,7 +348,7 @@ scene('19', {
     tl.to(lap.querySelector('.lid'), { scaleY: 0.05, duration: 0.9, ease: 'power2.in' }, at("doesn't run"));
     const closed = add(`<div class="abs chip ghost" style="left:400px;top:600px;height:56px;font-size:26px">Closed</div>`);
     POP(closed, at("doesn't run") + 0.9);
-    const moon = add(`<div class="abs" style="left:470px;top:350px;width:110px;color:#C7D1E3">${icon('moon')}</div>`);
+    const moon = add(`<div class="abs moon" style="left:470px;top:350px;width:110px">${icon('moon')}</div>`);
     POP(moon, at('while you sleep'));
     const srv = add(`<div class="abs glass" style="left:1000px;top:220px;width:760px;height:640px;padding:44px">
       <div style="display:flex;align-items:center;gap:24px"><div class="badge">${icon('server')}</div><div class="h2">A computer<br>in the cloud</div></div>
@@ -399,7 +421,7 @@ scene('22', {
   text: `Prompt injection just means hiding instructions for the AI inside normal-looking text. OWASP, a group that tracks software security risks, puts it at number one on its list for AI apps. And it isn't only email. When researchers checked the add-on skills people shared for OpenClaw, about one in eight were malicious.`,
   build(at) {
     const A = add('<div class="abs" style="inset:0"></div>');
-    const mail = add(`<div class="abs" style="left:160px;top:180px;width:960px;height:700px;border-radius:24px;background:linear-gradient(170deg,#FFFFFF,#E8EEF8);color:#0B1020;padding:44px 50px;box-shadow:0 40px 100px rgba(0,0,0,.55)">
+    const mail = add(`<div class="abs mailcard" style="left:160px;top:180px;width:960px;height:700px;border-radius:24px;background:linear-gradient(170deg,#FFFFFF,#E8EEF8);color:#0B1020;padding:44px 50px">
       <div style="font-size:26px;color:#4B5670;font-weight:600">From: Recruiting Team</div>
       <div style="font-size:40px;font-weight:800;margin-top:10px">Next steps for your application</div>
       <div style="height:2px;background:#D5DDEB;margin:26px 0"></div>

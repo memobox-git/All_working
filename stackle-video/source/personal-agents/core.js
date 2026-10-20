@@ -6,7 +6,11 @@
 gsap.registerPlugin(DrawSVGPlugin);
 
 const Q = new URLSearchParams(location.search);
-const ID = Q.get('g') || '01';
+// ?slot=N plays slot N of the finished video (vo/timing.js): its scene, its
+// length, and cues at the times Chris's narration actually says each word
+const SLOT = Q.has('slot') ? window.SLOTS[+Q.get('slot') - 1] : null;
+const ID = SLOT ? SLOT.scene : Q.get('g') || '01';
+const CUE = 0.12;   // with real timing, start a beat before the word is heard
 const WPM = +(Q.get('wpm') || 150);
 const LEAD = 0.6;   // the graphic is on screen a beat before the first word
 const TAIL = 1.6;   // and holds a beat after the last one
@@ -16,6 +20,16 @@ const tl = gsap.timeline({ paused: true, defaults: { ease: 'power3.out', duratio
 
 const norm = s => s.toLowerCase().replace(/[^a-z0-9$¢']/g, '');
 function speech(text) {
+  if (SLOT) {
+    const at = (phrase, n = 0) => {
+      const p = phrase.split(/\s+/).map(norm), W = SLOT.words;
+      for (let i = 0, k = 0; i <= W.length - p.length; i++)
+        if (p.every((w, j) => W[i + j][0] === w) && k++ === n) return Math.max(0, W[i][1] - CUE);
+      throw Error(`no cue "${phrase}" #${n} in slot ${SLOT.id}`);
+    };
+    at.end = SLOT.dur;
+    return at;
+  }
   const words = text.split(/\s+/).filter(Boolean).map(norm);
   const sec = 60 / WPM;
   const at = (phrase, n = 0) => {
@@ -107,7 +121,7 @@ window.addEventListener('load', async () => {
   const at = speech(s.text);
   if (s.chapter && !document.body.classList.contains('light')) hud(s.chapter);
   s.build(at);
-  window.DURATION = +(s.duration || at.end + TAIL).toFixed(2);
+  window.DURATION = SLOT ? SLOT.dur : +(s.duration || at.end + TAIL).toFixed(2);
   await document.fonts.ready;
   // resolve to nothing: Playwright would try to serialise the timeline
   window.render = async t => { tl.seek(t, false); await syncClips(t); };

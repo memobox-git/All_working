@@ -56,6 +56,34 @@ After recording, there are three ways to line them up:
 2. **Retime everything.** If Chris reads faster or slower overall, use `WPM=165 ./build.sh`.
 3. **Move one cue.** Cues are words from the line, like `at('heartbeat')`, in `scenes.js`. Change the word or add seconds (`at('heartbeat') + 0.5`).
 
+## The full narrated video
+
+`graphics/personal-agents/full/personal-agents-full.mp4` is the whole video, about 15 minutes, in the light Jeff Su look:
+- Chris's ElevenLabs voice ("Crispus Roshan") reads the whole script.
+- Every VOICE line has its graphic, real launch page or real launch footage, timed to the word he says.
+- Every CAMERA line is a grey card that says "CAMERA · LINE N" and shows the line. Chris puts his own shot over it, at the same length.
+
+How it's made:
+1. `vo/chunk01–12.mp3` are the narration, generated in 12 parts. `vo/words01–12.json` are their word timings from ElevenLabs Scribe. `vo/plan.json` says which paragraphs are in each part.
+2. `python3 vo/timeline.py` gives every script word its time on the joined narration. It splits the video into 56 slots, one per visual (`vo/timeline.json`, `vo/timing.js`), and writes `vo/narration.wav`.
+3. `node build-video.js` renders each slot from `video.html?slot=N`. In a slot, a cue like `at('heartbeat')` is the moment the voice says that word. It then joins the slots and adds the narration.
+
+`video.html` loads every scene: the motion graphics (`scenes.js`), the real-source scenes (`scenes-real.js`) and the newer ones (`scenes-new.js`). It draws them all in the light look (`light.css`, `pa-light.css`, `scenes-new.css`).
+
+```bash
+cd stackle-video/source/personal-agents
+./clips.sh                              # official footage, cut to frames (not committed)
+python3 vo/timeline.py                  # slots and narration.wav
+node build-video.js                     # about 45 minutes; finished slots are kept
+node build-video.js --only 11,18        # re-render just these slots, then run it again to join
+open "video.html?slot=11"               # preview one slot (scrub with window.render(t))
+```
+
+If Chris re-records with his real voice:
+- Replace the chunks and word files.
+- Run `timeline.py`. The cues follow his timing.
+- Run `build-video.js` again, after deleting `full/slots/`.
+
 ## Rebuild
 
 ```bash

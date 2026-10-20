@@ -127,7 +127,7 @@ scene('r15b', {
     OUT(G, at('and meta') - 0.2, { x: -120 });
     // Meta's demo
     const M = add('<div class="abs" style="inset:0"></div>');
-    const ph = phoneClip('muse-fieldtrip', at('and meta') + 0.2, { left: 260, top: 110, width: 400, parent: M });
+    const ph = phoneClip('muse-fieldtrip', at('and meta') + 0.2, { left: 260, top: 150, width: 400, parent: M });
     const ml = add(`<div class="abs" style="left:800px;top:330px;width:900px">
       <div class="pill dark">Meta · Muse</div>
       <div class="h2" style="margin-top:30px">Found the form in an email, and filled it out before anyone asked</div>

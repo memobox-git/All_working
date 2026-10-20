@@ -170,5 +170,53 @@ window.SOURCES = {
     97
    ]
   ]
+ },
+ "claude-memory": {
+  "url": "https://code.claude.com/docs/en/memory",
+  "domain": "code.claude.com",
+  "quote": "You write these files in plain text; Claude reads them at the start of every session.",
+  "captured": "2026-10-20",
+  "lines": [
+   [
+    751,
+    426,
+    247,
+    20
+   ],
+   [
+    363,
+    454,
+    358,
+    20
+   ]
+  ]
+ },
+ "agents-md": {
+  "url": "https://agents.md/",
+  "domain": "agents.md",
+  "quote": "used by over 60k open-source projects.",
+  "captured": "2026-10-20",
+  "lines": [
+   [
+    144,
+    181,
+    322,
+    21
+   ]
+  ]
+ },
+ "meta-muse-memory": {
+  "url": "https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/",
+  "domain": "about.fb.com",
+  "quote": "Muse remembers what matters to a person",
+  "captured": "2026-10-20",
+  "lines": [
+   [
+    135,
+    440,
+    329,
+    20
+   ]
+  ]
  }
 };
