@@ -86,11 +86,11 @@ export function ResourceCta({
           </div>
           <div className="reveal flex flex-col gap-3 sm:flex-row md:flex-col md:items-stretch">
             {external ? (
-              <a href={courseHref} className="btn btn-ink">
+              <a href={courseHref} className="btn btn-ink whitespace-normal py-3 text-center leading-snug">
                 {courseLabel} <ArrowRight />
               </a>
             ) : (
-              <Link href={courseHref} className="btn btn-ink">
+              <Link href={courseHref} className="btn btn-ink whitespace-normal py-3 text-center leading-snug">
                 {courseLabel} <ArrowRight />
               </Link>
             )}
