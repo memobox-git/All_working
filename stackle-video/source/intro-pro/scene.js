@@ -2,6 +2,8 @@
 // One paused GSAP timeline keyed to the voiceover word cues in cues.js, so
 // window.render(t) always produces the same frame for the same t.
 gsap.registerPlugin(DrawSVGPlugin);
+// portrait layout for TikTok, Reels and Shorts when the frame is taller than wide
+if (innerHeight > innerWidth) document.documentElement.classList.add('tall');
 
 const OFF = VO.offset;                       // voice starts this far into the video
 const END = OFF + VO.duration + .5;          // a short beat after the last word, then cut to the video
@@ -132,7 +134,8 @@ function build() {
 
   // the photo: drawn on first, then held beside the name and the numbers
   scene('#photo', 0, S3);
-  draw($('#s1-frame'), rect(4, 4, 592, 730, 3), null, .1, .75);
+  const pf = $('#s1-photo');
+  draw($('#s1-frame'), rect(4, 4, pf.offsetWidth - 8, pf.offsetHeight - 8, 3), null, .1, .75);
   tl.fromTo('#s1-photo img', { opacity: 0, scale: 1.03 }, { opacity: 1, scale: 1, duration: .8 }, .3);
 
   // S1 · Hi, I'm Chris -------------------------------------------------------

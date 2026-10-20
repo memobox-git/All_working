@@ -1,6 +1,6 @@
 # Stackle channel intro
 
-A 13-second intro voiced by the ElevenLabs "Crispus Roshan" voice: "Hi, I'm Chris. I've spent over 10 years in data engineering and interviewed more than 200 engineers. Now I run Stackle, where I teach the skills that actually get you hired. Let's get into it." The look is a quiet page that fills in as Chris talks: off-white paper, black type, hand-drawn frames and underlines, one red accent, and soft pencil and paper sounds. Output: `stackle-video/graphics/stackle-intro.mp4` (1920×1080, 30 fps, -14 LUFS).
+A 13-second intro voiced by the ElevenLabs "Crispus Roshan" voice: "Hi, I'm Chris. I've spent over 10 years in data engineering and interviewed more than 200 engineers. Now I run Stackle, where I teach the skills that actually get you hired. Let's get into it." The look is a quiet page that fills in as Chris talks: off-white paper, black type, hand-drawn frames and underlines, one red accent, and soft pencil and paper sounds. Outputs: `stackle-video/graphics/stackle-intro.mp4` (1920×1080 for YouTube) and `stackle-video/graphics/stackle-intro-tiktok.mp4` (1080×1920 for TikTok, Reels and Shorts), both 30 fps and -14 LUFS.
 
 ## Rebuild
 
@@ -8,6 +8,7 @@ A 13-second intro voiced by the ElevenLabs "Crispus Roshan" voice: "Hi, I'm Chri
 cd stackle-video/source && npm install
 cd intro-pro && ./build.sh                          # about 1 minute
 ./build.sh /tmp/draft.mp4 --sub 1                   # faster draft, no motion blur
+./build.sh ../../graphics/stackle-intro-tiktok.mp4 --size 1080x1920   # vertical version
 ```
 
 Rendering is split into chunks, so a stopped build picks up where it left off when run again.
@@ -32,5 +33,6 @@ Rendering is split into chunks, so a stopped build picks up where it left off wh
 - **Numbers:** edit them in `index.html` and re-record the line.
 - **The 47-second version** (with the industries, offers and community numbers) is in git history at commit `9f1b913`.
 - **Photo:** replace `img/chris.jpg` (4:5, about 1024×1280).
+- **Vertical layout:** the `.tall` block at the end of `style.css`. It switches on by itself when the frame is taller than wide, and keeps everything clear of the app's buttons on the right and the caption at the bottom.
 - **Colours:** the variables at the top of `style.css`.
 - **Sound levels:** `LEVEL` in `mix.js`.

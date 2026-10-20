@@ -6,14 +6,13 @@
 
 :root{--paper:#FAFAF7;--ink:#1D1D1F;--grey:#6E6E73;--line:#B9B9BE;--red:#E2553E}
 *{margin:0;padding:0;box-sizing:border-box}
-html,body{width:1920px;height:1080px;overflow:hidden;background:var(--paper)}
+html,body{width:100vw;height:100vh;overflow:hidden;background:var(--paper)}
 body{font-family:PJS,sans-serif;color:var(--ink);position:relative;-webkit-font-smoothing:antialiased}
 #grain{position:absolute;inset:0;opacity:.035;mix-blend-mode:multiply;pointer-events:none}
 
 .scene{position:absolute;inset:0;visibility:hidden;opacity:0}
-.ink{position:absolute;left:0;top:0;width:1920px;height:1080px;overflow:visible;pointer-events:none}
-.ink path,.photo svg path,.pill svg path{fill:none;stroke:var(--ink);stroke-width:6;stroke-linecap:round;stroke-linejoin:round}
-.pill svg path{stroke-width:4}
+.ink{position:absolute;left:0;top:0;width:100%;height:100%;overflow:visible;pointer-events:none}
+.ink path,.photo svg path{fill:none;stroke:var(--ink);stroke-width:6;stroke-linecap:round;stroke-linejoin:round}
 .ink path.red{stroke:var(--red);stroke-width:7}
 .ink path.thin{stroke:var(--line);stroke-width:3}
 
@@ -26,8 +25,8 @@ body{font-family:PJS,sans-serif;color:var(--ink);position:relative;-webkit-font-
 
 /* S1 · photo stays through S2 */
 .photo{position:absolute;left:170px;top:150px;width:600px;height:738px;transform:rotate(-2.5deg)}
-.photo img{position:absolute;left:24px;top:24px;width:552px;height:690px;object-fit:cover}
-.photo svg{position:absolute;left:0;top:0;width:600px;height:738px;overflow:visible}
+.photo img{position:absolute;left:24px;top:24px;width:calc(100% - 48px);height:calc(100% - 48px);object-fit:cover}
+.photo svg{position:absolute;left:0;top:0;width:100%;height:100%;overflow:visible}
 #s1-note{left:930px;top:140px;font-size:90px;white-space:nowrap}
 #s1-my{left:930px;top:270px}
 #s1-name{left:922px;top:322px;font-size:200px}
@@ -35,6 +34,8 @@ body{font-family:PJS,sans-serif;color:var(--ink);position:relative;-webkit-font-
 
 /* S2 · two numbers beside the photo */
 .stat{position:absolute;top:655px}
+#st-a{left:930px}
+#st-b{left:1330px}
 .stat .n{font-size:128px;font-weight:800;letter-spacing:-.04em;line-height:1}
 .stat .l{margin-top:20px;font-size:40px;font-weight:600;line-height:1.2}
 
@@ -46,3 +47,23 @@ body{font-family:PJS,sans-serif;color:var(--ink);position:relative;-webkit-font-
 
 /* S4 · close */
 #s4-go{top:440px;font-size:150px}
+
+/* Portrait (TikTok, Reels, Shorts): on when the frame is taller than wide.
+   Everything stays inside x 110-940 and y 160-1500, clear of the app's
+   buttons on the right and the caption at the bottom. */
+.tall .at{left:110px}
+.tall .photo{left:110px;top:230px;width:520px;height:640px}
+.tall #s1-note{left:740px;top:330px;font-size:96px}
+.tall #s1-my{left:110px;top:915px;font-size:48px}
+.tall #s1-name{left:102px;top:962px;font-size:180px}
+.tall #s1-meta{left:110px;top:1162px;font-size:32px}
+.tall .stat{top:1240px}
+.tall .stat .n{font-size:104px}
+.tall .stat .l{margin-top:14px;font-size:34px}
+.tall #st-a{left:110px}
+.tall #st-b{left:470px}
+.tall #s3-pre{top:560px;font-size:48px}
+.tall #s3-word{top:615px;font-size:170px}
+.tall #s3-teach{top:850px;font-size:48px}
+.tall #s3-line{top:910px;font-size:84px;width:820px}
+.tall #s4-go{top:760px;font-size:130px;width:700px}
