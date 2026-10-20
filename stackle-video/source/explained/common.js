@@ -1,11 +1,13 @@
-// Shared by both cuts of "Apache Airflow, explained": the landscape video
-// (index.html + scene.js) and the vertical TikTok cut (vertical.html +
-// vertical.js). Cue lookup, the paused timeline and its helpers, icons,
-// the pinwheel, the background and straight connector edges.
+// Shared by every episode of "Explained in 2 minutes", in both cuts (the
+// landscape video and the vertical TikTok cut): cue lookup, the paused
+// timeline and its helpers, icons, the background, the opening card and
+// straight connector edges. Each episode adds its own mark (brand.js) and
+// scenes after this file.
 gsap.registerPlugin(DrawSVGPlugin);
 
 const OFF = VO.offset;                       // voice starts this far into the video
-const END = OFF + VO.duration + 2.6;         // hold the closing title, then fade to white
+const END = VO.end ?? OFF + VO.duration + 2.6;   // after the closing title (and the comment ask), fade to white
+const CARD = VO.card ?? OFF;                 // the opening card's length
 window.DURATION = END;
 window.SFX = [];                             // no sound effects: mix.js lays the music under the voice
 
@@ -66,18 +68,24 @@ const ICONS = {
   warehouse: '<path d="M3 20.5V9l9-5 9 5v11.5"/><path d="M7 20.5v-8h10v8M7 16.5h10"/>',
   branch: '<circle cx="6" cy="5.5" r="2.3"/><circle cx="6" cy="18.5" r="2.3"/><circle cx="18" cy="8" r="2.3"/><path d="M6 7.8v8.4M18 10.3c0 4-5 4.2-10.6 6.6"/>',
   flow: '<rect x="3" y="3.5" width="7" height="7" rx="1.8"/><rect x="14" y="13.5" width="7" height="7" rx="1.8"/><path d="M10 7h3.5a3 3 0 0 1 3 3v3.5"/>',
+  phone: '<rect x="6.5" y="2.5" width="11" height="19" rx="2.5"/><path d="M10.5 18.5h3"/>',
+  card: '<rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="M2.5 9.5h19M6.5 15h4"/>',
+  chart: '<path d="M3.5 20.5h17"/><path d="M6.5 17v-5M11.5 17V7M16.5 17v-8"/>',
+  mail: '<rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m3.5 7 8.5 6 8.5-6"/>',
+  shield: '<path d="M12 3 4.5 6v5.5c0 4.6 3.2 8.2 7.5 9.5 4.3-1.3 7.5-4.9 7.5-9.5V6z"/><path d="m9 12 2.2 2.2L15.5 10"/>',
+  search: '<circle cx="11" cy="11" r="6.5"/><path d="m20.5 20.5-4.8-4.8"/>',
+  users: '<circle cx="9" cy="8" r="3.2"/><path d="M3 19.5c0-3.3 2.7-5.5 6-5.5s6 2.2 6 5.5"/><circle cx="17" cy="9" r="2.5"/><path d="M16.5 14c2.6.2 4.5 2.1 4.5 5"/>',
+  log: '<rect x="2.5" y="7" width="5" height="10" rx="1.3"/><rect x="9.5" y="7" width="5" height="10" rx="1.3"/><path d="M16.5 7h5M16.5 17h5M16.5 7v10" stroke-dasharray="2 2.2"/>',
+  moon: '<path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/>',
+  zap: '<path d="M13 2.5 4.5 13.5H12l-1 8 8.5-11H12z"/>',
+  crown: '<path d="m3.5 8 4.5 4 4-6.5 4 6.5 4.5-4-2 11h-13z"/>',
+  copy: '<rect x="8" y="8" width="12.5" height="12.5" rx="2.5"/><path d="M16 8V5.5a2 2 0 0 0-2-2H5.5a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2H8"/>',
+  x: '<path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/>',
+  box: '<path d="M12 2.8 20.5 7.5v9L12 21.2 3.5 16.5v-9z"/><path d="M3.8 7.6 12 12.2l8.2-4.6M12 12.2v9"/>',
 };
+Object.assign(ICONS, window.EXTRA_ICONS || {});     // a page can add its own before loading this file
 $$('[data-icon]').forEach(el => {
   el.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${ICONS[el.dataset.icon]}</svg>`;
-});
-
-// a four-blade pinwheel: a nod to Airflow's logo, drawn from scratch
-const BLADES = ['#017CEE', '#00B2D6', '#12B76A', '#F04438'];
-const wheels = $$('svg.wheel').map(svg => {
-  svg.innerHTML = '<g>' + BLADES.map((c, i) =>
-    `<path d="M0 0C-12-30-10-66 8-94 34-80 50-50 44-22 30-8 14-2 0 0Z" fill="${c}" transform="rotate(${i * 90})"/>`
-  ).join('') + '<circle r="10" fill="#fff"/><circle r="4.5" fill="#0B1220"/></g>';
-  return svg.firstChild;
 });
 
 // ---------------------------------------------------------------- background
@@ -106,8 +114,10 @@ function drawBg(t, fields) {
 
 // ---------------------------------------------------------------- the opening card
 // Both cuts open on their own thumbnail (so the first frame is the YouTube
-// thumbnail and the TikTok cover), then clear it away just before the voice.
-tl.to('#s0', { autoAlpha: 0, scale: 1.03, duration: .5, ease: 'power2.in' }, OFF - .6);
+// thumbnail and the TikTok cover), then clear it away, just before the
+// channel intro or the voice. The intro video itself is laid over the
+// picture afterwards (build.sh); here the page stays blank while it plays.
+tl.to('#s0', { autoAlpha: 0, scale: 1.03, duration: .5, ease: 'power2.in' }, CARD - .6);
 
 // ---------------------------------------------------------------- connectors
 // straight edges with a chevron head: [x1, y1, x2, y2]

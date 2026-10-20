@@ -1,7 +1,8 @@
 // Apache Airflow, explained: the vertical (9:16) cut for TikTok, Reels and
 // Shorts, with word-by-word captions. Same voice, music, cues and story as
 // the landscape cut (scene.js), laid out for a phone. Shared helpers (cues,
-// timeline, icons, background, edges) are in common.js.
+// timeline, icons, background, edges) are in ../explained/common.js, the
+// captions in ../explained/captions.js.
 
 // soft colour fields behind the vertical cut (see drawBg in common.js)
 const FIELDS = [
@@ -25,55 +26,6 @@ function drawHud(t) {
 }
 tl.fromTo('#hud', { autoAlpha: 0 }, { autoAlpha: 1, duration: .6, ease: 'power1.out' }, OFF - .2);  // after the opening card
 tl.to('#hud', { autoAlpha: 0, duration: .6, ease: 'power1.in' }, at("that's") - .3);
-
-// ---------------------------------------------------------------- captions
-// Word-by-word captions from the voiceover timings: short pages of a few
-// words, the word being spoken on a blue pill, the words still to come in grey.
-const RAW = VO.words.filter(w => !w.w.startsWith('['));
-const CAPW = [];
-RAW.forEach((w, i) => {
-  if (!/[a-z0-9]/i.test(w.w)) return;                       // the em dashes
-  const next = RAW[i + 1];
-  CAPW.push({
-    text: w.w.replace(/["“”]/g, '').replace(/[.,:;]+$/, ''),
-    brk: /[.,:;?!]["”]?$/.test(w.w) || (next && next.w === '—'),
-    s: w.s + OFF, e: w.e + OFF,
-  });
-});
-const PAGES = [];
-for (let i = 0, page = null; i < CAPW.length; i++) {
-  const w = CAPW[i], prev = page && page.words[page.words.length - 1];
-  const chars = page ? page.words.reduce((n, x) => n + x.text.length + 1, 0) + w.text.length : 0;
-  if (!page || page.words.length >= 4 || chars > 24 || w.s - prev.e > .45) PAGES.push(page = { words: [] });
-  page.words.push(w);
-  if (w.brk) page = null;
-}
-PAGES.forEach((p, i) => {
-  const last = p.words[p.words.length - 1], next = PAGES[i + 1];
-  p.s = p.words[0].s - .08;
-  p.e = next ? Math.min(next.words[0].s - .08, last.e + .7) : last.e + 1.2;
-  p.el = document.createElement('div');
-  p.el.className = 'cp';
-  p.el.innerHTML = p.words.map(w => `<span class="cw">${w.text}</span>`).join(' ');
-  $('#caps').appendChild(p.el);
-  p.spans = [...p.el.children];
-  p.on = false;
-});
-function drawCaptions(t) {
-  for (const p of PAGES) {
-    const on = t >= p.s && t < p.e;
-    if (on !== p.on) { p.el.style.visibility = on ? 'visible' : 'hidden'; p.on = on; }
-    if (!on) continue;
-    const k = 1 - Math.pow(1 - clamp((t - p.s) / .16), 3);
-    p.el.style.opacity = k.toFixed(3);
-    p.el.style.transform = `translateY(-50%) scale(${(.9 + .1 * k).toFixed(4)})`;
-    p.words.forEach((w, j) => {
-      const until = j + 1 < p.words.length ? p.words[j + 1].s : p.e;
-      const c = t >= until ? 'cw past' : t >= w.s - .02 ? 'cw now' : 'cw';
-      if (p.spans[j].className !== c) p.spans[j].className = c;
-    });
-  }
-}
 
 // ---------------------------------------------------------------- S1 · the morning run
 show('#s1', 0, at('something', 1) + .3);
@@ -368,7 +320,7 @@ function build() {
   window.render = t => {
     tl.seek(t, false);
     wheels.forEach(g => g.setAttribute('transform', `rotate(${(t * 9).toFixed(3)})`));
-    drawBg(t, FIELDS); drawHud(t); drawCaptions(t); drawRuns(t); drawStates(t); drawFlows(t); drawWorkers(t); drawMini(t); drawWorld();
+    drawBg(t, FIELDS); drawHud(t); drawCaptions(t); drawRuns(t); drawStates(t); drawFlows(t); drawWorkers(t); drawMini(t); drawWorld(); drawCta(t);
   };
   window.render(0);
   window.READY = true;

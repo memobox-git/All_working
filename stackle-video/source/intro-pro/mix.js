@@ -11,9 +11,11 @@ const [cuesFile, out] = process.argv.slice(2);
 const { duration, offset, sfx } = JSON.parse(fs.readFileSync(cuesFile, 'utf8'));
 
 // level of each kind of sound before the per-cue gain
-const LEVEL = { impact: .38, whoosh: .34, blips: .55, riser: .45, bed: .2 };
-// seconds into the file where the hit lands, so the hit sits on the cue
-const LEAD = { impact_2: .5, riser: 1.62 };
+const LEVEL = { pencil: 2, paper: .75, bed: .1 };
+// seconds into the file where the sound peaks, so the peak sits on the cue
+const LEAD = { paper_1: .5, paper_2: .55 };
+// longest a sound may run, so a pencil scribble ends with its stroke
+const TRIM = { pencil: .6 };
 const ff = args => {
   const r = spawnSync('ffmpeg', ['-hide_banner', '-loglevel', 'error', '-y', ...args], { encoding: 'utf8' });
   if (r.status) throw new Error('ffmpeg failed:\n' + r.stderr.split('\n').slice(-8).join('\n'));
@@ -32,7 +34,8 @@ sfx.filter(c => c.file !== 'bed').forEach((c, i) => {
   const kind = c.file.replace(/_\d+$/, '');
   const lead = LEAD[c.file] || 0, start = Math.max(0, lead - c.t), delay = Math.max(0, c.t - lead);
   inputs.push('-i', path.join(A, 'sfx', c.file + '.mp3'));
-  graph.push(`[${i + 2}:a]${fmt},atrim=start=${start.toFixed(3)},asetpts=PTS-STARTPTS,volume=${(LEVEL[kind] * c.gain).toFixed(3)},adelay=${Math.round(delay * 1000)}:all=1[s${i}]`);
+  const trim = TRIM[kind] ? `,atrim=end=${TRIM[kind]},afade=t=out:st=${TRIM[kind] - .15}:d=0.15` : '';
+  graph.push(`[${i + 2}:a]${fmt},atrim=start=${start.toFixed(3)},asetpts=PTS-STARTPTS${trim},volume=${(LEVEL[kind] * c.gain).toFixed(3)},adelay=${Math.round(delay * 1000)}:all=1[s${i}]`);
   labels.push(`[s${i}]`);
 });
 graph.push(`${labels.join('')}amix=inputs=${labels.length}:normalize=0:dropout_transition=0,atrim=0:${D},afade=t=out:st=${(duration - .25).toFixed(3)}:d=0.25,alimiter=limit=0.9:level=0[mix]`);

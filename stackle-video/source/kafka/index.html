@@ -1,0 +1,128 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Apache Kafka, explained</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="../explained/cta.css"></head>
+<body>
+<canvas id="bg" width="1920" height="1080"></canvas>
+
+<div id="stage">
+
+  <!-- S0 · the opening card: the thumbnail (img/thumbnail.png), cleared away just before the first word -->
+  <section class="scene" id="s0">
+    <img class="th-full" src="img/thumbnail.png" alt="Apache Kafka, explained in 2 minutes">
+  </section>
+
+  <!-- S1 · "Every time you tap 'order' … put Apache Kafka in the middle." -->
+  <section class="scene" id="s1">
+    <svg class="links" id="s1-links" viewBox="0 0 1920 1080"></svg>
+    <div class="phone" id="phone">
+      <div class="ph-bar"><span>Shop</span><span class="ph-ic" data-icon="box"></span></div>
+      <div class="ph-item"><div class="ph-img"><span data-icon="box"></span></div><div class="ph-t">Running shoes</div><div class="ph-p">$89.00</div></div>
+      <div class="ph-btn" id="ph-btn">Order</div>
+      <i class="touch" id="touch"></i><i class="tap-ring" id="tap-ring"></i>
+    </div>
+    <div class="evt" id="evt"><div class="evt-h"><i></i>event</div><pre>{ <span class="k">"type"</span>: <span class="s">"order_placed"</span>,
+  <span class="k">"order_id"</span>: <span class="n">1042</span> }</pre></div>
+    <div class="svc" id="sv-pay" style="--c:#7A5AF8;--tint:#F4F3FF"><span class="tile" data-icon="card"></span><div><h3>Payments</h3><p>charges the card</p></div><i class="ring"></i></div>
+    <div class="svc" id="sv-wh" style="--c:#F79009;--tint:#FFFAEB"><span class="tile" data-icon="warehouse"></span><div><h3>Warehouse</h3><p>packs the order</p></div><i class="ring"></i></div>
+    <div class="svc" id="sv-an" style="--c:#0E9384;--tint:#F0FDF9"><span class="tile" data-icon="chart"></span><div><h3>Analytics</h3><p>counts the sales</p></div><i class="ring"></i></div>
+    <div class="svc" id="sv-mail" style="--c:#DD2590;--tint:#FDF2FA"><span class="tile" data-icon="mail"></span><div><h3>Email</h3><p>sends the receipt</p></div><i class="ring"></i></div>
+    <div class="svc" id="sv-fraud" style="--c:#F04438;--tint:#FEF3F2"><span class="tile" data-icon="shield"></span><div><h3>Fraud check</h3><p>flags risky orders</p></div><i class="ring"></i></div>
+    <div class="kbar" id="kbar"><svg class="kmark" viewBox="-100 -100 200 200"></svg><span>Apache <b>Kafka</b></span></div>
+  </section>
+
+  <!-- S2 · what it is (under the shrunken hub), streaming vs batch, where it came from -->
+  <section class="scene" id="s2">
+    <div class="def" id="def"></div>
+
+    <div class="kicker" id="s2-tag">Streaming just means</div>
+    <div class="lane" id="ln1" style="--c:#017CEE;--tint:#EFF8FF">
+      <div class="ln-h"><span class="tile" data-icon="zap"></span><div><h3>Streaming</h3><p>the moment it happens</p></div><span class="live"><i></i>live</span></div>
+      <div class="track" id="tr1"><span class="t-src" data-icon="phone"></span><span class="t-dst" data-icon="chart"></span></div>
+    </div>
+    <div class="lane batch" id="ln2" style="--c:#667085;--tint:#F2F4F7">
+      <div class="ln-h"><span class="tile" data-icon="moon"></span><div><h3>Nightly batch</h3><p>waits until 02:00</p></div><span class="wait" id="wait">0 waiting</span></div>
+      <div class="track" id="tr2"><span class="t-src" data-icon="phone"></span><span class="gate"></span><span class="t-dst" data-icon="chart"></span></div>
+    </div>
+
+    <div class="kicker" id="s2-tag2">Where it came from</div>
+    <div class="tline" id="tline">
+      <div class="tl-track"><i id="tl-fill"></i></div>
+      <div class="tl-node" id="tn1"><b>2011</b><i class="dot"></i><span>Open-sourced by LinkedIn</span></div>
+      <div class="tl-node now" id="tn2"><b>2012</b><i class="dot"></i><span>Top-level Apache project</span></div>
+    </div>
+  </section>
+
+  <!-- S3 · the core idea: producers append to a topic's log, consumers read at their own offsets -->
+  <section class="scene" id="s3">
+    <div class="kicker" id="s3-tag">The core idea</div>
+    <div class="prod" id="prod" style="--c:#017CEE;--tint:#EFF8FF"><span class="tile" data-icon="phone"></span><div><h3>Producer</h3><p>the shop app</p></div></div>
+    <div class="topic" id="topic"><span>topic</span><b>orders</b></div>
+    <div class="keep" id="keep"><span class="tile sm" data-icon="clock"></span>Kept for 7 days<em>you choose</em></div>
+    <div class="log" id="log"><div class="slot"><div class="cell"><span>#1037</span></div><b class="off">0</b></div><div class="slot"><div class="cell"><span>#1038</span></div><b class="off">1</b></div><div class="slot"><div class="cell"><span>#1039</span></div><b class="off">2</b></div><div class="slot"><div class="cell"><span>#1040</span></div><b class="off">3</b></div><div class="slot"><div class="cell"><span>#1041</span></div><b class="off">4</b></div><div class="slot"><div class="cell"><span>#1042</span></div><b class="off">5</b></div><div class="slot"><div class="cell"><span>#1043</span></div><b class="off">6</b></div><div class="slot"><div class="cell"><span>#1044</span></div><b class="off">7</b></div><div class="slot"><div class="cell"><span>#1045</span></div><b class="off">8</b></div><div class="slot"><div class="cell"><span>#1046</span></div><b class="off">9</b></div><div class="slot"><div class="cell"><span>#1047</span></div><b class="off">10</b></div><div class="slot"><div class="cell"><span>#1048</span></div><b class="off">11</b></div><div class="slot"><div class="cell"><span>#1049</span></div><b class="off">12</b></div></div>
+    <div class="flyers" id="flyers"></div>
+    <div class="cons" id="cA" style="--c:#0E9384;--tint:#F0FDF9"><i class="ptr"></i><div class="cons-c"><span class="tile sm" data-icon="chart"></span><div><h3>Analytics</h3><p>offset <b>1</b></p></div></div></div>
+    <div class="cons" id="cB" style="--c:#DD2590;--tint:#FDF2FA"><i class="ptr"></i><div class="cons-c"><span class="tile sm" data-icon="mail"></span><div><h3>Email</h3><p>offset <b>6</b></p></div></div></div>
+  </section>
+
+  <!-- S4 · the architecture: brokers, partitions, replicas, consumer groups, KRaft -->
+  <section class="scene" id="s4">
+    <div class="s4-title" id="s4-title">
+      <div class="kicker">The architecture</div>
+      <div class="s4-h">Inside a Kafka cluster</div>
+    </div>
+    <div class="viewport"><div id="world">
+      <svg class="links under" id="s4-under" viewBox="0 0 1920 1080"></svg>
+      <div class="frame" id="ctl"><span class="tab">KRaft controllers</span>
+        <div class="cn" id="cn1"><span class="tile sm" data-icon="cpu"></span>controller</div>
+        <div class="cn on" id="cn2"><span class="tile sm" data-icon="cpu"></span>controller<em>active</em></div>
+        <div class="cn" id="cn3"><span class="tile sm" data-icon="cpu"></span>controller</div>
+      </div>
+      <div class="tbar" id="tbar"><span class="tb-name">orders</span><div class="tseg" id="ts0"><b>P0</b></div><div class="tseg" id="ts1"><b>P1</b></div><div class="tseg" id="ts2"><b>P2</b></div></div>
+      <div class="frame" id="cl"><span class="tab">Kafka cluster</span></div>
+      <div class="broker" id="b1"><div class="b-head"><span class="tile sm" data-icon="server"></span><h3>Broker 1</h3><span class="st"><i></i><em>online</em></span></div><div class="slots"><div class="ps" id="b1-l"><b></b><span>leader</span><span class="crown" data-icon="crown"></span></div><div class="ps rep" id="b1-r"><b></b><span>replica</span><span class="crown" data-icon="crown"></span></div></div><div class="load"><span>load</span><i><b id="ld1"></b></i></div><span class="xb" data-icon="x"></span></div>
+      <div class="broker" id="b2"><div class="b-head"><span class="tile sm" data-icon="server"></span><h3>Broker 2</h3><span class="st"><i></i><em>online</em></span></div><div class="slots"><div class="ps" id="b2-l"><b></b><span>leader</span><span class="crown" data-icon="crown"></span></div><div class="ps rep" id="b2-r"><b></b><span>replica</span><span class="crown" data-icon="crown"></span></div></div><div class="load"><span>load</span><i><b id="ld2"></b></i></div><span class="xb" data-icon="x"></span></div>
+      <div class="broker" id="b3"><div class="b-head"><span class="tile sm" data-icon="server"></span><h3>Broker 3</h3><span class="st"><i></i><em>online</em></span></div><div class="slots"><div class="ps" id="b3-l"><b></b><span>leader</span><span class="crown" data-icon="crown"></span></div><div class="ps rep" id="b3-r"><b></b><span>replica</span><span class="crown" data-icon="crown"></span></div></div><div class="load"><span>load</span><i><b id="ld3"></b></i></div><span class="xb" data-icon="x"></span></div>
+      <div class="frame" id="cg"><span class="tab">Consumer group · analytics</span></div>
+      <div class="kc" id="k1" style="--c:#475467;--tint:#F2F4F7"><span class="tile sm" data-icon="users"></span><div><h3>Consumer 1</h3><span class="tags"></span></div></div>
+      <div class="kc" id="k2" style="--c:#475467;--tint:#F2F4F7"><span class="tile sm" data-icon="users"></span><div><h3>Consumer 2</h3><span class="tags"></span></div></div>
+      <div class="kc" id="k3" style="--c:#475467;--tint:#F2F4F7"><span class="tile sm" data-icon="users"></span><div><h3>Consumer 3</h3><span class="tags"></span></div></div>
+      <svg class="links over" id="s4-over" viewBox="0 0 1920 1080"></svg>
+      <div class="ghosts" id="ghosts"></div>
+    </div></div>
+  </section>
+
+  <!-- S5 · "So when a team says …" + closing title -->
+  <section class="scene" id="s5">
+    <div class="kicker" id="s5-tag">When a team says</div>
+    <div class="quote" id="quote"></div>
+    <div class="takeaways">
+      <div class="ta" id="ta1"><span class="tick" data-icon="check"></span><span>Services don't call each other.</span></div>
+      <div class="ta" id="ta2"><span class="tick" data-icon="check"></span><span>They publish each event once.</span></div>
+      <div class="ta" id="ta3"><span class="tick" data-icon="check"></span><span>Anyone who needs it reads it, as it happens.</span></div>
+    </div>
+    <div class="lock" id="lock5">
+      <svg class="kmark" id="mark5" viewBox="-100 -100 200 200"></svg>
+      <div class="word"><span class="wm-m"><span class="wm-a" id="wm5a">Apache</span></span> <span class="wm-m"><span class="wm-b" id="wm5b">Kafka</span></span></div>
+    </div>
+    <div class="kicker" id="lock5-sub">Explained in 2 minutes</div>
+    <div class="credit" id="credit">Stackle · Episode 02</div>
+  </section>
+
+</div>
+
+<div id="hud">
+  <div class="hud-tl"><svg class="kmark mini-mark" viewBox="-100 -100 200 200"></svg>Apache Kafka<span class="sep"></span><span class="series">Explained in 2 minutes</span></div>
+  <div class="hud-tr"><span id="hud-num">01</span><span class="sep"></span><span id="hud-chap">The problem</span></div>
+  <div class="hud-bar"><i id="hud-prog"></i></div>
+</div>
+<div id="fade"></div>
+
+<script src="cues.js"></script>
+<script src="../node_modules/gsap/dist/gsap.min.js"></script>
+<script src="../node_modules/gsap/dist/DrawSVGPlugin.min.js"></script>
+<script src="../explained/common.js"></script>
+<script src="../explained/cta.js"></script>
+<script src="brand.js"></script>
+<script src="story.js"></script>
+</body></html>

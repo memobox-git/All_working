@@ -2,7 +2,8 @@
 // One paused GSAP timeline plus a few per-frame draws, so window.render(t)
 // always produces the same frame for the same t. Timing comes from the
 // voiceover word cues in cues.js; swap the take, regenerate cues, re-render.
-// Shared helpers (cues, timeline, icons, background, edges) are in common.js.
+// Shared helpers (cues, timeline, icons, background, edges) are in
+// ../explained/common.js; the pinwheel is in brand.js.
 
 // soft colour fields behind the landscape cut (see drawBg in common.js)
 const FIELDS = [
@@ -319,7 +320,7 @@ function build() {
   window.render = t => {
     tl.seek(t, false);
     wheels.forEach(g => g.setAttribute('transform', `rotate(${(t * 9).toFixed(3)})`));
-    drawBg(t, FIELDS); drawHud(t); drawRuns(t); drawStates(t); drawFlows(t); drawWorkers(t); drawMini(t); drawWorld();
+    drawBg(t, FIELDS); drawHud(t); drawRuns(t); drawStates(t); drawFlows(t); drawWorkers(t); drawMini(t); drawWorld(); drawCta(t);
   };
   window.render(0);
   window.READY = true;

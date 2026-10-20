@@ -26,14 +26,16 @@ In this episode:
 • What it really means when a team says "we use Airflow"
 
 Chapters
-0:00 Why pipelines need an orchestrator
-0:18 What is Apache Airflow?
-0:32 DAGs, explained (with code)
-0:50 Airflow architecture
-1:20 Recap
+0:00 Intro
+0:15 Why pipelines need an orchestrator
+0:31 What is Apache Airflow?
+0:45 DAGs, explained (with code)
+1:03 Airflow architecture
+1:34 Recap
+1:48 What should I explain next?
 
 Explained in 2 Minutes is a Stackle series: one data tool, two minutes, no fluff.
-Next episode: Apache Kafka.
+Next episode: Apache Kafka. What should I explain after that? Tell me in the comments.
 
 Subscribe so you don't miss it.
 [Your links: Stackle website · LinkedIn · newsletter]

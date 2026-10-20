@@ -1,15 +1,18 @@
-// Writes an .srt caption file from the voiceover word timings, to upload with
+// Writes an .srt caption file from the timeline (make-cues.js), to upload with
 // the landscape video (YouTube indexes real captions; the vertical cut has its
-// captions burned in instead). Each sentence becomes one caption, split in two
-// until every caption fits in 42 characters: at the comma or dash nearest the
-// middle when there is one, never right after a small word like "a" or "the".
-// Usage: node make-srt.js <transcript.json> <out.srt> [offset-seconds]
+// captions burned in instead): the channel intro's lines, the voiceover and
+// the comment ask. Each sentence becomes one caption, split in two until every
+// caption fits in 42 characters: at the comma or dash nearest the middle when
+// there is one, never right after a small word like "a" or "the".
+// Usage: node make-srt.js <episode-dir> <out.srt>
 const fs = require('fs');
+const path = require('path');
 
-const [src, out, offArg] = process.argv.slice(2);
-const OFF = Number(offArg || 1);
+const [dir, out] = process.argv.slice(2);
+const T = JSON.parse(fs.readFileSync(path.join(dir, 'timeline.json'), 'utf8'));
 const MAX = 42;
-const words = JSON.parse(fs.readFileSync(src, 'utf8')).words.filter(w => w.type === 'word' && !w.text.startsWith('['));
+const words = T.words.concat(T.insert ? T.insert.words : []).filter(w => !w.w.startsWith('['))
+  .map(w => ({ text: w.w, start: w.s, end: w.e })).sort((a, b) => a.start - b.start);
 const text = ws => ws.map(w => w.text).join(' ');
 const SMALL = new Set(['a', 'an', 'the', 'to', 'of', 'in', 'at', 'on', 'and', 'or', 'for', 'is', 'it', 'its', 'their', 'your', 'each', 'with']);
 
@@ -43,7 +46,7 @@ const ts = s => {
 const srt = cues.map((c, i) => {
   const next = cues[i + 1];
   const end = Math.min(c.end + .4, next ? next.start - .02 : Infinity);
-  return `${i + 1}\n${ts(c.start + OFF)} --> ${ts(end + OFF)}\n${c.text}\n`;
+  return `${i + 1}\n${ts(c.start)} --> ${ts(end)}\n${c.text}\n`;
 }).join('\n');
 fs.writeFileSync(out, srt);
 console.log(`wrote ${out}: ${cues.length} captions`);

@@ -1,0 +1,38 @@
+/* The comment ask that closes every episode (cta.js). Uses the page's fonts,
+   colours and .kicker; one layout per orientation. */
+#cta .cta-q{position:absolute;left:0;right:0;text-align:center;font-weight:800;letter-spacing:-.035em;line-height:1.05;color:var(--ink)}
+.cbox{position:absolute;left:50%;background:#fff;border:1.5px solid var(--line);border-radius:28px;box-shadow:var(--shadow);opacity:0;visibility:hidden}
+.c-row{display:flex;align-items:center;gap:22px}
+.c-av{flex:none;border-radius:50%;display:grid;place-items:center;background:#EFF8FF;color:var(--blue)}
+.c-in{position:relative;flex:1;display:flex;align-items:center;border-bottom:2px solid var(--ink);font-weight:600;color:var(--ink)}
+.c-ph{color:var(--faint);font-weight:500}
+.caret{display:inline-block;width:3px;margin-left:3px;background:var(--blue);border-radius:2px}
+.c-act{display:flex;align-items:center;justify-content:space-between}
+.c-hint{font-family:JBM,monospace;font-weight:500;color:var(--muted)}
+.c-btn{border-radius:999px;font-weight:700;color:var(--muted);background:var(--soft)}
+.cta-credit{position:absolute;left:0;right:0;text-align:center;font-family:JBM,monospace;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(--faint)}
+
+@media (orientation:landscape){
+  #cta-tag{top:286px}
+  #cta .cta-q{top:340px;font-size:96px}
+  .cbox{top:540px;width:1040px;margin-left:-520px;padding:34px 40px 28px}
+  .c-av{width:72px;height:72px}.c-av svg{width:38px;height:38px}
+  .c-in{height:72px;font-size:40px}
+  .caret{height:44px}
+  .c-act{margin:24px 0 0 94px}
+  .c-hint{font-size:19px}
+  .c-btn{padding:14px 30px;font-size:24px}
+  .cta-credit{top:900px;font-size:17px}
+}
+@media (orientation:portrait){
+  #cta-tag{top:330px}
+  #cta .cta-q{top:390px;left:90px;right:90px;font-size:104px;text-wrap:balance}
+  .cbox{top:700px;width:880px;margin-left:-440px;padding:36px 36px 30px}
+  .c-av{width:76px;height:76px}.c-av svg{width:40px;height:40px}
+  .c-in{height:76px;font-size:44px}
+  .caret{height:48px}
+  .c-act{margin:26px 0 0 98px}
+  .c-hint{font-size:20px}
+  .c-btn{padding:14px 30px;font-size:26px}
+  .cta-credit{top:1060px;font-size:18px}
+}

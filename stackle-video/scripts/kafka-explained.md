@@ -1,14 +1,14 @@
-# Apache Kafka, Explained in 2 Minutes: Script (draft for review)
+# Apache Kafka, Explained in 2 Minutes: Script
 
 **Title:** Apache Kafka, Explained in 2 Minutes
 
 **Series:** Explained in 2 Minutes, episode 02
 
-**Spoken words:** about 245 · **Estimated length:** about 1:35 (same pace as the Airflow episode)
+**Spoken words:** 249 · **Voice:** 1:24 · **Video:** 1:48 (opening card, channel intro, episode, comment ask)
 
 **Format:** the same as episode 01: both cuts (landscape for YouTube, portrait for TikTok, Reels and Shorts), the "Crispus Roshan" voice, the 120 BPM beat, word-by-word captions in the portrait cut, and each cut opening on its thumbnail. The delivery tag is `[confident]` instead of `[calm]`, to keep the energy up.
 
-**Status:** waiting for review. Nothing has been recorded yet.
+**Status:** approved, recorded (take 4 of 4) and built. Both cuts are in `stackle-video/graphics/` (`kafka-explained.mp4`, `kafka-explained-vertical.mp4`). The opening cards are temporary until Chris's thumbnails arrive.
 
 ---
 
@@ -24,16 +24,18 @@
 >
 > [warmly] So when a team says, "we use Kafka," it means their services don't call each other. They publish events once, and anyone who needs them can read them, as they happen. That's Apache Kafka.
 
-## What is on screen (plan)
+## What is on screen
 
 | Part | Words | Picture |
 |---|---|---|
-| Opening card | (beat only) | Your Kafka thumbnail (16:9 and 9:16, in your marker style) |
+| Opening card | (beat only) | The Kafka thumbnail (16:9 and 9:16). A temporary design for now |
+| Channel intro | "Hi, I'm Chris …" | The Stackle intro (12.9 s) |
 | The problem | "Every time you tap 'order' …" | A phone taps "Order". Arrows fan out to Payments, Warehouse and Analytics, then multiply into a tangle of service-to-service lines |
 | What it is | "Kafka is an open-source platform …" | The tangle collapses into one Kafka bar in the middle. Then "batch vs streaming" (a nightly clock vs a live flow) and a timeline: 2011 LinkedIn, 2012 top-level Apache project |
 | The core idea | "Producers write events to a topic …" | An `orders` log builds from left to right with numbered events. Producers append on the right, and two consumers read at different points, each with its own offset marker |
 | Architecture | "A Kafka cluster is a group of servers …" | Three broker cards. The topic splits into partitions P0, P1 and P2 spread across them, with leader and replica copies. One broker fails, its replica takes over, and nothing goes dark. A consumer group of three picks up one partition each. A small KRaft controller quorum sits on top, pointing at each leader |
-| In short | "So when a team says …" | "We use Kafka." Takeaways: publish once · anyone can read · as it happens. Then the closing title |
+| In short | "So when a team says …" | "We use Kafka." Takeaways: services don't call each other · they publish each event once · anyone who needs it reads it, as it happens. Then the closing title |
+| Comment ask | "So, what should I explain next? …" | A comment box types out ideas until "comments" presses its button |
 
 ## Facts to check before recording
 

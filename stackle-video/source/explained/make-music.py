@@ -1,15 +1,22 @@
-"""Writes the background music for the Airflow explainer: an upbeat, original
-house-pop track at 120 BPM in D major (four-on-the-floor kick, claps, hats,
-off-beat bass, plucked chords, a 16th-note arp for the architecture part).
-It is synthesised from scratch, so there is nothing to license.
+"""Writes the background music for an "Explained in 2 minutes" episode: an
+upbeat, original house-pop track at 120 BPM in D major (four-on-the-floor
+kick, claps, hats, off-beat bass, plucked chords, a 16th-note arp for the
+architecture part). It is synthesised from scratch, so there is nothing to
+license.
 
-The bars follow the voiceover: the full beat drops on the title ("Apache
-Airflow"), a crash marks each new chapter, the drums drop out for "That's
-Apache Airflow", and the last chord hits as the voice ends. The beat is
-already going on the very first frame, under the opening card.
-Usage: python3 make-music.py <seconds> <out.wav> <vo.transcript.json> <voice offset>
+The bars follow the voiceover, at the words named in the episode's
+episode.json ("music"): the full beat drops on the title ("drop"), a crash
+marks each of the three chapters after it ("chapters": open hats join from
+the first, the arp plays from the second until the third), the drums drop
+out for the last line ("break"), and the last chord hits as the voice ends.
+A soft pad carries on under the comment ask. The beat is already going on
+the very first frame, under the opening card, and it pauses while the
+channel intro plays (the intro has its own sound).
+Word times come from <episode>/timeline.json (written by make-cues.js).
+Usage: python3 make-music.py <seconds> <out.wav> <episode-dir>
 """
 import json
+import os
 import re
 import sys
 import wave
@@ -187,28 +194,34 @@ def add(buf, sig, start, gain=1.0, p=0.0):
 
 # ---------------------------------------------------------------- arrangement
 
-def cue_times(transcript, offset):
+def cue_times(episode):
+    music = json.load(open(os.path.join(episode, 'episode.json')))['music']
+    tl = json.load(open(os.path.join(episode, 'timeline.json')))
     norm = lambda s: re.sub(r"[^a-z0-9']", '', s.lower())
-    words = [w for w in json.load(open(transcript))['words'] if w['type'] == 'word' and not w['text'].startswith('[')]
+    words = [w for w in tl['words'] if not w['w'].startswith('[')]
 
-    def at(word, n=0):
-        hits = [w['start'] + offset for w in words if norm(w['text']) == word]
+    def at(cue):
+        word, n = cue
+        hits = [w['s'] for w in words if norm(w['w']) == word]
         return hits[n]
-    return {'title': at('apache'), 'dags': at('you'), 'arch': at('now'), 'short': at('team'),
-            'last_line': at("that's"), 'voice_end': words[-1]['end'] + offset}
+    c1, c2, c3 = (at(cue) for cue in music['chapters'])
+    ins = tl.get('insert')
+    return {'title': at(music['drop']), 'ch1': c1, 'ch2': c2, 'ch3': c3,
+            'last_line': at(music['break']), 'voice_end': tl['voiceEnd'],
+            'insert': (ins['start'], ins['start'] + ins['duration']) if ins else None}
 
 
-def main(seconds, out, transcript, offset):
+def main(seconds, out, episode):
     total = int(seconds * SR)
     drums, bass, keys, pads, sends, fx = (np.zeros((total, 2)) for _ in range(6))
-    c = cue_times(transcript, offset)
+    c = cue_times(episode)
 
     # downbeats sit on the title, every bar is two seconds
     t0 = c['title'] % BAR
     bar_at = lambda t: int(round((t - t0) / BAR))
     start = lambda b: t0 + b * BAR
-    b_title, b_dags, b_arch, b_short = (bar_at(c[k]) for k in ('title', 'dags', 'arch', 'short'))
-    b_break = int(np.floor((c['last_line'] - t0) / BAR + 1e-6))     # drums out for "That's Apache Airflow"
+    b_title, b_ch1, b_ch2, b_ch3 = (bar_at(c[k]) for k in ('title', 'ch1', 'ch2', 'ch3'))
+    b_break = int(np.floor((c['last_line'] - t0) / BAR + 1e-6))     # drums out for the last line
     b_end = max(b_break + 1, bar_at(c['voice_end']))                 # the last chord, as the voice ends
     nbars = int(np.ceil((seconds - t0) / BAR))
 
@@ -229,7 +242,7 @@ def main(seconds, out, transcript, offset):
         root, voicing = PROG[b % 4]
         if b == b_end:
             root, voicing = PROG[0]
-        intro, full = b < b_title, b_title <= b < b_break
+        full = b_title <= b < b_break
 
         # drums
         if b < b_break:
@@ -247,12 +260,12 @@ def main(seconds, out, transcript, offset):
                 add(drums, C, s + 3 * BEAT, .55)
                 add(sends, pan(C, 0) * .55, s + BEAT, .25)
                 add(sends, pan(C, 0) * .55, s + 3 * BEAT, .25)
-                if b >= b_dags:
+                if b >= b_ch1:
                     add(drums, OPEN, s + 3.5 * BEAT, .16, .2)
-                if b + 1 in (b_dags, b_arch, b_short, b_break):     # a clap roll into the next chapter
+                if b + 1 in (b_ch1, b_ch2, b_ch3, b_break):     # a clap roll into the next chapter
                     for k in range(4):
                         add(drums, C, s + (3 + k / 4) * BEAT, .25 + .1 * k)
-        if b in (b_title, b_dags, b_arch, b_short, b_end):
+        if b in (b_title, b_ch1, b_ch2, b_ch3, b_end):
             add(fx, pan(CRASH, 0), s, .3)
         if b == b_end:
             add(drums, K, s, 1.0)
@@ -271,11 +284,13 @@ def main(seconds, out, transcript, offset):
             for pos in STABS:
                 for j, m in enumerate(voicing):
                     add(keys, pl(m), s + pos * BEAT / 4, .24, (j / 3 - .5) * .6)
-        else:
+        elif b <= b_end:
             for j, m in enumerate(voicing):
                 add(keys, pluck(hz(m), 2.6 if b == b_end else 1.9), s, .2, (j / 3 - .5) * .6)
-        add(pads, pad_chord(voicing, BAR), s, .42 if b >= b_break else .3)
-        if b_arch <= b < b_short:
+        else:                                            # after the last chord: a soft bed for the comment ask
+            add(keys, pl(voicing[0], 1.2), s, .1)
+        add(pads, pad_chord(voicing, BAR), s, .3 if b > b_end else .42 if b >= b_break else .3)
+        if b_ch2 <= b < b_ch3:
             arp = [voicing[i % 4] + 12 for i in (0, 1, 2, 3, 2, 1)]
             for k in range(16):
                 add(keys, pl(arp[k % 6], .22), s + k * BEAT / 4, .09 + .03 * (k % 4 == 0), np.sin(k * .8) * .5)
@@ -294,6 +309,9 @@ def main(seconds, out, transcript, offset):
 
     t = np.arange(total) / SR
     mix *= np.minimum(1, t / .05)[:, None]
+    if c['insert']:                                                 # quiet while the channel intro plays
+        a, b = c['insert']
+        mix *= np.clip(np.maximum((a - .05 - t) / .25, (t - b) / .4), 0, 1)[:, None]
     mix *= np.clip((seconds - t) / 1.8, 0, 1)[:, None] ** 1.3      # fade the last chord out with the picture
     mix = np.tanh(mix / np.max(np.abs(mix)) * 1.4) / np.tanh(1.4) * .89
 
@@ -304,9 +322,9 @@ def main(seconds, out, transcript, offset):
         w.setframerate(SR)
         w.writeframes(pcm.tobytes())
     print(f'wrote {out}: {seconds:.2f}s at {BPM} BPM; drop {start(b_title):.2f}s, '
-          f'crashes at {", ".join(f"{start(b):.2f}" for b in (b_dags, b_arch, b_short))}s, '
+          f'crashes at {", ".join(f"{start(b):.2f}" for b in (b_ch1, b_ch2, b_ch3))}s, '
           f'break {start(b_break):.2f}s, last chord {start(b_end):.2f}s')
 
 
 if __name__ == '__main__':
-    main(float(sys.argv[1]), sys.argv[2], sys.argv[3], float(sys.argv[4]))
+    main(float(sys.argv[1]), sys.argv[2], sys.argv[3])

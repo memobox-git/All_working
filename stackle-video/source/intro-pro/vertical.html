@@ -1,0 +1,47 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Stackle intro (vertical)</title>
+<link rel="stylesheet" href="vertical.css"></head>
+<body>
+
+<!-- the photo stays on the page for "Hi, I'm Chris" and the two numbers -->
+<section class="scene" id="photo">
+  <div class="photo" id="s1-photo"><img src="img/chris.jpg" alt="Chris"><svg id="s1-frame"></svg></div>
+</section>
+
+<!-- S1 · "Hi, I'm Chris." -->
+<section class="scene" id="s1">
+  <div class="at hand" id="s1-note">Hi,</div>
+  <div class="at pre" id="s1-my">I'm</div>
+  <div class="at big" id="s1-name">Chris<span class="red">.</span></div>
+  <div class="at" id="s1-meta">Crispus Roshan · Founder, Stackle</div>
+  <svg class="ink" id="s1-ink"></svg>
+</section>
+
+<!-- S2 · over 10 years in data engineering, more than 200 engineers interviewed -->
+<section class="scene" id="s2">
+  <div class="stat" id="st-a"><div class="n"><span class="w" id="st-10">10</span>+</div><div class="l">years in data<br>engineering</div></div>
+  <div class="stat" id="st-b"><div class="n" id="st-200">200+</div><div class="l">engineers<br>interviewed</div></div>
+  <svg class="ink" id="s2-ink"></svg>
+</section>
+
+<!-- S3 · Now I run Stackle, where I teach the skills that actually get you hired. -->
+<section class="scene" id="s3">
+  <div class="at pre" id="s3-pre">Now I run</div>
+  <div class="at big" id="s3-word">Stackle<span class="red">.</span></div>
+  <div class="at pre" id="s3-teach">where I teach</div>
+  <div class="at big" id="s3-line">the skills that actually get you hired.</div>
+  <svg class="ink" id="s3-ink"></svg>
+</section>
+
+<!-- S4 · Let's get into it. -->
+<section class="scene" id="s4">
+  <div class="at big" id="s4-go">Let's get into it.</div>
+</section>
+
+<div id="grain"></div>
+
+<script src="cues.js"></script>
+<script src="../node_modules/gsap/dist/gsap.min.js"></script>
+<script src="../node_modules/gsap/dist/DrawSVGPlugin.min.js"></script>
+<script src="scene.js"></script>
+</body></html>

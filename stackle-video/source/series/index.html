@@ -1,0 +1,90 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Explained in 2 Minutes: the series</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="../explained/cta.css"></head>
+<body>
+<canvas id="bg" width="1920" height="1080"></canvas>
+
+<div id="stage">
+
+  <!-- S0 · the opening card: the thumbnail (img/thumbnail.png) -->
+  <section class="scene" id="s0">
+    <img class="th-full" src="img/thumbnail.png" alt="Explained in 2 minutes: the series">
+  </section>
+
+  <!-- S1 · "One data tool. Two minutes. No fluff." (then the channel intro plays) -->
+  <section class="scene" id="s1">
+    <div class="hook" id="hook">
+      <div class="hl" id="h1"></div>
+      <div class="hl" id="h2"></div>
+      <div class="hl" id="h3"></div>
+    </div>
+    <svg class="links" id="s1-ink" viewBox="0 0 1920 1080"></svg>
+  </section>
+
+  <!-- S2 · "This is Explained in 2 Minutes …": what every episode does -->
+  <section class="scene" id="s2">
+    <div class="lock" id="lock2">
+      <svg class="smark" id="mark2" viewBox="-100 -100 200 200"></svg>
+      <div class="word"><span class="wm-m"><span class="wm-a" id="wm2a">Explained in</span></span> <span class="wm-m"><span class="wm-b" id="wm2b">2 minutes</span></span></div>
+    </div>
+    <div class="sub" id="sub2">One tool or idea from data engineering, every episode</div>
+    <div class="beats">
+      <div class="bt" id="bt1" style="--c:#017CEE;--tint:#EFF8FF"><span class="num">01</span><span class="tile big" data-icon="file"></span><div class="bt-t">What it is</div></div>
+      <div class="bt" id="bt2" style="--c:#7A5AF8;--tint:#F4F3FF"><span class="num">02</span><span class="tile big" data-icon="users"></span><div class="bt-t">Why teams use it</div></div>
+      <div class="bt" id="bt3" style="--c:#0E9384;--tint:#F0FDF9"><span class="num">03</span><span class="tile big" data-icon="cpu"></span><div class="bt-t">How it works</div></div>
+    </div>
+    <div class="kicker" id="arch-tag">The architecture, step by step</div>
+    <svg class="links" id="arch-links" viewBox="0 0 1920 1080"></svg>
+    <div class="an" id="an1" style="--c:#F79009;--tint:#FFFAEB"><span class="tile" data-icon="phone"></span><h3>Source</h3></div>
+    <div class="an" id="an2" style="--c:#0B1220;--tint:#F2F4F7"><span class="tile" data-icon="log"></span><h3>Stream</h3></div>
+    <div class="an" id="an3" style="--c:#7A5AF8;--tint:#F4F3FF"><span class="tile" data-icon="cpu"></span><h3>Process</h3></div>
+    <div class="an" id="an4" style="--c:#12B76A;--tint:#ECFDF3"><span class="tile" data-icon="warehouse"></span><h3>Store</h3></div>
+  </section>
+
+  <!-- S3 · "Here's what's coming …": the first six episodes, then a hundred -->
+  <section class="scene" id="s3">
+    <div class="kicker" id="s3-tag">Coming up</div>
+    <div class="eps" id="eps"><div class="ep" id="ep1" style="--c:#017CEE;--tint:#EFF8FF"><span class="ep-n">01</span><span class="tile ep-ic" data-icon="ep-airflow"></span><b>Apache Airflow</b></div><div class="ep" id="ep2" style="--c:#0B1220;--tint:#F2F4F7"><span class="ep-n">02</span><span class="tile ep-ic" data-icon="ep-kafka"></span><b>Apache Kafka</b></div><div class="ep" id="ep3" style="--c:#F79009;--tint:#FFFAEB"><span class="ep-n">03</span><span class="tile ep-ic" data-icon="ep-spark"></span><b>Apache Spark</b></div><div class="ep" id="ep4" style="--c:#7A5AF8;--tint:#F4F3FF"><span class="ep-n">04</span><span class="tile ep-ic" data-icon="ep-de"></span><b>What is Data Engineering?</b></div><div class="ep" id="ep5" style="--c:#00B2D6;--tint:#ECFDFF"><span class="ep-n">05</span><span class="tile ep-ic" data-icon="ep-snow"></span><b>Snowflake</b></div><div class="ep" id="ep6" style="--c:#F04438;--tint:#FEF3F2"><span class="ep-n">06</span><span class="tile ep-ic" data-icon="ep-bricks"></span><b>Databricks</b></div></div>
+    <div class="grid100" id="grid100"></div>
+    <div class="count" id="count"><b id="count-n">6</b><span>episodes</span></div>
+  </section>
+
+  <!-- S5 · "See you in episode one." -->
+  <section class="scene" id="s5">
+    <div class="lock" id="lock5">
+      <svg class="smark" id="mark5" viewBox="-100 -100 200 200"></svg>
+      <div class="word"><span class="wm-m"><span class="wm-a" id="wm5a">Explained in</span></span> <span class="wm-m"><span class="wm-b" id="wm5b">2 minutes</span></span></div>
+    </div>
+    <div class="next" id="next"><span class="tile" data-icon="ep-airflow" style="--c:#017CEE;--tint:#EFF8FF"></span><div><span>Next: episode 01</span><b>Apache Airflow</b></div></div>
+    <div class="credit" id="credit">Stackle · Episode 00</div>
+  </section>
+
+</div>
+
+<div id="hud">
+  <div class="hud-tl"><svg class="smark mini-mark" viewBox="-100 -100 200 200"></svg>Explained in 2 minutes<span class="sep"></span><span class="series">The series</span></div>
+  <div class="hud-tr"><span id="hud-num">01</span><span class="sep"></span><span id="hud-chap">The series</span></div>
+  <div class="hud-bar"><i id="hud-prog"></i></div>
+</div>
+<div id="fade"></div>
+
+<script src="cues.js"></script>
+<script src="../node_modules/gsap/dist/gsap.min.js"></script>
+<script src="../node_modules/gsap/dist/DrawSVGPlugin.min.js"></script>
+<script>
+// the episode icons for the roadmap (common.js draws every [data-icon])
+window.EXTRA_ICONS = {
+  'ep-airflow': '<g fill="currentColor" stroke="none"><path d="M12 12C10.5 9 10.8 5.2 12.9 2.6 15.7 4 17 7.4 16.2 10.3z"/><path d="M12 12c3-1.5 6.8-1.2 9.4.9-1.4 2.8-4.8 4.1-7.7 3.3z" opacity=".8"/><path d="M12 12c1.5 3 1.2 6.8-.9 9.4-2.8-1.4-4.1-4.8-3.3-7.7z" opacity=".65"/><path d="M12 12c-3 1.5-6.8 1.2-9.4-.9 1.4-2.8 4.8-4.1 7.7-3.3z" opacity=".5"/></g>',
+  'ep-kafka': '<circle cx="10" cy="12" r="2.6"/><circle cx="10" cy="4.5" r="1.7"/><circle cx="10" cy="19.5" r="1.7"/><circle cx="17.5" cy="8" r="1.7"/><circle cx="17.5" cy="16" r="1.7"/><path d="M10 9.4V6.2M10 14.6v3.2M12.3 10.8l3.7-2M12.3 13.2l3.7 2"/>',
+  'ep-spark': '<path d="M12 2.5l2.2 6.6 6.8.3-5.3 4.2 1.9 6.6L12 16.3l-5.6 3.9 1.9-6.6L3 9.4l6.8-.3z"/>',
+  'ep-de': '<rect x="3" y="3.5" width="7" height="7" rx="1.8"/><rect x="14" y="13.5" width="7" height="7" rx="1.8"/><path d="M10 7h3.5a3 3 0 0 1 3 3v3.5"/>',
+  'ep-snow': '<path d="M12 2.5v19M3.8 7.2l16.4 9.6M20.2 7.2 3.8 16.8"/><path d="m9.5 4 2.5 2 2.5-2M9.5 20l2.5-2 2.5 2M4.2 10.6l3.1-.6-.9-3M19.8 13.4l-3.1.6.9 3M4.2 13.4l3.1.6-.9 3M19.8 10.6l-3.1-.6.9-3"/>',
+  'ep-bricks': '<path d="m12 3 9 5-9 5-9-5z"/><path d="m3 12 9 5 9-5M3 16l9 5 9-5"/>',
+};
+</script>
+<script src="../explained/common.js"></script>
+<script src="../explained/cta.js"></script>
+<script src="brand.js"></script>
+<script src="story.js"></script>
+</body></html>

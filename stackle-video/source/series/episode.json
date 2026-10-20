@@ -1,0 +1,20 @@
+{
+  "title": "Explained in 2 Minutes",
+  "episode": 0,
+  "slug": "explained-series-intro",
+  "card": 1.8,
+  "offset": 1.8,
+  "intro": {
+    "landscape": "../../graphics/stackle-intro.mp4",
+    "vertical": "../../graphics/stackle-intro-vertical.mp4",
+    "transcript": "../intro-pro/audio/vo.transcript.json",
+    "voiceOffset": 0.6,
+    "after": ["fluff", 0]
+  },
+  "cta": false,
+  "music": {
+    "drop": ["this", 0],
+    "chapters": [["here's", 0], ["hundred", 0], ["so", 0]],
+    "break": ["see", 0]
+  }
+}

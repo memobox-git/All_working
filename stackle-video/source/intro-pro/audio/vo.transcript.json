@@ -1,849 +1,230 @@
 {
-  "generation_id": "NcMyjuTILrdzBy0Ujyxi",
-  "text": "[confident] Hi, if you are new here, my name is Chris.\n\nI have worked in data engineering for more than 10 years.\n\nI have interviewed more than 200 engineers, for companies in healthcare, banking, automotive, and financial exchanges. So I know exactly what gets people hired... and what gets them rejected.\n\nI have also sat on the other side of the table, with offers from multiple big tech companies at the same time.\n\nToday, I run Stackle, your career lab, where I teach data engineering and AI engineering.\n\nMore than 13,000 people follow me on LinkedIn. Nearly 4,000 are part of our Meetup community. And one free Claude workshop brought in more than 500 people.\n\nOn this channel, I teach you the skills that actually get you hired. No fluff. Just what works.\n\n[excited] So let's get into it.",
-  "model_id": "eleven_scribe_v1",
-  "download_url": "https://storage.googleapis.com/xi-backend/database/workspace/78994f50291a473bba525fc9db38b1d1/content_generation/VP2mYkXSGlHGAoMadd02/NcMyjuTILrdzBy0Ujyxi/content.txt?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=xi-backend-prod%40xi-labs.iam.gserviceaccount.com%2F20261017%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20261017T021258Z&X-Goog-Expires=7200&X-Goog-SignedHeaders=host&response-content-disposition=attachment%3B%20filename%3D%22transcript-NcMyjuTILrdzBy0Ujyxi.txt%22&X-Goog-Signature=7d349d5fc613820770e54d815032ae67cddffb5e6c1c8a98b899ce802d5e726ac60d895df0203cfa1fcc0c18dbcfb7162985d6d63b24d0a5a74d067240db0f1ba7f9ab20488f649f61395e52d10b0cc66211ba9d36debfce0be16fc7b3715ef7130648c813bb97fc015df41a56ed3599911e1c7ca186e1b312977fd2f4137b11478fabe56459cbf3e2910d5970e061ebb1f7c0424941035717d8e087ff8fe9a14a3b2df067e837a75117f8bc642465dac6c23aee203ecad32e978c1df8f69f8d8d697ec2f9f97430069488dd909e35b3b2e091922204e28a96f4f75f84692bfb5905dace09fd8e8569eb9111545010c08ef0269011fd780cc64c489ad44f9eef",
-  "word_count": 139,
-  "words": [
-    {
-      "text": "[confident]",
-      "type": "word",
-      "start": 0,
-      "end": 0.067
-    },
-    {
-      "text": "Hi,",
-      "type": "word",
-      "start": 0.08,
-      "end": 0.48
-    },
-    {
-      "text": "if",
-      "type": "word",
-      "start": 0.64,
-      "end": 0.8
-    },
-    {
-      "text": "you",
-      "type": "word",
-      "start": 0.84,
-      "end": 0.88
-    },
-    {
-      "text": "are",
-      "type": "word",
-      "start": 0.96,
-      "end": 1.04
-    },
-    {
-      "text": "new",
-      "type": "word",
-      "start": 1.12,
-      "end": 1.28
-    },
-    {
-      "text": "here,",
-      "type": "word",
-      "start": 1.4,
-      "end": 1.68
-    },
-    {
-      "text": "my",
-      "type": "word",
-      "start": 1.84,
-      "end": 1.92
-    },
-    {
-      "text": "name",
-      "type": "word",
-      "start": 2,
-      "end": 2.08
-    },
-    {
-      "text": "is",
-      "type": "word",
-      "start": 2.16,
-      "end": 2.32
-    },
-    {
-      "text": "Chris.",
-      "type": "word",
-      "start": 2.68,
-      "end": 3.12
-    },
-    {
-      "text": "I",
-      "type": "word",
-      "start": 3.2,
-      "end": 3.253
-    },
-    {
-      "text": "have",
-      "type": "word",
-      "start": 3.307,
-      "end": 3.36
-    },
-    {
-      "text": "worked",
-      "type": "word",
-      "start": 3.44,
-      "end": 3.6
-    },
-    {
-      "text": "in",
-      "type": "word",
-      "start": 3.68,
-      "end": 3.76
-    },
-    {
-      "text": "data",
-      "type": "word",
-      "start": 3.84,
-      "end": 3.92
-    },
-    {
-      "text": "engineering",
-      "type": "word",
-      "start": 4,
-      "end": 4.48
-    },
-    {
-      "text": "for",
-      "type": "word",
-      "start": 4.6,
-      "end": 4.72
-    },
-    {
-      "text": "more",
-      "type": "word",
-      "start": 4.8,
-      "end": 4.96
-    },
-    {
-      "text": "than",
-      "type": "word",
-      "start": 5.08,
-      "end": 5.2
-    },
-    {
-      "text": "10",
-      "type": "word",
-      "start": 5.28,
-      "end": 5.52
-    },
-    {
-      "text": "years.",
-      "type": "word",
-      "start": 5.6,
-      "end": 6.32
-    },
-    {
-      "text": "I",
-      "type": "word",
-      "start": 6.4,
-      "end": 6.427
-    },
-    {
-      "text": "have",
-      "type": "word",
-      "start": 6.453,
-      "end": 6.48
-    },
-    {
-      "text": "interviewed",
-      "type": "word",
-      "start": 6.56,
-      "end": 6.96
-    },
-    {
-      "text": "more",
-      "type": "word",
-      "start": 7.04,
-      "end": 7.12
-    },
-    {
-      "text": "than",
-      "type": "word",
-      "start": 7.24,
-      "end": 7.36
-    },
-    {
-      "text": "200",
-      "type": "word",
-      "start": 7.44,
-      "end": 7.6
-    },
-    {
-      "text": "engineers,",
-      "type": "word",
-      "start": 7.68,
-      "end": 8.52
-    },
-    {
-      "text": "for",
-      "type": "word",
-      "start": 8.56,
-      "end": 8.64
-    },
-    {
-      "text": "companies",
-      "type": "word",
-      "start": 8.72,
-      "end": 9.12
-    },
-    {
-      "text": "in",
-      "type": "word",
-      "start": 9.2,
-      "end": 9.28
-    },
-    {
-      "text": "healthcare,",
-      "type": "word",
-      "start": 9.44,
-      "end": 10.107
-    },
-    {
-      "text": "banking,",
-      "type": "word",
-      "start": 10.213,
-      "end": 10.6
-    },
-    {
-      "text": "automotive,",
-      "type": "word",
-      "start": 10.64,
-      "end": 11.24
-    },
-    {
-      "text": "and",
-      "type": "word",
-      "start": 11.28,
-      "end": 11.44
-    },
-    {
-      "text": "financial",
-      "type": "word",
-      "start": 11.52,
-      "end": 11.92
-    },
-    {
-      "text": "exchanges.",
-      "type": "word",
-      "start": 12,
-      "end": 13.013
-    },
-    {
-      "text": "So",
-      "type": "word",
-      "start": 13.067,
-      "end": 13.12
-    },
-    {
-      "text": "I",
-      "type": "word",
-      "start": 13.28,
-      "end": 13.333
-    },
-    {
-      "text": "know",
-      "type": "word",
-      "start": 13.387,
-      "end": 13.44
-    },
-    {
-      "text": "exactly",
-      "type": "word",
-      "start": 13.68,
-      "end": 14.08
-    },
-    {
-      "text": "what",
-      "type": "word",
-      "start": 14.16,
-      "end": 14.24
-    },
-    {
-      "text": "gets",
-      "type": "word",
-      "start": 14.36,
-      "end": 14.48
-    },
-    {
-      "text": "people",
-      "type": "word",
-      "start": 14.6,
-      "end": 14.72
-    },
-    {
-      "text": "hired...",
-      "type": "word",
-      "start": 14.8,
-      "end": 15.6
-    },
-    {
-      "text": "and",
-      "type": "word",
-      "start": 15.68,
-      "end": 15.92
-    },
-    {
-      "text": "what",
-      "type": "word",
-      "start": 16,
-      "end": 16.08
-    },
-    {
-      "text": "gets",
-      "type": "word",
-      "start": 16.16,
-      "end": 16.24
-    },
-    {
-      "text": "them",
-      "type": "word",
-      "start": 16.32,
-      "end": 16.4
-    },
-    {
-      "text": "rejected.",
-      "type": "word",
-      "start": 16.48,
-      "end": 17.48
-    },
-    {
-      "text": "I",
-      "type": "word",
-      "start": 17.52,
-      "end": 17.573
-    },
-    {
-      "text": "have",
-      "type": "word",
-      "start": 17.627,
-      "end": 17.68
-    },
-    {
-      "text": "also",
-      "type": "word",
-      "start": 17.84,
-      "end": 18
-    },
-    {
-      "text": "sat",
-      "type": "word",
-      "start": 18.08,
-      "end": 18.16
-    },
-    {
-      "text": "on",
-      "type": "word",
-      "start": 18.24,
-      "end": 18.32
-    },
-    {
-      "text": "the",
-      "type": "word",
-      "start": 18.4,
-      "end": 18.48
-    },
-    {
-      "text": "other",
-      "type": "word",
-      "start": 18.56,
-      "end": 18.72
-    },
-    {
-      "text": "side",
-      "type": "word",
-      "start": 18.8,
-      "end": 18.88
-    },
-    {
-      "text": "of",
-      "type": "word",
-      "start": 18.96,
-      "end": 19.04
-    },
-    {
-      "text": "the",
-      "type": "word",
-      "start": 19.08,
-      "end": 19.12
-    },
-    {
-      "text": "table,",
-      "type": "word",
-      "start": 19.32,
-      "end": 19.56
-    },
-    {
-      "text": "with",
-      "type": "word",
-      "start": 19.6,
-      "end": 19.76
-    },
-    {
-      "text": "offers",
-      "type": "word",
-      "start": 19.84,
-      "end": 20.08
-    },
-    {
-      "text": "from",
-      "type": "word",
-      "start": 20.16,
-      "end": 20.4
-    },
-    {
-      "text": "multiple",
-      "type": "word",
-      "start": 20.64,
-      "end": 20.88
-    },
-    {
-      "text": "big",
-      "type": "word",
-      "start": 20.96,
-      "end": 21.04
-    },
-    {
-      "text": "tech",
-      "type": "word",
-      "start": 21.12,
-      "end": 21.2
-    },
-    {
-      "text": "companies",
-      "type": "word",
-      "start": 21.28,
-      "end": 21.68
-    },
-    {
-      "text": "at",
-      "type": "word",
-      "start": 21.76,
-      "end": 21.84
-    },
-    {
-      "text": "the",
-      "type": "word",
-      "start": 21.92,
-      "end": 22
-    },
-    {
-      "text": "same",
-      "type": "word",
-      "start": 22.08,
-      "end": 22.32
-    },
-    {
-      "text": "time.",
-      "type": "word",
-      "start": 22.4,
-      "end": 23.16
-    },
-    {
-      "text": "Today,",
-      "type": "word",
-      "start": 23.2,
-      "end": 23.68
-    },
-    {
-      "text": "I",
-      "type": "word",
-      "start": 23.76,
-      "end": 23.84
-    },
-    {
-      "text": "run",
-      "type": "word",
-      "start": 23.92,
-      "end": 24
-    },
-    {
-      "text": "Stackle,",
-      "type": "word",
-      "start": 24.16,
-      "end": 24.68
-    },
-    {
-      "text": "your",
-      "type": "word",
-      "start": 24.72,
-      "end": 24.88
-    },
-    {
-      "text": "career",
-      "type": "word",
-      "start": 24.96,
-      "end": 25.28
-    },
-    {
-      "text": "lab,",
-      "type": "word",
-      "start": 25.4,
-      "end": 25.6
-    },
-    {
-      "text": "where",
-      "type": "word",
-      "start": 25.68,
-      "end": 25.76
-    },
-    {
-      "text": "I",
-      "type": "word",
-      "start": 25.92,
-      "end": 25.947
-    },
-    {
-      "text": "teach",
-      "type": "word",
-      "start": 25.973,
-      "end": 26.16
-    },
-    {
-      "text": "data",
-      "type": "word",
-      "start": 26.24,
-      "end": 26.4
-    },
-    {
-      "text": "engineering",
-      "type": "word",
-      "start": 26.48,
-      "end": 26.96
-    },
-    {
-      "text": "and",
-      "type": "word",
-      "start": 27.04,
-      "end": 27.2
-    },
-    {
-      "text": "AI",
-      "type": "word",
-      "start": 27.28,
-      "end": 27.52
-    },
-    {
-      "text": "engineering.",
-      "type": "word",
-      "start": 27.96,
-      "end": 28.44
-    },
-    {
-      "text": "More",
-      "type": "word",
-      "start": 28.48,
-      "end": 28.56
-    },
-    {
-      "text": "than",
-      "type": "word",
-      "start": 28.64,
-      "end": 28.8
-    },
-    {
-      "text": "13,000",
-      "type": "word",
-      "start": 28.88,
-      "end": 29.28
-    },
-    {
-      "text": "people",
-      "type": "word",
-      "start": 29.44,
-      "end": 30.16
-    },
-    {
-      "text": "follow",
-      "type": "word",
-      "start": 30.28,
-      "end": 30.4
-    },
-    {
-      "text": "me",
-      "type": "word",
-      "start": 30.44,
-      "end": 30.48
-    },
-    {
-      "text": "on",
-      "type": "word",
-      "start": 30.56,
-      "end": 30.64
-    },
-    {
-      "text": "LinkedIn.",
-      "type": "word",
-      "start": 31,
-      "end": 31.467
-    },
-    {
-      "text": "Nearly",
-      "type": "word",
-      "start": 31.573,
-      "end": 31.68
-    },
-    {
-      "text": "4,000",
-      "type": "word",
-      "start": 31.8,
-      "end": 32.32
-    },
-    {
-      "text": "are",
-      "type": "word",
-      "start": 32.4,
-      "end": 32.48
-    },
-    {
-      "text": "part",
-      "type": "word",
-      "start": 32.56,
-      "end": 32.64
-    },
-    {
-      "text": "of",
-      "type": "word",
-      "start": 32.72,
-      "end": 32.8
-    },
-    {
-      "text": "our",
-      "type": "word",
-      "start": 32.84,
-      "end": 32.88
-    },
-    {
-      "text": "Meetup",
-      "type": "word",
-      "start": 32.96,
-      "end": 33.2
-    },
-    {
-      "text": "community.",
-      "type": "word",
-      "start": 33.56,
-      "end": 33.96
-    },
-    {
-      "text": "And",
-      "type": "word",
-      "start": 34,
-      "end": 34.16
-    },
-    {
-      "text": "one",
-      "type": "word",
-      "start": 34.24,
-      "end": 34.48
-    },
-    {
-      "text": "free",
-      "type": "word",
-      "start": 34.6,
-      "end": 34.72
-    },
-    {
-      "text": "Claude",
-      "type": "word",
-      "start": 34.8,
-      "end": 34.96
-    },
-    {
-      "text": "workshop",
-      "type": "word",
-      "start": 35.04,
-      "end": 35.44
-    },
-    {
-      "text": "brought",
-      "type": "word",
-      "start": 35.48,
-      "end": 35.6
-    },
-    {
-      "text": "in",
-      "type": "word",
-      "start": 35.68,
-      "end": 35.76
-    },
-    {
-      "text": "more",
-      "type": "word",
-      "start": 35.84,
-      "end": 35.92
-    },
-    {
-      "text": "than",
-      "type": "word",
-      "start": 36.04,
-      "end": 36.16
-    },
-    {
-      "text": "500",
-      "type": "word",
-      "start": 36.24,
-      "end": 36.72
-    },
-    {
-      "text": "people.",
-      "type": "word",
-      "start": 36.8,
-      "end": 37.48
-    },
-    {
-      "text": "On",
-      "type": "word",
-      "start": 37.52,
-      "end": 37.68
-    },
-    {
-      "text": "this",
-      "type": "word",
-      "start": 37.76,
-      "end": 37.84
-    },
-    {
-      "text": "channel,",
-      "type": "word",
-      "start": 37.92,
-      "end": 38.36
-    },
-    {
-      "text": "I",
-      "type": "word",
-      "start": 38.48,
-      "end": 38.507
-    },
-    {
-      "text": "teach",
-      "type": "word",
-      "start": 38.533,
-      "end": 38.72
-    },
-    {
-      "text": "you",
-      "type": "word",
-      "start": 38.76,
-      "end": 38.8
-    },
-    {
-      "text": "the",
-      "type": "word",
-      "start": 38.84,
-      "end": 38.88
-    },
-    {
-      "text": "skills",
-      "type": "word",
-      "start": 38.96,
-      "end": 39.2
-    },
-    {
-      "text": "that",
-      "type": "word",
-      "start": 39.28,
-      "end": 39.52
-    },
-    {
-      "text": "actually",
-      "type": "word",
-      "start": 39.6,
-      "end": 40
-    },
-    {
-      "text": "get",
-      "type": "word",
-      "start": 40.08,
-      "end": 40.16
-    },
-    {
-      "text": "you",
-      "type": "word",
-      "start": 40.2,
-      "end": 40.24
-    },
-    {
-      "text": "hired.",
-      "type": "word",
-      "start": 40.32,
-      "end": 41
-    },
-    {
-      "text": "No",
-      "type": "word",
-      "start": 41.04,
-      "end": 41.2
-    },
-    {
-      "text": "fluff.",
-      "type": "word",
-      "start": 41.24,
-      "end": 41.84
-    },
-    {
-      "text": "Just",
-      "type": "word",
-      "start": 41.92,
-      "end": 42.08
-    },
-    {
-      "text": "what",
-      "type": "word",
-      "start": 42.16,
-      "end": 42.24
-    },
-    {
-      "text": "works.",
-      "type": "word",
-      "start": 42.32,
-      "end": 42.971
-    },
-    {
-      "text": "[excited]",
-      "type": "word",
-      "start": 42.983,
-      "end": 43.029
-    },
-    {
-      "text": "So",
-      "type": "word",
-      "start": 43.04,
-      "end": 43.2
-    },
-    {
-      "text": "let's",
-      "type": "word",
-      "start": 43.28,
-      "end": 43.44
-    },
-    {
-      "text": "get",
-      "type": "word",
-      "start": 43.48,
-      "end": 43.52
-    },
-    {
-      "text": "into",
-      "type": "word",
-      "start": 43.6,
-      "end": 43.84
-    },
-    {
-      "text": "it.",
-      "type": "word",
-      "start": 43.92,
-      "end": 44.24
-    }
-  ],
-  "words_download_url": "https://storage.googleapis.com/xi-backend/database/workspace/78994f50291a473bba525fc9db38b1d1/content_generation/VP2mYkXSGlHGAoMadd02/NcMyjuTILrdzBy0Ujyxi/words.json?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=xi-backend-prod%40xi-labs.iam.gserviceaccount.com%2F20261017%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20261017T021258Z&X-Goog-Expires=7200&X-Goog-SignedHeaders=host&response-content-disposition=attachment%3B%20filename%3D%22transcript-NcMyjuTILrdzBy0Ujyxi-words.json%22&X-Goog-Signature=2e6f35ad9e18864c17a709757f8e2bf0c6bb167c3de3095a6c6b98836f563a48d05b8032c8a1cdc8917b6e6b41e077705ff855e29e273b3d37731e934294b6387bbc7f7d6153e253fb32094c5c27b9c872a4b10202bb3e355b457899f920cd0252e62c5b7fa0dc0a4205d323d6030fbc80ddaabbfd1bfe08a77fd5ce844a15b22c60f06bfd8d85be1053b42bf38e2cd55ea0386aa815fbc1b112d64026c7914e580017e0473f2d8f731f41dbed9cdf22f0b48ec3746d693ecfb972935f7e8b4932b90fb2405002af772e61e1be10812f4e55def12340d27dbae49954254fa6eeb02f610490fe318b09a3136ee49a14cd407fe04219b207a5d0861abfcbc32aa9",
-  "spoken_duration_secs": 44.24,
-  "source": {
-    "kind": "audio",
-    "url": "https://storage.googleapis.com/xi-backend/database/workspace/78994f50291a473bba525fc9db38b1d1/content_generation/5kOFWTJ6hZQ7UJ5cvxdd/eIgbXhjXjSfLmXrKsDTe/content.mp3?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=xi-backend-prod%40xi-labs.iam.gserviceaccount.com%2F20261017%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20261017T021136Z&X-Goog-Expires=7200&X-Goog-SignedHeaders=host&X-Goog-Signature=61ee252c053652c9ad52caa3bc1577cb6c15193df9fd67bb3762ef590c85e2489c048b1e896771bae9d0df5cdb421f6bff0dc2e88fcd8f04c3a81d1f262a08dea3b0bf03be20bdb232be062d2a9e99aa453f41e7a522e4c438fa461d41d67085750cd351c51c99d0000ecad0aff842168973b3dbcae84b258da5cb9907af9b4f8cb9dc001e1cd00e29ac1059252dbb38fe50402a1c2789c49ac2d7111a522ce00cca4700735abcc1a169a431c33fd1f66c6b0acce66fd371530a8b3010ca86127e2ecfc0799c44e5eaed8d33fe892355d681b3d5cc46f85a87d3c9a1f619b2a986c6820f7aaff2cc3f494d4b43425fd00d35d6ed627092ceaac91fb0f202b920"
+ "generation_id": "hkEwoEWWIyd25Bx4z9hu",
+ "model_id": "eleven_scribe_v1",
+ "text": "[confident] Hi, I'm Chris. I've spent over 10 years in data engineering and interviewed more than 200 engineers. Now I run Stackle, where I teach the skills that actually get you hired. [excited] Let's get into it.",
+ "spoken_duration_secs": 11.76,
+ "words": [
+  {
+   "text": "[confident]",
+   "type": "word",
+   "start": 0,
+   "end": 0.067
+  },
+  {
+   "text": "Hi,",
+   "type": "word",
+   "start": 0.08,
+   "end": 0.48
+  },
+  {
+   "text": "I'm",
+   "type": "word",
+   "start": 0.56,
+   "end": 0.72
+  },
+  {
+   "text": "Chris.",
+   "type": "word",
+   "start": 0.92,
+   "end": 1.44
+  },
+  {
+   "text": "I've",
+   "type": "word",
+   "start": 1.48,
+   "end": 1.6
+  },
+  {
+   "text": "spent",
+   "type": "word",
+   "start": 1.76,
+   "end": 1.92
+  },
+  {
+   "text": "over",
+   "type": "word",
+   "start": 2.08,
+   "end": 2.24
+  },
+  {
+   "text": "10",
+   "type": "word",
+   "start": 2.36,
+   "end": 2.48
+  },
+  {
+   "text": "years",
+   "type": "word",
+   "start": 2.56,
+   "end": 2.8
+  },
+  {
+   "text": "in",
+   "type": "word",
+   "start": 2.88,
+   "end": 2.96
+  },
+  {
+   "text": "data",
+   "type": "word",
+   "start": 3.08,
+   "end": 3.2
+  },
+  {
+   "text": "engineering",
+   "type": "word",
+   "start": 3.48,
+   "end": 3.76
+  },
+  {
+   "text": "and",
+   "type": "word",
+   "start": 3.84,
+   "end": 3.92
+  },
+  {
+   "text": "interviewed",
+   "type": "word",
+   "start": 4,
+   "end": 4.4
+  },
+  {
+   "text": "more",
+   "type": "word",
+   "start": 4.44,
+   "end": 4.48
+  },
+  {
+   "text": "than",
+   "type": "word",
+   "start": 4.56,
+   "end": 4.8
+  },
+  {
+   "text": "200",
+   "type": "word",
+   "start": 4.88,
+   "end": 5.6
+  },
+  {
+   "text": "engineers.",
+   "type": "word",
+   "start": 5.68,
+   "end": 6.64
+  },
+  {
+   "text": "Now",
+   "type": "word",
+   "start": 6.72,
+   "end": 6.96
+  },
+  {
+   "text": "I",
+   "type": "word",
+   "start": 7.04,
+   "end": 7.08
+  },
+  {
+   "text": "run",
+   "type": "word",
+   "start": 7.12,
+   "end": 7.28
+  },
+  {
+   "text": "Stackle,",
+   "type": "word",
+   "start": 7.44,
+   "end": 7.92
+  },
+  {
+   "text": "where",
+   "type": "word",
+   "start": 7.96,
+   "end": 8
+  },
+  {
+   "text": "I",
+   "type": "word",
+   "start": 8.16,
+   "end": 8.187
+  },
+  {
+   "text": "teach",
+   "type": "word",
+   "start": 8.213,
+   "end": 8.4
+  },
+  {
+   "text": "the",
+   "type": "word",
+   "start": 8.48,
+   "end": 8.56
+  },
+  {
+   "text": "skills",
+   "type": "word",
+   "start": 8.72,
+   "end": 8.88
+  },
+  {
+   "text": "that",
+   "type": "word",
+   "start": 9,
+   "end": 9.12
+  },
+  {
+   "text": "actually",
+   "type": "word",
+   "start": 9.36,
+   "end": 9.6
+  },
+  {
+   "text": "get",
+   "type": "word",
+   "start": 9.68,
+   "end": 9.76
+  },
+  {
+   "text": "you",
+   "type": "word",
+   "start": 9.8,
+   "end": 9.84
+  },
+  {
+   "text": "hired.",
+   "type": "word",
+   "start": 9.92,
+   "end": 10.56
+  },
+  {
+   "text": "[excited]",
+   "type": "word",
+   "start": 10.573,
+   "end": 10.627
+  },
+  {
+   "text": "Let's",
+   "type": "word",
+   "start": 10.64,
+   "end": 10.88
+  },
+  {
+   "text": "get",
+   "type": "word",
+   "start": 10.92,
+   "end": 10.96
+  },
+  {
+   "text": "into",
+   "type": "word",
+   "start": 11.04,
+   "end": 11.28
+  },
+  {
+   "text": "it.",
+   "type": "word",
+   "start": 11.36,
+   "end": 11.76
   }
+ ]
 }
