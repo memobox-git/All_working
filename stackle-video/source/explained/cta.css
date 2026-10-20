@@ -1,5 +1,6 @@
 /* The comment ask that closes every episode (cta.js). Uses the page's fonts,
    colours and .kicker; one layout per orientation. */
+#cta-tag{position:absolute;left:0;right:0;text-align:center}
 #cta .cta-q{position:absolute;left:0;right:0;text-align:center;font-weight:800;letter-spacing:-.035em;line-height:1.05;color:var(--ink)}
 .cbox{position:absolute;left:50%;background:#fff;border:1.5px solid var(--line);border-radius:28px;box-shadow:var(--shadow);opacity:0;visibility:hidden}
 .c-row{display:flex;align-items:center;gap:22px}

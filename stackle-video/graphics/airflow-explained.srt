@@ -1,199 +1,239 @@
 1
-00:00:01,880 --> 00:00:03,100
-Every morning,
+00:00:02,480 --> 00:00:03,860
+Hi, I'm Chris.
 
 2
-00:00:03,120 --> 00:00:05,540
-before anyone at work opens a laptop,
+00:00:03,880 --> 00:00:05,260
+I've spent over 10 years
 
 3
-00:00:05,560 --> 00:00:06,580
-thousands of data
+00:00:05,280 --> 00:00:06,220
+in data engineering
 
 4
-00:00:06,600 --> 00:00:08,660
-pipelines have already run.
+00:00:06,240 --> 00:00:09,100
+and interviewed more than 200 engineers.
 
 5
-00:00:08,680 --> 00:00:09,860
-Something decided when
+00:00:09,120 --> 00:00:10,860
+Now I run Stackle, where I teach
 
 6
-00:00:09,880 --> 00:00:11,220
-each one should start,
+00:00:10,880 --> 00:00:13,020
+the skills that actually get you hired.
 
 7
-00:00:11,240 --> 00:00:12,260
-in what order,
+00:00:13,040 --> 00:00:14,560
+Let's get into it.
 
 8
-00:00:12,280 --> 00:00:14,420
-and what to do when one fails.
+00:00:15,097 --> 00:00:16,317
+Every morning,
 
 9
-00:00:14,440 --> 00:00:15,820
-In a lot of companies,
+00:00:16,337 --> 00:00:18,757
+before anyone at work opens a laptop,
 
 10
-00:00:15,840 --> 00:00:18,420
-that something is Apache Airflow.
+00:00:18,777 --> 00:00:19,797
+thousands of data
 
 11
-00:00:18,440 --> 00:00:20,180
-Airflow is an open-source tool
+00:00:19,817 --> 00:00:21,877
+pipelines have already run.
 
 12
-00:00:20,200 --> 00:00:22,100
-for orchestrating workflows.
+00:00:21,897 --> 00:00:23,077
+Something decided when
 
 13
-00:00:22,120 --> 00:00:23,460
-Orchestrating just means
+00:00:23,097 --> 00:00:24,437
+each one should start,
 
 14
-00:00:23,480 --> 00:00:24,700
-running the right task,
+00:00:24,457 --> 00:00:25,477
+in what order,
 
 15
-00:00:24,720 --> 00:00:27,060
-at the right time, in the right order.
+00:00:25,497 --> 00:00:27,637
+and what to do when one fails.
 
 16
-00:00:27,080 --> 00:00:29,700
-It started at Airbnb in 2014,
+00:00:27,657 --> 00:00:29,037
+In a lot of companies,
 
 17
-00:00:29,720 --> 00:00:32,580
-and today it's a top-level Apache project.
+00:00:29,057 --> 00:00:31,637
+that something is Apache Airflow.
 
 18
-00:00:32,600 --> 00:00:33,780
-You write each pipeline
+00:00:31,657 --> 00:00:33,397
+Airflow is an open-source tool
 
 19
-00:00:33,800 --> 00:00:36,020
-in Python, as a DAG.
+00:00:33,417 --> 00:00:35,317
+for orchestrating workflows.
 
 20
-00:00:36,040 --> 00:00:39,140
-DAG just means directed acyclic graph.
+00:00:35,337 --> 00:00:36,677
+Orchestrating just means
 
 21
-00:00:39,160 --> 00:00:42,380
-Each box is a task: extract the orders,
+00:00:36,697 --> 00:00:37,917
+running the right task,
 
 22
-00:00:42,400 --> 00:00:43,140
-transform them,
+00:00:37,937 --> 00:00:40,277
+at the right time, in the right order.
 
 23
-00:00:43,160 --> 00:00:44,980
-and load them into the warehouse.
+00:00:40,297 --> 00:00:42,917
+It started at Airbnb in 2014,
 
 24
-00:00:45,000 --> 00:00:46,820
-The arrows are dependencies,
+00:00:42,937 --> 00:00:45,797
+and today it's a top-level Apache project.
 
 25
-00:00:46,840 --> 00:00:47,860
-so a task only
+00:00:45,817 --> 00:00:46,997
+You write each pipeline
 
 26
-00:00:47,880 --> 00:00:50,740
-runs after the tasks before it succeed.
+00:00:47,017 --> 00:00:49,237
+in Python, as a DAG.
 
 27
-00:00:50,760 --> 00:00:52,260
-Now, the architecture.
+00:00:49,257 --> 00:00:52,357
+DAG just means directed acyclic graph.
 
 28
-00:00:52,280 --> 00:00:54,860
-The DAG processor reads your Python files
+00:00:52,377 --> 00:00:55,597
+Each box is a task: extract the orders,
 
 29
-00:00:54,880 --> 00:00:56,300
-and saves each DAG
+00:00:55,617 --> 00:00:56,357
+transform them,
 
 30
-00:00:56,320 --> 00:00:58,020
-to the metadata database.
+00:00:56,377 --> 00:00:58,197
+and load them into the warehouse.
 
 31
-00:00:58,040 --> 00:00:59,500
-The scheduler checks that
+00:00:58,217 --> 00:01:00,037
+The arrows are dependencies,
 
 32
-00:00:59,520 --> 00:01:00,900
-database, finds the tasks
+00:01:00,057 --> 00:01:01,077
+so a task only
 
 33
-00:01:00,920 --> 00:01:01,727
-that are ready,
+00:01:01,097 --> 00:01:03,957
+runs after the tasks before it succeed.
 
 34
-00:01:01,747 --> 00:01:03,540
-and hands them to the executor.
+00:01:03,977 --> 00:01:05,477
+Now, the architecture.
 
 35
-00:01:03,560 --> 00:01:05,660
-The executor sends them out to workers,
+00:01:05,497 --> 00:01:08,077
+The DAG processor reads your Python files
 
 36
-00:01:05,680 --> 00:01:07,780
-and the workers do the actual work.
+00:01:08,097 --> 00:01:09,517
+and saves each DAG
 
 37
-00:01:07,800 --> 00:01:09,660
-Every result — queued,
+00:01:09,537 --> 00:01:11,237
+to the metadata database.
 
 38
-00:01:09,680 --> 00:01:11,380
-running, success or failed
+00:01:11,257 --> 00:01:12,717
+The scheduler checks that
 
 39
-00:01:11,400 --> 00:01:13,820
-— goes back into the metadata database.
+00:01:12,737 --> 00:01:14,117
+database, finds the tasks
 
 40
-00:01:13,840 --> 00:01:15,620
-And the web UI sits on top,
+00:01:14,137 --> 00:01:14,944
+that are ready,
 
 41
-00:01:15,640 --> 00:01:17,340
-so you can see every run,
+00:01:14,964 --> 00:01:16,757
+and hands them to the executor.
 
 42
-00:01:17,360 --> 00:01:18,180
-read the logs,
+00:01:16,777 --> 00:01:18,877
+The executor sends them out to workers,
 
 43
-00:01:18,200 --> 00:01:20,953
-and retry a failed task with one click.
+00:01:18,897 --> 00:01:20,997
+and the workers do the actual work.
 
 44
-00:01:20,973 --> 00:01:23,460
-So when a team says, "we use Airflow,"
+00:01:21,017 --> 00:01:22,877
+Every result — queued,
 
 45
-00:01:23,480 --> 00:01:25,780
-it means their pipelines are code.
+00:01:22,897 --> 00:01:24,597
+running, success or failed
 
 46
-00:01:25,800 --> 00:01:26,940
-They run on a schedule,
+00:01:24,617 --> 00:01:27,037
+— goes back into the metadata database.
 
 47
-00:01:26,960 --> 00:01:28,020
-in the right order,
+00:01:27,057 --> 00:01:28,837
+And the web UI sits on top,
 
 48
-00:01:28,040 --> 00:01:29,300
-and when something breaks,
+00:01:28,857 --> 00:01:30,557
+so you can see every run,
 
 49
-00:01:29,320 --> 00:01:31,140
-they know exactly where.
+00:01:30,577 --> 00:01:31,397
+read the logs,
 
 50
-00:01:31,160 --> 00:01:33,240
+00:01:31,417 --> 00:01:34,170
+and retry a failed task with one click.
+
+51
+00:01:34,190 --> 00:01:36,677
+So when a team says, "we use Airflow,"
+
+52
+00:01:36,697 --> 00:01:38,997
+it means their pipelines are code.
+
+53
+00:01:39,017 --> 00:01:40,157
+They run on a schedule,
+
+54
+00:01:40,177 --> 00:01:41,237
+in the right order,
+
+55
+00:01:41,257 --> 00:01:42,517
+and when something breaks,
+
+56
+00:01:42,537 --> 00:01:44,357
+they know exactly where.
+
+57
+00:01:44,377 --> 00:01:46,457
 That's Apache Airflow.
+
+58
+00:01:48,517 --> 00:01:50,657
+So, what should I explain next?
+
+59
+00:01:50,677 --> 00:01:51,817
+Tell me in the comments below,
+
+60
+00:01:51,837 --> 00:01:54,037
+and it could be the next episode.
