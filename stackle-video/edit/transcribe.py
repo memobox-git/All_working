@@ -8,8 +8,10 @@ Needs faster-whisper; the model is small.en on CPU (int8).
 import json
 import subprocess
 import sys
+import wave
 from pathlib import Path
 
+import numpy as np
 from faster_whisper import WhisperModel
 
 video, out = Path(sys.argv[1]), Path(sys.argv[2])
@@ -25,8 +27,11 @@ def tc(t):
 
 
 model = WhisperModel("small.en", device="cpu", compute_type="int8", download_root=model_dir, cpu_threads=4)
+# Pass samples, not a path: some PyAV versions reject faster-whisper's own decoder options.
+with wave.open(str(wav)) as w:
+    audio = np.frombuffer(w.readframes(w.getnframes()), np.int16).astype(np.float32) / 32768
 # Keep the false starts and fillers in the text: they are what we want to find and cut.
-segments, _ = model.transcribe(str(wav), word_timestamps=True, vad_filter=False, condition_on_previous_text=False,
+segments, _ = model.transcribe(audio, word_timestamps=True, vad_filter=False, condition_on_previous_text=False,
                                initial_prompt="Um, uh, so, like, you know. I'm a senior data engineer, uh, at Meta.")
 words, lines = [], []
 for s in segments:
