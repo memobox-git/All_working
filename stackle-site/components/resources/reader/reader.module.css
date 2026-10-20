@@ -1,0 +1,31 @@
+/* Cheat sheet level filter. <LevelFilter> sets data-filter="<Level>" on .root; question rows carry
+   data-level. Sections with no match are hidden, and a topic with no match shows its .empty note. */
+
+.empty { display: none; }
+
+.root[data-filter="Basic"] .q:not([data-level="Basic"]),
+.root[data-filter="Intermediate"] .q:not([data-level="Intermediate"]),
+.root[data-filter="Advanced"] .q:not([data-level="Advanced"]),
+.root[data-filter="Concept"] .q:not([data-level="Concept"]),
+.root[data-filter="Snowflake"] .q:not([data-level="Snowflake"]) {
+  display: none;
+}
+
+.root[data-filter="Basic"] .sec:not(:has(.q[data-level="Basic"])),
+.root[data-filter="Intermediate"] .sec:not(:has(.q[data-level="Intermediate"])),
+.root[data-filter="Advanced"] .sec:not(:has(.q[data-level="Advanced"])),
+.root[data-filter="Concept"] .sec:not(:has(.q[data-level="Concept"])),
+.root[data-filter="Snowflake"] .sec:not(:has(.q[data-level="Snowflake"])) {
+  display: none;
+}
+
+.root[data-filter="Basic"] .topic:not(:has(.q[data-level="Basic"])) .empty,
+.root[data-filter="Intermediate"] .topic:not(:has(.q[data-level="Intermediate"])) .empty,
+.root[data-filter="Advanced"] .topic:not(:has(.q[data-level="Advanced"])) .empty,
+.root[data-filter="Concept"] .topic:not(:has(.q[data-level="Concept"])) .empty,
+.root[data-filter="Snowflake"] .topic:not(:has(.q[data-level="Snowflake"])) .empty {
+  display: block;
+}
+
+/* the hairline under the last visible question of a section */
+.sec .q:last-child { border-bottom-width: 0; }

@@ -1,0 +1,91 @@
+/* Lesson drawer: a full-screen sheet on phones, a right-hand panel from 768px. */
+.root {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+}
+.backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgb(17 17 16 / 0.42);
+  animation: fade 0.2s ease-out;
+}
+.sheet {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--color-paper);
+  padding-bottom: env(safe-area-inset-bottom);
+  animation: rise 0.28s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+@media (min-width: 768px) {
+  .sheet {
+    left: auto;
+    width: min(720px, 100%);
+    border-left: 1px solid var(--color-line);
+    animation-name: slide;
+  }
+}
+.body {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+@keyframes fade {
+  from { opacity: 0; }
+}
+@keyframes rise {
+  from { opacity: 0; transform: translateY(24px); }
+}
+@keyframes slide {
+  from { opacity: 0; transform: translateX(40px); }
+}
+
+/* Square checkbox drawn in ink; the tick is a sibling svg shown when checked. */
+.check {
+  appearance: none;
+  flex: none;
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  border: 1px solid var(--color-ink);
+  background: var(--color-white);
+  border-radius: 0;
+  cursor: pointer;
+  margin-top: 2px;
+}
+.check:checked {
+  background: var(--color-ink) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2 6.5 5 9.5 10.5 3' fill='none' stroke='%23f4f4f1' stroke-width='1.8' stroke-linecap='square'/%3E%3C/svg%3E") center / 12px no-repeat;
+}
+
+/* Repeated rows inside lessons, kept as short class names because every lesson ships in the HTML. */
+.item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding-block: 14px;
+  border-bottom: 1px solid var(--color-line);
+  cursor: pointer;
+}
+.item:hover { background: rgb(255 255 255 / 0.6); }
+.item > span { color: var(--color-ink-2); line-height: 1.6; }
+.item input:checked + span { color: var(--color-muted); text-decoration: line-through; text-decoration-color: var(--color-faint); }
+
+.link {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-block: 14px;
+  border-bottom: 1px solid var(--color-line);
+  transition: background-color 0.15s;
+}
+.link:hover { background: var(--color-white); }
+.link:hover b { text-decoration: underline dashed; text-underline-offset: 4px; }
+.link b { display: block; font-weight: 500; }
+.link small { display: block; margin-top: 4px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; line-height: 1.2; color: var(--color-muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.link > span { min-width: 0; flex: 1; }
+.link > svg { color: var(--color-muted); }
+.link:hover > svg { color: var(--color-ink); }
