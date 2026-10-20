@@ -1,52 +1,52 @@
 # Netlify redirects for stackle.io. A rule only applies when no page exists at that path,
 # except rules marked with ! (forced).
 #
-# The old Lovable app moves to app.stackle.io and keeps handling sign-in, checkout, the learner
+# The old Lovable app moves to learn.stackle.io and keeps handling sign-in, checkout, the learner
 # dashboard and the tutor/admin tools. 302 (temporary) so it can change later without browsers
 # caching the move.
 
 # Accounts and checkout
-/auth                        https://app.stackle.io/auth                         302
-/auth/*                      https://app.stackle.io/auth/:splat                  302
-/signup                      https://app.stackle.io/signup                       302
-/academy                     https://app.stackle.io/academy                      302
-/academy/*                   https://app.stackle.io/academy/:splat               302
-/courses/:id/enrollment-success  https://app.stackle.io/courses/:id/enrollment-success  302
+/auth                        https://learn.stackle.io/auth                         302
+/auth/*                      https://learn.stackle.io/auth/:splat                  302
+/signup                      https://learn.stackle.io/signup                       302
+/academy                     https://learn.stackle.io/academy                      302
+/academy/*                   https://learn.stackle.io/academy/:splat               302
+/courses/:id/enrollment-success  https://learn.stackle.io/courses/:id/enrollment-success  302
 
 # Learner, tutor and admin areas
-/learn                       https://app.stackle.io/learn                        302
-/learn/*                     https://app.stackle.io/learn/:splat                 302
-/learner                     https://app.stackle.io/learner                      302
-/learner/*                   https://app.stackle.io/learner/:splat               302
-/tutor/*                     https://app.stackle.io/tutor/:splat                 302
-/admin/*                     https://app.stackle.io/admin/:splat                 302
-/webinars                    https://app.stackle.io/webinars                     302
-/webinars/*                  https://app.stackle.io/webinars/:splat              302
-/share/*                     https://app.stackle.io/share/:splat                 302
+/learn                       https://learn.stackle.io/learn                        302
+/learn/*                     https://learn.stackle.io/learn/:splat                 302
+/learner                     https://learn.stackle.io/learner                      302
+/learner/*                   https://learn.stackle.io/learner/:splat               302
+/tutor/*                     https://learn.stackle.io/tutor/:splat                 302
+/admin/*                     https://learn.stackle.io/admin/:splat                 302
+/webinars                    https://learn.stackle.io/webinars                     302
+/webinars/*                  https://learn.stackle.io/webinars/:splat              302
+/share/*                     https://learn.stackle.io/share/:splat                 302
 
 # Older marketplace and tools pages, kept reachable in the app
-/engineer/*                  https://app.stackle.io/engineer/:splat              302
-/client/*                    https://app.stackle.io/client/:splat                302
-/recruiter/*                 https://app.stackle.io/recruiter/:splat             302
-/projects                    https://app.stackle.io/projects                     302
-/projects/*                  https://app.stackle.io/projects/:splat              302
-/post-project                https://app.stackle.io/post-project                 302
-/post-project/*              https://app.stackle.io/post-project/:splat          302
-/post-project-screening      https://app.stackle.io/post-project-screening       302
-/applicants/*                https://app.stackle.io/applicants/:splat            302
-/edit-project/*              https://app.stackle.io/edit-project/:splat          302
-/project-details             https://app.stackle.io/project-details             302
-/project-preview             https://app.stackle.io/project-preview             302
-/hiring-pipeline             https://app.stackle.io/hiring-pipeline             302
-/career-workspace            https://app.stackle.io/career-workspace            302
-/resume-parser               https://app.stackle.io/resume-parser               302
-/resume-report               https://app.stackle.io/resume-report               302
-/resume-screening            https://app.stackle.io/resume-screening            302
-/chat-lander                 https://app.stackle.io/chat-lander                 302
-/feed                        https://app.stackle.io/feed                        302
+/engineer/*                  https://learn.stackle.io/engineer/:splat              302
+/client/*                    https://learn.stackle.io/client/:splat                302
+/recruiter/*                 https://learn.stackle.io/recruiter/:splat             302
+/projects                    https://learn.stackle.io/projects                     302
+/projects/*                  https://learn.stackle.io/projects/:splat              302
+/post-project                https://learn.stackle.io/post-project                 302
+/post-project/*              https://learn.stackle.io/post-project/:splat          302
+/post-project-screening      https://learn.stackle.io/post-project-screening       302
+/applicants/*                https://learn.stackle.io/applicants/:splat            302
+/edit-project/*              https://learn.stackle.io/edit-project/:splat          302
+/project-details             https://learn.stackle.io/project-details             302
+/project-preview             https://learn.stackle.io/project-preview             302
+/hiring-pipeline             https://learn.stackle.io/hiring-pipeline             302
+/career-workspace            https://learn.stackle.io/career-workspace            302
+/resume-parser               https://learn.stackle.io/resume-parser               302
+/resume-report               https://learn.stackle.io/resume-report               302
+/resume-screening            https://learn.stackle.io/resume-screening            302
+/chat-lander                 https://learn.stackle.io/chat-lander                 302
+/feed                        https://learn.stackle.io/feed                        302
 
 # Any other course slug (hidden or older courses) opens in the app
-/courses/*                   https://app.stackle.io/courses/:splat               302
+/courses/*                   https://learn.stackle.io/courses/:splat               302
 
 # Renamed pages on this site
 /services/resume-marketing   /career                                             301

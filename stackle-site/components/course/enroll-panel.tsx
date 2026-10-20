@@ -6,7 +6,7 @@ import { joinWaitlist, type WaitlistResult } from "@/lib/supabase";
 import { ArrowUpRight, Pixel } from "@/components/icons";
 import { useLiveCohorts } from "./live-cohorts";
 
-// Price, cohort picker and the hand-off to the learner app (app.stackle.io), which handles sign-up,
+// Price, cohort picker and the hand-off to the learner app (learn.stackle.io), which handles sign-up,
 // Stripe checkout and the dashboard exactly as before.
 export function EnrollPanel({
   courseId,

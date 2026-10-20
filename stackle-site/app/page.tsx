@@ -297,8 +297,26 @@ export default async function Home() {
         </div>
       </Row>
 
-      {/* 12 career service */}
-      <Row n="12" id="career">
+      {/* 12 free AI coach */}
+      <Row n="12" tone="white">
+        <a href={site.coachUrl} className="group pad grid gap-6 py-10 md:grid-cols-[auto_1fr_auto] md:items-center md:gap-10 md:py-12">
+          <span className="grid h-14 w-14 place-items-center border border-ink transition-colors group-hover:bg-ink group-hover:text-paper">
+            <Pixel name="doc" size={20} />
+          </span>
+          <span>
+            <span className="t-mono-sm text-muted">Free · AI resume coach</span>
+            <span className="mt-2 block text-[22px] font-medium leading-tight tracking-[-0.02em] md:text-[26px]">
+              Drop your resume. Get an honest score, the bullets that work and the gaps that don&apos;t.
+            </span>
+          </span>
+          <span className="dlink justify-self-start md:justify-self-end">
+            Try it free <ArrowUpRight />
+          </span>
+        </a>
+      </Row>
+
+      {/* 13 career service */}
+      <Row n="13" id="career">
         <div className="pad sec pb-12 md:pb-16">
           <div className="flex flex-wrap items-end justify-between gap-6">
             <SectionHead
@@ -317,8 +335,8 @@ export default async function Home() {
         </div>
       </Row>
 
-      {/* 13 FAQ */}
-      <Row n="13" id="faq">
+      {/* 14 FAQ */}
+      <Row n="14" id="faq">
         <div className="pad sec grid gap-10 md:grid-cols-[1fr_1.6fr]">
           <div>
             <SectionHead title="Questions" />
@@ -330,11 +348,11 @@ export default async function Home() {
         </div>
       </Row>
 
-      {/* 14 closing */}
-      <Row n="14" tone="night">
-        <div className="pad sec grid gap-14 md:grid-cols-2 md:items-center">
+      {/* 15 closing */}
+      <Row n="15" tone="night">
+        <div className="pad sec grid gap-14 md:grid-cols-[1.5fr_1fr] md:items-center">
           <div className="reveal">
-            <h2 className="text-[clamp(2.75rem,1.4rem+4.2vw,4.75rem)] font-medium leading-[0.98] tracking-[-0.045em]">
+            <h2 className="text-[clamp(2.5rem,1.3rem+3.6vw,4.25rem)] font-medium leading-[0.98] tracking-[-0.045em]">
               Your next role
               <br />
               starts with a <span className="t-pixel">plan.</span>

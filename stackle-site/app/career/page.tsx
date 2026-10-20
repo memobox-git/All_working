@@ -74,8 +74,8 @@ export default function CareerPage() {
               <a href="#plans" className="btn btn-ink">
                 <Pixel name="spark" size={14} /> Get started from $250
               </a>
-              <a href={site.bookCall} target="_blank" rel="noreferrer" className="dlink">
-                Book a free call <ArrowUpRight />
+              <a href={site.coachUrl} className="dlink">
+                Or try the free AI resume review <ArrowUpRight />
               </a>
             </div>
           </div>

@@ -11,7 +11,9 @@ export const site = {
   legalEmail: "legal@stackle.io",
   privacyEmail: "privacy@stackle.io",
   // The old Lovable app keeps running here for sign-in, checkout and the learner dashboard.
-  appUrl: process.env.NEXT_PUBLIC_APP_URL || "https://app.stackle.io",
+  appUrl: process.env.NEXT_PUBLIC_APP_URL || "https://learn.stackle.io",
+  // The free AI resume coach (a separate app on Vercel).
+  coachUrl: "https://app.stackle.io",
   bookCall: "https://calendar.app.google/gCDaTk9dCAgLUJAZ9",
   newsletter: "https://crispusroshan.substack.com/subscribe",
   gaId: "G-805Y4K5PCP",

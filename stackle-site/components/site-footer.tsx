@@ -6,9 +6,11 @@ const links = [
   { href: "/courses", label: "Academy" },
   { href: "/career", label: "Career" },
   { href: "/resources", label: "Resources" },
+  { href: site.coachUrl, label: "AI resume coach" },
   { href: site.socials.linkedin, label: "LinkedIn" },
   { href: site.socials.meetup, label: "Meetup" },
   { href: site.socials.substack, label: "Newsletter" },
+  { href: `${site.appUrl}/auth`, label: "Student login" },
 ];
 
 export function SiteFooter() {
@@ -19,7 +21,7 @@ export function SiteFooter() {
           <span className="row-num">FIN</span>
         </div>
         <div className="row-col">
-          <div className="grid border-b border-night-line md:grid-cols-[1.15fr_2fr]">
+          <div className="grid border-b border-night-line md:grid-cols-[1fr_2.2fr]">
             <a
               href={site.bookCall}
               target="_blank"
@@ -32,11 +34,11 @@ export function SiteFooter() {
                 <ArrowUpRight size={26} className="mb-2 text-night-muted transition-transform group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-paper" />
               </span>
             </a>
-            <ul className="grid grid-cols-2 sm:grid-cols-3">
+            <ul className="grid grid-cols-2 gap-px bg-night-line sm:grid-cols-4">
               {links.map((l, i) => {
                 const external = l.href.startsWith("http");
                 return (
-                  <li key={l.label} className="border-b border-night-line [&:nth-child(2n)]:border-l sm:border-l sm:[&:nth-child(3n+1)]:border-l-0 [&:nth-last-child(-n+2)]:border-b-0 sm:[&:nth-last-child(-n+3)]:border-b-0">
+                  <li key={l.label} className="bg-night">
                     <a
                       href={l.href}
                       {...(external ? { target: "_blank", rel: "noreferrer" } : {})}
@@ -44,8 +46,8 @@ export function SiteFooter() {
                     >
                       <span className="t-mono-sm text-night-muted">{String(i + 2).padStart(2, "0")}</span>
                       <span className="flex items-end justify-between gap-3">
-                        <span className="text-[18px] tracking-[-0.02em] md:text-[20px]">{l.label}</span>
-                        <ArrowUpRight size={14} className="mb-1 text-night-muted group-hover:text-paper" />
+                        <span className="text-[17px] leading-tight tracking-[-0.02em] md:text-[18px]">{l.label}</span>
+                        <ArrowUpRight size={14} className="mb-1 shrink-0 text-night-muted group-hover:text-paper" />
                       </span>
                     </a>
                   </li>
