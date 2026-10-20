@@ -1,0 +1,119 @@
+1
+00:00:02,040 --> 00:00:03,220
+One data tool.
+
+2
+00:00:03,240 --> 00:00:04,360
+Two minutes.
+
+3
+00:00:04,940 --> 00:00:06,320
+Hi, I'm Chris.
+
+4
+00:00:06,340 --> 00:00:07,720
+I've spent over 10 years
+
+5
+00:00:07,740 --> 00:00:08,680
+in data engineering
+
+6
+00:00:08,700 --> 00:00:11,560
+and interviewed more than 200 engineers.
+
+7
+00:00:11,580 --> 00:00:13,320
+Now I run Stackle, where I teach
+
+8
+00:00:13,340 --> 00:00:15,480
+the skills that actually get you hired.
+
+9
+00:00:15,500 --> 00:00:17,020
+Let's get into it.
+
+10
+00:00:17,477 --> 00:00:19,777
+This is Explained in 2 Minutes.
+
+11
+00:00:19,797 --> 00:00:22,177
+Every episode takes one tool or idea from
+
+12
+00:00:22,197 --> 00:00:23,217
+data engineering,
+
+13
+00:00:23,237 --> 00:00:24,657
+and shows you what it is,
+
+14
+00:00:24,677 --> 00:00:25,777
+why teams use it,
+
+15
+00:00:25,797 --> 00:00:27,457
+and how it works under the hood,
+
+16
+00:00:27,477 --> 00:00:29,097
+with the architecture drawn out,
+
+17
+00:00:29,117 --> 00:00:30,257
+step by step.
+
+18
+00:00:30,277 --> 00:00:31,537
+Here's what's coming.
+
+19
+00:00:31,557 --> 00:00:32,777
+Apache Airflow.
+
+20
+00:00:32,797 --> 00:00:34,057
+Apache Kafka.
+
+21
+00:00:34,077 --> 00:00:35,297
+Apache Spark.
+
+22
+00:00:35,317 --> 00:00:37,777
+What data engineering actually is.
+
+23
+00:00:37,797 --> 00:00:38,737
+Snowflake.
+
+24
+00:00:38,757 --> 00:00:39,777
+Databricks.
+
+25
+00:00:39,797 --> 00:00:41,257
+And that's just the start.
+
+26
+00:00:41,277 --> 00:00:43,377
+We're going for a hundred episodes.
+
+27
+00:00:43,397 --> 00:00:45,537
+So, what should I explain next?
+
+28
+00:00:45,557 --> 00:00:46,697
+Tell me in the comments below,
+
+29
+00:00:46,717 --> 00:00:48,577
+and it could be the next episode.
+
+30
+00:00:48,597 --> 00:00:50,277
+See you in episode one.
