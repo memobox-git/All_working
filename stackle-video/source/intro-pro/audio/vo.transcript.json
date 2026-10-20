@@ -1,8 +1,8 @@
 {
  "generation_id": "hkEwoEWWIyd25Bx4z9hu",
  "model_id": "eleven_scribe_v1",
- "text": "[confident] Hi, I'm Chris. I've spent over 10 years in data engineering and interviewed more than 200 engineers. Now I run Stackle, where I teach the skills that actually get you hired. [excited] Let's get into it.",
- "spoken_duration_secs": 11.76,
+ "text": "[confident] Hi, I'm Chris. I've spent over 10 years in data engineering and interviewed more than 200 engineers. Now I run Stackle, where I teach the skills that actually get you hired.",
+ "spoken_duration_secs": 10.56,
  "words": [
   {
    "text": "[confident]",
@@ -195,36 +195,6 @@
    "type": "word",
    "start": 9.92,
    "end": 10.56
-  },
-  {
-   "text": "[excited]",
-   "type": "word",
-   "start": 10.573,
-   "end": 10.627
-  },
-  {
-   "text": "Let's",
-   "type": "word",
-   "start": 10.64,
-   "end": 10.88
-  },
-  {
-   "text": "get",
-   "type": "word",
-   "start": 10.92,
-   "end": 10.96
-  },
-  {
-   "text": "into",
-   "type": "word",
-   "start": 11.04,
-   "end": 11.28
-  },
-  {
-   "text": "it.",
-   "type": "word",
-   "start": 11.36,
-   "end": 11.76
   }
  ]
 }

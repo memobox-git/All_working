@@ -6,7 +6,7 @@ gsap.registerPlugin(DrawSVGPlugin);
 if (innerHeight > innerWidth) document.documentElement.classList.add('tall');
 
 const OFF = VO.offset;                       // voice starts this far into the video
-const END = OFF + VO.duration + .5;          // a short beat after the last word, then cut to the video
+const END = OFF + VO.duration + .8;          // a beat after the last word, then cut to the video
 window.DURATION = END;
 window.SFX = [];                             // sound cues, read by mix.js
 
@@ -130,7 +130,6 @@ function build() {
   makeGrain();
 
   const S3 = at('now') - .1;                // "Now I run Stackle"
-  const S4 = at("let's") - .1;              // "Let's get into it"
 
   // the photo: drawn on first, then held beside the name and the numbers
   scene('#photo', 0, S3);
@@ -164,7 +163,7 @@ function build() {
   draw($('#s2-ink'), line(two.left + 6, two.bottom + 8, two.right - 20, two.bottom + 2, 13, 1.5, 5), 'red', at('200') + .1, .4);
 
   // S3 · Stackle and what it teaches ----------------------------------------
-  scene('#s3', S3, S4);
+  scene('#s3', S3, null);
   rise('#s3-pre', S3 + .05);
   rise('#s3-word', at('stackle') - .12, .55, 24);
   rise('#s3-teach', at('where') - .08);
@@ -175,10 +174,7 @@ function build() {
   const hired = box('#s3-line .w:last-child');
   draw($('#s3-ink'), line(hired.left + 4, hired.bottom - 6, hired.right - 26, hired.bottom - 12, 23, 1.5, 6), 'red', at('hired') + .15, .35);
 
-  // S4 · let's get into it ----------------------------------------------------
-  scene('#s4', S4, null);
-  words($('#s4-go'), "let's");
-  tl.to('#s4-go', { opacity: 0, duration: .25, ease: 'power1.in' }, END - .25);
+  tl.to('#s3', { opacity: 0, duration: .25, ease: 'power1.in' }, END - .25);
   sfx(0, 'bed', 1);
   // two scenes can end together; keep one sound per moment
   window.SFX = window.SFX.filter((c, i, all) => all.findIndex(d => d.t === c.t && d.file === c.file) === i);

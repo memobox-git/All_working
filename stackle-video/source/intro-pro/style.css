@@ -45,8 +45,6 @@ body{font-family:PJS,sans-serif;color:var(--ink);position:relative;-webkit-font-
 #s3-teach{top:590px}
 #s3-line{top:655px;font-size:92px;width:1600px}
 
-/* S4 · close */
-#s4-go{top:440px;font-size:150px}
 
 /* Portrait (TikTok, Reels, Shorts): on when the frame is taller than wide.
    Everything stays inside x 110-940 and y 160-1500, clear of the app's
@@ -66,4 +64,3 @@ body{font-family:PJS,sans-serif;color:var(--ink);position:relative;-webkit-font-
 .tall #s3-word{top:615px;font-size:170px}
 .tall #s3-teach{top:850px;font-size:48px}
 .tall #s3-line{top:910px;font-size:84px;width:820px}
-.tall #s4-go{top:760px;font-size:130px;width:700px}
