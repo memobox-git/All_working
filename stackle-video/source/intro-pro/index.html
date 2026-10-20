@@ -3,84 +3,40 @@
 <link rel="stylesheet" href="style.css"></head>
 <body>
 
-<!-- S1 · "Hi, if you are new here, my name is Chris." -->
-<section class="scene" id="s1">
+<!-- the photo stays on the page for "Hi, I'm Chris" and the two numbers -->
+<section class="scene" id="photo">
   <div class="photo" id="s1-photo"><img src="img/chris.jpg" alt="Chris"><svg id="s1-frame"></svg></div>
-  <div class="at hand" id="s1-note">Hi, if you are new here</div>
-  <div class="at pre" id="s1-my">My name is</div>
+</section>
+
+<!-- S1 · "Hi, I'm Chris." -->
+<section class="scene" id="s1">
+  <div class="at hand" id="s1-note">Hi,</div>
+  <div class="at pre" id="s1-my">I'm</div>
   <div class="at big" id="s1-name">Chris<span class="red">.</span></div>
   <div class="at" id="s1-meta">Crispus Roshan · Founder, Stackle</div>
   <svg class="ink" id="s1-ink"></svg>
 </section>
 
-<!-- S2 · more than 10 years in data engineering -->
+<!-- S2 · over 10 years in data engineering, more than 200 engineers interviewed -->
 <section class="scene" id="s2">
-  <div class="at pre" id="s2-pre">More than</div>
-  <div class="at big" id="s2-big"><span class="w" id="s2-10">10</span> years</div>
-  <div class="at" id="s2-sub">in data engineering</div>
+  <div class="stat" id="st-a" style="left:930px"><div class="n"><span class="w" id="st-10">10</span>+</div><div class="l">years in data<br>engineering</div></div>
+  <div class="stat" id="st-b" style="left:1330px"><div class="n" id="st-200">200+</div><div class="l">engineers<br>interviewed</div></div>
   <svg class="ink" id="s2-ink"></svg>
 </section>
 
-<!-- S3 · 200+ engineers, four industries -->
+<!-- S3 · Now I run Stackle, where I teach the skills that actually get you hired. -->
 <section class="scene" id="s3">
-  <div class="at pre" id="s3-pre">I have interviewed</div>
-  <div class="at big" id="s3-big">200+ engineers</div>
-  <div class="at pre" id="s3-for">for companies in</div>
-  <div class="item" id="i1" style="left:170px;top:575px"><svg viewBox="0 0 64 64"><path d="M8 34 L26 52 L58 10"/></svg>Healthcare</div>
-  <div class="item" id="i2" style="left:980px;top:575px"><svg viewBox="0 0 64 64"><path d="M8 34 L26 52 L58 10"/></svg>Banking</div>
-  <div class="item" id="i3" style="left:170px;top:715px"><svg viewBox="0 0 64 64"><path d="M8 34 L26 52 L58 10"/></svg>Automotive</div>
-  <div class="item" id="i4" style="left:980px;top:715px"><svg viewBox="0 0 64 64"><path d="M8 34 L26 52 L58 10"/></svg>Financial exchanges</div>
+  <div class="at pre" id="s3-pre">Now I run</div>
+  <div class="at big" id="s3-word">Stackle<span class="red">.</span></div>
+  <div class="at pre" id="s3-teach">where I teach</div>
+  <div class="at big" id="s3-line">the skills that actually get you hired.</div>
+  <svg class="ink" id="s3-ink"></svg>
 </section>
 
-<!-- S4 · what gets people hired... and what gets them rejected -->
+<!-- S4 · Let's get into it. -->
 <section class="scene" id="s4">
-  <div class="at pre" id="s4-pre">So I know exactly</div>
-  <div class="at big" id="s4-a">what gets people <span class="w" id="s4-hired">hired.</span></div>
-  <div class="at big" id="s4-b">and what gets them <span class="w" id="s4-rej">rejected.</span></div>
-  <svg class="ink" id="s4-ink"></svg>
-</section>
-
-<!-- S5 · the other side of the table, offers at the same time -->
-<section class="scene" id="s5">
-  <div class="at pre" id="s5-pre">I have also sat on</div>
-  <div class="at big" id="s5-big">the <span class="w" id="s5-other">other side</span> of the table.</div>
-  <div class="at big" id="s5-offer">Multiple big tech offers</div>
-  <div class="at hand" id="s5-same">at the same time</div>
-  <div id="s5-cards"></div>
-  <svg class="ink" id="s5-ink"></svg>
-</section>
-
-<!-- S6 · Stackle, your career lab -->
-<section class="scene" id="s6">
-  <div class="at pre" id="s6-pre">Today I run</div>
-  <div class="at big" id="s6-word">Stackle<span class="red">.</span></div>
-  <div class="at hand" id="s6-sub">your career lab</div>
-  <div class="pill" id="pill-de" style="left:170px"><svg></svg>Data engineering</div>
-  <div id="s6-and">&amp;</div>
-  <div class="pill" id="pill-ai"><svg></svg>AI engineering</div>
-</section>
-
-<!-- S7 · community numbers -->
-<section class="scene" id="s7">
-  <div class="col" id="c1" style="left:170px"><div class="n"><span id="c1-n">0</span>+</div><div class="l">people follow me<br>on LinkedIn</div></div>
-  <div class="col" id="c2" style="left:760px"><div class="h hand">Nearly</div><div class="n" id="c2-n">0</div><div class="l">are part of our<br>Meetup community</div></div>
-  <div class="col" id="c3" style="left:1350px"><div class="n"><span id="c3-n">0</span>+</div><div class="l">people at one free<br>Claude workshop</div></div>
-  <svg class="ink" id="s7-ink"></svg>
-</section>
-
-<!-- S8 · the skills that actually get you hired. No fluff. Just what works. -->
-<section class="scene" id="s8">
-  <div class="at pre" id="s8-pre">On this channel,</div>
-  <div class="at big" id="s8-line">I teach you the skills that actually get you hired.</div>
-  <div class="at big" id="s8-nf">No fluff.</div>
-  <div class="at big" id="s8-jw">Just what works.</div>
-  <svg class="ink" id="s8-ink"></svg>
-</section>
-
-<!-- S9 · So let's get into it. -->
-<section class="scene" id="s9">
-  <div class="at big" id="s9-go">So let's get into it.</div>
-  <div class="end" id="s9-end"><div class="big">Stackle<span class="red">.</span></div><div class="site">stackle.io</div></div>
+  <div class="at big" id="s4-go">Let's get into it.</div>
+  <div class="end" id="s4-end"><div class="big">Stackle<span class="red">.</span></div><div class="site">stackle.io</div></div>
 </section>
 
 <div id="grain"></div>

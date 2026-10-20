@@ -4,7 +4,7 @@
 gsap.registerPlugin(DrawSVGPlugin);
 
 const OFF = VO.offset;                       // voice starts this far into the video
-const END = OFF + VO.duration + 2;           // hold the end card, then fade to paper
+const END = OFF + VO.duration + 2.6;         // hold the end card, then fade to paper
 window.DURATION = END;
 window.SFX = [];                             // sound cues, read by mix.js
 
@@ -127,134 +127,62 @@ function makeGrain() {
 function build() {
   makeGrain();
 
-  const S2 = at('for', 0) - .35;            // "for more than 10 years"
-  const S3 = at('i', 1) + .02;              // "I have interviewed"
-  const S4 = at('so', 0) - .05;             // "So I know exactly"
-  const S5 = at('i', 3) + .02;              // "I have also sat"
-  const S6 = at('today') - .02;
-  const S7 = at('more', 2) - .02;           // "More than 13,000"
-  const S8 = at('on', 2) - .05;             // "On this channel"
-  const S9 = at('so', 1) - .02;             // "So let's get into it"
-  const LOCK = atEnd('it') + .1;
+  const S3 = at('now') - .1;                // "Now I run Stackle"
+  const S4 = at("let's") - .1;              // "Let's get into it"
+  const LOCK = atEnd('it') + .15;
 
-  // S1 · photo, note, name ------------------------------------------------
-  scene('#s1', 0, S2);
+  // the photo: drawn on first, then held beside the name and the numbers
+  scene('#photo', 0, S3);
+  draw($('#s1-frame'), rect(4, 4, 592, 730, 3), null, .1, .75);
+  tl.fromTo('#s1-photo img', { opacity: 0, scale: 1.03 }, { opacity: 1, scale: 1, duration: .8 }, .3);
+
+  // S1 · Hi, I'm Chris -------------------------------------------------------
+  scene('#s1', 0, S3);
   const tHi = at('hi'), tChris = at('chris');
-  draw($('#s1-frame'), rect(4, 4, 592, 730, 3), null, tHi - .2, 1);
-  tl.fromTo('#s1-photo img', { opacity: 0, scale: 1.03 }, { opacity: 1, scale: 1, duration: .9 }, tHi + .1);
-  write('#s1-note', tHi, 1.1);
+  write('#s1-note', tHi - .1, .45);
   const note = box('#s1-note'), ph = box('#s1-photo');
-  const a0 = [note.left - 18, note.top + note.height * .55], a1 = [ph.right + 26, note.bottom + 70];
-  const shaft = draw($('#s1-ink'), line(a0[0], a0[1], a1[0], a1[1], 7, 1, 22), 'red', tHi + 1, .35, false);
+  const a0 = [note.left - 18, note.top + note.height * .55], a1 = [ph.right + 26, note.top + note.height * .55 + 60];
+  draw($('#s1-ink'), line(a0[0], a0[1], a1[0], a1[1], 7, 1, 18), 'red', tHi + .3, .3, false);
   const ang = Math.atan2(a1[1] - a0[1], a1[0] - a0[0]);
   const head = ['M', a1[0] - Math.cos(ang - .5) * 24, a1[1] - Math.sin(ang - .5) * 24, 'L', a1[0], a1[1], 'L', a1[0] - Math.cos(ang + .5) * 24, a1[1] - Math.sin(ang + .5) * 24].map(v => typeof v === 'number' ? f1(v) : v).join(' ');
-  draw($('#s1-ink'), head, 'red', tHi + 1.33, .2);
-  rise('#s1-my', at('my') - .08);
-  rise('#s1-name', tChris - .12, .6, 24);
+  draw($('#s1-ink'), head, 'red', tHi + .58, .15);
+  rise('#s1-my', at("i'm") - .08);
+  rise('#s1-name', tChris - .12, .55, 24);
   const nm = box('#s1-name');
-  draw($('#s1-ink'), line(nm.left + 8, nm.bottom - 14, nm.right - 40, nm.bottom - 24, 11, 1.5, 7), 'red', tChris + .25, .45);
-  rise('#s1-meta', tChris + .45);
+  draw($('#s1-ink'), line(nm.left + 8, nm.bottom - 14, nm.right - 40, nm.bottom - 24, 11, 1.5, 7), 'red', tChris + .2, .4);
+  rise('#s1-meta', tChris + .35);
 
-  // S2 · 10 years ------------------------------------------------------------
-  scene('#s2', S2, S3);
-  rise('#s2-pre', S2 + .05);
-  rise('#s2-big', S2 + .2, .6, 24);
-  rise('#s2-sub', S2 + .4);
-  const ten = box('#s2-10');
-  draw($('#s2-ink'), loop(ten.left + ten.width / 2 + 8, ten.top + ten.height * .55, ten.width / 2 + 58, ten.height * .4, 5), 'red', at('10') - .05, .6);
+  // S2 · 10+ years, 200+ engineers -------------------------------------------
+  scene('#s2', 0, S3);
+  rise('#st-a', at('over') - .1, .55, 20);
+  const ten = box('#st-10');
+  draw($('#s2-ink'), loop(ten.left + ten.width / 2 + 4, ten.top + ten.height * .55, ten.width / 2 + 40, ten.height * .44, 5), 'red', at('10') - .05, .5);
+  rise('#st-b', at('interviewed') - .1, .55, 20);
+  const two = box('#st-200');
+  draw($('#s2-ink'), line(two.left + 6, two.bottom + 8, two.right - 20, two.bottom + 2, 13, 1.5, 5), 'red', at('200') + .1, .4);
 
-  // S3 · 200+ engineers, four industries ---------------------------------
+  // S3 · Stackle and what it teaches ----------------------------------------
   scene('#s3', S3, S4);
   rise('#s3-pre', S3 + .05);
-  rise('#s3-big', at('200') - .3, .6, 24);
-  rise('#s3-for', at('for', 1) - .05);
-  [['#i1', 'healthcare'], ['#i2', 'banking'], ['#i3', 'automotive'], ['#i4', 'financial']].forEach(([sel, w]) => {
-    const t = at(w) - .1;
-    rise(`${sel}`, t, .45, 12);
-    tl.fromTo(`${sel} svg path`, { drawSVG: '0%' }, { drawSVG: '100%', duration: .35, ease: 'power1.inOut' }, t + .1);
-    pencil(t + .1, .4);
-  });
+  rise('#s3-word', at('stackle') - .12, .55, 24);
+  rise('#s3-teach', at('where') - .08);
+  const line3 = $('#s3-line');
+  line3.innerHTML = line3.textContent.trim().split(/\s+/).map(w => `<span class="w">${w}</span>`).join(' ');
+  const i0 = wi('teach') + 1;
+  $$('#s3-line .w').forEach((w, k) => rise(w, WORDS[i0 + k].s + OFF - .05, .4, 12));
+  const hired = box('#s3-line .w:last-child');
+  draw($('#s3-ink'), line(hired.left + 4, hired.bottom - 6, hired.right - 26, hired.bottom - 12, 23, 1.5, 6), 'red', at('hired') + .15, .35);
 
-  // S4 · hired vs rejected ----------------------------------------------------
-  scene('#s4', S4, S5);
-  rise('#s4-pre', S4 + .05);
-  words($('#s4-a'), 'what', 0);
-  words($('#s4-b'), 'and', 1);
-  const hi = box('#s4-a .w:last-child'), rj = box('#s4-b .w:last-child');
-  draw($('#s4-ink'), line(hi.left + 4, hi.bottom - 8, hi.right - 30, hi.bottom - 14, 13, 1.5, 5), 'red', at('hired', 0) + .25, .4);
-  draw($('#s4-ink'), line(rj.left - 10, rj.top + rj.height * .55, rj.right - 10, rj.top + rj.height * .5, 17, 2.5, -3), 'red', at('rejected') + .3, .4);
-  tl.to('#s4-b .w:last-child', { color: '#A1A1A6', duration: .4 }, at('rejected') + .4);
-
-  // S5 · the other side of the table, then the offers ----------------------
-  scene('#s5', S5, S6);
-  rise('#s5-pre', S5 + .05);
-  const big5 = $('#s5-big');
-  big5.innerHTML = 'the other side of the table.'.split(' ').map((w, k) => `<span class="w" id="s5w${k}">${w}</span>`).join(' ');
-  const iThe = wi('the', 0);
-  $$('#s5-big .w').forEach((w, k) => rise(w, WORDS[iThe + k].s + OFF - .05, .45, 12));
-  const o1 = box('#s5w1'), o2 = box('#s5w2');
-  draw($('#s5-ink'), line(o1.left + 4, o1.bottom - 6, o2.right - 6, o2.bottom - 12, 19, 1.5, 6), 'red', at('other') + .2, .45);
-  const tWith = at('with');
-  tl.to(['#s5-pre', '#s5-big', '#s5-ink'], { opacity: 0, y: -16, duration: .35, ease: 'power1.in' }, tWith - .05);
-  rise('#s5-offer', at('offers') + .05, .6, 20);
-  const cards = $('#s5-cards'), fan = [[1060, -5], [1275, 1], [1490, 6]];
-  cards.innerHTML = fan.map(([x, r], i) => `<div class="card" style="left:${x}px;transform:rotate(${r}deg)"><svg>
-    <path class="f" d="${rect(3, 3, 324, 424, 30 + i)}"/>
-    <path class="h" d="${line(40, 62, 170 - i * 18, 62, 40 + i, .8)}"/>
-    <path class="l" d="${line(40, 120, 286, 120, 50 + i, .8)}"/><path class="l" d="${line(40, 160, 266, 160, 60 + i, .8)}"/>
-    <path class="l" d="${line(40, 200, 280, 200, 70 + i, .8)}"/><path class="l" d="${line(40, 240, 200, 240, 80 + i, .8)}"/>
-    <path class="c" d="${loop(82, 360, 32, 32, 90 + i)}"/><path class="c" d="M65 360 L78 373 L101 344"/></svg></div>`).join('');
-  const tCards = at('multiple') - .1;
-  $$('.card').forEach((c, i) => {
-    rise(c, tCards + i * .18, .6, 26);
-    tl.fromTo(c.querySelectorAll('path.c'), { drawSVG: '0%' }, { drawSVG: '100%', duration: .45, ease: 'power1.inOut', stagger: .2 }, at('same') - .05);
-  });
-  sfx(tCards, 'paper_2', .35);
-  pencil(at('same'), .55);
-  write('#s5-same', at('same') - .2, .9);
-
-  // S6 · Stackle --------------------------------------------------------------
-  scene('#s6', S6, S7);
-  rise('#s6-pre', S6 + .05);
-  rise('#s6-word', at('stackle') - .12, .6, 24);
-  write('#s6-sub', at('your', 0) - .05, .9);
-  const de = box('#pill-de');
-  $('#s6-and').style.left = `${de.right + 34}px`;
-  $('#pill-ai').style.left = `${de.right + 34 + box('#s6-and').width + 34}px`;
-  ['#pill-de', '#pill-ai'].forEach((sel, i) => {
-    const t = i ? at('ai') - .1 : at('data', 1) - .1, b = box(sel);
-    tl.fromTo(`${sel}`, { opacity: 0 }, { opacity: 1, duration: .4 }, t);
-    draw($(`${sel} svg`), rect(3, 3, b.width - 6, b.height - 6, 100 + i, 1.2), null, t, .6);
-  });
-  rise('#s6-and', at('and', 2) - .05, .4, 8);
-
-  // S7 · community numbers -----------------------------------------------------
-  scene('#s7', S7, S8);
-  const cols = [['#c1', S7 + .05, at('13000'), 13000], ['#c2', at('nearly') - .1, at('4000'), 4000], ['#c3', at('and', 3) - .05, at('500'), 500]];
-  cols.forEach(([sel, tIn, tNum, n], i) => {
-    rise(sel, tIn, .6, 20);
-    counter(`${sel}-n`, n, tIn + .1, tNum + .35);
-    if (i) draw($('#s7-ink'), line(170 + i * 590 - 50, 330, 170 + i * 590 - 46, 650, 120 + i, 1.2), 'thin', tIn - .15, .45);
-  });
-
-  // S8 · the mission -----------------------------------------------------------
-  scene('#s8', S8, S9);
-  rise('#s8-pre', S8 + .05);
-  words($('#s8-line'), 'i', 6);
-  const h2 = box('#s8-line .w:last-child');
-  draw($('#s8-ink'), line(h2.left + 4, h2.bottom - 10, h2.right - 34, h2.bottom - 16, 23, 1.5, 6), 'red', at('hired', 1) + .2, .4);
-  tl.to(['#s8-pre', '#s8-line', '#s8-ink'], { opacity: 0, y: -16, duration: .3, ease: 'power1.in' }, at('no') - .3);
-  rise('#s8-nf', at('no') - .05, .5, 20);
-  rise('#s8-jw', at('just') - .05, .5, 20);
-
-  // S9 · so let's get into it, then the end card ----------------------------
-  scene('#s9', S9, null);
-  words($('#s9-go'), 'so', 1);
-  tl.to('#s9-go', { opacity: 0, y: -16, duration: .35, ease: 'power1.in' }, LOCK);
-  rise('#s9-end', LOCK + .3, .7, 20);
-  sfx(LOCK + .3, 'paper_1', .35);
-  tl.to('#s9-end', { opacity: 0, duration: .5, ease: 'power1.in' }, END - .55);
+  // S4 · let's get into it, then the end card -------------------------------
+  scene('#s4', S4, null);
+  words($('#s4-go'), "let's");
+  tl.to('#s4-go', { opacity: 0, y: -16, duration: .3, ease: 'power1.in' }, LOCK);
+  rise('#s4-end', LOCK + .25, .6, 20);
+  sfx(LOCK + .25, 'paper_1', .35);
+  tl.to('#s4-end', { opacity: 0, duration: .45, ease: 'power1.in' }, END - .5);
   sfx(0, 'bed', 1);
+  // two scenes can end together; keep one sound per moment
+  window.SFX = window.SFX.filter((c, i, all) => all.findIndex(d => d.t === c.t && d.file === c.file) === i);
 
   window.render = t => { tl.seek(t, false); drawCounters(t); };
   window.render(0);
