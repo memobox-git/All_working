@@ -62,3 +62,27 @@ Lovable app changes, so a rollback is only DNS.
 - learn.stackle.io still shows the old Lovable homepage at `/`. Ask Lovable to redirect `/` to `https://stackle.io`.
 - When a cohort fills or new dates are added in Supabase, the site shows them right away in the browser; the static HTML catches up
   on the next deploy (Netlify → Deploys → Trigger deploy, or any push).
+
+## Things for you to confirm or fix (not blocking launch)
+**Security**
+- Supabase shows row-level security turned off on 4 tables. I did not change it. Ask Lovable or run the fix SQL from the
+  Supabase advisor after checking the app still works.
+
+**Copy and numbers**
+- Community numbers (13K LinkedIn followers, 3.9K Meetup members, 511 at one free workshop) come from your intro script. Update `content/site.ts` if
+  they've moved.
+- The three "rejection reasons" on the homepage come from your scripts and were marked [CHECK] there.
+- Reviews and testimonials are hidden because they can't be tied to a course. The 22 Data Engineering reviews predate the
+  course. Add real quotes with names and permission in `content/site.ts` when you have them.
+- "Data Engineer at Meta" is not on the site. Add it if you want it public.
+- Salary ranges in the AI Engineer roadmap have no source. Keep, source, or remove them.
+
+**Course data in Supabase**
+- The AI course says 8 weeks in some places and 10 in others. The Data Analyst course has 10 weeks, but its URL and
+  description say 8.
+- Data Engineering week 4 repeats the Spark description.
+
+**Product gaps**
+- The $1,997 Career track has no online checkout; the site sends people to book a call.
+- The SQL cheat sheet is now a direct download with no email gate.
+- The legal pages are short and there is no refund policy.
