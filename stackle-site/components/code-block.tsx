@@ -68,15 +68,15 @@ export function CodeBlock({
           <span className="h-1.5 w-1.5 rounded-full bg-paper/70" aria-hidden="true" />
           {filename ?? language}
         </span>
-        <CopyButton text={code} />
+        <CopyButton />
       </figcaption>
       <pre>
         <code>
           {lineNumbers
             ? lines.map((l, i) => (
                 <span key={i} className="table-row">
-                  <span className="table-cell select-none pr-4 text-right text-[#5a5a54]">{i + 1}</span>
-                  <span className="table-cell" dangerouslySetInnerHTML={{ __html: l || " " }} />
+                  <span className="table-cell select-none pr-4 text-right text-[#5a5a54]" aria-hidden="true">{i + 1}</span>
+                  <span className="table-cell" data-line="" dangerouslySetInnerHTML={{ __html: l || " " }} />
                 </span>
               ))
             : <span dangerouslySetInnerHTML={{ __html: html }} />}

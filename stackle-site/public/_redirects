@@ -54,4 +54,5 @@
 /legal-notice                /terms                                              301
 /blogs                       /resources                                          301
 /blogs/*                     /resources                                          301
+/resources/hr-analytics-measures.dax  /resources/power-bi/hr-analytics-measures.dax  301
 /newsletter                  https://crispusroshan.substack.com                  302
