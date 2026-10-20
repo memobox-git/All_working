@@ -8,6 +8,8 @@
 
 **Format:** White-background motion graphics, voiced by the ElevenLabs "Crispus Roshan" voice (`eleven_v4`, calm delivery), with soft original music underneath and no sound effects. Source and build steps are in `stackle-video/source/airflow/`.
 
+**Cuts:** landscape for YouTube (`stackle-video/graphics/airflow-explained.mp4`, upload `airflow-explained.srt` as its captions), and vertical for TikTok, Reels and Shorts (`airflow-explained-vertical.mp4`, captions burned in word by word).
+
 ---
 
 ## Script
