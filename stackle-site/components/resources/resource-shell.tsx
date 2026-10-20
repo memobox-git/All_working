@@ -70,7 +70,7 @@ export function ResourceHero({
 export function ResourceCta({
   n = "99",
   title = "Turn this into a job offer.",
-  body = "Learn it live with Chris in a small cohort: real projects, code reviews and mock interviews with someone who has hired 200+ engineers.",
+  body = "Learn it live with Chris in a small cohort: three sessions a week, real projects, and feedback from someone who has interviewed 200+ engineers.",
   courseHref = "/courses",
   courseLabel = "See the next cohorts",
 }: {
