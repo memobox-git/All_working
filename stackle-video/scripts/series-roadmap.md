@@ -118,7 +118,7 @@ The first-week vocabulary of a data team, ending with one picture that joins it 
 
 | # | Title | Core idea | Architecture / picture to draw |
 |---|---|---|---|
-| 00 | Explained in 2 Minutes: The Series (Trailer) | One tool or idea, two minutes, the same five parts every time | "One data tool. Two minutes. No fluff.", Chris's intro, what every episode does (what it is · why teams use it · how it works), a mini architecture drawn step by step, the first six episodes, a 10×10 grid filling to 100, and the comment ask. 54 seconds. **Made** (`source/series/`) |
+| 00 | Explained in 2 Minutes: The Series (Trailer) | One tool or idea, two minutes, the same five parts every time | "One data tool. Two minutes.", Chris's intro, what every episode does (what it is · why teams use it · how it works), a mini architecture drawn step by step, the first six episodes, a 10×10 grid filling to 100, and the comment ask. 54 seconds. **Made** (`source/series/`) |
 | 01 | Apache Airflow, Explained in 2 Minutes | The DAG: tasks and the order they run in | DAG processor → metadata database ⇄ scheduler → executor → workers, with the web UI on top. A failed task retried with one click. **Made** |
 | 02 | Apache Kafka, Explained in 2 Minutes | The log: a topic that producers append to and consumers read at their own offset | Brokers holding partitions and replicas. A broker fails and a replica takes over. A consumer group splits the partitions. KRaft controllers on top. **Made** |
 | 03 | Apache Spark, Explained in 2 Minutes | The data is cut into partitions, and a lazy plan runs one task per partition, in parallel | Driver → cluster manager → executors on worker machines. An executor dies and its tasks re-run elsewhere. Planned below |

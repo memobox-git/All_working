@@ -8,7 +8,8 @@
 //   0:00            the opening card (the thumbnail), `card` seconds (default: `offset`)
 //   then            the channel intro video ("intro"), if there is one: straight after the card,
 //                   or, with "intro": {"after": [word, n]}, after that spoken word; the voice
-//                   pauses for it and picks up again afterwards
+//                   pauses for it and picks up again afterwards (at "resume": [word, n] if
+//                   given, leaving out the words in between)
 //   then            the voiceover
 //   then            the comment ask ("cta": true), the shared line in ../explained/audio/cta.wav,
 //                   a moment after the voice ends
@@ -39,15 +40,21 @@ if (ep.intro) {
     offset = r3(card + duration + GAP_OUT);
   } else {
     // pause the voice after the n-th time it says `word`, and play the intro there
-    const [word, n] = ep.intro.after;
-    let k = 0, i = -1;
-    words.forEach((w, j) => { if (i < 0 && !w.w.startsWith('[') && norm(w.w) === norm(word) && k++ === n) i = j; });
-    if (i < 0) throw Error('no cue for the intro: ' + word + ' #' + n);
-    const a = words[i], b = words[i + 1];
+    const find = ([word, n], from = 0) => {
+      let k = 0;
+      for (let j = from; j < words.length; j++) if (!words[j].w.startsWith('[') && norm(words[j].w) === norm(word) && k++ === n) return j;
+      throw Error('no cue for the intro: ' + word + ' #' + n);
+    };
+    // with "resume": [word, n], the voice picks up again at that word, and the words in between are left out
+    const i = find(ep.intro.after), r = ep.intro.resume ? find(ep.intro.resume, i + 1) : i + 1;
+    const a = words[i], b = words[r];
     insert.start = r3(offset + a.e + GAP_IN);
     insert.shift = r3(insert.start + duration + GAP_OUT - (offset + b.s));
-    insert.cut = r3((a.e + b.s) / 2);            // where the voice file is split
-    words = words.map((w, j) => j > i ? { ...w, s: r3(w.s + insert.shift), e: r3(w.e + insert.shift) } : w);
+    // where the voice file is cut: just after a word ends, since the next word's sound starts
+    // a little before its transcribed start time
+    insert.cut = r3(a.e + .02);                   // the end of the first part
+    insert.resumeAt = ep.intro.resume ? r3(Math.max(insert.cut, words[r - 1].e + .05)) : insert.cut;   // and the start of the rest
+    words = words.filter((w, j) => j <= i || j >= r).map((w, j) => j > i ? { ...w, s: r3(w.s + insert.shift), e: r3(w.e + insert.shift) } : w);
   }
   // the intro's own words, for the .srt (its voice starts `voiceOffset` seconds into the video)
   insert.words = it.words.filter(w => w.type === 'word' && !w.text.startsWith('['))

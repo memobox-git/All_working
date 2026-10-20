@@ -34,7 +34,7 @@ Chapters
 1:34 Recap
 1:48 What should I explain next?
 
-Explained in 2 Minutes is a Stackle series: one data tool, two minutes, no fluff.
+Explained in 2 Minutes is a Stackle series: one data tool, two minutes.
 Next episode: Apache Kafka. What should I explain after that? Tell me in the comments.
 
 Subscribe so you don't miss it.

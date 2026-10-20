@@ -14,7 +14,7 @@ Everything the episodes share. Each episode is its own folder next to this one (
 | Comment ask | 5.2 s (`cta`) | "So, what should I explain next? Tell me in the comments below, and it could be the next episode." A comment box types out ideas (`cta.js`) |
 | Fade | 1.8 s | To white |
 
-The series intro (episode 00) is the one exception: its intro plays after its first line ("One data tool. Two minutes. No fluff."), set with `"after": ["fluff", 0]`.
+The series intro (episode 00) is the one exception: its intro plays after its first line ("One data tool. Two minutes."), set with `"after": ["minutes", 0]`. Its `"resume": ["this", 0]` picks the voice up again at "This is …" and leaves out the words in between.
 
 ## episode.json
 
@@ -44,6 +44,7 @@ The fields:
 - `intro` is the channel intro.
   - `after: null` plays it straight after the card.
   - `[word, n]` plays it after the n-th time the voice says that word (counting from 0). The voice pauses for it.
+  - `resume` (optional, with `after`): `[word, n]` where the voice picks up again. The words in between are left out of the video.
 - `cta` adds the comment ask after the closing title.
 - `music` names the words the beat follows (also counted from 0):
   - `drop` is where the full beat comes in, usually the first "Apache".

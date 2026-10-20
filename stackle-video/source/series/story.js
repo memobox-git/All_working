@@ -48,7 +48,6 @@ tl.to('#hud', { autoAlpha: 0, duration: .6, ease: 'power1.in' }, at('see') - .3)
 show('#s1', CARD - .2, VO.insert.start);
 cueWords($('#h1'), ['One', 'data', 'tool.'], 'one');
 cueWords($('#h2'), ['<em>Two</em>', '<em>minutes.</em>'], 'two');
-cueWords($('#h3'), ['No', '<span class="ff">fluff.</span>'], 'no');
 tl.to('#s1', { autoAlpha: 0, duration: .25, ease: 'power1.in' }, VO.insert.start - .25);
 
 // ---------------------------------------------------------------- S2 · what every episode does
@@ -110,11 +109,6 @@ rise('#credit', at('one', 2) + .5, { y: 8, d: 1 });
 tl.to('#fade', { opacity: 1, duration: .9, ease: 'power1.in' }, END - .9);
 
 function build() {
-  // the strike through "fluff"
-  const ff = $('#h3 .ff'), b = box(ff, $('#s1')), y = b.y + b.h * .56;
-  const strike = svgEl($('#s1-ink'), 'path', { class: 'strike', d: `M${b.x - 6} ${y + 4} L${b.r + 4} ${y - 6}` });
-  tl.fromTo(strike, { drawSVG: '0%' }, { drawSVG: '100%', duration: .35, ease: 'power2.out' }, WORDS[wi('fluff')].e + OFF - .15);
-
   // the mini architecture: arrows drawn one step at a time
   const sc = $('#s2'), svg = $('#arch-links');
   const edges = [0, 1, 2].map(i => {

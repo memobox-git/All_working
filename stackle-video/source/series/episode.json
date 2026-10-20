@@ -9,7 +9,8 @@
     "vertical": "../../graphics/stackle-intro-vertical.mp4",
     "transcript": "../intro-pro/audio/vo.transcript.json",
     "voiceOffset": 0.6,
-    "after": ["fluff", 0]
+    "after": ["minutes", 0],
+    "resume": ["this", 0]
   },
   "cta": false,
   "music": {

@@ -19,7 +19,7 @@ Explained in 2 Minutes: Data Engineering, One Tool at a Time (Series Intro)
 **Description**
 
 ```
-One data tool. Two minutes. No fluff.
+One data tool. Two minutes.
 
 Explained in 2 Minutes is a Stackle series. Every episode takes one tool or idea from data engineering and shows you what it is, why teams use it, and how it works under the hood, with the architecture drawn out step by step.
 
@@ -53,7 +53,7 @@ Drop the tool you want explained next 👇 The most-liked suggestion goes on the
 **Caption**
 
 ```
-New series: Explained in 2 Minutes ⏱️ One data tool, two minutes, no fluff. Airflow, Kafka, Spark, Snowflake, Databricks… 100 episodes. What should I explain first? 👇
+New series: Explained in 2 Minutes ⏱️ One data tool, two minutes. Airflow, Kafka, Spark, Snowflake, Databricks… 100 episodes. What should I explain first? 👇
 
 #dataengineering #dataengineer #techtok #learnontiktok #sql #python
 ```

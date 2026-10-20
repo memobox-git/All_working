@@ -35,7 +35,7 @@ Chapters
 1:27 Recap
 1:41 What should I explain next?
 
-Explained in 2 Minutes is a Stackle series: one data tool, two minutes, no fluff.
+Explained in 2 Minutes is a Stackle series: one data tool, two minutes.
 Previous episode: Apache Airflow. Next episode: Apache Spark.
 
 What should I explain next? Tell me in the comments.

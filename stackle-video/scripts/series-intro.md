@@ -2,15 +2,15 @@
 
 **What it is:** the trailer for the series. It covers what the series is, what every episode does, the first six episodes and the goal of 100, and it asks viewers what to explain next.
 
-**Length:** 54 seconds. That is 36 seconds of voice plus the 12.9-second channel intro.
+**Length:** 52 seconds. That is 35 seconds of voice plus the 12.9-second channel intro.
 
-**Status:** recorded (take 1 of 4) and built. Both cuts are in `stackle-video/graphics/` (`explained-series-intro.mp4`, `explained-series-intro-vertical.mp4`). The opening cards are temporary until Chris's thumbnails arrive.
+**Status:** recorded (take 1 of 4) and built. The recorded take has two more words after "Two minutes." that the video leaves out (`"resume": ["this", 0]` in `source/series/episode.json`). Both cuts are in `stackle-video/graphics/` (`explained-series-intro.mp4`, `explained-series-intro-vertical.mp4`). The opening cards are temporary until Chris's thumbnails arrive.
 
 ---
 
 ## Script
 
-> [confident] One data tool. Two minutes. No fluff.
+> [confident] One data tool. Two minutes.
 >
 > *(the channel intro: "Hi, I'm Chris. I've spent over 10 years in data engineering and interviewed more than 200 engineers. Now I run Stackle, where I teach the skills that actually get you hired. Let's get into it.")*
 >
@@ -27,7 +27,7 @@ The line "So, what should I explain next? … it could be the next episode." is 
 | Words | Picture |
 |---|---|
 | (beat) | The opening card (the series thumbnail) |
-| "One data tool. Two minutes. No fluff." | Three big lines, word by word, and a red pen strike through "fluff" |
+| "One data tool. Two minutes." | Two big lines, word by word |
 | (channel intro) | The Stackle intro |
 | "This is Explained in 2 Minutes …" | The series lockup with the stopwatch mark, then "One tool or idea from data engineering, every episode" |
 | "… what it is, why teams use it, and how it works under the hood" | Three cards: What it is · Why teams use it · How it works |

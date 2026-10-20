@@ -30,7 +30,8 @@ const inputs = ['-i', path.join(dir, 'audio', 'vo.mp3'), '-i', music];
 const pieces = [];
 const ins = T.insert;
 if (ins && ins.cut != null) {
-  pieces.push([0, 0, ins.cut, T.offset], [0, ins.cut, null, T.offset + ins.cut + ins.shift]);
+  const resume = ins.resumeAt ?? ins.cut;     // a stretch between the two can be left out ("resume" in episode.json)
+  pieces.push([0, 0, ins.cut, T.offset], [0, resume, null, T.offset + resume + ins.shift]);
 } else pieces.push([0, 0, null, T.offset]);
 if (T.cta) {
   inputs.push('-i', path.join(__dirname, 'audio', 'cta.wav'));
