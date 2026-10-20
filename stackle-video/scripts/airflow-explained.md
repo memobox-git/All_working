@@ -1,14 +1,14 @@
 # Apache Airflow, Explained: Script
 
-**Title:** Apache Airflow Explained in 90 Seconds (Architecture Included)
+**Title:** Apache Airflow, Explained in 2 Minutes
 
-**Show:** Explained for Data Engineers
+**Series:** Explained in 2 Minutes, episode 01 (the short companion to the long-form "Explained for Data Engineers" show)
 
-**Spoken words:** 245 · **Length:** 1:35 (voice 1:31, plus the closing title)
+**Spoken words:** 245 · **Length:** 1:35 (opening card 1.8 s, voice 1:31, then the closing title)
 
 **Format:** White-background motion graphics, voiced by the ElevenLabs "Crispus Roshan" voice (`eleven_v4`, calm delivery), over an upbeat original beat (120 BPM, synced to the chapters) and no sound effects. Source and build steps are in `stackle-video/source/airflow/`.
 
-**Cuts:** landscape for YouTube (`stackle-video/graphics/airflow-explained.mp4`, upload `airflow-explained.srt` as its captions), and vertical for TikTok, Reels and Shorts (`airflow-explained-vertical.mp4`, captions burned in word by word).
+**Cuts:** landscape for YouTube (`stackle-video/graphics/airflow-explained.mp4`, upload `airflow-explained.srt` as its captions), and vertical for TikTok, Reels and Shorts (`airflow-explained-vertical.mp4`, captions burned in word by word). Each opens on its own thumbnail, also saved as `airflow-explained-thumbnail.jpg` and `airflow-explained-vertical-thumbnail.jpg`.
 
 ---
 
@@ -28,20 +28,21 @@
 
 | Time | Words | Picture |
 |---|---|---|
-| 0:00 | "Every morning … already run." | "06:00 AM". A 32 × 12 grid of task runs turns from grey to blue to green |
-| 0:08 | "Something decided …" | The grid moves up. Three cards: *When to start*, *In what order*, *What to do when one fails*. One task turns red |
-| 0:15 | "… Apache Airflow." | Pinwheel mark and the "Apache Airflow" wordmark |
-| 0:18 | "Airflow is an open-source tool …" | The definition, word by word, with "orchestrating workflows" highlighted |
-| 0:21 | "Orchestrating just means …" | Three cards: the right task, at the right time, in the right order |
-| 0:26 | "It started at Airbnb …" | Timeline: 2014 Airbnb, 2016 Apache Incubator, 2019 top-level project |
-| 0:31 | "You write each pipeline in Python …" | `orders_pipeline.py` types in. D·A·G expands to Directed, Acyclic, Graph |
-| 0:38 | "Each box is a task …" | extract → transform → load cards, each lighting up its code. Arrows draw, then tasks run and succeed in order |
-| 0:50 | "Now, the architecture." | "What runs your DAGs" |
-| 0:51 | "The DAG processor …" | The diagram builds piece by piece as each part is named, and the camera follows. Dots flow along every connection |
-| 1:07 | "Every result …" | Full view. queued / running / success / failed land in the metadata database |
-| 1:13 | "And the web UI sits on top …" | The UI appears on top. The camera zooms in: runs fill in, the log shows a failed load, a click retries it and it turns green |
-| 1:20 | "So when a team says …" | "We use Airflow." and three takeaways |
-| 1:30 | "That's Apache Airflow." | Closing title, then a fade to white |
+| 0:00 | (beat only) | The opening card: the thumbnail, with the photo, "Explained in 2 minutes" and Apache Airflow. It clears as the voice starts |
+| 0:02 | "Every morning … already run." | "06:00 AM". A 32 × 12 grid of task runs turns from grey to blue to green |
+| 0:09 | "Something decided …" | The grid moves up. Three cards: *When to start*, *In what order*, *What to do when one fails*. One task turns red |
+| 0:16 | "… Apache Airflow." | Pinwheel mark and the "Apache Airflow" wordmark |
+| 0:19 | "Airflow is an open-source tool …" | The definition, word by word, with "orchestrating workflows" highlighted |
+| 0:22 | "Orchestrating just means …" | Three cards: the right task, at the right time, in the right order |
+| 0:27 | "It started at Airbnb …" | Timeline: 2014 Airbnb, 2016 Apache Incubator, 2019 top-level project |
+| 0:32 | "You write each pipeline in Python …" | `orders_pipeline.py` types in. D·A·G expands to Directed, Acyclic, Graph |
+| 0:39 | "Each box is a task …" | extract → transform → load cards, each lighting up its code. Arrows draw, then tasks run and succeed in order |
+| 0:51 | "Now, the architecture." | "What runs your DAGs" |
+| 0:52 | "The DAG processor …" | The diagram builds piece by piece as each part is named, and the camera follows. Dots flow along every connection |
+| 1:08 | "Every result …" | Full view. queued / running / success / failed land in the metadata database |
+| 1:14 | "And the web UI sits on top …" | The UI appears on top. The camera zooms in: runs fill in, the log shows a failed load, a click retries it and it turns green |
+| 1:21 | "So when a team says …" | "We use Airflow." and three takeaways |
+| 1:31 | "That's Apache Airflow." | Closing title, then a fade to white |
 
 ## Facts checked
 
