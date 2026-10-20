@@ -79,7 +79,7 @@
   }
   .row-gutter { position: relative; }
   .row-num {
-    position: absolute; top: 28px; left: 32px; display: none;
+    position: absolute; top: 24px; left: 32px; display: none;
     font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.02em; color: var(--color-muted);
   }
   .row-night .row-num { color: var(--color-night-muted); }
@@ -184,7 +184,9 @@
   .kbd { font-family: var(--font-mono); font-size: 11px; border: 1px solid var(--color-line); padding: 2px 5px; background: var(--color-white); }
 
   /* code */
-  .code-win { background: var(--color-night-2); border: 1px solid var(--color-night-line); color: #e8e8e3; }
+  /* contain: inline-size stops long lines from widening grid/flex parents; the <pre> scrolls instead. */
+  .code-win { background: var(--color-night-2); border: 1px solid var(--color-night-line); color: #e8e8e3; contain: inline-size; width: 100%; }
+  .scroll-x { contain: inline-size; width: 100%; overflow-x: auto; }
   .code-win pre { font-family: var(--font-mono); font-size: 13.5px; line-height: 1.75; overflow-x: auto; padding: 16px 18px; tab-size: 2; }
   .tok-k { color: #ffffff; font-weight: 700; }
   .tok-s { color: #b9b9b0; }

@@ -102,3 +102,9 @@ export function IsoLine({ from, to, dashed = true }: { from: [number, number, nu
   const b = iso(...to);
   return <line x1={a[0]} y1={a[1]} x2={b[0]} y2={b[1]} stroke="#111110" strokeWidth="1" strokeDasharray={dashed ? "3 3" : undefined} vectorEffect="non-scaling-stroke" />;
 }
+
+// A point just above a box's highest corner, for a label that never overlaps the box.
+export function above(b: IsoBox, gap = 10): [number, number, number] {
+  const top = (b.z ?? 0) + b.h;
+  return [b.x + b.w / 2, b.y + b.d / 2, top + ((b.w + b.d) / 2) * S + gap];
+}
