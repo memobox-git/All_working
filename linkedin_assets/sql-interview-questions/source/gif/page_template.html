@@ -1,0 +1,142 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>SQL Interview GIF</title>
+<style>
+  @font-face { font-family: "Cabin Sketch"; src: url(fonts/Cabin_Sketch.woff2) format("woff2"); font-weight: 700; }
+  @font-face { font-family: "Patrick Hand"; src: url(fonts/Patrick_Hand.woff2) format("woff2"); }
+  @font-face { font-family: "Caveat"; src: url(fonts/Caveat.woff2) format("woff2"); font-weight: 700; }
+  @font-face { font-family: "JetBrains Mono"; src: url(fonts/JetBrains_Mono.woff2) format("woff2"); font-weight: 500; }
+  :root { --chalk: #f4f2ea; --yellow: #f6dd73; --pink: #f3a3b6; --blue: #93d2f2; --green: #a9e1a0; --board: #1c2521; --line: rgba(244,242,234,.45); }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1080px; height: 1350px; overflow: hidden; background: #5a3a1e; }
+  .frame { position: absolute; top: 0; left: 0; width: 1080px; height: 1350px; padding: 18px;
+    background: linear-gradient(135deg, #8a5a2e 0%, #6a4220 35%, #7d5129 60%, #5b3819 100%); }
+  .board { position: relative; width: 100%; height: 100%; overflow: hidden; color: var(--chalk); font-family: "Patrick Hand", sans-serif;
+    background: radial-gradient(ellipse at 20% 15%, rgba(255,255,255,.07), transparent 45%),
+                radial-gradient(ellipse at 80% 70%, rgba(255,255,255,.05), transparent 50%), var(--board);
+    box-shadow: inset 0 0 40px rgba(0,0,0,.6), 0 0 0 3px #3e2611; }
+  .dust { position: absolute; inset: 0; opacity: .10; z-index: 0; }
+  .grain { position: absolute; inset: 0; opacity: .35; mix-blend-mode: multiply; z-index: 0; }
+  .layer { position: relative; z-index: 1; height: 100%; display: flex; flex-direction: column; }
+  .hide { visibility: hidden; }
+
+  header { padding: 24px 36px 0; height: 136px; position: relative; }
+  .t { font-family: "Cabin Sketch", cursive; font-weight: 700; font-size: 52px; line-height: 1; }
+  .t .y { color: var(--yellow); }
+  .sub { font-family: "Caveat", cursive; font-weight: 700; color: var(--pink); font-size: 36px; margin-top: 6px; }
+  .page { position: absolute; right: 36px; top: 84px; font-family: "Caveat", cursive; font-weight: 700; font-size: 40px; color: var(--blue); }
+  main { flex: 1; margin: 0 26px; padding: 26px 14px 0; border-top: 2.5px solid var(--line); border-bottom: 2.5px solid var(--line); }
+  .q { display: flex; gap: 18px; align-items: flex-start; color: var(--yellow); font-size: 54px; line-height: 1.08; }
+  .num { flex: none; width: 66px; height: 66px; border: 3.5px solid var(--pink); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--pink); font-size: 36px; margin-top: -4px; }
+  .idea { font-size: 41px; line-height: 1.22; margin: 22px 0 0 0; }
+  .idea b { font-weight: normal; color: var(--green); }
+  pre { font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 35px; line-height: 1.38; color: #eef3ea;
+        margin: 22px 0 0 0; padding: 18px 24px; background: rgba(0,0,0,.24); border: 2px solid rgba(244,242,234,.28); border-radius: 12px; white-space: pre; }
+  pre .k { color: var(--blue); }
+  pre .c { color: #9fb19a; }
+  .trap { font-size: 41px; line-height: 1.22; margin: 24px 0 0 0; }
+  .trap span { color: var(--pink); }
+  .ab { display: flex; gap: 40px; margin-top: 24px; align-items: flex-start; }
+  .tbl { border: 2.5px solid rgba(244,242,234,.55); border-radius: 10px; min-width: 170px; text-align: center; font-family: "JetBrains Mono", monospace; font-size: 36px; }
+  .tbl div { padding: 2px 16px; border-top: 1.5px solid rgba(244,242,234,.25); }
+  .tbl .h { border-top: none; color: var(--blue); font-family: "Patrick Hand", sans-serif; font-size: 34px; }
+  .on { align-self: center; font-family: "JetBrains Mono", monospace; font-size: 30px; color: var(--green); }
+  .joins { display: flex; gap: 16px; margin-top: 26px; }
+  .joins div { border: 2.5px solid rgba(244,242,234,.55); border-radius: 12px; padding: 10px 22px; text-align: center; font-size: 38px; min-width: 180px; }
+  .joins div b { display: block; font-weight: normal; font-size: 70px; color: var(--yellow); line-height: 1.05; }
+  footer { height: 84px; padding: 0 36px; display: flex; align-items: center; justify-content: space-between; }
+  .brand { display: flex; align-items: baseline; gap: 14px; }
+  .brand .name { font-family: "Cabin Sketch", cursive; font-weight: 700; font-size: 44px; color: var(--yellow); }
+  .brand .tagline { font-size: 24px; }
+  .motto { font-family: "Caveat", cursive; font-weight: 700; font-size: 32px; color: var(--blue); }
+
+  .center { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 0 60px; }
+  .big { font-family: "Cabin Sketch", cursive; font-weight: 700; font-size: 116px; line-height: 1.02; }
+  .big .y { color: var(--yellow); }
+  .bigsub { font-family: "Caveat", cursive; font-weight: 700; color: var(--pink); font-size: 66px; margin-top: 30px; line-height: 1.05; }
+  .chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px 16px; margin-top: 50px; max-width: 900px; }
+  .chips span { border: 2.5px solid rgba(244,242,234,.55); border-radius: 30px; padding: 6px 22px; font-size: 36px; }
+  .outro-line { font-family: "Caveat", cursive; font-weight: 700; color: var(--blue); font-size: 96px; line-height: 1.05; }
+  .outro-list { margin-top: 50px; font-size: 44px; line-height: 1.5; }
+  .outro-list b { font-weight: normal; color: var(--green); }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute">
+  <filter id="grainf"><feTurbulence type="fractalNoise" baseFrequency="1.1" numOctaves="2" seed="7"/><feColorMatrix values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 -1.6 1.25"/></filter>
+  <filter id="dustf"><feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="3" seed="3"/><feColorMatrix values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1.4 -0.45"/></filter>
+</svg>
+<div class="frame"><div class="board">
+  <svg class="dust" width="100%" height="100%"><rect width="100%" height="100%" filter="url(#dustf)"/></svg>
+  <svg class="grain" width="100%" height="100%"><rect width="100%" height="100%" filter="url(#grainf)"/></svg>
+  <div class="layer" id="root"></div>
+</div></div>
+<script>
+const CODE = /*CODE*/;
+// [question, idea, trap]
+const Q = {
+  1: ["Nth highest salary in each department", "<b>DENSE_RANK()</b> inside each department, then filter.",
+      "<span>Trap:</span> ROW_NUMBER() picks one person when two salaries tie. DENSE_RANK() keeps both."],
+  2: ["Month-over-month growth %", "<b>LAG()</b> brings last month's value onto this month's row.",
+      "<span>Trap:</span> a zero month breaks the division. NULLIF() returns NULL instead."],
+  3: ["Pivot rows into columns", "<b>SUM(CASE WHEN ...)</b> turns each value into its own column.",
+      "<span>Trap:</span> PIVOT syntax is different in every database. This works everywhere."],
+  4: ["Find duplicate records", "<b>GROUP BY</b> what should be unique. Keep groups with more than one row.",
+      "<span>Trap:</span> to keep one copy, number the rows with ROW_NUMBER() and keep row 1."],
+  5: ["Running total and moving average", "<b>Window functions</b> with a ROWS frame, per product.",
+      "<span>Trap:</span> 6 PRECEDING is a 7-day average only if there's one row per day."],
+  6: ["Assign levels by salary range", "<b>CASE</b> checks top to bottom. The first match wins.",
+      "<span>Trap:</span> without the NULL line, a missing salary falls into ELSE and becomes your top level."],
+  7: ["Join A to B on x. How many rows?", "<b>1s:</b> 2 × 2 = 4 rows. <b>0s:</b> 2 × 1 = 2 rows. NULL matches nothing.",
+      "LEFT and RIGHT each add one NULL row. FULL adds both. <span>Trap:</span> duplicates multiply, NULL never equals NULL."],
+  8: ["Each person's direct reports, even if zero", "<b>Self-join</b> the table to itself with a LEFT JOIN.",
+      "<span>Trap:</span> COUNT(*) says 1 for people with no reports. COUNT(e.emp_id) says 0."],
+};
+const KW = /\b(SELECT|FROM|WHERE|GROUP BY|HAVING|ORDER BY|PARTITION BY|OVER|AS|CASE|WHEN|THEN|ELSE|END|LEFT JOIN|ON|ROWS|UNBOUNDED|PRECEDING|IS NULL|DESC)\b/g;
+const esc = s => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+function codeHtml(s, shown) {
+  return s.split("\n").map((line, i) => {
+    const j = line.indexOf("--");
+    const code = esc(j >= 0 ? line.slice(0, j) : line), cm = j >= 0 ? `<span class="c">${esc(line.slice(j))}</span>` : "";
+    const html = code.replace(KW, '<span class="k">$1</span>') + cm;
+    return i < shown ? html : `<span class="hide">${html}</span>`;
+  }).join("\n");
+}
+const p = new URLSearchParams(location.search);
+const scene = parseInt(p.get("scene") ?? "1"), step = parseInt(p.get("step") ?? "4");
+const root = document.getElementById("root");
+const foot = (right) => `<footer><div class="brand"><span class="name">Stackle</span><span class="tagline">Data engineering careers</span></div><div class="motto">${right}</div></footer>`;
+if (scene === 0) {
+  root.innerHTML = `<div class="center">
+      <div class="big"><span class="y">8 SQL</span><br>Interview<br>Questions</div>
+      <div class="bigsub">with the answer<br>and the trap in each</div>
+      <div class="chips"><span>DENSE_RANK</span><span>LAG</span><span>CASE</span><span>GROUP BY</span><span>window frames</span><span>joins</span><span>self-join</span></div>
+    </div>${foot("")}`;
+} else if (scene === 9) {
+  root.innerHTML = `<div class="center">
+      <div class="outro-line">Knowing the function<br>is step one.</div>
+      <div class="outro-line" style="color:var(--yellow);margin-top:26px">Knowing where it breaks<br>is the interview.</div>
+      <div class="outro-list"><b>Ties</b> · <b>NULLs</b> · <b>zero rows</b> · <b>duplicates</b></div>
+    </div>${foot("")}`;
+} else {
+  const [title, idea, trap] = Q[scene];
+  let body;
+  if (scene === 7) {
+    const col = (name, vals) => `<div class="tbl"><div class="h">${name}</div>${vals.map(v => `<div>${v}</div>`).join("")}</div>`;
+    body = `<div class="ab ${step >= 2 ? "" : "hide"}">${col("A.x", ["1", "1", "0", "0", "NULL"])}<div class="on">A.x = B.x</div>${col("B.x", ["1", "0", "NULL", "1"])}</div>
+      <div class="joins ${step >= 3 ? "" : "hide"}"><div>INNER<b>6</b></div><div>LEFT<b>7</b></div><div>RIGHT<b>7</b></div><div>FULL<b>8</b></div></div>`;
+  } else {
+    const lines = CODE[scene].split("\n").length;
+    const shown = step <= 1 ? 0 : step === 2 ? Math.ceil(lines / 2) : lines;
+    body = `<pre class="${step >= 2 ? "" : "hide"}">${codeHtml(CODE[scene], shown)}</pre>`;
+  }
+  root.innerHTML = `<header><div class="t"><span class="y">SQL</span> Interview Questions</div>
+      <div class="sub">the answer, and the trap in each</div><div class="page">${scene} / 8</div></header>
+    <main><div class="q"><span class="num">${scene}</span><span>${title}</span></div>
+      <div class="idea">${idea}</div>${body}<div class="trap ${step >= 4 ? "" : "hide"}">${trap}</div></main>${foot("Ties · NULLs · duplicates")}`;
+}
+</script>
+</body>
+</html>
