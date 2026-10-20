@@ -5,8 +5,9 @@ import { Row, SectionHead } from "@/components/row";
 import { Accordion } from "@/components/accordion";
 import { EnrollPanel } from "@/components/course/enroll-panel";
 import { CohortList } from "@/components/course/live-cohorts";
-import { ArrowUpRight, Pixel } from "@/components/icons";
-import { IsoHub, IsoPipeline, IsoSchedule } from "@/components/illustrations";
+import { HeroCards } from "@/components/home/hero-cards";
+import { ResourceCta } from "@/components/resources/resource-shell";
+import { Pixel } from "@/components/icons";
 import { getCourse, getCourses, fmtDays, fmtPrice } from "@/lib/courses";
 import { instructor, site } from "@/content/site";
 
@@ -30,13 +31,11 @@ export default async function CoursePage({ params }: { params: Promise<{ slug: s
   if (!course) notFound();
   const c = course.copy;
   const days = course.cohorts[0]?.days ?? ["monday", "wednesday", "friday"];
-  const Art = c.glyph === "flow" ? IsoHub : c.glyph === "db" ? IsoPipeline : IsoSchedule;
-  const artProps = c.glyph === "flow" ? { tools: ["LLMs", "RAG", "Agents", "Evals"], center: "App" } : {};
   const facts = [
     { l: "Duration", v: `${course.weeks} weeks` },
     { l: "Schedule", v: fmtDays(days) },
     { l: "Level", v: course.level ? course.level[0].toUpperCase() + course.level.slice(1) : "All levels" },
-    { l: "Format", v: course.format === "cohort" ? "Live cohort" : "Self-paced" },
+    { l: "Live content", v: c.liveHours ? `${c.liveHours} hours` : "Live cohort" },
   ];
   const jsonLd = {
     "@context": "https://schema.org",
@@ -51,42 +50,33 @@ export default async function CoursePage({ params }: { params: Promise<{ slug: s
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <Row n="01" tone="white" showInlineNum={false}>
-        <nav aria-label="Breadcrumb" className="t-mono pad flex items-center gap-2 py-4 text-muted">
-          <Link href="/courses" className="hover:text-ink">Academy</Link>
-          <span aria-hidden="true">/</span>
-          <span className="text-ink">{c.short}</span>
-        </nav>
-      </Row>
 
-      <Row n="02">
-        <div className="grid lg:grid-cols-[1fr_380px]">
+      <section id="top" className="fill-ruled">
+        <div className="mx-auto grid max-w-[1200px] gap-10 px-5 pb-16 pt-8 md:px-10 md:pb-24 md:pt-14 lg:grid-cols-[1fr_380px] lg:gap-14">
           <div className="min-w-0">
-            <div className="pad pb-10 pt-10 md:pb-14 md:pt-20">
-              <div className="reveal">
-                <span className="label">{c.category}</span>
-                <h1 className="t-display mt-6">
-                  {c.title.replace(/ Masterclass$/, "")}
-                  <br />
-                  <span className="t-second">Masterclass.</span>
-                </h1>
-                <p className="t-lede mt-6 max-w-[620px]">{c.subtitle}</p>
-              </div>
+            <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-[14px] text-muted">
+              <Link href="/courses" className="hover:text-ink">Academy</Link>
+              <span aria-hidden="true">/</span>
+              <span className="text-ink-2">{c.short}</span>
+            </nav>
+            <div className="reveal mt-10 md:mt-14">
+              <span className="label">{c.category}</span>
+              <h1 className="t-display mt-6">
+                {c.title.replace(/ Masterclass$/, "")} <span className="t-second">Masterclass.</span>
+              </h1>
+              <p className="t-lede mt-6 max-w-[620px]">{c.subtitle}</p>
             </div>
-            <dl className="grid grid-cols-2 border-t hairline md:grid-cols-4">
-              {facts.map((f, i) => (
-                <div key={f.l} className={`px-5 py-5 md:px-8 ${i % 2 ? "border-l hairline" : ""} ${i > 1 ? "border-t hairline md:border-t-0" : ""} ${i === 2 ? "md:border-l" : ""}`}>
-                  <dt className="t-mono-sm text-muted">{f.l}</dt>
-                  <dd className="mt-2 font-medium">{f.v}</dd>
+            <dl className="reveal mt-12 grid grid-cols-2 gap-x-8 gap-y-6 md:grid-cols-4">
+              {facts.map((f) => (
+                <div key={f.l} className="border-t border-line-strong pt-4">
+                  <dt className="text-[13.5px] text-muted">{f.l}</dt>
+                  <dd className="mt-1.5 text-[16px] font-semibold">{f.v}</dd>
                 </div>
               ))}
             </dl>
-            <div className="fill-iso grid place-items-center border-t hairline p-8 md:p-12">
-              <Art className="h-[240px] w-full max-w-[460px] md:h-[300px]" {...artProps} />
-            </div>
           </div>
-          <aside className="border-t hairline p-4 md:p-6 lg:border-l lg:border-t-0">
-            <div className="lg:sticky lg:top-[96px]">
+          <aside className="lg:row-span-2">
+            <div className="lg:sticky lg:top-[100px]">
               <EnrollPanel
                 courseId={course.id}
                 slug={course.slug}
@@ -102,27 +92,42 @@ export default async function CoursePage({ params }: { params: Promise<{ slug: s
             </div>
           </aside>
         </div>
-      </Row>
+      </section>
 
-      <Row n="03">
-        <div className="pad sec grid gap-12 md:grid-cols-2">
+      <Row tone="white">
+        <div className="pad sec grid gap-12 md:grid-cols-2 md:items-center md:gap-16">
           <div>
             <SectionHead label="Outcomes" title="What you" second="leave with." />
-            <ul className="reveal mt-8 border-t hairline">
+            <ul className="reveal mt-8 grid gap-4">
               {c.outcomes.map((o) => (
-                <li key={o} className="flex items-start gap-3 border-b hairline py-4">
-                  <Pixel name="check" size={13} className="mt-1.5" /> <span>{o}</span>
+                <li key={o} className="flex items-start gap-3 text-[16px] text-ink-2">
+                  <Pixel name="check" size={18} className="mt-0.5 text-ink" /> <span>{o}</span>
                 </li>
               ))}
             </ul>
           </div>
+          {course.curriculum.length > 0 && <HeroCards course={course} />}
+        </div>
+      </Row>
+
+      <Row>
+        <div className="pad sec grid gap-12 md:grid-cols-2 md:gap-16">
           <div>
             <SectionHead label="Audience" title="Who it's" second="for." />
-            <ul className="reveal mt-8 border-t hairline">
+            <ol className="reveal mt-8 grid gap-5">
               {course.forWho.map((o, i) => (
-                <li key={o} className="flex items-start gap-4 border-b hairline py-4">
-                  <span className="t-mono-sm mt-1 text-muted">{String(i + 1).padStart(2, "0")}</span> <span>{o}</span>
+                <li key={o} className="flex items-start gap-4 border-t hairline pt-5">
+                  <span className="t-serif w-7 shrink-0 text-[16px] text-muted">{String(i + 1).padStart(2, "0")}</span>
+                  <span className="text-ink-2">{o}</span>
                 </li>
+              ))}
+            </ol>
+          </div>
+          <div>
+            <SectionHead label="Before you start" title="Prerequisites" />
+            <ul className="reveal dot-list mt-8 grid gap-3 text-ink-2">
+              {course.prerequisites.map((p) => (
+                <li key={p}>{p}</li>
               ))}
             </ul>
           </div>
@@ -130,28 +135,24 @@ export default async function CoursePage({ params }: { params: Promise<{ slug: s
       </Row>
 
       {course.curriculum.length > 0 && (
-        <Row n="04" id="curriculum">
-          <div className="pad sec grid gap-10 md:grid-cols-[1fr_1.7fr]">
+        <Row tone="white" id="curriculum">
+          <div className="pad sec grid gap-10 md:grid-cols-[1fr_1.7fr] md:gap-16">
             <div>
               <SectionHead label="Curriculum" title={`${course.curriculum.length} weeks,`} second="week by week." />
-              <p className="t-small reveal mt-6 max-w-[300px]">Each week has live sessions on {fmtDays(days).replace(/ \/ /g, ", ")} and ends with something you build.</p>
+              <p className="t-small reveal mt-6 max-w-[320px]">Each week has live sessions on {fmtDays(days).replace(/ \/ /g, ", ")} and ends with something you build.</p>
             </div>
             <Accordion
-              numbered={false}
               items={course.curriculum.map((w) => ({
                 q: (
                   <span className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-4">
-                    <span className="t-mono-sm text-muted">Week {String(w.n).padStart(2, "0")}</span>
+                    <span className="t-serif w-[72px] shrink-0 text-[15px] font-normal text-muted">Week {String(w.n).padStart(2, "0")}</span>
                     <span>{w.title}</span>
                   </span>
                 ),
                 a: w.points.length ? (
-                  <ul className="grid gap-2">
+                  <ul className="dot-list grid gap-2">
                     {w.points.map((p) => (
-                      <li key={p} className="flex items-start gap-3">
-                        <span className="mt-[9px] h-1.5 w-1.5 shrink-0 bg-ink" aria-hidden="true" />
-                        {p}
-                      </li>
+                      <li key={p}>{p}</li>
                     ))}
                   </ul>
                 ) : (
@@ -163,73 +164,42 @@ export default async function CoursePage({ params }: { params: Promise<{ slug: s
         </Row>
       )}
 
-      <Row n="05">
-        <div className="pad sec grid gap-12 md:grid-cols-2">
+      <Row>
+        <div className="pad sec grid gap-12 md:grid-cols-[0.8fr_1.2fr] md:items-center md:gap-16">
+          <figure className="reveal relative mx-auto w-full max-w-[340px]">
+            <div className="card-float overflow-hidden p-2.5">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={instructor.photo} alt="Chris (Crispus Roshan)" width={640} height={800} loading="lazy" className="block aspect-[4/5] w-full rounded-[10px] object-cover grayscale" />
+            </div>
+          </figure>
           <div>
-            <SectionHead label="Before you start" title="Prerequisites" />
-            <ul className="reveal mt-8 border-t hairline">
-              {course.prerequisites.map((p) => (
-                <li key={p} className="flex items-start gap-3 border-b hairline py-4">
-                  <span className="mt-[9px] h-1.5 w-1.5 shrink-0 bg-ink" aria-hidden="true" /> {p}
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <SectionHead label="Dates" title="Upcoming" second="cohorts." />
+            <SectionHead label="Your instructor" title="Chris," second="Crispus Roshan." />
+            <p className="t-body reveal mt-6 max-w-[560px]">{instructor.bio}</p>
             <div className="reveal mt-8">
-              <CohortList courseId={course.id} initial={course.cohorts} limit={4} />
+              <span className="label label-plain">Upcoming cohorts</span>
+              <div className="mt-4 max-w-[520px]">
+                <CohortList courseId={course.id} initial={course.cohorts} limit={4} />
+              </div>
             </div>
           </div>
         </div>
       </Row>
 
-      <Row n="06">
-        <div className="grid md:grid-cols-[380px_1fr]">
-          <div className="fill-iso grid place-items-center border-b hairline p-8 md:border-b-0 md:border-r">
-            <figure className="corners w-full max-w-[280px] bg-white p-3">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={instructor.photo} alt="Chris (Crispus Roshan)" width={640} height={800} loading="lazy" className="block aspect-[4/5] w-full object-cover grayscale" />
-              <figcaption className="t-mono-sm px-1 pb-1 pt-3 text-muted">{instructor.fullName}</figcaption>
-            </figure>
-          </div>
-          <div className="pad flex flex-col justify-center py-12 md:py-16">
-            <SectionHead label="Your instructor" title="Chris" second="Crispus Roshan" />
-            <p className="t-body reveal mt-6 max-w-[560px]">{instructor.bio}</p>
-          </div>
-        </div>
-      </Row>
-
       {c.faq.length > 0 && (
-        <Row n="07">
-          <div className="pad sec grid gap-10 md:grid-cols-[1fr_1.6fr]">
-            <SectionHead title="Questions" />
+        <Row tone="white">
+          <div className="pad sec grid gap-10 md:grid-cols-[1fr_1.6fr] md:gap-16">
+            <SectionHead label="FAQ" title="Questions," second="answered." />
             <Accordion items={c.faq} />
           </div>
         </Row>
       )}
 
-      <Row n="08" tone="night">
-        <div className="pad sec flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
-          <div className="reveal">
-            <h2 className="t-h2">
-              {course.cohorts.length ? "Save your seat." : "Be first in line."}
-              <br />
-              <span className="t-second">{fmtPrice(course.price)} · {course.weeks} weeks · live</span>
-            </h2>
-          </div>
-          <div className="reveal flex flex-wrap gap-3">
-            {course.cohorts.length > 0 && (
-              <a href={`${site.appUrl}/courses/${course.slug}`} className="btn btn-paper">
-                <Pixel name="spark" size={14} /> Enroll
-              </a>
-            )}
-            <a href={site.bookCall} target="_blank" rel="noreferrer" className="btn btn-line">
-              Book a free call <ArrowUpRight />
-            </a>
-          </div>
-        </div>
-      </Row>
+      <ResourceCta
+        title={course.cohorts.length ? "Save your seat." : "Be first in line."}
+        body={`${fmtPrice(course.price)} · ${course.weeks} weeks · live with Chris. Not sure it's the right track? Book a free call first.`}
+        courseHref={course.cohorts.length ? `${site.appUrl}/courses/${course.slug}` : "#top"}
+        courseLabel={course.cohorts.length ? "Enroll now" : "Get notified"}
+      />
     </>
   );
 }

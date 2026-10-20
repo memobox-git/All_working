@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { Row, SectionHead } from "@/components/row";
 import { Accordion } from "@/components/accordion";
 import { CareerPlans } from "@/components/career/plans";
 import { PaidBanner } from "@/components/career/paid-banner";
-import { ArrowUpRight, Pixel } from "@/components/icons";
-import { IsoStack } from "@/components/illustrations";
+import { ArrowRight, Pixel, type PixelName } from "@/components/icons";
 import { site } from "@/content/site";
 
 export const metadata: Metadata = {
@@ -25,19 +23,19 @@ const pipeline = [
 ];
 
 const problems = [
-  "Resumes that never make it past the applicant tracking system",
-  "Generic, template resumes that blend in with thousands of others",
-  "Weak positioning: no clear story about what makes you valuable",
-  "No strategy for where, how or when to apply",
+  { title: "Filtered out early", body: "Resumes that never make it past the applicant tracking system, so no human ever reads them." },
+  { title: "Blending in", body: "Generic, template resumes that look like thousands of others for the same role." },
+  { title: "No clear story", body: "Weak positioning: nothing that says what makes you valuable, or for which role." },
+  { title: "No plan", body: "No strategy for where, how or when to apply, so effort turns into silence." },
 ];
 
-const included = [
-  { title: "Resume rewrite", icon: "doc" as const, items: ["Full rewrite or optimisation", "Keywords for your target roles", "Metrics-driven achievement bullets", "2+ rounds of revisions"] },
-  { title: "LinkedIn profile", icon: "user" as const, items: ["Headline and About rewrite", "Experience section optimisation", "Keywords for recruiter search", "Profile visibility strategy"] },
-  { title: "Role positioning", icon: "target" as const, items: ["Target role identification", "Seniority jump strategy", "Narrative positioning", "Personal brand alignment"] },
-  { title: "Resume marketing kit", icon: "chat" as const, items: ["Recruiter DM templates", "Referral request templates", "Follow-up email templates", "Cover letter template", "“Tell me about yourself” pitch"] },
-  { title: "Application strategy", icon: "flow" as const, items: ["Where and how to apply", "Application tracking system", "Referrals vs cold applying", "Follow-up timing"] },
-  { title: "1:1 review call", icon: "calendar" as const, items: ["30–45 minute live strategy session", "Resume and LinkedIn walkthrough", "A 30-day action plan", "Open Q&A"] },
+const included: { title: string; icon: PixelName; items: string[] }[] = [
+  { title: "Resume rewrite", icon: "doc", items: ["Full rewrite or optimisation", "Keywords for your target roles", "Metrics-driven achievement bullets", "2+ rounds of revisions"] },
+  { title: "LinkedIn profile", icon: "user", items: ["Headline and About rewrite", "Experience section optimisation", "Keywords for recruiter search", "Profile visibility strategy"] },
+  { title: "Role positioning", icon: "target", items: ["Target role identification", "Seniority jump strategy", "Narrative positioning", "Personal brand alignment"] },
+  { title: "Resume marketing kit", icon: "chat", items: ["Recruiter DM templates", "Referral request templates", "Follow-up email templates", "Cover letter template", "“Tell me about yourself” pitch"] },
+  { title: "Application strategy", icon: "flow", items: ["Where and how to apply", "Application tracking system", "Referrals vs cold applying", "Follow-up timing"] },
+  { title: "1:1 review call", icon: "calendar", items: ["30–45 minute live strategy session", "Resume and LinkedIn walkthrough", "A 30-day action plan", "Open Q&A"] },
 ];
 
 const faqs = [
@@ -53,136 +51,105 @@ export default function CareerPage() {
   return (
     <>
       <PaidBanner />
-      <Row n="01" tone="white" showInlineNum={false}>
-        <p className="t-mono pad flex items-center justify-between gap-4 py-4 text-muted">
-          <span>Stackle / Career service</span>
-          <span className="hidden sm:inline">From $250</span>
-        </p>
-      </Row>
-
-      <Row n="02">
-        <div className="grid md:grid-cols-[1.3fr_1fr]">
-          <div className="pad pb-12 pt-10 md:pb-20 md:pt-20">
-            <SectionHead
-              as="h1"
-              label="Resume · LinkedIn · Strategy"
-              title="More interviews,"
-              second="starting with your resume."
-              lede="Not just resume editing: a full resume, LinkedIn, positioning and application strategy system for tech professionals, from someone who has interviewed 200+ engineers."
-            />
-            <div className="reveal mt-10 flex flex-wrap items-center gap-x-8 gap-y-5">
+      <section className="fill-ruled">
+        <div className="mx-auto grid max-w-[1200px] gap-12 px-5 pb-20 pt-10 md:px-10 md:pb-28 md:pt-20 lg:grid-cols-[1.2fr_1fr] lg:items-center">
+          <div>
+            <span className="label reveal">Resume · LinkedIn · Strategy</span>
+            <h1 className="t-display reveal mt-7">
+              More interviews, <span className="t-accent">starting with your resume.</span>
+            </h1>
+            <p className="t-lede reveal mt-7 max-w-[560px]">
+              Not just resume editing: a full resume, LinkedIn, positioning and application strategy system for tech professionals, from someone who has interviewed 200+ engineers.
+            </p>
+            <div className="reveal mt-9 flex flex-wrap gap-3">
               <a href="#plans" className="btn btn-ink">
-                <Pixel name="spark" size={14} /> Get started from $250
+                Get started from $250 <ArrowRight />
               </a>
-              <a href={site.coachUrl} className="dlink">
-                Or try the free AI resume review <ArrowUpRight />
+              <a href={site.coachUrl} className="btn btn-line">
+                Free AI resume review
               </a>
             </div>
           </div>
-          <div className="fill-iso grid place-items-center border-t hairline p-10 md:border-l md:border-t-0">
-            <IsoStack className="w-full max-w-[300px]" labels={["Resume", "LinkedIn", "Strategy"]} />
+          <div className="card-float reveal mx-auto w-full max-w-[440px] p-5 md:p-6" style={{ ["--d" as string]: ".1s" }}>
+            <div className="flex items-center justify-between gap-3">
+              <p className="t-serif text-[21px]">Your hiring pipeline</p>
+              <span className="rounded-full border border-line-strong px-2.5 py-1 text-[12px] font-semibold">7 stages</span>
+            </div>
+            <ol className="mt-4">
+              {pipeline.map((p, i) => (
+                <li key={p.name} className="flex items-center justify-between gap-3 border-t hairline py-2.5 text-[14.5px]">
+                  <span className="flex items-center gap-3">
+                    <span className="t-serif w-5 text-[13px] text-muted">{String(i + 1).padStart(2, "0")}</span>
+                    <span className={p.ours ? "font-semibold text-ink" : "text-ink-2"}>{p.name}</span>
+                  </span>
+                  {p.ours ? (
+                    <span className="flex items-center gap-1.5 rounded-full bg-ink px-2.5 py-1 text-[12px] font-semibold text-paper">
+                      <Pixel name="check" size={12} /> We fix
+                    </span>
+                  ) : (
+                    <span className="text-[13px] text-muted">{p.note}</span>
+                  )}
+                </li>
+              ))}
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      <Row tone="white">
+        <div className="pad sec">
+          <SectionHead label="Sound familiar?" title="Skilled, and still" second="not getting calls." lede="You've built real things. Your resume just isn't doing the selling for you. Whether you're a data engineer, software engineer, analyst, ML engineer or a career switcher, the problem is the same." />
+          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {problems.map((p, i) => (
+              <div key={p.title} className="panel reveal relative overflow-hidden p-6" style={{ ["--d" as string]: `${i * 0.05}s` }}>
+                <span className="absolute inset-y-0 left-0 w-[3px] bg-ink" aria-hidden="true" />
+                <h3 className="t-h4">{p.title}</h3>
+                <p className="t-small mt-3">{p.body}</p>
+              </div>
+            ))}
           </div>
         </div>
       </Row>
 
-      <Row n="03">
-        <div className="pad sec pb-0 md:pb-0">
-          <SectionHead label="The pipeline" title="Getting hired is a pipeline." second="Every stage feeds the next." lede="Most people practise for interviews they never get. We fix the stages at the top, where the interviews come from." />
-        </div>
-        <ol className="mt-12 grid grid-cols-2 gap-px border-t hairline bg-line sm:grid-cols-4 lg:grid-cols-7 md:mt-16">
-          {pipeline.map((p, i) => (
-            <li key={p.name} className={`flex min-h-[150px] flex-col justify-between p-5 ${p.ours ? "bg-ink text-paper" : "bg-paper"}`}>
-              <span className="flex items-center justify-between">
-                <span className={`t-mono-sm ${p.ours ? "text-night-muted" : "text-muted"}`}>{String(i + 1).padStart(2, "0")}</span>
-                {p.ours && <span className="t-mono-sm border border-paper px-1.5 py-0.5">We fix</span>}
-              </span>
-              <span>
-                <span className="block text-[17px] font-medium tracking-[-0.01em]">{p.name}</span>
-                <span className={`mt-1 block text-[13px] ${p.ours ? "text-night-muted" : "text-muted"}`}>{p.note}</span>
-              </span>
-            </li>
-          ))}
-          <li className="hidden bg-paper sm:block lg:hidden" aria-hidden="true" />
-        </ol>
-      </Row>
-
-      <Row n="04" tone="night">
-        <div className="pad sec grid gap-12 md:grid-cols-2">
-          <SectionHead label="Sound familiar?" title="Skilled, and still" second="not getting calls." lede="You've built real things. Your resume just isn't doing the selling for you. Whether you're a data engineer, software engineer, analyst, ML engineer or a career switcher, the problem is the same." />
-          <ul className="reveal self-end border-t hairline">
-            {problems.map((p, i) => (
-              <li key={p} className="flex items-start gap-4 border-b hairline py-5">
-                <span className="t-pixel w-8 shrink-0 text-[20px]">{String(i + 1).padStart(2, "0")}</span>
-                <span className="text-[17px]">{p}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </Row>
-
-      <Row n="05">
-        <div className="pad sec pb-0 md:pb-0">
+      <Row>
+        <div className="pad sec">
           <SectionHead label="What's included" title="Everything you need" second="to land more interviews." />
-        </div>
-        <ul className="mt-12 grid gap-px border-t hairline bg-line sm:grid-cols-2 lg:grid-cols-3 md:mt-16">
-          {included.map((b, i) => (
-            <li key={b.title} className="flex flex-col bg-paper p-6 md:p-8">
-              <span className="flex items-center justify-between">
-                <span className="grid h-11 w-11 place-items-center border border-line bg-white">
-                  <Pixel name={b.icon} size={16} />
+          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {included.map((b, i) => (
+              <div key={b.title} className="panel reveal flex flex-col p-6 md:p-7" style={{ ["--d" as string]: `${i * 0.04}s` }}>
+                <span className="icon-tile">
+                  <Pixel name={b.icon} size={19} />
                 </span>
-                <span className="t-mono-sm text-muted">{String(i + 1).padStart(2, "0")}</span>
-              </span>
-              <h3 className="t-h4 mt-6">{b.title}</h3>
-              <ul className="mt-4 grid gap-2">
-                {b.items.map((x) => (
-                  <li key={x} className="t-small flex items-start gap-2.5">
-                    <span className="mt-[8px] h-1 w-1 shrink-0 bg-ink" aria-hidden="true" />
-                    {x}
-                  </li>
-                ))}
-              </ul>
-            </li>
-          ))}
-        </ul>
-      </Row>
-
-      <Row n="06" id="plans">
-        <div className="pad sec pb-12 md:pb-16">
-          <SectionHead label="Pricing" title="Choose your plan." second="Secure checkout with Stripe." />
-        </div>
-        <div className="border-t hairline">
-          <CareerPlans />
+                <h3 className="t-h4 mt-6">{b.title}</h3>
+                <ul className="dot-list mt-4 grid gap-2 text-[14.5px] text-ink-2">
+                  {b.items.map((x) => (
+                    <li key={x}>{x}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
         </div>
       </Row>
 
-      <Row n="07">
-        <div className="pad sec grid gap-10 md:grid-cols-[1fr_1.6fr]">
+      <Row tone="white" id="plans">
+        <div className="pad sec">
+          <SectionHead label="Pricing" title="Choose" second="your plan." lede="One flat price, no hourly billing. Secure checkout with Stripe." />
+          <div className="mt-12">
+            <CareerPlans />
+          </div>
+        </div>
+      </Row>
+
+      <Row>
+        <div className="pad sec grid gap-10 md:grid-cols-[1fr_1.6fr] md:gap-16">
           <div>
-            <SectionHead title="Questions" />
+            <SectionHead label="FAQ" title="Questions," second="answered." />
             <a href={`mailto:${site.email}`} className="dlink reveal mt-6">
-              {site.email} <ArrowUpRight />
+              {site.email} <ArrowRight />
             </a>
           </div>
           <Accordion items={faqs} />
-        </div>
-      </Row>
-
-      <Row n="08" tone="night">
-        <div className="pad sec flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
-          <h2 className="t-h2 reveal">
-            Stop waiting.
-            <br />
-            <span className="t-second">Start getting interviews.</span>
-          </h2>
-          <div className="reveal flex flex-wrap gap-3">
-            <a href="#plans" className="btn btn-paper">
-              <Pixel name="spark" size={14} /> Get started for $250
-            </a>
-            <Link href="/courses" className="btn btn-line">
-              Or join a cohort <ArrowUpRight />
-            </Link>
-          </div>
         </div>
       </Row>
     </>

@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { type Cohort, fmtDate, fmtDays, fmtPrice, fmtRange, daysUntil } from "@/lib/courses";
 import { joinWaitlist, type WaitlistResult } from "@/lib/supabase";
-import { ArrowUpRight, Pixel } from "@/components/icons";
+import { ArrowRight, ArrowUpRight } from "@/components/icons";
 import { useLiveCohorts } from "./live-cohorts";
 
 // Price, cohort picker and the hand-off to the learner app (learn.stackle.io), which handles sign-up,
@@ -43,12 +43,12 @@ export function EnrollPanel({
   return (
     <div className="panel">
       <div className="border-b hairline p-6">
-        <p className="t-mono-sm text-muted">Enrollment fee</p>
+        <p className="t-mono-sm text-muted">Tuition</p>
         <p className="mt-3 flex items-baseline gap-2">
-          <span className="t-pixel text-[56px] leading-none tracking-[-0.04em]">{fmtPrice(price)}</span>
-          <span className="t-mono-sm text-muted">USD</span>
+          <span className="t-serif text-[56px] leading-none tracking-[-0.03em]">{fmtPrice(price)}</span>
+          <span className="text-[14px] text-muted">USD</span>
         </p>
-        <dl className="mt-6 grid grid-cols-2 border hairline">
+        <dl className="mt-6 grid grid-cols-2 overflow-hidden rounded-[10px] border hairline">
           <div className="p-3">
             <dt className="t-mono-sm text-muted">Duration</dt>
             <dd className="mt-1.5 font-medium">{weeks} weeks</dd>
@@ -72,23 +72,24 @@ export function EnrollPanel({
                 const d = now === null ? -1 : daysUntil(k.start, now);
                 const on = k.id === pick;
                 return (
-                  <label key={k.id} className={`flex cursor-pointer items-center gap-3 border p-3 transition-colors ${on ? "border-ink bg-paper" : "border-line hover:border-ink"}`}>
+                  <label key={k.id} className={`flex cursor-pointer items-center gap-3 rounded-[10px] border p-3 transition-colors ${on ? "border-ink bg-paper" : "border-line hover:border-ink"}`}>
                     <input type="radio" name={`cohort-${slug}`} value={k.id} checked={on} onChange={() => setPick(k.id)} className="sr-only" />
-                    <span aria-hidden="true" className={`grid h-4 w-4 place-items-center border ${on ? "border-ink" : "border-line-strong"}`}>
-                      {on && <span className="h-2 w-2 bg-ink" />}
+                    <span aria-hidden="true" className={`grid h-[18px] w-[18px] place-items-center rounded-full border ${on ? "border-ink" : "border-line-strong"}`}>
+                      {on && <span className="h-2 w-2 rounded-full bg-ink" />}
                     </span>
                     <span className="flex-1">
                       <span className="block font-medium">{fmtRange(k.start, k.end)}</span>
                       <span className="t-mono-sm text-muted">{fmtDays(k.days)}</span>
                     </span>
-                    {d >= 0 && d <= 7 && <span className="t-mono-sm bg-ink px-1.5 py-1 text-paper">{d <= 0 ? "Today" : `${d}d left`}</span>}
+                    {d >= 0 && d <= 7 && <span className="rounded-full bg-ink px-2 py-1 text-[11.5px] font-semibold text-paper">{d <= 0 ? "Today" : `${d}d left`}</span>}
                   </label>
                 );
               })}
             </div>
           </fieldset>
           <a href={`${appUrl}/courses/${slug}${chosen ? `?cohort=${chosen.id}` : ""}`} className="btn btn-ink btn-block mt-5">
-            <Pixel name="spark" size={14} /> Enroll{chosen ? ` · starts ${fmtDate(chosen.start, { month: "short", day: "numeric" })}` : ""}
+            Enroll{chosen ? ` · starts ${fmtDate(chosen.start, { month: "short", day: "numeric" })}` : ""}
+            <ArrowRight />
           </a>
           <p className="t-small mt-3 text-center">You&apos;ll create your account and pay securely with Stripe.</p>
         </div>
@@ -123,7 +124,7 @@ function Waitlist({ slug, title }: { slug: string; title: string }) {
       <p className="t-mono-sm text-muted">Next cohort</p>
       <p className="mt-2 font-medium">Not scheduled yet. Get an email when it opens.</p>
       {state === "joined" || state === "already" ? (
-        <p role="status" className="mt-4 border border-ink bg-paper p-3 text-[15px]">
+        <p role="status" className="mt-4 rounded-[10px] border border-ink bg-paper p-3 text-[15px]">
           {state === "joined" ? `You're on the list for the ${title}.` : "You're already on the list. We'll email you."}
         </p>
       ) : (

@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { Row, SectionHead } from "@/components/row";
 import { Library } from "@/components/resources/library";
 import { ResourceCta } from "@/components/resources/resource-shell";
@@ -20,14 +19,8 @@ export default function ResourcesPage() {
   ];
   return (
     <>
-      <Row n="01" tone="white" showInlineNum={false}>
-        <p className="t-mono pad flex justify-between py-4 text-muted">
-          <span>Stackle / Resource library</span>
-          <Link href="/courses" className="hidden hover:text-ink sm:inline">Want it taught live? Academy →</Link>
-        </p>
-      </Row>
-      <Row n="02">
-        <div className="pad pb-12 pt-10 md:pb-16 md:pt-20">
+      <section className="fill-ruled">
+        <div className="mx-auto max-w-[1200px] px-5 pb-14 pt-10 md:px-10 md:pb-20 md:pt-20">
           <SectionHead
             as="h1"
             label="Free resources"
@@ -35,20 +28,20 @@ export default function ResourcesPage() {
             second="your next career move."
             lede="Roadmaps, interview preparation and hands-on references for modern data and AI roles. No sign-up, no paywall."
           />
+          <dl className="reveal mt-12 grid grid-cols-2 gap-x-8 gap-y-8 md:mt-16 md:grid-cols-4">
+            {totals.map((m) => (
+              <div key={m.l} className="flex flex-col border-t border-line-strong pt-5">
+                <dt className="order-2 mt-2 text-[14px] text-muted">{m.l}</dt>
+                <dd className="t-serif order-1 text-[40px] leading-none tracking-[-0.03em] md:text-[52px]">{m.v}</dd>
+              </div>
+            ))}
+          </dl>
         </div>
-        <dl className="grid grid-cols-2 border-t hairline md:grid-cols-4">
-          {totals.map((m, i) => (
-            <div key={m.l} className={`corners flex flex-col px-5 py-6 md:px-8 md:py-8 ${i % 2 ? "border-l hairline" : ""} ${i > 1 ? "border-t hairline md:border-t-0" : ""} ${i === 2 ? "md:border-l" : ""}`}>
-              <dt className="t-mono-sm order-2 mt-3 text-muted">{m.l}</dt>
-              <dd className="t-pixel order-1 text-[40px] leading-none md:text-[52px]">{m.v}</dd>
-            </div>
-          ))}
-        </dl>
-      </Row>
-      <Row n="03" showInlineNum={false}>
+      </section>
+      <Row>
         <Library items={resources} />
       </Row>
-      <ResourceCta n="04" title="Learn it live, not alone." />
+      <ResourceCta title="Learn it live, not alone." />
     </>
   );
 }

@@ -20,14 +20,14 @@ export function Library({ items }: { items: ResourceItem[] }) {
 
   return (
     <>
-      <div className="sticky top-[68px] z-30 border-b hairline bg-paper/95 backdrop-blur md:top-[72px]">
+      <div className="sticky top-[72px] z-30 border-b hairline bg-paper/95 backdrop-blur md:top-[80px]">
         <div className="flex flex-col gap-3 py-3 md:flex-row md:items-center md:justify-between">
           <div role="tablist" aria-label="Resource type" className="pad flex gap-2 overflow-x-auto [scrollbar-width:none]">
             {tabs.map((t) => {
               const n = t === "All" ? items.length : items.filter((r) => r.group === t).length;
               const on = t === group;
               return (
-                <button key={t} role="tab" aria-selected={on} onClick={() => setGroup(t)} className={`t-mono-sm flex shrink-0 items-center gap-2 border px-3 py-2.5 transition-colors ${on ? "border-ink bg-ink text-paper" : "border-line bg-white hover:border-ink"}`}>
+                <button key={t} role="tab" aria-selected={on} onClick={() => setGroup(t)} className={`flex shrink-0 items-center gap-2 rounded-full border px-4 py-2 text-[14.5px] font-semibold transition-colors ${on ? "border-ink bg-ink text-paper" : "border-line-strong bg-white hover:border-ink"}`}>
                   {t}
                   <span className={on ? "text-night-muted" : "text-muted"}>{n}</span>
                 </button>
@@ -38,26 +38,23 @@ export function Library({ items }: { items: ResourceItem[] }) {
             <label className="relative block md:w-[300px]">
               <span className="sr-only">Search the library</span>
               <Search className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-muted" />
-              <input type="search" value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search the library" className="field !min-h-[44px] pl-11" />
+              <input type="search" value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search the library" className="field !min-h-[44px] !rounded-full pl-11" />
             </label>
           </div>
         </div>
       </div>
-      <p className="t-mono-sm pad py-4 text-muted" aria-live="polite">
+      <p className="pad pb-2 pt-6 text-[14px] text-muted" aria-live="polite">
         {shown.length} {shown.length === 1 ? "resource" : "resources"}
       </p>
       {shown.length ? (
-        <div className="grid gap-px border-t hairline bg-line sm:grid-cols-2 lg:grid-cols-3">
-          {shown.map((r, i) => (
-            <ResourceCard key={r.slug} r={r} n={i + 1} />
-          ))}
-          {Array.from({ length: (3 - (shown.length % 3)) % 3 }).map((_, i) => (
-            <div key={`f${i}`} className="fill-hatch hidden bg-paper lg:block" aria-hidden="true" />
+        <div className="pad grid gap-5 pb-20 pt-4 sm:grid-cols-2 lg:grid-cols-3 md:pb-28">
+          {shown.map((r) => (
+            <ResourceCard key={r.slug} r={r} />
           ))}
         </div>
       ) : (
-        <div className="pad border-t hairline py-16 text-center">
-          <p className="t-h4">Nothing matches “{q}”.</p>
+        <div className="pad py-20 text-center">
+          <p className="t-h3">Nothing matches “{q}”.</p>
           <button className="dlink mt-4" onClick={() => { setQ(""); setGroup("All"); }}>Clear the search</button>
         </div>
       )}
