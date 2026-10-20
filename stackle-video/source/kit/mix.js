@@ -1,13 +1,13 @@
-// Builds the intro soundtrack: the voiceover plus the sound design cued by the
-// scene (window.SFX, saved by render-pro.js as <video>.cues.json), ducks the
+// Builds a video's soundtrack: the voiceover plus the sound design cued by the
+// page (window.SFX, saved by render-pro.js as <video>.cues.json), ducks the
 // bed under the voice and normalises to YouTube loudness (-14 LUFS).
-// Usage: node mix.js <video.cues.json> <out.wav>
+// Usage: node mix.js <video.cues.json> <out.wav> <voiceover.mp3>
 const { spawnSync } = require('child_process');
 const fs = require('fs');
 const path = require('path');
 
-const A = path.join(__dirname, 'audio');
-const [cuesFile, out] = process.argv.slice(2);
+const SFX = path.join(__dirname, 'sfx');
+const [cuesFile, out, vo] = process.argv.slice(2);
 const { duration, offset, sfx } = JSON.parse(fs.readFileSync(cuesFile, 'utf8'));
 
 // level of each kind of sound before the per-cue gain
@@ -23,7 +23,7 @@ const ff = args => {
 const fmt = 'aformat=sample_rates=48000:channel_layouts=stereo';
 const D = duration.toFixed(3);
 
-const inputs = ['-i', path.join(A, 'vo.mp3'), '-stream_loop', '-1', '-i', path.join(A, 'sfx', 'bed.mp3')];
+const inputs = ['-i', vo, '-stream_loop', '-1', '-i', path.join(SFX, 'bed.mp3')];
 const graph = [
   `[0:a]${fmt},highpass=f=70,acompressor=threshold=-20dB:ratio=3:attack=5:release=120:makeup=1.6,adelay=${Math.round(offset * 1000)}:all=1,apad=whole_dur=${D},asplit=2[vo][key]`,
   `[1:a]${fmt},atrim=0:${D},volume=${LEVEL.bed},afade=t=in:d=1.2,afade=t=out:st=${(duration - 2.2).toFixed(3)}:d=2.2[bedraw]`,
@@ -33,7 +33,7 @@ const labels = ['[vo]', '[bed]'];
 sfx.filter(c => c.file !== 'bed').forEach((c, i) => {
   const kind = c.file.replace(/_\d+$/, '');
   const lead = LEAD[c.file] || 0, start = Math.max(0, lead - c.t), delay = Math.max(0, c.t - lead);
-  inputs.push('-i', path.join(A, 'sfx', c.file + '.mp3'));
+  inputs.push('-i', path.join(SFX, c.file + '.mp3'));
   const trim = TRIM[kind] ? `,atrim=end=${TRIM[kind]},afade=t=out:st=${TRIM[kind] - .15}:d=0.15` : '';
   graph.push(`[${i + 2}:a]${fmt},atrim=start=${start.toFixed(3)},asetpts=PTS-STARTPTS${trim},volume=${(LEVEL[kind] * c.gain).toFixed(3)},adelay=${Math.round(delay * 1000)}:all=1[s${i}]`);
   labels.push(`[s${i}]`);

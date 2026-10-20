@@ -1,0 +1,169 @@
+{
+ "model_id": "eleven_scribe_v1",
+ "text": "[confident] Quick pause. Want to become an AI engineer? Join my AI Engineering Masterclass and learn the skills companies hire for. The link is in the description.",
+ "spoken_duration_secs": 8.72,
+ "words": [
+  {
+   "text": "[confident]",
+   "type": "word",
+   "start": 0,
+   "end": 0.067
+  },
+  {
+   "text": "Quick",
+   "type": "word",
+   "start": 0.08,
+   "end": 0.24
+  },
+  {
+   "text": "pause.",
+   "type": "word",
+   "start": 0.44,
+   "end": 0.84
+  },
+  {
+   "text": "Want",
+   "type": "word",
+   "start": 1.04,
+   "end": 1.2
+  },
+  {
+   "text": "to",
+   "type": "word",
+   "start": 1.24,
+   "end": 1.28
+  },
+  {
+   "text": "become",
+   "type": "word",
+   "start": 1.36,
+   "end": 1.52
+  },
+  {
+   "text": "an",
+   "type": "word",
+   "start": 1.6,
+   "end": 1.68
+  },
+  {
+   "text": "AI",
+   "type": "word",
+   "start": 1.76,
+   "end": 1.96
+  },
+  {
+   "text": "engineer?",
+   "type": "word",
+   "start": 2,
+   "end": 2.8
+  },
+  {
+   "text": "Join",
+   "type": "word",
+   "start": 2.92,
+   "end": 3.04
+  },
+  {
+   "text": "my",
+   "type": "word",
+   "start": 3.12,
+   "end": 3.28
+  },
+  {
+   "text": "AI",
+   "type": "word",
+   "start": 3.36,
+   "end": 3.52
+  },
+  {
+   "text": "Engineering",
+   "type": "word",
+   "start": 3.6,
+   "end": 4
+  },
+  {
+   "text": "Masterclass",
+   "type": "word",
+   "start": 4.08,
+   "end": 4.8
+  },
+  {
+   "text": "and",
+   "type": "word",
+   "start": 4.92,
+   "end": 5.04
+  },
+  {
+   "text": "learn",
+   "type": "word",
+   "start": 5.12,
+   "end": 5.2
+  },
+  {
+   "text": "the",
+   "type": "word",
+   "start": 5.28,
+   "end": 5.32
+  },
+  {
+   "text": "skills",
+   "type": "word",
+   "start": 5.36,
+   "end": 5.76
+  },
+  {
+   "text": "companies",
+   "type": "word",
+   "start": 6,
+   "end": 6.24
+  },
+  {
+   "text": "hire",
+   "type": "word",
+   "start": 6.32,
+   "end": 6.56
+  },
+  {
+   "text": "for.",
+   "type": "word",
+   "start": 6.68,
+   "end": 7.12
+  },
+  {
+   "text": "The",
+   "type": "word",
+   "start": 7.16,
+   "end": 7.2
+  },
+  {
+   "text": "link",
+   "type": "word",
+   "start": 7.36,
+   "end": 7.52
+  },
+  {
+   "text": "is",
+   "type": "word",
+   "start": 7.6,
+   "end": 7.68
+  },
+  {
+   "text": "in",
+   "type": "word",
+   "start": 7.76,
+   "end": 7.84
+  },
+  {
+   "text": "the",
+   "type": "word",
+   "start": 7.88,
+   "end": 7.92
+  },
+  {
+   "text": "description.",
+   "type": "word",
+   "start": 8.2,
+   "end": 8.72
+  }
+ ]
+}

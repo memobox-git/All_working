@@ -1,0 +1,32 @@
+/* Shared look for Stackle's page-style videos: paper, ink, one red accent. */
+@font-face{font-family:PJS;font-weight:500;src:url(../node_modules/@fontsource/plus-jakarta-sans/files/plus-jakarta-sans-latin-500-normal.woff2)}
+@font-face{font-family:PJS;font-weight:600;src:url(../node_modules/@fontsource/plus-jakarta-sans/files/plus-jakarta-sans-latin-600-normal.woff2)}
+@font-face{font-family:PJS;font-weight:700;src:url(../node_modules/@fontsource/plus-jakarta-sans/files/plus-jakarta-sans-latin-700-normal.woff2)}
+@font-face{font-family:PJS;font-weight:800;src:url(../node_modules/@fontsource/plus-jakarta-sans/files/plus-jakarta-sans-latin-800-normal.woff2)}
+@font-face{font-family:Hand;font-weight:600;src:url(../node_modules/@fontsource/caveat/files/caveat-latin-600-normal.woff2)}
+
+:root{--paper:#FAFAF7;--ink:#1D1D1F;--grey:#6E6E73;--line:#B9B9BE;--red:#E2553E}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:100vw;height:100vh;overflow:hidden;background:var(--paper)}
+body{font-family:PJS,sans-serif;color:var(--ink);position:relative;-webkit-font-smoothing:antialiased}
+#grain{position:absolute;inset:0;opacity:.035;mix-blend-mode:multiply;pointer-events:none}
+
+.scene{position:absolute;inset:0;visibility:hidden;opacity:0}
+.ink{position:absolute;left:0;top:0;width:100%;height:100%;overflow:visible;pointer-events:none}
+.ink path,.photo svg path{fill:none;stroke:var(--ink);stroke-width:6;stroke-linecap:round;stroke-linejoin:round}
+.ink path.red{stroke:var(--red);stroke-width:7}
+.ink path.thin{stroke:var(--line);stroke-width:3}
+
+.at{position:absolute;left:170px}
+.pre{font-size:54px;font-weight:500;color:var(--grey)}
+.big{font-weight:800;letter-spacing:-.03em;line-height:1.02}
+.hand{font-family:Hand,cursive;font-weight:600;color:var(--red)}
+.red{color:var(--red)}
+.w{display:inline-block}
+
+.photo{position:absolute;transform:rotate(-2.5deg)}
+.photo img{position:absolute;left:24px;top:24px;width:calc(100% - 48px);height:calc(100% - 48px);object-fit:cover}
+.photo svg{position:absolute;left:0;top:0;width:100%;height:100%;overflow:visible}
+
+/* portrait frames (TikTok, Reels, Shorts) keep a wider left margin */
+.tall .at{left:110px}

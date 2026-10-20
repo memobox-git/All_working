@@ -1,32 +1,6 @@
-@font-face{font-family:PJS;font-weight:500;src:url(../node_modules/@fontsource/plus-jakarta-sans/files/plus-jakarta-sans-latin-500-normal.woff2)}
-@font-face{font-family:PJS;font-weight:600;src:url(../node_modules/@fontsource/plus-jakarta-sans/files/plus-jakarta-sans-latin-600-normal.woff2)}
-@font-face{font-family:PJS;font-weight:700;src:url(../node_modules/@fontsource/plus-jakarta-sans/files/plus-jakarta-sans-latin-700-normal.woff2)}
-@font-face{font-family:PJS;font-weight:800;src:url(../node_modules/@fontsource/plus-jakarta-sans/files/plus-jakarta-sans-latin-800-normal.woff2)}
-@font-face{font-family:Hand;font-weight:600;src:url(../node_modules/@fontsource/caveat/files/caveat-latin-600-normal.woff2)}
-
-:root{--paper:#FAFAF7;--ink:#1D1D1F;--grey:#6E6E73;--line:#B9B9BE;--red:#E2553E}
-*{margin:0;padding:0;box-sizing:border-box}
-html,body{width:100vw;height:100vh;overflow:hidden;background:var(--paper)}
-body{font-family:PJS,sans-serif;color:var(--ink);position:relative;-webkit-font-smoothing:antialiased}
-#grain{position:absolute;inset:0;opacity:.035;mix-blend-mode:multiply;pointer-events:none}
-
-.scene{position:absolute;inset:0;visibility:hidden;opacity:0}
-.ink{position:absolute;left:0;top:0;width:100%;height:100%;overflow:visible;pointer-events:none}
-.ink path,.photo svg path{fill:none;stroke:var(--ink);stroke-width:6;stroke-linecap:round;stroke-linejoin:round}
-.ink path.red{stroke:var(--red);stroke-width:7}
-.ink path.thin{stroke:var(--line);stroke-width:3}
-
-.at{position:absolute;left:170px}
-.pre{font-size:54px;font-weight:500;color:var(--grey)}
-.big{font-weight:800;letter-spacing:-.03em;line-height:1.02}
-.hand{font-family:Hand,cursive;font-weight:600;color:var(--red)}
-.red{color:var(--red)}
-.w{display:inline-block}
-
+/* Intro layout. Shared fonts, palette and pieces are in ../kit/kit.css. */
 /* S1 · photo stays through S2 */
-.photo{position:absolute;left:170px;top:150px;width:600px;height:738px;transform:rotate(-2.5deg)}
-.photo img{position:absolute;left:24px;top:24px;width:calc(100% - 48px);height:calc(100% - 48px);object-fit:cover}
-.photo svg{position:absolute;left:0;top:0;width:100%;height:100%;overflow:visible}
+#s1-photo{left:170px;top:150px;width:600px;height:738px}
 #s1-note{left:930px;top:140px;font-size:90px;white-space:nowrap}
 #s1-my{left:930px;top:270px}
 #s1-name{left:922px;top:322px;font-size:200px}
@@ -49,8 +23,7 @@ body{font-family:PJS,sans-serif;color:var(--ink);position:relative;-webkit-font-
 /* Portrait (TikTok, Reels, Shorts): on when the frame is taller than wide.
    Everything stays inside x 110-940 and y 160-1500, clear of the app's
    buttons on the right and the caption at the bottom. */
-.tall .at{left:110px}
-.tall .photo{left:110px;top:230px;width:520px;height:640px}
+.tall #s1-photo{left:110px;top:230px;width:520px;height:640px}
 .tall #s1-note{left:740px;top:330px;font-size:96px}
 .tall #s1-my{left:110px;top:915px;font-size:48px}
 .tall #s1-name{left:102px;top:962px;font-size:180px}

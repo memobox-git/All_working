@@ -19,20 +19,17 @@ Rendering is split into chunks, so a stopped build picks up where it left off wh
 |---|---|
 | `audio/vo.mp3` | The voiceover (ElevenLabs `eleven_v4`, take 2 of 4) |
 | `audio/vo.transcript.json` | Word timings for the voiceover |
-| `audio/sfx/` | Pencil strokes, paper slides and a quiet ambience bed (ElevenLabs sound effects) |
-| `img/chris.jpg` | The photo in the opening frame |
-| `make-cues.js` | Turns the word timings into `cues.js` |
+| `../kit/` | Shared fonts, palette, pen strokes, photo, sounds, cue writer and mixer (also used by `../asks`) |
 | `index.html`, `style.css` | The scenes: photo card with the name and two numbers, then Stackle and what it teaches |
-| `scene.js` | One GSAP timeline keyed to spoken words (`at('stackle')`), the hand-drawn strokes, counters and sound cues |
+| `scene.js` | The edit: one GSAP timeline keyed to spoken words (`at('stackle')`), built on `../kit/kit.js` |
 | `../render-pro.js` | Renders frames in parallel, with optional motion blur (`--sub`) |
-| `mix.js` | Voice, ducked bed and sound effects from the scene's cues, normalised to -14 LUFS |
 
 ## Changing things
 
 - **New voiceover take or new script:** replace `audio/vo.mp3` and `audio/vo.transcript.json` (an ElevenLabs transcript with word timings), then rebuild. Cues follow the words, so most timing adjusts itself. If you change the words, update the `at('word')` calls in `scene.js` that point at them.
 - **Numbers:** edit them in `index.html` and re-record the line.
 - **The 47-second version** (with the industries, offers and community numbers) is in git history at commit `9f1b913`.
-- **Photo:** replace `img/chris.jpg` (4:5, about 1024×1280).
+- **Photo:** replace `../kit/img/chris.jpg` (4:5, about 1024×1280).
 - **Vertical layout:** the `.tall` block at the end of `style.css`. It switches on by itself when the frame is taller than wide, and keeps everything clear of the app's buttons on the right and the caption at the bottom.
-- **Colours:** the variables at the top of `style.css`.
-- **Sound levels:** `LEVEL` in `mix.js`.
+- **Colours:** the variables at the top of `../kit/kit.css`.
+- **Sound levels:** `LEVEL` in `../kit/mix.js`.
