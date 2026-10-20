@@ -53,6 +53,17 @@ function shot(name, rect, { left, top, width, height, url, parent = stage }) {
   });
   return { el, sweep(t, per = 0.45) { marks.forEach((m, i) => tl.to(m, { scaleX: 1, duration: per, ease: 'power1.inOut' }, t + i * per)); } };
 }
+// Real launch footage (clips/) or a launch still (clips/stills/) in a frame,
+// labelled with who made it. `from` is how far into the clip it starts at t0.
+function tile(src, t0, { left, top, width, height, label, from = 0, still = false, labelTop = false, parent = stage }) {
+  const el = add(`<div class="clip" style="left:${left}px;top:${top}px;width:${width}px;height:${height}px"><img>${label ? `<div class="pill dark" style="position:absolute;left:16px;${labelTop ? 'top' : 'bottom'}:16px;height:48px;font-size:22px">${label}</div>` : ''}</div>`, parent);
+  const img = el.querySelector('img');
+  if (still) {
+    img.src = `clips/stills/${src}.jpg`;
+    tl.fromTo(img, { scale: 1 }, { scale: 1.08, duration: 8, ease: 'none' }, t0);
+  } else CLIP(img, src, t0 - from);
+  return el;
+}
 function phoneClip(name, t0, { left, top, width, parent = stage }) {
   const k = width / 368, H = Math.round(790 * k);
   const el = add(`<div class="clip" style="left:${left}px;top:${top}px;width:${width}px;height:${H}px;border:0;border-radius:${50 * k}px;background:#fff">
@@ -86,49 +97,36 @@ scene('r01', {
     tl.to(B.querySelector('.hl'), { scaleX: 1, duration: 0.45, ease: 'power1.inOut' }, at("can't ignore"));
     OUT(B, at('in the last') - 0.25, { y: -40 });
 
-    // 2. four companies, four launches
+    // 2. four companies, their own launch footage, each as it's named
     const C = add('<div class="abs" style="inset:0"></div>');
-    const head = add('<div class="abs h2" style="left:120px;top:110px">In the last <span style="color:var(--blue)">five months</span></div>', C);
+    const head = add('<div class="abs h2" style="left:150px;top:36px;font-size:56px">In the last <span style="color:var(--blue)">five months</span></div>', C);
     IN(head, at('in the last'), { x: -30, y: 0 });
-    const line = add('<div class="abs" style="left:120px;top:250px;width:1680px;height:4px;border-radius:2px;background:#E5E7EB"></div>', C);
-    tl.from(line, { scaleX: 0, transformOrigin: '0 50%', duration: 1.2, ease: 'power2.inOut' }, at('in the last') + 0.2);
-    const posts = [
-      ['google-spark-top', [280, 170, 880, 270], 'May 19, 2026', 'Gemini Spark', 'Google', 'google'],
-      ['xai-grokbot-top', [430, 200, 580, 190], 'Aug 11, 2026', 'Grok Bot', 'xAI', 'xai'],
-      ['meta-muse-top', [70, 140, 960, 352], 'Sep 8, 2026', 'Muse', 'Meta', 'meta'],
-      ['openai-dots-top', [440, 290, 560, 150], 'Sep 29, 2026', 'dots', 'OpenAI', 'openai'],
-    ];
-    const tags = [];
-    posts.forEach(([name, rect, date, prod, co, cue], i) => {
-      const x = 120 + i * 430;
-      const dot = add(`<div class="abs" style="left:${x + 195}px;top:242px;width:20px;height:20px;border-radius:50%;background:var(--blue);box-shadow:0 0 0 6px rgba(37,99,235,.15)"></div>`, C);
-      const card = add(`<div class="abs" style="left:${x}px;top:300px;width:410px"></div>`, C);
-      shot(name, rect, { left: 0, top: 0, width: 410, height: 150, url: SOURCES[name].domain, parent: card });
-      add(`<div style="position:absolute;top:214px;left:4px;right:4px">
-        <div class="mono" style="font-size:24px;color:var(--blue)">${date}</div>
-        <div class="h2" style="font-size:58px;margin-top:6px">${prod}</div>
-        <div class="body muted" style="font-size:30px">${co}</div></div>`, card);
-      const tag = add('<div class="pill blue" style="position:absolute;top:404px;left:4px;height:58px;font-size:26px"><span class="dot"></span>Personal AI agent</div>', card);
-      tags.push(tag);
-      POP(dot, at(cue));
-      IN(card, at(cue), { y: 60, duration: 0.55 });
+    const W = 790, H = 444, X = [150, 980], Y = [125, 595];
+    [['spark-mac', 0, 'Google · Gemini Spark · May 19', 'google'],
+     ['grok-meet', 1.2, 'xAI · Grok Bot · Aug 11', 'xai'],
+     ['muse-intro', 2.4, 'Meta · Muse · Sep 8', 'meta'],
+     ['dots-feedback', 0, 'OpenAI · dots · Sep 29', 'openai', true]].forEach(([src, from, label, cue, still], i) => {
+      const t = tile(src, at(cue), { left: X[i % 2], top: Y[i >> 1], width: W, height: H, label, from, still, parent: C });
+      IN(t, at(cue), { y: 50, scale: 0.96, duration: 0.5 });
     });
-    tags.forEach((t, i) => POP(t, at('personal ai agent') - 0.2 + i * 0.12));
+    const four = add('<div class="pill blue abs" style="left:760px;top:540px;height:84px;font-size:38px;padding:0 40px;box-shadow:0 20px 50px rgba(37,99,235,.25)"><span class="dot"></span>Personal AI agents</div>', C);
+    POP(four, at('personal ai agent') - 0.15, { scale: 1.3 });
     OUT(C, at('which is') - 0.1, { y: -40 });
 
-    // 3. what that means, in Meta's own words
+    // 3. what that means: Google's agent finishing a job on a locked phone, and Meta's own words
     const D = add('<div class="abs" style="inset:0"></div>');
-    const def = add(`<div class="abs center" style="left:0;right:0;top:130px">
-      <div class="pill dark" style="height:64px;font-size:30px">A personal AI agent</div>
-      <div class="h1" style="margin-top:34px;font-size:84px;line-height:1.15">An AI that <span class="k1" style="position:relative;display:inline-block;isolation:isolate"><span class="hl abs" style="inset:6px -8px;background:var(--hl);border-radius:8px;z-index:-1"></span>keeps working</span><br>even after you <span class="k2" style="position:relative;display:inline-block;isolation:isolate"><span class="hl abs" style="inset:6px -8px;background:var(--hl);border-radius:8px;z-index:-1"></span>close the app</span></div></div>`, D);
+    const def = add(`<div class="abs center" style="left:0;right:0;top:70px">
+      <div class="h1" style="font-size:80px;line-height:1.15">An AI that <span class="k1" style="position:relative;display:inline-block;isolation:isolate"><span class="hl abs" style="inset:6px -8px;background:var(--hl);border-radius:8px;z-index:-1"></span>keeps working</span><br>even after you <span class="k2" style="position:relative;display:inline-block;isolation:isolate"><span class="hl abs" style="inset:6px -8px;background:var(--hl);border-radius:8px;z-index:-1"></span>close the app</span></div></div>`, D);
     IN(def, at('which is'), { y: 30 });
     def.querySelectorAll('.hl').forEach(h => gsap.set(h, { scaleX: 0, transformOrigin: '0 50%' }));
     tl.to(def.querySelector('.k1 .hl'), { scaleX: 1, duration: 0.4, ease: 'power1.inOut' }, at('keeps working'));
     tl.to(def.querySelector('.k2 .hl'), { scaleX: 1, duration: 0.4, ease: 'power1.inOut' }, at('close the app'));
+    const g = tile('spark-notify', at('keeps working') - 0.2, { left: 150, top: 340, width: 800, height: 450, label: 'Google · Spark, on a locked phone', parent: D });
+    IN(g, at('keeps working') - 0.2, { y: 40 });
     const Q = add('<div class="abs" style="inset:0"></div>', D);
-    const q = shot('meta-muse-quote', [50, 400, 720, 100], { left: 360, top: 640, width: 1200, height: 160, parent: Q });
-    chip('Meta’s launch post · Sep 8, 2026', 330, 610, 'dark', Q);
-    IN(Q, at('even after') - 0.3, { y: 40 });
+    const q = shot('meta-muse-quote', [50, 395, 560, 110], { left: 1010, top: 450, width: 760, height: 180, parent: Q });
+    chip('Meta’s launch post · Sep 8, 2026', 985, 420, 'dark', Q);
+    IN(Q, at('even after') - 0.2, { x: 40, y: 0 });
     q.sweep(at('close the app'), 0.6);
     OUT(D, at('in this video') - 0.25, { y: -40 });
 

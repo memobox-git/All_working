@@ -304,21 +304,99 @@ scene('r30', {
   },
 });
 
+// ---------- r14: the personal agents themselves (paragraph 14) ----------
+// Each product's own launch footage as it's named; each trait shown by a
+// real moment from those launches.
+scene('r14', {
+  text: `Number three is the personal agent, like Meta's Muse, OpenAI's dots or xAI's Grok Bot. To put it simply, a personal agent is a DIY agent that comes ready to use, keeps running all the time, and can start the conversation instead of waiting for you.`,
+  build(at) {
+    numHead(3, 'The personal agent', 0.1, { left: 100, top: 50 });
+    const W = 560, H = 315, X = [100, 680, 1260], T = 170;
+    const muse = tile('muse-intro', at("meta's muse"), { left: X[0], top: T, width: W, height: H, label: 'Meta · Muse', from: 2.2 });
+    const dots = tile('dots-feedback', at("openai's dots"), { left: X[1], top: T, width: W, height: H, label: 'OpenAI · dots', still: true });
+    const grok = tile('grok-meet', at('grok bot'), { left: X[2], top: T, width: W, height: H, label: 'xAI · Grok Bot', from: 1.2 });
+    IN(muse, at("meta's muse"), { y: 50 }); IN(dots, at("openai's dots"), { y: 50 }); IN(grok, at('grok bot'), { y: 50 });
+    const sum = add('<div class="abs h2 center" style="left:0;right:0;top:540px;font-size:54px">A DIY agent that…</div>');
+    IN(sum, at('a personal agent is') - 0.1, { y: 30 });
+    // the traits, each on the launch moment that shows it
+    const trait = (i, txt, t) => {
+      const el = add(`<div class="abs" style="left:${X[i]}px;top:660px;width:${W}px;display:flex;gap:18px;align-items:flex-start">
+        <span style="flex:none;width:56px;height:56px;border-radius:16px;background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:center">${svgi('check', 32)}</span>
+        <div class="h3" style="font-size:40px">${txt}</div></div>`);
+      IN(el, t, { y: 30 });
+      tl.to([muse, dots, grok][i], { boxShadow: '0 0 0 6px rgba(37,99,235,.35), 0 40px 90px rgba(17,24,39,.14)', duration: 0.4 }, t);
+    };
+    trait(1, 'Comes ready to use', at('ready to use'));
+    const cloud = tile('grok-cloud', at('keeps running'), { left: X[2], top: T, width: W, height: H, label: 'xAI · Grok Bot', from: 2.2, labelTop: true });
+    FADE(cloud, at('keeps running'), { duration: 0.3 });
+    trait(2, 'Keeps running all the time', at('keeps running'));
+    const talk = tile('muse-training', at('can start'), { left: X[0], top: T, width: W, height: H, label: 'Meta · Muse messages first', from: 2.2 });
+    FADE(talk, at('can start'), { duration: 0.3 });
+    trait(0, 'Starts the conversation', at('can start'));
+    FADE(credit('Footage and images: Meta, OpenAI and xAI launch posts', 100, 1010), 0.4);
+  },
+});
+
+// ---------- r28: you just start talking (paragraph 28) ----------
+scene('r28', {
+  text: `Okay, now personal agents. With a personal agent like Muse, you don't make the folder, and you don't write the rules file. You just start talking.`,
+  build(at) {
+    FADE(chip('<span class="dot"></span>Now, personal agents', 120, 120, 'blue'), 0.2);
+    IN(add('<div class="abs h2" style="left:120px;top:210px;width:620px;font-size:56px">With a personal agent like Muse</div>'), at('with a personal'), { x: -30, y: 0 });
+    const row = (top, ok, txt, t) => IN(add(`<div class="abs h3" style="left:120px;top:${top}px;display:flex;gap:22px;align-items:center;font-size:40px${ok ? ';color:var(--blue)' : ''}">
+      <span style="flex:none;width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;${ok ? 'background:var(--blue);color:#fff' : 'background:#FFF1F3;color:var(--red)'}">${svgi(ok ? 'check' : 'x', 34)}</span>${txt}</div>`), t, { x: -30, y: 0 });
+    row(440, false, 'No folder to make', at("don't make"));
+    row(540, false, 'No rules file to write', at("don't write"));
+    row(640, true, 'You just start talking', at('just start'));
+    const t = tile('muse-talk', 0, { left: 800, top: 150, width: 1000, height: 562, label: 'Meta · Muse launch film' });
+    IN(t, 0.05, { x: 60, y: 0 });
+    FADE(credit('Footage: Meta, “Introducing Muse”, 8 Sep 2026', 800, 730), 0.4);
+  },
+});
+
 // ---------- r32: it acts before you ask (paragraph 32) ----------
+// Three real launch demos of an agent speaking first, each next to the job
+// version Chris describes.
 scene('r32', {
   text: `A personal agent can tell you when a job that matches you is posted, remind you when a recruiter has waited two days for your reply, or, like we saw earlier, message you the night before an interview.`,
   build(at) {
-    const ph = phoneClip('muse-rel', 0.2, { left: 160, top: 100, width: 380 });
-    IN(ph.el, 0.05, { y: 50 });
-    FADE(credit('Meta’s launch demo: Muse<br>starts the conversation', 160, 100 + ph.H + 14), 0.4);
-    FADE(chip('<span class="dot"></span>It acts before you ask', 680, 120, 'blue'), 0.2);
-    [['A new job that matches you: Data Engineer, posted an hour ago.', 'a job that'],
-     ['A recruiter has waited 2 days for your reply. Want a draft?', 'remind you'],
-     ['Your interview is tomorrow at 10. Practice round tonight?', 'message you the']].forEach(([t, c], i) => {
-      const n = add(`<div class="notif" style="left:680px;top:${230 + i * 240}px;width:1100px">
-        <div class="ap">${svgi('bell', 36, '#fff')}</div><div><div class="nh">Personal agent<span style="margin-left:auto">now</span></div><div class="nt">${t}</div></div></div>`);
-      IN(n, at(c), { y: -30, scale: 0.96 });
+    FADE(chip('<span class="dot"></span>It acts before you ask', 100, 60, 'blue'), 0.1);
+    const W = 560, H = 315, X = [100, 680, 1260], T = 150;
+    [['daily-brief', 4.5, 'Google · Daily Brief', 'Lists what needs you today', 'A new job that matches you', 'a job that'],
+     ['muse-flight', 1.8, 'Meta · Muse', '“Your flight is delayed. Change it?”', 'A recruiter waiting 2 days for your reply', 'remind you'],
+     ['spark-notify', 0, 'Google · Spark', '“The game is tomorrow. Snacks are in the cart.”', 'Your interview tomorrow at 10', 'message you the']].forEach(([src, from, label, real, job, cue], i) => {
+      const t = tile(src, at(cue), { left: X[i], top: T, width: W, height: H, label, from });
+      IN(t, at(cue), { y: 50 });
+      const c = add(`<div class="abs" style="left:${X[i]}px;top:${T + H + 30}px;width:${W}px">
+        <div class="h3" style="font-size:34px">${real}</div>
+        <div class="muted" style="font-size:22px;font-weight:700;margin-top:22px;letter-spacing:.04em">FOR YOU, IT COULD BE</div>
+        <div class="pill blue" style="margin-top:10px;height:64px;font-size:28px">${job}</div></div>`);
+      IN(c, at(cue) + 0.2, { y: 30 });
     });
+    FADE(credit('Footage: Google and Meta launch posts', 100, 1010), 0.4);
+  },
+});
+
+// ---------- r38: it runs on a computer in the cloud (paragraph 38) ----------
+scene('r38', {
+  text: `A personal agent keeps working because it doesn't run on your laptop. Muse, dots, Grok Bot and Google's agent each run on their own computer in the cloud, which just means a computer in a data center that's switched on all the time. So the agent can keep working while you sleep.`,
+  build(at) {
+    const lap = add(`<div class="abs" style="left:140px;top:360px;width:620px;height:420px">
+      <div class="lid abs" style="left:60px;top:0;width:500px;height:320px;border-radius:20px;background:linear-gradient(170deg,#1C2745,#0E1528);border:3px solid rgba(17,24,39,.2);transform-origin:50% 100%"><div class="abs" style="inset:18px;border-radius:10px;background:#0A1022"></div></div>
+      <div class="abs" style="left:0;top:320px;width:620px;height:30px;border-radius:6px 6px 18px 18px;background:#2A3554"></div>
+      <div class="abs center h3" style="left:0;right:0;top:390px">Your laptop</div></div>`);
+    IN(lap, 0.2);
+    tl.to(lap.querySelector('.lid'), { scaleY: 0.05, duration: 0.9, ease: 'power2.in' }, at("doesn't run"));
+    POP(add('<div class="abs pill" style="left:385px;top:580px">Closed</div>'), at("doesn't run") + 0.9);
+    POP(add(`<div class="abs moon" style="left:400px;top:430px;width:110px">${icon('moon')}</div>`), at('while you sleep'));
+    const g = tile('grok-cloud', at('muse') - 0.3, { left: 900, top: 110, width: 900, height: 506, label: 'xAI · Grok Bot launch film', from: 0.6, labelTop: true });
+    IN(g, at('muse') - 0.3, { x: 60, y: 0 });
+    const names = add('<div class="abs" style="left:900px;top:650px;width:900px;display:flex;flex-wrap:wrap;gap:16px"></div>');
+    [['Muse', 'muse'], ['dots', 'dots'], ['Grok Bot', 'grok bot'], ['Google’s agent', "google's agent"]].forEach(([n, c]) => POP(add(`<div class="pill" style="height:64px;font-size:30px">${n}</div>`, names), at(c)));
+    IN(add('<div class="abs h3" style="left:900px;top:750px;width:900px;font-size:42px">Each runs on its own computer in the cloud</div>'), at('each run'), { y: 20 });
+    const on = add(`<div class="abs" style="left:900px;top:840px;display:flex;align-items:center;gap:16px;font-size:34px;font-weight:700"><span class="dot" style="width:22px;height:22px;border-radius:50%;background:var(--green);box-shadow:0 0 0 6px rgba(22,163,74,.15)"></span>Switched on all the time</div>`);
+    IN(on, at('switched on'), { y: 20 });
+    tl.to(on.querySelector('.dot'), { opacity: 0.35, duration: 0.6, repeat: 7, yoyo: true, ease: 'sine.inOut' }, at('switched on') + 0.6);
   },
 });
 

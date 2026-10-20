@@ -68,6 +68,14 @@ How it's made:
 2. `python3 vo/timeline.py` gives every script word its time on the joined narration. It splits the video into 56 slots, one per visual (`vo/timeline.json`, `vo/timing.js`), and writes `vo/narration.wav`.
 3. `node build-video.js` renders each slot from `video.html?slot=N`. In a slot, a cue like `at('heartbeat')` is the moment the voice says that word. It then joins the slots and adds the narration.
 
+Wherever Chris names a company, the screen shows that company's own launch footage or launch images:
+- Google: the Gemini Spark desktop app, Daily Brief and the Spark notification.
+- Meta: the Muse launch film and its phone demos.
+- xAI: the Grok Bot launch film. x.ai refuses plain downloads, so `grab-media.js` saves it as the launch page loads it.
+- OpenAI: the dots screenshots from its launch post.
+
+`clips.sh` downloads all of it and cuts the clips.
+
 `video.html` loads every scene: the motion graphics (`scenes.js`), the real-source scenes (`scenes-real.js`) and the newer ones (`scenes-new.js`). It draws them all in the light look (`light.css`, `pa-light.css`, `scenes-new.css`).
 
 ```bash
