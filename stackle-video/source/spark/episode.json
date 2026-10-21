@@ -1,0 +1,16 @@
+{
+  "title": "Apache Spark",
+  "episode": 4,
+  "slug": "spark-explained",
+  "card": 1.8,
+  "offset": 1.8,
+  "intro": {
+    "landscape": "../../graphics/stackle-intro.mp4",
+    "vertical": "../../graphics/stackle-intro-vertical.mp4",
+    "transcript": "../intro-pro/audio/vo.transcript.json",
+    "voiceOffset": 0.6,
+    "after": ["spark", 0]
+  },
+  "cta": true,
+  "music": false
+}

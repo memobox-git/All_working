@@ -1,0 +1,1593 @@
+{
+"generation_id": "KjQQpi7aCSVrb3jayTEA",
+"voice_generation_id": "huJW9OyhLOrSxq8mhMx4",
+"model_id": "eleven_scribe_v1",
+"word_count": 264,
+"spoken_duration_secs": 92.16,
+"words": [
+{
+"text": "[confident]",
+"type": "word",
+"start": 0.0,
+"end": 0.067
+},
+{
+"text": "Your",
+"type": "word",
+"start": 0.08,
+"end": 0.24
+},
+{
+"text": "laptop",
+"type": "word",
+"start": 0.28,
+"end": 0.72
+},
+{
+"text": "opens",
+"type": "word",
+"start": 0.88,
+"end": 1.04
+},
+{
+"text": "a",
+"type": "word",
+"start": 1.08,
+"end": 1.12
+},
+{
+"text": "file",
+"type": "word",
+"start": 1.2,
+"end": 1.44
+},
+{
+"text": "of",
+"type": "word",
+"start": 1.48,
+"end": 1.52
+},
+{
+"text": "a",
+"type": "word",
+"start": 1.6,
+"end": 1.68
+},
+{
+"text": "million",
+"type": "word",
+"start": 1.84,
+"end": 2.24
+},
+{
+"text": "orders",
+"type": "word",
+"start": 2.32,
+"end": 2.64
+},
+{
+"text": "in",
+"type": "word",
+"start": 2.72,
+"end": 2.8
+},
+{
+"text": "a",
+"type": "word",
+"start": 2.88,
+"end": 2.96
+},
+{
+"text": "second.",
+"type": "word",
+"start": 3.04,
+"end": 3.84
+},
+{
+"text": "Now",
+"type": "word",
+"start": 3.92,
+"end": 4.08
+},
+{
+"text": "open",
+"type": "word",
+"start": 4.16,
+"end": 4.48
+},
+{
+"text": "every",
+"type": "word",
+"start": 4.56,
+"end": 4.88
+},
+{
+"text": "order",
+"type": "word",
+"start": 4.96,
+"end": 5.2
+},
+{
+"text": "your",
+"type": "word",
+"start": 5.28,
+"end": 5.36
+},
+{
+"text": "company",
+"type": "word",
+"start": 5.52,
+"end": 5.68
+},
+{
+"text": "has",
+"type": "word",
+"start": 5.76,
+"end": 6.0
+},
+{
+"text": "ever",
+"type": "word",
+"start": 6.08,
+"end": 6.32
+},
+{
+"text": "taken:",
+"type": "word",
+"start": 6.48,
+"end": 7.04
+},
+{
+"text": "two",
+"type": "word",
+"start": 7.12,
+"end": 7.2
+},
+{
+"text": "terabytes.",
+"type": "word",
+"start": 7.36,
+"end": 8.32
+},
+{
+"text": "It",
+"type": "word",
+"start": 8.4,
+"end": 8.48
+},
+{
+"text": "doesn't",
+"type": "word",
+"start": 8.56,
+"end": 8.72
+},
+{
+"text": "fit",
+"type": "word",
+"start": 8.8,
+"end": 8.88
+},
+{
+"text": "in",
+"type": "word",
+"start": 8.96,
+"end": 9.04
+},
+{
+"text": "memory,",
+"type": "word",
+"start": 9.24,
+"end": 9.6
+},
+{
+"text": "and",
+"type": "word",
+"start": 9.72,
+"end": 9.84
+},
+{
+"text": "one",
+"type": "word",
+"start": 9.92,
+"end": 10.0
+},
+{
+"text": "machine",
+"type": "word",
+"start": 10.08,
+"end": 10.48
+},
+{
+"text": "would",
+"type": "word",
+"start": 10.56,
+"end": 10.64
+},
+{
+"text": "take",
+"type": "word",
+"start": 10.8,
+"end": 10.96
+},
+{
+"text": "all",
+"type": "word",
+"start": 11.04,
+"end": 11.2
+},
+{
+"text": "night.",
+"type": "word",
+"start": 11.28,
+"end": 11.92
+},
+{
+"text": "So",
+"type": "word",
+"start": 12.08,
+"end": 12.24
+},
+{
+"text": "a",
+"type": "word",
+"start": 12.28,
+"end": 12.32
+},
+{
+"text": "lot",
+"type": "word",
+"start": 12.4,
+"end": 12.48
+},
+{
+"text": "of",
+"type": "word",
+"start": 12.56,
+"end": 12.64
+},
+{
+"text": "teams",
+"type": "word",
+"start": 12.84,
+"end": 13.04
+},
+{
+"text": "split",
+"type": "word",
+"start": 13.2,
+"end": 13.36
+},
+{
+"text": "the",
+"type": "word",
+"start": 13.4,
+"end": 13.44
+},
+{
+"text": "work",
+"type": "word",
+"start": 13.52,
+"end": 13.68
+},
+{
+"text": "across",
+"type": "word",
+"start": 13.76,
+"end": 14.16
+},
+{
+"text": "many",
+"type": "word",
+"start": 14.24,
+"end": 14.4
+},
+{
+"text": "machines,",
+"type": "word",
+"start": 14.48,
+"end": 15.173
+},
+{
+"text": "with",
+"type": "word",
+"start": 15.227,
+"end": 15.28
+},
+{
+"text": "Apache",
+"type": "word",
+"start": 15.48,
+"end": 15.68
+},
+{
+"text": "Spark.",
+"type": "word",
+"start": 15.76,
+"end": 16.64
+},
+{
+"text": "Spark",
+"type": "word",
+"start": 16.84,
+"end": 17.04
+},
+{
+"text": "is",
+"type": "word",
+"start": 17.12,
+"end": 17.2
+},
+{
+"text": "an",
+"type": "word",
+"start": 17.28,
+"end": 17.36
+},
+{
+"text": "open-source",
+"type": "word",
+"start": 17.44,
+"end": 17.92
+},
+{
+"text": "engine",
+"type": "word",
+"start": 18.0,
+"end": 18.32
+},
+{
+"text": "for",
+"type": "word",
+"start": 18.4,
+"end": 18.48
+},
+{
+"text": "processing",
+"type": "word",
+"start": 18.56,
+"end": 19.04
+},
+{
+"text": "large",
+"type": "word",
+"start": 19.12,
+"end": 19.36
+},
+{
+"text": "amounts",
+"type": "word",
+"start": 19.48,
+"end": 19.68
+},
+{
+"text": "of",
+"type": "word",
+"start": 19.76,
+"end": 19.84
+},
+{
+"text": "data",
+"type": "word",
+"start": 20.0,
+"end": 20.16
+},
+{
+"text": "across",
+"type": "word",
+"start": 20.24,
+"end": 20.56
+},
+{
+"text": "many",
+"type": "word",
+"start": 20.64,
+"end": 20.8
+},
+{
+"text": "machines.",
+"type": "word",
+"start": 20.88,
+"end": 21.68
+},
+{
+"text": "You",
+"type": "word",
+"start": 21.76,
+"end": 21.84
+},
+{
+"text": "write",
+"type": "word",
+"start": 21.96,
+"end": 22.08
+},
+{
+"text": "Python",
+"type": "word",
+"start": 22.36,
+"end": 22.64
+},
+{
+"text": "or",
+"type": "word",
+"start": 22.72,
+"end": 22.8
+},
+{
+"text": "SQL,",
+"type": "word",
+"start": 22.88,
+"end": 23.6
+},
+{
+"text": "and",
+"type": "word",
+"start": 23.68,
+"end": 23.76
+},
+{
+"text": "Scala,",
+"type": "word",
+"start": 23.84,
+"end": 24.48
+},
+{
+"text": "Java",
+"type": "word",
+"start": 24.56,
+"end": 24.96
+},
+{
+"text": "and",
+"type": "word",
+"start": 25.04,
+"end": 25.2
+},
+{
+"text": "R",
+"type": "word",
+"start": 25.36,
+"end": 25.6
+},
+{
+"text": "work",
+"type": "word",
+"start": 25.68,
+"end": 25.84
+},
+{
+"text": "too.",
+"type": "word",
+"start": 25.92,
+"end": 26.48
+},
+{
+"text": "It",
+"type": "word",
+"start": 26.56,
+"end": 26.64
+},
+{
+"text": "started",
+"type": "word",
+"start": 26.72,
+"end": 27.04
+},
+{
+"text": "at",
+"type": "word",
+"start": 27.12,
+"end": 27.2
+},
+{
+"text": "UC",
+"type": "word",
+"start": 27.28,
+"end": 27.52
+},
+{
+"text": "Berkeley",
+"type": "word",
+"start": 27.6,
+"end": 27.92
+},
+{
+"text": "in",
+"type": "word",
+"start": 28.0,
+"end": 28.08
+},
+{
+"text": "2009,",
+"type": "word",
+"start": 28.16,
+"end": 29.12
+},
+{
+"text": "was",
+"type": "word",
+"start": 29.24,
+"end": 29.36
+},
+{
+"text": "open-sourced",
+"type": "word",
+"start": 29.44,
+"end": 29.92
+},
+{
+"text": "in",
+"type": "word",
+"start": 30.0,
+"end": 30.08
+},
+{
+"text": "2010,",
+"type": "word",
+"start": 30.16,
+"end": 30.96
+},
+{
+"text": "and",
+"type": "word",
+"start": 31.0,
+"end": 31.04
+},
+{
+"text": "became",
+"type": "word",
+"start": 31.12,
+"end": 31.36
+},
+{
+"text": "a",
+"type": "word",
+"start": 31.44,
+"end": 31.52
+},
+{
+"text": "top-level",
+"type": "word",
+"start": 31.64,
+"end": 32.0
+},
+{
+"text": "Apache",
+"type": "word",
+"start": 32.2,
+"end": 32.4
+},
+{
+"text": "project",
+"type": "word",
+"start": 32.48,
+"end": 32.88
+},
+{
+"text": "in",
+"type": "word",
+"start": 32.96,
+"end": 33.04
+},
+{
+"text": "2014.",
+"type": "word",
+"start": 33.16,
+"end": 34.24
+},
+{
+"text": "Here's",
+"type": "word",
+"start": 34.36,
+"end": 34.56
+},
+{
+"text": "the",
+"type": "word",
+"start": 34.64,
+"end": 34.72
+},
+{
+"text": "core",
+"type": "word",
+"start": 34.8,
+"end": 34.88
+},
+{
+"text": "idea.",
+"type": "word",
+"start": 34.96,
+"end": 35.68
+},
+{
+"text": "Spark",
+"type": "word",
+"start": 35.92,
+"end": 36.16
+},
+{
+"text": "cuts",
+"type": "word",
+"start": 36.28,
+"end": 36.4
+},
+{
+"text": "your",
+"type": "word",
+"start": 36.48,
+"end": 36.56
+},
+{
+"text": "data",
+"type": "word",
+"start": 36.72,
+"end": 36.88
+},
+{
+"text": "into",
+"type": "word",
+"start": 36.96,
+"end": 37.12
+},
+{
+"text": "partitions.",
+"type": "word",
+"start": 37.2,
+"end": 38.16
+},
+{
+"text": "You",
+"type": "word",
+"start": 38.24,
+"end": 38.32
+},
+{
+"text": "write",
+"type": "word",
+"start": 38.44,
+"end": 38.56
+},
+{
+"text": "steps",
+"type": "word",
+"start": 38.76,
+"end": 38.96
+},
+{
+"text": "on",
+"type": "word",
+"start": 39.0,
+"end": 39.04
+},
+{
+"text": "a",
+"type": "word",
+"start": 39.12,
+"end": 39.2
+},
+{
+"text": "DataFrame,",
+"type": "word",
+"start": 39.48,
+"end": 39.92
+},
+{
+"text": "which",
+"type": "word",
+"start": 40.04,
+"end": 40.16
+},
+{
+"text": "works",
+"type": "word",
+"start": 40.24,
+"end": 40.4
+},
+{
+"text": "like",
+"type": "word",
+"start": 40.48,
+"end": 40.56
+},
+{
+"text": "a",
+"type": "word",
+"start": 40.6,
+"end": 40.64
+},
+{
+"text": "table:",
+"type": "word",
+"start": 40.72,
+"end": 41.28
+},
+{
+"text": "filter,",
+"type": "word",
+"start": 41.36,
+"end": 42.08
+},
+{
+"text": "group,",
+"type": "word",
+"start": 42.28,
+"end": 42.64
+},
+{
+"text": "sum.",
+"type": "word",
+"start": 42.8,
+"end": 43.04
+},
+{
+"text": "But",
+"type": "word",
+"start": 43.44,
+"end": 43.52
+},
+{
+"text": "Spark",
+"type": "word",
+"start": 43.6,
+"end": 43.92
+},
+{
+"text": "doesn't",
+"type": "word",
+"start": 44.0,
+"end": 44.24
+},
+{
+"text": "run",
+"type": "word",
+"start": 44.32,
+"end": 44.4
+},
+{
+"text": "them",
+"type": "word",
+"start": 44.48,
+"end": 44.64
+},
+{
+"text": "one",
+"type": "word",
+"start": 44.72,
+"end": 44.8
+},
+{
+"text": "by",
+"type": "word",
+"start": 44.88,
+"end": 45.04
+},
+{
+"text": "one.",
+"type": "word",
+"start": 45.12,
+"end": 45.6
+},
+{
+"text": "It",
+"type": "word",
+"start": 45.68,
+"end": 45.76
+},
+{
+"text": "writes",
+"type": "word",
+"start": 45.84,
+"end": 46.08
+},
+{
+"text": "a",
+"type": "word",
+"start": 46.16,
+"end": 46.24
+},
+{
+"text": "plan,",
+"type": "word",
+"start": 46.44,
+"end": 46.72
+},
+{
+"text": "and",
+"type": "word",
+"start": 46.8,
+"end": 46.88
+},
+{
+"text": "runs",
+"type": "word",
+"start": 47.0,
+"end": 47.12
+},
+{
+"text": "it",
+"type": "word",
+"start": 47.24,
+"end": 47.36
+},
+{
+"text": "only",
+"type": "word",
+"start": 47.44,
+"end": 47.68
+},
+{
+"text": "when",
+"type": "word",
+"start": 47.76,
+"end": 47.84
+},
+{
+"text": "you",
+"type": "word",
+"start": 47.92,
+"end": 48.0
+},
+{
+"text": "ask",
+"type": "word",
+"start": 48.08,
+"end": 48.24
+},
+{
+"text": "for",
+"type": "word",
+"start": 48.28,
+"end": 48.32
+},
+{
+"text": "a",
+"type": "word",
+"start": 48.4,
+"end": 48.48
+},
+{
+"text": "result,",
+"type": "word",
+"start": 48.68,
+"end": 49.04
+},
+{
+"text": "like",
+"type": "word",
+"start": 49.12,
+"end": 49.36
+},
+{
+"text": "saving",
+"type": "word",
+"start": 49.52,
+"end": 49.68
+},
+{
+"text": "the",
+"type": "word",
+"start": 49.72,
+"end": 49.76
+},
+{
+"text": "output.",
+"type": "word",
+"start": 49.84,
+"end": 50.56
+},
+{
+"text": "Then",
+"type": "word",
+"start": 50.64,
+"end": 50.96
+},
+{
+"text": "one",
+"type": "word",
+"start": 51.04,
+"end": 51.28
+},
+{
+"text": "task",
+"type": "word",
+"start": 51.44,
+"end": 51.6
+},
+{
+"text": "per",
+"type": "word",
+"start": 51.68,
+"end": 51.76
+},
+{
+"text": "partition",
+"type": "word",
+"start": 52.0,
+"end": 52.24
+},
+{
+"text": "runs,",
+"type": "word",
+"start": 52.4,
+"end": 52.8
+},
+{
+"text": "all",
+"type": "word",
+"start": 52.88,
+"end": 53.12
+},
+{
+"text": "at",
+"type": "word",
+"start": 53.16,
+"end": 53.2
+},
+{
+"text": "the",
+"type": "word",
+"start": 53.28,
+"end": 53.44
+},
+{
+"text": "same",
+"type": "word",
+"start": 53.56,
+"end": 53.68
+},
+{
+"text": "time.",
+"type": "word",
+"start": 53.76,
+"end": 54.56
+},
+{
+"text": "Now,",
+"type": "word",
+"start": 54.76,
+"end": 54.987
+},
+{
+"text": "the",
+"type": "word",
+"start": 55.013,
+"end": 55.04
+},
+{
+"text": "architecture.",
+"type": "word",
+"start": 55.12,
+"end": 56.213
+},
+{
+"text": "The",
+"type": "word",
+"start": 56.267,
+"end": 56.32
+},
+{
+"text": "driver",
+"type": "word",
+"start": 56.52,
+"end": 56.72
+},
+{
+"text": "runs",
+"type": "word",
+"start": 56.8,
+"end": 57.04
+},
+{
+"text": "your",
+"type": "word",
+"start": 57.12,
+"end": 57.2
+},
+{
+"text": "code,",
+"type": "word",
+"start": 57.28,
+"end": 57.733
+},
+{
+"text": "and",
+"type": "word",
+"start": 57.787,
+"end": 57.84
+},
+{
+"text": "turns",
+"type": "word",
+"start": 57.92,
+"end": 58.12
+},
+{
+"text": "the",
+"type": "word",
+"start": 58.16,
+"end": 58.32
+},
+{
+"text": "plan",
+"type": "word",
+"start": 58.48,
+"end": 58.64
+},
+{
+"text": "into",
+"type": "word",
+"start": 58.76,
+"end": 58.88
+},
+{
+"text": "tasks.",
+"type": "word",
+"start": 58.96,
+"end": 59.68
+},
+{
+"text": "The",
+"type": "word",
+"start": 59.76,
+"end": 59.84
+},
+{
+"text": "cluster",
+"type": "word",
+"start": 60.0,
+"end": 60.16
+},
+{
+"text": "manager,",
+"type": "word",
+"start": 60.24,
+"end": 60.76
+},
+{
+"text": "like",
+"type": "word",
+"start": 60.8,
+"end": 61.04
+},
+{
+"text": "Kubernetes",
+"type": "word",
+"start": 61.08,
+"end": 61.68
+},
+{
+"text": "or",
+"type": "word",
+"start": 61.76,
+"end": 61.84
+},
+{
+"text": "YARN,",
+"type": "word",
+"start": 61.88,
+"end": 62.44
+},
+{
+"text": "gives",
+"type": "word",
+"start": 62.48,
+"end": 62.64
+},
+{
+"text": "the",
+"type": "word",
+"start": 62.72,
+"end": 62.8
+},
+{
+"text": "driver",
+"type": "word",
+"start": 63.0,
+"end": 63.2
+},
+{
+"text": "executors",
+"type": "word",
+"start": 63.28,
+"end": 63.92
+},
+{
+"text": "on",
+"type": "word",
+"start": 64.0,
+"end": 64.16
+},
+{
+"text": "worker",
+"type": "word",
+"start": 64.28,
+"end": 64.4
+},
+{
+"text": "machines.",
+"type": "word",
+"start": 64.52,
+"end": 65.32
+},
+{
+"text": "Executors",
+"type": "word",
+"start": 65.36,
+"end": 65.92
+},
+{
+"text": "run",
+"type": "word",
+"start": 66.0,
+"end": 66.16
+},
+{
+"text": "the",
+"type": "word",
+"start": 66.24,
+"end": 66.32
+},
+{
+"text": "tasks,",
+"type": "word",
+"start": 66.56,
+"end": 66.853
+},
+{
+"text": "and",
+"type": "word",
+"start": 66.907,
+"end": 66.96
+},
+{
+"text": "keep",
+"type": "word",
+"start": 67.04,
+"end": 67.2
+},
+{
+"text": "data",
+"type": "word",
+"start": 67.36,
+"end": 67.52
+},
+{
+"text": "in",
+"type": "word",
+"start": 67.6,
+"end": 67.68
+},
+{
+"text": "memory,",
+"type": "word",
+"start": 67.96,
+"end": 68.267
+},
+{
+"text": "so",
+"type": "word",
+"start": 68.293,
+"end": 68.32
+},
+{
+"text": "it's",
+"type": "word",
+"start": 68.4,
+"end": 68.56
+},
+{
+"text": "fast.",
+"type": "word",
+"start": 68.92,
+"end": 69.32
+},
+{
+"text": "And",
+"type": "word",
+"start": 69.36,
+"end": 69.68
+},
+{
+"text": "if",
+"type": "word",
+"start": 69.8,
+"end": 69.92
+},
+{
+"text": "one",
+"type": "word",
+"start": 70.0,
+"end": 70.08
+},
+{
+"text": "executor",
+"type": "word",
+"start": 70.32,
+"end": 70.56
+},
+{
+"text": "dies?",
+"type": "word",
+"start": 70.64,
+"end": 71.387
+},
+{
+"text": "The",
+"type": "word",
+"start": 71.413,
+"end": 71.44
+},
+{
+"text": "driver",
+"type": "word",
+"start": 71.52,
+"end": 71.92
+},
+{
+"text": "re-runs",
+"type": "word",
+"start": 72.0,
+"end": 72.48
+},
+{
+"text": "just",
+"type": "word",
+"start": 72.56,
+"end": 72.8
+},
+{
+"text": "its",
+"type": "word",
+"start": 72.88,
+"end": 72.96
+},
+{
+"text": "tasks",
+"type": "word",
+"start": 73.04,
+"end": 73.36
+},
+{
+"text": "on",
+"type": "word",
+"start": 73.44,
+"end": 73.52
+},
+{
+"text": "another",
+"type": "word",
+"start": 73.68,
+"end": 73.84
+},
+{
+"text": "one,",
+"type": "word",
+"start": 73.92,
+"end": 74.28
+},
+{
+"text": "rebuilding",
+"type": "word",
+"start": 74.32,
+"end": 74.72
+},
+{
+"text": "the",
+"type": "word",
+"start": 74.8,
+"end": 74.88
+},
+{
+"text": "lost",
+"type": "word",
+"start": 75.0,
+"end": 75.12
+},
+{
+"text": "pieces",
+"type": "word",
+"start": 75.2,
+"end": 75.52
+},
+{
+"text": "from",
+"type": "word",
+"start": 75.6,
+"end": 75.68
+},
+{
+"text": "the",
+"type": "word",
+"start": 75.72,
+"end": 75.76
+},
+{
+"text": "plan.",
+"type": "word",
+"start": 75.84,
+"end": 76.48
+},
+{
+"text": "Then",
+"type": "word",
+"start": 76.56,
+"end": 76.88
+},
+{
+"text": "the",
+"type": "word",
+"start": 76.96,
+"end": 77.0
+},
+{
+"text": "results",
+"type": "word",
+"start": 77.04,
+"end": 77.44
+},
+{
+"text": "land",
+"type": "word",
+"start": 77.52,
+"end": 77.68
+},
+{
+"text": "in",
+"type": "word",
+"start": 77.76,
+"end": 77.84
+},
+{
+"text": "storage.",
+"type": "word",
+"start": 77.92,
+"end": 78.731
+},
+{
+"text": "[warmly]",
+"type": "word",
+"start": 78.743,
+"end": 78.789
+},
+{
+"text": "So",
+"type": "word",
+"start": 78.8,
+"end": 78.88
+},
+{
+"text": "when",
+"type": "word",
+"start": 78.96,
+"end": 79.04
+},
+{
+"text": "a",
+"type": "word",
+"start": 79.08,
+"end": 79.12
+},
+{
+"text": "team",
+"type": "word",
+"start": 79.28,
+"end": 79.44
+},
+{
+"text": "says,",
+"type": "word",
+"start": 79.6,
+"end": 80.0
+},
+{
+"text": "\"we",
+"type": "word",
+"start": 80.053,
+"end": 80.16
+},
+{
+"text": "use",
+"type": "word",
+"start": 80.24,
+"end": 80.4
+},
+{
+"text": "Spark,\"",
+"type": "word",
+"start": 80.64,
+"end": 81.2
+},
+{
+"text": "it",
+"type": "word",
+"start": 81.28,
+"end": 81.36
+},
+{
+"text": "means",
+"type": "word",
+"start": 81.44,
+"end": 81.6
+},
+{
+"text": "their",
+"type": "word",
+"start": 81.68,
+"end": 81.84
+},
+{
+"text": "data",
+"type": "word",
+"start": 82.0,
+"end": 82.16
+},
+{
+"text": "is",
+"type": "word",
+"start": 82.32,
+"end": 82.48
+},
+{
+"text": "too",
+"type": "word",
+"start": 82.6,
+"end": 82.72
+},
+{
+"text": "big",
+"type": "word",
+"start": 82.8,
+"end": 82.88
+},
+{
+"text": "for",
+"type": "word",
+"start": 82.96,
+"end": 83.04
+},
+{
+"text": "one",
+"type": "word",
+"start": 83.12,
+"end": 83.2
+},
+{
+"text": "machine.",
+"type": "word",
+"start": 83.28,
+"end": 84.04
+},
+{
+"text": "They",
+"type": "word",
+"start": 84.08,
+"end": 84.16
+},
+{
+"text": "write",
+"type": "word",
+"start": 84.28,
+"end": 84.4
+},
+{
+"text": "the",
+"type": "word",
+"start": 84.44,
+"end": 84.48
+},
+{
+"text": "steps",
+"type": "word",
+"start": 84.56,
+"end": 84.88
+},
+{
+"text": "once.",
+"type": "word",
+"start": 84.96,
+"end": 85.733
+},
+{
+"text": "Spark",
+"type": "word",
+"start": 85.867,
+"end": 86.0
+},
+{
+"text": "splits",
+"type": "word",
+"start": 86.08,
+"end": 86.4
+},
+{
+"text": "them",
+"type": "word",
+"start": 86.48,
+"end": 86.56
+},
+{
+"text": "into",
+"type": "word",
+"start": 86.68,
+"end": 86.8
+},
+{
+"text": "tasks",
+"type": "word",
+"start": 87.0,
+"end": 87.2
+},
+{
+"text": "across",
+"type": "word",
+"start": 87.28,
+"end": 87.52
+},
+{
+"text": "a",
+"type": "word",
+"start": 87.56,
+"end": 87.6
+},
+{
+"text": "cluster,",
+"type": "word",
+"start": 87.68,
+"end": 88.373
+},
+{
+"text": "and",
+"type": "word",
+"start": 88.427,
+"end": 88.48
+},
+{
+"text": "re-runs",
+"type": "word",
+"start": 88.56,
+"end": 89.12
+},
+{
+"text": "any",
+"type": "word",
+"start": 89.2,
+"end": 89.36
+},
+{
+"text": "piece",
+"type": "word",
+"start": 89.44,
+"end": 89.6
+},
+{
+"text": "that",
+"type": "word",
+"start": 89.68,
+"end": 89.84
+},
+{
+"text": "fails.",
+"type": "word",
+"start": 89.92,
+"end": 90.64
+},
+{
+"text": "That's",
+"type": "word",
+"start": 90.72,
+"end": 91.04
+},
+{
+"text": "Apache",
+"type": "word",
+"start": 91.12,
+"end": 91.52
+},
+{
+"text": "Spark.",
+"type": "word",
+"start": 91.6,
+"end": 92.16
+}
+]
+}

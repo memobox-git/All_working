@@ -1,0 +1,168 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Apache Spark, explained (vertical)</title>
+<link rel="stylesheet" href="vertical.css">
+<link rel="stylesheet" href="../explained/cta.css"></head>
+<body>
+<canvas id="bg" width="1080" height="1920"></canvas>
+
+<div id="stage">
+
+  <!-- S0 · the opening card: the thumbnail (img/thumbnail-vertical.png), cleared away just before the first word -->
+  <section class="scene" id="s0">
+    <img class="th-full" src="img/thumbnail-vertical.png" alt="Apache Spark, explained in 2 minutes">
+  </section>
+
+  <!-- S1 · "Your laptop opens a file … split the work across many machines, with Apache Spark." -->
+  <section class="scene" id="s1">
+    <svg class="links" id="s1-links" viewBox="0 0 1080 1920"></svg>
+    <div class="laptop" id="laptop">
+      <div class="screen">
+        <div class="win-bar"><i></i><i></i><i></i><span class="fname" id="fname"><span data-icon="file"></span><b id="fname-t">orders.csv</b></span><span class="fsize" id="fsize">48 MB</span></div>
+        <div class="panel" id="p-small">
+          <div class="trow th"><span>order_id</span><span>date</span><span>amount</span><span>status</span></div>
+          <div class="trow"><span>1042</span><span>2026-10-20</span><span>$89.00</span><span>paid</span></div>
+          <div class="trow"><span>1043</span><span>2026-10-20</span><span>$12.50</span><span>paid</span></div>
+          <div class="trow"><span>1044</span><span>2026-10-20</span><span>$240.00</span><span>refunded</span></div>
+          <div class="trow"><span>1045</span><span>2026-10-21</span><span>$31.20</span><span>paid</span></div>
+          <div class="trow"><span>1046</span><span>2026-10-21</span><span>$7.99</span><span>pending</span></div>
+          <div class="p-foot"><span id="rows">1,000,000 rows</span><span class="ok" id="loaded"><span data-icon="check"></span>opened in 1 s</span></div>
+        </div>
+        <div class="panel" id="p-big">
+          <div class="big-file"><span class="tile" data-icon="folder"></span><div><h3>all_orders/</h3><p>every order, ever</p></div><b id="bigsize">2 TB</b></div>
+          <div class="meter" id="ram"><div class="m-h"><span>Memory</span><em id="ram-t">16 GB</em></div><i><b id="ram-fill"></b></i><span class="oom" id="oom">out of memory</span></div>
+          <div class="meter" id="prog"><div class="m-h"><span>Processing</span><em id="prog-t">0.1%</em></div><i><b id="prog-fill"></b></i><span class="eta" id="eta"><span data-icon="moon"></span>about 9 hours</span></div>
+        </div>
+      </div>
+      <div class="base"></div>
+    </div>
+    <div class="sbar" id="sbar"><svg class="smark" viewBox="-100 -100 200 200"></svg><span>Apache <b>Spark</b></span></div>
+    <div class="mach" id="m1"><span class="tile sm" data-icon="server"></span><h3>Machine 1</h3><div class="mslots"><i></i><i></i></div></div>
+    <div class="mach" id="m2"><span class="tile sm" data-icon="server"></span><h3>Machine 2</h3><div class="mslots"><i></i><i></i></div></div>
+    <div class="mach" id="m3"><span class="tile sm" data-icon="server"></span><h3>Machine 3</h3><div class="mslots"><i></i><i></i></div></div>
+    <div class="mach" id="m4"><span class="tile sm" data-icon="server"></span><h3>Machine 4</h3><div class="mslots"><i></i><i></i></div></div>
+    <div class="slices" id="slices"></div>
+  </section>
+
+  <!-- S2 · what it is, the languages, where it came from -->
+  <section class="scene" id="s2">
+    <div class="lock" id="lock2">
+      <svg class="smark" id="mark2" viewBox="-100 -100 200 200"></svg>
+      <div class="word"><span class="wm-m"><span class="wm-a" id="wm2a">Apache</span></span> <span class="wm-m"><span class="wm-b" id="wm2b">Spark</span></span></div>
+    </div>
+    <div class="def" id="def"></div>
+    <div class="chips">
+      <div class="chip" id="chip1"><span class="tile" data-icon="branch"></span>Open source</div>
+      <div class="chip" id="chip2"><span class="tile" data-icon="server"></span>Many machines</div>
+    </div>
+    <div class="langs" id="langs">
+      <span class="lang" id="lg-py" style="--c:#3776AB">Python</span>
+      <span class="lang" id="lg-sql" style="--c:#017CEE">SQL</span>
+      <span class="lang" id="lg-sc" style="--c:#DC322F">Scala</span>
+      <span class="lang" id="lg-ja" style="--c:#E76F00">Java</span>
+      <span class="lang" id="lg-r" style="--c:#276DC3">R</span>
+    </div>
+    <div class="kicker" id="s2-tag">Where it came from</div>
+    <div class="tline" id="tline">
+      <div class="tl-track"><i id="tl-fill"></i></div>
+      <div class="tl-node" id="tn1"><b>2009</b><i class="dot"></i><span>Started at UC Berkeley</span></div>
+      <div class="tl-node" id="tn2"><b>2010</b><i class="dot"></i><span>Open-sourced</span></div>
+      <div class="tl-node now" id="tn3"><b>2014</b><i class="dot"></i><span>Top-level Apache project</span></div>
+    </div>
+  </section>
+
+  <!-- S3 · the core idea: partitions, a lazy plan, one task per partition -->
+  <section class="scene" id="s3">
+    <div class="kicker" id="s3-tag">The core idea</div>
+    <div class="code" id="code">
+      <div class="win-bar"><i></i><i></i><i></i><span class="fname"><span data-icon="code"></span><b>daily_sales.py</b></span></div>
+      <pre><span class="ln" id="ln1">orders = spark.read.parquet(<s>"s3://shop/orders/"</s>)</span>
+<span class="ln" id="ln2">daily = (orders</span>
+<span class="ln" id="ln3">    .<k>filter</k>(orders.status == <s>"paid"</s>)</span>
+<span class="ln" id="ln4">    .<k>groupBy</k>(<s>"order_date"</s>)</span>
+<span class="ln" id="ln5">    .<k>sum</k>(<s>"amount"</s>))</span>
+<span class="ln" id="ln6">daily.<k>write</k>.parquet(<s>"s3://shop/daily_sales/"</s>)</span></pre>
+    </div>
+    <div class="plan" id="plan">
+      <div class="plan-h" id="plan-h">The plan</div>
+      <div class="pb" id="pb1">read</div>
+      <div class="pb" id="pb2">filter</div>
+      <div class="pb" id="pb3">groupBy</div>
+      <div class="pb" id="pb4">sum</div>
+      <div class="pb" id="pb5">write</div>
+    </div>
+    <div class="status" id="status"><i></i><span id="status-t">Nothing runs yet</span></div>
+    <div class="parts" id="parts"></div>
+    <div class="parts-label" id="parts-label"><b>orders</b> · 2 TB</div>
+  </section>
+
+  <!-- S4 · the architecture: driver, cluster manager, executors on workers, a failure, results to storage -->
+  <section class="scene" id="s4">
+    <div class="s4-title" id="s4-title">
+      <div class="kicker">The architecture</div>
+      <div class="s4-h">Inside a Spark cluster</div>
+    </div>
+    <svg class="links" id="s4-links" viewBox="0 0 1080 1920"></svg>
+    <div class="card" id="drv" style="--c:#E25A1C;--tint:#FEF6EE">
+      <span class="tile" data-icon="cpu"></span>
+      <div><h3>Driver</h3><p>your code + the plan</p>
+        <div class="mini" id="mini"><i>read</i><i>filter</i><i>group</i><i>sum</i></div></div>
+    </div>
+    <div class="card" id="mgr" style="--c:#475467;--tint:#F2F4F7">
+      <span class="tile" data-icon="server"></span>
+      <div><h3>Cluster manager</h3>
+        <div class="opts"><i id="op-k8s">Kubernetes</i><i id="op-yarn">YARN</i><i id="op-sa">standalone</i></div></div>
+    </div>
+    <div class="link-note" id="dm-note">asks for executors</div>
+    <div class="wk" id="w1"><div class="wk-h"><span class="tile sm" data-icon="server"></span><h3>Worker 1</h3><span class="xb" data-icon="x"></span></div>
+      <div class="ex"><span class="ex-l">Executor</span><div class="eslots"><i></i><i></i><i></i><i></i></div>
+        <div class="mem"><span data-icon="memory"></span>memory<em>cached</em><span class="zap" data-icon="zap"></span></div></div></div>
+    <div class="wk" id="w2"><div class="wk-h"><span class="tile sm" data-icon="server"></span><h3>Worker 2</h3><span class="xb" data-icon="x"></span></div>
+      <div class="ex"><span class="ex-l">Executor</span><div class="eslots"><i></i><i></i><i></i><i></i></div>
+        <div class="mem"><span data-icon="memory"></span>memory<em>cached</em><span class="zap" data-icon="zap"></span></div></div></div>
+    <div class="wk" id="w3"><div class="wk-h"><span class="tile sm" data-icon="server"></span><h3>Worker 3</h3><span class="xb" data-icon="x"></span></div>
+      <div class="ex"><span class="ex-l">Executor</span><div class="eslots"><i></i><i></i><i></i><i></i></div>
+        <div class="mem"><span data-icon="memory"></span>memory<em>cached</em><span class="zap" data-icon="zap"></span></div></div></div>
+    <div class="card" id="bkt" style="--c:#12B76A;--tint:#ECFDF3">
+      <span class="tile" data-icon="bucket"></span>
+      <div><h3>s3://shop/daily_sales/</h3><p id="bkt-t">waiting for results</p></div>
+    </div>
+    <div class="note" id="rb-note">rebuilt from the plan</div>
+    <div class="chipsx" id="tasks"></div>
+  </section>
+
+  <!-- S5 · "So when a team says …" + closing title -->
+  <section class="scene" id="s5">
+    <div class="kicker" id="s5-tag">When a team says</div>
+    <div class="quote" id="quote"></div>
+    <div class="takeaways">
+      <div class="ta" id="ta1"><span class="tick" data-icon="check"></span><span>Their data is too big for one machine.</span></div>
+      <div class="ta" id="ta2"><span class="tick" data-icon="check"></span><span>They write the steps once.</span></div>
+      <div class="ta" id="ta3"><span class="tick" data-icon="check"></span><span>Spark splits them into tasks, and re-runs any that fail.</span></div>
+    </div>
+    <div class="lock" id="lock5">
+      <svg class="smark" id="mark5" viewBox="-100 -100 200 200"></svg>
+      <div class="word"><span class="wm-m"><span class="wm-a" id="wm5a">Apache</span></span> <span class="wm-m"><span class="wm-b" id="wm5b">Spark</span></span></div>
+    </div>
+    <div class="kicker" id="lock5-sub">Explained in 2 minutes</div>
+    <div class="credit" id="credit">Stackle · Episode 04</div>
+  </section>
+
+</div>
+
+<div id="hud">
+  <div class="vh-title"><svg class="smark mini-mark" viewBox="-100 -100 200 200"></svg>Apache Spark<span class="sep"></span><span class="series">Explained in 2 minutes</span></div>
+  <div class="vh-chap"><span id="hud-num">01</span><span class="sep"></span><span id="hud-chap">The problem</span></div>
+</div>
+<div id="caps"></div>
+<div id="fade"></div>
+
+<script src="cues.js"></script>
+<script src="../node_modules/gsap/dist/gsap.min.js"></script>
+<script src="../node_modules/gsap/dist/DrawSVGPlugin.min.js"></script>
+<script src="icons.js"></script>
+<script src="../explained/common.js"></script>
+<script src="../explained/cta.js"></script>
+<script src="brand.js"></script>
+<script src="../explained/captions.js"></script>
+<script src="story.js"></script>
+</body></html>

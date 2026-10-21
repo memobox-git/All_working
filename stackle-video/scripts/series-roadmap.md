@@ -2,7 +2,7 @@
 
 **Series:** Explained in 2 Minutes, by Stackle. Presented by Chris (Crispus Roshan): 10+ years in data engineering, 200+ engineers interviewed. It is the short companion to the long-form "Explained for Data Engineers" show.
 
-**Status on 20 October 2026:** 00 (the trailer), 01 Apache Airflow, 02 Apache Kafka and 03 20 Gen AI Concepts are made, in both cuts. 00, 02 and 03 open on temporary cards until your thumbnails arrive. Gen AI took slot 03, so Spark and everything after it moved down one: 04 to 07 are planned in detail below. 08 onwards are not started.
+**Status on 21 October 2026:** 00 (the trailer), 01 Apache Airflow, 02 Apache Kafka, 03 20 Gen AI Concepts and 04 Apache Spark are made, in both cuts, with no background music. 00, 02, 03 and 04 open on temporary cards until your thumbnails arrive. Gen AI took slot 03, so Spark and everything after it moved down one: 05 to 07 are planned in detail below. 08 onwards are not started.
 
 **Approval:** every script is sent to you for approval before anything is recorded.
 
@@ -86,7 +86,7 @@ The trailer and Airflow go out together, so anyone who watches the trailer has a
 | Week | Tuesday | Friday | Where it stands |
 |---|---|---|---|
 | 1 | 00 Trailer and 01 Apache Airflow | 02 Apache Kafka | All three made. 00 and 02 wait for their thumbnails |
-| 2 | 03 20 Gen AI concepts | 04 Apache Spark | 03 made (waits for its thumbnails). 04 planned in detail below |
+| 2 | 03 20 Gen AI concepts | 04 Apache Spark | Both made. They wait for their thumbnails |
 | 3 | 05 What is data engineering | 06 Snowflake | Planned in detail below |
 | 4 | 07 Databricks | 08 ETL vs ELT | 07 planned in detail below. 08 to plan |
 | 5 | 09 dbt | 10 The modern data stack | To plan |
@@ -122,7 +122,7 @@ The first-week vocabulary of a data team, ending with one picture that joins it 
 | 01 | Apache Airflow, Explained in 2 Minutes | The DAG: tasks and the order they run in | DAG processor → metadata database ⇄ scheduler → executor → workers, with the web UI on top. A failed task retried with one click. **Made** |
 | 02 | Apache Kafka, Explained in 2 Minutes | The log: a topic that producers append to and consumers read at their own offset | Brokers holding partitions and replicas. A broker fails and a replica takes over. A consumer group splits the partitions. KRaft controllers on top. **Made** |
 | 03 | 20 Gen AI Concepts You Actually Need, Explained in 2 Minutes | The full stack, from tokens to agents: twenty concepts, one notebook page each | A hand-drawn spiral notebook: each concept gets a numbered circle, a marker title, its line, a sketch and a starred takeaway, while a 1–20 tracker ticks each one off. "The last 8" (vector databases to guardrails) are flagged as where the jobs are. 2:28, longer than usual because it covers twenty concepts. **Made** (`source/genai/`) |
-| 04 | Apache Spark, Explained in 2 Minutes | The data is cut into partitions, and a lazy plan runs one task per partition, in parallel | Driver → cluster manager → executors on worker machines. An executor dies and its tasks re-run elsewhere. Planned below |
+| 04 | Apache Spark, Explained in 2 Minutes | The data is cut into partitions, and a lazy plan runs one task per partition, in parallel | Driver → cluster manager → executors on worker machines. An executor dies and its tasks re-run elsewhere. **Made** (`source/spark/`), 1:55 |
 | 05 | What Is Data Engineering? Explained in 2 Minutes | The lifecycle: generate → ingest → store → transform → serve | The whole map from sources to dashboards, with orchestration on top. A renamed column caught by a test. Planned below |
 | 06 | Snowflake, Explained in 2 Minutes | Storage and compute are separate | Storage (micro-partitions), virtual warehouses and cloud services. The 9 AM rush scales out, then idle compute suspends. Planned below |
 | 07 | Databricks, Explained in 2 Minutes | The lakehouse: one copy of the data, as open files with a transaction log, and warehouse features on top | Your cloud storage, the compute plane, the control plane and Unity Catalog. A crashed write never shows half a table. Planned below |

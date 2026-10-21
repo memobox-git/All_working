@@ -1,10 +1,10 @@
-# Apache Spark, Explained in 2 Minutes: Script (draft for review)
+# Apache Spark, Explained in 2 Minutes: Script
 
 **Title:** Apache Spark, Explained in 2 Minutes
 
 **Series:** Explained in 2 Minutes, episode 04
 
-**Spoken words:** about 260 · **Voice:** about 1:30 · **Video:** about 1:50 (opening card, the problem as the hook, channel intro, the rest of the episode, comment ask)
+**Spoken words:** 262 · **Voice:** 1:32 · **Video:** 1:55 (opening card, the problem as the hook, channel intro, the rest of the episode, comment ask)
 
 **Format:** the same as Kafka:
 - both cuts (landscape for YouTube with an `.srt`, portrait for TikTok, Reels and Shorts with captions burned in);
@@ -13,7 +13,7 @@
 - the hook first, then your intro (now ending on "…get you hired.");
 - each cut opening on its thumbnail.
 
-**Status:** waiting for your review. Nothing has been recorded yet.
+**Status:** approved, recorded (take 1 of 4; "YARN" is said as a word) and built. Both cuts are in `stackle-video/graphics/` (`spark-explained.mp4` with `.srt`, `spark-explained-vertical.mp4`). The opening cards are temporary until Chris's thumbnails arrive. The post copy is in `spark-explained-posts.md`.
 
 ---
 

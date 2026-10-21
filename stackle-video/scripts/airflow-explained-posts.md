@@ -31,8 +31,7 @@ Chapters
 0:30 What is Apache Airflow?
 0:44 DAGs, explained (with code)
 1:02 Airflow architecture
-1:33 Recap
-1:47 What should I explain next?
+1:33 Recap, and what should I explain next?
 
 Explained in 2 Minutes is a Stackle series: one data tool, two minutes.
 Next episode: Apache Kafka. What should I explain after that? Tell me in the comments.
