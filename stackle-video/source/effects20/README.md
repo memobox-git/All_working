@@ -2,7 +2,7 @@
 
 A remake of @taki.gpt's "20 Video Effects Created by Claude" TikTok, on your own footage. You film one take reading the effect names; this folder turns it into the edit: word-by-word captions, the "20 Video Effects" header with a numbered label per effect, all 20 effects timed to the moment you say each name, and the "Comment EDIT" ending.
 
-Output: one 1080×1920, 30 fps MP4 with your voice at -14 LUFS, for TikTok, Reels and Shorts.
+Output: one 1080×1920, 30 fps MP4 for TikTok, Reels and Shorts. The soundtrack is your voice over a 120 BPM beat built on the edit's own timing (one bar per effect, so every switch lands on a downbeat) and a sound effect for each animation, with the music ducking whenever you talk, at -14 LUFS. The music and sounds are synthesised in `music.py`, so they are free to use.
 
 ## What to film
 
@@ -44,7 +44,9 @@ Python needs `faster-whisper onnxruntime opencv-python-headless numpy`. The cut-
 | `index.html`, `style.css` | The pieces of every effect |
 | `scene.js` | The edit: finds each effect name in the transcript and draws each frame |
 | `stills.js` | Stills and a contact sheet without a full render |
-| `build.sh` | Renders with `../render-pro.js` and lays the voice back on |
+| `timing.js` | Reads the effect, ending and sound-cue times from the edit into `work/timing.json` |
+| `music.py` | The beat, the sound effects and the mix with the voice, to `work/soundtrack.wav` |
+| `build.sh` | Renders with `../render-pro.js`, then makes and lays on the soundtrack |
 
 ## Changing things
 

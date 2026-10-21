@@ -510,6 +510,15 @@ function hud(t, i) {
 
 // ------------------------------------------------------------ ending
 function typed(text, from, t, cps) { return text.slice(0, Math.max(0, Math.floor((t - from) * cps))); }
+// when the typing starts and how fast it goes, so the words finish before the next part
+const promptTyping = ({ a, b }) => {
+  const from = Math.min(cueAfter(a, ['prompt', 'want'], a + .4), b - .6);
+  return { from, cps: Math.max(22, C.prompt.length / Math.max(.4, b - from - .3)) };
+};
+const commentTyping = ({ a, b }) => {
+  const from = a + .4;
+  return { from, cps: Math.max(7, C.comment.length / Math.max(.4, b - from - .5)) };
+};
 
 function outro(t) {
   const { part, a, b } = ENDING.findLast(p => t >= p.a) || ENDING[0];
@@ -544,10 +553,9 @@ function outro(t) {
     const pr = $('#o-flow .prompt');
     show(pr, part === 'prompt', 'flex');
     if (part === 'prompt') {
-      const k = out(seg(t, a, a + .35)), from = Math.min(cueAfter(a, ['prompt', 'want'], a + .4), b - .6);
+      const k = out(seg(t, a, a + .35)), { from, cps } = promptTyping({ a, b });
       pr.style.transform = `translateY(${(1 - k) * 80}px)`;
       pr.style.opacity = k;
-      const cps = Math.max(22, C.prompt.length / Math.max(.4, b - from - .3));
       const txt = $('.txt', pr), s = typed(C.prompt, from, t, cps);
       txt.textContent = t < from ? 'Tell Claude what you want…' : s;
       txt.className = 'txt' + (t < from ? ' ph' : '');
@@ -567,7 +575,7 @@ function outro(t) {
     const cm = $('#comment');
     show(cm, true, 'flex');
     cm.style.transform = `translateY(${(1 - out(seg(t, a, a + .35))) * -160}px)`;
-    const from = a + .4, cps = Math.max(7, C.comment.length / Math.max(.4, b - from - .5));
+    const { from, cps } = commentTyping({ a, b });
     const s = typed(C.comment, from, t, cps), txt = $('.txt', cm);
     txt.textContent = t < from ? 'Add a comment…' : s;
     txt.className = 'txt' + (t < from ? ' ph' : '');
@@ -587,6 +595,49 @@ function wordAt(t) {
   const w = WORDS[k], next = WORDS[k + 1];
   return t < Math.min(next ? next.s : 1e9, w.e + .6) ? w.w.replace(/^[^\w']+|[^\w']+$/g, '') : '';
 }
+
+// ------------------------------------------------------------ sound cues
+// What to play and when, read by music.py (through timing.js). They sit here, next
+// to the effects, so a change of timing moves the sound with the picture.
+window.SFX = [];
+const cue = (t, kind, gain = 1) => { if (t >= 0 && t < window.DURATION) window.SFX.push({ t: +t.toFixed(3), kind, gain }); };
+NAMES.slice(0, 10).forEach((_, row) => cue(.25 + row * .08, 'tick', .25));
+SEG.forEach(({ a, b }, i) => {
+  const d = b - a;
+  cue(a, 'whoosh', .7);
+  if (i === 1) { cue(a + .3, 'pop', .6); [0, 1, 2].forEach(k => cue(a + 1.15 + k * .3, 'tick', .6)); }
+  if (i === 2) cue(a + .3, 'whoosh', .5);
+  if (i === 3) cue(a, 'hit');
+  if (i === 4) [0, 1, 2].forEach(k => cue(a + .1 + k * .32, 'pop'));
+  if (i === 5) [0, 2, 4, 6, 8].forEach(k => cue(a + k * .07, 'swish', .5));
+  if (i === 6) { cue(a, 'pop', .7); cue(b - .55, 'suck', .7); }
+  if (i === 7) { cue(a + .1, 'riser', .5); cue(b - .2, 'ding', .5); }
+  if (i === 8) { cue(a + .22, 'clunk', .4); cue(a + .38, 'clunk'); }
+  if (i === 10) SHAPES.forEach((_, k) => cue(a + .05 + k * .06, 'pop', .4));
+  if (i === 11) cue(a, 'riser', .5);
+  if (i === 12) cue(a, 'shutter');
+  if (i === 13) cue(a + .1, 'shimmer', .7);
+  if (i === 14) { cue(a, 'suck'); cue(a + Math.min(.42, d * .35), 'hit'); }
+  if (i === 15) cue(a + d * .45, 'zap');
+  if (i === 16) { cue(a, 'crack'); cue(a + Math.min(.55, d * .35), 'shatter'); }
+  if (i === 17) { cue(a + .05, 'beep', .5); cue(a + .3 * d, 'focus', .6); cue(a + .55 * d, 'focus', .6); }
+  if (i === 19) for (let k = 0; k < 20; k++) cue(a + (k + 1) / 20 * d * .85, 'tick', .4);
+});
+ENDING.forEach(p => {
+  const { part, a } = p;
+  if (part === 'lists') { cue(a, 'whoosh', .5); cue(a + 1.5, 'pop', .7); }
+  if (part === 'card' || part === 'phone') cue(a, 'whoosh', .6);
+  if (part === 'drop') cue(cueAfter(a, ['drop'], a + .5) + .35, 'thud');
+  const typing = part === 'prompt' ? [C.prompt, promptTyping(p)] : part === 'comment' ? [C.comment, commentTyping(p)] : null;
+  if (typing) {
+    const [text, { from, cps }] = typing;
+    cue(a, 'whoosh', .5);
+    for (let k = 0; k < text.length; k++) if (text[k] !== ' ') cue(from + k / cps, 'key', .35);
+    cue(from + text.length / cps + .15, 'send', .6);
+  }
+  if (part === 'follow') cue(a, 'hit', .8);
+});
+window.SFX.sort((x, y) => x.t - y.t);
 
 // ------------------------------------------------------------ one frame
 const FXEL = $$('.fx'), HUDEL = ['#title', '#chip', '#dashes', '#lists', '#outroTitle', '#comment', '#profile'].map(s => $(s));
