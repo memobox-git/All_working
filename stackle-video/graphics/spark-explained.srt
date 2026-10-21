@@ -1,0 +1,239 @@
+1
+00:00:01,880 --> 00:00:03,260
+Your laptop opens a file
+
+2
+00:00:03,280 --> 00:00:05,700
+of a million orders in a second.
+
+3
+00:00:05,720 --> 00:00:07,540
+Now open every order your company
+
+4
+00:00:07,560 --> 00:00:10,180
+has ever taken: two terabytes.
+
+5
+00:00:10,200 --> 00:00:11,500
+It doesn't fit in memory,
+
+6
+00:00:11,520 --> 00:00:13,860
+and one machine would take all night.
+
+7
+00:00:13,880 --> 00:00:16,020
+So a lot of teams split the work across
+
+8
+00:00:16,040 --> 00:00:18,840
+many machines, with Apache Spark.
+
+9
+00:00:19,420 --> 00:00:20,800
+Hi, I'm Chris.
+
+10
+00:00:20,820 --> 00:00:22,200
+I've spent over 10 years
+
+11
+00:00:22,220 --> 00:00:23,160
+in data engineering
+
+12
+00:00:23,180 --> 00:00:26,040
+and interviewed more than 200 engineers.
+
+13
+00:00:26,060 --> 00:00:27,800
+Now I run Stackle, where I teach
+
+14
+00:00:27,820 --> 00:00:30,300
+the skills that actually get you hired.
+
+15
+00:00:30,757 --> 00:00:31,897
+Spark is an open-source
+
+16
+00:00:31,917 --> 00:00:33,017
+engine for processing
+
+17
+00:00:33,037 --> 00:00:34,137
+large amounts of data
+
+18
+00:00:34,157 --> 00:00:35,657
+across many machines.
+
+19
+00:00:35,677 --> 00:00:37,577
+You write Python or SQL,
+
+20
+00:00:37,597 --> 00:00:40,457
+and Scala, Java and R work too.
+
+21
+00:00:40,477 --> 00:00:43,137
+It started at UC Berkeley in 2009,
+
+22
+00:00:43,157 --> 00:00:44,897
+was open-sourced in 2010,
+
+23
+00:00:44,917 --> 00:00:46,097
+and became a top-level
+
+24
+00:00:46,117 --> 00:00:48,257
+Apache project in 2014.
+
+25
+00:00:48,277 --> 00:00:49,817
+Here's the core idea.
+
+26
+00:00:49,837 --> 00:00:52,137
+Spark cuts your data into partitions.
+
+27
+00:00:52,157 --> 00:00:53,937
+You write steps on a DataFrame,
+
+28
+00:00:53,957 --> 00:00:55,257
+which works like a table:
+
+29
+00:00:55,277 --> 00:00:57,337
+filter, group, sum.
+
+30
+00:00:57,357 --> 00:00:59,577
+But Spark doesn't run them one by one.
+
+31
+00:00:59,597 --> 00:01:00,697
+It writes a plan,
+
+32
+00:01:00,717 --> 00:01:01,977
+and runs it only when you
+
+33
+00:01:01,997 --> 00:01:04,537
+ask for a result, like saving the output.
+
+34
+00:01:04,557 --> 00:01:06,777
+Then one task per partition runs,
+
+35
+00:01:06,797 --> 00:01:08,657
+all at the same time.
+
+36
+00:01:08,677 --> 00:01:10,164
+Now, the architecture.
+
+37
+00:01:10,184 --> 00:01:11,684
+The driver runs your code,
+
+38
+00:01:11,704 --> 00:01:13,657
+and turns the plan into tasks.
+
+39
+00:01:13,677 --> 00:01:14,697
+The cluster manager,
+
+40
+00:01:14,717 --> 00:01:16,377
+like Kubernetes or YARN,
+
+41
+00:01:16,397 --> 00:01:17,897
+gives the driver executors
+
+42
+00:01:17,917 --> 00:01:19,257
+on worker machines.
+
+43
+00:01:19,277 --> 00:01:20,804
+Executors run the tasks,
+
+44
+00:01:20,824 --> 00:01:23,257
+and keep data in memory, so it's fast.
+
+45
+00:01:23,277 --> 00:01:25,310
+And if one executor dies?
+
+46
+00:01:25,330 --> 00:01:26,777
+The driver re-runs just
+
+47
+00:01:26,797 --> 00:01:28,217
+its tasks on another one,
+
+48
+00:01:28,237 --> 00:01:30,457
+rebuilding the lost pieces from the plan.
+
+49
+00:01:30,477 --> 00:01:32,697
+Then the results land in storage.
+
+50
+00:01:32,717 --> 00:01:35,177
+So when a team says, "we use Spark,"
+
+51
+00:01:35,197 --> 00:01:36,697
+it means their data is too
+
+52
+00:01:36,717 --> 00:01:37,977
+big for one machine.
+
+53
+00:01:37,997 --> 00:01:39,764
+They write the steps once.
+
+54
+00:01:39,784 --> 00:01:40,897
+Spark splits them into
+
+55
+00:01:40,917 --> 00:01:42,324
+tasks across a cluster,
+
+56
+00:01:42,344 --> 00:01:44,617
+and re-runs any piece that fails.
+
+57
+00:01:44,637 --> 00:01:46,477
+That's Apache Spark.
+
+58
+00:01:48,537 --> 00:01:50,677
+So, what should I explain next?
+
+59
+00:01:50,697 --> 00:01:51,837
+Tell me in the comments below,
+
+60
+00:01:51,857 --> 00:01:54,057
+and it could be the next episode.
