@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
-# Renders the RAG Short (1080x1920) with its sound and an .srt.
+# Renders the RAG Short (1080x1920): the scenes, the voice with soft sound effects (no music), and an .srt.
 # Usage: ./build.sh [out.mp4] [extra render-pro.js flags, e.g. --sub 1 for a fast draft]
 set -euo pipefail
 cd "$(dirname "$0")"
-OUT=${1:-../../graphics/rag-short-demo.mp4}; [ $# -gt 0 ] && shift
+OUT=${1:-../../graphics/rag-short.mp4}; [ $# -gt 0 ] && shift
 BASE=${OUT%.mp4}
 export NODE_PATH=${NODE_PATH:-$(npm root -g)}
 node make-words.js

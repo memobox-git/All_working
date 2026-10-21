@@ -1,62 +1,170 @@
 <!doctype html>
-<!-- RAG as a talking-head Short (1080×1920), in the style of Vaibhav Sisinty's Shorts.
-     DEMO: the channel-intro photo stands in for Chris's footage, so the shot is a still
-     with jump cuts, punch-ins and a slight handheld drift. With real footage, #cam holds
-     a <video> instead and everything else stays. Rendered by build.sh. -->
+<!-- RAG as a vertical Short (1080×1920): Chris's cloned voice over full-screen scenes of RAG
+     at work, one scene per script line. The pace, captions and quiet sound follow the style of
+     Vaibhav Sisinty's Shorts. Rendered by build.sh. -->
 <html><head><meta charset="utf-8"><title>RAG Short</title>
 <link rel="stylesheet" href="style.css"></head>
 <body>
 <div id="frame">
-  <div id="cam"><img id="aroll" src="../intro-pro/img/chris.jpg" alt=""></div>
-  <div id="grade"></div>
+  <canvas id="bg" width="1080" height="1920"></canvas>
+  <div id="stage">
 
-  <!-- props: glossy 3D objects that pop in near the hands -->
-  <img class="prop" id="p-files" src="img/props/locked-files.png" alt="">
-  <img class="prop" id="p-robot" src="img/props/robot-librarian.png" alt="">
-  <img class="prop" id="p-book" src="img/props/open-book.png" alt="">
-  <img class="prop" id="p-db" src="img/props/database.png" alt="">
-  <img class="prop" id="p-wave" src="img/props/robot-waving.png" alt="">
+    <!-- 1 · "Your company's AI chatbot isn't dumb." -->
+    <section class="sc" id="s1">
+      <div class="chat" id="chat1">
+        <div class="ch-head"><span class="av"><svg viewBox="0 0 24 24"><use href="#i-bot"/></svg></span><div><h3>Company Assistant</h3><p><i></i>online</p></div></div>
+        <div class="ch-body"><div class="msg bot hi" id="hi1">Hi! I'm Acme's AI assistant. Ask me anything.</div><div class="smart" id="smart"><svg viewBox="0 0 24 24"><use href="#i-spark"/></svg>Powered by a top AI model</div></div>
+        <div class="ch-in">Ask me anything…</div>
+      </div>
+    </section>
 
-  <!-- cards: small, clean UI moments -->
-  <div class="card" id="c-chat">
-    <div class="msg me">What's our refund policy?</div>
-    <div class="msg bot">Refunds are available within <b>60 days</b>.</div>
-    <span class="stamp" id="stamp">made up</span>
-  </div>
-  <div class="card" id="c-docs">
-    <div class="ch"><span class="dot"></span>Searching your documents</div>
-    <div class="row" id="r1"><i></i>handbook.docx · §7</div>
-    <div class="row hit" id="r2"><i></i>refund-policy.pdf · §2<em>1</em></div>
-    <div class="row hit" id="r3"><i></i>faq.md · returns<em>2</em></div>
-    <div class="row" id="r4"><i></i>pricing.md · §3</div>
-    <div class="row hit" id="r5"><i></i>refund-policy.pdf · §1<em>3</em></div>
-  </div>
-  <div class="card slim" id="c-vec">
-    <p class="q">“Refunds are available within 30 days…”</p>
-    <div class="arrow">↓</div>
-    <p class="nums">[ 0.12, −0.83, 0.44, 0.07, … ]</p>
-  </div>
-  <div class="card" id="c-match">
-    <p class="q">“Can I return this?”</p>
-    <div class="eq"><span>≈</span>same meaning, different words</div>
-    <p class="q hl">“Refunds are available within 30 days.”</p>
-  </div>
-  <div class="card" id="c-ans">
-    <div class="ch"><span class="dot g"></span>Assistant</div>
-    <p class="ans">Refunds are available within <b>30 days</b> of purchase.<span class="cite">1</span></p>
-    <span class="src" id="src">refund-policy.pdf</span>
-    <i class="tap" id="tap"></i>
-  </div>
-  <div class="card" id="c-upd">
-    <div class="ch"><span class="dot a"></span>refund-policy.pdf<em class="upd">updated</em></div>
-    <p class="ans">Refunds are available within <s>30</s> <b>14 days</b>.</p>
-    <div class="nore" id="nore">✕ no retraining</div>
-  </div>
-  <div class="next" id="next">Next: <b>AI agents</b></div>
+    <!-- 2 · "It just never read your documents." -->
+    <section class="sc" id="s2">
+      <span class="av big" id="bot2"><svg viewBox="0 0 24 24"><use href="#i-bot"/></svg></span>
+      <svg class="wire" id="wire2" viewBox="0 0 1080 1920"><path id="w2" d="M300 560 C 480 560, 560 900, 700 900"/></svg>
+      <span class="nox" id="nox2">✕</span>
+      <img class="prop" id="p-files" src="img/props/locked-files.png" alt="">
+      <span class="chip red" id="never">never read them</span>
+    </section>
 
+    <!-- 3 · "Ask it your refund policy, and it'll confidently make one up." -->
+    <section class="sc" id="s3">
+      <div class="chat" id="chat3">
+        <div class="ch-head"><span class="av"><svg viewBox="0 0 24 24"><use href="#i-bot"/></svg></span><div><h3>Company Assistant</h3><p><i></i>online</p></div></div>
+        <div class="ch-body">
+          <div class="msg me" id="q3">What's our refund policy?</div>
+          <div class="msg bot" id="a3">Refunds are available within <b>60 days</b> of purchase.</div>
+          <span class="stamp" id="stamp">made up</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4 · "And the fix isn't a bigger model." -->
+    <section class="sc" id="s4">
+      <div class="model" id="model"><svg viewBox="0 0 24 24"><use href="#i-cpu"/></svg><h3>AI model</h3><p id="msize">70B parameters</p></div>
+      <span class="chip" id="bigger">10× bigger</span>
+      <span class="bigx" id="bigx">✕</span>
+    </section>
+
+    <!-- 5 · "It's a trick called RAG." -->
+    <section class="sc" id="s5">
+      <div class="rag" id="rag"><span>R</span><span>A</span><span>G</span></div>
+      <div class="rag-sub" id="ragsub">Retrieval · Augmented · Generation</div>
+      <img class="prop" id="p-robot" src="img/props/robot-librarian.png" alt="">
+    </section>
+
+    <!-- 6 · "Think of it like an open-book exam." -->
+    <section class="sc" id="s6">
+      <div class="exam" id="exam"><b>EXAM</b><i></i><i></i><i class="s"></i><i></i><i class="s"></i></div>
+      <img class="prop" id="p-book" src="img/props/open-book.png" alt="">
+      <span class="chip green" id="ob">open book: look it up</span>
+    </section>
+
+    <!-- 7 · "Before the model answers, it searches your documents," -->
+    <section class="sc" id="s7">
+      <div class="kick" id="k7">Searching your documents</div>
+      <div class="docs" id="docs">
+        <div class="doc"><b>refund-policy.pdf</b><i></i><i></i><i class="s"></i></div>
+        <div class="doc"><b>handbook.docx</b><i></i><i class="s"></i><i></i></div>
+        <div class="doc"><b>faq.md</b><i></i><i></i><i class="s"></i></div>
+        <div class="doc"><b>pricing.md</b><i class="s"></i><i></i><i></i></div>
+        <div class="doc"><b>shipping.md</b><i></i><i class="s"></i><i></i></div>
+        <div class="doc"><b>onboarding.pdf</b><i></i><i></i><i class="s"></i></div>
+      </div>
+      <span class="lens" id="lens"><svg viewBox="0 0 24 24"><use href="#i-search"/></svg></span>
+    </section>
+
+    <!-- 8 · "grabs the three paragraphs that match the question best," -->
+    <section class="sc" id="s8">
+      <div class="qpill" id="qp8">“What's our refund policy?”</div>
+      <div class="para" id="pa1"><em>1</em><p>Refunds are available within 30 days of purchase.</p><small>refund-policy.pdf · §2</small></div>
+      <div class="para" id="pa2"><em>2</em><p>To return an item, start from your order page.</p><small>faq.md · returns</small></div>
+      <div class="para" id="pa3"><em>3</em><p>Refunds go back to your original payment method.</p><small>refund-policy.pdf · §1</small></div>
+    </section>
+
+    <!-- 9 · "and reads them first." -->
+    <section class="sc" id="s9">
+      <div class="prompt" id="prompt">
+        <div class="pr-h">Prompt</div>
+        <div class="pq">What's our refund policy?</div>
+        <div class="pc" id="pc1"><em>1</em>Refunds are available within 30 days…</div>
+        <div class="pc" id="pc2"><em>2</em>To return an item, start from your order…</div>
+        <div class="pc" id="pc3"><em>3</em>Refunds go back to your original payment…</div>
+      </div>
+      <img class="prop" id="p-robot2" src="img/props/robot-librarian.png" alt="">
+      <span class="chip" id="reads">reads these first</span>
+    </section>
+
+    <!-- 10 · "Behind the scenes, every paragraph is turned into numbers that capture its meaning, and stored in a vector database." -->
+    <section class="sc" id="s10">
+      <div class="para solo" id="pa10"><p>Refunds are available within 30 days of purchase.</p></div>
+      <div class="down" id="down10">↓</div>
+      <div class="vec" id="vec10">[ 0.12, −0.83, 0.44, 0.07, … ]</div>
+      <span class="chip" id="mean10">numbers that capture the meaning</span>
+      <img class="prop" id="p-db" src="img/props/database.png" alt="">
+      <div class="flyers" id="fly10"></div>
+    </section>
+
+    <!-- 11 · "So it finds the right paragraph even when you use different words." -->
+    <section class="sc" id="s11">
+      <div class="map" id="map">
+        <div class="map-h">Map of meaning</div>
+        <svg class="map-l" id="mapl" viewBox="0 0 900 900"></svg>
+        <div class="lbl" id="lb-ref">“Refunds within 30 days”</div>
+        <div class="lbl q" id="lb-q">“Can I return this?”</div>
+      </div>
+      <span class="chip green" id="same">same meaning, different words</span>
+    </section>
+
+    <!-- 12 · "That's why the answer comes back with a source you can click." -->
+    <section class="sc" id="s12">
+      <div class="chat short" id="chat12">
+        <div class="ch-head"><span class="av g"><svg viewBox="0 0 24 24"><use href="#i-bot"/></svg></span><div><h3>Company Assistant</h3><p><i></i>with RAG</p></div></div>
+        <div class="ch-body">
+          <div class="msg bot ok" id="a12">Refunds are available within <b>30 days</b> of purchase. <span class="cite">1</span></div>
+          <span class="src" id="src12"><svg viewBox="0 0 24 24"><use href="#i-file"/></svg>refund-policy.pdf · §2</span>
+          <i class="tap" id="tap12"></i>
+        </div>
+      </div>
+      <div class="pdf" id="pdf12"><b>refund-policy.pdf</b><i></i><p><mark>Refunds are available within 30 days of purchase.</mark></p><i></i><i class="s"></i></div>
+    </section>
+
+    <!-- 13 · "And when the policy changes, you just update the document. No retraining." -->
+    <section class="sc" id="s13">
+      <div class="pdf big" id="pdf13"><b>refund-policy.pdf <em id="upd13">updated</em></b><i></i><p>Refunds are available within <s>30</s> <ins>14</ins> days of purchase.</p><i></i><i class="s"></i></div>
+      <div class="retrain" id="retrain"><svg viewBox="0 0 24 24"><use href="#i-refresh"/></svg>Retrain the model<i class="strike" id="strike"></i></div>
+    </section>
+
+    <!-- 14 · "If you want to get into AI engineering, this is the first thing to learn." -->
+    <section class="sc" id="s14">
+      <div class="path" id="path">
+        <div class="path-h">AI engineering · where to start</div>
+        <div class="step on" id="st1"><em>1</em>RAG<span>start here</span></div>
+        <div class="step" id="st2"><em>2</em>AI agents</div>
+        <div class="step" id="st3"><em>3</em>Evals</div>
+        <div class="step" id="st4"><em>4</em>Fine-tuning</div>
+      </div>
+    </section>
+
+    <!-- 15 · "Follow, and next I'll explain AI agents." -->
+    <section class="sc" id="s15">
+      <img class="prop" id="p-wave" src="img/props/robot-waving.png" alt="">
+      <div class="next" id="next">Next: <b>AI agents</b></div>
+      <div class="follow" id="follow">+ Follow</div>
+    </section>
+
+  </div>
   <div id="caps"></div>
-  <div class="demo" id="demo">Demo · photo stands in for your footage</div>
 </div>
+
+<svg width="0" height="0" style="position:absolute">
+  <symbol id="i-bot" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="7.5" width="16" height="12" rx="3.5"/><path d="M12 7.5V4.2"/><circle cx="12" cy="3.6" r=".6"/><circle cx="9" cy="13.5" r="1.2"/><circle cx="15" cy="13.5" r="1.2"/><path d="M2 12.5v3M22 12.5v3"/></symbol>
+  <symbol id="i-spark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 3.5l1.9 5.6 5.6 1.9-5.6 1.9L11 18.5l-1.9-5.6L3.5 11l5.6-1.9z"/></symbol>
+  <symbol id="i-cpu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="6" width="12" height="12" rx="2.5"/><path d="M10 10h4v4h-4zM9 2.5V6M15 2.5V6M9 18v3.5M15 18v3.5M2.5 9H6M2.5 15H6M18 9h3.5M18 15h3.5"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="m20.5 20.5-4.8-4.8"/></symbol>
+  <symbol id="i-file" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/></symbol>
+  <symbol id="i-refresh" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19.5 10.5A7.8 7.8 0 0 0 5.6 7.2L4 9"/><path d="M4 4.5V9h4.5"/><path d="M4.5 13.5a7.8 7.8 0 0 0 13.9 3.3L20 15"/><path d="M20 19.5V15h-4.5"/></symbol>
+</svg>
 <script src="../node_modules/gsap/dist/gsap.min.js"></script>
 <script src="words.js"></script>
 <script src="short.js"></script>
