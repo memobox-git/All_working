@@ -92,9 +92,23 @@
 
 | Field | Text |
 |---|---|
-| YouTube title | Claude Edited This Video With 20 Effects |
-| Pinned comment | Comment EDIT and I'll send you the prompt. |
-| Instagram and TikTok caption | I gave Claude my raw video and one prompt. These are the 20 effects it made. Comment EDIT for the prompt. #claude #ai #videoediting #aitools |
+| YouTube title | I Let Claude Edit My Video (20 Effects, No Editing App) |
+| Pinned comment | Comment "Claude effects" and I'll send you the prompt 👇 |
+| Instagram and TikTok caption | I filmed one take on my phone and let Claude edit it: 20 effects, every word captioned, even the music. No editing app. Comment "Claude effects" and I'll send you the prompt. #claude #ai #videoediting #aitools #contentcreator |
+
+YouTube description:
+
+```
+I filmed one take on my phone and let Claude Code edit it. It cut the pauses, captioned every word, cut me out of the background, and built 20 effects, each one timed to the moment I say its name. It even made the music, so every effect lands on a beat. No editing app, no timeline.
+
+The 20 effects: Orbit, Chat Takeover, Frame Escape, Snap Zoom, Checklist Pop, Headline Storm, Zoom Portal, Growth Curve, Studio Reveal, B-roll Overlay, Paper Cutout, Dolly Zoom, Magazine Cover, Liquid Glass, Zoom-Through Cut, Green Screen, Frame Break, Digital Zoom, Phone Mockup, Checklist.
+
+Comment "Claude effects" and I'll send you the prompt.
+
+Book a Call — https://calendar.app.google/2HjLnF1HSov9m5Gk9 | LinkedIn — https://www.linkedin.com/in/crispusroshan | DE Roadmap — https://stackle.io/resources/data-engineering-roadmap | DE Masterclass — https://stackle.io/courses/data-engineering-masterclass-get-job-ready-in-10-weeks | Meetup — https://www.meetup.com/stackle-your-career-lab
+
+#claude #claudecode #ai #videoediting #aitools #shorts
+```
 
 ---
 
