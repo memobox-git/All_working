@@ -23,8 +23,10 @@ export NODE_PATH=${NODE_PATH:-$(npm root -g)}
 node "$KIT/make-cues.js" .
 node ../render-pro.js "$PAGE" "$BASE.picture.mp4" --width "${SIZE%x*}" --height "${SIZE#*x}" "$@"
 DUR=$(node -e "process.stdout.write(String(JSON.parse(require('fs').readFileSync(process.argv[1])).duration))" "$BASE.picture.cues.json")
-python3 "$KIT/make-music.py" "$DUR" "$BASE.music.wav" .
-node "$KIT/mix.js" . "$BASE.picture.cues.json" "$BASE.music.wav" "$BASE.wav"
+if [ "$(node -p "require('./episode.json').music !== false")" = true ]; then
+  python3 "$KIT/make-music.py" "$DUR" "$BASE.music.wav" .; MUSIC=$BASE.music.wav
+else MUSIC=none; fi
+node "$KIT/mix.js" . "$BASE.picture.cues.json" "$MUSIC" "$BASE.wav"
 INTRO=$(node -p "const t = require('./timeline.json'); t.insert ? [t.insert.start, t.insert.start + t.insert.duration, t.insert['$([ "$PAGE" = index.html ] && echo landscape || echo vertical)']].join(' ') : ''")
 if [ -n "$INTRO" ]; then
   read -r IN_A IN_B IN_FILE <<< "$INTRO"

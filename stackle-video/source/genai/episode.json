@@ -12,9 +12,5 @@
     "after": ["need", 0]
   },
   "cta": true,
-  "music": {
-    "drop": ["one", 0],
-    "chapters": [["seven", 0], ["now", 0], ["tokens", 3]],
-    "break": ["save", 0]
-  }
+  "music": false
 }

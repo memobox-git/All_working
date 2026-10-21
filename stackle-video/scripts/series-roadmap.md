@@ -18,7 +18,7 @@ Each episode explains one data-engineering tool or idea in about two minutes. Ev
 |---|---|
 | Length | About 1:30 to 2:00. The five main parts take about 1:35 (240 to 260 spoken words). The channel intro and the closing ask add about 15 seconds |
 | Voice | Chris's cloned voice ("Crispus Roshan" on ElevenLabs, `eleven_v4`), with one delivery tag per episode, such as `[calm]` or `[confident]`, and `[warmly]` for the last part |
-| Picture | Motion graphics on a white background, each picture timed to the word that names it. An original 120 BPM beat under the voice. No sound effects |
+| Picture | Motion graphics on a white background, each picture timed to the word that names it. No background music: the same beat in every episode got repetitive, so from 21 October 2026 the episodes are voice only (Kafka and Gen AI were remixed without it). The kit can still add a beat (`"music"` in `episode.json`) if a better idea for music comes up. No sound effects |
 | Cuts | Landscape 1920×1080 for YouTube, with an `.srt` caption file. Portrait 1080×1920 for TikTok, Instagram Reels and YouTube Shorts, with word-by-word captions burned in |
 | Opening | Each cut opens on its own thumbnail card, then the hook (the problem part, about 17 seconds), then Chris's channel intro (about 13 seconds): "Hi, I'm Chris… Let's get into it." |
 | Closing | "That's X.", then the voiced ask: "What should I explain next? Tell me in the comments below." Then the closing title |
@@ -27,7 +27,7 @@ Each episode explains one data-engineering tool or idea in about two minutes. Ev
 
 | Part | Its job | About | In the Kafka episode |
 |---|---|---|---|
-| Opening card | Your thumbnail, with the beat already playing | 2 s | The Kafka thumbnail |
+| Opening card | Your thumbnail | 2 s | The Kafka thumbnail |
 | The problem | The hook: a concrete, everyday problem that makes the tool necessary, ending on the line that names it | 45 words | One tap on "Order" that three services need, the tangle of service-to-service wiring, and "put Apache Kafka in the middle" |
 | Channel intro | "Hi, I'm Chris… Let's get into it." The same in every episode, always after the hook | 13 s | |
 | What it is | A one-line definition, the jargon word explained, and where it came from, with dates | 40 words | "An open-source platform for streaming events". LinkedIn, then a top-level Apache project in 2012 |
@@ -45,7 +45,7 @@ The five main parts add up to about 255 words. For an idea rather than a tool (s
 2. **Script.** 240 to 260 words in the five parts, with delivery tags. It goes to you for approval. Nothing is recorded before you approve it.
 3. **Voice.** Four takes in the "Crispus Roshan" voice. The best take is saved as `audio/vo.mp3`.
 4. **Word timings.** A transcript with a start and end time for every word (`audio/vo.transcript.json`). The picture cues, the music hits and the captions all follow these timings.
-5. **Motion graphics.** White-background HTML scenes for the episode, built on the shared kit in `stackle-video/source/explained/`. Each picture appears on the word that names it. The beat is generated from the same timings, so it drops on the title and marks each chapter.
+5. **Motion graphics.** White-background HTML scenes for the episode, built on the shared kit in `stackle-video/source/explained/`. Each picture appears on the word that names it. There is no background music (see Format).
 6. **Two cuts.** The landscape cut (plus `.srt`) and the portrait cut (captions burned in). Each opens on its thumbnail.
 7. **Post copy.** Titles, description with chapters, tags and the pinned comment, as in `airflow-explained-posts.md`.
 

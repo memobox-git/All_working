@@ -1,6 +1,6 @@
 # Apache Kafka, Explained in 2 Minutes (episode 02)
 
-A 1:49 explainer on a white canvas, voiced by the ElevenLabs "Crispus Roshan" voice over the series beat. It opens on the thumbnail and the problem as the hook, then the Stackle channel intro, then the rest of the episode, and closes on the comment ask. It is built with the shared kit in `../explained/` (see its README for the running order and the tools).
+A 1:49 explainer on a white canvas, voiced by the ElevenLabs "Crispus Roshan" voice, with no background music (`"music": false`). It opens on the thumbnail and the problem as the hook, then the Stackle channel intro, then the rest of the episode, and closes on the comment ask. It is built with the shared kit in `../explained/` (see its README for the running order and the tools).
 
 | Cut | File | For |
 |---|---|---|
@@ -21,7 +21,7 @@ cd stackle-video/source/kafka
 
 | File | Job |
 |---|---|
-| `episode.json` | Output name, opening card, channel intro, comment ask, the words the beat follows |
+| `episode.json` | Output name, opening card, channel intro, comment ask, and `"music": false` |
 | `audio/vo.mp3`, `audio/vo.transcript.json` | The voiceover (`eleven_v4`, take 4 of 4) and its word timings |
 | `index.html`, `vertical.html` | The same elements for both cuts |
 | `style.css`, `vertical.css` | The two layouts |
@@ -37,7 +37,7 @@ cd stackle-video/source/kafka
    - A shop app's "Order" tap becomes an event (a small JSON card).
    - It fans out to Payments, Warehouse and Analytics, and a copy races down every line "right now".
    - Email and Fraud check join, every service wires to every other, and the lines tangle red into spaghetti.
-   - At "Apache Kafka" (where the beat drops) the tangle unwinds into one Kafka bar in the middle, and events flow in and out along its spokes.
+   - At "Apache Kafka" the tangle unwinds into one Kafka bar in the middle, and events flow in and out along its spokes.
    - Then the channel intro (0:19). The hub is still there when it ends.
 2. **What it is** (0:32).
    - The hub steps back for the definition: "An open-source platform for streaming events" in landscape, two chips in vertical.

@@ -1,6 +1,6 @@
 # 20 Gen AI Concepts You Actually Need, Explained in 2 Minutes (episode 03)
 
-A 2:29 explainer in a hand-drawn notebook style, voiced by the ElevenLabs "Crispus Roshan" voice over the series beat. Each of the twenty concepts gets its own notebook page:
+A 2:29 explainer in a hand-drawn notebook style, voiced by the ElevenLabs "Crispus Roshan" voice, with no background music (`"music": false`). Each of the twenty concepts gets its own notebook page:
 - a numbered circle;
 - a marker title;
 - its line, word by word, with the key words highlighted;
@@ -28,7 +28,7 @@ cd stackle-video/source/genai
 
 | File | Job |
 |---|---|
-| `episode.json` | Output name, opening card, channel intro (after "need"), comment ask, the words the beat follows |
+| `episode.json` | Output name, opening card, channel intro (after "need"), comment ask, and `"music": false` |
 | `audio/vo.mp3`, `audio/vo.transcript.json` | The voiceover (`eleven_v4`, take 2 of 4) and its word timings |
 | `index.html`, `vertical.html` | The same elements for both cuts. The twenty pages are built by `story.js` |
 | `notebook.css` | The look: paper, the Kalam marker font (Caveat for notes), colours, the sketch marks |

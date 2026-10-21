@@ -47,7 +47,7 @@ The fields:
   - The voice file is cut in the quiet between words, found from the audio itself, so no syllable is clipped.
   - `resume` (optional, with `after`): `[word, n]` where the voice picks up again. The words in between are left out of the video.
 - `cta` adds the comment ask after the closing title.
-- `music` names the words the beat follows (also counted from 0):
+- `music` is `false` for no background music (Kafka and Gen AI have none: the soundtrack is the voices and the channel intro's own sound). Otherwise it names the words the beat follows (also counted from 0):
   - `drop` is where the full beat comes in, usually the first "Apache".
   - `chapters` places a crash on each of three chapters. Open hats join from the first, and the arp plays from the second until the third.
   - `break` is where the drums drop out, on the last line.
@@ -81,8 +81,9 @@ The fields:
 | `common.js` | Loaded by every page: cue lookup (`at()`), the paused GSAP timeline and its helpers, icons, the dotted white background, the opening card and connector arrows |
 | `captions.js` | Word-by-word captions for the vertical cuts |
 | `cta.js`, `cta.css` | The comment ask scene |
+| `remix.sh` | Rebuilds only the soundtrack of a finished cut and swaps it into the MP4, without re-rendering the picture: `./remix.sh ../kafka` or `./remix.sh ../kafka vertical`. Use it after changing `music` |
 | `make-music.py` | The beat: original house-pop at 120 BPM, synthesised from scratch (nothing to license), following the cue words. It pauses for the channel intro and keeps a soft pad under the comment ask |
-| `mix.js` | Voice (split around the intro if needed), comment ask and the beat ducked about 10 dB under the voice. It normalises to -14 LUFS, then lays in the intro's own sound |
+| `mix.js` | Voice (split around the intro if needed), comment ask and, unless `music` is `false`, the beat ducked about 10 dB under the voice. It normalises to -14 LUFS, then lays in the intro's own sound |
 | `make-srt.js` | The `.srt` for YouTube: the intro's lines, the voiceover and the comment ask |
 | `make-thumb.js` | Saves a cut's first frame as its thumbnail JPG |
 | `audio/cta.wav`, `audio/cta.transcript.json` | The comment ask, cut from the series intro take (`series/audio/vo.mp3`, 29.30–34.52 s) |

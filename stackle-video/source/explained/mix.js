@@ -4,8 +4,8 @@
 // the beat from make-music.py, which dips under the voice. It is normalised
 // to YouTube loudness (-14 LUFS), then the channel intro's own sound (already
 // at -14 LUFS) goes in where the intro plays.
-// Usage: node mix.js <episode-dir> <video.cues.json> <music.wav> <out.wav>
-// MUSIC=0 node mix.js ... gives a soundtrack without the beat.
+// Usage: node mix.js <episode-dir> <video.cues.json> <music.wav | none> <out.wav>
+// With "none" (episode.json "music": false) the soundtrack is the voices only.
 const { spawnSync } = require('child_process');
 const fs = require('fs');
 const path = require('path');
@@ -26,7 +26,8 @@ const ms = s => Math.round(s * 1000);
 const voice = 'highpass=f=70,acompressor=threshold=-20dB:ratio=2.5:attack=5:release=120:makeup=1.4';
 
 // the voice pieces: [input, trim start, trim end, where it goes]
-const inputs = ['-i', path.join(dir, 'audio', 'vo.mp3'), '-i', music];
+const BEAT = music !== 'none';
+const inputs = ['-i', path.join(dir, 'audio', 'vo.mp3'), ...(BEAT ? ['-i', music] : [])];
 const pieces = [];
 const ins = T.insert;
 if (ins && ins.cut != null) {
@@ -34,15 +35,18 @@ if (ins && ins.cut != null) {
   pieces.push([0, 0, ins.cut, T.offset], [0, resume, null, T.offset + resume + ins.shift]);
 } else pieces.push([0, 0, null, T.offset]);
 if (T.cta) {
+  pieces.push([inputs.length / 2, 0, null, T.cta.start]);
   inputs.push('-i', path.join(__dirname, 'audio', 'cta.wav'));
-  pieces.push([2, 0, null, T.cta.start]);
 }
 const graph = pieces.map(([i, a, b, at], k) =>
   `[${i}:a]${fmt},atrim=start=${a}${b != null ? ':end=' + b : ''},asetpts=PTS-STARTPTS,${voice},adelay=${ms(at)}:all=1,apad=whole_dur=${D}[v${k}]`);
-graph.push(`${pieces.map((_, k) => `[v${k}]`).join('')}amix=inputs=${pieces.length}:normalize=0:dropout_transition=0,asplit=2[vo][key]`);
-graph.push(`[1:a]${fmt},atrim=0:${D},volume=${MUSIC}[bedraw]`);
-graph.push(`[bedraw][key]sidechaincompress=threshold=0.04:ratio=2.5:attack=80:release=900[bed]`);
-graph.push(`[vo][bed]amix=inputs=2:normalize=0:dropout_transition=0,atrim=0:${D},alimiter=limit=0.9:level=0[mix]`);
+const voices = `${pieces.map((_, k) => `[v${k}]`).join('')}amix=inputs=${pieces.length}:normalize=0:dropout_transition=0`;
+if (BEAT) {
+  graph.push(`${voices},asplit=2[vo][key]`);
+  graph.push(`[1:a]${fmt},atrim=0:${D},volume=${MUSIC}[bedraw]`);
+  graph.push(`[bedraw][key]sidechaincompress=threshold=0.04:ratio=2.5:attack=80:release=900[bed]`);
+  graph.push(`[vo][bed]amix=inputs=2:normalize=0:dropout_transition=0,atrim=0:${D},alimiter=limit=0.9:level=0[mix]`);
+} else graph.push(`${voices},atrim=0:${D},alimiter=limit=0.9:level=0[mix]`);
 const raw = out.replace(/\.wav$/, '') + '.raw.wav';
 ff([...inputs, '-filter_complex', graph.join(';'), '-map', '[mix]', '-c:a', 'pcm_s24le', raw]);
 
