@@ -1,6 +1,6 @@
 # 20 Gen AI Concepts You Actually Need, Explained in 2 Minutes: Post Copy
 
-Ready to paste. The videos, thumbnails and captions are in `stackle-video/graphics/`. The video is 2:29, so it fits YouTube Shorts (up to 3 minutes), Reels and TikTok.
+Ready to paste. The videos, thumbnails and captions are in `stackle-video/graphics/`. The video is 2:28, so it fits YouTube Shorts (up to 3 minutes), Reels and TikTok.
 
 ---
 
@@ -25,13 +25,13 @@ Most people learning Gen AI stop at prompting. The last 8 concepts are where the
 Chapters
 0:00 Most people stop at prompting
 0:13 Intro
-0:26 1–4: Tokens, embeddings, attention, LLMs
-0:49 5–8: Context window, temperature, prompting, few-shot
-1:09 9–12: Hallucinations, fine-tuning, RLHF, multimodal
-1:29 The last 8 · 13–15: Vector databases, chunking, RAG
-1:47 16–18: Tool calling, agents, MCP
-2:03 19–20: Evals, guardrails
-2:13 Recap, and what should I explain next?
+0:25 1–4: Tokens, embeddings, attention, LLMs
+0:48 5–8: Context window, temperature, prompting, few-shot
+1:07 9–12: Hallucinations, fine-tuning, RLHF, multimodal
+1:28 The last 8 · 13–15: Vector databases, chunking, RAG
+1:46 16–18: Tool calling, agents, MCP
+2:02 19–20: Evals, guardrails
+2:12 Recap, and what should I explain next?
 
 The 20:
 1 Tokens · 2 Embeddings · 3 Attention · 4 Large language models · 5 Context window · 6 Temperature · 7 Prompting · 8 Few-shot · 9 Hallucinations · 10 Fine-tuning · 11 RLHF · 12 Multimodal · 13 Vector databases · 14 Chunking · 15 RAG · 16 Tool calling · 17 Agents · 18 MCP · 19 Evals · 20 Guardrails

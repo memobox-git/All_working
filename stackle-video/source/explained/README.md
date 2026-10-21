@@ -10,7 +10,7 @@ Everything the episodes share. Each episode is its own folder next to this one (
 |---|---|---|
 | Opening card | 1.8 s (`card`) | The episode's thumbnail, full frame, over the start of the beat. It is the first frame, so it doubles as the TikTok cover |
 | The hook | about 17 s | The episode's opening, its problem part, up to the line that names the tool ("… put Apache Kafka in the middle.") |
-| Channel intro | 12.9 s | Chris's Stackle intro ("Hi, I'm Chris … Let's get into it."), from `../../graphics/stackle-intro.mp4` (or `stackle-intro-vertical.mp4`). The voice and the beat pause while it plays |
+| Channel intro | 11.7 s | Chris's Stackle intro ("Hi, I'm Chris … the skills that actually get you hired."), from `../../graphics/stackle-intro.mp4` (or `stackle-intro-vertical.mp4`). The voice and the beat pause while it plays |
 | The rest of the episode | about 1:05 | What it is, the core idea, architecture, in short |
 | Comment ask | 5.2 s (`cta`) | "So, what should I explain next? Tell me in the comments below, and it could be the next episode." A comment box types out ideas (`cta.js`) |
 | Fade | 1.8 s | To white |
@@ -81,6 +81,7 @@ The fields:
 | `common.js` | Loaded by every page: cue lookup (`at()`), the paused GSAP timeline and its helpers, icons, the dotted white background, the opening card and connector arrows |
 | `captions.js` | Word-by-word captions for the vertical cuts |
 | `cta.js`, `cta.css` | The comment ask scene |
+| `reintro.sh` | After the channel intro changes length, swaps the new intro into both finished cuts of an episode without re-rendering the page (the page is blank under the intro), and rebuilds the soundtrack and `.srt`: `./reintro.sh ../kafka` |
 | `remix.sh` | Rebuilds only the soundtrack of a finished cut and swaps it into the MP4, without re-rendering the picture: `./remix.sh ../kafka` or `./remix.sh ../kafka vertical`. Use it after changing `music` |
 | `make-music.py` | The beat: original house-pop at 120 BPM, synthesised from scratch (nothing to license), following the cue words. It pauses for the channel intro and keeps a soft pad under the comment ask |
 | `mix.js` | Voice (split around the intro if needed), comment ask and, unless `music` is `false`, the beat ducked about 10 dB under the voice. It normalises to -14 LUFS, then lays in the intro's own sound |

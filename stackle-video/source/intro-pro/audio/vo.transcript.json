@@ -1,230 +1,201 @@
 {
- "generation_id": "hkEwoEWWIyd25Bx4z9hu",
- "model_id": "eleven_scribe_v1",
- "text": "[confident] Hi, I'm Chris. I've spent over 10 years in data engineering and interviewed more than 200 engineers. Now I run Stackle, where I teach the skills that actually get you hired. [excited] Let's get into it.",
- "spoken_duration_secs": 11.76,
- "words": [
-  {
-   "text": "[confident]",
-   "type": "word",
-   "start": 0,
-   "end": 0.067
-  },
-  {
-   "text": "Hi,",
-   "type": "word",
-   "start": 0.08,
-   "end": 0.48
-  },
-  {
-   "text": "I'm",
-   "type": "word",
-   "start": 0.56,
-   "end": 0.72
-  },
-  {
-   "text": "Chris.",
-   "type": "word",
-   "start": 0.92,
-   "end": 1.44
-  },
-  {
-   "text": "I've",
-   "type": "word",
-   "start": 1.48,
-   "end": 1.6
-  },
-  {
-   "text": "spent",
-   "type": "word",
-   "start": 1.76,
-   "end": 1.92
-  },
-  {
-   "text": "over",
-   "type": "word",
-   "start": 2.08,
-   "end": 2.24
-  },
-  {
-   "text": "10",
-   "type": "word",
-   "start": 2.36,
-   "end": 2.48
-  },
-  {
-   "text": "years",
-   "type": "word",
-   "start": 2.56,
-   "end": 2.8
-  },
-  {
-   "text": "in",
-   "type": "word",
-   "start": 2.88,
-   "end": 2.96
-  },
-  {
-   "text": "data",
-   "type": "word",
-   "start": 3.08,
-   "end": 3.2
-  },
-  {
-   "text": "engineering",
-   "type": "word",
-   "start": 3.48,
-   "end": 3.76
-  },
-  {
-   "text": "and",
-   "type": "word",
-   "start": 3.84,
-   "end": 3.92
-  },
-  {
-   "text": "interviewed",
-   "type": "word",
-   "start": 4,
-   "end": 4.4
-  },
-  {
-   "text": "more",
-   "type": "word",
-   "start": 4.44,
-   "end": 4.48
-  },
-  {
-   "text": "than",
-   "type": "word",
-   "start": 4.56,
-   "end": 4.8
-  },
-  {
-   "text": "200",
-   "type": "word",
-   "start": 4.88,
-   "end": 5.6
-  },
-  {
-   "text": "engineers.",
-   "type": "word",
-   "start": 5.68,
-   "end": 6.64
-  },
-  {
-   "text": "Now",
-   "type": "word",
-   "start": 6.72,
-   "end": 6.96
-  },
-  {
-   "text": "I",
-   "type": "word",
-   "start": 7.04,
-   "end": 7.08
-  },
-  {
-   "text": "run",
-   "type": "word",
-   "start": 7.12,
-   "end": 7.28
-  },
-  {
-   "text": "Stackle,",
-   "type": "word",
-   "start": 7.44,
-   "end": 7.92
-  },
-  {
-   "text": "where",
-   "type": "word",
-   "start": 7.96,
-   "end": 8
-  },
-  {
-   "text": "I",
-   "type": "word",
-   "start": 8.16,
-   "end": 8.187
-  },
-  {
-   "text": "teach",
-   "type": "word",
-   "start": 8.213,
-   "end": 8.4
-  },
-  {
-   "text": "the",
-   "type": "word",
-   "start": 8.48,
-   "end": 8.56
-  },
-  {
-   "text": "skills",
-   "type": "word",
-   "start": 8.72,
-   "end": 8.88
-  },
-  {
-   "text": "that",
-   "type": "word",
-   "start": 9,
-   "end": 9.12
-  },
-  {
-   "text": "actually",
-   "type": "word",
-   "start": 9.36,
-   "end": 9.6
-  },
-  {
-   "text": "get",
-   "type": "word",
-   "start": 9.68,
-   "end": 9.76
-  },
-  {
-   "text": "you",
-   "type": "word",
-   "start": 9.8,
-   "end": 9.84
-  },
-  {
-   "text": "hired.",
-   "type": "word",
-   "start": 9.92,
-   "end": 10.56
-  },
-  {
-   "text": "[excited]",
-   "type": "word",
-   "start": 10.573,
-   "end": 10.627
-  },
-  {
-   "text": "Let's",
-   "type": "word",
-   "start": 10.64,
-   "end": 10.88
-  },
-  {
-   "text": "get",
-   "type": "word",
-   "start": 10.92,
-   "end": 10.96
-  },
-  {
-   "text": "into",
-   "type": "word",
-   "start": 11.04,
-   "end": 11.28
-  },
-  {
-   "text": "it.",
-   "type": "word",
-   "start": 11.36,
-   "end": 11.76
-  }
- ]
+"generation_id": "hkEwoEWWIyd25Bx4z9hu",
+"model_id": "eleven_scribe_v1",
+"text": "[confident] Hi, I'm Chris. I've spent over 10 years in data engineering and interviewed more than 200 engineers. Now I run Stackle, where I teach the skills that actually get you hired.",
+"spoken_duration_secs": 10.56,
+"words": [
+{
+"text": "[confident]",
+"type": "word",
+"start": 0,
+"end": 0.067
+},
+{
+"text": "Hi,",
+"type": "word",
+"start": 0.08,
+"end": 0.48
+},
+{
+"text": "I'm",
+"type": "word",
+"start": 0.56,
+"end": 0.72
+},
+{
+"text": "Chris.",
+"type": "word",
+"start": 0.92,
+"end": 1.44
+},
+{
+"text": "I've",
+"type": "word",
+"start": 1.48,
+"end": 1.6
+},
+{
+"text": "spent",
+"type": "word",
+"start": 1.76,
+"end": 1.92
+},
+{
+"text": "over",
+"type": "word",
+"start": 2.08,
+"end": 2.24
+},
+{
+"text": "10",
+"type": "word",
+"start": 2.36,
+"end": 2.48
+},
+{
+"text": "years",
+"type": "word",
+"start": 2.56,
+"end": 2.8
+},
+{
+"text": "in",
+"type": "word",
+"start": 2.88,
+"end": 2.96
+},
+{
+"text": "data",
+"type": "word",
+"start": 3.08,
+"end": 3.2
+},
+{
+"text": "engineering",
+"type": "word",
+"start": 3.48,
+"end": 3.76
+},
+{
+"text": "and",
+"type": "word",
+"start": 3.84,
+"end": 3.92
+},
+{
+"text": "interviewed",
+"type": "word",
+"start": 4,
+"end": 4.4
+},
+{
+"text": "more",
+"type": "word",
+"start": 4.44,
+"end": 4.48
+},
+{
+"text": "than",
+"type": "word",
+"start": 4.56,
+"end": 4.8
+},
+{
+"text": "200",
+"type": "word",
+"start": 4.88,
+"end": 5.6
+},
+{
+"text": "engineers.",
+"type": "word",
+"start": 5.68,
+"end": 6.64
+},
+{
+"text": "Now",
+"type": "word",
+"start": 6.72,
+"end": 6.96
+},
+{
+"text": "I",
+"type": "word",
+"start": 7.04,
+"end": 7.08
+},
+{
+"text": "run",
+"type": "word",
+"start": 7.12,
+"end": 7.28
+},
+{
+"text": "Stackle,",
+"type": "word",
+"start": 7.44,
+"end": 7.92
+},
+{
+"text": "where",
+"type": "word",
+"start": 7.96,
+"end": 8
+},
+{
+"text": "I",
+"type": "word",
+"start": 8.16,
+"end": 8.187
+},
+{
+"text": "teach",
+"type": "word",
+"start": 8.213,
+"end": 8.4
+},
+{
+"text": "the",
+"type": "word",
+"start": 8.48,
+"end": 8.56
+},
+{
+"text": "skills",
+"type": "word",
+"start": 8.72,
+"end": 8.88
+},
+{
+"text": "that",
+"type": "word",
+"start": 9,
+"end": 9.12
+},
+{
+"text": "actually",
+"type": "word",
+"start": 9.36,
+"end": 9.6
+},
+{
+"text": "get",
+"type": "word",
+"start": 9.68,
+"end": 9.76
+},
+{
+"text": "you",
+"type": "word",
+"start": 9.8,
+"end": 9.84
+},
+{
+"text": "hired.",
+"type": "word",
+"start": 9.92,
+"end": 10.56
+}
+],
+"word_count": 31
 }

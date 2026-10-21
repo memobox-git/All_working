@@ -1,6 +1,6 @@
 # 20 Gen AI Concepts You Actually Need, Explained in 2 Minutes (episode 03)
 
-A 2:29 explainer in a hand-drawn notebook style, voiced by the ElevenLabs "Crispus Roshan" voice, with no background music (`"music": false`). Each of the twenty concepts gets its own notebook page:
+A 2:28 explainer in a hand-drawn notebook style, voiced by the ElevenLabs "Crispus Roshan" voice, with no background music (`"music": false`). Each of the twenty concepts gets its own notebook page:
 - a numbered circle;
 - a marker title;
 - its line, word by word, with the key words highlighted;
@@ -56,8 +56,8 @@ To change a concept's wording on screen, edit `CONCEPTS` in `story.js`. A `^` be
 0. **Opening card** (0:00). The thumbnail.
 1. **The hook: the cover page** (0:02). "20 Gen AI Concepts You Actually Need" writes itself in. A tape reads "Tokens → Agents. The full stack.", and a box says "Most people stop at prompting. The last 8 are where the jobs are." The 1–20 circles pop up along the tracker on "twenty".
    - Then the channel intro (0:13).
-2. **Pages 1–12** (0:26). Tokens, embeddings, attention, LLMs, context window, temperature, prompting, few-shot, hallucinations, fine-tuning, RLHF, multimodal.
-3. **"The last 8"** (1:29). A big "The last 8 are where the jobs are", with circles 13 to 20.
-4. **Pages 13–20** (1:32). Vector databases, chunking, RAG, tool calling, agents, MCP, evals, guardrails.
-5. **The close** (2:13). "Tokens → Agents. That's the full stack. Save this: all 20, in one place", with all twenty circles ticking off.
-6. **Comment ask** (2:21). "What should I explain next?"
+2. **Pages 1–12** (0:25). Tokens, embeddings, attention, LLMs, context window, temperature, prompting, few-shot, hallucinations, fine-tuning, RLHF, multimodal.
+3. **"The last 8"** (1:28). A big "The last 8 are where the jobs are", with circles 13 to 20.
+4. **Pages 13–20** (1:31). Vector databases, chunking, RAG, tool calling, agents, MCP, evals, guardrails.
+5. **The close** (2:12). "Tokens → Agents. That's the full stack. Save this: all 20, in one place", with all twenty circles ticking off.
+6. **Comment ask** (2:20). "What should I explain next?"

@@ -2,7 +2,7 @@
 
 **Series:** Explained in 2 Minutes, episode 03 (Gen AI takes this slot, so Spark and the rest move down one)
 
-**Spoken words:** 332. **Length:** 2:04 of voice, so 2:29 in all, counting the opening card, your intro and the comment ask.
+**Spoken words:** 332. **Length:** 2:04 of voice, so 2:28 in all, counting the opening card, your intro and the comment ask.
 
 **Format:** each concept is a notebook page in the style of your reference. The page has:
 - the number in a coloured circle;
@@ -13,7 +13,7 @@
 
 A 1→20 tracker runs down the side (along the top in the vertical cut) and ticks off each concept. The voice says each number, so viewers always know where they are. The order is the same as every episode: the hook, then your intro, then the rest.
 
-**Status:** approved and made. The voice is take 2 of 4 (`source/genai/audio/vo.mp3`, 2:04 of voice), and the video runs 2:29 in all: about 25 seconds longer than estimated, because twenty concepts take longer to say than the word count suggested. Both cuts are in `stackle-video/graphics/` (`genai-20-concepts.mp4` with `.srt`, and `genai-20-concepts-vertical.mp4`). The post copy is in `genai-20-concepts-posts.md`. The opening cards are temporary until your thumbnails arrive.
+**Status:** approved and made. The voice is take 2 of 4 (`source/genai/audio/vo.mp3`, 2:04 of voice), and the video runs 2:28 in all: about 23 seconds longer than estimated, because twenty concepts take longer to say than the word count suggested. Both cuts are in `stackle-video/graphics/` (`genai-20-concepts.mp4` with `.srt`, and `genai-20-concepts-vertical.mp4`). The post copy is in `genai-20-concepts-posts.md`. The opening cards are temporary until your thumbnails arrive.
 
 ---
 
@@ -21,7 +21,7 @@ A 1→20 tracker runs down the side (along the top in the vertical cut) and tick
 
 > [confident] Most people learning Gen AI stop at prompting. But it's a full stack, from tokens to agents, and the last eight are where the jobs are. Here are the twenty you actually need.
 >
-> *(your intro: "Hi, I'm Chris … Let's get into it.")*
+> *(your intro: "Hi, I'm Chris … the skills that actually get you hired.")*
 >
 > One: tokens. Models read text in small pieces called tokens, and you pay per token.
 >
