@@ -1,7 +1,7 @@
 # Short 03: Which AI to use when
 
 **Shot:** a numbered list, edited like Short 02: a fixed title, a numbered label for each tool, captions one word at a time, a different effect for each tool, and music with sound effects.
-**Words:** 143 · **Length:** about 57 seconds at 150 words a minute
+**Words:** 146 · **Length:** about 58 seconds at 150 words a minute
 **Needs:** Chris alone, one take of about a minute. Same setup as Short 02.
 **Channel:** TikTok, Reels and YouTube Shorts (AI). Not for LinkedIn, where AI tool posts get 120 to 260 impressions.
 
@@ -49,16 +49,20 @@ Claude in Chrome is not connected in this cloud session, so this used YouTube se
 
 ## Script
 
+Told the Storyworthy way: it opens in a moment with stakes (late at night, too much to do, one AI tab for all of it), turns on one realisation, and ends as the opposite of how it began (pick the tool by the job). The three jobs from the opening come back as the first three tools, which closes the loop.
+
 | Time | Chris says | On screen |
 |---|---|---|
-| 0:00 | There is no single best AI. Each of these six tools is best at a different job. | Big title "Which AI to use when", with the six names beside you. Snap zoom on "different job". |
-| 0:06 | Use ChatGPT for everyday tasks, like planning a trip or rewriting an email. It can also make images. | Label "01 ChatGPT". Chat takeover: a chat window asks "Rewrite this email so it sounds friendly". |
-| 0:13 | Use Claude for coding and long documents. Give it a long report, and ask about any part of it. | Label "02 Claude". B-roll overlay: an editor window with code and a long report. |
-| 0:21 | Use Gemini if you work in Google. It sits inside Gmail and Docs, so it can sum up a long email thread. | Label "03 Gemini". Phone mockup: an email thread shrinks into a three-line summary. |
-| 0:29 | Use Copilot if you work in Microsoft. It sits inside Word, Excel and Teams, and can sum up a meeting you missed. | Label "04 Copilot". Growth curve: a chart draws behind you, like a sheet in Excel. |
-| 0:38 | Use Perplexity when you need answers you can check. It searches the web and shows its sources. | Label "05 Perplexity". Headline storm: news headlines fly in, each with a numbered source. |
-| 0:45 | Use NotebookLM to study your own files. Upload your notes, and it answers only from them. | Label "06 NotebookLM". Paper cutout: your pages and notes pop in around you. |
-| 0:51 | Which one do you use the most? Tell me in the comments. | Checklist: the six tools tick off. Your profile tag. |
+| 0:00 | It's ten at night. You have a long report to read, a meeting you missed, and a full inbox, and one AI tab open for all of it. | Big title "Which AI to use when", with the six names beside you. A report, a meeting invite and an inbox pop in around you. |
+| 0:08 | Using one AI for every job is the problem, because each of these six tools is best at something different. | Snap zoom on "something different". |
+| 0:13 | Use Claude for the long report. Give it the whole thing, and ask about any part of it. | Label "01 Claude". B-roll overlay: a long report scrolls in an editor window. |
+| 0:19 | Use Copilot for the meeting you missed. Inside Teams, it can sum up what was said. | Label "02 Copilot". Checklist pop: "Decisions", "Next steps", "Who does what". |
+| 0:25 | Use Gemini for your inbox. Inside Gmail, it can sum up a long thread in a few lines. | Label "03 Gemini". Phone mockup: an email thread shrinks into a three-line summary. |
+| 0:31 | Use Perplexity when you need answers you can check. It searches the web and shows its sources. | Label "04 Perplexity". Headline storm: headlines fly in, each with a numbered source. |
+| 0:37 | Use NotebookLM to study your own notes. It answers only from the files you give it. | Label "05 NotebookLM". Paper cutout: your pages and notes pop in around you. |
+| 0:43 | And use ChatGPT for everything else, like planning a trip or making an image. | Label "06 ChatGPT". Chat takeover: "Plan a three-day trip to Tokyo". |
+| 0:48 | So stop asking which AI is best. Ask what the job is. | Your face. Snap zoom on "what the job is". |
+| 0:52 | Which one do you use the most? Tell me in the comments. | Checklist: the six tools tick off. Your profile tag. |
 
 ---
 
@@ -91,4 +95,4 @@ Book a Call — https://calendar.app.google/2HjLnF1HSov9m5Gk9 | LinkedIn — htt
 - **"Best at" is a judgement,** not a measured fact. It matches what the written comparisons agree on. Change any pairing that doesn't match how you use the tools.
 - **Gemini in Gmail and Copilot in Word, Excel and Teams** need a paid plan for some features, so the script says "can".
 - **NotebookLM's name:** one guide says Google now calls it Gemini Notebook. That comes from a single source and is not confirmed. Check the name in the app before filming.
-- **Added by me:** the examples (planning a trip, rewriting an email, a long report, a long email thread, a meeting you missed, your notes).
+- **Added by me:** the opening scene (ten at night, a report, a missed meeting, a full inbox) and the examples (a trip, an image, your notes). The scene is a "you" situation, not a story about you, so nothing in it claims something happened to you.
