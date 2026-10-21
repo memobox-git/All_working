@@ -1,0 +1,31 @@
+Dear recruiters, if you want one Data Engineer who knows all of this for $90K:
+
+SQL, Python, Scala and Java
+Spark, Flink and Kafka in production
+Airflow, Dagster and dbt
+Snowflake, Databricks, BigQuery and Redshift
+AWS, Azure and GCP (all three, of course)
+Terraform, Docker and Kubernetes
+Power BI and Tableau dashboards
+ML pipelines and LLM agents
+5+ years of Microsoft Fabric (it launched in 2023)
+On call every weekend
+
+That's not a Data Engineer.
+That's a platform team, an analytics team and an ML team. For one salary.
+
+I've run 200+ data engineering interviews from the hiring side. I've never needed one person who knows all of that.
+
+What a strong data engineer actually does every week:
+
+→ Turns a vague business question into a table design that holds up
+→ Builds pipelines that can rerun without creating duplicates
+→ Picks between cost, speed and freshness, and explains the choice
+→ Finds out why yesterday's numbers changed before someone asks
+→ Moves old pipelines to new tools without breaking dashboards
+→ Watches cloud spend before finance does
+→ Fixes the 2 AM failure before the morning dashboards load
+
+Know SQL, one cloud and one processing engine deeply. That beats touching 15 tools once.
+
+If a job post looks like that list, don't feel behind. It's not a checklist. It's a wish list.
