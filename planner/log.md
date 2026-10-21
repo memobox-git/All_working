@@ -2,6 +2,10 @@
 
 Newest first. One entry a day: the top 3, what got done, what moved to tomorrow.
 
+## Wed 21 Oct 2026
+
+**Top 3 (Draft, waiting for Chris):** 1) Prep and record Skip the Line with Mark (6 pm) 2) Publish one finished video 3) OBIE prompt 11. Fixed: 4 sales calls, 12–1. No reply to the last 3 drafts, so this one is short and sent no phone ping.
+
 ## Tue 20 Oct 2026
 
 **Top 3 (Draft, waiting for Chris)**
