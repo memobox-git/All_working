@@ -1,6 +1,6 @@
 # Apache Airflow, Explained in 2 Minutes (episode 01)
 
-A 1:55 explainer on a white canvas, voiced by the ElevenLabs "Crispus Roshan" voice over an upbeat original beat, with motion graphics synced to every word. It opens on the thumbnail and the problem as the hook, then the Stackle channel intro, then the rest of the episode, and closes on the comment ask. It is built with the shared kit in `../explained/` (see its README for the running order and the tools).
+A 1:54 explainer on a white canvas, voiced by the ElevenLabs "Crispus Roshan" voice over an upbeat original beat, with motion graphics synced to every word. It opens on the thumbnail and the problem as the hook, then the Stackle channel intro, then the rest of the episode, and closes on the comment ask. It is built with the shared kit in `../explained/` (see its README for the running order and the tools).
 
 | Cut | File | For |
 |---|---|---|
@@ -34,11 +34,11 @@ cd airflow && ./build.sh              # landscape + .srt, motion blur on (about 
 
 0. **Opening card** (0:00). The thumbnail.
 1. **The problem, as the hook** (0:02). The 6 AM grid of pipeline runs, the three questions (when, in what order, what if one fails), and "that something is Apache Airflow" with the title. Then the channel intro (0:18).
-2. **What it is** (0:31). The title, what Airflow is, "the right task, time and order", and 2014 → 2016 → 2019.
-3. **DAGs** (0:45). A TaskFlow DAG in Python next to the graph it makes. Tasks run in order once the ones before them succeed.
-4. **Architecture** (1:03). DAG files → DAG processor → metadata database ⇄ scheduler → executor → workers, with results flowing back. The web UI sits on top: runs, logs and a one-click retry.
-5. **In short** (1:34). "We use Airflow", three takeaways and the closing title.
-6. **Comment ask** (1:48). "What should I explain next?"
+2. **What it is** (0:30). The title, what Airflow is, "the right task, time and order", and 2014 → 2016 → 2019.
+3. **DAGs** (0:44). A TaskFlow DAG in Python next to the graph it makes. Tasks run in order once the ones before them succeed.
+4. **Architecture** (1:02). DAG files → DAG processor → metadata database ⇄ scheduler → executor → workers, with results flowing back. The web UI sits on top: runs, logs and a one-click retry.
+5. **In short** (1:33). "We use Airflow", three takeaways and the closing title.
+6. **Comment ask** (1:47). "What should I explain next?"
 
 ## The vertical cut
 
