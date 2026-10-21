@@ -31,6 +31,8 @@ export const instructor = {
   role: "Founder, Stackle",
   photo: "/img/chris-640.jpg",
   bio: "Chris has spent more than 10 years in data engineering and has interviewed over 200 engineers for companies in healthcare, banking, automotive and financial exchanges. He has also sat on the other side of the table, holding offers from several big tech companies at once. Stackle is where he teaches what gets people hired, and what gets them rejected.",
+  // Two-sentence version for the homepage.
+  bioShort: "Chris has spent more than 10 years in data engineering and has interviewed over 200 engineers for companies in healthcare, banking, automotive and financial exchanges. Stackle is where he teaches what gets people hired, and what gets them rejected.",
   facts: [
     "10+ years in data engineering",
     "200+ engineers interviewed",
