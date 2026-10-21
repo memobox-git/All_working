@@ -47,7 +47,7 @@ The fields:
   - The voice file is cut in the quiet between words, found from the audio itself, so no syllable is clipped.
   - `resume` (optional, with `after`): `[word, n]` where the voice picks up again. The words in between are left out of the video.
 - `cta` adds the comment ask after the closing title.
-- `music` is `false` for no background music (Kafka and Gen AI have none: the soundtrack is the voices and the channel intro's own sound). Otherwise it names the words the beat follows (also counted from 0):
+- `music` is `false` for no background music (no episode has one now: the soundtrack is the voices and the channel intro's own sound). Otherwise it names the words the beat follows (also counted from 0):
   - `drop` is where the full beat comes in, usually the first "Apache".
   - `chapters` places a crash on each of three chapters. Open hats join from the first, and the arp plays from the second until the third.
   - `break` is where the drums drop out, on the last line.

@@ -18,7 +18,7 @@ Each episode explains one data-engineering tool or idea in about two minutes. Ev
 |---|---|
 | Length | About 1:30 to 2:00. The five main parts take about 1:35 (240 to 260 spoken words). The channel intro and the closing ask add about 15 seconds |
 | Voice | Chris's cloned voice ("Crispus Roshan" on ElevenLabs, `eleven_v4`), with one delivery tag per episode, such as `[calm]` or `[confident]`, and `[warmly]` for the last part |
-| Picture | Motion graphics on a white background, each picture timed to the word that names it. No background music: the same beat in every episode got repetitive, so from 21 October 2026 the episodes are voice only (Kafka and Gen AI were remixed without it). The kit can still add a beat (`"music"` in `episode.json`) if a better idea for music comes up. No sound effects |
+| Picture | Motion graphics on a white background, each picture timed to the word that names it. No background music: the same beat in every episode got repetitive, so from 21 October 2026 the episodes are voice only (Airflow, Kafka, Gen AI and the trailer were all remixed without it). The kit can still add a beat (`"music"` in `episode.json`) if a better idea for music comes up. No sound effects |
 | Cuts | Landscape 1920×1080 for YouTube, with an `.srt` caption file. Portrait 1080×1920 for TikTok, Instagram Reels and YouTube Shorts, with word-by-word captions burned in |
 | Opening | Each cut opens on its own thumbnail card, then the hook (the problem part, about 17 seconds), then Chris's channel intro (about 12 seconds): "Hi, I'm Chris … the skills that actually get you hired." |
 | Closing | "That's X.", then the voiced ask: "What should I explain next? Tell me in the comments below." Then the closing title |

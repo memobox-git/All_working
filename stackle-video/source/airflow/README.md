@@ -1,6 +1,6 @@
 # Apache Airflow, Explained in 2 Minutes (episode 01)
 
-A 1:54 explainer on a white canvas, voiced by the ElevenLabs "Crispus Roshan" voice over an upbeat original beat, with motion graphics synced to every word. It opens on the thumbnail and the problem as the hook, then the Stackle channel intro, then the rest of the episode, and closes on the comment ask. It is built with the shared kit in `../explained/` (see its README for the running order and the tools).
+A 1:54 explainer on a white canvas, voiced by the ElevenLabs "Crispus Roshan" voice, with no background music (`"music": false`), and motion graphics synced to every word. It opens on the thumbnail and the problem as the hook, then the Stackle channel intro, then the rest of the episode, and closes on the comment ask. It is built with the shared kit in `../explained/` (see its README for the running order and the tools).
 
 | Cut | File | For |
 |---|---|---|
@@ -22,7 +22,7 @@ cd airflow && ./build.sh              # landscape + .srt, motion blur on (about 
 
 | File | Job |
 |---|---|
-| `episode.json` | Output name, opening card, channel intro, comment ask, the words the beat follows |
+| `episode.json` | Output name, opening card, channel intro, comment ask, and `"music": false` |
 | `audio/vo.mp3`, `audio/vo.transcript.json` | The voiceover (`eleven_v4`, take 3 of 4) and its word timings |
 | `index.html`, `style.css`, `scene.js` | The landscape cut: five scenes, the HUD, task grids, flow dots and camera |
 | `vertical.html`, `vertical.css`, `vertical.js` | The vertical cut: the same story laid out for a phone, plus the captions |
@@ -49,5 +49,5 @@ cd airflow && ./build.sh              # landscape + .srt, motion blur on (about 
 ## Changing things
 
 - **New voiceover take or new script:** replace `audio/vo.mp3` and `audio/vo.transcript.json`, then rebuild both cuts. If you change the words, update the `at('word')` calls in `scene.js` and `vertical.js` that point at them.
-- **Music level:** `MUSIC=0 ./build.sh` makes a version without the beat; `MUSIC=.3 ./build.sh` makes the beat louder.
+- **Music:** off (`"music": false` in `episode.json`). To bring a beat back, put the cue words back in `music` (see `../explained/README.md`) and run `../explained/remix.sh .` for each cut.
 - **New thumbnail:** replace the two files in `img/`, then rebuild.

@@ -12,9 +12,5 @@
     "after": ["airflow", 0]
   },
   "cta": true,
-  "music": {
-    "drop": ["apache", 0],
-    "chapters": [["you", 0], ["now", 0], ["team", 0]],
-    "break": ["that's", 0]
-  }
+  "music": false
 }

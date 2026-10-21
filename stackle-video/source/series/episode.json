@@ -13,9 +13,5 @@
     "resume": ["this", 0]
   },
   "cta": false,
-  "music": {
-    "drop": ["this", 0],
-    "chapters": [["here's", 0], ["hundred", 0], ["so", 0]],
-    "break": ["see", 0]
-  }
+  "music": false
 }

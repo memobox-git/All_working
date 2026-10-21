@@ -1,6 +1,6 @@
 # Explained in 2 Minutes: the series intro (episode 00)
 
-A 51-second trailer for the series, in the same look and beat as the episodes. It is built with the shared kit in `../explained/`.
+A 51-second trailer for the series, in the same look as the episodes, with no background music. It is built with the shared kit in `../explained/`.
 
 | Cut | File | For |
 |---|---|---|
@@ -21,7 +21,7 @@ cd stackle-video/source/series
 
 | Time | Words | Picture |
 |---|---|---|
-| 0:00 | (beat) | Opening card: `img/thumbnail.png` / `img/thumbnail-vertical.png`. **Temporary designs**: replace them with Chris's thumbnails |
+| 0:00 | (silent) | Opening card: `img/thumbnail.png` / `img/thumbnail-vertical.png`. **Temporary designs**: replace them with Chris's thumbnails |
 | 0:02 | "One data tool. Two minutes." | Two big lines, word by word |
 | 0:04 | (channel intro) | The Stackle intro, "Hi, I'm Chris … the skills that actually get you hired." (`"intro": {"after": ["minutes", 0], "resume": ["this", 0]}` in `episode.json`) |
 | 0:16 | "This is Explained in 2 Minutes …" | The series lockup (a stopwatch mark whose arc fills toward two minutes), then "One tool or idea from data engineering, every episode" |
@@ -36,7 +36,7 @@ cd stackle-video/source/series
 
 | File | Job |
 |---|---|
-| `episode.json` | Output name, card, the intro after "Two minutes" (two words of the take after it are left out), the words the beat follows (the drop on "This is …", a crash on "Here's", the arp for "a hundred", drums out for "See you in episode one") |
+| `episode.json` | Output name, card, the intro after "Two minutes" (two words of the take after it are left out), and `"music": false` (no background music) |
 | `audio/vo.mp3`, `audio/vo.transcript.json` | The voiceover (`eleven_v4`, take 1 of 4) and its word timings. Its comment-ask line is also cut out as the shared ending for every episode (`../explained/audio/cta.wav`) |
 | `index.html`, `vertical.html`, `style.css`, `vertical.css`, `story.js` | The pages, the two layouts and one timeline for both |
 | `brand.js` | The stopwatch mark |
