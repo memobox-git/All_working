@@ -101,6 +101,7 @@ Audience: **Both** = India and US. Effort: **S** = one filming session, **M** = 
 |---|---|---|---|---|
 | 40 | Will AI Replace Data Engineers? What I See From the Hiring Side | Jean Lee "careers AI won't take over" 1.0M | Both | M |
 | 41 | The Data Engineering Jobs AI Is Creating in 2027 | Same proof | Both | M |
+| 42 | Reverse Engineer Anything (REA) vs a Pipeline With No Source Code | REA trend, October 2026: Low Level 2.9M, Nick Saraev 1.6M. **Ready**: plan, script and Shorts in `stackle-video/videos/rea-legacy-pipeline/` | Both | M |
 
 ---
 
