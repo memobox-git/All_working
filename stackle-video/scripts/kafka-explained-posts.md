@@ -29,11 +29,11 @@ In this episode:
 Chapters
 0:00 The problem
 0:19 Intro
-0:32 What is Apache Kafka?
-0:44 The core idea: topics, logs and offsets
-1:01 Kafka architecture
-1:28 Recap
-1:41 What should I explain next?
+0:31 What is Apache Kafka?
+0:43 The core idea: topics, logs and offsets
+1:00 Kafka architecture
+1:27 Recap
+1:40 What should I explain next?
 
 Explained in 2 Minutes is a Stackle series: one data tool, two minutes.
 Previous episode: Apache Airflow. Next episode: 20 Gen AI Concepts You Actually Need.

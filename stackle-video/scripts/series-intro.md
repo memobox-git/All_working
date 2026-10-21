@@ -12,7 +12,7 @@
 
 > [confident] One data tool. Two minutes.
 >
-> *(the channel intro: "Hi, I'm Chris. I've spent over 10 years in data engineering and interviewed more than 200 engineers. Now I run Stackle, where I teach the skills that actually get you hired. Let's get into it.")*
+> *(the channel intro: "Hi, I'm Chris. I've spent over 10 years in data engineering and interviewed more than 200 engineers. Now I run Stackle, where I teach the skills that actually get you hired.")*
 >
 > This is Explained in 2 Minutes. Every episode takes one tool or idea from data engineering, and shows you what it is, why teams use it, and how it works under the hood, with the architecture drawn out, step by step.
 >

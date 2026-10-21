@@ -1,6 +1,6 @@
 # Apache Kafka, Explained in 2 Minutes (episode 02)
 
-A 1:49 explainer on a white canvas, voiced by the ElevenLabs "Crispus Roshan" voice, with no background music (`"music": false`). It opens on the thumbnail and the problem as the hook, then the Stackle channel intro, then the rest of the episode, and closes on the comment ask. It is built with the shared kit in `../explained/` (see its README for the running order and the tools).
+A 1:47 explainer on a white canvas, voiced by the ElevenLabs "Crispus Roshan" voice, with no background music (`"music": false`). It opens on the thumbnail and the problem as the hook, then the Stackle channel intro, then the rest of the episode, and closes on the comment ask. It is built with the shared kit in `../explained/` (see its README for the running order and the tools).
 
 | Cut | File | For |
 |---|---|---|
@@ -39,17 +39,17 @@ cd stackle-video/source/kafka
    - Email and Fraud check join, every service wires to every other, and the lines tangle red into spaghetti.
    - At "Apache Kafka" the tangle unwinds into one Kafka bar in the middle, and events flow in and out along its spokes.
    - Then the channel intro (0:19). The hub is still there when it ends.
-2. **What it is** (0:32).
+2. **What it is** (0:31).
    - The hub steps back for the definition: "An open-source platform for streaming events" in landscape, two chips in vertical.
    - Streaming vs a nightly batch: live events pass straight through, while batch ones queue at a 2 AM gate.
    - The timeline: 2011, open-sourced by LinkedIn; 2012, top-level Apache project.
-3. **The core idea** (0:44).
+3. **The core idea** (0:43).
    - A producer appends events to the `orders` topic, a numbered log, and they are "kept for 7 days, you choose".
    - Two consumers (Analytics and Email) read at their own pace, each pointer showing its own offset.
-4. **Architecture** (1:01).
+4. **Architecture** (1:00).
    - Three brokers in a cluster. The topic splits into P0, P1 and P2, one leader per broker, and the load spreads.
    - Every partition is copied to another broker. Broker 2 fails, and P1's copy on broker 1 becomes the leader.
    - A consumer group of two takes the partitions, then a third consumer joins and P2 moves to it.
    - The KRaft controllers appear on top, with dashed lines to each leader and crowns on the leaders.
-5. **In short** (1:28). "We use Kafka.", three takeaways, then "That's Apache Kafka" and the closing title.
-6. **Comment ask** (1:41). "What should I explain next?"
+5. **In short** (1:27). "We use Kafka.", three takeaways, then "That's Apache Kafka" and the closing title.
+6. **Comment ask** (1:40). "What should I explain next?"

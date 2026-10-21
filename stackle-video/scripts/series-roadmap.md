@@ -20,7 +20,7 @@ Each episode explains one data-engineering tool or idea in about two minutes. Ev
 | Voice | Chris's cloned voice ("Crispus Roshan" on ElevenLabs, `eleven_v4`), with one delivery tag per episode, such as `[calm]` or `[confident]`, and `[warmly]` for the last part |
 | Picture | Motion graphics on a white background, each picture timed to the word that names it. No background music: the same beat in every episode got repetitive, so from 21 October 2026 the episodes are voice only (Kafka and Gen AI were remixed without it). The kit can still add a beat (`"music"` in `episode.json`) if a better idea for music comes up. No sound effects |
 | Cuts | Landscape 1920×1080 for YouTube, with an `.srt` caption file. Portrait 1080×1920 for TikTok, Instagram Reels and YouTube Shorts, with word-by-word captions burned in |
-| Opening | Each cut opens on its own thumbnail card, then the hook (the problem part, about 17 seconds), then Chris's channel intro (about 13 seconds): "Hi, I'm Chris… Let's get into it." |
+| Opening | Each cut opens on its own thumbnail card, then the hook (the problem part, about 17 seconds), then Chris's channel intro (about 12 seconds): "Hi, I'm Chris … the skills that actually get you hired." |
 | Closing | "That's X.", then the voiced ask: "What should I explain next? Tell me in the comments below." Then the closing title |
 
 ### The fixed structure
@@ -29,7 +29,7 @@ Each episode explains one data-engineering tool or idea in about two minutes. Ev
 |---|---|---|---|
 | Opening card | Your thumbnail | 2 s | The Kafka thumbnail |
 | The problem | The hook: a concrete, everyday problem that makes the tool necessary, ending on the line that names it | 45 words | One tap on "Order" that three services need, the tangle of service-to-service wiring, and "put Apache Kafka in the middle" |
-| Channel intro | "Hi, I'm Chris… Let's get into it." The same in every episode, always after the hook | 13 s | |
+| Channel intro | "Hi, I'm Chris … the skills that actually get you hired." The same in every episode, always after the hook. It ends on "hired.": no "Let's get into it" | 12 s | |
 | What it is | A one-line definition, the jargon word explained, and where it came from, with dates | 40 words | "An open-source platform for streaming events". LinkedIn, then a top-level Apache project in 2012 |
 | The core idea | The one concept you must understand | 50 words | The log: a topic, new events on the end, consumers reading at their own offset |
 | Architecture | The components drawn one at a time, with one failure or scaling moment | 85 words | Brokers, partitions and replicas. One broker fails and a replica takes over |
@@ -121,7 +121,7 @@ The first-week vocabulary of a data team, ending with one picture that joins it 
 | 00 | Explained in 2 Minutes: The Series (Trailer) | One tool or idea, two minutes, the same five parts every time | "One data tool. Two minutes.", Chris's intro, what every episode does (what it is · why teams use it · how it works), a mini architecture drawn step by step, six of the episodes coming up (Airflow, Kafka, Spark, What is data engineering, Snowflake, Databricks, with no episode numbers), a 10×10 grid filling to 100, and the comment ask. 54 seconds. **Made** (`source/series/`) |
 | 01 | Apache Airflow, Explained in 2 Minutes | The DAG: tasks and the order they run in | DAG processor → metadata database ⇄ scheduler → executor → workers, with the web UI on top. A failed task retried with one click. **Made** |
 | 02 | Apache Kafka, Explained in 2 Minutes | The log: a topic that producers append to and consumers read at their own offset | Brokers holding partitions and replicas. A broker fails and a replica takes over. A consumer group splits the partitions. KRaft controllers on top. **Made** |
-| 03 | 20 Gen AI Concepts You Actually Need, Explained in 2 Minutes | The full stack, from tokens to agents: twenty concepts, one notebook page each | A hand-drawn spiral notebook: each concept gets a numbered circle, a marker title, its line, a sketch and a starred takeaway, while a 1–20 tracker ticks each one off. "The last 8" (vector databases to guardrails) are flagged as where the jobs are. 2:29, longer than usual because it covers twenty concepts. **Made** (`source/genai/`) |
+| 03 | 20 Gen AI Concepts You Actually Need, Explained in 2 Minutes | The full stack, from tokens to agents: twenty concepts, one notebook page each | A hand-drawn spiral notebook: each concept gets a numbered circle, a marker title, its line, a sketch and a starred takeaway, while a 1–20 tracker ticks each one off. "The last 8" (vector databases to guardrails) are flagged as where the jobs are. 2:28, longer than usual because it covers twenty concepts. **Made** (`source/genai/`) |
 | 04 | Apache Spark, Explained in 2 Minutes | The data is cut into partitions, and a lazy plan runs one task per partition, in parallel | Driver → cluster manager → executors on worker machines. An executor dies and its tasks re-run elsewhere. Planned below |
 | 05 | What Is Data Engineering? Explained in 2 Minutes | The lifecycle: generate → ingest → store → transform → serve | The whole map from sources to dashboards, with orchestration on top. A renamed column caught by a test. Planned below |
 | 06 | Snowflake, Explained in 2 Minutes | Storage and compute are separate | Storage (micro-partitions), virtual warehouses and cloud services. The 9 AM rush scales out, then idle compute suspends. Planned below |
@@ -316,7 +316,7 @@ These are beat outlines, not scripts. Each full script (about 250 words) will be
 | Part | Words | Picture |
 |---|---|---|
 | Opening card | (beat only) | Your Spark thumbnail (16:9 and 9:16, in your marker style) |
-| Channel intro | "Hi, I'm Chris … Let's get into it." | The shared intro |
+| Channel intro | "Hi, I'm Chris … the skills that actually get you hired." | The shared intro |
 | The problem | "Your laptop opens a file …" | A laptop opens `orders.csv` (1M rows) at once. The file swaps to `all_orders/` (2 TB). A memory bar fills red, the progress bar crawls, and a clock spins to "all night" |
 | What it is | "Spark is an open-source engine …" | The big file cuts into slices that fly out to a row of machines. Spark logo and wordmark. The definition word by word, with "across many machines" highlighted. Language chips: Python, SQL, Scala, Java, R. Timeline: 2009 UC Berkeley · 2010 open source · 2013 joins Apache · 2014 top-level project |
 | The core idea | "Spark cuts your data into partitions …" | A table splits into eight coloured partitions. `daily_sales.py` types in, and each line adds a dashed box to a plan. Nothing runs. On `.write`, the plan turns solid and all eight partitions light up at once |
@@ -375,7 +375,7 @@ daily.write.parquet("s3://shop/daily_sales/")
 | Part | Words | Picture |
 |---|---|---|
 | Opening card | (beat only) | Your thumbnail for this episode (16:9 and 9:16) |
-| Channel intro | "Hi, I'm Chris … Let's get into it." | The shared intro |
+| Channel intro | "Hi, I'm Chris … the skills that actually get you hired." | The shared intro |
 | The problem | "At 9 AM, the CEO opens a dashboard …" | A dashboard card: "Yesterday's sales: 4,213 orders". The camera pulls back, and three faint lines run from the number back to a database, a phone and a spreadsheet. A clock reads 08:59 |
 | What it is | "Data engineering is building the systems …" | The definition word by word, with "move data" highlighted. Timeline: 2006 Hadoop · 2017 "The Rise of the Data Engineer". A small Airflow pinwheel next to Beauchemin's name links back to episode 01 |
 | The core idea | "Every pipeline does the same five jobs …" | Five cards in a row light up in turn: Generate → Ingest → Store → Transform → Serve. Under them, a thin bar: security · data management · DataOps · architecture · software engineering |
@@ -419,7 +419,7 @@ daily.write.parquet("s3://shop/daily_sales/")
 | Part | Words | Picture |
 |---|---|---|
 | Opening card | (beat only) | Your Snowflake thumbnail (16:9 and 9:16) |
-| Channel intro | "Hi, I'm Chris … Let's get into it." | The shared intro |
+| Channel intro | "Hi, I'm Chris … the skills that actually get you hired." | The shared intro |
 | The problem | "It's Monday, 9 AM …" | A calendar flips to "Mon 09:00". A month-end report starts, and one server's CPU bar fills red. Five dashboard cards around it show loading spinners |
 | What it is | "Snowflake is a cloud data warehouse …" | Snowflake logo and wordmark. The definition word by word, with "cloud data warehouse" highlighted. A server rack crossed out ("nothing to install"). Timeline: 2012 founded · 2015 generally available · then AWS, Azure and Google Cloud chips |
 | The core idea | "Storage and compute are separate …" | One storage cylinder at the bottom. Three warehouse cards above it (Finance L, Dashboards S, Pipelines M), each with its own on/off switch and size dial, all reading from the same cylinder. Each card has a small meter that runs only while it is on |
@@ -479,7 +479,7 @@ CREATE WAREHOUSE dashboards_wh
 | Part | Words | Picture |
 |---|---|---|
 | Opening card | (beat only) | Your Databricks thumbnail (16:9 and 9:16) |
-| Channel intro | "Hi, I'm Chris … Let's get into it." | The shared intro |
+| Channel intro | "Hi, I'm Chris … the skills that actually get you hired." | The shared intro |
 | The problem | "Most companies keep their data twice …" | A lake of raw files on the left, a warehouse on the right, and a copy arrow between them. Two bills appear. Two dashboards show "Revenue: 1.24M" and "Revenue: 1.19M" |
 | What it is | "Databricks is a data and AI platform …" | The warehouse slides onto the lake and becomes a table layer on top of it. Databricks logo and wordmark. The definition word by word, with "lakehouse" highlighted. Timeline: 2013 founded by Spark's creators (Spark logo links back to episode 04) · 2019 Delta Lake open-sourced · 2024 Unity Catalog open-sourced |
 | The core idea | "Tables in Databricks are Delta tables …" | A folder `orders/` with Parquet files and a `_delta_log/` folder. Commits `00000.json`, `00001.json` and `00002.json` stack up as writes happen. A reader icon looks only at finished commits. A version slider scrubs back to version 1 |
@@ -530,4 +530,4 @@ The first time on a machine, run `npm install` in `stackle-video/source/`. A fas
 
 **Per episode, in `stackle-video/scripts/`:** `<slug>.md` (the script, the on-screen plan and the facts table) and `<slug>-posts.md` (titles, description with chapters, tags and the pinned comment).
 
-**Decided:** every video runs thumbnail card → **the hook first** (the problem part, ending on the line that names the tool) → the shared 12.9-second intro (`graphics/stackle-intro.mp4`, and `stackle-intro-vertical.mp4` for the portrait cut) → the rest of the episode → the closing ask. Set the hook's last word in `episode.json` (`"intro": {"after": [word, n]}`). The closing ask is one shared recording too (`source/explained/audio/cta.wav`), so episodes don't need to record it.
+**Decided:** every video runs thumbnail card → **the hook first** (the problem part, ending on the line that names the tool) → the shared 11.7-second intro (`graphics/stackle-intro.mp4`, and `stackle-intro-vertical.mp4` for the portrait cut) → the rest of the episode → the closing ask. Set the hook's last word in `episode.json` (`"intro": {"after": [word, n]}`). The closing ask is one shared recording too (`source/explained/audio/cta.wav`), so episodes don't need to record it.
