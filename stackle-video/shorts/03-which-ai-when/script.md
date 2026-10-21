@@ -1,7 +1,7 @@
 # Short 03: Which AI to use when
 
 **Shot:** a numbered list, edited like Short 02: a fixed title, a numbered label for each tool, captions one word at a time, a different effect for each tool, and music with sound effects.
-**Words:** 139 · **Length:** about 55 seconds at 150 words a minute
+**Words:** 143 · **Length:** about 57 seconds at 150 words a minute
 **Needs:** Chris alone, one take of about a minute. Same setup as Short 02.
 **Channel:** TikTok, Reels and YouTube Shorts (AI). Not for LinkedIn, where AI tool posts get 120 to 260 impressions.
 
