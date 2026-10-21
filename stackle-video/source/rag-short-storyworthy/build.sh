@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Renders the RAG Short, storyworthy version, with the shared kit in ../rag-short/.
+# Usage: ./build.sh [out.mp4] [extra render-pro.js flags]
+here=$(cd "$(dirname "$0")" && pwd)
+SHORT_DIR=$here SCRIPT=$here/../../scripts/rag-short-storyworthy.md exec "$here/../rag-short/build.sh" "$@"

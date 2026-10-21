@@ -1,0 +1,168 @@
+1
+00:00:00,260 --> 00:00:02,020
+You want your company's AI chatbot
+
+2
+00:00:02,100 --> 00:00:03,700
+to answer like your best support
+
+3
+00:00:03,900 --> 00:00:04,500
+person.
+
+4
+00:00:04,739 --> 00:00:05,220
+Instead,
+
+5
+00:00:05,300 --> 00:00:06,979
+it tells a customer refunds take
+
+6
+00:00:07,100 --> 00:00:08,100
+sixty days.
+
+7
+00:00:08,139 --> 00:00:09,860
+The real policy is thirty.
+
+8
+00:00:09,940 --> 00:00:11,299
+And now you're the one explaining
+
+9
+00:00:11,379 --> 00:00:12,580
+it to your boss.
+
+10
+00:00:12,660 --> 00:00:14,540
+An AI shouldn't make things up.
+
+11
+00:00:14,580 --> 00:00:16,020
+It should show its work.
+
+12
+00:00:16,180 --> 00:00:16,847
+I get it.
+
+13
+00:00:16,873 --> 00:00:18,260
+I've spent over ten years in
+
+14
+00:00:18,340 --> 00:00:19,300
+data engineering,
+
+15
+00:00:19,380 --> 00:00:20,420
+and here's the fix.
+
+16
+00:00:20,460 --> 00:00:21,460
+It's called RAG,
+
+17
+00:00:21,500 --> 00:00:22,980
+and it's three steps.
+
+18
+00:00:23,060 --> 00:00:25,220
+One: turn your documents into numbers
+
+19
+00:00:25,300 --> 00:00:26,713
+that capture their meaning,
+
+20
+00:00:26,767 --> 00:00:27,940
+and store them in a vector
+
+21
+00:00:28,220 --> 00:00:28,900
+database.
+
+22
+00:00:29,020 --> 00:00:30,660
+Two: when a question comes in,
+
+23
+00:00:30,740 --> 00:00:32,420
+grab the three paragraphs that match
+
+24
+00:00:32,500 --> 00:00:33,380
+it best.
+
+25
+00:00:33,700 --> 00:00:35,380
+Three: give those paragraphs to the
+
+26
+00:00:35,580 --> 00:00:35,820
+model,
+
+27
+00:00:35,860 --> 00:00:37,340
+so it answers from them,
+
+28
+00:00:37,380 --> 00:00:38,620
+with sources.
+
+29
+00:00:38,660 --> 00:00:39,407
+Skip this,
+
+30
+00:00:39,433 --> 00:00:40,820
+and you'll pay for bigger models
+
+31
+00:00:40,940 --> 00:00:42,380
+that still make things up.
+
+32
+00:00:42,420 --> 00:00:42,940
+Do it,
+
+33
+00:00:42,980 --> 00:00:44,580
+and every answer comes from your
+
+34
+00:00:44,660 --> 00:00:45,460
+own documents,
+
+35
+00:00:45,500 --> 00:00:46,847
+with a link to the proof.
+
+36
+00:00:46,873 --> 00:00:48,313
+And when the policy changes,
+
+37
+00:00:48,367 --> 00:00:49,700
+you update the document.
+
+38
+00:00:49,780 --> 00:00:50,780
+No retraining.
+
+39
+00:00:50,820 --> 00:00:51,273
+Follow,
+
+40
+00:00:51,327 --> 00:00:52,740
+and learn RAG first.
+
+41
+00:00:52,940 --> 00:00:53,180
+Next,
+
+42
+00:00:53,220 --> 00:00:54,900
+I'll explain AI agents.
+

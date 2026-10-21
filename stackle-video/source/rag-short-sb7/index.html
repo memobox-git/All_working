@@ -1,0 +1,149 @@
+<!doctype html>
+<!-- RAG Short, told the StoryBrand (SB7) way (vertical, 1080×1920): the viewer is the hero,
+     Chris is the guide, and RAG is the three-step plan. Chris's cloned voice over scenes of
+     RAG at work. Built on ../rag-short (styles, props, core). Rendered by build.sh. -->
+<html><head><meta charset="utf-8"><title>RAG Short · SB7</title>
+<link rel="stylesheet" href="../rag-short/style.css"></head>
+<body>
+<div id="frame">
+  <canvas id="bg" width="1080" height="1920"></canvas>
+  <div id="stage">
+
+    <!-- 1 · "You want your company's AI chatbot to answer like your best support person." (character + want) -->
+    <section class="sc" id="s1">
+      <div class="chat" id="chat1">
+        <div class="ch-head"><span class="av"><svg viewBox="0 0 24 24"><use href="#i-bot"/></svg></span><div><h3>Company Assistant</h3><p><i></i>online</p></div></div>
+        <div class="ch-body"><div class="msg bot hi">Hi! I'm Acme's AI assistant. Ask me anything.</div><div class="smart" id="goal"><svg viewBox="0 0 24 24"><use href="#i-target"/></svg>Goal: answer like your best support person</div></div>
+        <div class="ch-in">Ask me anything…</div>
+      </div>
+    </section>
+
+    <!-- 2 · "Instead, it tells a customer refunds take sixty days. The real policy is thirty." (external problem) -->
+    <section class="sc" id="s2">
+      <div class="chat" id="chat3">
+        <div class="ch-head"><span class="av"><svg viewBox="0 0 24 24"><use href="#i-bot"/></svg></span><div><h3>Company Assistant</h3><p><i></i>online</p></div></div>
+        <div class="ch-body">
+          <div class="msg me" id="q3">What's our refund policy?</div>
+          <div class="msg bot" id="a3">Refunds take <b>60 days</b>.</div>
+          <span class="stamp" id="stamp" style="top:330px">made up</span>
+        </div>
+      </div>
+      <span class="chip green" id="real30" style="top:1230px">real policy: 30 days</span>
+    </section>
+
+    <!-- 3 · "And now you're the one explaining it to your boss." (internal problem) -->
+    <section class="sc" id="s3">
+      <div class="notif" id="boss"><span class="nav">B</span><div><h4>Your boss · now</h4><p>Why did our bot promise 60-day refunds??</p></div></div>
+    </section>
+
+    <!-- 4 · "An AI shouldn't make things up. It should show its work." (philosophical problem) -->
+    <section class="sc" id="s4">
+      <div class="vs bad" id="bad"><span class="ic">✕</span>Makes things up</div>
+      <div class="vs good" id="good"><span class="ic">✓</span>Shows its work<span class="src"><svg viewBox="0 0 24 24"><use href="#i-file"/></svg>source</span></div>
+    </section>
+
+    <!-- 5 · "I get it. I've spent over ten years in data engineering, and here's the fix." (the guide) -->
+    <section class="sc" id="s5">
+      <div class="quote" id="getit">“I get it.”</div>
+      <div class="guide" id="guide">
+        <div class="gh"><span class="gl">C</span><div><h3>Chris</h3><p>Stackle · your guide</p></div></div>
+        <div class="row" id="g1"><b>10+</b>years in data engineering</div>
+        <div class="row" id="g2"><b>200+</b>engineers interviewed</div>
+      </div>
+      <span class="chip green" id="fix5" style="top:1180px">here's the fix ↓</span>
+    </section>
+
+    <!-- 6 · "It's called RAG, and it's three steps." (the plan) -->
+    <section class="sc" id="s6">
+      <div class="plan" id="plan">
+        <h3><span style="color:var(--blue)">RAG</span> in 3 steps</h3>
+        <div class="step" id="p1"><em>1</em>Store the meaning</div>
+        <div class="step" id="p2"><em>2</em>Find the best 3</div>
+        <div class="step" id="p3"><em>3</em>Answer with sources</div>
+      </div>
+    </section>
+
+    <!-- 7 · "One: turn your documents into numbers that capture their meaning, and store them in a vector database." -->
+    <section class="sc" id="s7">
+      <div class="stepb" id="sb1">STEP 1</div>
+      <div class="para solo" id="pa10"><p>Refunds are available within 30 days of purchase.</p></div>
+      <div class="down" id="down10">↓</div>
+      <div class="vec" id="vec10">[ 0.12, −0.83, 0.44, 0.07, … ]</div>
+      <span class="chip" id="mean10">numbers that capture the meaning</span>
+      <img class="prop" id="p-db" src="../rag-short/img/props/database.png" alt="">
+      <div class="flyers" id="fly10"></div>
+    </section>
+
+    <!-- 8 · "Two: when a question comes in, grab the three paragraphs that match it best." -->
+    <section class="sc" id="s8">
+      <div class="stepb" id="sb2">STEP 2</div>
+      <div class="qpill" id="qp8" style="top:310px">“What's our refund policy?”</div>
+      <div class="para" id="pa1" style="top:460px"><em>1</em><p>Refunds are available within 30 days of purchase.</p><small>refund-policy.pdf · §2</small></div>
+      <div class="para" id="pa2" style="top:720px"><em>2</em><p>To return an item, start from your order page.</p><small>faq.md · returns</small></div>
+      <div class="para" id="pa3" style="top:980px"><em>3</em><p>Refunds go back to your original payment method.</p><small>refund-policy.pdf · §1</small></div>
+    </section>
+
+    <!-- 9 · "Three: give those paragraphs to the model, so it answers from them, with sources." -->
+    <section class="sc" id="s9">
+      <div class="stepb" id="sb3">STEP 3</div>
+      <div class="prompt" id="prompt" style="top:310px">
+        <div class="pr-h">Prompt</div>
+        <div class="pq">What's our refund policy?</div>
+        <div class="pc" id="pc1"><em>1</em>Refunds are available within 30 days…</div>
+        <div class="pc" id="pc2"><em>2</em>To return an item, start from your order…</div>
+        <div class="pc" id="pc3"><em>3</em>Refunds go back to your original payment…</div>
+      </div>
+      <div class="pdf" id="ans9" style="top:900px;left:110px;right:110px;border-color:#ABEFC6;background:#F6FEF9"><b>Answer</b><p>Refunds are available within <span style="color:#067647">30 days</span> of purchase. <span class="cite">1</span></p><span class="src" id="src9" style="opacity:1;visibility:inherit"><svg viewBox="0 0 24 24"><use href="#i-file"/></svg>refund-policy.pdf · §2</span></div>
+    </section>
+
+    <!-- 10 · "Skip this, and you'll pay for bigger models that still make things up." (failure) -->
+    <section class="sc" id="s10">
+      <div class="fail-tint" id="tint10"></div>
+      <div class="model" id="model" style="top:300px"><svg viewBox="0 0 24 24"><use href="#i-cpu"/></svg><h3>Bigger model</h3><p>700B parameters · $$$</p></div>
+      <div class="msg bot" id="a10" style="position:absolute;left:150px;top:900px;font-size:44px">Refunds take <b>60 days</b>.</div>
+      <span class="stamp" id="stamp10" style="right:150px;top:1010px">still made up</span>
+    </section>
+
+    <!-- 11 · "Do it, and every answer comes from your own documents, with a link to the proof." (success) -->
+    <section class="sc" id="s11">
+      <div class="chat short" id="chat12">
+        <div class="ch-head"><span class="av g"><svg viewBox="0 0 24 24"><use href="#i-bot"/></svg></span><div><h3>Company Assistant</h3><p><i></i>with RAG</p></div></div>
+        <div class="ch-body">
+          <div class="msg bot ok" id="a12">Refunds are available within <b>30 days</b> of purchase. <span class="cite">1</span></div>
+          <span class="src" id="src12"><svg viewBox="0 0 24 24"><use href="#i-file"/></svg>refund-policy.pdf · §2</span>
+          <i class="tap" id="tap12"></i>
+        </div>
+      </div>
+      <div class="pdf" id="pdf12"><b>refund-policy.pdf</b><i></i><p><mark>Refunds are available within 30 days of purchase.</mark></p><i></i><i class="s"></i></div>
+    </section>
+
+    <!-- 12 · "And when the policy changes, you update the document. No retraining." (success) -->
+    <section class="sc" id="s12">
+      <div class="pdf big" id="pdf13"><b>refund-policy.pdf <em id="upd13">updated</em></b><i></i><p>Refunds are available within <s>30</s> <ins>14</ins> days of purchase.</p><i></i><i class="s"></i></div>
+      <div class="retrain" id="retrain"><svg viewBox="0 0 24 24"><use href="#i-refresh"/></svg>Retrain the model<i class="strike" id="strike"></i></div>
+    </section>
+
+    <!-- 13 · "Follow, and learn RAG first. Next, I'll explain AI agents." (call to action) -->
+    <section class="sc" id="s13">
+      <img class="prop" id="p-wave" src="../rag-short/img/props/robot-waving.png" alt="">
+      <div class="win" id="learn" style="top:180px">Learn RAG first</div>
+      <div class="next" id="next">Next: <b>AI agents</b></div>
+      <div class="follow" id="follow">+ Follow</div>
+    </section>
+
+  </div>
+  <div id="caps"></div>
+</div>
+
+<svg width="0" height="0" style="position:absolute">
+  <symbol id="i-bot" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="7.5" width="16" height="12" rx="3.5"/><path d="M12 7.5V4.2"/><circle cx="12" cy="3.6" r=".6"/><circle cx="9" cy="13.5" r="1.2"/><circle cx="15" cy="13.5" r="1.2"/><path d="M2 12.5v3M22 12.5v3"/></symbol>
+  <symbol id="i-target" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r=".8"/></symbol>
+  <symbol id="i-cpu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="6" width="12" height="12" rx="2.5"/><path d="M10 10h4v4h-4zM9 2.5V6M15 2.5V6M9 18v3.5M15 18v3.5M2.5 9H6M2.5 15H6M18 9h3.5M18 15h3.5"/></symbol>
+  <symbol id="i-file" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/></symbol>
+  <symbol id="i-refresh" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19.5 10.5A7.8 7.8 0 0 0 5.6 7.2L4 9"/><path d="M4 4.5V9h4.5"/><path d="M4.5 13.5a7.8 7.8 0 0 0 13.9 3.3L20 15"/><path d="M20 19.5V15h-4.5"/></symbol>
+</svg>
+<script src="../node_modules/gsap/dist/gsap.min.js"></script>
+<script src="words.js"></script>
+<script src="../rag-short/short-core.js"></script>
+<script src="scenes.js"></script>
+</body></html>

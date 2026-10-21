@@ -1,0 +1,152 @@
+1
+00:00:00,260 --> 00:00:02,420
+Maya's AI support bot just told
+
+2
+00:00:02,460 --> 00:00:03,540
+a customer they can get a
+
+3
+00:00:03,620 --> 00:00:05,619
+refund after sixty days.
+
+4
+00:00:05,699 --> 00:00:07,939
+Her company's policy is thirty.
+
+5
+00:00:08,060 --> 00:00:09,299
+Maya is sure the fix is
+
+6
+00:00:09,459 --> 00:00:10,379
+a bigger model.
+
+7
+00:00:10,420 --> 00:00:11,940
+So she pays for one.
+
+8
+00:00:12,060 --> 00:00:13,060
+Same question.
+
+9
+00:00:13,219 --> 00:00:14,660
+Same confident answer.
+
+10
+00:00:14,740 --> 00:00:15,860
+Sixty days.
+
+11
+00:00:15,940 --> 00:00:17,513
+And that's when it hits her.
+
+12
+00:00:17,567 --> 00:00:19,007
+The model isn't dumb.
+
+13
+00:00:19,033 --> 00:00:20,420
+It has never read her refund
+
+14
+00:00:20,860 --> 00:00:21,340
+policy.
+
+15
+00:00:21,380 --> 00:00:22,980
+So she tries a trick called
+
+16
+00:00:23,340 --> 00:00:23,740
+RAG.
+
+17
+00:00:23,780 --> 00:00:25,140
+Before the bot answers,
+
+18
+00:00:25,220 --> 00:00:26,580
+it searches her documents,
+
+19
+00:00:26,660 --> 00:00:28,420
+grabs the three paragraphs that match
+
+20
+00:00:28,500 --> 00:00:29,033
+best,
+
+21
+00:00:29,087 --> 00:00:30,460
+and reads them first.
+
+22
+00:00:30,500 --> 00:00:32,420
+Every paragraph is stored as numbers
+
+23
+00:00:32,500 --> 00:00:33,887
+that capture its meaning,
+
+24
+00:00:33,913 --> 00:00:35,220
+so it finds the right one
+
+25
+00:00:35,300 --> 00:00:37,580
+even when customers use different words.
+
+26
+00:00:37,620 --> 00:00:39,380
+Now every answer comes with its
+
+27
+00:00:39,460 --> 00:00:40,140
+source.
+
+28
+00:00:40,180 --> 00:00:41,673
+And when the policy changes,
+
+29
+00:00:41,727 --> 00:00:43,340
+she just updates the document.
+
+30
+00:00:43,380 --> 00:00:44,500
+No retraining.
+
+31
+00:00:44,700 --> 00:00:44,980
+Now,
+
+32
+00:00:45,060 --> 00:00:46,340
+when someone tells Maya they need
+
+33
+00:00:46,500 --> 00:00:47,340
+a bigger model,
+
+34
+00:00:47,380 --> 00:00:49,380
+she asks one question: has it
+
+35
+00:00:49,460 --> 00:00:50,700
+read your documents?
+
+36
+00:00:50,740 --> 00:00:51,860
+Follow.
+
+37
+00:00:52,020 --> 00:00:52,220
+Next,
+
+38
+00:00:52,260 --> 00:00:54,020
+I'll explain AI agents.
+
