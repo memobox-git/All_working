@@ -35,3 +35,6 @@ if [ -n "${SCREEN:-}" ]; then
 fi
 echo "6/6 room, face and meta"
 python3 -I prep/plate.py $W $FPS
+# the cut points from prep/cut.py, if the video was cut with it
+CUTS="${RAW%.*}.cuts.json"
+echo "window.CUTS = $([ -f "$CUTS" ] && cat "$CUTS" || echo '[]');" > $W/cuts.js

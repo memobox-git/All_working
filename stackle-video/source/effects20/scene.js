@@ -49,7 +49,13 @@ for (let i = 0; i < T.length; i++) if (T[i] == null) {
   const tp = p >= 0 ? T[p] : 3, tq = q < T.length ? T[q] : tp + 1.9 * (q - p);
   T[i] = lerp(tp, tq, (i - p) / (q - p));
 }
-for (let i = 0; i < T.length; i++) T[i] = Math.max(T[i] - LEAD, i ? T[i - 1] + .4 : .5);
+// on a take cut down with prep/cut.py, an effect switches on the cut just before
+// its name, so the jump in the footage happens under the change of effect
+const CUTS = window.CUTS || [];
+for (let i = 0; i < T.length; i++) {
+  const cut = CUTS.filter(c => c <= T[i] && c > T[i] - .6).pop();
+  T[i] = Math.max(cut ?? T[i] - LEAD, i ? T[i - 1] + .4 : .5);
+}
 const lastWord = said[19] != null ? WORDS[said[19] + 1] : null;
 const OUT = Math.min(window.DURATION, Math.max(T[19] + 1, lastWord ? lastWord.s - .05 : T[19] + 1.6));
 const SEG = NAMES.map((name, i) => ({ name, a: T[i], b: i < 19 ? T[i + 1] : OUT }));
@@ -143,17 +149,16 @@ function chat(u) {
 function escape(u) {
   show($('#escape'));
   const k = io(seg(u, .3, .8));
-  const B = { x: 140, y: Math.min(1460, F.y + .85 * F.w), w: 800 };
-  const r = { x: lerp(70, B.x, k), y: lerp(430, B.y, k), w: lerp(940, B.w, k) };
-  r.h = lerp(1420, 1880 - B.y, k);
+  // the small frame starts at the chin, so the head comes out of its top edge
+  const B = { x: 90, y: Math.min(1400, F.y + .55 * F.w), w: 900 };
+  const r = { x: lerp(70, B.x, k), y: lerp(430, B.y, k), w: lerp(940, B.w, k), h: lerp(1420, Math.min(560, 1860 - B.y), k) };
   const tilt = $('#escape .tilt');
   tilt.style.transformOrigin = `${r.x + r.w / 2}px ${r.y + r.h / 2}px`;
   tilt.style.transform = `rotate(${lerp(2.5, -3, k)}deg)`;
   $('#escape .clip').style.clipPath = `inset(${r.y}px ${1080 - r.x - r.w}px ${1920 - r.y - r.h}px ${r.x}px)`;
   Object.assign($('#escape .border').style, { left: r.x - 16 + 'px', top: r.y - 16 + 'px', width: r.w + 32 + 'px', height: r.h + 32 + 'px' });
   const pop = $('#escape .pop');
-  pop.style.clipPath = `inset(0 0 ${1920 - r.y - r.h}px 0)`;
-  pop.style.opacity = out(seg(u, .3, .6));
+  pop.style.clipPath = `inset(0 0 ${1920 - r.y}px 0)`;
 }
 
 // ------------------------------------------------------------ 04 snap zoom
@@ -195,7 +200,7 @@ function portal(u, d) {
   show($('#g-portal'));
   const pop = back(seg(u, 0, .35)), grow = io(seg(u, d - .55, d));
   const cx = lerp(175, 540, grow), cy = lerp(F.y + 30, 960, grow), rad = Math.max(1, lerp(125 * pop, 1150, grow));
-  const el = $('.portal'), bw = lerp(8, 0, grow), inner = rad - bw, k = lerp(1.7, 1.2, grow);
+  const el = $('.portal'), bw = lerp(8, 0, grow), inner = rad - bw, k = lerp(.62, 1, grow);
   Object.assign(el.style, { left: cx - rad + 'px', top: cy - rad + 'px', width: 2 * rad + 'px', height: 2 * rad + 'px', borderWidth: bw + 'px' });
   $('.portal img').style.transform = `translate(${inner - F.x * k}px,${inner - F.y * k}px) scale(${k})`;
   foot.style.transformOrigin = `${F.x}px ${F.y}px`;
@@ -287,9 +292,12 @@ function paper(u) {
 function dolly(u, d) {
   const plate = $('#plate');
   show(plate); show(person); show(foot, false);
-  plate.style.transformOrigin = `${F.x}px ${F.y}px`;
-  plate.style.transform = `scale(${lerp(1.45, 1, io(seg(u, 0, d)))})`;
+  // the room pulls away while the camera pushes in on the person
+  const k = io(seg(u, 0, d));
+  plate.style.transformOrigin = person.style.transformOrigin = `${F.x}px ${F.y}px`;
+  plate.style.transform = `scale(${lerp(1.6, 1, k)})`;
   plate.style.filter = 'blur(1.5px)';
+  person.style.transform = `scale(${lerp(1, 1.12, k)})`;
 }
 
 // ------------------------------------------------------------ 13 magazine cover
@@ -431,14 +439,14 @@ function phone(u) {
 }
 
 // ------------------------------------------------------------ 20 checklist
-$('#check .grid').innerHTML = NAMES.map(n => `<div class="it"><svg><use href="#check"/></svg>${n}</div>`).join('');
-$$('#check .it svg').forEach(s => { const i = document.createElement('i'); s.replaceWith(i); i.appendChild(s); s.classList.add('icon'); });
+$('#tally .grid').innerHTML = NAMES.map(n => `<div class="it"><svg><use href="#check"/></svg>${n}</div>`).join('');
+$$('#tally .it svg').forEach(s => { const i = document.createElement('i'); s.replaceWith(i); i.appendChild(s); s.classList.add('icon'); });
 function checklist(u, d) {
-  show($('#check'));
+  show($('#tally'));
   const n = Math.floor(20 * clamp(u / (d * .85)));
-  $('#check .count b').textContent = n;
-  $$('#check .it').forEach((el, i) => el.classList.toggle('done', i < n));
-  $$('#check .it svg').forEach((s, i) => { s.style.opacity = i < n ? 1 : 0; });
+  $('#tally .count b').textContent = n;
+  $$('#tally .it').forEach((el, i) => el.classList.toggle('done', i < n));
+  $$('#tally .it svg').forEach((s, i) => { s.style.opacity = i < n ? 1 : 0; });
 }
 
 const FX = [orbit, chat, escape, snap, pops, storm, portal, growth, studio, broll,

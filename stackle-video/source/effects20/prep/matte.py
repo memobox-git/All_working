@@ -42,6 +42,10 @@ def predict(sess, size, img, square):
     return cv2.resize(out, (w, h), interpolation=cv2.INTER_CUBIC).clip(0, 1)
 
 
+def hazy(m):
+    return ((m > 0.15) & (m < 0.85)).mean() > 0.2
+
+
 def masks(frames, sess, size, square, step):
     """Yields one mask per frame, in order. The model runs on every step-th frame;
     the frames in between get a blend of the two masks around them."""
@@ -49,6 +53,11 @@ def masks(frames, sess, size, square, step):
     t0, prev = time.time(), None
     for n, i in enumerate(keys):
         m = predict(sess, size, cv2.imread(frames[i]), square)
+        # now and then the model returns a grey haze over the whole frame instead of a
+        # cut-out; a real mask is nearly all black or white, so a hazy one is replaced
+        # by the last good mask
+        if prev is not None and hazy(m):
+            m = prev[1]
         if prev is None:
             yield m
         else:
