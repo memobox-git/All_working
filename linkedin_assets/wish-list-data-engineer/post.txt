@@ -14,8 +14,6 @@ On call every weekend
 That's not a Data Engineer.
 That's a platform team, an analytics team and an ML team. For one salary.
 
-I've run 200+ data engineering interviews from the hiring side. I've never needed one person who knows all of that.
-
 What a strong data engineer actually does every week:
 
 → Turns a vague business question into a table design that holds up
