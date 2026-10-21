@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Across the Table GIF</title>
+<style>
+  @font-face { font-family: "Cabin Sketch"; src: url(fonts/Cabin_Sketch.woff2) format("woff2"); font-weight: 700; }
+  @font-face { font-family: "Patrick Hand"; src: url(fonts/Patrick_Hand.woff2) format("woff2"); }
+  @font-face { font-family: "Caveat"; src: url(fonts/Caveat.woff2) format("woff2"); font-weight: 700; }
+  :root { --chalk: #f4f2ea; --yellow: #f6dd73; --pink: #f3a3b6; --blue: #93d2f2; --green: #a9e1a0; --board: #1c2521; --line: rgba(244,242,234,.45); }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1080px; height: 1350px; overflow: hidden; background: #5a3a1e; }
+  .frame { position: absolute; top: 0; left: 0; width: 1080px; height: 1350px; padding: 18px;
+    background: linear-gradient(135deg, #8a5a2e 0%, #6a4220 35%, #7d5129 60%, #5b3819 100%); }
+  .board { position: relative; width: 100%; height: 100%; overflow: hidden; color: var(--chalk); font-family: "Patrick Hand", sans-serif;
+    background: radial-gradient(ellipse at 20% 15%, rgba(255,255,255,.07), transparent 45%),
+                radial-gradient(ellipse at 80% 70%, rgba(255,255,255,.05), transparent 50%), var(--board);
+    box-shadow: inset 0 0 40px rgba(0,0,0,.6), 0 0 0 3px #3e2611; }
+  .dust { position: absolute; inset: 0; opacity: .10; z-index: 0; }
+  .grain { position: absolute; inset: 0; opacity: .35; mix-blend-mode: multiply; z-index: 0; }
+  .layer { position: relative; z-index: 1; height: 100%; display: flex; flex-direction: column; }
+  .hide { visibility: hidden; }
+
+  header { padding: 30px 40px 0; height: 150px; }
+  .kicker { font-family: "Caveat", cursive; font-weight: 700; font-size: 38px; color: var(--blue); }
+  .title { font-family: "Cabin Sketch", cursive; font-weight: 700; font-size: 66px; line-height: 1.05; }
+  .title.no { color: var(--pink); }
+  .title.yes { color: var(--green); }
+  main { flex: 1; margin: 0 28px; padding: 10px 14px 20px; display: flex; flex-direction: column; justify-content: space-evenly; border-top: 2.5px solid var(--line); border-bottom: 2.5px solid var(--line); }
+  .item { display: flex; gap: 26px; align-items: flex-start; }
+  .mark { flex: none; width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 50px; margin-top: 4px; }
+  .mark.no { border: 3.5px solid var(--pink); color: var(--pink); }
+  .mark.yes { border: 3.5px solid var(--green); color: var(--green); }
+  .it { font-size: 62px; line-height: 1.05; color: var(--yellow); position: relative; display: inline-block; }
+  .it.struck::after { content: ""; position: absolute; left: -6px; right: -6px; top: 54%; height: 5px; background: var(--pink); border-radius: 3px; transform: rotate(-1.5deg); opacity: .9; }
+  .ex { font-size: 45px; line-height: 1.2; margin-top: 10px; }
+  footer { height: 84px; padding: 0 40px; display: flex; align-items: center; justify-content: space-between; }
+  .brand { display: flex; align-items: baseline; gap: 14px; }
+  .brand .name { font-family: "Cabin Sketch", cursive; font-weight: 700; font-size: 44px; color: var(--yellow); }
+  .brand .tagline { font-size: 24px; }
+  .motto { font-family: "Caveat", cursive; font-weight: 700; font-size: 34px; color: var(--blue); }
+
+  .center { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 0 70px; }
+  .big { font-family: "Cabin Sketch", cursive; font-weight: 700; font-size: 92px; line-height: 1.08; }
+  .big .y { color: var(--yellow); }
+  .bigsub { font-family: "Caveat", cursive; font-weight: 700; font-size: 62px; line-height: 1.1; margin-top: 46px; }
+  .bigsub .no { color: var(--pink); } .bigsub .yes { color: var(--green); }
+  .outro-line { font-family: "Caveat", cursive; font-weight: 700; color: var(--blue); font-size: 104px; line-height: 1.05; }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute">
+  <filter id="grainf"><feTurbulence type="fractalNoise" baseFrequency="1.1" numOctaves="2" seed="7"/><feColorMatrix values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 -1.6 1.25"/></filter>
+  <filter id="dustf"><feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="3" seed="3"/><feColorMatrix values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1.4 -0.45"/></filter>
+</svg>
+<div class="frame"><div class="board">
+  <svg class="dust" width="100%" height="100%"><rect width="100%" height="100%" filter="url(#dustf)"/></svg>
+  <svg class="grain" width="100%" height="100%"><rect width="100%" height="100%" filter="url(#grainf)"/></svg>
+  <div class="layer" id="root"></div>
+</div></div>
+<script>
+const NO = [
+  ["Which cloud you used", "AWS, Azure or GCP. Learn one well and the next one takes weeks."],
+  ["Perfect syntax", "Say \"I'd look that up\" and keep going. That's what engineers do every day."],
+  ["A long list of tools", "Spark, Airflow, dbt, Kafka on a resume shows what you touched, not what you understand."],
+];
+const YES = [
+  ["One pipeline, end to end", "Where the data came from, what broke, and how you fixed it."],
+  ["Questions before code", "What does one row mean? How much data? Can it arrive late?"],
+  ["Trade-offs", "Why batch and not streaming. Why that partition key. What it costs."],
+  ["Checking your own numbers", "Row counts before and after a join. NULLs. Duplicates."],
+];
+const p = new URLSearchParams(location.search);
+const scene = parseInt(p.get("scene") ?? "0"), step = parseInt(p.get("step") ?? "9");
+const root = document.getElementById("root");
+const foot = `<footer><div class="brand"><span class="name">Stackle</span><span class="tagline">Data engineering careers</span></div><div class="motto">Across the Table</div></footer>`;
+const list = (items, kind) => items.map((x, i) => `<div class="item ${i < step ? "" : "hide"}">
+    <span class="mark ${kind}">${kind === "no" ? "✗" : "✓"}</span>
+    <div><span class="it ${kind === "no" ? "struck" : ""}">${x[0]}</span><div class="ex">${x[1]}</div></div></div>`).join("");
+if (scene === 0) {
+  root.innerHTML = `<div class="center">
+      <div class="big">I've interviewed<br><span class="y">200+ data engineers</span><br>from the hiring side.</div>
+      <div class="bigsub"><span class="no">What I don't care about.</span><br><span class="yes">What I do.</span></div>
+    </div>${foot}`;
+} else if (scene === 1) {
+  root.innerHTML = `<header><div class="kicker">From 200+ interviews</div><div class="title no">What I don't care about</div></header>
+    <main>${list(NO, "no")}</main>${foot}`;
+} else if (scene === 2) {
+  root.innerHTML = `<header><div class="kicker">From 200+ interviews</div><div class="title yes">What I do care about</div></header>
+    <main>${list(YES, "yes")}</main>${foot}`;
+} else {
+  root.innerHTML = `<div class="center">
+      <div class="outro-line">Tools change<br>every two years.</div>
+      <div class="outro-line" style="color:var(--yellow);margin-top:34px">How you think<br>about data doesn't.</div>
+    </div>${foot}`;
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+I've run 200+ data engineering interviews across banking, healthcare, automotive and financial exchanges.
+What I don't care about, and what I do. 👇
+
+What I don't care about:
+
+Which cloud you used
+→ AWS, Azure or GCP. Learn one well and the next one takes weeks.
+
+Perfect syntax
+→ Say "I'd look that up" and keep going. That's what engineers do every day.
+
+A long list of tools
+→ Spark, Airflow, dbt, Kafka on a resume shows what you touched, not what you understand.
+
+What I do care about:
+
+One pipeline, end to end
+→ Where the data came from, what broke, and how you fixed it.
+
+Questions before code
+→ What does one row mean? How much data? Can it arrive late?
+
+Trade-offs
+→ Why batch and not streaming. Why that partition key. What it costs.
+
+Checking your own numbers
+→ Row counts before and after a join. NULLs. Duplicates.
+
+Tools change every two years. How you think about data doesn't.
