@@ -2,7 +2,7 @@
 
 **What it is:** the trailer for the series. It covers what the series is, what every episode does, the first six episodes and the goal of 100, and it asks viewers what to explain next.
 
-**Length:** 52 seconds. That is 35 seconds of voice plus the 12.9-second channel intro.
+**Length:** 51 seconds. That is 35 seconds of voice plus the 11.7-second channel intro.
 
 **Status:** recorded (take 1 of 4) and built. The recorded take has two more words after "Two minutes." that the video leaves out (`"resume": ["this", 0]` in `source/series/episode.json`). Both cuts are in `stackle-video/graphics/` (`explained-series-intro.mp4`, `explained-series-intro-vertical.mp4`). The opening cards are temporary until Chris's thumbnails arrive.
 
