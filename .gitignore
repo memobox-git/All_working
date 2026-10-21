@@ -15,4 +15,5 @@ stackle-video/footage/
 stackle-video/source/personal-agents/clips/
 # rebuilt from the narration chunks and the scenes (personal-agents/vo/timeline.py, build-video.js)
 stackle-video/source/personal-agents/vo/narration.wav
+stackle-video/source/personal-agents/short/short.wav
 stackle-video/graphics/personal-agents/full/slots/

@@ -4,7 +4,7 @@
 // Work is cut into chunks kept in <out>.parts/, so a stopped render resumes
 // where it left off when run again.
 // The page must set window.READY, window.DURATION and window.render(t).
-// Usage: node render-pro.js <scene.html> <out.mp4> [--fps 30] [--sub 4] [--workers 4] [--chunk 45] [--from 0] [--to DURATION]
+// Usage: node render-pro.js <scene.html> <out.mp4> [--fps 30] [--sub 4] [--workers 4] [--chunk 45] [--from 0] [--to DURATION] [--w 1920 --h 1080]
 // Also writes <out>.cues.json (duration, voice offset, sound cues) for mix.js.
 const { chromium } = require('playwright');
 const { spawn } = require('child_process');
@@ -15,9 +15,10 @@ const argv = process.argv.slice(2);
 const opt = (k, d) => { const i = argv.indexOf('--' + k); return i >= 0 ? Number(argv[i + 1]) : d; };
 const [scene, out] = argv;
 const fps = opt('fps', 30), sub = opt('sub', 4), workers = opt('workers', 4), chunk = opt('chunk', 45), shutter = 0.5;
+const W = opt('w', 1920), H = opt('h', 1080);   // --w 1080 --h 1920 for a vertical Short
 
 async function openPage(browser) {
-  const page = await browser.newPage({ viewport: { width: 1920, height: 1080 } });
+  const page = await browser.newPage({ viewport: { width: W, height: H } });
   page.on('pageerror', e => { console.error('page error:', e.message); process.exit(1); });
   await page.goto('file://' + path.resolve(scene));
   await page.waitForFunction(() => window.READY === true, null, { timeout: 30000 });

@@ -55,13 +55,14 @@ function shot(name, rect, { left, top, width, height, url, parent = stage }) {
 }
 // Real launch footage (clips/) or a launch still (clips/stills/) in a frame,
 // labelled with who made it. `from` is how far into the clip it starts at t0.
-function tile(src, t0, { left, top, width, height, label, from = 0, still = false, labelTop = false, parent = stage }) {
+function tile(src, t0, { left, top, width, height, label, from = 0, still = false, labelTop = false, zoom = 0, origin = '50% 50%', parent = stage }) {
   const el = add(`<div class="clip" style="left:${left}px;top:${top}px;width:${width}px;height:${height}px"><img>${label ? `<div class="pill dark" style="position:absolute;left:16px;${labelTop ? 'top' : 'bottom'}:16px;height:48px;font-size:22px">${label}</div>` : ''}</div>`, parent);
   const img = el.querySelector('img');
   if (still) {
     img.src = `clips/stills/${src}.jpg`;
     tl.fromTo(img, { scale: 1 }, { scale: 1.08, duration: 8, ease: 'none' }, t0);
   } else CLIP(img, src, t0 - from);
+  if (zoom) gsap.set(img, { scale: zoom, transformOrigin: origin });   // close in on the part that matters
   return el;
 }
 function phoneClip(name, t0, { left, top, width, parent = stage }) {
