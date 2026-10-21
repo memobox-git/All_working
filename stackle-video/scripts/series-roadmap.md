@@ -350,7 +350,7 @@ daily.write.parquet("s3://shop/daily_sales/")
 | Transformations are lazy, and run only when an action needs a result | Same guide | Yes |
 | A lost partition is recomputed from the transformations that created it | Same guide | Yes |
 | Current versions are 4.x: 4.0.0 on 23 May 2025, 4.2.0 on 14 July 2026. The code above uses the DataFrame API, which is the same in 3.x and 4.x | [Spark news](https://spark.apache.org/news/index.html) | Yes |
-| The PySpark code runs as written (`groupBy(...).sum("amount")` gives a column named `sum(amount)`) | Run it once in a local Spark session | No, check before recording |
+| The PySpark code runs as written (`groupBy(...).sum("amount")` gives a column named `sum(amount)`) | Ran on 21 October 2026 in Spark 4.0.1 (local mode, Java 21), with local paths | Yes |
 
 **Kept simple on purpose:** stages and the shuffle are left for episodes 23 and 88, so the driver "turns the plan into tasks". Spark also runs on one machine (local mode), but the episode shows only a cluster. Reading a Parquet file can start a small job to read its schema, but the steps after it are lazy, which is what the voice says. When an executor is lost, Spark may also re-run earlier work whose shuffle files were on it. The voice says "rebuilding the lost pieces from the plan", which covers both.
 
