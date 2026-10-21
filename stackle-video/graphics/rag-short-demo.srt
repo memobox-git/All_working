@@ -1,0 +1,124 @@
+1
+00:00:00,180 --> 00:00:02,620
+Your company's AI chatbot isn't dumb.
+
+2
+00:00:02,820 --> 00:00:04,859
+It just never read your documents.
+
+3
+00:00:04,899 --> 00:00:06,300
+Ask it your refund policy,
+
+4
+00:00:06,340 --> 00:00:08,447
+and it'll confidently make one up.
+
+5
+00:00:08,472 --> 00:00:09,780
+And the fix isn't a bigger
+
+6
+00:00:09,860 --> 00:00:10,459
+model.
+
+7
+00:00:10,500 --> 00:00:12,299
+It's a trick called RAG.
+
+8
+00:00:12,340 --> 00:00:13,540
+Think of it like an open-book
+
+9
+00:00:13,900 --> 00:00:14,340
+exam.
+
+10
+00:00:14,420 --> 00:00:15,673
+Before the model answers,
+
+11
+00:00:15,727 --> 00:00:16,980
+it searches your documents,
+
+12
+00:00:17,060 --> 00:00:18,660
+grabs the three paragraphs that match
+
+13
+00:00:18,700 --> 00:00:19,753
+the question best,
+
+14
+00:00:19,807 --> 00:00:21,300
+and reads them first.
+
+15
+00:00:21,380 --> 00:00:22,140
+Behind the scenes,
+
+16
+00:00:22,180 --> 00:00:24,020
+every paragraph is turned into numbers
+
+17
+00:00:24,100 --> 00:00:25,340
+that capture its meaning,
+
+18
+00:00:25,380 --> 00:00:27,327
+and stored in a vector database.
+
+19
+00:00:27,353 --> 00:00:28,820
+So it finds the right paragraph
+
+20
+00:00:28,900 --> 00:00:30,780
+even when you use different words.
+
+21
+00:00:30,820 --> 00:00:32,020
+That's why the answer comes back
+
+22
+00:00:32,060 --> 00:00:33,420
+with a source you can click.
+
+23
+00:00:33,460 --> 00:00:34,847
+And when the policy changes,
+
+24
+00:00:34,873 --> 00:00:36,420
+you just update the document.
+
+25
+00:00:36,500 --> 00:00:37,580
+No retraining.
+
+26
+00:00:37,620 --> 00:00:38,420
+If you want to get into
+
+27
+00:00:38,500 --> 00:00:39,420
+AI engineering,
+
+28
+00:00:39,460 --> 00:00:40,740
+this is the first thing to
+
+29
+00:00:40,980 --> 00:00:41,300
+learn.
+
+30
+00:00:41,540 --> 00:00:41,833
+Follow,
+
+31
+00:00:41,887 --> 00:00:43,940
+and next I'll explain AI agents.
+
