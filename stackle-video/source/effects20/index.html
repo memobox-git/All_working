@@ -1,0 +1,183 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>20 Video Effects</title>
+<link rel="stylesheet" href="style.css">
+</head><body>
+<svg width="0" height="0" style="position:absolute"><defs>
+  <!-- white sticker edge and a soft shadow round the cut-out person (paper cutout) -->
+  <filter id="sticker" x="-5%" y="-5%" width="110%" height="110%" color-interpolation-filters="sRGB">
+    <feComponentTransfer in="SourceAlpha" result="a"><feFuncA type="linear" slope="3" intercept="-1"/></feComponentTransfer>
+    <feMorphology in="a" operator="dilate" radius="12" result="d"/>
+    <feFlood flood-color="#fff"/><feComposite in2="d" operator="in" result="edge"/>
+    <feGaussianBlur in="d" stdDeviation="12"/><feOffset dy="14" result="sb"/>
+    <feFlood flood-color="#000" flood-opacity=".35"/><feComposite in2="sb" operator="in" result="shadow"/>
+    <feMerge><feMergeNode in="shadow"/><feMergeNode in="edge"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+  <symbol id="star" viewBox="-50 -50 100 100"><g fill="currentColor">
+    <rect x="-7" y="-48" width="14" height="40" rx="7"/><rect x="-7" y="-48" width="14" height="40" rx="7" transform="rotate(45)"/>
+    <rect x="-7" y="-48" width="14" height="40" rx="7" transform="rotate(90)"/><rect x="-7" y="-48" width="14" height="40" rx="7" transform="rotate(135)"/>
+    <rect x="-7" y="-48" width="14" height="40" rx="7" transform="rotate(180)"/><rect x="-7" y="-48" width="14" height="40" rx="7" transform="rotate(225)"/>
+    <rect x="-7" y="-48" width="14" height="40" rx="7" transform="rotate(270)"/><rect x="-7" y="-48" width="14" height="40" rx="7" transform="rotate(315)"/>
+  </g></symbol>
+  <symbol id="check" viewBox="0 0 24 24"><path d="M4.5 12.5l5 5L19.5 7" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="up" viewBox="0 0 24 24"><path d="M12 19V5M5.5 11.5L12 5l6.5 6.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="play" viewBox="0 0 24 24"><path d="M7 4.5v15l12.5-7.5z" fill="currentColor"/></symbol>
+  <symbol id="cut" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M8.6 7.6L20 18M8.6 16.4L20 6"/></g></symbol>
+  <symbol id="wave" viewBox="0 0 24 24"><g stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M4 10v4M8 7v10M12 4v16M16 8v8M20 10v4"/></g></symbol>
+</defs></svg>
+
+<div id="stage">
+  <div id="scene">
+    <div id="bg-growth" class="fx full back"></div>
+    <div id="bg-studio" class="fx full back"></div>
+    <div id="bg-paper" class="fx full back"></div>
+    <div id="bg-mag" class="fx full back"></div>
+    <div id="bg-green" class="fx full back"></div>
+    <div id="bg-sky" class="fx full back"></div>
+    <img id="plate" class="fx full back" src="work/plate.jpg">
+    <img id="foot" class="live full">
+    <img id="person" class="cut full">
+
+    <div id="g-orbit" class="fx full"></div>
+    <div id="g-pop" class="fx full">
+      <div class="pill" style="top:740px"><svg class="tick"><use href="#check"/></svg>Edit</div>
+      <div class="pill" style="top:850px"><svg class="tick"><use href="#check"/></svg>Captions</div>
+      <div class="pill" style="top:960px"><svg class="tick"><use href="#check"/></svg>Effects</div>
+    </div>
+    <div id="g-storm" class="fx full"></div>
+    <div id="g-portal" class="fx full"><div class="portal"><img class="live"></div></div>
+    <div id="g-growth" class="fx full">
+      <svg viewBox="0 0 1080 1920" width="1080" height="1920">
+        <defs>
+          <linearGradient id="area" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2F5BEA" stop-opacity=".55"/><stop offset="1" stop-color="#2F5BEA" stop-opacity="0"/></linearGradient>
+          <clipPath id="grow"><rect x="0" y="0" width="0" height="1920"/></clipPath>
+        </defs>
+        <path class="area" fill="url(#area)" clip-path="url(#grow)"/>
+        <path class="line" fill="none" stroke="#EE4423" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle class="dot" r="14" fill="#fff" stroke="#EE4423" stroke-width="6"/>
+      </svg>
+      <div class="sample">SAMPLE DATA</div>
+      <div class="badge"><b>1×</b><span>GROWTH</span></div>
+    </div>
+    <div id="g-studio" class="fx full">
+      <div class="soft l"></div><div class="soft r"></div>
+      <div class="onair">ON AIR</div>
+    </div>
+    <div id="g-paper" class="fx full"></div>
+    <div id="g-mag" class="fx full">
+      <div class="mag top"><span>THE AI EDIT ISSUE</span><span>NO. 01 · OCT 2026</span></div>
+      <div class="mag mast"></div>
+      <div class="mag l"><small>COVER STORY</small><div class="big">20</div><p>One prompt.<br>No editor.</p></div>
+      <div class="mag r"><small>INSIDE</small><div class="h">CLAUDE<br>EDITS<br>VIDEO</div><p>Every word,<br>captioned.</p></div>
+      <div class="mag code"><i></i>9 780201 379624</div>
+      <div class="mag seal"><b>20</b><span>EFFECTS<br>INSIDE</span></div>
+    </div>
+    <div id="g-glass" class="fx full"><div class="lens"><img class="live"><div class="shine"></div></div></div>
+  </div>
+
+  <div id="over">
+    <div id="chat" class="fx full dark">
+      <div class="win">
+        <div class="bar"><span class="dots"><i></i><i></i><i></i></span><svg class="star"><use href="#star"/></svg><b>Claude</b><span class="url">claude.ai</span></div>
+        <div class="user"></div>
+        <div class="reply">
+          <svg class="star"><use href="#star"/></svg>
+          <div class="typing"><i></i><i></i><i></i></div>
+          <div class="onit">On it.</div>
+          <ul><li><svg class="tick"><use href="#check"/></svg>Cut the pauses</li><li><svg class="tick"><use href="#check"/></svg>Caption every word</li><li><span class="spin"></span>Add the effects</li></ul>
+        </div>
+        <div class="input">Reply to Claude…<span class="go"><svg class="icon"><use href="#up"/></svg></span></div>
+      </div>
+      <div class="att"><img class="live"><span class="tag">▶ raw-video.mov</span></div>
+    </div>
+
+    <div id="escape" class="fx full">
+      <div class="full dark"></div>
+      <div class="tilt">
+        <div class="full clip"><img class="live full"></div>
+        <div class="border"></div>
+        <div class="full pop"><img class="cut full"></div>
+      </div>
+    </div>
+
+    <div id="broll" class="fx full dark">
+      <div class="editor">
+        <div class="tb"><span class="logo"></span><span>reel</span><span class="sp">Capture</span><span>Inspector</span><span class="exp">Export</span></div>
+        <div class="canvas">
+          <div class="prev"><img class="live"></div>
+          <div class="insp"><b>“Put the text big and behind my head.”</b><span>layout</span> magazine · <span>type</span> 200px · <span>layer</span> behind subject</div>
+        </div>
+        <img class="screen">
+        <div class="rtag">B-ROLL · SCREEN RECORDING</div>
+      </div>
+      <div class="tline">
+        <div class="thumbs"></div>
+        <div class="clip b">B-roll</div>
+        <div class="clip t">Talking head</div>
+        <div class="head"></div>
+      </div>
+    </div>
+
+    <div id="phone" class="fx full dark">
+      <div class="device" style="left:260px;top:480px;width:560px;height:1180px">
+        <div class="screen"><img class="live"><div class="island"></div>
+          <div class="side"><i></i><i></i><i></i></div>
+          <div class="who"><img class="avatar">@<span class="handle"></span></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="check" class="fx full dark">
+      <div class="count"><b>0</b>/ 20 effects.<br>All made by Claude.</div>
+      <div class="grid"></div>
+    </div>
+
+    <div id="vf" class="fx full">
+      <div class="corner" style="left:60px;top:520px;border-width:6px 0 0 6px"></div>
+      <div class="corner" style="right:60px;top:520px;border-width:6px 6px 0 0"></div>
+      <div class="corner" style="left:60px;top:1400px;border-width:0 0 6px 6px"></div>
+      <div class="corner" style="right:60px;top:1400px;border-width:0 6px 6px 0"></div>
+      <div class="rec"><i></i>REC</div>
+      <div class="zoom">1.0×</div>
+      <div class="tc"></div>
+    </div>
+
+    <canvas id="shatter" class="fx full" width="1080" height="1920"></canvas>
+    <div id="flash" class="fx full"></div>
+
+    <div id="o-card" class="fx full dark">
+      <div class="ocard">
+        <div class="hd"><svg class="ico"><use href="#star"/></svg><div><b>AI Video Editor</b><small>100% NEW EMPLOYEE</small></div><span class="live">● ONLINE</span></div>
+        <div class="tags"><i>CUTS</i><i>CAPTIONS</i><i>HOOKS</i><i>20+ EFFECTS</i><i>B-ROLL</i><i>SOUND</i><i>EXPORTS</i></div>
+        <div class="style"><svg class="tick"><use href="#check"/></svg>Edits in your style, every time</div>
+      </div>
+    </div>
+    <div id="o-flow" class="fx full dark">
+      <div class="steps"><i><b>1</b>Drop in</i><i><b>2</b>Prompt</i><i><b>3</b>Edited</i></div>
+      <div class="drop"><div class="up">↑</div>Drop your raw video here</div>
+      <div class="file"><svg class="play"><use href="#play"/></svg><div><b>raw-video.mov</b><small>84 MB · 1:02</small></div></div>
+      <div class="rtag2 uploaded" style="top:985px">✓ UPLOADED</div>
+      <div class="prompt"><span class="txt"></span><span class="caret"></span><span class="go"><svg class="icon"><use href="#up"/></svg></span></div>
+      <div class="rtag2 ready" style="top:672px">✓ EDITED · READY TO POST</div>
+      <div class="device ophone" style="left:330px;top:730px;width:420px;height:880px">
+        <div class="screen"><img class="live"><div class="mini"></div><div class="minicap"></div><div class="island"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="hud">
+    <div id="lists"><div class="col left"></div><div class="col right"></div><div class="more">+50 more</div></div>
+    <div id="title"><svg class="star"><use href="#star"/></svg><div><b class="l1"></b></div><div><b class="l2"></b></div></div>
+    <div id="chip"><span class="num"></span><span class="name"></span></div>
+    <div id="dashes"></div>
+    <div id="outroTitle"></div>
+    <div id="comment"><img class="avatar"><span class="txt"></span><span class="sent">✓ SENT</span><span class="go"><svg class="icon"><use href="#up"/></svg></span></div>
+    <div id="profile"><img class="avatar"><div><div class="h"><span class="handle"></span><i><svg class="icon"><use href="#check"/></svg></i></div><div class="n"></div></div></div>
+  </div>
+  <div id="cap"><span class="s"></span><span class="f"></span></div>
+</div>
+
+<script src="config.js"></script>
+<script src="work/meta.js"></script>
+<script src="work/cues.js"></script>
+<script src="scene.js"></script>
+</body></html>
