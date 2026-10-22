@@ -15,6 +15,10 @@ import '@fontsource/montserrat/800.css';
 import '@fontsource/playfair-display/400.css';
 import '@fontsource/playfair-display/700.css';
 import '@fontsource/playfair-display/800.css';
+import '@fontsource/plus-jakarta-sans/400.css';
+import '@fontsource/plus-jakarta-sans/600.css';
+import '@fontsource/plus-jakarta-sans/700.css';
+import '@fontsource/plus-jakarta-sans/800.css';
 import '@fontsource/poppins/400.css';
 import '@fontsource/poppins/600.css';
 import '@fontsource/poppins/800.css';
@@ -37,6 +41,7 @@ const families: Record<FontName, string> = {
 	Anton: 'Anton',
 	DMSans: 'DM Sans',
 	Sora: 'Sora',
+	PlusJakartaSans: 'Plus Jakarta Sans',
 };
 
 // @font-face files load lazily; hold the first frame until the fonts we use are ready.

@@ -2,7 +2,7 @@
 
 const LAYOUTS = ['aroll', 'pip', 'split', 'broll'];
 const GRAPHICS = ['title', 'kinetic', 'quote', 'stat', 'chart', 'list', 'diagram', 'compare', 'code', 'image', 'cta'];
-const FONTS = ['Inter', 'Montserrat', 'Poppins', 'SpaceGrotesk', 'BebasNeue', 'PlayfairDisplay', 'Anton', 'DMSans', 'Sora'];
+const FONTS = ['Inter', 'Montserrat', 'Poppins', 'SpaceGrotesk', 'BebasNeue', 'PlayfairDisplay', 'Anton', 'DMSans', 'Sora', 'PlusJakartaSans'];
 export const SFX = {
 	whoosh: 'quick airy whoosh transition, clean and short',
 	pop: 'soft bubbly UI pop',

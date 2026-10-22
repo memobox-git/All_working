@@ -20,13 +20,16 @@ const flag = (name) => args.find((a) => a.startsWith(`--${name}`));
 const MOCK = Boolean(flag('mock'));
 // Reuse an avatar video HeyGen already rendered (e.g. after a failed download) instead of paying again.
 const REUSE_VIDEO = flag('heygen-video')?.split('=')[1];
+// Keep the avatar's real filmed background: no green screen, framed like a camera clip.
+const KEEP_BG = flag('keep-background') !== undefined || process.env.HEYGEN_KEEP_BACKGROUND === '1';
+const AVATAR_FILE = KEEP_BG ? 'avatar.mp4' : 'avatar.webm';
 const FORMATS = (flag('formats')?.split('=')[1] ?? '9x16,16x9').split(',');
 const FPS = 30;
 const SIZES = {'9x16': [1080, 1920], '16x9': [1920, 1080]};
 
 const projectArg = args.find((a) => !a.startsWith('--'));
 if (!projectArg) {
-	console.error('Usage: node build.mjs <project-dir> [--formats=9x16,16x9] [--mock] [--heygen-video=<id>]');
+	console.error('Usage: node build.mjs <project-dir> [--formats=9x16,16x9] [--mock] [--heygen-video=<id>] [--keep-background]');
 	process.exit(1);
 }
 const PROJECT = path.resolve(expandHome(projectArg));
@@ -95,11 +98,11 @@ if (narrated.length) {
 
 // ── 2. Avatar ───────────────────────────────────────────────────────────────
 if (needsAvatar) {
-	const key = hash('avatar', cache.voiceKey, process.env.HEYGEN_AVATAR_ID, MOCK);
-	if (cached(key, 'avatar.webm')) {
+	const key = hash('avatar', cache.voiceKey, process.env.HEYGEN_AVATAR_ID, MOCK, KEEP_BG || undefined);
+	if (cached(key, AVATAR_FILE)) {
 		log('Avatar: cached');
 	} else {
-		const raw = path.join(ASSETS, 'avatar-green.mp4');
+		const raw = path.join(ASSETS, KEEP_BG ? 'avatar-raw.mp4' : 'avatar-green.mp4');
 		if (MOCK) {
 			log('Avatar: MOCK green-screen stand-in');
 			run('ffmpeg', [
@@ -116,7 +119,7 @@ if (needsAvatar) {
 			} else {
 				log('Avatar: uploading narration to HeyGen…');
 				const assetId = await hg.uploadAudio(path.join(ASSETS, 'voice.mp3'));
-				videoId = await hg.generateAvatarVideo({audioAssetId: assetId});
+				videoId = await hg.generateAvatarVideo({audioAssetId: assetId, keepBackground: KEEP_BG});
 				cache[`heygen:${key}`] = videoId;
 				fs.rmSync(raw, {force: true}); // never key an older render
 				saveCache();
@@ -128,8 +131,13 @@ if (needsAvatar) {
 				await hg.download(url, raw);
 			}
 		}
-		log('Avatar: keying out green screen…');
-		chromaKey(raw, path.join(ASSETS, 'avatar.webm'));
+		if (KEEP_BG) {
+			log('Avatar: keeping the filmed background');
+			run('ffmpeg', ['-y', '-v', 'error', '-i', raw, '-an', '-c:v', 'libx264', '-crf', '18', '-pix_fmt', 'yuv420p', path.join(ASSETS, AVATAR_FILE)]);
+		} else {
+			log('Avatar: keying out green screen…');
+			chromaKey(raw, path.join(ASSETS, AVATAR_FILE));
+		}
 		cache[key] = true;
 		saveCache();
 	}
@@ -297,7 +305,8 @@ for (const fmt of FORMATS) {
 		theme: sl.theme,
 		captions: sl.captions,
 		voiceSrc: narrated.length ? 'voice.mp3' : null,
-		avatarSrc: needsAvatar ? 'avatar.webm' : null,
+		avatarSrc: needsAvatar ? AVATAR_FILE : null,
+		avatarKeyed: !KEEP_BG,
 		music,
 		shots,
 	};

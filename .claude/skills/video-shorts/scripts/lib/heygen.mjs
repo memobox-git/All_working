@@ -75,7 +75,8 @@ export const uploadAudio = async (file) => {
 	return data.id;
 };
 
-export const generateAvatarVideo = async ({audioAssetId, width = 1080, height = 1920}) => {
+// keepBackground: leave the avatar's own filmed background (no green screen, no keying later).
+export const generateAvatarVideo = async ({audioAssetId, width = 1080, height = 1920, keepBackground = false}) => {
 	const avatar = await resolveAvatar();
 	const character =
 		avatar.type === 'talking_photo'
@@ -91,7 +92,7 @@ export const generateAvatarVideo = async ({audioAssetId, width = 1080, height = 
 					{
 						character,
 						voice: {type: 'audio', audio_asset_id: audioAssetId},
-						background: {type: 'color', value: '#00FF00'},
+						...(keepBackground ? {} : {background: {type: 'color', value: '#00FF00'}}),
 					},
 				],
 				dimension: {width, height},

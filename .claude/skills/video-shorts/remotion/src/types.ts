@@ -10,7 +10,8 @@ export type FontName =
 	| 'PlayfairDisplay'
 	| 'Anton'
 	| 'DMSans'
-	| 'Sora';
+	| 'Sora'
+	| 'PlusJakartaSans';
 
 export type Theme = {
 	bg: string;
@@ -70,6 +71,8 @@ export type Timeline = {
 	captions: 'karaoke' | 'simple' | 'none';
 	voiceSrc: string | null;
 	avatarSrc: string | null;
+	// false when the avatar keeps its filmed background (framed like a camera clip).
+	avatarKeyed?: boolean;
 	music: {src: string; volume: number} | null;
 	shots: Shot[];
 };

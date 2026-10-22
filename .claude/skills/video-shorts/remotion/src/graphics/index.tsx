@@ -193,10 +193,11 @@ const List: React.FC<{g: Extract<Graphic, {kind: 'list'}>; s: number; box: Box}>
 	// Spread item reveals across the first ~60% of a typical shot.
 	const step = Math.round(fps * 0.6);
 	return (
-		<AbsoluteFill style={{padding: s * 7, justifyContent: 'center', gap: s * 3}}>
+		<AbsoluteFill style={{padding: s * 7, justifyContent: 'center', alignItems: 'center'}}>
+			<div style={{display: 'flex', flexDirection: 'column', gap: s * 3}}>
 			{g.title && (
 				<Rise>
-					<div style={{fontFamily: t.heading, fontWeight: 800, fontSize: s * 7, color: t.fg}}>{g.title}</div>
+					<div style={{fontFamily: t.heading, fontWeight: 800, fontSize: s * 8, color: t.fg}}>{g.title}</div>
 				</Rise>
 			)}
 			{g.items.map((item, i) => (
@@ -204,8 +205,8 @@ const List: React.FC<{g: Extract<Graphic, {kind: 'list'}>; s: number; box: Box}>
 					<div style={{display: 'flex', alignItems: 'center', gap: s * 2.5}}>
 						<div
 							style={{
-								minWidth: s * 7,
-								height: s * 7,
+								minWidth: s * 8,
+								height: s * 8,
 								borderRadius: s * 2,
 								background: t.accent,
 								color: t.bg,
@@ -219,10 +220,11 @@ const List: React.FC<{g: Extract<Graphic, {kind: 'list'}>; s: number; box: Box}>
 						>
 							{g.numbered === false ? '✓' : i + 1}
 						</div>
-						<div style={{fontFamily: t.body, fontWeight: 600, fontSize: s * 5.6, color: t.fg, textAlign: 'left'}}>{item}</div>
+						<div style={{fontFamily: t.body, fontWeight: 700, fontSize: s * 6.6, color: t.fg, textAlign: 'left'}}>{item}</div>
 					</div>
 				</Rise>
 			))}
+			</div>
 		</AbsoluteFill>
 	);
 };
@@ -231,18 +233,24 @@ const Diagram: React.FC<{g: Extract<Graphic, {kind: 'diagram'}>; s: number; box:
 	const t = useTheme();
 	const {fps} = useVideoConfig();
 	const frame = useCurrentFrame();
-	const column = box.h > box.w * 0.8;
+	const n = g.steps.length;
+	const longest = Math.max(...g.steps.map((l) => l.length));
+	// Font that fits all steps on one row (box + arrow widths in em); fall back to a column when too small.
+	const rowFont = Math.min(s * 5.2, (box.w * 0.85) / (n * (longest * 0.62 + 1.4) + (n - 1) * 1.6));
+	const column = box.h > box.w * 0.8 || rowFont < s * 4;
+	const colFont = Math.min(s * 6.5, (box.h * 0.8) / (n * 1.9 + (n - 1) * 1.3 + (g.title ? 1.6 : 0)));
+	const font = column ? colFont : rowFont;
 	const step = Math.round(fps * 0.5);
 	return (
-		<AbsoluteFill style={{padding: s * 6, justifyContent: 'center', alignItems: 'center', gap: s * 4}}>
+		<AbsoluteFill style={{padding: s * 4, justifyContent: 'center', alignItems: 'center', gap: font * 0.8}}>
 			{g.title && (
 				<Rise>
-					<div style={{fontFamily: t.heading, fontWeight: 800, fontSize: s * 6.5, color: t.fg, textAlign: 'center'}}>
+					<div style={{fontFamily: t.heading, fontWeight: 800, fontSize: font * 1.15, color: t.fg, textAlign: 'center'}}>
 						{g.title}
 					</div>
 				</Rise>
 			)}
-			<div style={{display: 'flex', flexDirection: column ? 'column' : 'row', alignItems: 'center', gap: s * 1.5}}>
+			<div style={{display: 'flex', flexDirection: column ? 'column' : 'row', alignItems: 'center', gap: font * 0.3}}>
 				{g.steps.map((label, i) => {
 					const p = spring({frame: frame - 6 - i * step, fps, config: {damping: 15}});
 					return (
@@ -251,7 +259,8 @@ const Diagram: React.FC<{g: Extract<Graphic, {kind: 'diagram'}>; s: number; box:
 								<div
 									style={{
 										color: t.accent,
-										fontSize: s * 6,
+										fontSize: font,
+										lineHeight: 1,
 										opacity: p,
 										transform: column ? 'rotate(90deg)' : undefined,
 									}}
@@ -263,13 +272,13 @@ const Diagram: React.FC<{g: Extract<Graphic, {kind: 'diagram'}>; s: number; box:
 								style={{
 									opacity: p,
 									transform: `scale(${0.7 + 0.3 * p})`,
-									border: `${s * 0.4}px solid ${t.accent}`,
+									border: `${Math.max(2, font * 0.07)}px solid ${t.accent}`,
 									background: `${t.bg}cc`,
-									borderRadius: s * 2,
-									padding: `${s * 2}px ${s * 4}px`,
+									borderRadius: font * 0.35,
+									padding: `${font * 0.3}px ${font * 0.7}px`,
 									fontFamily: t.body,
 									fontWeight: 700,
-									fontSize: s * (column ? 6.5 : 5.2),
+									fontSize: font,
 									color: t.fg,
 									textAlign: 'center',
 									maxWidth: column ? box.w * 0.8 : box.w / g.steps.length,
@@ -319,7 +328,7 @@ const Compare: React.FC<{g: Extract<Graphic, {kind: 'compare'}>; s: number}> = (
 	);
 };
 
-const Code: React.FC<{g: Extract<Graphic, {kind: 'code'}>; s: number}> = ({g, s}) => {
+const Code: React.FC<{g: Extract<Graphic, {kind: 'code'}>; s: number; box: Box}> = ({g, s, box}) => {
 	const t = useTheme();
 	const frame = useCurrentFrame();
 	const {fps} = useVideoConfig();
@@ -345,7 +354,8 @@ const Code: React.FC<{g: Extract<Graphic, {kind: 'code'}>; s: number}> = ({g, s}
 							margin: 0,
 							padding: s * 3,
 							fontFamily: monoFamily(),
-							fontSize: s * 4.2,
+							// Longest line must fit without wrapping (~0.6em per mono character).
+							fontSize: Math.min(s * 4.2, (box.w - s * 16) / (Math.max(...g.code.split('\n').map((l) => l.length)) * 0.6)),
 							lineHeight: 1.45,
 							color: '#e6edf3',
 							whiteSpace: 'pre-wrap',
@@ -415,7 +425,8 @@ const Cta: React.FC<{g: Extract<Graphic, {kind: 'cta'}>; s: number}> = ({g, s}) 
 export const GraphicView: React.FC<{graphic: Graphic; box: Box; words: Word[]}> = ({graphic, box, words}) => {
 	// Scale unit relative to the box's shorter side, so text shrinks inside a half-frame split.
 	// Phones are small screens: vertical boxes get bigger type.
-	const s = (Math.min(box.w, box.h * 0.75) / 100) * (box.h > box.w ? 1.2 : 1);
+	// Big enough to read on a phone, small enough that the content fits the box.
+	const s = Math.min(box.w / 100, box.h / 62) * (box.h > box.w ? 1.15 : 1);
 	switch (graphic.kind) {
 		case 'title':
 			return <Title g={graphic} s={s} />;
@@ -434,7 +445,7 @@ export const GraphicView: React.FC<{graphic: Graphic; box: Box; words: Word[]}> 
 		case 'compare':
 			return <Compare g={graphic} s={s} />;
 		case 'code':
-			return <Code g={graphic} s={s} />;
+			return <Code g={graphic} s={s} box={box} />;
 		case 'image':
 			return <Image g={graphic} s={s} />;
 		case 'cta':

@@ -48,7 +48,8 @@ export const chromaKey = (input, output, color = '0x00FF00') => {
 export const loudnorm = (input, output) => {
 	run('ffmpeg', [
 		'-y', '-v', 'error', '-i', input,
-		'-c:v', 'copy', '-af', 'loudnorm=I=-14:TP=-1.5:LRA=11', '-c:a', 'aac', '-b:a', '192k',
+		// loudnorm upsamples to 192 kHz internally; force 48 kHz or phones may play the audio as silence.
+		'-c:v', 'copy', '-af', 'loudnorm=I=-14:TP=-1.5:LRA=11', '-ar', '48000', '-c:a', 'aac', '-b:a', '192k',
 		'-movflags', '+faststart', output,
 	]);
 };

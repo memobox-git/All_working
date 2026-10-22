@@ -19,10 +19,15 @@ const chunk = (words: Word[], size: number, maxGap = 0.6): Word[][] => {
 	return groups;
 };
 
-export const Captions: React.FC<{words: Word[]; mode: 'karaoke' | 'simple'; position: 'low' | 'middle'}> = ({
+// `area` (px) pins captions to a band the layout keeps free, so they never cover the speaker's face or a graphic.
+export type CaptionArea = {top: number; left: number; width: number};
+
+export const Captions: React.FC<{words: Word[]; mode: 'karaoke' | 'simple'; position: 'low' | 'middle'; area?: CaptionArea; onTheme?: boolean}> = ({
 	words,
 	mode,
 	position,
+	area,
+	onTheme,
 }) => {
 	const frame = useCurrentFrame();
 	const {fps} = useVideoConfig();
@@ -37,11 +42,16 @@ export const Captions: React.FC<{words: Word[]; mode: 'karaoke' | 'simple'; posi
 	});
 	if (!group) return null;
 
-	const top = position === 'middle' ? (vertical ? '58%' : '62%') : vertical ? '74%' : '80%';
+	const top = area ? area.top : position === 'middle' ? (vertical ? '58%' : '62%') : vertical ? '74%' : '80%';
+	const box: React.CSSProperties = area ? {left: area.left, width: area.width, right: 'auto'} : {};
+	// Over a light theme background (not footage), use dark text without the outline.
+	const hex = t.bg.replace('#', '');
+	const lum = (parseInt(hex.slice(0, 2), 16) * 299 + parseInt(hex.slice(2, 4), 16) * 587 + parseInt(hex.slice(4, 6), 16) * 114) / 1000;
+	const dark = Boolean(onTheme) && lum > 150;
 
 	if (mode === 'simple') {
 		return (
-			<AbsoluteFill style={{top, height: 'auto', alignItems: 'center', padding: `0 ${u * 6}px`}}>
+			<AbsoluteFill style={{top, height: 'auto', alignItems: 'center', padding: `0 ${u * 6}px`, ...box}}>
 				<div
 					style={{
 						fontFamily: t.body,
@@ -63,7 +73,7 @@ export const Captions: React.FC<{words: Word[]; mode: 'karaoke' | 'simple'; posi
 
 	const enter = spring({frame: frame - Math.round(group[0].start * fps), fps, config: {damping: 14, mass: 0.6}});
 	return (
-		<AbsoluteFill style={{top, height: 'auto', alignItems: 'center', padding: `0 ${u * 5}px`}}>
+		<AbsoluteFill style={{top, height: 'auto', alignItems: 'center', padding: `0 ${u * 4}px`, ...box}}>
 			<div
 				style={{
 					display: 'flex',
@@ -81,12 +91,12 @@ export const Captions: React.FC<{words: Word[]; mode: 'karaoke' | 'simple'; posi
 							style={{
 								fontFamily: t.heading,
 								fontWeight: 800,
-								fontSize: u * (vertical ? 8 : 6.4),
+								fontSize: u * (vertical ? 7 : 5.6),
 								textTransform: 'uppercase',
-								color: active ? t.accent : '#fff',
-								WebkitTextStroke: `${u * 0.25}px rgba(0,0,0,0.85)`,
+								color: active ? t.accent : dark ? t.fg : '#fff',
+								WebkitTextStroke: dark ? undefined : `${u * 0.25}px rgba(0,0,0,0.85)`,
 								paintOrder: 'stroke fill',
-								textShadow: `0 ${u * 0.5}px ${u * 1.5}px rgba(0,0,0,0.6)`,
+								textShadow: dark ? undefined : `0 ${u * 0.5}px ${u * 1.5}px rgba(0,0,0,0.6)`,
 								transform: active ? 'scale(1.05)' : 'scale(1)',
 								lineHeight: 1.15,
 							}}

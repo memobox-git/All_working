@@ -12,10 +12,17 @@ export const Presenter: React.FC<{
 	punchIn?: boolean;
 	// Vertical anchor for cover-cropping (0 = top, 100 = bottom). Faces sit high in the frame.
 	anchorY?: number;
-}> = ({presenter, avatarSrc, voiceFrom, fit = 'cover', punchIn, anchorY = 25}) => {
+	// false when the avatar video keeps its filmed background (opaque mp4).
+	keyed?: boolean;
+}> = ({presenter, avatarSrc, voiceFrom, fit = 'cover', punchIn, anchorY = 25, keyed = true}) => {
 	const frame = useCurrentFrame();
 	const {fps, durationInFrames} = useVideoConfig();
-	const scale = punchIn ? interpolate(frame, [0, Math.min(12, durationInFrames)], [1.0, 1.28], {extrapolateRight: 'clamp'}) : 1;
+	// Cut-out avatar: quick punch. Filmed footage: slow push-in toward the face, like a camera move.
+	const scale = !punchIn
+		? 1
+		: keyed || presenter.type === 'clip'
+			? interpolate(frame, [0, Math.min(12, durationInFrames)], [1.0, 1.28], {extrapolateRight: 'clamp'})
+			: interpolate(frame, [0, durationInFrames], [1.0, 1.12], {extrapolateRight: 'clamp'});
 
 	const style: React.CSSProperties = {
 		width: '100%',
@@ -24,7 +31,7 @@ export const Presenter: React.FC<{
 		objectPosition: `50% ${anchorY}%`,
 		transform: `scale(${scale})`,
 		// Zoom toward the face, never the feet.
-		transformOrigin: `50% ${Math.min(anchorY, 22)}%`,
+		transformOrigin: keyed ? `50% ${Math.min(anchorY, 22)}%` : '50% 42%',
 	};
 
 	if (presenter.type === 'clip') {
@@ -41,7 +48,7 @@ export const Presenter: React.FC<{
 	}
 	if (!avatarSrc) return null;
 	// Soften the bottom edge of a contained cut-out (photo avatars end where the photo ends).
-	if (fit === 'contain') {
+	if (keyed && fit === 'contain') {
 		style.WebkitMaskImage = 'linear-gradient(to bottom, #000 86%, transparent 100%)';
 		style.maskImage = 'linear-gradient(to bottom, #000 86%, transparent 100%)';
 	}
@@ -51,7 +58,7 @@ export const Presenter: React.FC<{
 				src={staticFile(avatarSrc)}
 				startFrom={Math.round(voiceFrom * fps)}
 				muted
-				transparent
+				transparent={keyed}
 				style={style}
 			/>
 		</AbsoluteFill>
