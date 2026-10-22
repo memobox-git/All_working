@@ -1,0 +1,29 @@
+/* The vertical Shorts: same look as the long video, laid out for a phone (1080x1920). */
+html, body { width: 1080px; height: 1920px; }
+#vignette { background: radial-gradient(900px 1500px at 50% 45%, transparent 55%, rgba(0,0,0,.6)); }
+#grid { -webkit-mask-image: radial-gradient(700px 1000px at 50% 45%, #000 20%, transparent 75%); }
+#brand { position: absolute; left: 0; right: 0; top: 74px; text-align: center; z-index: 40; font: 500 22px 'Mono'; letter-spacing: .24em; color: rgba(255,255,255,.55); }
+#brand b { color: var(--accent); font-weight: 500; }
+
+/* captions: a few words at a time, the spoken word lit */
+#cap { position: absolute; left: 60px; right: 60px; top: 1296px; height: 190px; z-index: 42; display: flex; align-items: center; justify-content: center; text-align: center; }
+#cap .ln { font: 800 66px/1.12 'Jakarta'; letter-spacing: -.02em; color: #fff; text-shadow: 0 6px 26px rgba(0,0,0,.75), 0 2px 4px rgba(0,0,0,.6); transform-origin: 50% 60%; }
+#cap .ln span { display: inline-block; margin: 0 .12em; }
+#cap .ln span.on { background: linear-gradient(100deg, #9fb2ff, #5ef0e0); -webkit-background-clip: text; color: transparent; text-shadow: none; filter: drop-shadow(0 4px 16px rgba(0,0,0,.6)); }
+
+/* layout pieces */
+.vtitle { position: absolute; left: 70px; right: 70px; top: 150px; text-align: center; }
+.vtitle .h1 { font-size: 96px; }
+.vtitle .h2 { font-size: 64px; }
+.vrow { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+.vcard { position: absolute; left: 80px; width: 920px; }
+.vcard .t { font-size: 40px; }
+.vcard .d { font-size: 28px; }
+.stack .card { position: relative; margin-top: 22px; }
+.tile { position: absolute; width: 440px; height: 270px; }
+.fcard { position: absolute; left: 40px; width: 1000px; height: 563px; border-radius: 30px; overflow: hidden; box-shadow: 0 40px 120px rgba(0,0,0,.7), 0 0 0 1.5px rgba(255,255,255,.14); }
+.fcard img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.fbg { position: absolute; inset: 0; overflow: hidden; }
+.fbg img { position: absolute; left: 50%; top: 50%; height: 100%; transform: translate(-50%, -50%) scale(1.15); opacity: .38; }
+.fbg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(6,7,12,.75), rgba(6,7,12,.35) 40%, rgba(6,7,12,.85)); }
+.vcredit { position: absolute; left: 0; right: 0; top: 1500px; text-align: center; font: 500 18px 'Mono'; letter-spacing: .1em; color: rgba(255,255,255,.55); text-transform: uppercase; }

@@ -56,3 +56,24 @@ Python needs `numpy` and `faster-whisper` (for `prep/voice.py`); ffmpeg needs Ru
 - **Which part of a clip plays:** the `clip(img, name, sourceSeconds, startTime)` calls in `scene.js`.
 - **Colours:** the variables at the top of `style.css`.
 - **Music:** the chords, tempo and levels at the top of each block in `music.py`.
+
+## The vertical Shorts
+
+Five 1080×1920 Shorts for TikTok and YouTube Shorts, cut from the same voice-over. Their titles and captions are in `stackle-video/scripts/claude-duet-shorts.md`.
+
+```bash
+python3 prep/shorts.py work             # cuts each Short's voice -> work/shorts/<id>/{voice.wav, cues.js}
+node shorts-stills.js in45 work/sstills 5 20   # optional: check single frames
+for id in in45 vs safety catch parts; do
+  node ../render-pro.js "shorts.html?s=$id" work/shorts/$id/picture.mp4 --size 1080x1920 --sub 1 --workers 1 --chunk 90
+  python3 music.py work/shorts/$id
+  ffmpeg -i work/shorts/$id/picture.mp4 -i work/shorts/$id/soundtrack.wav -map 0:v -map 1:a -c:v libx264 -crf 20 -c:a aac -b:a 256k -shortest -movflags +faststart work/shorts/$id/claude-duet-short-$id.mp4
+done
+```
+
+| File | Job |
+|---|---|
+| `prep/shorts.py` | Which spans of the long voice-over each Short uses, joined with short beats; word timings moved to the Short's clock and spelled for captions |
+| `shorts.html`, `shorts.css`, `shorts.js` | The vertical edit, one builder per Short, with word-by-word captions and an end card that points to the full video |
+| `lib.js` | The timeline helpers the long video and the Shorts share |
+| `shorts-stills.js` | Single frames of one Short for checking |

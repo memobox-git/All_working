@@ -1,14 +1,16 @@
 """Writes the Claude Duet soundtrack: a calm electronic bed, the interface sounds the scene
 cues (window.SFX, saved by render-pro.js in part0.cues.json), and the voice-over, with the
 music ducking whenever Chris talks. Everything here is synthesised, so it is free to use.
-Usage: python3 music.py <work-dir>     -> work/soundtrack.wav (48 kHz stereo, -14 LUFS)"""
+Usage: python3 music.py <work-dir>     -> work/soundtrack.wav (48 kHz stereo, -14 LUFS)
+The same script mixes each Short: python3 music.py work/shorts/<id> (its sections.json is marked "flat")."""
 import json, os, subprocess, sys
 import numpy as np
 
 SR = 48000
 work = sys.argv[1]
 rng = np.random.default_rng(11)
-cues = json.load(open(os.path.join(work, 'part0.cues.json')))
+import glob
+cues = json.load(open(sorted(glob.glob(os.path.join(work, '*.cues.json')))[0]))     # part0.cues.json, or a Short's picture.cues.json
 secs = json.load(open(os.path.join(work, 'sections.json')))
 D = secs['duration']
 N = int(D * SR)
@@ -50,9 +52,11 @@ def env(n, a, r, d=None):
 
 # ---------------------------------------------------------------- arrangement
 s = {x['n']: x for x in secs['sections']}
-END_VO = s[8]['end']
+END_VO = max(x['end'] for x in secs['sections'])
+LONG = not secs.get('flat')                  # the 8-minute video has an arrangement; a Short plays the full groove
 def level(t):
     """How busy the groove is at time t: 0 = pad only, 1 = full."""
+    if not LONG: return 1.0 if t < END_VO else 0.0
     if t < s[2]['start'] - 0.5: return 0.35
     if t < s[8]['start'] - 0.5: return 1.0
     return max(0.0, 1 - (t - s[8]['start']) / 12)
@@ -105,7 +109,7 @@ for b in range(int(D / BEAT)):
         put(music, x, t0, 0.10 * L)
     if L > 0.5:
         hat = band(noise(0.05), 7000) * np.exp(-ts(0.05) * 70)
-        lift = 1.4 if s[7]['start'] <= t0 < s[8]['start'] else 1.0
+        lift = 1.4 if LONG and s[7]['start'] <= t0 < s[8]['start'] else 1.0
         put(music, hat, t0 + BEAT / 2, 0.05 * L * lift, pan=0.25)
 music *= pump[:, None]
 
