@@ -1,0 +1,98 @@
+/* Claude Duet video: dark ink, one cool accent, glass cards. No brown or gold. */
+@font-face { font-family: 'Jakarta'; font-weight: 400; src: url('../node_modules/@fontsource/plus-jakarta-sans/files/plus-jakarta-sans-latin-400-normal.woff2'); }
+@font-face { font-family: 'Jakarta'; font-weight: 500; src: url('../node_modules/@fontsource/plus-jakarta-sans/files/plus-jakarta-sans-latin-500-normal.woff2'); }
+@font-face { font-family: 'Jakarta'; font-weight: 600; src: url('../node_modules/@fontsource/plus-jakarta-sans/files/plus-jakarta-sans-latin-600-normal.woff2'); }
+@font-face { font-family: 'Jakarta'; font-weight: 700; src: url('../node_modules/@fontsource/plus-jakarta-sans/files/plus-jakarta-sans-latin-700-normal.woff2'); }
+@font-face { font-family: 'Jakarta'; font-weight: 800; src: url('../node_modules/@fontsource/plus-jakarta-sans/files/plus-jakarta-sans-latin-800-normal.woff2'); }
+@font-face { font-family: 'Mono'; font-weight: 400; src: url('../node_modules/@fontsource/jetbrains-mono/files/jetbrains-mono-latin-400-normal.woff2'); }
+@font-face { font-family: 'Mono'; font-weight: 500; src: url('../node_modules/@fontsource/jetbrains-mono/files/jetbrains-mono-latin-500-normal.woff2'); }
+
+:root {
+  --bg: #06070c; --bg2: #0c1022;
+  --ink: #f3f5fa; --mute: #a3acbd; --dim: #646d80; --line: rgba(255,255,255,.10);
+  --glass: rgba(255,255,255,.055); --glass2: rgba(255,255,255,.09);
+  --accent: #7d95ff; --accent2: #3fe0d0; --ok: #3ddc97; --bad: #ff6b7d;
+  --shadow: 0 30px 90px rgba(0,0,0,.55);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 1920px; height: 1080px; overflow: hidden; background: var(--bg); }
+body { font-family: 'Jakarta', sans-serif; color: var(--ink); -webkit-font-smoothing: antialiased; }
+
+#stage { position: absolute; inset: 0; overflow: hidden; background: radial-gradient(1400px 900px at 50% 40%, var(--bg2), var(--bg) 70%); }
+.blob { position: absolute; width: 1100px; height: 1100px; border-radius: 50%; opacity: .55; will-change: transform; }
+.blob.b1 { background: radial-gradient(circle, rgba(93,112,255,.42), rgba(93,112,255,.12) 40%, transparent 70%); }
+.blob.b2 { background: radial-gradient(circle, rgba(46,210,200,.22), rgba(46,210,200,.06) 40%, transparent 70%); }
+.blob.b3 { background: radial-gradient(circle, rgba(150,95,255,.22), rgba(150,95,255,.06) 40%, transparent 70%); }
+#grid { position: absolute; inset: -60px; background-image: radial-gradient(rgba(255,255,255,.09) 1.2px, transparent 1.3px); background-size: 44px 44px;
+  -webkit-mask-image: radial-gradient(900px 600px at 50% 50%, #000 20%, transparent 75%); opacity: .55; }
+#grain { position: absolute; inset: 0; opacity: .07; mix-blend-mode: overlay; pointer-events: none; z-index: 50; }
+#vignette { position: absolute; inset: 0; background: radial-gradient(1300px 820px at 50% 50%, transparent 55%, rgba(0,0,0,.65)); z-index: 49; pointer-events: none; }
+
+.shot { position: absolute; inset: 0; opacity: 0; visibility: hidden; }
+.abs { position: absolute; }
+.center { display: flex; align-items: center; justify-content: center; }
+
+/* type */
+.kicker { font-family: 'Mono'; font-weight: 500; font-size: 22px; letter-spacing: .16em; text-transform: uppercase; color: var(--mute); display: inline-flex; align-items: center; gap: 14px; }
+.kicker::before { content: ''; width: 10px; height: 10px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 18px var(--accent); }
+.h0 { font-weight: 800; font-size: 150px; line-height: .95; letter-spacing: -.045em; }
+.h1 { font-weight: 800; font-size: 92px; line-height: 1.02; letter-spacing: -.04em; }
+.h2 { font-weight: 700; font-size: 58px; line-height: 1.08; letter-spacing: -.03em; }
+.h3 { font-weight: 700; font-size: 40px; line-height: 1.15; letter-spacing: -.02em; }
+.body { font-weight: 500; font-size: 30px; line-height: 1.4; color: var(--mute); }
+.small { font-weight: 500; font-size: 22px; color: var(--mute); }
+.grad { background: linear-gradient(100deg, #ffffff 10%, #b9c6ff 45%, #7ef0e4 95%); -webkit-background-clip: text; color: transparent; }
+.acc { color: var(--accent); }
+.ok { color: var(--ok); } .bad { color: var(--bad); }
+.w { display: inline-block; }               /* a word that animates on its own */
+.line { display: block; overflow: hidden; padding-bottom: .08em; }
+.line > span { display: inline-block; }
+
+/* cards */
+.card { position: absolute; background: linear-gradient(160deg, rgba(255,255,255,.085), rgba(255,255,255,.035)); border: 1px solid rgba(255,255,255,.12);
+  border-radius: 28px; box-shadow: var(--shadow), inset 0 1px 0 rgba(255,255,255,.08); padding: 34px 38px; }
+.card .t { font-weight: 700; font-size: 34px; letter-spacing: -.02em; color: var(--ink); }
+.card .d { font-weight: 500; font-size: 24px; line-height: 1.4; color: var(--mute); margin-top: 10px; }
+.card .num { font-family: 'Mono'; font-size: 20px; color: var(--accent); letter-spacing: .12em; margin-bottom: 14px; }
+.chip { display: inline-flex; align-items: center; gap: 12px; padding: 14px 24px; border-radius: 999px; background: var(--glass2); border: 1px solid var(--line);
+  font-weight: 600; font-size: 26px; color: var(--ink); white-space: nowrap; }
+.chip svg { width: 28px; height: 28px; }
+.chip.dim { color: var(--dim); background: rgba(255,255,255,.03); }
+.chip.okc { border-color: rgba(61,220,151,.45); background: rgba(61,220,151,.10); }
+.chip.badc { border-color: rgba(255,107,125,.45); background: rgba(255,107,125,.10); }
+.icon { width: 64px; height: 64px; border-radius: 18px; display: flex; align-items: center; justify-content: center; background: rgba(125,149,255,.14);
+  border: 1px solid rgba(125,149,255,.35); color: #c9d3ff; }
+.icon svg { width: 34px; height: 34px; }
+.icon.teal { background: rgba(63,224,208,.12); border-color: rgba(63,224,208,.35); color: #a7f5ec; }
+.icon.red { background: rgba(255,107,125,.12); border-color: rgba(255,107,125,.4); color: #ffb3bd; }
+.icon.green { background: rgba(61,220,151,.12); border-color: rgba(61,220,151,.4); color: #a6f3cf; }
+svg.i { fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+/* device frame around the captured Duet screen */
+/* The capture is 692x1358 with the demo's screen at (46, 106), 604x1249. At 0.857 that screen fills the 492x1070 inside of the frame. */
+.phone { position: absolute; width: 520px; height: 1098px; border-radius: 70px; padding: 14px; background: linear-gradient(150deg, #2a2f3d, #0d1017 55%, #1b1f2a);
+  box-shadow: 0 0 0 1.5px rgba(255,255,255,.10), 0 50px 140px rgba(0,0,0,.65), 0 0 160px rgba(110,130,255,.22); }
+.phone .scr { position: relative; width: 100%; height: 100%; border-radius: 56px; overflow: hidden; background: #f8f7f3; }
+.phone .scr img { position: absolute; left: -52px; top: -91px; width: 593px; }
+.phone::after { content: ''; position: absolute; left: 50%; top: 26px; width: 130px; height: 34px; margin-left: -65px; border-radius: 20px; background: #05060a; }
+
+.browser { position: absolute; border-radius: 22px; overflow: hidden; background: #111522; border: 1px solid rgba(255,255,255,.12);
+  box-shadow: 0 40px 120px rgba(0,0,0,.6), 0 0 120px rgba(110,130,255,.15); }
+.browser .bar { height: 46px; display: flex; align-items: center; gap: 9px; padding: 0 18px; background: #161b2b; border-bottom: 1px solid rgba(255,255,255,.07); }
+.browser .bar i { width: 13px; height: 13px; border-radius: 50%; background: #3a4154; }
+.browser .bar .url { margin-left: 18px; flex: 1; height: 28px; border-radius: 8px; background: #0e1220; color: var(--mute); font: 500 16px 'Mono'; display: flex; align-items: center; padding: 0 14px; }
+.browser img { display: block; width: 100%; }
+
+.full { position: absolute; inset: 0; overflow: hidden; background: #000; }
+.full img { position: absolute; left: 0; top: 0; width: 100%; height: 100%; object-fit: cover; }
+.shade { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(4,5,10,.9), rgba(4,5,10,.35) 45%, rgba(4,5,10,0) 70%); }
+.shadeB { position: absolute; inset: 0; background: linear-gradient(0deg, rgba(4,5,10,.85), rgba(4,5,10,0) 45%); }
+.credit { position: absolute; right: 44px; bottom: 34px; font: 500 18px 'Mono'; letter-spacing: .08em; color: rgba(255,255,255,.62); text-transform: uppercase; z-index: 5; }
+.lowthird { position: absolute; left: 90px; bottom: 96px; z-index: 5; }
+.lowthird .brand { font-weight: 800; font-size: 86px; letter-spacing: -.04em; }
+.lowthird .meta { font: 500 24px 'Mono'; letter-spacing: .12em; text-transform: uppercase; color: var(--mute); margin-top: 8px; }
+.tagline { position: absolute; font-weight: 600; font-size: 34px; padding: 16px 26px; border-radius: 18px; background: rgba(8,10,18,.72); border: 1px solid var(--line); }
+
+#chapter { position: absolute; left: 64px; top: 52px; z-index: 40; font: 500 20px 'Mono'; letter-spacing: .16em; text-transform: uppercase; color: rgba(255,255,255,.55); display: flex; gap: 16px; align-items: center; }
+#chapter b { color: var(--accent); font-weight: 500; }
+#flash { position: absolute; inset: 0; background: #fff; opacity: 0; z-index: 45; pointer-events: none; mix-blend-mode: overlay; }
