@@ -2,6 +2,10 @@
 
 Newest first. One entry a day: the top 3, what got done, what moved to tomorrow.
 
+## Thu 22 Oct 2026
+
+**Top 3 (Draft, waiting for Chris):** 1) Publish the finished renders (trailer, Airflow, Kafka, Spark, AI Agents, Personal Agents) 2) Send Mark a thank-you and the next steps for episode 4 3) OBIE prompt 11. Fixed: 4 sales calls, 12–1. No reply since Sunday, so this one is short and sent no phone ping.
+
 ## Wed 21 Oct 2026
 
 **Top 3 (Draft, waiting for Chris):** 1) Prep and record Skip the Line with Mark (6 pm) 2) Publish one finished video 3) OBIE prompt 11. Fixed: 4 sales calls, 12–1. No reply to the last 3 drafts, so this one is short and sent no phone ping.
