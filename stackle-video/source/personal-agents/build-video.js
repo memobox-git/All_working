@@ -55,7 +55,7 @@ const ff = (...a) => execFileSync('ffmpeg', ['-v', 'error', '-y', ...a], { stdio
   ff('-f', 'concat', '-safe', '0', '-i', list, '-c', 'copy', joined);
   const final = path.join(out, 'personal-agents-full.mp4');
   ff('-i', joined, '-i', path.join(__dirname, 'vo/narration.wav'), '-map', '0:v', '-map', '1:a',
-    '-c:v', 'libx264', '-preset', 'slow', '-crf', '20', '-pix_fmt', 'yuv420p', '-c:a', 'aac', '-b:a', '192k',
+    '-c:v', 'libx264', '-preset', 'slow', '-crf', '22', '-pix_fmt', 'yuv420p', '-c:a', 'aac', '-b:a', '192k',   // crf 22 keeps it under GitHub's 100 MB
     '-t', String(T.duration), '-movflags', '+faststart', final);
   fs.rmSync(joined);
   console.log(`wrote ${final}: ${T.slots.length} slots, ${T.duration.toFixed(1)} s`);
