@@ -63,7 +63,7 @@ Audience: **Both** = India and US. Effort: **S** = one filming session, **M** = 
 | # | Title | Proof | Audience | Effort |
 |---|---|---|---|---|
 | 18 | How I'd Become a Data Engineer in 2027 If I Started Over (After Interviewing 200+) | Dave 1.8M; Mo Chen 702K; Baraa 374K | Both | S |
-| 19 | Data Engineer to AI Engineer: What to Learn First (90-Day Plan) | CampusX GenAI roadmap 1.43M; an open lane | Both | S |
+| 19 | Data Engineer to AI Engineer: What to Learn First (90-Day Plan) | CampusX GenAI roadmap 1.43M; still open for data engineers. Closest rival: Jam With AI's general 12-week roadmap (20 Oct 2026), see `research/breakdowns/jamwithai-MTt0CeDNvKE.md` | Both | S |
 | 20 | Data Analyst vs Data Engineer vs AI Engineer: Which One in 2027? | Zen van Riel 427K; Akber 335K | Both | S |
 | 21 | Don't Become a Data Engineer If… | Jean Lee 510K; Baraa's Short 168K | Both | S |
 | 22 | Tester at an IT Services Company to Data Engineer at a Product Company: The Plan | GrowDataSkills 441K | India | S |
