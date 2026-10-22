@@ -1,6 +1,7 @@
-// Renders the whole narrated video from vo/timeline.json: each VOICE slot is
-// its scene rendered with render-pro.js at the slot's exact length, each
-// CAMERA slot is a still, labelled card for Chris to cover with his own shot.
+// Renders the whole narrated video from vo/timeline.json: each slot is its
+// scene rendered with render-pro.js at the slot's exact length (the camera
+// lines are kinetic graphics, scenes-premium.js). A slot whose scene is 'cam'
+// is a still, labelled placeholder card instead.
 // Then the slots are joined and laid over the narration (vo/narration.wav).
 // Finished slots are kept, so a stopped build resumes where it left off.
 // Usage: node build-video.js [out-dir] [--sub 2] [--only 8,11]

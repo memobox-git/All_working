@@ -61,7 +61,7 @@ After recording, there are three ways to line them up:
 `graphics/personal-agents/full/personal-agents-full.mp4` is the whole video, about 15 minutes, in the light Jeff Su look:
 - Chris's ElevenLabs voice ("Crispus Roshan") reads the whole script.
 - Every VOICE line has its graphic, real launch page or real launch footage, timed to the word he says.
-- Every CAMERA line is a grey card that says "CAMERA · LINE N" and shows the line. Chris puts his own shot over it, at the same length.
+- Every CAMERA line (a line Chris would say to camera) is a full-screen kinetic graphic instead, in the style of Meta's Muse and xAI's Grok Bot launch films. There is no footage of Chris in the video.
 
 How it's made:
 1. `vo/chunk01–12.mp3` are the narration, generated in 12 parts. `vo/words01–12.json` are their word timings from ElevenLabs Scribe. `vo/plan.json` says which paragraphs are in each part.
@@ -76,12 +76,13 @@ Wherever Chris names a company, the screen shows that company's own launch foota
 
 `clips.sh` downloads all of it and cuts the clips.
 
-Chris's camera lines (`scenes-camera.js`) come in three kinds:
-- Lines he filmed show his own take (Descript project "personal ai", saved to `footage/chris/personal-ai.mp4`). `camera/lipsync.py` matches his words to the narration's words (`camera/takes-words.json`, from ElevenLabs Scribe) and retimes his take, so his lips move with the voice.
-- Lines where his take stops early cut to graphics.
-- Lines he didn't film are graphics.
+The camera lines (`scenes-premium.js`, `kinetic.css`) borrow the launch-film look of Muse and Grok Bot:
+- big semi-bold type that sharpens out of a blur, word by word, with small 3D icons inside the sentence;
+- a soft blue haze, and a slow push-in so no frame sits still;
+- an agent orb with a name pill and a live status, grey and blue chat bubbles, and "typing…" dots;
+- highlighter and strike-through marks on the word being said, and a dark, grainy night look for the "laptop is closed" line.
 
-`video.html` loads every scene: the motion graphics (`scenes.js`), the real-source scenes (`scenes-real.js`) and the newer ones (`scenes-new.js`). It draws them all in the light look (`light.css`, `pa-light.css`, `scenes-new.css`).
+`video.html` loads every scene: the motion graphics (`scenes.js`), the real-source scenes (`scenes-real.js`), the newer ones (`scenes-new.js`) and the camera lines (`scenes-premium.js`). It draws them all in the light look (`light.css`, `pa-light.css`, `scenes-new.css`, `kinetic.css`).
 
 ```bash
 cd stackle-video/source/personal-agents

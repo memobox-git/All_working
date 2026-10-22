@@ -7,8 +7,8 @@ became (spans: "xAI" is read as "x A I"), so every script word gets a start
 time on the joined narration.
 
 The video is a run of slots, one per visual. A VOICE slot is a graphic that
-plays under the voice; a CAMERA slot is a blank card where Chris drops in his
-own face. Each slot starts a beat before its first word and ends where the
+plays under the voice; a CAMERA slot is one of the lines Chris says to camera,
+shown as a full-screen kinetic graphic (scenes-premium.js). Each slot starts a beat before its first word and ends where the
 next one starts, on a frame boundary, so the slots add up to the audio.
 
 Writes timeline.json (for build-video.sh), timing.js (window.SLOTS, for the
@@ -24,17 +24,17 @@ TAIL = 1.5       # the last slot holds this long after the last word
 
 # visual for each paragraph, in order; paragraphs that share a visual share a slot
 VISUAL = [
-    (['1', '2'], 'r01'), (['3'], 'f3'), (['4'], 'c4'), (['5'], 'f5'), (['6'], '02'),
-    (['7'], 'f7'), (['8'], '03'), (['9'], 'r09'), (['10'], 'f10'), (['11'], '05'), (['12'], 'r12'),
-    (['13'], 'f13'), (['14'], 'r14'), (['15'], '08'), (['15b'], 'r15b'), (['16'], '09'),
-    (['17'], 'c17'), (['18'], 'r18'), (['19'], 'r19'), (['20'], 'r20'), (['21'], 'r21'),
-    (['22'], 'f22'), (['23'], '12'), (['24', '25'], '13'), (['26'], 'f26'), (['27'], 'c27'),
-    (['28'], 'r28'), (['29'], 'r29'), (['30'], 'r30'), (['31'], 'c31'), (['32'], 'r32'),
-    (['33'], 'c33'), (['34'], '17'), (['35'], 'c35'), (['36'], '18'), (['37'], 'c37'),
-    (['38'], 'r38'), (['39'], 'c39'), (['40'], 'r40'), (['41'], 'r41'), (['42'], '20'),
-    (['43'], 'c43'), (['44'], 'r44'), (['45'], 'c45'), (['46'], '22'), (['47'], 'r47'),
-    (['48'], 'r48'), (['49'], '23'), (['50'], 'c50'), (['51'], 'c51'), (['52'], '24'),
-    (['53', '54'], '25'), (['55'], 'c55'), (['56'], 'c56'), (['57'], 'c57'), (['58'], 'c58'),
+    (['1', '2'], 'r01'), (['3'], 'p3'), (['4'], 'p4'), (['5'], 'p5'), (['6'], '02'),
+    (['7'], 'p7'), (['8'], '03'), (['9'], 'r09'), (['10'], 'p10'), (['11'], '05'), (['12'], 'r12'),
+    (['13'], 'p13'), (['14'], 'r14'), (['15'], '08'), (['15b'], 'r15b'), (['16'], '09'),
+    (['17'], 'p17'), (['18'], 'r18'), (['19'], 'r19'), (['20'], 'r20'), (['21'], 'r21'),
+    (['22'], 'p22'), (['23'], '12'), (['24', '25'], '13'), (['26'], 'p26'), (['27'], 'p27'),
+    (['28'], 'r28'), (['29'], 'r29'), (['30'], 'r30'), (['31'], 'p31'), (['32'], 'r32'),
+    (['33'], 'p33'), (['34'], '17'), (['35'], 'p35'), (['36'], '18'), (['37'], 'p37'),
+    (['38'], 'r38'), (['39'], 'p39'), (['40'], 'r40'), (['41'], 'r41'), (['42'], '20'),
+    (['43'], 'p43'), (['44'], 'r44'), (['45'], 'p45'), (['46'], '22'), (['47'], 'r47'),
+    (['48'], 'r48'), (['49'], '23'), (['50'], 'p50'), (['51'], 'p51'), (['52'], '24'),
+    (['53', '54'], '25'), (['55'], 'p55'), (['56'], 'p56'), (['57'], 'p57'), (['58'], 'p58'),
 ]
 
 here = os.path.dirname(os.path.abspath(__file__))
@@ -71,7 +71,7 @@ frame = lambda t: round(t * FPS)
 slots = []
 for ids, scene in VISUAL:
     first = paras[ids[0]]
-    slots.append({'paras': ids, 'scene': scene, 'kind': 'camera' if scene == 'cam' or scene[0] in 'fc' else 'voice',
+    slots.append({'paras': ids, 'scene': scene, 'kind': 'camera' if scene == 'cam' or scene[0] == 'p' else 'voice',
                   'f0': 0 if not slots else frame(first['start'] - LEAD)})
 end_frame = frame(paras['58']['end'] + TAIL)
 for i, s in enumerate(slots):
