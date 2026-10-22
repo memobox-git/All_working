@@ -1,0 +1,42 @@
+You can learn data engineering for $0 on YouTube.
+The trick is learning it in the right order, from the right channels. 👇
+
+1. SQL
+→ Data with Baraa: https://www.youtube.com/@DataWithBaraa
+→ Ankit Bansal: https://www.youtube.com/@ankitbansal6
+
+2. Python
+→ Corey Schafer: https://www.youtube.com/@coreyms
+→ freeCodeCamp.org: https://www.youtube.com/@freecodecamp
+
+3. Data modeling and warehousing
+→ Data with Baraa: https://www.youtube.com/@DataWithBaraa
+→ Zach Wilson (DataExpert): https://www.youtube.com/@EcZachly_
+
+4. Spark and PySpark
+→ Ansh Lamba: https://www.youtube.com/@AnshLambaJSR
+→ Databricks: https://www.youtube.com/@Databricks
+
+5. Airflow
+→ Marc Lamberti (Data with Marc): https://www.youtube.com/@MarcLamberti
+→ Astronomer: https://www.youtube.com/@Astronomer
+
+6. dbt
+→ dbt Labs: https://www.youtube.com/@dbt-labs
+
+7. Kafka and streaming
+→ Confluent: https://www.youtube.com/@Confluent
+→ Stephane Maarek: https://www.youtube.com/@StephaneMaarek
+
+8. Cloud projects (AWS, Azure)
+→ Darshil Parmar: https://www.youtube.com/@DarshilParmar
+→ Ansh Lamba: https://www.youtube.com/@AnshLambaJSR
+
+9. System design
+→ ByteByteGo: https://www.youtube.com/@ByteByteGo
+→ Gaurav Sen: https://www.youtube.com/@gkcs
+
+Don't follow all of them at once.
+Pick one skill. Build one small project with it. Move to the next only when you can explain what you built.
+
+Watching is free. Building is what gets you hired.
