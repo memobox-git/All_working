@@ -76,6 +76,11 @@ Wherever Chris names a company, the screen shows that company's own launch foota
 
 `clips.sh` downloads all of it and cuts the clips.
 
+Chris's camera lines (`scenes-camera.js`) come in three kinds:
+- Lines he filmed show his own take (Descript project "personal ai", saved to `footage/chris/personal-ai.mp4`). `camera/lipsync.py` matches his words to the narration's words (`camera/takes-words.json`, from ElevenLabs Scribe) and retimes his take, so his lips move with the voice.
+- Lines where his take stops early cut to graphics.
+- Lines he didn't film are graphics.
+
 `video.html` loads every scene: the motion graphics (`scenes.js`), the real-source scenes (`scenes-real.js`) and the newer ones (`scenes-new.js`). It draws them all in the light look (`light.css`, `pa-light.css`, `scenes-new.css`).
 
 ```bash

@@ -30,7 +30,7 @@ const ff = (...a) => execFileSync('ffmpeg', ['-v', 'error', '-y', ...a], { stdio
     if (fs.existsSync(file) || (only && !only.includes(n))) continue;
     const frames = s.f1 - s.f0;
     console.log(`== slot ${n}/${T.slots.length} ${s.id} (${s.scene}, ${frames} frames)`);
-    if (s.kind === 'voice') {
+    if (s.scene !== 'cam') {           // a scene to render; 'cam' is a blank card for Chris's own shot
       execFileSync('node', [path.join(__dirname, '../render-pro.js'), `${page}?slot=${n}`, file, '--sub', sub, '--workers', '4'], { stdio: 'inherit' });
       fs.rmSync(file.replace(/\.mp4$/, '.cues.json'), { force: true });
     } else {

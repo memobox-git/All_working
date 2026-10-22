@@ -22,6 +22,8 @@ const SPECS = [
   { name: 'claude-memory', url: 'https://code.claude.com/docs/en/memory', domain: 'code.claude.com', quote: 'You write these files in plain text; Claude reads them at the start of every session.' },
   { name: 'agents-md', url: 'https://agents.md/', domain: 'agents.md', top: true, quote: 'used by over 60k open-source projects.' },
   { name: 'meta-muse-memory', url: 'https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/', domain: 'about.fb.com', quote: 'Muse remembers what matters to a person' },
+  { name: 'chatgpt-tasks', url: 'https://learn.chatgpt.com/docs/automations', domain: 'learn.chatgpt.com', quote: 'Run tasks on a schedule or from supported app events in ChatGPT' },
+  { name: 'openai-dots-codex', url: 'https://openai.com/index/introducing-dots/', domain: 'openai.com', quote: 'When you ask your dot to start or manage tasks in Codex or ChatGPT Work' },
   { name: 'gemini-task-rename', url: 'https://9to5google.com/2026/10/12/gemini-spark-task-redesign/', domain: '9to5google.com', top: true, quote: 'Gemini ‘Task’ redesign integrates Spark into the main chat app' },
 ];
 

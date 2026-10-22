@@ -218,5 +218,39 @@ window.SOURCES = {
     20
    ]
   ]
+ },
+ "chatgpt-tasks": {
+  "url": "https://learn.chatgpt.com/docs/automations",
+  "domain": "learn.chatgpt.com",
+  "quote": "Run tasks on a schedule or from supported app events in ChatGPT",
+  "captured": "2026-10-22",
+  "lines": [
+   [
+    275,
+    194,
+    534,
+    21
+   ]
+  ]
+ },
+ "openai-dots-codex": {
+  "url": "https://openai.com/index/introducing-dots/",
+  "domain": "openai.com",
+  "quote": "When you ask your dot to start or manage tasks in Codex or ChatGPT Work",
+  "captured": "2026-10-22",
+  "lines": [
+   [
+    956,
+    412,
+    75,
+    20
+   ],
+   [
+    382,
+    440,
+    488,
+    20
+   ]
+  ]
  }
 };
