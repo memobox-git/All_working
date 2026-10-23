@@ -55,7 +55,7 @@ Checked on 23 October 2026.
 
 | Who | What they do on this problem | What they don't do | Threat to SleekBuys |
 |---|---|---|---|
-| **Amazon and Flipkart** | List bank offers on each product page. Bank terms say the discount is applied to the "Net Cart Value", the cart total after other discounts and exchange ([Canara Bank terms](https://www.canarabank.bank.in/documents/d/guest/flipkart-minutes-from-13th-aug-till-31-december-2026)). The shopper still has to work out the final price for their own card. | No neutral "buy now or wait", and no comparison with the other store | They own checkout |
+| **Amazon and Flipkart** | List bank offers on each product page. Bank terms say the discount is applied to the "Net Cart Value", the cart total after other discounts and exchange ([Canara Bank terms](https://www.canarabank.bank.in/documents/d/guest/flipkart-minutes-from-13th-aug-till-31-december-2026)). The shopper still has to work out the final price for their own card. **Amazon now shows 30, 90 and 365 days of price history next to the price**, in India as well as the US, UK and Canada ([Amazon](https://www.aboutamazon.com/news/retail/how-to-check-amazon-price-history)). | No neutral "buy now or wait", and no comparison with the other store | They own checkout |
 | **BuyHatke** | Its tool (checked as of Sep 2025) shows each product's all-time low, average price and a verdict ([NewsKarnataka](https://newskarnataka.com/india/big-billion-days-great-indian-festival-shop-smarter-with-ai/23092025/)). Its homepage now promises "Spot price hikes before sales · See the real effective price · Get quick verdict: Buy / Skip" ([BuyHatke](https://buyhatke.com/)). About **1 million Chrome users**, plus apps; 6.33M site visits a month (Semrush, Aug 2026). | I couldn't confirm that its "effective price" uses *your* card's offer. It works item by item and doesn't help you choose which phone to buy. | **High.** It owns price data and installs. |
 | **Price History app** | Price charts, alerts, and a buy-or-wait rule: if today is near the low, buy; if it's usually cheaper, wait. Publishes audits of sale prices ([Price History](https://pricehistoryapp.com/)). Claims 1M+ downloads. | Doesn't account for bank or card offers | Medium-high |
 | **pFinTools (Firefox add-on)** | "Combine all the payment method offers for your particular card and show the best price… for upfront payments as well as EMI" ([Mozilla](https://addons.mozilla.org/addon/pfintools/)) | Tiny and Firefox-only | Low, but it shows the per-card idea is real |
@@ -69,7 +69,7 @@ Checked on 23 October 2026.
 2. **Your card, not "up to".** Only a tiny Firefox add-on works out the price for a specific card.
 3. **Video and WhatsApp, not installs.** A 30-second Short or a WhatsApp post reaches people who will never install an extension.
 
-**What SleekBuys should not do:** build its own price tracker or alerts app. BuyHatke and Price History have years of price data and millions of installs. Use their public price charts to check "is this a real low?", and spend SleekBuys' effort on the verdict.
+**What SleekBuys should not do:** build its own price tracker or alerts app. BuyHatke and Price History have years of price data and millions of installs, and Amazon now shows its own price history for free. Use their public price charts to check "is this a real low?", and spend SleekBuys' effort on the verdict.
 
 ## Is the problem worth it? 6 out of 10, and only in the narrower form
 
