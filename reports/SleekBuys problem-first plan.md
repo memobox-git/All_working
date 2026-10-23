@@ -201,6 +201,15 @@ From the first day this log is SleekBuys' own price and offer history. Later it 
 
 **One more Amazon rule:** if SleekBuys ever ships a mobile app, price tracking or price alerts in it need Amazon's written approval first (§21, item 4).
 
+**Amazon's API in practice:**
+- **Old keys are dead.** The old Product Advertising API (PA-API 5) is deprecated, and calls to it now return "403 AccessDeniedException". Its AWS Access Key and Secret Key don't work with the new **Creators API** ([Amazon](https://affiliate-program.amazon.com/creatorsapi/docs/en-us/migrating-to-creatorsapi-from-paapi)).
+- **Getting new credentials.** In Associates Central, open the Creators API tab and create an application. That gives a Credential ID, a Credential Secret (shown only once) and a version; India uses version 3.2.
+- **Eligibility.** Access needs **10 qualifying sales in the past 30 days** ([Amazon](https://affiliate-program.amazon.com/creatorsapi/docs/en-us/introduction)).
+- **Logging in.** Each request first gets a token from `https://api.amazon.co.uk/auth/o2/token`, which is the EU region where India sits ([Amazon](https://affiliate-program.amazon.com/creatorsapi/docs/en-us/get-started/using-curl)). The token lasts 1 hour.
+- **Asking for prices.** Calls go to `https://creatorsapi.amazon/catalog/v1/getItems` with `x-marketplace: www.amazon.in`, SleekBuys' partner tag `sleekbuys2023-21`, and up to 10 product IDs (ASINs) per call ([Amazon](https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items)).
+- **What it returns.** The buying price, availability, deal details, whether the offer holds the Buy Box (the main "Add to Cart" slot), and seller information.
+- **What it doesn't return:** price history, bank or card offers, and anything from Flipkart.
+
 **Two more allowed sources:**
 - **Google Shopping results through SerpApi.** These show one phone's price at Amazon, Flipkart, Croma, Reliance Digital and other stores in one call. Plans start at $75 a month for 5,000 searches ([SerpApi](https://serpapi.com/pricing)). Test the India results before paying. SerpApi does the collecting from Google, so check you're comfortable with that.
 - **Cuelinks' Offers API.** It returns live coupons and deals, but not product prices, and it opens only once SleekBuys earns ₹10,000+ a month through Cuelinks ([Cuelinks](https://desk.zoho.com/portal/cuelinks/kb/articles/what-are-the-different-types-of-apis-available?no=2)).
@@ -211,7 +220,7 @@ From the first day this log is SleekBuys' own price and offer history. Later it 
 |---|---|---|---|
 | **1. Collect prices** | Fetch each tracked phone's price from the allowed sources above. Until those are live, the team uses a 2-minute web form instead. | n8n scheduled workflow, or an n8n form for manual entry | Every 4 hours in sales, daily otherwise |
 | **2. Collect bank offers** | Check each bank's offer pages and sale terms PDFs. When something changes, AI pulls out the rules (bank, store, %, cap, minimum, full payment or EMI, dates, excluded cards). | n8n plus Claude | Daily, and as soon as a sale is announced |
-| **3. Store** | Every price and offer is saved as a new dated row and never overwritten, so the history builds itself | Supabase (free tier to start) | Each run |
+| **3. Store** | Every price and offer is saved as a new dated row and never overwritten, so the history builds itself. **The exception is Amazon API data:** keep it for 24 hours at most and refresh it, because Amazon's agreement bars storing it longer or "aggregating" it without written approval. Take Amazon's history from its own "Price history" link or from Keepa. | Supabase (free tier to start) | Each run |
 | **4. Calculate** | Real price per card, cheapest store and the verdict, using the same rules as the Real Price Checker | n8n code step | Each run |
 | **5. Review** | New offers and verdict changes go to Slack with "approve" or "fix". Nothing is published without a person's OK. | Slack | Each change |
 | **6. Publish** | Approved posts go automatically to a Telegram channel (Telegram's bot tools allow this) and to the website (WordPress, with "as of" time stamps). Post to the WhatsApp Channel by hand. | Telegram bot, WordPress API | On approval |
