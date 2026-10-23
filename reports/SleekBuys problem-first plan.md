@@ -201,6 +201,29 @@ From the first day this log is SleekBuys' own price and offer history. Later it 
 
 **One more Amazon rule:** if SleekBuys ever ships a mobile app, price tracking or price alerts in it need Amazon's written approval first (§21, item 4).
 
+**Two more allowed sources:**
+- **Google Shopping results through SerpApi.** These show one phone's price at Amazon, Flipkart, Croma, Reliance Digital and other stores in one call. Plans start at $75 a month for 5,000 searches ([SerpApi](https://serpapi.com/pricing)). Test the India results before paying. SerpApi does the collecting from Google, so check you're comfortable with that.
+- **Cuelinks' Offers API.** It returns live coupons and deals, but not product prices, and it opens only once SleekBuys earns ₹10,000+ a month through Cuelinks ([Cuelinks](https://desk.zoho.com/portal/cuelinks/kb/articles/what-are-the-different-types-of-apis-available?no=2)).
+
+### How to automate it
+
+| Step | What runs | Tool | How often |
+|---|---|---|---|
+| **1. Collect prices** | Fetch each tracked phone's price from the allowed sources above. Until those are live, the team uses a 2-minute web form instead. | n8n scheduled workflow, or an n8n form for manual entry | Every 4 hours in sales, daily otherwise |
+| **2. Collect bank offers** | Check each bank's offer pages and sale terms PDFs. When something changes, AI pulls out the rules (bank, store, %, cap, minimum, full payment or EMI, dates, excluded cards). | n8n plus Claude | Daily, and as soon as a sale is announced |
+| **3. Store** | Every price and offer is saved as a new dated row and never overwritten, so the history builds itself | Supabase (free tier to start) | Each run |
+| **4. Calculate** | Real price per card, cheapest store and the verdict, using the same rules as the Real Price Checker | n8n code step | Each run |
+| **5. Review** | New offers and verdict changes go to Slack with "approve" or "fix". Nothing is published without a person's OK. | Slack | Each change |
+| **6. Publish** | Approved posts go automatically to a Telegram channel (Telegram's bot tools allow this) and to the website (WordPress, with "as of" time stamps). Post to the WhatsApp Channel by hand. | Telegram bot, WordPress API | On approval |
+| **7. Alerts** | When a phone drops below a subscriber's target price, send them a message | Telegram bot (free) or a WhatsApp template message (about ₹0.12–0.15 each) | Each run |
+
+**WhatsApp Channels can't be posted to automatically through Meta's own platform.** The tools that do it are unofficial and risk the number being banned, so post there by hand: copying an approved post takes a minute.
+
+**Running cost to start:**
+- n8n Starter is about €20–24 a month for 2,500 runs. One run can check all 30 phones, so checking every 4 hours uses about 180 runs a month.
+- Supabase's free tier, plus a small Claude API bill for reading bank PDFs.
+- Add Keepa (about €49 a month) or SerpApi ($75 a month) only once the free version shows demand.
+
 ## How the money follows the solution
 
 | What the shopper is told | What SleekBuys earns | Rate (from the audit) |
