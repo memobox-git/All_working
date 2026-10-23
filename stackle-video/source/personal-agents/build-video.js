@@ -2,7 +2,8 @@
 // scene rendered with render-pro.js at the slot's exact length (the camera
 // lines are kinetic graphics, scenes-premium.js). A slot whose scene is 'cam'
 // is a still, labelled placeholder card instead.
-// Then the slots are joined and laid over the narration (vo/narration.wav).
+// Then the slots are joined and laid over the narration (vo/narration.wav),
+// with the background music very low under it (music/mix.sh).
 // Finished slots are kept, so a stopped build resumes where it left off.
 // Usage: node build-video.js [out-dir] [--sub 2] [--only 8,11]
 //   (run vo/timeline.py first; out-dir defaults to graphics/personal-agents/full)
@@ -54,10 +55,11 @@ const ff = (...a) => execFileSync('ffmpeg', ['-v', 'error', '-y', ...a], { stdio
   fs.writeFileSync(list, files.map(f => `file '${path.basename(f)}'`).join('\n'));
   const joined = path.join(dir, 'joined.mp4');
   ff('-f', 'concat', '-safe', '0', '-i', list, '-c', 'copy', joined);
-  const final = path.join(out, 'personal-agents-full.mp4');
+  const final = path.join(out, 'personal-agents-full.mp4'), voiced = path.join(dir, 'voice-only.mp4');
   ff('-i', joined, '-i', path.join(__dirname, 'vo/narration.wav'), '-map', '0:v', '-map', '1:a',
     '-c:v', 'libx264', '-preset', 'slow', '-crf', '22', '-pix_fmt', 'yuv420p', '-c:a', 'aac', '-b:a', '192k',   // crf 22 keeps it under GitHub's 100 MB
-    '-t', String(T.duration), '-movflags', '+faststart', final);
+    '-t', String(T.duration), '-movflags', '+faststart', voiced);
+  execFileSync(path.join(__dirname, 'music/mix.sh'), [voiced, final], { stdio: 'inherit' });   // the background music, very low
   fs.rmSync(joined);
   console.log(`wrote ${final}: ${T.slots.length} slots, ${T.duration.toFixed(1)} s`);
 })();
