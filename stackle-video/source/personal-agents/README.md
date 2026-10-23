@@ -93,6 +93,10 @@ node build-video.js --only 11,18        # re-render just these slots, then run i
 open "video.html?slot=11"               # preview one slot (scrub with window.render(t))
 ```
 
+Optional background music (not in the committed video yet):
+- `music/bed.py` writes an original, soft lo-fi loop, made from scratch so there is nothing to license.
+- `music/mix.sh in.mp4 out.mp4` lays it under a finished video at -31 LUFS, about 14 dB under the voice. It copies the picture, so it takes about a minute. Set `MUSIC_LUFS=-29` for louder.
+
 If Chris re-records with his real voice:
 - Replace the chunks and word files.
 - Run `timeline.py`. The cues follow his timing.
