@@ -127,6 +127,18 @@ Don't build software yet. Prove people want the answer by doing it manually for 
 | **3. Full launch** | Republic Day sales, mid-Jan 2027 | 30–50 phones. Prepare the hub 3 weeks early with sale dates and bank-offer terms. Put ₹500–1,000 a day of Meta ads behind the best Reels to grow WhatsApp and Telegram (India's median ad cost is about $1.35 per 1,000 impressions, per [Superads](https://www.superads.ai/facebook-ads-costs/cpm-cost-per-mille/india)). Apply for YouTube Shopping tags. | Team plus ad budget |
 | **4. Automate and extend** | Feb–Mar 2027 | Only once it's working: switch to Amazon's data feed, which needs 10 sales in 30 days ([Amazon](https://affiliate-program.amazon.com/creatorsapi/docs/en-us/introduction)), and add a second category (earbuds or laptops). Don't build a price-alert app to compete with BuyHatke; alerts stay as WhatsApp and Telegram posts. | Developer |
 
+### How to run it day to day
+
+The team uses the [Real Price Checker](https://claude.ai/artifact/T9EzhaxPRf4JMo7243Rcto). You type in one phone's prices and bank offers, and it gives the real price for each card, a buy-now-or-wait verdict, and ready-to-copy posts for WhatsApp and Telegram, a 30-second Short, and the website.
+
+| Time | What happens | About how long |
+|---|---|---|
+| 9:00 | Check the 10 phones on Amazon and Flipkart: listed price, the 90-day low (Amazon's "Price history" link; a price-history chart for Flipkart), each bank offer's %, maximum, minimum order and full-payment-or-EMI, and any EMI fee. Enter them in the checker. | 5 minutes a phone, so about 50 minutes |
+| 10:00 | Post the morning real prices to WhatsApp and Telegram from the checker's text. Update each phone's page on the site with the website note (savings, not Amazon prices). | 20 minutes |
+| 11:00–15:00 | Film one Short or Reel on the most-asked phone, using the checker's script and real footage of the phone or the store page. | 2–3 hours, editor |
+| 19:00 | Re-check the phones whose price or offers move most, and post changes only. | 30 minutes |
+| 21:00 | Read the comments and messages. Every "which phone for ₹X with my card?" question becomes a candidate for tomorrow's list or Short. | 15 minutes |
+
 **What to stop doing while this runs:**
 - daily phone-news rewrites;
 - beauty and fashion product posts;
