@@ -2,6 +2,10 @@
 
 Newest first. One entry a day: the top 3, what got done, what moved to tomorrow.
 
+## Fri 23 Oct 2026
+
+**Top 3 (Draft, waiting for Chris):** 1) Publish 1–2 finished videos before the weekend (Personal Agents is ready to go) 2) Plan the Claude Duet Shorts drops 3) OBIE prompt 11. Fixed: 4 sales calls, 12–1. No reply since Sunday, so this one is short and sent no phone ping.
+
 ## Thu 22 Oct 2026
 
 **Top 3 (Draft, waiting for Chris):** 1) Publish the finished renders (trailer, Airflow, Kafka, Spark, AI Agents, Personal Agents) 2) Send Mark a thank-you and the next steps for episode 4 3) OBIE prompt 11. Fixed: 4 sales calls, 12–1. No reply since Sunday, so this one is short and sent no phone ping.
