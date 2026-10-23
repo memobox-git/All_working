@@ -20,7 +20,7 @@ This plan starts from the other end: pick one problem that Indian shoppers reall
 - Price-history tools (BuyHatke, Price History) tell you whether a price is low.
 - Deal sites write one-off articles about bank offers.
 - "Best phones under ₹20,000" lists are everywhere, and Google's AI now answers that kind of query itself.
-- I found nobody who, phone by phone and day by day, gives the real price for each card, says whether that price is a real low, and gives a clear **buy now, wait or skip** verdict. My search was limited, so treat that gap as likely, not proven.
+- **Correction to an earlier draft:** this space is not empty. BuyHatke's price-checking tool (its Chrome extension has about 1 million users) already promises to "Spot price hikes before sales", "See the real effective price" and "Get quick verdict: Buy / Skip" ([BuyHatke](https://buyhatke.com/)). What's still open is narrower: a **phone-buying verdict delivered as short videos and WhatsApp posts** that says which phone to buy, with which card, and whether to wait. See "How competitors treat this problem" below.
 
 **Why SleekBuys can win it.** It already has:
 - 449 product pages;
@@ -43,11 +43,48 @@ I compared five problems SleekBuys could build around.
 
 | Problem the shopper has | Evidence it hurts | Who already solves it | SleekBuys' edge | Money attached | Decision |
 |---|---|---|---|---|---|
-| **"What will I actually pay, and should I buy now?"** (bank offers, caps, EMI, exchange, timing) | Fine print turns "up to ₹17,250" into ₹1,000–1,750 on phones ([Axis](https://www.axis.bank.in/docs/default-source/default-document-library/terms-and-conditions-for-flipkart-big-billion-day-sale-offer-on-axis-bank-cards.pdf)). Offers "vary by pincode, account and card" ([Zoutons](https://zoutons.com/news/flipkart-bank-offers-october-2026-axis-sbi-icici-cards-checked)). | Only one-off articles (Zoutons, [Smartprix Bytes](https://www.smartprix.com/bytes/flipkart-vs-amazon-which-e-commerce-platform-offers-better-iphone-deals/)). No per-phone daily answer found. | Phone pages and YouTube already exist. "Which should you buy" content already works. | Store links, credit cards, alerts | **Solve this** |
+| **"What will I actually pay, and should I buy now?"** (bank offers, caps, EMI, exchange, timing) | Fine print turns "up to ₹17,250" into ₹1,000–1,750 on phones ([Axis](https://www.axis.bank.in/docs/default-source/default-document-library/terms-and-conditions-for-flipkart-big-billion-day-sale-offer-on-axis-bank-cards.pdf)). Offers "vary by pincode, account and card" ([Zoutons](https://zoutons.com/news/flipkart-bank-offers-october-2026-axis-sbi-icici-cards-checked)). | BuyHatke's tool ("real effective price", Buy/Skip verdict), the Price History app, deal sites and channels that post price minus bank offer, and one-off articles (Zoutons, [Smartprix Bytes](https://www.smartprix.com/bytes/flipkart-vs-amazon-which-e-commerce-platform-offers-better-iphone-deals/)). None combines which phone, which card, and buy-or-wait in a video or WhatsApp format. | Phone pages and YouTube already exist. "Which should you buy" content already works. | Store links, credit cards, alerts | **Solve this, but as content, not a tool** |
 | "Is this sale price a real deal?" | 19% of tracked products cost more before the sale than the month before ([Price History](https://pricehistoryapp.com/sale-events)) | BuyHatke (6.33M visits a month), Price History (1M+ downloads, self-reported) | None on its own | Low on its own | **Fold into the main answer** as one line: "lowest in 90 days?" |
 | "Which phone should I buy under ₹X?" | 68% of Indians check creator reviews before buying premium electronics ([Kofluence via NetInfluencer](https://www.netinfluencer.com/creator-content-drives-india-tech-purchases-as-consumer-trust-in-influencers-reaches-71-percent/)) | Very crowded: 91mobiles (16.9M visits a month), Croma, Smartprix. Google's AI Overviews appear on 83% of "best [product]" searches ([BrightEdge](https://www.brightedge.com/resources/weekly-ai-search-insights/black-friday-2024-vs-2025-what-a-year-of-testing-taught-google-about-ai-overviews)). | YouTube comparisons already work | Medium | **Fold in** as "a better phone for the same real price" |
 | "Which beauty or fashion product?" | Not researched | Nykaa, Myntra, beauty creators | None; off-brand | Medium | **Drop for now** |
 | "What phones launched this week?" | — | 91mobiles and Gadgets360 (about 16M visits a month each) | None; Google's scaled-content rule targets this | Low | **Stop** |
+
+## How competitors treat this problem
+
+Checked on 23 October 2026.
+
+| Who | What they do on this problem | What they don't do | Threat to SleekBuys |
+|---|---|---|---|
+| **Amazon and Flipkart** | List bank offers on each product page. Bank terms say the discount is applied to the "Net Cart Value", the cart total after other discounts and exchange ([Canara Bank terms](https://www.canarabank.bank.in/documents/d/guest/flipkart-minutes-from-13th-aug-till-31-december-2026)). The shopper still has to work out the final price for their own card. | No neutral "buy now or wait", and no comparison with the other store | They own checkout |
+| **BuyHatke** | Its tool (checked as of Sep 2025) shows each product's all-time low, average price and a verdict ([NewsKarnataka](https://newskarnataka.com/india/big-billion-days-great-indian-festival-shop-smarter-with-ai/23092025/)). Its homepage now promises "Spot price hikes before sales · See the real effective price · Get quick verdict: Buy / Skip" ([BuyHatke](https://buyhatke.com/)). About **1 million Chrome users**, plus apps; 6.33M site visits a month (Semrush, Aug 2026). | I couldn't confirm that its "effective price" uses *your* card's offer. It works item by item and doesn't help you choose which phone to buy. | **High.** It owns price data and installs. |
+| **Price History app** | Price charts, alerts, and a buy-or-wait rule: if today is near the low, buy; if it's usually cheaper, wait. Publishes audits of sale prices ([Price History](https://pricehistoryapp.com/)). Claims 1M+ downloads. | Doesn't account for bank or card offers | Medium-high |
+| **pFinTools (Firefox add-on)** | "Combine all the payment method offers for your particular card and show the best price… for upfront payments as well as EMI" ([Mozilla](https://addons.mozilla.org/addon/pfintools/)) | Tiny and Firefox-only | Low, but it shows the per-card idea is real |
+| **Deal communities** (DesiDime 4.65M visits a month; Telegram channels with 250K–2.8M subscribers) | Each deal post shows "price minus bank offer = final price", and members correct wrong figures ([DesiDime example](https://www.desidime.com/deals/oneplus-nord-3-5g-mtk-dimensity-9000-50mp-ois-camera-80w-charge)) | One deal at a time; no "which phone suits you" | Medium |
+| **Tech publishers** (91mobiles, Smartprix, Zoutons, Business Today) | One bank-offer article per sale, and fact-checks of viral "effective prices", such as Business Today's ₹1,47,900 → "₹79,800" iPhone 17 Pro Max ([Business Today](https://www.businesstoday.in/latest/trends/photo/how-does-a-rs147900-iphone-17-pro-max-become-rs79800-the-full-effective-price-calculation-explained-553979-2026-09-08)) | Not updated phone by phone, day by day | Low-medium |
+| **Google (AI Mode, Gemini)** | Comparison tables with price, reviews and stock (Apr 2026) ([Google India](https://blog.google/intl/en-in/products/explore-communicate/new-ways-google-is-using-ai-to-make-shopping-easier/)). Testing a Flipkart "Buy" button (Sep 2026). | Its April 2026 announcement mentions no bank offers or price history | Rising |
+| **super.money** (Flipkart's payments app) | AI agents that buy on Flipkart when the price hits a target the user sets; rolling out free ([NewsBytes](https://www.newsbytesapp.com/news/science/flipkart-s-super-money-lets-ai-agents-shop-for-you/story)) | Flipkart only, so not neutral | Rising |
+
+**What's left open for SleekBuys:**
+1. **The phone choice and the price in one answer.** Tools check one product at a time, and deal posts list one deal at a time. Neither says "for ₹20K with an SBI card, buy the Vivo on Amazon today rather than the Redmi". That combines SleekBuys' proven "X vs Y" format with the real price.
+2. **Your card, not "up to".** Only a tiny Firefox add-on works out the price for a specific card.
+3. **Video and WhatsApp, not installs.** A 30-second Short or a WhatsApp post reaches people who will never install an extension.
+
+**What SleekBuys should not do:** build its own price tracker or alerts app. BuyHatke and Price History have years of price data and millions of installs. Use their public price charts to check "is this a real low?", and spend SleekBuys' effort on the verdict.
+
+## Is the problem worth it? 6 out of 10, and only in the narrower form
+
+| Factor | Score | Why |
+|---|---|---|
+| How much it hurts | **8** | Fine print cuts "up to ₹17,250" to ₹1,000–1,750 on phones. Viral "effective prices" need fact-checks. 1 in 5 products cost more just before sales. |
+| How big it is | **8** | Phones were 38–40% of the ₹24,000 crore spent in the first two days of the 2026 festive sales, and big sales come round several times a year |
+| How open the space is | **3** | BuyHatke already promises the effective price and verdict; Price History, deal communities, Google and super.money are all moving in |
+| SleekBuys' ability to win | **5** | It has a phone YouTube channel (comparisons get twice the views) and 449 phone and product pages. It has no price data, no app, a damaged site and no owned audience. |
+| Money attached | **6** | Phone commissions are thin (0.32–0.63% on Amazon), but card referrals (₹441–1,400) and accessories (2–7%) add up |
+| **Overall** | **6 / 10** | Worth testing cheaply as a content brand, not worth building as a tool |
+
+It scores higher (about 7) if the Diwali test shows people want the combined "which phone + which card + buy or wait" verdict on video and WhatsApp. It scores lower (about 4) if SleekBuys tries to out-build BuyHatke on price tracking.
+
+**The checkpoint after Diwali is the real test.** If Real Price Shorts don't beat the channel's comparison average (about 1,280 views) and fewer than 300 people join WhatsApp or Telegram, drop the price angle and go back to plain "which phone should you buy" comparisons, which already work for the channel.
 
 ## The promise, the customer and the product
 
@@ -86,9 +123,9 @@ Don't build software yet. Prove people want the answer by doing it manually for 
 |---|---|---|---|
 | **0. Remove the blockers** | 24–26 Oct | Only what would undermine the launch: delete the 110 pirated-Windows posts, tag every store link (Cuelinks or EarnKaro, plus the Amazon tag), add the affiliate disclosure and privacy pages, connect Google Analytics and Search Console, fix "$" to "₹". (Details are in the audit.) | Site admin |
 | **1. Test on 10 phones** | 27 Oct – 8 Nov (Diwali) | Choose the 10 phones from the YouTube comments, the 449 product pages and the sale best-seller lists. Check prices and offer terms twice a day in a spreadsheet. Publish 10 Real Price pages and a Diwali hub. Start the WhatsApp and Telegram channels. Post one "Real price today" Short or Reel a day. | 1 researcher for 2–3 hours a day; the existing video editor |
-| **2. Learn and widen to 30 phones** | 9 Nov – 31 Dec | Keep the phones and formats that worked. Add the 90-day price line by logging prices daily. Run Black Friday (27 Nov) and year-end sale hubs. Publish one long video a week: "Real prices this week: the best phones under ₹20K / ₹30K". Publish one honest card page: "Which card gets the lowest real price this sale". | Same team, plus a part-time writer |
+| **2. Learn and widen to 30 phones** | 9 Nov – 31 Dec | Keep the phones and formats that worked. Add the "is it a real low?" line by checking the public price charts on BuyHatke or Price History. Don't build a tracker. Run Black Friday (27 Nov) and year-end sale hubs. Publish one long video a week: "Real prices this week: the best phones under ₹20K / ₹30K". Publish one honest card page: "Which card gets the lowest real price this sale". | Same team, plus a part-time writer |
 | **3. Full launch** | Republic Day sales, mid-Jan 2027 | 30–50 phones. Prepare the hub 3 weeks early with sale dates and bank-offer terms. Put ₹500–1,000 a day of Meta ads behind the best Reels to grow WhatsApp and Telegram (India's median ad cost is about $1.35 per 1,000 impressions, per [Superads](https://www.superads.ai/facebook-ads-costs/cpm-cost-per-mille/india)). Apply for YouTube Shopping tags. | Team plus ad budget |
-| **4. Automate and extend** | Feb–Mar 2027 | Only once it's working: switch to Amazon's data feed, which needs 10 sales in 30 days ([Amazon](https://affiliate-program.amazon.com/creatorsapi/docs/en-us/introduction)); automate price alerts; add a second category (earbuds or laptops). | Developer |
+| **4. Automate and extend** | Feb–Mar 2027 | Only once it's working: switch to Amazon's data feed, which needs 10 sales in 30 days ([Amazon](https://affiliate-program.amazon.com/creatorsapi/docs/en-us/introduction)), and add a second category (earbuds or laptops). Don't build a price-alert app to compete with BuyHatke; alerts stay as WhatsApp and Telegram posts. | Developer |
 
 **What to stop doing while this runs:**
 - daily phone-news rewrites;
@@ -133,7 +170,8 @@ These starting bars come from SleekBuys' own numbers where they exist. Reset the
 
 ## Caveats
 
-- **The gap may not be fully open.** I didn't find a site that gives per-phone, per-card real prices with a buy-or-wait verdict, but my search was limited, and Google's AI Mode is moving into shopping fast. Speed and an owned audience (WhatsApp, Telegram, email) protect against both.
+- **The gap is narrower than first thought.** BuyHatke already promises an effective price and a Buy/Skip verdict, and Google and Flipkart's super.money are moving in. SleekBuys' opening is the combined phone-and-card verdict as content. Speed and an owned audience (WhatsApp, Telegram, email) are its only protection.
+- **Competitor checks were limited.** I couldn't confirm whether BuyHatke's effective price uses the shopper's own card. Smartprix and 91mobiles blocked direct page checks, so I couldn't see whether their phone pages show prices after bank offers.
 - **Pre-sale price rises.** The "one in five" figure comes from a price-tracking company's own audit of 325 products across all categories, not just phones.
 - **Example offer terms.** The bank-offer example uses Axis Bank's 2026 Big Billion Days terms. Other banks and sales use different caps, which is exactly the confusion SleekBuys would clear up.
 - **Commission rates.** The rates come from the audit; check them in your own Amazon and network dashboards.
