@@ -6,7 +6,7 @@
 - an agent orb with a name and a live status, and chat bubbles with "typing…" dots;
 - a highlighter or a strike-through on the word being said.
 
-The voice everywhere is the ElevenLabs read. Every graphic is cued to the words in it. Under the voice there is soft, original background music, about 14 dB quieter (`source/personal-agents/music/`).
+The voice everywhere is the ElevenLabs read. Every graphic is cued to the words in it. Under the voice there is upbeat, original background music, about 18 dB quieter (`source/personal-agents/music/`).
 
 To put a filmed take back over a line later, drop it on top of that line's start and end times in your editor.
 

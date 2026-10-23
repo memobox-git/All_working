@@ -94,12 +94,12 @@ open "video.html?slot=11"               # preview one slot (scrub with window.re
 ```
 
 Background music, very low under the voice:
-- `music/score.py` writes an original soft lo-fi score, made from scratch, so there is nothing to license and nothing for Content ID to claim. It runs the full length and follows the video (the arrangement is read from `vo/timeline.json`):
+- `music/score.py` writes an original, bright and upbeat score at 112 bpm, made from scratch, so there is nothing to license and nothing for Content ID to claim. It has a plucky synth arpeggio, a soft four-on-the-floor kick, claps and a bouncing bass. It runs the full length and follows the video (the arrangement is read from `vo/timeline.json`):
   - the drums drop out for the sincere and serious lines;
-  - the piano gets busier for the big sections;
+  - shakers and a high arpeggio come in for the big sections;
   - it turns dark for the night shot;
   - it ends on one long chord.
-- `music/mix.sh in.mp4 out.mp4` lays it under a video at -31 LUFS, about 14 dB under the voice. It copies the picture, so it takes about a minute. Set `MUSIC_LUFS=-29` for louder. `build-video.js` runs it as its last step.
+- `music/mix.sh in.mp4 out.mp4` lays it under a video at -35 LUFS, about 18 dB under the voice, with a small dip around 2.5 kHz to keep the words clear. It copies the picture, so it takes about a minute. Set `MUSIC_LUFS=-33` for louder. `build-video.js` runs it as its last step.
 
 If Chris re-records with his real voice:
 - Replace the chunks and word files.
