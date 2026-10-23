@@ -148,6 +148,35 @@ The team uses the [Real Price Checker](https://claude.ai/artifact/T9EzhaxPRf4JMo
 
 Each one takes time away from the one thing that should make SleekBuys known.
 
+## Should SleekBuys add an AI bot? Later, and only on top of checked data
+
+**An AI chat on its own won't set SleekBuys apart, because every big player already has one:**
+- **Amazon.** Its assistant (Rufus, now "Alexa for Shopping") has been used by more than 1 crore Indian customers ([Amazon India](https://aboutamazon.in/news/retail/rufus-ai-shopping-assistant-launch-in-india)), and it answers "What's the price history?" in India ([Amazon](https://www.aboutamazon.com/news/retail/how-to-check-amazon-price-history)).
+- **Flipkart.** It has run its Flippi assistant since 2023 and is reported to be building a standalone successor ([Apparel Resources](https://apparelresources.com/technology-news/retail-tech/flipkart-roll-standalone-conversational-ai-shopping-assistant/)).
+- **Google, super.money and Perplexity.** Google answers shopping questions in Gemini and AI Mode. super.money's agents buy on Flipkart when a target price is hit. Airtel gave Perplexity Pro free to its subscribers ([Storyboard18](https://www.storyboard18.com/amp/how-it-works/indias-ai-revolution-airtel-hand-delivers-perplexity-pro-to-370-mn-challenging-googles-reign-75571.htm)).
+- **BuyHatke.** It already markets "AI Insights" and has 1 crore+ Android downloads ([Google Play](https://play.google.com/store/apps/details?id=com.buyhatke.assistant)), so it could add chat quickly.
+
+**A bot can stand out only if it does three things those can't:**
+1. **Stays neutral across stores.** Amazon's assistant won't tell you Flipkart is cheaper today.
+2. **Uses your card and today's checked offers**, with the cap, minimum order and EMI fine print.
+3. **Lives on WhatsApp.** A shopper sends "Vivo V80, SBI card" and gets the real price, the verdict and an alert offer back.
+
+**What could go wrong:**
+
+| Risk | What to do |
+|---|---|
+| **The bot invents prices or offers.** One wrong "real price" ruins trust, and misleading claims are a consumer-law risk. | The bot answers **only from the team's checked data** for that day. For any phone it hasn't got, it says "not checked today" and explains how to check. AI understands the question and words the reply; the numbers always come from the sheet. |
+| **WhatsApp's rules.** Since 15 Jan 2026, WhatsApp's business platform bans general-purpose AI chatbots. Business bots for sales and support are still allowed ([TechCrunch](https://techcrunch.com/2025/10/18/whatssapp-changes-its-terms-to-bar-general-purpose-chatbots-from-its-platform)). | Keep it a narrow "SleekBuys deals helper", not an ask-me-anything AI. |
+| **Message costs.** Broadcast marketing messages cost about ₹0.86 each in India. Replies to customers are free or cheap; one report says a ₹0.115 fee per reply starts in Oct 2026, with 1,000 free a month ([TelecomTalk](https://telecomtalk.info/whatsappbusiness-price-reveal-telegram-arattai-may-benefit/1012403/); check Meta's rate card). | Broadcast through the free WhatsApp Channel. Use the bot only for one-to-one questions. |
+| **Amazon's pricing rules** | Same as the website: show savings, or prices with a timestamp, and switch to Amazon's data feed once eligible. |
+
+**When to build it:**
+1. **Until Diwali:** no AI. Answer WhatsApp questions by hand and save every question. Those questions become the bot's brief.
+2. **Nov–Dec, only if the Diwali checkpoint passes:** a simple WhatsApp bot that looks phones up in the Real Price data. Repoint the Botpress chatbot already on the site at the same data, or remove it, since today it only slows the pages down.
+3. **For the Republic Day sales:** add "which phone under ₹X with my card?", choosing from the phones the team has checked.
+
+**Score:** an AI bot on its own scores about **3/10**, because everyone has one. A WhatsApp bot built on SleekBuys' own daily checked card-price data, launched after demand is proven, scores about **7/10**.
+
 ## How the money follows the solution
 
 | What the shopper is told | What SleekBuys earns | Rate (from the audit) |
