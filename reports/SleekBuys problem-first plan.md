@@ -177,6 +177,30 @@ Each one takes time away from the one thing that should make SleekBuys known.
 
 **Score:** an AI bot on its own scores about **3/10**, because everyone has one. A WhatsApp bot built on SleekBuys' own daily checked card-price data, launched after demand is proven, scores about **7/10**.
 
+## Where the data comes from
+
+No single source gives Amazon and Flipkart prices, price history and bank offers together, so SleekBuys builds it in layers. **Don't scrape Amazon or Flipkart.**
+- **Amazon.** Its Conditions of Use exclude "data mining, robots, or similar data gathering and extraction tools" and the collection of prices (as reproduced by [ConductAtlas](https://conductatlas.com/platform/amazon/amazon-conditions-of-use/provision/CA-P-018441/prohibition-on-data-mining-and-scraping-tools/)).
+- **Your Amazon affiliate account.** The Associates agreement bars using Amazon's product data "for the purpose of aggregating, analyzing, extracting, or repurposing" it without written approval. It also limits storing prices to 24 hours (§11.3.3, items 8 and 13, [Amazon Associates India](https://affiliate-program.amazon.in/help/operating/agreement)).
+- **The risk.** Breaking these rules risks the affiliate account, which is SleekBuys' main income.
+
+| Data | Now (by hand, allowed) | Later (automated, allowed) |
+|---|---|---|
+| **Amazon price today** | The product page | Amazon's Creators API, once SleekBuys makes 10 sales in 30 days. Show a date/time stamp and "accurate as of…" next to prices, and refresh at least every 24 hours (§11.3.3, item 14). |
+| **Amazon price history** | Amazon's own **Price history** link next to the price: 30, 90 and 365 days ([Amazon](https://www.aboutamazon.com/news/retail/how-to-check-amazon-price-history)) | The **Keepa API**, a paid service with its own Amazon price history ([docs](https://keepa.com/api-docs/)). Its extension lists Amazon.in; confirm India API coverage and display rights with Keepa first. A third-party guide puts the entry plan at €49 a month. Don't build history from Amazon's own API without Amazon's written OK. |
+| **Flipkart price today** | The product page | The **Flipkart Affiliate API**: product feed, change ("delta") feed, search, offers and deals of the day, up to 20 calls a second ([docs](https://affiliate.flipkart.com/api-docs/affiliate_index.html)). It needs a registered Flipkart affiliate account, and new sign-ups have been reported closed since 2018. Its terms bar use "in a similar or competitive platform" ([terms](https://affiliate.flipkart.com/api-docs/af_tou.html)), so ask Flipkart in writing whether a comparison site counts. |
+| **Flipkart price history** | Read it off a public chart (BuyHatke, Price History) for the verdict; don't copy their data in bulk | SleekBuys' **own log**. Every price the team checks, or the API returns, goes in as a dated row. That builds a Flipkart history from day one. |
+| **Bank offers** | The offer strip on the product page, plus the bank's own terms PDF | **No API exists anywhere.** Save each bank's terms PDF for each sale and have AI pull out the rules (%, cap, minimum, EMI or full payment) into the sheet. For example, Axis Bank's Big Billion Days caps came straight out of its PDF. A person then confirms them on the product page. This checked layer is the data nobody else has. |
+
+**Start with one sheet.** Each check becomes one row:
+
+| Date and time | Phone and variant | Store | Listed price | 90-day low | Card | % | Max | Min order | Full / EMI / both | EMI fee | Checked by |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+
+From the first day this log is SleekBuys' own price and offer history. Later it can feed the Real Price Checker, the website and a WhatsApp bot. Move it to a proper database only when the sheet gets slow.
+
+**One more Amazon rule:** if SleekBuys ever ships a mobile app, price tracking or price alerts in it need Amazon's written approval first (§21, item 4).
+
 ## How the money follows the solution
 
 | What the shopper is told | What SleekBuys earns | Rate (from the audit) |
