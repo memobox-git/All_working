@@ -332,3 +332,14 @@ The worker and the every-minute cron already keep approved work running after th
 3. **OBIE Cloud apps.** Agents build small web apps and pages (forms, calculators, booking, client portals) and host them on the owner's custom domain.
 4. **A Finance agent** in Operations: simple revenue and cash forecasts from Stripe or a spreadsheet, as drafts.
 5. **A power setting** to choose the model per agent, hidden under Settings.
+
+## Brand: the penguin colony (art pending)
+
+OBIE's look is moving from the blue orb to soft 3D clay penguins in white, blue, black and yellow (Plus Jakarta Sans, no emojis). Don't redo the UI until the founder locks the final OBIE face and the art files arrive.
+
+- **The cast:** OBIE is the little blue penguin with a headset and blue scarf. Sales is a rockhopper with a yellow crest, Customers a chinstrap, Operations an emperor, and Product a penguin with glasses. Marketing has no penguin yet. Nano agents are mochi chicks that pop in, do one task and waddle off.
+- **Growing up:** new agents start as chicks and grow into adults as they earn points. The agent of the week gets a yellow star badge.
+- **Points:** no ranks. Points for approved, on-time work unlock more autonomy, and a team's points are the sum of its agents' points.
+- **Hierarchy:** OBIE, then main agents (one per stack, the only ones in the sidebar), then subagents (one per area, living in channels), then nano agents (one task each, then gone). For example, Marketing has a Social Media agent with one agent per platform, and each platform agent has five nanos: Adapter, Writer, Poster, Engager and Tracker.
+- **Lines:** "We don't fly. We dive." and "You work alone. OBIE doesn't."
+- **Still open:** whether the E stands for Employees or Education (keep Employees for now), and the final OBIE face.

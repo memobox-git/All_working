@@ -3,6 +3,7 @@ You are building OBIE (One Business, Infinite Employees): an app where a one-per
 CORE IDEAS
 - OBIE: the agent the owner talks to first, and the face of the product. OBIE chats by voice or text, learns the business, builds the Business Profile, recommends the team, and stays pinned at the top of the sidebar as the front desk ("OBIE, add an Instagram agent").
 - Stacks: the business areas. Defaults are Sales, Marketing, Product, Customers and Operations. OBIE can suggest custom stacks (for example Community or Podcast), and the owner can ask OBIE to create one anytime.
+- Hierarchy: OBIE, then main agents, then subagents, then nano agents. For example, Marketing has a Social Media subagent, which has one agent per platform, and each platform agent uses five nanos: Adapter, Writer, Poster, Engager and Tracker.
 - Three agent levels:
   - Main agent: one per stack. Only main agents and OBIE appear in the sidebar.
   - Subagents: one per area inside a stack. They live inside channels.
@@ -32,7 +33,12 @@ DESIGN RULES
 - No emojis anywhere in the UI.
 - Never use the word "candidate" anywhere in the product.
 - Layout like Slack, but cleaner and calmer.
-- OBIE's look: a glossy blue orb with a friendly face and a small yellow star above it. The star is a status light: steady when idle, sparkling while working. Main agents are smaller orbs with initials. Nano agents are tiny dots that appear, do their task and fade out.
+- OBIE's look (changing): the brand is moving from the blue orb to a colony of soft 3D clay penguins in white, blue, black and yellow. Don't redo the UI yet: the founder is still locking the final OBIE face, and the art files come later. Until then the app keeps the current orb (`components/obie-orb.tsx`), with main agents as smaller orbs with initials and nano agents as dots.
+  - The cast: OBIE is the little blue penguin with a headset and blue scarf. Sales is a rockhopper with a yellow crest. Customers is a chinstrap. Operations is an emperor. Product wears glasses. Marketing has no penguin yet. Nano agents are mochi chicks that pop in, do one task and waddle off.
+  - Growing up: new agents start as chicks and grow into adults as they earn points. The agent of the week gets a yellow star badge.
+  - Points: no ranks. Points for approved, on-time work unlock more autonomy; a team's points are the sum of its agents' points.
+  - Lines to use: "We don't fly. We dive." and "You work alone. OBIE doesn't."
+  - Still open: whether the E stands for Employees or Education (keep Employees for now), and the final OBIE face.
 
 WORKING RULES
 - Build in small steps, verifying each one yourself (build, typecheck, lint, Playwright at desktop and phone sizes). For Version 1, build straight through and don't ask me to test anything until all of it is built and live; then send me one test guide for desktop and phone.
