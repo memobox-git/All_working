@@ -1,6 +1,6 @@
 # OBIE Landing Page Copy
 
-This copy is written for the page structure Building OBIE is using: nav, hero video, 4 steps, persona tabs, tools grid, 3 control blocks, FAQ, closing CTA and footer. It follows the product rules: no emojis, never the word "candidate", and only white, blue, black and yellow. Every claim matches what Version 1 does today. It drafts, and you approve.
+This copy is written for the page structure Building OBIE is using: nav, hero video, 4 steps, persona tabs, OBIE Cloud, tools grid, 3 control blocks, FAQ, closing CTA and footer. It follows the product rules: no emojis, never the word "candidate", and only white, blue, black and yellow. Every claim matches what Version 1 does today. It drafts, and you approve.
 
 Every CTA says **Get early access** and opens the waitlist form (section 10).
 
@@ -102,7 +102,33 @@ Each tab has a one-line intro, 3 or 4 job cards (an agent plus what it drafts) a
 | One-page brief on target company | Research | Working |
 | Weekly pipeline summary | Pipeline | Waiting |
 
-## 5. Works with your tools (grid)
+## 5. OBIE Cloud (Coming soon)
+None of this is built yet. Every block below carries a "Coming soon" label, and the section must never read as live. Write it in future tense.
+
+**Eyebrow:** Coming soon
+**Headline:** OBIE Cloud. Everything your business runs on, in one place.
+**Subhead:** Your AI team is only half of it. OBIE Cloud will be home base for the business itself, so you stop paying for a different tool for every job.
+
+**Five blocks, each with a "Coming soon" label:**
+
+**A customer database that builds itself.**
+No setup. Every inquiry, form and booking will land in it automatically. It will be private to you and backed up. Ask it questions by voice: "Who hasn't paid?"
+
+**Your website and landing pages.**
+OBIE will design them and host them for you. Describe the page you want, and approve it before it goes live.
+
+**Forms and booking pages.**
+Every form and booking will feed straight into your customer database, so nothing gets copied by hand.
+
+**File storage.**
+Your files will live next to the agents that use them.
+
+**One bill.**
+One price instead of a stack of subscriptions.
+
+**Under the blocks:** Tell us which you'd use first when you join. Your answers decide what we build next.
+
+## 6. Works with your tools (grid)
 **Headline:** Built to work with the tools you already use.
 **Subhead:** One-click connections are coming next. For now, your agents draft and you copy the drafts wherever they need to go.
 **Tiles:** Gmail · Google Calendar · Google Drive · Slack · WhatsApp · LinkedIn · Stripe. Each tile shows a small "Coming soon" label.
@@ -110,7 +136,7 @@ Each tab has a one-line intro, 3 or 4 job cards (an agent plus what it drafts) a
 
 (Don't add more logos until each connection is actually planned. Every tile must say "Coming soon" until it works.)
 
-## 6. You stay in control (3 blocks)
+## 7. You stay in control (3 blocks)
 **Nothing goes out without you.**
 Every email, post and reply waits in "Needs you". You approve it, edit it or reject it.
 
@@ -120,7 +146,7 @@ Every plan shows its credit estimate up front. Credits for failed tasks and redo
 **Agents earn your trust.**
 Every agent's work is visible, and approved work done on time earns points. More points will mean more freedom later, at a pace you set.
 
-## 7. FAQ
+## 8. FAQ
 **Is OBIE live?**
 It's in private beta. Get early access and we'll invite you.
 
@@ -139,31 +165,35 @@ Every task uses credits, and you see the estimate before anything runs. You star
 **How much will it cost?**
 Pricing isn't set yet. Everyone who joins early gets a founding price before we launch publicly.
 
+**What is OBIE Cloud?**
+It's what we're building next: a customer database, a website and pages, forms and booking, and file storage, all in one place with one bill. It isn't live yet. Tell us which part you'd use first when you join.
+
 **Who's building it?**
 Chris, founder of Stackle. Stackle is OBIE's first customer and runs on it every day.
 
-## 8. Closing CTA
+## 9. Closing CTA
 **Headline:** Your team is ready when you are.
 **Subhead:** Join the private beta. We'll invite you as spots open.
 **Button:** Get early access
 
-## 9. Footer
+## 10. Footer
 - OBIE · One Business, Infinite Employees
 - Links: Sign in · Privacy · Contact
 - © 2026 OBIE
 
 (Privacy and Contact need real pages or a real email before launch. Don't link to empty pages.)
 
-## 10. Waitlist form (opens from every Get early access button)
+## 11. Waitlist form (opens from every Get early access button)
 **Title:** Get early access
 **Fields:**
 - Email (required). Placeholder: you@business.com
 - What kind of business do you run? (required, dropdown): Coaching or courses · Business brokerage · Consulting or freelance · Search fund or buying a business · Agency · Local services · Other
 - Website (optional). Placeholder: yourbusiness.com
+- Which would you use first? (required, choose one): AI team · Customer database · Website and pages · Connections to my tools
 
 **Button:** Get early access
 **Below the button:** We'll only email you about OBIE. You can unsubscribe anytime.
 **Success message:** You're on the list. We'll email you when your spot opens.
 **Error messages:** "Enter a valid email." and "Something went wrong. Try again."
 
-Store the source of each signup (the UTM parameter or the referrer) with the email, so we can see whether LinkedIn, outreach or something else brings people in.
+Store the "use first" answer and the source of each signup (the UTM parameter or the referrer) with the email. The answer tells us what to build next, and the source shows whether LinkedIn, outreach or something else brings people in.
