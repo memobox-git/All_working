@@ -290,3 +290,45 @@ Test: on my phone, I open Watch, see the agent browsing, tap Take over, log in t
 - **Auto-replies earned per question type,** with a 60-second undo window.
 - **More industry packs:** E-commerce, Local Services, Professional Services, Freelance, Creator.
 - **Local mode:** agents that work with files on the owner's own computer.
+
+---
+
+## Order after traction
+
+Nothing below is built yet. The founder decides when to start, based on waitlist signups. Build in this order: guardrails, then connections, then always-on agents, then agent computers (Day 2).
+
+## Guardrails and evals (must ship before Connections go live)
+
+**Guardrails**
+- **Self-check before Needs you.** A cheap model checks each draft against a rubric before it reaches the owner: no made-up facts or stats, no prices or promises the owner didn't set, matches the brand voice, no banned words ("candidate"), no emojis where they aren't allowed. A draft that fails is redone automatically, for free.
+- **Runaway limits.** A maximum number of tasks per plan, a maximum number of retries per task, and a daily credit cap per workspace.
+- **Prompt-injection safety.** Text from websites, emails or files is always treated as data, never as instructions.
+- **Send limits** once Connections exist (for example, a maximum number of emails per day).
+- **A "Pause all agents" switch.**
+- **An audit trail** of who approved what, and when.
+
+**Evals**
+- **Agent report card** on each agent's profile, built from data we already have: approvals, rejections, edits, on-time rate, and cost per task from `agent_runs`.
+- **20 golden Stackle tasks**, scored by a judge model against the same rubric before every release. If quality drops, the release is blocked.
+- **Weekly summary from OBIE.**
+
+## Always-on agents
+
+The worker and the every-minute cron already keep approved work running after the owner closes the app. These items go further:
+
+1. **Routines.** A schedule per agent, for example "Every Monday at 9am, Marketing drafts this week's posts." Store them in a `routines` table and run them from the existing every-minute cron.
+2. **Triggers.** Wake an agent when something happens: a new email, a form or waitlist signup, a payment, a booking, a lead reply. These come through the Connections platform (Composio triggers and webhooks), so they depend on Connections.
+3. **Watchers.** Cheap periodic checks (for example, hourly "any new reviews or replies?") that use the small model and escalate only when they find something.
+4. **Memory between wake-ups.** The agent's notes, the owner's preferences and past work, stored in the database.
+5. **Long jobs.** On-demand agent computers (Day 2, Managed Agents), never left running idle. Like OpenAI Dots, an agent's computer keeps its state (files, browser sign-ins) between wake-ups, and nothing runs while it's idle.
+6. **Reaching the owner anytime.** Push notifications, WhatsApp, SMS or email for Needs you items, with quiet hours.
+7. **Guardrails first.** This needs the daily caps, send limits and pause switch from the section above.
+8. **Self-scheduled wake-ups.** An agent can set its own follow-up, for example "check on Friday whether the lead replied". Store these in the same `routines` table with `source = 'agent'`, and list them on a "Scheduled" page where the owner can see and cancel them.
+
+## From Dots and Duet
+
+1. **Daily briefing** (first in line after traction). Every morning OBIE sends a short summary: what came in, what the agents finished, what needs the owner today, and what's due. It can be read in the app or played as audio in OBIE's voice through ElevenLabs, and sent by push or email. It's built from tasks, approvals and channels, so it needs no Connections at first.
+2. **Proactive "needs attention" items** from connected apps, using watchers and triggers once Connections exist.
+3. **OBIE Cloud apps.** Agents build small web apps and pages (forms, calculators, booking, client portals) and host them on the owner's custom domain.
+4. **A Finance agent** in Operations: simple revenue and cash forecasts from Stripe or a spreadsheet, as drafts.
+5. **A power setting** to choose the model per agent, hidden under Settings.
