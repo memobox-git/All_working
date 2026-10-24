@@ -1,6 +1,6 @@
 # OBIE Landing Page Copy
 
-This copy is written for the page structure Building OBIE is using: nav, hero video, 4 steps, persona tabs, OBIE Cloud, tools grid, 3 control blocks, FAQ, closing CTA and footer. It follows the product rules: no emojis, never the word "candidate", and only white, blue, black and yellow. Every claim matches what Version 1 does today. It drafts, and you approve.
+This copy is written for the page structure Building OBIE is using: nav, hero video, 4 steps, persona tabs, OBIE Cloud, tools grid, guardrails, FAQ, closing CTA and footer. It follows the product rules: no emojis, never the word "candidate", and only white, blue, black and yellow. Every claim matches what Version 1 does today. It drafts, and you approve.
 
 Every CTA says **Get early access** and opens the waitlist form (section 11).
 
@@ -8,7 +8,7 @@ Every CTA says **Get early access** and opens the waitlist form (section 11).
 
 ## 1. Nav
 - Logo: the OBIE orb plus the word "OBIE"
-- Links: How it works · Who it's for · Control · FAQ
+- Links: How it works · Who it's for · Guardrails · FAQ
 - Right side: **Get early access** (primary button) and **Sign in** (text link to /login)
 
 ## 2. Hero
@@ -136,15 +136,24 @@ One price instead of a stack of subscriptions.
 
 (Don't add more logos until each connection is actually planned. Every tile must say "Coming soon" until it works.)
 
-## 7. You stay in control (3 blocks)
-**Nothing goes out without you.**
-Every email, post and reply waits in "Needs you". You approve it, edit it or reject it.
+## 7. Guardrails built in
+Claim only what Version 1 actually does. Automated quality checks or evals must never appear as live.
 
-**See the cost before it runs.**
-Every plan shows its credit estimate up front. Credits for failed tasks and redos come back to you.
+**Headline:** Guardrails built in.
 
-**Agents earn your trust.**
-Every agent's work is visible, and approved work done on time earns points. More points will mean more freedom later, at a pace you set.
+**You approve everything.**
+Nothing is sent or posted until you approve it in "Needs you". You can edit or reject any draft.
+
+**Costs up front, refunds on failure.**
+Every plan shows its credit estimate before it runs. Credits for failed tasks and redos come back to you.
+
+**Private to you.**
+Your workspace, your Business Profile and your drafts are visible only to you.
+
+**Every action logged.**
+Every AI action is recorded with the agent that did it and what it cost.
+
+**Coming soon:** Agent report cards, showing each agent's approval rate, on-time rate and cost.
 
 ## 8. FAQ
 **Is OBIE live?**
