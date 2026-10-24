@@ -2,7 +2,7 @@
 
 This copy is written for the page structure Building OBIE is using: nav, hero video, 4 steps, persona tabs, OBIE Cloud, tools grid, 3 control blocks, FAQ, closing CTA and footer. It follows the product rules: no emojis, never the word "candidate", and only white, blue, black and yellow. Every claim matches what Version 1 does today. It drafts, and you approve.
 
-Every CTA says **Get early access** and opens the waitlist form (section 10).
+Every CTA says **Get early access** and opens the waitlist form (section 11).
 
 ---
 
