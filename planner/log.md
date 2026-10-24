@@ -2,6 +2,10 @@
 
 Newest first. One entry a day: the top 3, what got done, what moved to tomorrow.
 
+## Sat 24 Oct 2026
+
+**Top 3 (Draft, waiting for Chris):** 1) OBIE prompt 11, so the new landing page and 30-day go-to-market plan have a finished v1 behind them 2) Publish one finished video 3) Decide whether SleekBuys (a new project as of Friday) gets a goal now or waits. The calendar is clear. No reply since Sunday, so this one is short and sent no phone ping.
+
 ## Fri 23 Oct 2026
 
 **Top 3 (Draft, waiting for Chris):** 1) Publish 1–2 finished videos before the weekend (Personal Agents is ready to go) 2) Plan the Claude Duet Shorts drops 3) OBIE prompt 11. Fixed: 4 sales calls, 12–1. No reply since Sunday, so this one is short and sent no phone ping.
