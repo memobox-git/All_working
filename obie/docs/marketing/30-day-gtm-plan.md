@@ -16,6 +16,8 @@ Anything marked **[VERIFY]** or **[CHRIS: fill in]** is a fact we don't have yet
 **One line:**
 OBIE gives a one-person business a full AI team. Tell it what you need by voice or text, and your sales, marketing, customer and operations agents draft the work. Nothing goes out until you tap approve.
 
+**Taglines (brand update):** "You work alone. OBIE doesn't." and "We don't fly. We dive."
+
 **Three alternative headlines:**
 1. One business. Infinite employees.
 2. Talk to your phone. Your team drafts the work. You approve it.
@@ -345,15 +347,17 @@ Building in public means posting the month that didn't go to plan too. This one 
 
 ## 5. Demo video script (60 seconds, shot on a phone)
 
+The final version is in video/voiceover-script.md, which replaces this draft. That file uses the new penguin brand.
+
 **Setup:** screen recording on the phone, with Chris's voice over it. Use a real Stackle goal, and keep the takes real. Add captions, because most people watch with the sound off.
 
 | Time | On screen | Voiceover (Chris) |
 |------|-----------|-------------------|
-| 0:00–0:05 | OBIE's orb with the yellow star. Caption: "I run Stackle alone." | "I run my business alone. This is my team." |
-| 0:05–0:15 | Chris taps the mic and records: "Draft five LinkedIn posts about getting hired as a data engineer, by Friday." The orb pulses and the transcript appears. | "I tell OBIE what I need. Voice note, ten seconds." |
+| 0:00–0:05 | OBIE, the little blue penguin. Caption: "I run Stackle alone." | "I run my business alone. This is my team." |
+| 0:05–0:15 | Chris taps the mic and records: "Draft five LinkedIn posts about getting hired as a data engineer, by Friday." OBIE listens and the transcript appears. | "I tell OBIE what I need. Voice note, ten seconds." |
 | 0:15–0:25 | The Marketing agent's DM, then a new channel appears with the plan: subagents, tasks and the credit estimate. | "My Marketing agent turns it into a plan. Every task, every subagent, and what it'll cost before anything runs." |
 | 0:25–0:30 | Chris taps Approve plan. | "I approve the plan." |
-| 0:30–0:42 | The channel fills in. Small dots appear in the threads and fade, and status pills move from Working to Done. | "Each task goes to a tiny agent that does one job and disappears. I can watch it happen." |
+| 0:30–0:42 | The channel fills in. Mochi chicks pick up tasks and waddle off, and status pills move from Working to Done. | "Each task goes to a chick that does one job, then waddles off. I can watch it happen." |
 | 0:42–0:52 | The "Needs you" page shows five drafts. Chris opens one, edits a word and taps Approve. | "Then the drafts land in Needs you. Nothing goes out until I tap approve." |
 | 0:52–1:00 | The OBIE logo. Caption: "One Business, Infinite Employees. Waitlist: link in Featured." | "OBIE. One business, infinite employees." |
 
